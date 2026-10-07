@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css"><style>
+body{margin:0;background:#0e1020}
+*{box-sizing:border-box}
+a{color:#46e0d2;text-decoration:none}
+a:hover{color:#ffc247}
+button{font:inherit;color:inherit;cursor:pointer}
+@keyframes mh-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes mh-blink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes mh-bob2{0%,100%{transform:translateY(-5px)}50%{transform:translateY(3px)}}
+@keyframes mh-scan{0%{transform:translateY(-100%)}100%{transform:translateY(320%)}}
+@keyframes mh-pulse{0%,100%{opacity:.25}50%{opacity:.7}}
+@keyframes mh-drift{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-10px)}}
+</style></helmet>
+
+<div style="width:1280px;height:800px;position:relative;overflow:hidden;background:#0e1020;font-family:Galmuri11,monospace;color:#f4f2e6;image-rendering:pixelated;user-select:none">
+
+<sc-if value="{{ showHud }}" hint-placeholder-val="{{ true }}">
+<div style="height:70px;display:flex;align-items:center;gap:14px;padding:0 18px;background:#0e1020;border-bottom:3px solid #0e1020;position:relative;z-index:20">
+<button onClick="{{ goProfile }}" style="display:flex;align-items:center;gap:10px;background:#1a2142;border:3px solid #0e1020;padding:5px 16px 5px 5px;height:48px">
+<img src="sprites/chibi/player.png" alt="" style="width:36px;height:36px;object-fit:cover;object-position:50% 0;background:#0e1020;border:2px solid #46e0d2;image-rendering:pixelated">
+<div style="text-align:left"><div style="font-family:Galmuri11,monospace;font-size:16px;color:#f4f2e6">한지우</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2">LV.10</div></div>
+</button>
+<div style="flex:1;min-width:0">
+<div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:4px"><span>EXP</span><span>4,200 / 14,000</span></div>
+<div style="height:16px;background:#1a2142;border:3px solid #0e1020;padding:1px"><div style="height:100%;width:30%;background:#46e0d2;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 4px,transparent 4px 8px)"></div></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;background:#1a2142;border:3px solid #0e1020;padding:10px 15px"><div style="width:12px;height:12px;background:#ffc247"></div><div style="font-family:Galmuri11,monospace;font-size:15px;color:#ffc247">1,240</div></div>
+<div style="display:flex;align-items:center;gap:8px;background:#1a2142;border:3px solid #0e1020;padding:10px 15px"><div style="width:12px;height:12px;background:#ff5d8f"></div><div style="font-family:Galmuri11,monospace;font-size:15px;color:#ff5d8f">7 / 10</div></div>
+<button style="width:48px;height:48px;background:#1a2142;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center"><div style="width:16px;height:16px;border:3px solid #5a6bc4"></div></button>
+</div>
+</sc-if>
+
+<!-- ============ 메인 · 내 방 ============ -->
+<sc-if value="{{ isMain }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="01 메인 · 내 방" style="height:800px;position:relative;overflow:hidden;background:#2b2a52">
+
+<div style="position:absolute;left:0;right:0;top:70px;height:460px;background:#2b2a52;background-image:repeating-linear-gradient(0deg,rgba(11,13,26,.14) 0 3px,transparent 3px 36px)"></div>
+<div style="position:absolute;left:0;right:0;top:506px;height:24px;background:#f4f2e6;border-top:3px solid #0e1020;border-bottom:3px solid #0e1020"></div>
+<div style="position:absolute;left:0;right:0;top:530px;bottom:76px;background:#3d3352;background-image:repeating-linear-gradient(90deg,rgba(11,13,26,.28) 0 4px,transparent 4px 72px)"></div>
+
+<div style="position:absolute;left:420px;top:272px;width:180px;height:148px;background:#7a663f;border:3px solid #0e1020;padding:8px">
+<div style="width:100%;height:100%;background:#101a3a;border:3px solid #0e1020;position:relative;overflow:hidden">
+<div style="position:absolute;left:0;right:0;bottom:0;height:30px;background:#1b2650"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:20px;background:#141a34;clip-path:polygon(0 100%,0 40%,26px 40%,36px 10px,64px 10px,76px 44%,112px 44%,124px 6px,150px 6px,160px 40%,180px 40%,180px 100%)"></div>
+<div style="position:absolute;left:18px;top:16px;width:40px;height:40px;background:#f4f2e6;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:96px;top:20px;width:5px;height:5px;background:#f4f2e6;animation:mh-blink 2.6s infinite"></div>
+<div style="position:absolute;left:130px;top:52px;width:5px;height:5px;background:#f4f2e6;animation:mh-blink 3.4s infinite"></div>
+<div style="position:absolute;left:74px;top:70px;width:4px;height:4px;background:#8f9bd6;animation:mh-blink 4s infinite"></div>
+<div style="position:absolute;left:0;right:0;top:62px;height:8px;background:#7a663f;border-top:3px solid #0e1020;border-bottom:3px solid #0e1020"></div>
+<div style="position:absolute;top:0;bottom:0;left:78px;width:8px;background:#7a663f;border-left:3px solid #0e1020;border-right:3px solid #0e1020"></div>
+</div>
+</div>
+<div style="position:absolute;left:406px;top:420px;width:208px;height:14px;background:#8f6b3a;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:428px;top:390px;width:34px;height:44px;background:#7ee081;border:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:70px;top:432px;width:28px;height:98px;background:#7a663f;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:70px;top:475px;width:240px;height:55px;background:#5a4a2e;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:74px;top:475px;width:232px;height:18px;background:#f4f2e6;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:170px;top:479px;width:136px;height:48px;background:#8f9bd6;border:3px solid #0e1020;background-image:repeating-linear-gradient(45deg,rgba(11,13,26,.16) 0 4px,transparent 4px 14px)"></div>
+<div style="position:absolute;left:100px;top:452px;width:70px;height:30px;background:#f4f2e6;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:78px;top:530px;width:16px;height:18px;background:#5a4a2e;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:288px;top:530px;width:16px;height:18px;background:#5a4a2e;border:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:250px;top:330px;width:76px;height:40px;background:#ffc247;border:3px solid #0e1020;clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 100%,0 100%)"></div>
+<div style="position:absolute;left:220px;top:370px;width:150px;height:160px;background-image:repeating-linear-gradient(45deg,rgba(255,243,196,.55) 0 2px,transparent 2px 4px);clip-path:polygon(20% 0,71% 0,100% 100%,0 100%);opacity:.9"></div>
+<div style="position:absolute;left:282px;top:370px;width:10px;height:160px;background:#5a4a2e;border-left:3px solid #0e1020;border-right:3px solid #0e1020"></div>
+<div style="position:absolute;left:262px;top:522px;width:50px;height:12px;background:#5a4a2e;border:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:760px;top:450px;width:210px;height:14px;background:#8f6b3a;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:766px;top:464px;width:12px;height:66px;background:#7a663f;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:952px;top:464px;width:12px;height:66px;background:#7a663f;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:830px;top:434px;width:70px;height:16px;background:#33407e;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:850px;top:414px;width:30px;height:20px;background:#33407e;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:782px;top:434px;width:44px;height:16px;background:#33407e;border:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:792px;top:316px;width:146px;height:98px;background:#0e1020;border:3px solid #0e1020;box-shadow:0 4px 0 rgba(0,0,0,.4);overflow:hidden">
+<div style="position:absolute;inset:0;background:#111a3e;background-image:repeating-linear-gradient(0deg,rgba(70,224,210,.12) 0 2px,transparent 2px 10px)"></div>
+<div style="position:absolute;left:10px;top:9px;font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2">1차원 관문</div>
+<div style="position:absolute;left:10px;top:38px;display:flex;align-items:center;gap:6px">
+<div style="width:20px;height:20px;background:#7ee081;border:2px solid #0e1020"></div>
+<div style="width:10px;height:4px;background:#33407e"></div>
+<div style="width:28px;height:28px;background:#ffc247;border:2px solid #0e1020;animation:mh-blink 1.8s infinite"></div>
+<div style="width:10px;height:4px;background:#33407e"></div>
+<div style="width:20px;height:20px;background:#1f2647;border:2px solid #0e1020"></div>
+</div>
+<div style="position:absolute;left:10px;bottom:8px;font-family:Galmuri11,monospace;font-size:15px;color:#f4f2e6">1-4 이어서 하기</div>
+</div>
+<button onClick="{{ goMap }}" style="position:absolute;left:792px;top:258px;width:146px;height:50px;display:flex;align-items:center;justify-content:center;background:#ffc247;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;animation:mh-bob 2.6s ease-in-out infinite">
+<div style="font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">톡 · 접속</div>
+</button>
+
+<div style="position:absolute;left:982px;top:465px;width:84px;height:22px;background:#5a6bc4;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:1016px;top:398px;width:26px;height:70px;background:#46536e;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:1016px;top:487px;width:12px;height:31px;background:#33407e;border-left:3px solid #0e1020;border-right:3px solid #0e1020"></div>
+<div style="position:absolute;left:988px;top:518px;width:70px;height:12px;background:#33407e;border:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:1100px;top:444px;width:130px;height:86px;background:#7a663f;border:3px solid #0e1020"></div>
+<div style="position:absolute;left:1110px;top:492px;display:flex;gap:5px">
+<div style="width:10px;height:26px;background:#ff5d8f;border:2px solid #0e1020"></div><div style="width:10px;height:26px;background:#46e0d2;border:2px solid #0e1020"></div><div style="width:10px;height:26px;background:#ffc247;border:2px solid #0e1020"></div>
+</div>
+<div style="position:absolute;left:1106px;top:352px;width:118px;height:92px;background:#0f2a34;border:3px solid #0e1020;overflow:hidden">
+<div style="position:absolute;left:0;right:0;bottom:0;height:12px;background:#1a4a52"></div>
+<img src="sprites/chibi/bug.png" alt="버그" style="position:absolute;left:8px;top:20px;width:32px;height:32px;animation:mh-drift 3.2s ease-in-out infinite">
+<img src="sprites/chibi/bug.png" alt="버그" style="position:absolute;left:44px;top:44px;width:32px;height:32px;animation:mh-drift 4.1s ease-in-out infinite">
+<img src="sprites/chibi/bug.png" alt="버그" style="position:absolute;left:76px;top:16px;width:32px;height:32px;animation:mh-drift 2.7s ease-in-out infinite">
+</div>
+<button onClick="{{ goReview }}" style="position:absolute;left:1092px;top:312px;height:38px;display:flex;align-items:center;background:#0e1020;border:3px solid #46e0d2;padding:0 12px">
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2">오답 수조 · 3마리</div>
+</button>
+
+<img src="sprites/chibi/player.png" alt="한지우" style="position:absolute;left:620px;top:440px;width:128px;height:160px">
+<img src="sprites/chibi/cobi.png" alt="코비" style="position:absolute;left:552px;top:404px;width:72px;height:72px;animation:mh-bob 3s ease-in-out infinite">
+<div style="position:absolute;left:336px;top:426px;width:212px;height:98px;background:#46e0d2;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;padding:14px 16px">
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#0e1020;line-height:1.7">오늘 할 일 3개 남았어. 1-4 관문 갈까?</div>
+</div>
+<div style="position:absolute;left:548px;top:452px;width:10px;height:11px;background:#46e0d2;border-top:3px solid #0e1020;border-bottom:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:0;right:0;top:0;height:70px;display:flex;align-items:center;gap:14px;padding:0 18px;background:#141a34;border-bottom:3px solid #0e1020">
+<button onClick="{{ goProfile }}" style="display:flex;align-items:center;gap:11px;background:#1a2142;border:3px solid #0e1020;padding:5px 16px 5px 5px">
+<img src="sprites/chibi/player.png" alt="" style="width:40px;height:40px;object-fit:cover;object-position:50% 0;background:#0e1020;border:2px solid #0e1020">
+<div style="text-align:left"><div style="font-family:Galmuri11,monospace;font-size:16px;color:#f4f2e6">한지우</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2;margin-top:2px">LV.10</div></div>
+</button>
+<div style="flex:1;min-width:0">
+<div style="height:20px;background:#0e1020;border:3px solid #0e1020;padding:2px"><div style="height:100%;width:30%;background:#46e0d2"></div></div>
+</div>
+<div style="height:40px;display:flex;align-items:center;gap:9px;background:#ffc247;border:3px solid #0e1020;padding:0 14px"><div style="width:12px;height:12px;background:#0e1020"></div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#0e1020">1,240</div></div>
+<div style="height:40px;display:flex;align-items:center;gap:9px;background:#ff5d8f;border:3px solid #0e1020;padding:0 14px"><div style="width:12px;height:12px;background:#0e1020;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#0e1020">7 / 10</div></div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:76px;background:#0e1020;border-top:3px solid #0e1020;padding:10px 16px 0;display:flex;align-items:flex-end;gap:8px">
+<div style="flex:1;height:66px;background:#ffc247;border:3px solid #0e1020;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px"><div style="width:18px;height:18px;background:#0e1020"></div><div style="font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">내 방</div></div>
+<button onClick="{{ goReview }}" style="flex:1;height:56px;background:#1a2142;border:3px solid #0e1020;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px"><div style="width:16px;height:16px;background:#46e0d2;clip-path:polygon(11px 0,100% 0,100% 100%,11px 100%,0 50%)"></div><div style="font-family:Galmuri14,monospace;font-size:18px;color:#8f9bd6">복습</div></button>
+<button onClick="{{ goClan }}" style="flex:1;height:56px;background:#1a2142;border:3px solid #0e1020;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px"><div style="width:16px;height:16px;background:#7ee081;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 50%,calc(100% - 6px) 100%,0 100%)"></div><div style="font-family:Galmuri14,monospace;font-size:18px;color:#8f9bd6">클랜</div></button>
+<button onClick="{{ goProfile }}" style="flex:1;height:56px;background:#1a2142;border:3px solid #0e1020;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px"><div style="width:16px;height:16px;background:#f4f2e6;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></div><div style="font-family:Galmuri14,monospace;font-size:18px;color:#8f9bd6">프로필</div></button>
+</div>
+
+</div>
+</sc-if>
+
+<!-- ============ 맵 ============ -->
+<sc-if value="{{ isMapish }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="02 맵 · 차원 선택" style="height:730px;display:flex;position:relative;background:#141a34">
+
+<div style="width:104px;flex:none;background:#0e1020;border-right:3px solid #0e1020;padding:12px 0;display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:4px">DIMENSION</div>
+<sc-for list="{{ dims }}" as="d" hint-placeholder-count="6">
+<div style="width:72px;height:72px;border:3px solid #0e1020;background:#1a2142;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+<div style="font-family:Galmuri14,monospace;font-size:22px;color:{{ d.fg }}">{{ d.n }}</div>
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:{{ d.fg }}">{{ d.label }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="flex:1;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:#141a34;background-image:repeating-linear-gradient(0deg,rgba(70,224,210,.05) 0 2px,transparent 2px 40px),repeating-linear-gradient(90deg,rgba(70,224,210,.05) 0 2px,transparent 2px 40px)"></div>
+
+<div style="position:absolute;left:36px;top:24px">
+<div style="font-family:Galmuri14,monospace;font-size:30px;color:#f4f2e6">1차원 · 1학년</div>
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2;margin-top:6px">1-2 수의 사칙연산 · 8개 지역 중 3곳 안전</div>
+</div>
+
+<div style="position:absolute;left:96px;top:238px;width:760px;height:6px;background:#33407e"></div>
+<div style="position:absolute;left:96px;top:238px;width:300px;height:6px;background:#7ee081"></div>
+
+<div style="position:absolute;left:64px;top:210px;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:64px;height:64px;background:#7ee081;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">1-1</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#7ee081">클리어</div></div>
+<div style="position:absolute;left:184px;top:210px;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:64px;height:64px;background:#7ee081;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">1-2</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#7ee081">클리어</div></div>
+<div style="position:absolute;left:304px;top:210px;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:64px;height:64px;background:#7ee081;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">1-3</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#7ee081">클리어</div></div>
+
+<button onClick="{{ openRegion }}" style="position:absolute;left:416px;top:190px;background:transparent;border:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:8px">
+<div style="width:88px;height:88px;background:#ffc247;border:4px solid #0e1020;box-shadow:0 6px 0 #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:24px;color:#0e1020;animation:mh-bob 2.4s ease-in-out infinite">1-4</div>
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#ffc247">지금 여기</div>
+</button>
+
+<div style="position:absolute;left:560px;top:210px;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:64px;height:64px;background:#1a2142;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:18px;color:#8f9bd6">1-5</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6">잠김</div></div>
+<div style="position:absolute;left:680px;top:210px;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:64px;height:64px;background:#1a2142;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:18px;color:#8f9bd6">1-6</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6">잠김</div></div>
+<div style="position:absolute;left:800px;top:198px;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:76px;height:76px;background:#1a2142;border:4px solid #ff5d8f;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:18px;color:#ff5d8f">BOSS</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#ff5d8f">단원 평가</div></div>
+
+<button onClick="{{ goReview }}" style="position:absolute;left:64px;top:392px;background:#0e1020;border:4px solid #46e0d2;box-shadow:0 6px 0 #0e1020;padding:16px 20px;display:flex;align-items:center;gap:16px;text-align:left">
+<div style="width:56px;height:56px;background:#2a1030;border:3px solid #ff5d8f;display:flex;align-items:center;justify-content:center;gap:2px"><img src="sprites/chibi/bug.png" alt="" style="width:22px;height:22px;image-rendering:pixelated"><div style="font-family:Galmuri14,monospace;font-size:22px;color:#ff5d8f">3</div></div>
+<div><div style="font-family:Galmuri14,monospace;font-size:20px;color:#46e0d2">복습 구역 · 놓친 버그 3마리</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-top:6px">POWER 0 소모 · 잠금 없음 · 언제든 입장</div></div>
+</button>
+
+<div style="position:absolute;left:64px;top:520px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6">난이도 · 아무 때나 바꿀 수 있어요</div>
+<div style="display:flex;gap:0;border:3px solid #0e1020">
+<sc-for list="{{ diffs }}" as="d" hint-placeholder-count="3">
+<button onClick="{{ d.pick }}" style="padding:16px 30px;border:0;background:{{ d.bg }};color:{{ d.fg }};font-family:Galmuri14,monospace;font-size:20px">{{ d.name }}</button>
+</sc-for>
+</div>
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6">{{ diffHint }}</div>
+</div>
+
+<button onClick="{{ goMain }}" style="position:absolute;right:28px;top:24px;background:#1a2142;border:3px solid #0e1020;padding:12px 18px;font-family:Galmuri14,monospace;font-size:18px;color:#f4f2e6">내 방으로</button>
+
+<sc-if value="{{ isRegion }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(14,16,32,.82);display:flex;align-items:center;justify-content:center">
+<div data-screen-label="03 지역 설명 보드" style="width:660px;background:#f4f2e6;border:5px solid #0e1020;box-shadow:0 8px 0 rgba(0,0,0,.5)">
+<div style="background:#33407e;padding:14px 20px;display:flex;justify-content:space-between;align-items:center">
+<div style="font-family:Galmuri14,monospace;font-size:24px;color:#f4f2e6">1-4 한 자리 수 뺄셈</div>
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#ffc247">난이도 {{ diff }} · 5문항</div>
+</div>
+<div style="padding:22px 24px">
+<div style="display:flex;gap:14px;align-items:flex-start;background:#efe9d5;border:3px solid #0e1020;padding:14px;margin-bottom:18px">
+<img src="sprites/chibi/minos.png" alt="미노스" style="width:52px;height:65px;flex:none;image-rendering:pixelated">
+<div><div style="display:inline-flex;align-items:center;gap:8px;background:#2a1030;border:3px solid #0e1020;padding:5px 12px;font-family:Galmuri14,monospace;font-size:18px;color:#ff5d8f;margin-bottom:10px"><div style="width:10px;height:10px;background:#ff5d8f;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></div>미노스 경보</div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#1a2142;line-height:1.7">기밀 정보가 빠져나가고 있어! 방화벽을 세우려면 남은 데이터 조각의 수를 계산해야 해.</div></div>
+</div>
+<div style="font-family:Galmuri14,monospace;font-size:18px;color:#33407e;margin-bottom:10px">이 지역에서 배우는 것</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+<div style="display:flex;gap:10px;align-items:center"><div style="width:10px;height:10px;background:#46e0d2"></div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#1a2142">한 자리 수의 개념을 이해할 수 있다</div></div>
+<div style="display:flex;gap:10px;align-items:center"><div style="width:10px;height:10px;background:#46e0d2"></div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#1a2142">한 자리 수의 기본적인 뺄셈을 할 수 있다</div></div>
+</div>
+<div style="display:flex;gap:12px;align-items:center">
+<button onClick="{{ goPlay }}" style="flex:1;background:#ffc247;border:4px solid #0e1020;box-shadow:0 5px 0 #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:22px;color:#0e1020">출격 · 파워 1</button>
+<button onClick="{{ goPlay }}" style="flex:1;background:#46e0d2;border:4px solid #0e1020;box-shadow:0 5px 0 #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:22px;color:#0e1020">연습 · 파워 0</button>
+<button onClick="{{ closeRegion }}" style="background:#e0ddcd;border:4px solid #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:20px;color:#1a2142">닫기</button>
+</div>
+<div style="margin-top:12px;font-family:Galmuri11,monospace;font-size:15px;color:#33407e">연습 모드는 순위에 반영되지 않지만 오답은 오답 수조에 쌓입니다.</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</sc-if>
+
+<!-- ============ 문제 풀이 ============ -->
+<sc-if value="{{ isPlayish }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="04 문제 풀이" style="height:800px;display:flex;position:relative;background:#0e1020">
+
+<div style="width:460px;flex:none;position:relative;overflow:hidden;background:#111a3e">
+<div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(70,224,210,.06) 0 2px,transparent 2px 36px),repeating-linear-gradient(90deg,rgba(70,224,210,.06) 0 2px,transparent 2px 36px)"></div>
+<div style="position:absolute;left:0;right:0;top:330px;height:180px;background:#0b1230;border-top:3px solid #46e0d2;overflow:hidden">
+<div style="position:absolute;left:0;right:0;top:8px;height:3px;background:rgba(70,224,210,.34)"></div>
+<div style="position:absolute;left:0;right:0;top:22px;height:3px;background:rgba(70,224,210,.26)"></div>
+<div style="position:absolute;left:0;right:0;top:46px;height:3px;background:rgba(70,224,210,.2)"></div>
+<div style="position:absolute;left:0;right:0;top:86px;height:3px;background:rgba(70,224,210,.16)"></div>
+<div style="position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(70,224,210,.14) 0 3px,transparent 3px 68px)"></div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:290px;background:#1d1436;border-top:3px solid #0e1020"></div>
+
+<div style="position:absolute;left:18px;top:18px;display:flex;gap:10px">
+<button onClick="{{ goMap }}" style="width:56px;height:56px;background:#1a2142;border:3px solid #0e1020;box-shadow:0 3px 0 #0e1020;font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6">◀</button>
+<button style="width:56px;height:56px;background:#1a2142;border:3px solid #0e1020;box-shadow:0 3px 0 #0e1020;display:flex;align-items:center;justify-content:center;gap:5px"><div style="width:6px;height:20px;background:#f4f2e6"></div><div style="width:6px;height:20px;background:#f4f2e6"></div></button>
+</div>
+<div style="position:absolute;right:18px;top:18px;background:#1a2142;border:3px solid #0e1020;padding:12px 15px;font-family:Galmuri11,monospace;font-size:15px;color:#8f9bd6">시간 제한 없음</div>
+
+<img src="sprites/chibi/minos.png" alt="미노스" style="position:absolute;right:44px;top:378px;width:96px;height:120px;animation:mh-bob 3.4s ease-in-out infinite">
+<div style="position:absolute;right:36px;top:330px;height:34px;display:flex;align-items:center;gap:8px;background:#2a1030;border:3px solid #ff5d8f;padding:0 12px">
+<div style="width:11px;height:11px;background:#ff5d8f;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation:mh-blink 1.4s infinite"></div>
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#ff5d8f">미노스</div>
+</div>
+<div style="position:absolute;right:36px;top:258px;width:172px">
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#ff5d8f;margin-bottom:6px">방화벽 침투율</div>
+<div style="height:20px;background:#0e1020;border:3px solid #0e1020;padding:2px"><div style="height:100%;width:40%;background:#ff5d8f"></div></div>
+</div>
+
+<img src="sprites/chibi/player.png" alt="한지우" style="position:absolute;left:44px;top:378px;width:96px;height:120px">
+<img src="sprites/chibi/cobi.png" alt="코비" style="position:absolute;left:140px;top:344px;width:60px;height:60px;animation:mh-bob 2.6s ease-in-out infinite">
+
+<div style="position:absolute;left:24px;top:530px;right:24px">
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2;margin-bottom:10px">내가 세운 방화벽 · 5칸</div>
+<div style="display:flex;gap:7px">
+<div style="flex:1;height:74px;background:#46e0d2;border:3px solid #0e1020"></div>
+<div style="flex:1;height:74px;background:#46e0d2;border:3px solid #0e1020"></div>
+<div style="flex:1;height:74px;background:#1f2647;border:3px solid #0e1020;background-image:repeating-linear-gradient(45deg,#33407e 0 2px,transparent 2px 6px)"></div>
+<div style="flex:1;height:74px;background:#1f2647;border:3px solid #0e1020;background-image:repeating-linear-gradient(45deg,#33407e 0 2px,transparent 2px 6px)"></div>
+<div style="flex:1;height:74px;background:#1f2647;border:3px solid #0e1020;background-image:repeating-linear-gradient(45deg,#33407e 0 2px,transparent 2px 6px)"></div>
+</div>
+</div>
+
+<div style="position:absolute;left:24px;bottom:26px;right:24px;background:#0e1020;border:3px solid #46e0d2;padding:14px 16px">
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2;margin-bottom:8px">미노스가 가져간 조각 · 3개</div>
+<div style="display:flex;gap:7px">
+<div style="width:22px;height:22px;background:#0e1020;border:3px solid #ff5d8f;animation:mh-drift 3.4s ease-in-out infinite"></div>
+<div style="width:22px;height:22px;background:#0e1020;border:3px solid #ff5d8f;animation:mh-drift 4s ease-in-out infinite"></div>
+<div style="width:22px;height:22px;background:#0e1020;border:3px solid #ff5d8f;animation:mh-drift 2.8s ease-in-out infinite"></div>
+</div>
+</div>
+</div>
+
+<div style="flex:1;background:#0e1020;border-left:5px solid #33407e;padding:24px 28px;display:flex;flex-direction:column;gap:14px">
+
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="font-family:Galmuri14,monospace;font-size:24px;color:#f4f2e6">2 <span style="color:#8f9bd6;font-size:18px">/ 5</span> <span style="font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6">1-4 한 자리 수 뺄셈</span></div>
+<button onClick="{{ toggleHint }}" style="background:#1a2142;border:3px solid #46e0d2;box-shadow:0 3px 0 #0e1020;padding:13px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#46e0d2">{{ hintLabel }}</button>
+</div>
+<div style="display:flex;gap:6px">
+<div style="flex:1;height:14px;background:#7ee081;border:3px solid #0e1020"></div><div style="flex:1;height:14px;background:#ffc247;border:3px solid #0e1020"></div><div style="flex:1;height:14px;background:#1a2142;border:3px solid #0e1020"></div><div style="flex:1;height:14px;background:#1a2142;border:3px solid #0e1020"></div><div style="flex:1;height:14px;background:#1a2142;border:3px solid #0e1020"></div>
+</div>
+
+<div style="background:#f4f2e6;border:5px solid #0e1020;box-shadow:0 5px 0 rgba(0,0,0,.45)">
+<div style="background:#33407e;padding:11px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #0e1020">
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#ffc247">Q.2 · 데이터 조각 지키기</div>
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#f4f2e6">난이도 {{ diff }}</div>
+</div>
+<div style="padding:18px 22px">
+<div style="font-family:Galmuri11,monospace;font-size:17px;color:#33407e;line-height:1.7;margin-bottom:16px">데이터 조각 9개 중 3개가 지워졌어. 몇 개 남았을까?</div>
+<div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+<div style="display:grid;grid-template-columns:repeat(5,26px);gap:7px">
+<div style="width:26px;height:26px;background:#46e0d2;border:3px solid #0e1020"></div><div style="width:26px;height:26px;background:#46e0d2;border:3px solid #0e1020"></div><div style="width:26px;height:26px;background:#46e0d2;border:3px solid #0e1020"></div><div style="width:26px;height:26px;background:#46e0d2;border:3px solid #0e1020"></div><div style="width:26px;height:26px;background:#46e0d2;border:3px solid #0e1020"></div>
+<div style="width:26px;height:26px;background:#46e0d2;border:3px solid #0e1020"></div><div style="width:26px;height:26px;background:#f4f2e6;border:3px dashed #ff5d8f"></div><div style="width:26px;height:26px;background:#f4f2e6;border:3px dashed #ff5d8f"></div><div style="width:26px;height:26px;background:#f4f2e6;border:3px dashed #ff5d8f"></div>
+</div>
+<div style="font-family:Galmuri14,monospace;font-size:40px;color:#1a2142;letter-spacing:3px">9 − 3 = ?</div>
+</div>
+</div>
+</div>
+
+<sc-if value="{{ hint }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b2a3d;border:3px solid #46e0d2;padding:12px 16px;display:flex;gap:14px;align-items:center">
+<img src="sprites/chibi/cobi.png" alt="코비" style="width:52px;height:52px;flex:none;animation:mh-bob 3s ease-in-out infinite">
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#f4f2e6;line-height:1.7"><span style="color:#46e0d2">코비의 힌트 · </span>점선 칸이 지워진 조각이야. 색이 남은 칸만 하나씩 세어볼까?</div>
+</div>
+</sc-if>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<sc-for list="{{ opts }}" as="o" hint-placeholder-count="4">
+<button onClick="{{ o.pick }}" style="height:80px;display:flex;align-items:center;gap:16px;padding:0 18px;background:{{ o.bg }};border:4px solid #0e1020;box-shadow:0 4px 0 #0e1020">
+<div style="font-family:Galmuri14,monospace;font-size:40px;color:{{ o.fg }};line-height:1;min-width:52px;text-align:center">{{ o.v }}</div>
+<div style="width:3px;height:44px;background:#33407e"></div>
+<div style="display:grid;grid-template-columns:repeat(4,13px);gap:5px">
+<sc-for list="{{ o.dots }}" as="d" hint-placeholder-count="5">
+<div style="width:13px;height:13px;background:{{ o.dotBg }};border:2px solid #0e1020"></div>
+</sc-for>
+</div>
+<div style="margin-left:auto;font-family:Galmuri11,monospace;font-size:15px;color:{{ o.fg }}">{{ o.mark }}</div>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ feedback }}" hint-placeholder-val="{{ false }}">
+<div style="background:{{ fbBg }};border:4px solid #0e1020;padding:12px 18px;display:flex;gap:14px;align-items:center">
+<div style="font-family:Galmuri14,monospace;font-size:20px;color:#0e1020;flex:none">{{ fbTitle }}</div>
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#0e1020;line-height:1.6">{{ fbBody }}</div>
+</div>
+</sc-if>
+
+<div style="margin-top:auto;display:flex;gap:12px">
+<button style="background:#1a2142;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;padding:16px 22px;font-family:Galmuri14,monospace;font-size:18px;color:#8f9bd6">◀ 이전</button>
+<button onClick="{{ toggleHint }}" style="display:flex;align-items:center;gap:12px;background:#0e1020;border:3px solid #46e0d2;box-shadow:0 4px 0 #0e1020;padding:10px 20px">
+<img src="sprites/chibi/cobi.png" alt="코비" style="width:44px;height:44px;flex:none">
+<div style="font-family:Galmuri14,monospace;font-size:18px;color:#46e0d2">잘 모르겠어요</div>
+</button>
+<button onClick="{{ goClear }}" style="flex:1;background:#ffc247;border:4px solid #0e1020;box-shadow:0 5px 0 #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:20px;color:#0e1020">다음 ▶</button>
+</div>
+</div>
+
+<sc-if value="{{ isClear }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(14,16,32,.86);display:flex;align-items:center;justify-content:center">
+<div data-screen-label="05 스테이지 클리어" style="width:660px;background:#1a2142;border:5px solid #46e0d2;box-shadow:0 8px 0 rgba(0,0,0,.5)">
+<div style="background:#46e0d2;padding:18px 24px;text-align:center"><div style="font-family:Galmuri14,monospace;font-size:30px;color:#0e1020">1-4 지역 안전 확보</div><div style="font-family:Galmuri11,monospace;font-size:15px;color:#0e1020;margin-top:8px">방화벽 설치 완료</div></div>
+<div style="padding:24px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+<div style="background:#0e1020;border:3px solid #0e1020;padding:14px;text-align:center"><div style="font-family:Galmuri11,monospace;font-size:15px;color:#8f9bd6;margin-bottom:8px">맞춘 문항</div><div style="font-family:Galmuri14,monospace;font-size:28px;color:#7ee081">4 / 5</div></div>
+<div style="background:#0e1020;border:3px solid #0e1020;padding:14px;text-align:center"><div style="font-family:Galmuri11,monospace;font-size:15px;color:#8f9bd6;margin-bottom:8px">푼 문제</div><div style="font-family:Galmuri14,monospace;font-size:28px;color:#f4f2e6">5개</div></div>
+<div style="background:#0e1020;border:3px solid #0e1020;padding:14px;text-align:center"><div style="font-family:Galmuri11,monospace;font-size:15px;color:#8f9bd6;margin-bottom:8px">경험치</div><div style="font-family:Galmuri14,monospace;font-size:28px;color:#ffc247">+129</div></div>
+</div>
+<div style="background:#2a1030;border:4px solid #ff5d8f;padding:16px;display:flex;align-items:center;gap:16px;margin-bottom:20px">
+<div style="width:56px;height:56px;flex:none;background:#0e1020;border:3px solid #ff5d8f;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:24px;color:#ff5d8f">1</div>
+<div style="flex:1"><div style="font-family:Galmuri14,monospace;font-size:20px;color:#ff5d8f;margin-bottom:8px">버그 1마리를 놓쳤어요</div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#f4f2e6;line-height:1.6">3번 문항 · 수조에 담아뒀어요. 지금 잡으면 경험치를 더 받아요.</div></div>
+</div>
+<div style="display:flex;gap:12px">
+<button onClick="{{ goReview }}" style="flex:1.4;background:#46e0d2;border:4px solid #0e1020;box-shadow:0 5px 0 #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:20px;color:#0e1020">지금 복습하기</button>
+<button onClick="{{ goMap }}" style="flex:1;background:#33407e;border:4px solid #0e1020;box-shadow:0 5px 0 #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6">맵으로</button>
+<button onClick="{{ goPlay }}" style="flex:1;background:#1a2142;border:4px solid #0e1020;box-shadow:0 5px 0 #0e1020;padding:16px;font-family:Galmuri14,monospace;font-size:20px;color:#8f9bd6">다시하기</button>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</sc-if>
+
+<!-- ============ 복습 · 버그 캡슐 ============ -->
+<sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="06 복습 · 오답 수조 (신규)" style="height:730px;display:flex;background:#141a34">
+<div style="flex:1;padding:28px 32px;overflow:hidden;display:flex;flex-direction:column">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:6px">
+<div style="font-family:Galmuri14,monospace;font-size:30px;color:#f4f2e6">오답 수조</div>
+<button onClick="{{ goMain }}" style="background:#1a2142;border:3px solid #0e1020;padding:15px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#f4f2e6">내 방으로</button>
+</div>
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2;margin-bottom:22px">놓친 문제 3마리 · 파워 0 소모 · 잡으면 방 아이템으로 바뀝니다 · 내 방 수조에 있어요</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ bugs }}" as="b" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:18px;background:#1a2142;border:3px solid #0e1020;padding:16px 18px">
+<div style="width:56px;height:56px;flex:none;background:#2a1030;border:3px solid #ff5d8f;background-image:repeating-linear-gradient(45deg,rgba(255,93,143,.3) 0 3px,transparent 3px 6px);display:flex;align-items:center;justify-content:center"><img src="sprites/chibi/bug.png" alt="버그" style="width:34px;height:34px;image-rendering:pixelated"></div>
+<div style="flex:1">
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:6px">{{ b.stage }} · {{ b.tag }}</div>
+<div style="font-family:Galmuri14,monospace;font-size:22px;color:#f4f2e6">{{ b.q }}</div>
+</div>
+<div style="text-align:right;margin-right:6px"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:5px">내 답</div><div style="font-family:Galmuri14,monospace;font-size:20px;color:#ff5d8f">{{ b.mine }}</div></div>
+<button onClick="{{ goPlay }}" style="background:#46e0d2;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;padding:13px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">다시 풀기</button>
+</div>
+</sc-for>
+</div>
+
+<div style="margin-top:auto;display:flex;gap:14px;align-items:center;background:#0b2a3d;border:3px solid #46e0d2;padding:16px">
+<img src="sprites/chibi/cobi.png" alt="코비" style="width:72px;height:72px;flex:none;image-rendering:pixelated">
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#f4f2e6;line-height:1.7">세 마리 다 같은 종류야 — <span style="color:#ffc247">받아내림이 있는 뺄셈</span>. 이것만 같이 연습해볼까?</div>
+<button onClick="{{ goPlay }}" style="margin-left:auto;flex:none;background:#ffc247;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;padding:14px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">묶어서 연습</button>
+</div>
+</div>
+
+<div style="width:320px;flex:none;background:#0e1020;border-left:3px solid #0e1020;padding:26px 22px">
+<div style="font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6;margin-bottom:16px">이번 주 성장</div>
+<div style="display:flex;align-items:flex-end;gap:8px;height:130px;margin-bottom:8px">
+<div style="flex:1;height:40%;background:#33407e"></div><div style="flex:1;height:62%;background:#33407e"></div><div style="flex:1;height:30%;background:#33407e"></div><div style="flex:1;height:78%;background:#46e0d2"></div><div style="flex:1;height:55%;background:#33407e"></div><div style="flex:1;height:90%;background:#46e0d2"></div><div style="flex:1;height:20%;background:#1a2142;border:2px dashed #33407e"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:24px"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+<div style="background:#1a2142;border:3px solid #0e1020;padding:16px;margin-bottom:12px"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:8px">잡은 버그</div><div style="font-family:Galmuri14,monospace;font-size:30px;color:#7ee081">17마리</div></div>
+<div style="background:#1a2142;border:3px solid #0e1020;padding:16px"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:8px">방으로 바뀐 아이템</div><div style="display:flex;gap:8px;margin-top:4px"><div style="width:34px;height:34px;background:#ffc247;border:2px solid #0e1020"></div><div style="width:34px;height:34px;background:#46e0d2;border:2px solid #0e1020"></div><div style="width:34px;height:34px;background:#7ee081;border:2px solid #0e1020"></div><div style="width:34px;height:34px;background:#1a2142;border:2px dashed #33407e"></div></div></div>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ 리더보드 ============ -->
+<sc-if value="{{ isBoard }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="07 리더보드" style="height:730px;padding:28px 40px;background:#141a34">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px">
+<div><div style="font-family:Galmuri14,monospace;font-size:30px;color:#f4f2e6">함께 지킨 기록</div><div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2;margin-top:6px">우리 클랜이 기본 · 전체 순위는 마지막 · 정답률 대신 '푼 문제 수'</div></div>
+<button onClick="{{ goMain }}" style="background:#1a2142;border:3px solid #0e1020;padding:15px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#f4f2e6">내 방으로</button>
+</div>
+<div style="display:flex;gap:0;border:3px solid #0e1020;margin-bottom:20px;width:fit-content">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+<button onClick="{{ t.pick }}" style="padding:16px 34px;border:0;background:{{ t.bg }};color:{{ t.fg }};font-family:Galmuri14,monospace;font-size:20px">{{ t.name }}</button>
+</sc-for>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1">
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ leaders }}" as="l" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:18px;background:{{ l.bg }};border:3px solid {{ l.bd }};padding:14px 18px">
+<div style="width:40px;font-family:Galmuri14,monospace;font-size:24px;color:{{ l.rankFg }};text-align:center">{{ l.rank }}</div>
+<sc-if value="{{ l.isPerson }}" hint-placeholder-val="{{ false }}"><img src="{{ l.av }}" alt="" style="width:44px;height:44px;object-fit:cover;object-position:50% 0;background:#0e1020;border:2px solid #0e1020;image-rendering:pixelated"></sc-if>
+<sc-if value="{{ l.isTeam }}" hint-placeholder-val="{{ false }}"><div style="width:44px;height:44px;flex:none;background:#0e1020;border:2px solid #0e1020;display:flex;align-items:center;justify-content:center"><div style="width:18px;height:18px;background:{{ l.crest }}"></div></div></sc-if>
+<div style="flex:1"><div style="font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6">{{ l.name }}</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-top:4px">{{ l.sub }}</div></div>
+<div style="text-align:right"><div style="font-family:Galmuri14,monospace;font-size:22px;color:#ffc247">{{ l.solved }}</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6">푼 문제</div></div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="width:300px;flex:none;background:#0e1020;border:3px solid #0e1020;padding:20px">
+<div style="font-family:Galmuri14,monospace;font-size:20px;color:#46e0d2;margin-bottom:14px">우리가 함께 지킨 차원</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
+<div style="aspect-ratio:1;background:#7ee081;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:20px;color:#0e1020">1</div>
+<div style="aspect-ratio:1;background:#7ee081;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:20px;color:#0e1020">2</div>
+<div style="aspect-ratio:1;background:#ffc247;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:20px;color:#0e1020">3</div>
+<div style="aspect-ratio:1;background:#1a2142;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:20px;color:#8f9bd6">4</div>
+<div style="aspect-ratio:1;background:#1a2142;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:20px;color:#8f9bd6">5</div>
+<div style="aspect-ratio:1;background:#1a2142;border:3px solid #0e1020;display:flex;align-items:center;justify-content:center;font-family:Galmuri14,monospace;font-size:20px;color:#8f9bd6">6</div>
+</div>
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;line-height:1.8">순위표는 우리 반 안에서만 보여요. 밖에서는 <span style="color:#46e0d2">우리 반이 몇 차원을 지켰는지</span>만 보입니다.</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ 프로필 ============ -->
+<sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="08 프로필" style="height:730px;padding:28px 40px;background:#141a34;display:flex;gap:26px">
+<div style="width:340px;flex:none;background:#1a2142;border:4px solid #0e1020;box-shadow:0 6px 0 rgba(0,0,0,.4)">
+<div style="background:#33407e;padding:12px 18px;font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6">유저 프로필</div>
+<div style="padding:22px;display:flex;flex-direction:column;align-items:center">
+<img src="sprites/chibi/player.png" alt="플레이어" style="width:144px;height:180px;image-rendering:pixelated">
+<div style="font-family:Galmuri14,monospace;font-size:26px;color:#f4f2e6;margin-top:16px">한지우</div>
+<div style="font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2;margin-top:6px">LV.10 · 4,200 / 14,000 EXP</div>
+<div style="width:100%;height:16px;background:#0e1020;border:3px solid #0e1020;padding:1px;margin-top:12px"><div style="height:100%;width:30%;background:#46e0d2"></div></div>
+<div style="width:100%;margin-top:20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px"><span style="color:#8f9bd6">소속 학교</span><span style="color:#f4f2e6">햇살초등학교</span></div>
+<div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px"><span style="color:#8f9bd6">소속 클랜</span><span style="color:#f4f2e6">4학년 2반 수호대</span></div>
+<div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px"><span style="color:#8f9bd6">지킨 차원</span><span style="color:#7ee081">2 / 6</span></div>
+</div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between">
+<div><div style="font-family:Galmuri14,monospace;font-size:28px;color:#f4f2e6">내 학습 기록</div><div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2;margin-top:6px">정답률은 본인에게만 · 다른 사람에게 노출되지 않습니다</div></div>
+<button onClick="{{ goMain }}" style="background:#1a2142;border:3px solid #0e1020;padding:15px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#f4f2e6">내 방으로</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+<div style="background:#1a2142;border:3px solid #0e1020;padding:18px"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:10px">푼 문제</div><div style="font-family:Galmuri14,monospace;font-size:30px;color:#f4f2e6">412</div></div>
+<div style="background:#1a2142;border:3px solid #0e1020;padding:18px"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:10px">잡은 버그</div><div style="font-family:Galmuri14,monospace;font-size:30px;color:#7ee081">17</div></div>
+<div style="background:#1a2142;border:3px solid #0e1020;padding:18px"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-bottom:10px">이어서 한 날</div><div style="font-family:Galmuri14,monospace;font-size:30px;color:#ffc247">6일</div></div>
+</div>
+<div style="background:#1a2142;border:3px solid #0e1020;padding:20px;flex:1">
+<div style="font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6;margin-bottom:16px">단원별 상태</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div><div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;margin-bottom:6px"><span>1-1 수 세기</span><span style="color:#7ee081">튼튼해요</span></div><div style="height:14px;background:#0e1020;border:2px solid #0e1020;padding:1px"><div style="height:100%;width:92%;background:#7ee081"></div></div></div>
+<div><div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;margin-bottom:6px"><span>1-2 덧셈</span><span style="color:#7ee081">튼튼해요</span></div><div style="height:14px;background:#0e1020;border:2px solid #0e1020;padding:1px"><div style="height:100%;width:84%;background:#7ee081"></div></div></div>
+<div><div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;margin-bottom:6px"><span>1-3 뺄셈</span><span style="color:#ffc247">한 번 더</span></div><div style="height:14px;background:#0e1020;border:2px solid #0e1020;padding:1px"><div style="height:100%;width:58%;background:#ffc247"></div></div></div>
+<div><div style="display:flex;justify-content:space-between;font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;margin-bottom:6px"><span>1-4 받아내림</span><span style="color:#ff5d8f">버그 3마리</span></div><div style="height:14px;background:#0e1020;border:2px solid #0e1020;padding:1px"><div style="height:100%;width:34%;background:#ff5d8f"></div></div></div>
+</div>
+</div>
+<div style="background:#1a2142;border:3px solid #0e1020;padding:18px;display:flex;align-items:center;gap:16px">
+<img src="sprites/chibi/cobi.png" alt="코비" style="width:72px;height:72px;flex:none;image-rendering:pixelated">
+<div><div style="font-family:Galmuri14,monospace;font-size:20px;color:#46e0d2">코비의 제안</div><div style="font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;margin-top:6px">1-4 받아내림만 묶어서 5문제 — 파워 0</div></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ 클랜 ============ -->
+<sc-if value="{{ isClan }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="09 클랜 아지트 · 보드" style="height:730px;display:flex;background:#141a34">
+<div style="flex:1;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:#1c2a4a;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 2px,transparent 2px 44px)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:170px;background:#24324f"></div>
+<div style="position:absolute;left:0;right:0;bottom:170px;height:5px;background:#0e1020"></div>
+<div style="position:absolute;left:36px;top:26px"><div style="font-family:Galmuri14,monospace;font-size:28px;color:#f4f2e6">4학년 2반 수호대</div><div style="font-family:Galmuri11,monospace;font-size:15px;color:#7ee081;margin-top:6px">햇살초등학교 · 멤버 12명 · 3명 접속중</div></div>
+<div style="position:absolute;left:120px;bottom:170px;display:flex;gap:36px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><img src="sprites/chibi/friend-minseo.png" alt="민서" style="width:96px;height:120px;image-rendering:pixelated"><div style="background:#0e1020;border:2px solid #7ee081;padding:6px 11px;font-family:Galmuri11,monospace;font-size:14px;color:#7ee081">민서</div></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><img src="sprites/chibi/friend-dohyun.png" alt="도현" style="width:96px;height:120px;image-rendering:pixelated"><div style="background:#0e1020;border:2px solid #7ee081;padding:6px 11px;font-family:Galmuri11,monospace;font-size:14px;color:#7ee081">도현</div></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><img src="sprites/chibi/player.png" alt="나" style="width:96px;height:120px;image-rendering:pixelated"><div style="background:#0e1020;border:2px solid #46e0d2;padding:6px 11px;font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2">나</div></div>
+</div>
+<div style="position:absolute;right:40px;top:110px;width:290px;background:#f4f2e6;border:4px solid #0e1020;box-shadow:0 6px 0 rgba(0,0,0,.4)">
+<div style="background:#ff5d8f;padding:12px 18px;font-family:Galmuri14,monospace;font-size:18px;color:#0e1020">클랜 소집</div>
+<div style="padding:16px"><div style="font-family:Galmuri11,monospace;font-size:16px;color:#1a2142;line-height:1.7;margin-bottom:14px">1차원 보스 방화벽이 뚫리는 중! 3명이 모이면 함께 막을 수 있어요.</div><button style="width:100%;background:#ffc247;border:3px solid #0e1020;box-shadow:0 4px 0 #0e1020;padding:13px;font-family:Galmuri14,monospace;font-size:20px;color:#0e1020">함께 출격</button></div>
+</div>
+<button onClick="{{ goMain }}" style="position:absolute;right:40px;top:26px;background:#1a2142;border:3px solid #0e1020;padding:15px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#f4f2e6">내 방으로</button>
+</div>
+<div style="width:378px;flex:none;background:#0e1020;border-left:3px solid #0e1020;padding:22px 20px">
+<div style="font-family:Galmuri14,monospace;font-size:20px;color:#f4f2e6;margin-bottom:14px">클랜 보드</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ clanMembers }}" as="m" hint-placeholder-count="6">
+<div style="display:flex;align-items:center;gap:12px;background:#1a2142;border:3px solid #0e1020;padding:11px 13px">
+<div style="width:10px;height:10px;flex:none;background:{{ m.dot }}"></div>
+<img src="{{ m.av }}" alt="" style="width:40px;height:40px;object-fit:cover;object-position:50% 0;background:#0e1020;border:2px solid #0e1020;image-rendering:pixelated">
+<div style="flex:1"><div style="font-family:Galmuri11,monospace;font-size:16px;color:{{ m.fg }}">{{ m.name }}</div><div style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6;margin-top:3px">{{ m.sub }}</div></div>
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#8f9bd6">LV.{{ m.lv }}</div>
+</div>
+</sc-for>
+</div>
+<button onClick="{{ goBoard }}" style="width:100%;margin-top:18px;background:#1a2142;border:3px solid #46e0d2;padding:14px;text-align:left"><div style="font-family:Galmuri11,monospace;font-size:14px;color:#46e0d2;margin-bottom:8px">우리 클랜이 지킨 차원 · 기록 보기 ▶</div><div style="font-family:Galmuri14,monospace;font-size:26px;color:#7ee081">2 / 6 차원</div></button>
+</div>
+</div>
+</sc-if>
+
+<!-- ============ 튜토리얼 ============ -->
+<sc-if value="{{ isTutorial }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="10 튜토리얼 · 수준 평가" style="height:800px;position:relative;background:#0b1030;overflow:hidden">
+<div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(70,224,210,.07) 0 2px,transparent 2px 42px),repeating-linear-gradient(90deg,rgba(70,224,210,.07) 0 2px,transparent 2px 42px)"></div>
+<div style="position:absolute;left:0;right:0;top:0;height:64px;display:flex;align-items:center;padding:0 24px;gap:10px">
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#46e0d2">코비의 테스트 · 3 / 8</div>
+<div style="flex:1;height:12px;background:#141a34;border:3px solid #0e1020;padding:1px"><div style="height:100%;width:37%;background:#46e0d2"></div></div>
+<div style="font-family:Galmuri11,monospace;font-size:15px;color:#8f9bd6">등급 없음 · 편하게 풀어요</div>
+</div>
+
+<div style="position:absolute;left:80px;top:150px;display:flex;gap:20px;align-items:flex-start">
+<img src="sprites/chibi/cobi.png" alt="코비" style="width:96px;height:96px;flex:none;image-rendering:pixelated;animation:mh-bob 3s ease-in-out infinite">
+<div style="max-width:560px;background:#46e0d2;border:4px solid #0e1020;box-shadow:0 6px 0 rgba(0,0,0,.4);padding:18px 22px">
+<div style="font-family:Galmuri14,monospace;font-size:22px;color:#0e1020;line-height:1.6;margin-bottom:10px">몇 문제만 같이 풀어보자. 틀려도 괜찮아 — 어디부터 시작할지 정하려는 거야.</div>
+<div style="font-family:Galmuri11,monospace;font-size:16px;color:#0e1020;opacity:.75">이 테스트는 점수도, 순위도 남지 않아요.</div>
+</div>
+</div>
+
+<div style="position:absolute;left:80px;right:80px;top:330px;background:#f4f2e6;border:5px solid #0e1020;box-shadow:0 8px 0 rgba(0,0,0,.45)">
+<div style="padding:34px 30px;text-align:center;border-bottom:4px solid #0e1020">
+<div style="font-family:Galmuri11,monospace;font-size:17px;color:#33407e;margin-bottom:14px">사과가 7개 있었는데 2개를 먹었어요.</div>
+<div style="font-family:Galmuri14,monospace;font-size:44px;color:#1a2142;letter-spacing:4px">7 − 2 = ?</div>
+</div>
+<div style="display:flex">
+<button style="flex:1;padding:26px;border:0;border-right:4px solid #0e1020;background:#f4f2e6;font-family:Galmuri14,monospace;font-size:32px;color:#1a2142">3</button>
+<button style="flex:1;padding:26px;border:0;border-right:4px solid #0e1020;background:#f4f2e6;font-family:Galmuri14,monospace;font-size:32px;color:#1a2142">4</button>
+<button style="flex:1;padding:26px;border:0;border-right:4px solid #0e1020;background:#f4f2e6;font-family:Galmuri14,monospace;font-size:32px;color:#1a2142">5</button>
+<button style="flex:1;padding:26px;border:0;border-right:4px solid #0e1020;background:#f4f2e6;font-family:Galmuri14,monospace;font-size:32px;color:#1a2142">6</button>
+<button style="flex:1;padding:26px;border:0;background:#e0ddcd;font-family:Galmuri14,monospace;font-size:22px;color:#33407e">잘 모르겠어요</button>
+</div>
+</div>
+
+<div style="position:absolute;left:80px;bottom:60px;font-family:Galmuri11,monospace;font-size:16px;color:#8f9bd6;line-height:1.8">'잘 모르겠어요'도 정답만큼 중요한 신호예요.<br><span style="font-family:Galmuri11,monospace;font-size:14px;color:#8f9bd6">원본에는 없던 선택지 — 찍기를 배제해 진단 정확도를 높입니다</span></div>
+<button onClick="{{ goMain }}" style="position:absolute;right:80px;bottom:60px;background:#1a2142;border:3px solid #0e1020;padding:14px 20px;font-family:Galmuri14,monospace;font-size:18px;color:#f4f2e6">건너뛰기</button>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;main&quot;,&quot;map&quot;,&quot;region&quot;,&quot;play&quot;,&quot;clear&quot;,&quot;review&quot;,&quot;board&quot;,&quot;profile&quot;,&quot;clan&quot;,&quot;tutorial&quot;],&quot;default&quot;:&quot;main&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onNavigate&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(screen: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { cur: null, sel: null, hint: false, diff: '노멀', tab: '우리 클랜', region: false };
+
+  componentDidUpdate(prev) {
+    if (prev.screen !== this.props.screen) this.setState({ cur: null, sel: null, hint: false, region: false });
+  }
+
+  get s() { return this.state.cur || this.props.screen || 'main'; }
+
+  go(name, extra) {
+    if (this.props.onNavigate) this.props.onNavigate(name);
+    this.setState(Object.assign({ cur: name, sel: null, hint: false, region: false }, extra || {}));
+  }
+
+  renderVals() {
+    const s = this.s;
+    const diff = this.state.diff;
+    const correct = 6;
+    const sel = this.state.sel;
+
+    const opts = [1, 2, 3, 4].map((n, i) => {
+      const v = [4, 5, 6, 7][i];
+      const picked = sel === i;
+      const right = v === correct;
+      let bg = '#1a2142', fg = '#f4f2e6', numBg = '#33407e', numFg = '#f4f2e6', mark = '';
+      if (sel !== null) {
+        if (right) { bg = '#7ee081'; fg = '#0e1020'; numBg = '#0e1020'; numFg = '#7ee081'; mark = '정답'; }
+        else if (picked) { bg = '#ff5d8f'; fg = '#0e1020'; numBg = '#0e1020'; numFg = '#ff5d8f'; mark = '내 답'; }
+        else { bg = '#141a34'; fg = '#5a6bc4'; numBg = '#1a2142'; numFg = '#33407e'; }
+      }
+      let dotBg = '#8f9bd6';
+      if (sel !== null) dotBg = right ? '#0e1020' : (picked ? '#0e1020' : '#33407e');
+      return { n: '①②③④⑤'[i], v: v, bg, fg, numBg, numFg, mark, dotBg,
+        dots: Array.from({ length: v }, (_, k) => k),
+        pick: () => this.setState({ sel: i }) };
+    });
+
+    const ok = sel !== null && [4, 5, 6, 7][sel] === correct;
+
+    const dims = [1, 2, 3, 4, 5, 6].map(n => ({
+      n: n,
+      label: n <= 2 ? '완료' : (n === 3 ? '진행' : '잠김'),
+      fg: n <= 2 ? '#7ee081' : (n === 3 ? '#ffc247' : '#8f9bd6')
+    }));
+
+    const diffs = ['이지', '노멀', '하드'].map(name => ({
+      name,
+      bg: name === diff ? '#ffc247' : '#1a2142',
+      fg: name === diff ? '#0e1020' : '#8f9bd6',
+      pick: () => this.setState({ diff: name })
+    }));
+
+    const tab = this.state.tab;
+    const tabs = ['우리 클랜', '우리 학교', '전체'].map(name => ({
+      name,
+      bg: name === tab ? '#46e0d2' : '#1a2142',
+      fg: name === tab ? '#0e1020' : '#8f9bd6',
+      pick: () => this.setState({ tab: name })
+    }));
+
+    const rowsByTab = {
+      '우리 클랜': [
+        ['1', '민서', '같은 반 · 오늘 22문제', '318', 'sprites/chibi/friend-minseo.png'],
+        ['2', '도현', '같은 반 · 오늘 19문제', '284', 'sprites/chibi/friend-dohyun.png'],
+        ['3', '나', '한지우 · 오늘 15문제', '412', 'sprites/chibi/player.png'],
+        ['4', '유진', '같은 반 · 오늘 11문제', '203', 'sprites/chibi/friend-yujin.png'],
+        ['5', '서준', '같은 반 · 오늘 8문제', '176', 'sprites/chibi/friend-dohyun.png']
+      ],
+      '우리 학교': [
+        ['1', '4학년 2반 수호대', '멤버 12명 · 2차원 확보', '2,410'],
+        ['2', '4학년 1반 코드', '멤버 10명 · 2차원 확보', '2,180'],
+        ['3', '3학년 3반 픽셀', '멤버 9명 · 1차원 확보', '1,640'],
+        ['4', '5학년 1반 알파', '멤버 11명 · 1차원 확보', '1,520'],
+        ['5', '2학년 2반 하나', '멤버 8명 · 1차원 확보', '980']
+      ],
+      '전체': [
+        ['—', '햇살초등학교', '우리 학교 · 2차원 확보', '9,820'],
+        ['—', '바다초등학교', '2차원 확보', '9,140'],
+        ['—', '한빛초등학교', '2차원 확보', '8,760'],
+        ['—', '푸른초등학교', '1차원 확보', '7,300'],
+        ['—', '새싹초등학교', '1차원 확보', '6,950']
+      ]
+    };
+
+    const crests = ['#ffc247', '#46e0d2', '#7ee081', '#ff5d8f', '#8f9bd6'];
+    const leaders = rowsByTab[tab].map((r, i) => {
+      const me = r[1] === '나';
+      return {
+        rank: r[0], name: r[1], sub: r[2], solved: r[3],
+        isPerson: !!r[4], isTeam: !r[4], av: r[4] || '', crest: crests[i % crests.length],
+        bg: me ? '#0b2a3d' : '#1a2142',
+        bd: me ? '#46e0d2' : '#33407e',
+        rankFg: me ? '#46e0d2' : '#8f9bd6'
+      };
+    });
+
+    const clanMembers = [
+      ['민서', '접속중 · 1-5 플레이', 12, '#7ee081', '#f4f2e6', 'sprites/chibi/friend-minseo.png'],
+      ['도현', '접속중 · 복습중', 11, '#7ee081', '#f4f2e6', 'sprites/chibi/friend-dohyun.png'],
+      ['한지우', '접속중 · 나', 10, '#7ee081', '#46e0d2', 'sprites/chibi/player.png'],
+      ['유진', '2시간 전', 9, '#33407e', '#8f9bd6', 'sprites/chibi/friend-yujin.png'],
+      ['서준', '어제', 8, '#33407e', '#8f9bd6', 'sprites/chibi/friend-dohyun.png'],
+      ['하람', '3일 전', 6, '#33407e', '#8f9bd6', 'sprites/chibi/friend-minseo.png']
+    ].map(m => ({ name: m[0], sub: m[1], lv: m[2], dot: m[3], fg: m[4], av: m[5] }));
+
+    const bugs = [
+      { stage: '1-3', tag: '받아내림 뺄셈', q: '13 − 5 = ?', mine: '9' },
+      { stage: '1-4', tag: '받아내림 뺄셈', q: '21 − 4 = ?', mine: '18' },
+      { stage: '1-4', tag: '받아내림 뺄셈', q: '32 − 7 = ?', mine: '26' }
+    ];
+
+    return {
+      showHud: s === 'review' || s === 'board' || s === 'profile' || s === 'clan',
+      isMain: s === 'main',
+      isMapish: s === 'map' || s === 'region',
+      isRegion: s === 'region' || this.state.region,
+      isPlayish: s === 'play' || s === 'clear',
+      isClear: s === 'clear',
+      isReview: s === 'review',
+      isBoard: s === 'board',
+      isProfile: s === 'profile',
+      isClan: s === 'clan',
+      isTutorial: s === 'tutorial',
+      diff, diffs, dims, tabs, leaders, clanMembers, bugs, opts,
+      diffHint: diff === '이지' ? '천천히 · 힌트가 먼저 보여요' : (diff === '노멀' ? '기본 · 교과 진도 그대로' : '도전 · 문항이 늘고 시간이 짧아져요'),
+      hint: this.state.hint && sel === null,
+      hintLabel: this.state.hint ? '힌트 접기' : '코비 힌트',
+      toggleHint: () => this.setState(st => ({ hint: !st.hint })),
+      feedback: sel !== null,
+      fbBg: ok ? '#7ee081' : '#ffc247',
+      fbTitle: ok ? '방화벽 설치 성공!' : '아깝다 — 같이 다시 볼까?',
+      fbBody: ok
+        ? '9개에서 3개를 지우면 6개! 조각을 지켜냈어.'
+        : '9칸 중 3칸을 지우면 6칸이 남아. 이 문제는 수조에 담아둘게.',
+      goMain: () => this.go('main'),
+      goMap: () => this.go('map'),
+      openRegion: () => this.setState({ region: true }),
+      closeRegion: () => this.setState({ region: false }),
+      goPlay: () => this.go('play'),
+      goClear: () => this.go('clear'),
+      goReview: () => this.go('review'),
+      goBoard: () => this.go('board'),
+      goProfile: () => this.go('profile'),
+      goClan: () => this.go('clan')
+    };
+  }
+}
+</script>
+</body>
+</html>

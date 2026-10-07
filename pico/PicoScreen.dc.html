@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#D8D8D2; font-family:'Pretendard Variable',Pretendard,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#4A5A3C; text-decoration:none; }
+  a:hover { color:#14140F; }
+  ::-webkit-scrollbar { width:0; height:0; }
+</style>
+</helmet>
+<div style="display:flex; align-items:center; justify-content:center; padding:0; min-height:100%;">
+<div style="position:relative; width:393px; height:852px; background:#FAFAF8; color:#14140F; overflow:hidden; display:flex; flex-direction:column; font-family:'Pretendard Variable',Pretendard,sans-serif;">
+
+  <div style="height:52px; flex:none; display:flex; align-items:flex-end; justify-content:space-between; padding:0 24px 8px; background:{{ statusBg }}; color:{{ statusInk }};">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; letter-spacing:0.02em;">{{ clock }}</div>
+    <div style="display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em;">
+      <span>LTE</span><span>·</span><span>84%</span>
+    </div>
+  </div>
+
+  <div style="flex:1; min-height:0; overflow:auto;">
+
+    <sc-if value="{{ isOnboarding }}">
+      <div style="display:flex; flex-direction:column; height:100%; min-height:800px; padding:56px 28px 32px; box-sizing:border-box;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6B6B63;">PICO / AI STYLING</div>
+        <div style="margin-top:auto; font-size:34px; line-height:1.28; font-weight:700; letter-spacing:-0.02em; text-wrap:pretty;">
+          가진 옷으로<br />매일 밤 세 벌.
+        </div>
+        <div style="margin-top:16px; font-size:15px; line-height:1.7; color:#6B6B63; text-wrap:pretty;">
+          옷장을 사진으로 등록하면, 매일 밤 10시에<br />내일 입을 코디 세 가지가 도착합니다.
+        </div>
+        <div style="margin-top:36px; display:flex; flex-direction:column; gap:0; border-top:1px solid #E2E2DC;">
+          <div style="display:flex; gap:16px; padding:16px 0; border-bottom:1px solid #E2E2DC; align-items:baseline;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#4A5A3C; width:24px; flex:none;">01</div>
+            <div style="font-size:14px; line-height:1.6;">사진 한 장을 찍으면 종류·색상·사이즈가 자동으로 등록됩니다</div>
+          </div>
+          <div style="display:flex; gap:16px; padding:16px 0; border-bottom:1px solid #E2E2DC; align-items:baseline;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#4A5A3C; width:24px; flex:none;">02</div>
+            <div style="font-size:14px; line-height:1.6;">매일 밤 10시, 내 옷장 안에서만 조합한 코디 3세트</div>
+          </div>
+          <div style="display:flex; gap:16px; padding:16px 0; border-bottom:1px solid #E2E2DC; align-items:baseline;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#4A5A3C; width:24px; flex:none;">03</div>
+            <div style="font-size:14px; line-height:1.6;">가진 옷으로 만들 수 없는 코디가 있을 때만 구매를 제안합니다</div>
+          </div>
+        </div>
+        <div style="margin-top:32px; display:flex; flex-direction:column; gap:12px;">
+          <div style="height:54px; background:#4A5A3C; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600; letter-spacing:-0.01em;">옷 한 장 찍고 시작하기</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isCapture }}">
+      <div style="height:100%; min-height:800px; background:#14140F; color:#FAFAF8; display:flex; flex-direction:column; padding:0 0 28px; box-sizing:border-box;">
+        <div style="padding:12px 24px 20px; display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-size:15px; font-weight:600;">옷 등록</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; color:#9A9A90;">03 / 12</div>
+        </div>
+        <div style="margin:0 24px; position:relative; aspect-ratio:3/4; background:repeating-linear-gradient(45deg,#1E1E18 0 8px,#191913 8px 16px); display:flex; align-items:center; justify-content:center;">
+          <img src="assets/clean/item-shirt-blue.png" alt="" style="width:62%; opacity:0.92;" />
+          <div style="position:absolute; left:16px; top:16px; width:22px; height:22px; border-left:1.5px solid #4A5A3C; border-top:1.5px solid #4A5A3C;"></div>
+          <div style="position:absolute; right:16px; top:16px; width:22px; height:22px; border-right:1.5px solid #4A5A3C; border-top:1.5px solid #4A5A3C;"></div>
+          <div style="position:absolute; left:16px; bottom:16px; width:22px; height:22px; border-left:1.5px solid #4A5A3C; border-bottom:1.5px solid #4A5A3C;"></div>
+          <div style="position:absolute; right:16px; bottom:16px; width:22px; height:22px; border-right:1.5px solid #4A5A3C; border-bottom:1.5px solid #4A5A3C;"></div>
+          <div style="position:absolute; bottom:0; left:0; right:0; padding:10px 16px; background:rgba(20,20,15,0.72); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; color:#C9C9C0;">DETECTING · SHIRT 94%</div>
+        </div>
+        <div style="padding:20px 24px 0; display:flex; flex-direction:column; gap:7px;">
+          <div style="display:flex; gap:8px; font-size:12.5px; line-height:1.55; color:#9A9A90;"><span style="color:#4A5A3C;">*</span><span>평평한 바닥이나 침대에 옷을 펼쳐 두세요</span></div>
+          <div style="display:flex; gap:8px; font-size:12.5px; line-height:1.55; color:#9A9A90;"><span style="color:#4A5A3C;">*</span><span>그림자가 지지 않는 밝은 곳이 가장 정확합니다</span></div>
+          <div style="display:flex; gap:8px; font-size:12.5px; line-height:1.55; color:#9A9A90;"><span style="color:#4A5A3C;">*</span><span>배경 색은 어떤 색이어도 괜찮습니다</span></div>
+        </div>
+        <div style="margin-top:auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="width:52px; height:52px; border:1px solid #3A3A32; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9A9A90;">LIB</div>
+          <div style="width:76px; height:76px; border-radius:50%; background:#4A5A3C; border:4px solid #FAFAF8; box-shadow:0 0 0 1px #14140F inset;"></div>
+          <div style="width:52px; height:52px; border:1px solid #3A3A32; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9A9A90;">FLIP</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isConfirm }}">
+      <div style="padding:12px 0 28px;">
+        <div style="padding:0 24px 18px; display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-size:19px; font-weight:700; letter-spacing:-0.02em;">이 옷 맞나요?</div>
+        </div>
+        <div style="display:flex; gap:16px; padding:0 24px 20px; align-items:flex-start;">
+          <div style="width:112px; aspect-ratio:3/4; flex:none; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;">
+            <img src="assets/clean/item-shirt-blue.png" alt="" style="width:88%;" />
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:15px; font-weight:600;">라이트 블루 옥스포드 셔츠</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; color:#6B6B63;">ID SH-04 · ADDED 2026.09.01</div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:2px;">
+              <div style="border:1px solid #4A5A3C; color:#4A5A3C; padding:5px 9px; font-size:12px;">셔츠</div>
+              <div style="border:1px solid #4A5A3C; color:#4A5A3C; padding:5px 9px; font-size:12px;">라이트 블루</div>
+              <div style="border:1px dashed #D2D2CA; color:#AFAFA6; padding:5px 9px; font-size:12px;">사이즈</div>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid #E2E2DC;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 24px; border-bottom:1px solid #E2E2DC;">
+            <div style="font-size:14px; color:#6B6B63;">카테고리</div>
+            <div style="display:flex; align-items:center; gap:8px;"><div style="font-size:14px; font-weight:600;">상의 · 셔츠</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4A5A3C;">AI</div></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 24px; border-bottom:1px solid #E2E2DC;">
+            <div style="font-size:14px; color:#6B6B63;">색상</div>
+            <div style="display:flex; align-items:center; gap:8px;"><div style="width:14px; height:14px; background:#A9C0D4; border:1px solid #E2E2DC;"></div><div style="font-size:14px; font-weight:600;">라이트 블루</div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4A5A3C;">AI</div></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 24px; border-bottom:1px solid #E2E2DC; background:#F4F5F0;">
+            <div style="font-size:14px; color:#14140F;">사이즈</div>
+            <div style="display:flex; align-items:center; gap:8px;"><div style="font-size:14px; font-weight:600; color:#4A5A3C;">직접 선택</div><div style="font-size:11px; color:#8E8E85;">선택 필요</div></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 24px; border-bottom:1px solid #E2E2DC;">
+            <div style="font-size:14px; color:#6B6B63;">계절</div>
+            <div style="font-size:14px; font-weight:600;">봄 · 가을</div>
+          </div>
+        </div>
+        <div style="padding:14px 24px 0; font-size:12.5px; line-height:1.65; letter-spacing:-0.005em; color:#8E8E85; text-wrap:pretty;">
+          인식 결과는 언제든 직접 고칠 수 있습니다. 고친 내용은 다음 인식의 분류 정확도에 반영됩니다.
+        </div>
+        <div style="padding:24px 24px 0; display:flex; gap:10px;">
+          <div style="flex:none; width:104px; height:52px; border:1px solid #14140F; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600;">수정</div>
+          <div style="flex:1; height:52px; background:#4A5A3C; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600;">맞아요, 옷장에 넣기</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 4px; display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#4A5A3C;">TONIGHT 22:00 · 3 SETS</div>
+            <div style="margin-top:8px; font-size:27px; font-weight:700; letter-spacing:-0.025em; line-height:1.25;">내일 입을 세 벌이<br />도착했어요</div>
+          </div>
+          <div style="position:relative; margin-top:8px; width:24px; height:24px; display:flex; align-items:center; justify-content:center;">
+            <svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="#14140F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5.2 8.6a4.8 4.8 0 0 1 9.6 0c0 3 .8 4.4 1.5 5.2H3.7c.7-.8 1.5-2.2 1.5-5.2Z"></path>
+              <path d="M8.4 16.2a1.8 1.8 0 0 0 3.2 0"></path>
+            </svg>
+            <div style="position:absolute; top:0; right:-1px; width:7px; height:7px; background:#4A5A3C; border-radius:50%; border:1.5px solid #FAFAF8;"></div>
+          </div>
+        </div>
+        <div style="padding:16px 24px 18px; display:flex; gap:18px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.04em; color:#6B6B63;">
+          <div>09.02 WED</div><div>21° / 14°</div><div>RAIN 10%</div>
+        </div>
+
+        <div style="border-top:1px solid #E2E2DC;">
+          <div style="padding:18px 24px 20px; border-bottom:1px solid #E2E2DC;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#14140F;">SET 01</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">MATCH 96</div>
+            </div>
+            <div style="margin-top:12px; background:#F1F1EC; border:1px solid #E2E2DC; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+              <img src="assets/clean/codi-navy-set.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <div style="margin-top:14px; display:flex; flex-direction:column; gap:12px;">
+              <div>
+                <div style="font-size:16px; font-weight:600; letter-spacing:-0.01em;">블랙 블레이저 · 화이트 티 · 데님</div>
+                <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63; letter-spacing:0.04em;">5 ITEMS · ALL OWNED · WORN 2</div>
+              </div>
+              <div style="display:flex; justify-content:flex-end; gap:6px;">
+                <div style="width:62px; height:38px; border:1px solid #E2E2DC; color:#6B6B63; display:flex; align-items:center; justify-content:center; font-size:13px;">넘기기</div>
+                <div style="width:82px; height:38px; background:#14140F; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600;">내일 입기</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:18px 24px 20px; border-bottom:1px solid #E2E2DC;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#14140F;">SET 02</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">MATCH 91</div>
+            </div>
+            <div style="margin-top:12px; background:#F1F1EC; border:1px solid #E2E2DC; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+              <img src="assets/clean/codi-pink-set.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <div style="margin-top:14px; display:flex; flex-direction:column; gap:12px;">
+              <div>
+                <div style="font-size:16px; font-weight:600; letter-spacing:-0.01em;">핑크 셔츠 · 그레이 니트 · 데님</div>
+                <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63; letter-spacing:0.04em;">4 ITEMS · ALL OWNED · NEW COMBO</div>
+              </div>
+              <div style="display:flex; justify-content:flex-end; gap:6px;">
+                <div style="width:62px; height:38px; border:1px solid #E2E2DC; color:#6B6B63; display:flex; align-items:center; justify-content:center; font-size:13px;">넘기기</div>
+                <div style="width:82px; height:38px; background:#14140F; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600;">내일 입기</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:18px 24px 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#14140F;">SET 03</div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">MATCH 88</div>
+            </div>
+            <div style="margin-top:12px; background:#F1F1EC; border:1px solid #E2E2DC; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+              <img src="assets/clean/codi-teal-set.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <div style="margin-top:14px; display:flex; flex-direction:column; gap:12px;">
+              <div>
+                <div style="font-size:16px; font-weight:600; letter-spacing:-0.01em;">티얼 셔츠 · 데님 · 더비</div>
+                <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63; letter-spacing:0.04em;">3 ITEMS · 1 TO BUY</div>
+              </div>
+              <div style="display:flex; justify-content:flex-end; gap:6px;">
+                <div style="width:62px; height:38px; border:1px solid #E2E2DC; color:#6B6B63; display:flex; align-items:center; justify-content:center; font-size:13px;">넘기기</div>
+                <div style="width:82px; height:38px; background:#14140F; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600;">내일 입기</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isOutfit }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 14px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em;">← SET 01</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A5A3C;">MATCH 96</div>
+        </div>
+        <div style="margin:0 24px; background:#F1F1EC; border:1px solid #E2E2DC; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+          <img src="assets/clean/codi-navy-set.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+        </div>
+        <div style="padding:20px 24px 6px;">
+          <div style="font-size:21px; font-weight:700; letter-spacing:-0.02em;">블랙 블레이저 · 화이트 티 · 데님</div>
+          <div style="margin-top:8px; font-size:14px; line-height:1.65; color:#6B6B63; text-wrap:pretty;">21°에 겉옷이 필요한 날. 이미 두 번 입은 조합이라 실패 확률이 낮습니다.</div>
+        </div>
+        <div style="margin-top:14px; border-top:1px solid #E2E2DC;">
+          <div style="padding:12px 24px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#9A9A90; border-bottom:1px solid #E2E2DC;">ITEMS 5 · FROM YOUR CLOSET</div>
+          <sc-for list="{{ outfitItems }}" as="it" hint-placeholder-count="5">
+            <div style="display:flex; align-items:center; gap:14px; padding:12px 24px; border-bottom:1px solid #E2E2DC;">
+              <div style="width:48px; height:48px; flex:none; border:1px solid #E2E2DC; background:{{ it.bg }};"></div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:14px; font-weight:600;">{{ it.name }}</div>
+                <div style="margin-top:4px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em; color:#6B6B63;">{{ it.meta }}</div>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9A9A90;">{{ it.worn }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:24px 24px 0; display:flex; gap:10px;">
+          <div style="flex:none; width:52px; height:52px; border:1px solid #14140F; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px;">SAVE</div>
+          <div style="flex:1; height:52px; background:#4A5A3C; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600;">내일 이걸 입기</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isWardrobe }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 12px; display:flex; justify-content:space-between; align-items:flex-end;">
+          <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em;">내 옷장</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; color:#6B6B63;">42 ITEMS</div>
+        </div>
+        <div style="display:flex; border-top:1px solid #E2E2DC; border-bottom:1px solid #E2E2DC;">
+          <div style="flex:1; padding:11px 0; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; color:#6B6B63; border-right:1px solid #E2E2DC;">TOP 18</div>
+          <div style="flex:1; padding:11px 0; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; color:#6B6B63; border-right:1px solid #E2E2DC;">BOTTOM 9</div>
+          <div style="flex:1; padding:11px 0; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; color:#6B6B63; border-right:1px solid #E2E2DC;">OUTER 7</div>
+          <div style="flex:1; padding:11px 0; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; color:#6B6B63;">ETC 8</div>
+        </div>
+        <div style="display:flex; gap:6px; padding:14px 24px 12px; overflow:hidden;">
+          <div style="padding:6px 11px; background:#14140F; color:#FAFAF8; font-size:12px; font-weight:600; flex:none;">전체</div>
+          <div style="padding:6px 11px; border:1px solid #E2E2DC; color:#6B6B63; font-size:12px; flex:none;">최근 등록</div>
+          <div style="padding:6px 11px; border:1px solid #E2E2DC; color:#6B6B63; font-size:12px; flex:none;">많이 입은</div>
+          <div style="padding:6px 11px; border:1px solid #4A5A3C; color:#4A5A3C; font-size:12px; flex:none;">30일 미착용 8</div>
+        </div>
+        <div style="padding:0 24px; display:grid; grid-template-columns:{{ gridCols }}; gap:1px; background:#E2E2DC; border:1px solid #E2E2DC;">
+          <sc-for list="{{ wardrobe }}" as="w" hint-placeholder-count="9">
+            <div style="background:#FAFAF8; padding:8px 8px 9px;">
+              <div style="aspect-ratio:1/1; background:{{ w.bg }};"></div>
+              <div style="margin-top:7px; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.04em; color:#14140F;">{{ w.id }}</div>
+              <div style="margin-top:3px; display:flex; align-items:center; gap:4px;">
+                <div style="width:7px; height:7px; flex:none; border:1px solid #E2E2DC; background:{{ w.dot }};"></div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:#6B6B63; letter-spacing:0.02em;">{{ w.spec }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isItem }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 14px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em;">← SH-04</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">EDIT</div>
+        </div>
+        <div style="margin:0 24px; background:#F1F1EC; border:1px solid #E2E2DC; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center;">
+          <img src="assets/clean/item-shirt-blue.png" alt="" style="width:76%;" />
+        </div>
+        <div style="padding:18px 24px 16px;">
+          <div style="font-size:20px; font-weight:700; letter-spacing:-0.02em;">라이트 블루 옥스포드 셔츠</div>
+        </div>
+        <div style="border-top:1px solid #E2E2DC;">
+          <sc-for list="{{ itemSpecs }}" as="s" hint-placeholder-count="6">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:13px 24px; border-bottom:1px solid #E2E2DC;">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em; color:#9A9A90;">{{ s.k }}</div>
+              <div style="font-size:14px; font-weight:600;">{{ s.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:22px 24px 10px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#9A9A90;">IN 3 OUTFITS</div>
+        <div style="padding:0 24px; display:flex; gap:8px;">
+          <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/codi-navy-set.png" alt="" style="width:100%; object-fit:contain;" /></div>
+          <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/codi-pink-set.png" alt="" style="width:100%; object-fit:contain;" /></div>
+          <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9A9A90;">+1</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isNotify }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 14px; display:flex; justify-content:space-between; align-items:flex-end;">
+          <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em;">알림</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A5A3C;">UNREAD {{ unread }}</div>
+        </div>
+        <div style="border-top:1px solid #E2E2DC;">
+          <sc-for list="{{ notifications }}" as="n" hint-placeholder-count="6">
+            <div style="display:flex; gap:12px; padding:15px 24px; border-bottom:1px solid #E2E2DC; align-items:flex-start; background:{{ n.bg }};">
+              <div style="width:7px; height:7px; margin-top:6px; flex:none; border-radius:50%; background:{{ n.dot }};"></div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:14px; font-weight:600; letter-spacing:-0.01em;">{{ n.title }}</div>
+                <div style="margin-top:5px; font-size:13px; line-height:1.55; color:#6B6B63; text-wrap:pretty;">{{ n.body }}</div>
+              </div>
+              <div style="flex:none; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.04em; color:#9A9A90;">{{ n.time }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin:18px 24px 0; border:1px solid #E2E2DC; padding:14px 16px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:14px; font-weight:600;">코디 도착 시간</div>
+            <div style="margin-top:4px; font-size:12.5px; color:#8E8E85;">매일 이 시간에 세 벌이 도착합니다</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:600; color:#4A5A3C;">22:00</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">›</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isTime }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 14px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em;">← 알림</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A5A3C;">저장</div>
+        </div>
+        <div style="padding:0 24px 6px;">
+          <div style="font-size:22px; font-weight:700; letter-spacing:-0.025em; line-height:1.3;">코디는 몇 시에<br />도착하면 좋을까요</div>
+          <div style="margin-top:10px; font-size:13px; line-height:1.65; color:#8E8E85; text-wrap:pretty;">보통 잠들기 한 시간 전에 정하면, 아침에 고민할 일이 없습니다.</div>
+        </div>
+        <div style="margin:22px 0 0; border-top:1px solid #E2E2DC; border-bottom:1px solid #E2E2DC; position:relative; height:218px; overflow:hidden;">
+          <div style="position:absolute; left:0; right:0; top:122px; height:48px; background:#F4F5F0; border-top:1px dashed #4A5A3C; border-bottom:1px dashed #4A5A3C;"></div>
+          <div style="position:relative; display:flex; height:100%; font-family:'IBM Plex Mono',monospace;">
+            <div style="flex:1; padding-top:26px; text-align:right; padding-right:14px;">
+              <div style="height:48px; line-height:48px; font-size:20px; color:#C6C6BE;">20</div>
+              <div style="height:48px; line-height:48px; font-size:20px; color:#9A9A90;">21</div>
+              <div style="height:48px; line-height:48px; font-size:28px; font-weight:600; color:#14140F;">22</div>
+              <div style="height:48px; line-height:48px; font-size:20px; color:#9A9A90;">23</div>
+            </div>
+            <div style="flex:none; width:14px; padding-top:26px;">
+              <div style="height:48px;"></div><div style="height:48px;"></div>
+              <div style="height:48px; line-height:48px; font-size:24px; text-align:center; color:#14140F;">:</div>
+            </div>
+            <div style="flex:1; padding-top:26px; padding-left:14px;">
+              <div style="height:48px; line-height:48px; font-size:20px; color:#C6C6BE;">30</div>
+              <div style="height:48px; line-height:48px; font-size:20px; color:#9A9A90;">45</div>
+              <div style="height:48px; line-height:48px; font-size:28px; font-weight:600; color:#14140F;">00</div>
+              <div style="height:48px; line-height:48px; font-size:20px; color:#9A9A90;">15</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 24px 0; display:flex; gap:6px;">
+          <div style="flex:1; padding:9px 0; text-align:center; border:1px solid #E2E2DC; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#6B6B63;">21:00</div>
+          <div style="flex:1; padding:9px 0; text-align:center; background:#14140F; color:#FAFAF8; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500;">22:00</div>
+          <div style="flex:1; padding:9px 0; text-align:center; border:1px solid #E2E2DC; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#6B6B63;">23:00</div>
+          <div style="flex:1; padding:9px 0; text-align:center; border:1px solid #E2E2DC; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#6B6B63;">직접</div>
+        </div>
+        <div style="margin:24px 24px 0; border-top:1px solid #E2E2DC;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #E2E2DC;">
+            <div>
+              <div style="font-size:14px; font-weight:600;">주말은 다르게</div>
+              <div style="margin-top:4px; font-size:12.5px; color:#8E8E85;">토·일은 09:00에 받기</div>
+            </div>
+            <div style="width:38px; height:22px; background:#E2E2DC; border-radius:11px; position:relative; flex:none;"><div style="position:absolute; top:2px; left:2px; width:18px; height:18px; background:#FAFAF8; border-radius:50%;"></div></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #E2E2DC;">
+            <div>
+              <div style="font-size:14px; font-weight:600;">비 오는 날 먼저 알림</div>
+              <div style="margin-top:4px; font-size:12.5px; color:#8E8E85;">강수 60% 이상이면 20:00에</div>
+            </div>
+            <div style="width:38px; height:22px; background:#4A5A3C; border-radius:11px; position:relative; flex:none;"><div style="position:absolute; top:2px; right:2px; width:18px; height:18px; background:#FAFAF8; border-radius:50%;"></div></div>
+          </div>
+        </div>
+        <div style="padding:24px 24px 0;">
+          <div style="height:52px; background:#4A5A3C; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600;">22:00으로 저장</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isShop }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 12px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#4A5A3C;">NEEDS 1 ITEM</div>
+          <div style="margin-top:8px; font-size:24px; font-weight:700; letter-spacing:-0.025em; line-height:1.3;">이 아이템 하나면<br />코디 4개가 늘어나요</div>
+        </div>
+        <div style="margin:6px 24px 0; border:1px solid #E2E2DC;">
+          <div style="background:#F1F1EC; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+            <img src="assets/clean/item-belt-black.png" alt="" style="width:70%;" />
+          </div>
+          <div style="padding:14px 16px; border-top:1px solid #E2E2DC;">
+            <div style="font-size:16px; font-weight:600;">블랙 레더 벨트 · 3.5cm</div>
+            <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63; letter-spacing:0.04em;">₩39,000 · FITS 12 OF YOUR ITEMS</div>
+          </div>
+        </div>
+        <div style="padding:18px 24px 0; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#9A9A90;">UNLOCKS THESE OUTFITS</div>
+        <div style="padding:10px 24px 0; display:flex; gap:8px;">
+          <div style="flex:1; aspect-ratio:3/4; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/item-blazer-black.png" alt="" style="width:80%;" /></div>
+          <div style="flex:1; aspect-ratio:3/4; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/item-knit-gray.png" alt="" style="width:80%;" /></div>
+          <div style="flex:1; aspect-ratio:3/4; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/item-tee-white.png" alt="" style="width:80%;" /></div>
+        </div>
+        <div style="padding:16px 24px 0; font-size:13px; line-height:1.6; color:#6B6B63; text-wrap:pretty;">가진 옷으로 만들 수 없는 조합에서만 제안합니다. 이번 달 제안은 이것 하나입니다.</div>
+        <div style="padding:22px 24px 0; display:flex; gap:10px;">
+          <div style="flex:none; width:104px; height:52px; border:1px solid #14140F; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600;">나중에</div>
+          <div style="flex:1; height:52px; background:#4A5A3C; color:#FAFAF8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600;">구매처 보기</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMy }}">
+      <div style="padding:8px 0 28px;">
+        <div style="padding:0 24px 16px; display:flex; justify-content:space-between; align-items:flex-end;">
+          <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em;">옷장 리포트</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">2026.08</div>
+        </div>
+        <div style="border-top:1px solid #E2E2DC; border-bottom:1px solid #E2E2DC; padding:20px 24px;">
+          <div style="display:flex; align-items:flex-end; justify-content:space-between;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#6B6B63;">CLOSET UTILIZATION</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:26px; font-weight:600; letter-spacing:-0.02em; color:#4A5A3C;">62%</div>
+          </div>
+          <div style="margin-top:12px; height:8px; background:#E2E2DC; display:flex;">
+            <div style="width:62%; background:#4A5A3C;"></div>
+          </div>
+          <div style="margin-top:10px; font-size:13px; color:#6B6B63;">42개 중 26개를 최근 30일 안에 입었습니다.</div>
+        </div>
+        <div style="padding:18px 24px 10px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#9A9A90;">BY CATEGORY</div>
+        <div style="padding:0 24px;">
+          <sc-for list="{{ catStats }}" as="c" hint-placeholder-count="4">
+            <div style="padding:11px 0; border-bottom:1px solid #E2E2DC; display:flex; align-items:center; gap:12px;">
+              <div style="width:56px; flex:none; font-size:13px; font-weight:600;">{{ c.label }}</div>
+              <div style="flex:1; height:6px; background:#EDEDE7;"><div style="height:6px; background:#14140F; width:{{ c.w }};"></div></div>
+              <div style="flex:none; width:52px; text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6B6B63;">{{ c.val }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin:22px 24px 0; border:1px solid #4A5A3C; padding:16px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#4A5A3C;">UNWORN 30D · 8 ITEMS</div>
+          <div style="margin-top:12px; display:flex; gap:8px;">
+            <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/item-shirt-pink.png" alt="" style="width:84%;" /></div>
+            <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/item-knit-gray.png" alt="" style="width:84%;" /></div>
+            <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center;"><img src="assets/clean/item-shirt-teal.png" alt="" style="width:84%;" /></div>
+            <div style="flex:1; aspect-ratio:1/1; background:#F1F1EC; border:1px solid #E2E2DC; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#9A9A90;">+5</div>
+          </div>
+          <div style="margin-top:12px; font-size:13px; line-height:1.55; color:#14140F;">이 옷들을 코디에 우선 포함할까요?</div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:none; border-top:1px solid #E2E2DC; background:#FAFAF8; display:flex; padding:10px 0 22px;">
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="{{ tabHome }}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15.4 12.1A6 6 0 0 1 7.9 4.6a6.2 6.2 0 1 0 7.5 7.5Z"></path>
+        </svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.08em; color:{{ tabHome }};">TONIGHT</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="{{ tabCloset }}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 6.6a1.7 1.7 0 1 1 1.7-1.7"></path>
+          <path d="M10 6.6 3 11.6a.8.8 0 0 0 .5 1.5h13a.8.8 0 0 0 .5-1.5L10 6.6Z"></path>
+        </svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.08em; color:{{ tabCloset }};">CLOSET</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="{{ tabAdd }}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.8 6.6h14.4v9.2H2.8z"></path>
+          <path d="M7.2 6.6l1.1-2.4h3.4l1.1 2.4"></path>
+          <circle cx="10" cy="11.2" r="2.6"></circle>
+        </svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.08em; color:{{ tabAdd }};">ADD</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="{{ tabMy }}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.2 16.4h13.6"></path>
+          <path d="M5.8 16.4V9.2M10 16.4V4.4M14.2 16.4v-4.6"></path>
+        </svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.08em; color:{{ tabMy }};">REPORT</div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:393,&quot;height&quot;:852},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;onboarding&quot;,&quot;capture&quot;,&quot;confirm&quot;,&quot;home&quot;,&quot;outfit&quot;,&quot;wardrobe&quot;,&quot;item&quot;,&quot;notify&quot;,&quot;time&quot;,&quot;shop&quot;,&quot;my&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;wardrobeColumns&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:2,&quot;max&quot;:4,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Wardrobe&quot;},&quot;unreadCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:0,&quot;max&quot;:9,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Notifications&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.props.screen || 'home';
+    const flat = (f, size) => 'url(assets/clean/' + f + ') center center / ' + size + ' no-repeat, #F1F1EC';
+    const ink = '#14140F', mute = '#B4B4AC', olive = '#4A5A3C';
+    const dark = s === 'capture';
+    const tab = (keys) => keys.indexOf(s) >= 0 ? ink : mute;
+    return {
+      clock: s === 'onboarding' ? '09:41' : '22:00',
+      statusBg: dark ? '#14140F' : '#FAFAF8',
+      statusInk: dark ? '#FAFAF8' : ink,
+      isOnboarding: s === 'onboarding',
+      isCapture: s === 'capture',
+      isConfirm: s === 'confirm',
+      isHome: s === 'home',
+      isOutfit: s === 'outfit',
+      isWardrobe: s === 'wardrobe',
+      isItem: s === 'item',
+      isNotify: s === 'notify',
+      isTime: s === 'time',
+      isShop: s === 'shop',
+      isMy: s === 'my',
+      showTabs: ['home', 'outfit', 'wardrobe', 'item', 'notify', 'shop', 'my'].indexOf(s) >= 0,
+      tabHome: tab(['home', 'outfit', 'notify', 'time']),
+      tabCloset: tab(['wardrobe', 'item']),
+      tabAdd: tab(['confirm', 'shop']),
+      tabMy: tab(['my']),
+      unread: this.props.unreadCount ?? 3,
+      gridCols: 'repeat(' + (this.props.wardrobeColumns ?? 3) + ', 1fr)',
+      outfitItems: [
+        { bg: flat('item-blazer-black.png', '78%'), name: '블랙 울 블레이저', meta: 'BL-01 / BLACK / 100', worn: '12' },
+        { bg: flat('item-tee-white.png', '78%'), name: '화이트 코튼 티셔츠', meta: 'TE-07 / WHITE / L', worn: '31' },
+        { bg: flat('item-jeans-blue.png', '62%'), name: '중청 워시드 데님', meta: 'JN-02 / BLUE / 32', worn: '24' },
+        { bg: flat('item-belt-black.png', '78%'), name: '블랙 레더 벨트', meta: 'AC-03 / BLACK / 90', worn: '18' },
+        { bg: flat('item-shoes-black.png', '78%'), name: '블랙 더비 슈즈', meta: 'SO-01 / BLACK / 270', worn: '9' }
+      ],
+      wardrobe: [
+        { bg: flat('item-shirt-blue.png', '86%'), id: 'SH-04', spec: 'BLUE / 100 · 6', dot: '#A9C0D4' },
+        { bg: flat('item-shirt-pink.png', '86%'), id: 'SH-05', spec: 'PINK / 100 · 2', dot: '#E2C0C4' },
+        { bg: flat('item-shirt-teal.png', '86%'), id: 'SH-06', spec: 'TEAL / 95 · 4', dot: '#7FA8A0' },
+        { bg: flat('item-tee-white.png', '86%'), id: 'TE-07', spec: 'WHITE / L · 31', dot: '#FFFFFF' },
+        { bg: flat('item-knit-gray.png', '86%'), id: 'KN-02', spec: 'GRAY / M · 7', dot: '#B7B7B2' },
+        { bg: flat('item-blazer-black.png', '86%'), id: 'BL-01', spec: 'BLACK / 100 · 12', dot: '#14140F' },
+        { bg: flat('item-jeans-blue.png', '68%'), id: 'JN-02', spec: 'BLUE / 32 · 24', dot: '#6E86A6' },
+        { bg: flat('item-belt-black.png', '86%'), id: 'AC-03', spec: 'BLACK / 90 · 18', dot: '#14140F' },
+        { bg: flat('item-shoes-black.png', '86%'), id: 'SO-01', spec: 'BLACK / 270 · 9', dot: '#14140F' }
+      ],
+      itemSpecs: [
+        { k: 'CATEGORY', v: '상의 · 셔츠' },
+        { k: 'COLOR', v: '라이트 블루' },
+        { k: 'SIZE', v: '100' },
+        { k: 'SEASON', v: '봄 · 가을' },
+        { k: 'ADDED', v: '2026.03.11' },
+        { k: 'WORN', v: '6회 · 최근 08.19' }
+      ],
+      notifications: [
+        { title: '오늘의 코디 3세트가 도착했어요', body: '21°, 겉옷이 필요한 날. 블레이저 조합을 가장 위에 두었습니다.', time: '22:00', dot: olive, bg: '#F4F5F0' },
+        { title: '어제 입은 코디를 기록할까요?', body: '기록하면 다음 추천이 더 정확해집니다.', time: '08:30', dot: olive, bg: '#F4F5F0' },
+        { title: '옷장에 없는 아이템 1개', body: '블랙 레더 벨트 하나면 코디 4개가 늘어납니다.', time: '어제', dot: olive, bg: '#F4F5F0' },
+        { title: '30일 동안 입지 않은 옷 8개', body: '이번 주 코디에 우선 포함할 수 있습니다.', time: '08.29', dot: '#D8D8D2', bg: '#FAFAF8' },
+        { title: 'AI 인식 정확도가 올라갔어요', body: '수정해 주신 12건이 반영되었습니다.', time: '08.27', dot: '#D8D8D2', bg: '#FAFAF8' },
+        { title: '옷장 리포트가 준비되었습니다', body: '8월 활용률 62%. 지난달보다 9%p 높습니다.', time: '08.25', dot: '#D8D8D2', bg: '#FAFAF8' }
+      ],
+      catStats: [
+        { label: '상의', w: '86%', val: '18 / 21' },
+        { label: '하의', w: '75%', val: '9 / 12' },
+        { label: '아웃터', w: '44%', val: '7 / 16' },
+        { label: '신발·소품', w: '58%', val: '8 / 14' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

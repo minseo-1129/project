@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"></helmet>
+<div style="width:360px;height:780px;background:#F7F5F1;text-align:left;display:flex;flex-direction:column;overflow:hidden;font-family:Pretendard,-apple-system,system-ui,sans-serif;color:#14110F;position:relative">
+
+  <div style="height:34px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12.5px;font-weight:600;position:relative;z-index:6;color:{{ statusColor }};background:{{ statusBg }}">
+    <span>9:41</span>
+    <span style="display:flex;align-items:center;gap:6px">
+      <span style="display:flex;align-items:flex-end;gap:1.5px;height:9px"><i style="display:block;width:2px;height:3px;background:currentColor"></i><i style="display:block;width:2px;height:5px;background:currentColor"></i><i style="display:block;width:2px;height:7px;background:currentColor"></i><i style="display:block;width:2px;height:9px;background:currentColor"></i></span>
+      <span style="display:block;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:9px solid currentColor"></span>
+      <span style="display:block;width:19px;height:10px;border:1.5px solid currentColor;border-radius:2.5px;padding:1.5px"><i style="display:block;width:70%;height:100%;background:currentColor"></i></span>
+    </span>
+  </div>
+
+  <div style="flex:1;position:relative;overflow:hidden">
+
+    <sc-if value="{{ isSplash }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;background:#14110F;display:flex;flex-direction:column;padding:0 26px 46px">
+        <div style="height:92px;flex:none"></div>
+        <div style="font:italic 31px/1.22 'Instrument Serif',Georgia,serif;color:#F7F5F1">Wine,<br>without the<br>vocabulary.</div>
+        <div style="width:1px;flex:1;background:linear-gradient(#7A2233,rgba(247,245,241,.3));margin:28px 0 28px 7px"></div>
+        <div style="font-size:28px;font-weight:600;letter-spacing:.2em;color:#F7F5F1">WINNUS</div>
+        <div style="font-size:12.5px;color:rgba(247,245,241,.5);letter-spacing:-0.02em;margin-top:10px">몰라도 고를 수 있는 와인</div>
+        <button type="button" onClick="{{ goIntro }}" style="margin-top:30px;display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;border-bottom:1px solid rgba(247,245,241,.4);padding:0 2px 13px;cursor:pointer;font-family:inherit" style-hover="border-bottom-color:#7A2233">
+          <span style="font-size:13.5px;letter-spacing:-0.02em;color:#F7F5F1">시작하기</span>
+          <span style="font-size:17px;color:#F7F5F1;line-height:1">→</span>
+        </button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isIntro }}">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:0 26px 38px">
+        <div style="height:70px;flex:none"></div>
+        <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">TASTE ONBOARDING</div>
+        <div style="font-size:25px;font-weight:700;letter-spacing:-0.035em;line-height:1.42;margin-top:16px;text-wrap:pretty">세 가지만 물어볼게요.<br>어려운 말은 안 나와요.</div>
+        <div style="font-size:13px;line-height:1.75;color:#6E6862;letter-spacing:-0.02em;margin-top:14px;text-wrap:pretty">평소 좋아하는 맛과 자주 먹는 음식만 고르면, 와인의 언어로는 저희가 대신 번역합니다.</div>
+        <div style="margin-top:30px">
+          <sc-for list="{{ introSteps }}" as="st" hint-placeholder-count="3">
+            <div style="display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-top:1px solid #E2DDD6">
+              <div style="font:italic 20px/1 'Instrument Serif',Georgia,serif;color:#7A2233;width:24px;flex:none">{{ st.n }}</div>
+              <div><div style="font-size:13.5px;font-weight:600;letter-spacing:-0.03em">{{ st.t }}</div><div style="font-size:11.5px;color:#8C857E;margin-top:5px;letter-spacing:-0.02em">{{ st.d }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="flex:1"></div>
+        <button type="button" onClick="{{ goQ1 }}" style="width:100%;background:#14110F;color:#F7F5F1;border:none;padding:17px 0;font-size:14px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer" style-hover="background:#7A2233">30초면 끝나요</button>
+        <button type="button" onClick="{{ goHome }}" style="margin-top:13px;background:none;border:none;font-family:inherit;font-size:12px;color:#8C857E;letter-spacing:-0.02em;cursor:pointer;text-decoration:underline;text-underline-offset:3px">나중에 할래요</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isQuiz }}">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:0 26px 32px">
+        <div style="display:flex;align-items:center;gap:13px;padding-top:18px">
+          <button type="button" onClick="{{ quizBack }}" style="background:none;border:none;padding:2px 6px 2px 0;font-size:19px;line-height:1;cursor:pointer;color:#14110F;font-family:inherit">‹</button>
+          <div style="flex:1;height:2px;background:#E2DDD6;position:relative"><i style="{{ quizProgressStyle }}"></i></div>
+          <div style="font:10px ui-monospace,Menlo,monospace;color:#8C857E;letter-spacing:.08em">{{ quizStepLabel }}</div>
+        </div>
+        <div style="height:46px;flex:none"></div>
+        <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">{{ quizKicker }}</div>
+        <div style="font-size:23px;font-weight:700;letter-spacing:-0.035em;line-height:1.42;margin-top:14px;text-wrap:pretty">{{ quizQuestion }}</div>
+        <div style="font-size:12px;color:#8C857E;margin-top:10px;letter-spacing:-0.02em">{{ quizHelp }}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px">
+          <sc-for list="{{ quizOptions }}" as="o" hint-placeholder-count="4">
+            <button type="button" onClick="{{ o.onClick }}" style="{{ o.style }}">
+              <span style="{{ o.chipStyle }}"></span>
+              <span style="font-size:14px;font-weight:600;letter-spacing:-0.03em;margin-top:14px;display:block">{{ o.label }}</span>
+              <span style="font-size:11px;color:#8C857E;margin-top:5px;display:block;letter-spacing:-0.02em">{{ o.sub }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="flex:1"></div>
+        <button type="button" onClick="{{ quizNext }}" style="{{ quizNextStyle }}">{{ quizNextLabel }}</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isProfile }}">
+      <div style="position:absolute;inset:0;overflow:auto;background:#14110F;color:#F7F5F1">
+        <div style="padding:34px 26px 0">
+          <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:rgba(247,245,241,.42)">YOUR TASTE, TRANSLATED</div>
+          <div style="font:italic 33px/1.24 'Instrument Serif',Georgia,serif;margin-top:16px">The gentle<br>sweet tooth</div>
+          <div style="font-size:15px;font-weight:600;letter-spacing:-0.03em;margin-top:14px">달고 가벼운 쪽을 좋아하시네요</div>
+          <div style="font-size:12.5px;line-height:1.78;color:rgba(247,245,241,.58);letter-spacing:-0.02em;margin-top:12px;text-wrap:pretty">떫은맛에는 아직 익숙하지 않으니, 향이 화사하고 가벼운 와인부터 시작하는 게 좋아요.</div>
+        </div>
+        <div style="margin:30px 26px 0;padding-top:2px;border-top:1px solid rgba(247,245,241,.2)">
+          <sc-for list="{{ tasteRows }}" as="t" hint-placeholder-count="4">
+            <div style="display:flex;gap:15px;align-items:center;padding:15px 0;border-bottom:1px solid rgba(247,245,241,.11)">
+              <span style="{{ t.swatchOnDark }}"></span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:600;letter-spacing:-0.03em">{{ t.word }}</div>
+                <div style="font-size:11px;color:rgba(247,245,241,.45);margin-top:4px;letter-spacing:-0.02em">{{ t.kr }}</div>
+              </div>
+              <div style="font:9.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(247,245,241,.32);flex:none;white-space:nowrap">{{ t.en }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:24px 26px 0">
+          <div style="font-size:12px;line-height:1.7;color:rgba(247,245,241,.5);letter-spacing:-0.02em;text-wrap:pretty">숫자나 점수는 쓰지 않습니다. 색과 말로만 전달해요 — 그게 더 빨리 이해되니까.</div>
+        </div>
+        <div style="padding:26px">
+          <button type="button" onClick="{{ goHome }}" style="width:100%;background:#F7F5F1;color:#14110F;border:none;padding:17px 0;font-size:14px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer" style-hover="background:#7A2233;color:#F7F5F1">내 취향 와인 보러가기</button>
+          <div style="text-align:center;font-size:11.5px;color:rgba(247,245,241,.42);margin-top:14px;letter-spacing:-0.02em">마신 기록이 쌓이면 더 정확해져요</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isHome }}">
+      <div style="position:absolute;inset:0;overflow:auto">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 22px 0">
+          <div style="font-size:15px;font-weight:600;letter-spacing:.18em">WINNUS</div>
+          <div style="font:10px ui-monospace,Menlo,monospace;color:#8C857E;letter-spacing:.08em">SEP 2026</div>
+        </div>
+        <div style="padding:30px 22px 0">
+          <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">TODAY FOR 예은</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.035em;line-height:1.42;margin-top:13px;text-wrap:pretty">달달한 게 좋다면,<br>오늘은 이 한 병.</div>
+        </div>
+        <button type="button" onClick="{{ goCard }}" style="display:block;width:100%;text-align:left;background:none;border:none;padding:20px 22px 0;cursor:pointer;font-family:inherit">
+          <div style="background:#14110F;padding:22px;display:flex;gap:20px;align-items:center">
+            <div style="flex:none;width:76px;height:158px;background:#F7F5F1;display:flex;align-items:flex-end;justify-content:center">
+              <span style="display:block;width:26px;height:92px;border-radius:13px 13px 3px 3px;background:#B4762F;margin-bottom:14px;position:relative">
+                <i style="position:absolute;left:50%;top:-23px;transform:translateX(-50%);width:8px;height:25px;background:#B4762F;border-radius:2px"></i>
+                <i style="position:absolute;left:3px;right:3px;bottom:15px;height:30px;background:rgba(255,255,255,.9)"></i>
+              </span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font:9.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(247,245,241,.42)">N° 01 · 오늘의 추천</div>
+              <div style="font-size:16.5px;font-weight:700;color:#F7F5F1;letter-spacing:-0.03em;margin-top:11px">코스타딜라</div>
+              <div style="font-size:11.5px;color:rgba(247,245,241,.52);margin-top:5px;letter-spacing:-0.02em">프랑스 · 오렌지 펫낫</div>
+              <div style="font-size:12px;color:rgba(247,245,241,.85);margin-top:13px;line-height:1.55;letter-spacing:-0.02em;text-wrap:pretty">복숭아 통조림처럼 달아요</div>
+              <div style="font-size:13.5px;font-weight:600;color:#F7F5F1;margin-top:15px;letter-spacing:-0.01em">25,000<span style="font-size:10.5px;color:rgba(247,245,241,.5);font-weight:400">원</span></div>
+            </div>
+          </div>
+        </button>
+        <div style="padding:32px 22px 0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid #14110F">
+            <div style="font-size:14px;font-weight:700;letter-spacing:-0.03em">이런 말로 찾아보세요</div>
+            <button type="button" onClick="{{ goSearch }}" style="background:none;border:none;font-family:inherit;font-size:11px;color:#8C857E;cursor:pointer;letter-spacing:-0.02em">전체 →</button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:15px">
+            <sc-for list="{{ homeTags }}" as="t" hint-placeholder-count="6">
+              <button type="button" onClick="{{ goSearch }}" style="background:none;border:1px solid #D6D0C8;padding:8px 13px;font-family:inherit;font-size:12px;letter-spacing:-0.02em;color:#14110F;cursor:pointer;border-radius:99px" style-hover="border-color:#7A2233;color:#7A2233">{{ t }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:32px 22px 28px">
+          <div style="padding-bottom:11px;border-bottom:1px solid #14110F;font-size:14px;font-weight:700;letter-spacing:-0.03em">입문자가 많이 고른 와인</div>
+          <sc-for list="{{ wines }}" as="w" hint-placeholder-count="4">
+            <button type="button" onClick="{{ goCard }}" style="display:flex;gap:16px;align-items:center;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid #E2DDD6;padding:15px 2px;cursor:pointer;font-family:inherit" style-hover="background:#F0EDE7">
+              <div style="flex:none;width:44px;height:74px;background:#EDEAE4;display:flex;align-items:flex-end;justify-content:center">
+                <span style="display:block;width:15px;height:44px;border-radius:8px 8px 2px 2px;background:{{ w.color }};margin-bottom:7px;position:relative">
+                  <i style="position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:5px;height:13px;background:{{ w.color }};border-radius:2px"></i>
+                  <i style="position:absolute;left:2px;right:2px;bottom:7px;height:14px;background:rgba(255,255,255,.9)"></i>
+                </span>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13.5px;font-weight:600;letter-spacing:-0.03em">{{ w.name }}</div>
+                <div style="font-size:11px;color:#8C857E;margin-top:4px;letter-spacing:-0.02em">{{ w.origin }}</div>
+                <div style="font-size:11.5px;margin-top:8px;letter-spacing:-0.02em">{{ w.blurb }}</div>
+              </div>
+              <div style="flex:none;text-align:right">
+                <span style="{{ w.swatch }}"></span>
+                <div style="font-size:12.5px;font-weight:600;margin-top:9px;letter-spacing:-0.01em">{{ w.price }}</div>
+              </div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSearch }}">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column">
+        <div style="flex:none;padding:22px 22px 0">
+          <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">TAG SEARCH</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.035em;line-height:1.42;margin-top:12px">아는 단어로 고르세요.</div>
+          <div style="font-size:12px;color:#8C857E;margin-top:9px;letter-spacing:-0.02em">전문 용어 대신, 평소 쓰는 말로 검색합니다</div>
+        </div>
+        <div style="flex:1;overflow:auto;padding:22px 22px 12px">
+          <sc-for list="{{ tagGroups }}" as="g" hint-placeholder-count="3">
+            <div style="margin-bottom:24px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #E2DDD6">
+                <div style="font-size:12.5px;font-weight:700;letter-spacing:-0.03em">{{ g.title }}</div>
+                <div style="font:9.5px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.08em;flex:none;white-space:nowrap">{{ g.en }}</div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+                <sc-for list="{{ g.tags }}" as="t" hint-placeholder-count="4">
+                  <button type="button" onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="flex:none;padding:14px 22px 18px;border-top:1px solid #E2DDD6">
+          <button type="button" onClick="{{ goResults }}" style="width:100%;background:#14110F;color:#F7F5F1;border:none;padding:17px 0;font-size:14px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="background:#7A2233">
+            <span>{{ tagCountLabel }}</span><span style="font-size:16px;line-height:1">→</span>
+          </button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isResults }}">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column">
+        <div style="flex:none;padding:18px 22px 14px;border-bottom:1px solid #14110F;display:flex;align-items:center;gap:12px">
+          <button type="button" onClick="{{ goSearch }}" style="background:none;border:none;padding:2px 4px 2px 0;font-size:19px;line-height:1;cursor:pointer;color:#14110F;font-family:inherit">‹</button>
+          <div style="flex:1;display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ activeTags }}" as="t" hint-placeholder-count="2">
+              <span style="font-size:11px;background:#14110F;color:#F7F5F1;padding:5px 10px;letter-spacing:-0.02em;border-radius:99px">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:14px 22px">
+          <span style="font-size:11.5px;color:#8C857E;letter-spacing:-0.02em">{{ resultCount }}</span>
+          <span style="font:10px ui-monospace,Menlo,monospace;color:#8C857E;letter-spacing:.08em">BEST FIT FIRST</span>
+        </div>
+        <div style="flex:1;overflow:auto;padding:0 22px 24px">
+          <sc-for list="{{ wines }}" as="w" hint-placeholder-count="4">
+            <button type="button" onClick="{{ goCard }}" style="display:flex;gap:18px;width:100%;text-align:left;background:none;border:none;border-top:1px solid #E2DDD6;padding:18px 2px;cursor:pointer;font-family:inherit" style-hover="background:#F0EDE7">
+              <div style="flex:none;width:66px;height:112px;background:#EDEAE4;display:flex;align-items:flex-end;justify-content:center">
+                <span style="display:block;width:21px;height:66px;border-radius:11px 11px 3px 3px;background:{{ w.color }};margin-bottom:11px;position:relative">
+                  <i style="position:absolute;left:50%;top:-17px;transform:translateX(-50%);width:7px;height:18px;background:{{ w.color }};border-radius:2px"></i>
+                  <i style="position:absolute;left:2px;right:2px;bottom:10px;height:21px;background:rgba(255,255,255,.9)"></i>
+                </span>
+              </div>
+              <div style="flex:1;min-width:0;padding-top:2px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+                  <div style="font-size:14px;font-weight:700;letter-spacing:-0.03em">{{ w.name }}</div>
+                  <span style="{{ w.swatch }}"></span>
+                </div>
+                <div style="font-size:11px;color:#8C857E;margin-top:4px;letter-spacing:-0.02em">{{ w.origin }}</div>
+                <div style="font-size:11.5px;margin-top:9px;letter-spacing:-0.02em;line-height:1.5;text-wrap:pretty">{{ w.blurb }}</div>
+                <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:11px">
+                  <div style="display:flex;gap:5px">
+                    <sc-for list="{{ w.tags }}" as="tg" hint-placeholder-count="2">
+                      <span style="font-size:10px;border:1px solid #D6D0C8;padding:3px 7px;color:#6E6862;letter-spacing:-0.02em">{{ tg }}</span>
+                    </sc-for>
+                  </div>
+                  <div style="font-size:12.5px;font-weight:600;letter-spacing:-0.01em">{{ w.price }}</div>
+                </div>
+              </div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isCard }}">
+      <div style="position:absolute;inset:0;overflow:auto">
+        <div style="background:#14110F;padding:18px 22px 28px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <button type="button" onClick="{{ goResults }}" style="background:none;border:none;padding:2px 6px 2px 0;font-size:19px;line-height:1;cursor:pointer;color:#F7F5F1;font-family:inherit">‹</button>
+            <button type="button" onClick="{{ toggleSave }}" style="{{ saveBtnStyle }}">{{ saveBtnLabel }}</button>
+          </div>
+          <div style="display:flex;gap:22px;align-items:flex-end;margin-top:16px">
+            <div style="flex:none;width:96px;height:186px;background:#F7F5F1;display:flex;align-items:flex-end;justify-content:center">
+              <span style="display:block;width:32px;height:110px;border-radius:16px 16px 4px 4px;background:#B4762F;margin-bottom:18px;position:relative">
+                <i style="position:absolute;left:50%;top:-28px;transform:translateX(-50%);width:10px;height:30px;background:#B4762F;border-radius:2px"></i>
+                <i style="position:absolute;left:3px;right:3px;bottom:18px;height:38px;background:rgba(255,255,255,.9)"></i>
+              </span>
+            </div>
+            <div style="flex:1;min-width:0;padding-bottom:4px">
+              <div style="font:9.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(247,245,241,.42)">N° 01</div>
+              <div style="font-size:20px;font-weight:700;color:#F7F5F1;letter-spacing:-0.035em;margin-top:12px;line-height:1.3">코스타딜라</div>
+              <div style="font:italic 13px/1.4 'Instrument Serif',Georgia,serif;color:rgba(247,245,241,.55);margin-top:6px">Costadilà 280 SLM</div>
+              <div style="font-size:11.5px;color:rgba(247,245,241,.52);margin-top:10px;letter-spacing:-0.02em">프랑스 · 오렌지 펫낫 · 750ml</div>
+              <div style="font-size:16px;font-weight:600;color:#F7F5F1;margin-top:14px;letter-spacing:-0.01em">25,000원</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:26px 22px 0">
+          <div style="font-size:16.5px;font-weight:700;letter-spacing:-0.035em;line-height:1.55;text-wrap:pretty">복숭아 통조림 같은 단맛에, 탄산이 살짝. 와인이 처음이어도 부담 없어요.</div>
+        </div>
+        <div style="margin:24px 22px 0;border-top:1px solid #14110F">
+          <sc-for list="{{ tasteRows }}" as="t" hint-placeholder-count="4">
+            <div style="display:flex;gap:15px;align-items:center;padding:15px 0;border-bottom:1px solid #E2DDD6">
+              <span style="{{ t.swatchOnLight }}"></span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:600;letter-spacing:-0.03em">{{ t.word }}</div>
+                <div style="font-size:11px;color:#8C857E;margin-top:4px;letter-spacing:-0.02em">{{ t.kr }}</div>
+              </div>
+              <button type="button" onClick="{{ goTerms }}" style="background:none;border:none;padding:2px 0;cursor:pointer;font:9.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#A9A29A;text-decoration:underline;text-underline-offset:3px;flex:none;white-space:nowrap" style-hover="color:#7A2233">{{ t.en }}</button>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:24px 22px 0">
+          <div style="font-size:13.5px;font-weight:700;letter-spacing:-0.03em">어떤 향이 나요</div>
+          <div style="display:flex;gap:12px;margin-top:14px">
+            <sc-for list="{{ aromas }}" as="a" hint-placeholder-count="3">
+              <div style="flex:1;text-align:center">
+                <div style="height:70px;background:{{ a.bg }};background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 6px,rgba(255,255,255,0) 6px 12px);display:flex;align-items:flex-end;padding:6px">
+                  <span style="font:8.5px ui-monospace,Menlo,monospace;color:rgba(20,17,15,.45);letter-spacing:.05em">ILLUST</span>
+                </div>
+                <div style="font-size:11.5px;margin-top:8px;letter-spacing:-0.02em">{{ a.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:26px 22px 30px">
+          <button type="button" onClick="{{ goMore }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:1px solid #14110F;padding:15px 16px;cursor:pointer;font-family:inherit" style-hover="background:#14110F;color:#F7F5F1">
+            <span style="font-size:13px;font-weight:600;letter-spacing:-0.03em">뭐랑 먹으면 좋은지 보기</span>
+            <span style="font-size:15px;line-height:1">↓</span>
+          </button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMore }}">
+      <div style="position:absolute;inset:0;overflow:auto">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 22px 14px;border-bottom:1px solid #14110F">
+          <button type="button" onClick="{{ goCard }}" style="background:none;border:none;padding:2px 4px 2px 0;font-size:19px;line-height:1;cursor:pointer;color:#14110F;font-family:inherit">‹</button>
+          <div style="font-size:13.5px;font-weight:700;letter-spacing:-0.03em">코스타딜라 · 더 알아보기</div>
+        </div>
+        <div style="padding:24px 22px 0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between">
+            <div style="font-size:14px;font-weight:700;letter-spacing:-0.03em">이 음식이랑 잘 맞아요</div>
+            <div style="font:9.5px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.08em">PAIRING</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
+            <sc-for list="{{ pairings }}" as="p" hint-placeholder-count="4">
+              <div style="border:1px solid #E2DDD6;padding:14px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:-0.03em">{{ p.food }}</div>
+                <div style="font-size:11px;color:#8C857E;margin-top:6px;line-height:1.5;letter-spacing:-0.02em;text-wrap:pretty">{{ p.why }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:28px 22px 0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between">
+            <div style="font-size:14px;font-weight:700;letter-spacing:-0.03em">이럴 때 열어보세요</div>
+            <div style="font:9.5px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.08em">OCCASION</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+            <sc-for list="{{ occasions }}" as="o" hint-placeholder-count="3">
+              <span style="font-size:12px;border:1px solid #D6D0C8;padding:8px 13px;border-radius:99px;letter-spacing:-0.02em;color:#4A4540">{{ o }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:28px 22px 34px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid #E2DDD6">
+            <div style="font-size:14px;font-weight:700;letter-spacing:-0.03em">전문가의 노트</div>
+            <div style="font:9.5px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.08em">TASTING NOTE</div>
+          </div>
+          <div style="font:italic 14px/1.75 'Instrument Serif',Georgia,serif;color:#4A4540;margin-top:14px;text-wrap:pretty">Cloudy amber. Ripe peach, dried apricot and a saline finish. Skin contact 7 days, unfiltered.</div>
+          <div style="font-size:11.5px;color:#8C857E;margin-top:12px;line-height:1.7;letter-spacing:-0.02em;text-wrap:pretty">모르는 단어가 있어도 괜찮아요. 위의 설명만으로 충분합니다.</div>
+          <button type="button" onClick="{{ goReview }}" style="margin-top:24px;width:100%;background:#14110F;color:#F7F5F1;border:none;padding:16px 0;font-size:13.5px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer" style-hover="background:#7A2233">마셔봤어요 · 기록하기</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isTerms }}">
+      <div style="position:absolute;inset:0;background:rgba(20,17,15,.55);display:flex;flex-direction:column;justify-content:flex-end">
+        <button type="button" onClick="{{ goCard }}" style="flex:1;background:none;border:none;cursor:pointer"></button>
+        <div style="flex:none;background:#F7F5F1;padding:22px 24px 30px">
+          <div style="width:38px;height:3px;background:#D6D0C8;margin:0 auto 20px"></div>
+          <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">TANNIN</div>
+          <div style="font-size:20px;font-weight:700;letter-spacing:-0.035em;margin-top:12px">탄닌 = 떫은맛</div>
+          <div style="font-size:13px;line-height:1.8;color:#4A4540;margin-top:12px;letter-spacing:-0.02em;text-wrap:pretty">진하게 우린 홍차를 마셨을 때 혀가 뻑뻑해지는 그 느낌. 그게 탄닌이에요. 높을수록 입 안이 마른 듯하고, 낮을수록 물처럼 부드럽게 넘어갑니다.</div>
+          <div style="display:flex;gap:10px;margin-top:20px">
+            <div style="flex:1;border:1px solid #E2DDD6;padding:12px"><div style="font-size:11px;color:#8C857E;letter-spacing:-0.02em">낮으면</div><div style="font-size:13px;font-weight:600;margin-top:6px;letter-spacing:-0.03em">부드러워요</div></div>
+            <div style="flex:1;border:1px solid #E2DDD6;padding:12px"><div style="font-size:11px;color:#8C857E;letter-spacing:-0.02em">높으면</div><div style="font-size:13px;font-weight:600;margin-top:6px;letter-spacing:-0.03em">떫어요</div></div>
+          </div>
+          <button type="button" onClick="{{ goCard }}" style="margin-top:22px;width:100%;background:#14110F;color:#F7F5F1;border:none;padding:15px 0;font-size:13.5px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer" style-hover="background:#7A2233">알겠어요</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isReview }}">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column">
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:18px 22px 0">
+          <div style="font-size:13.5px;font-weight:700;letter-spacing:-0.03em">기록하기</div>
+          <button type="button" onClick="{{ goMore }}" style="background:none;border:none;font-size:19px;line-height:1;color:#14110F;cursor:pointer;padding:4px;font-family:inherit">✕</button>
+        </div>
+        <div style="flex:none;padding:20px 22px 0">
+          <div style="font-size:20px;font-weight:700;letter-spacing:-0.035em;line-height:1.45;text-wrap:pretty">코스타딜라, 어땠어요?</div>
+          <div style="font-size:12px;color:#8C857E;margin-top:9px;letter-spacing:-0.02em">점수 대신, 느낌 그대로 골라주세요</div>
+        </div>
+        <div style="flex:1;overflow:auto;padding:22px 22px 12px">
+          <div style="display:flex;gap:9px">
+            <sc-for list="{{ verdicts }}" as="v" hint-placeholder-count="3">
+              <button type="button" onClick="{{ v.onClick }}" style="{{ v.style }}">{{ v.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:26px;padding-top:16px;border-top:1px solid #E2DDD6">
+            <div style="font-size:13px;font-weight:700;letter-spacing:-0.03em">어떤 맛이 기억나요?</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:13px">
+              <sc-for list="{{ reviewTags }}" as="t" hint-placeholder-count="6">
+                <button type="button" onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-top:26px;padding-top:16px;border-top:1px solid #E2DDD6">
+            <div style="font-size:13px;font-weight:700;letter-spacing:-0.03em">한마디 <span style="font-weight:400;color:#A9A29A;font-size:11px">선택</span></div>
+            <textarea placeholder="친구한테 말하듯이 적어도 좋아요" style="width:100%;box-sizing:border-box;height:76px;border:1px solid #E2DDD6;outline:none;resize:none;background:none;margin-top:12px;padding:12px;font-family:inherit;font-size:12.5px;letter-spacing:-0.02em;color:#14110F;line-height:1.6"></textarea>
+          </div>
+        </div>
+        <button type="button" onClick="{{ goDone }}" style="flex:none;background:#14110F;color:#F7F5F1;border:none;padding:18px 0;font-size:14px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer" style-hover="background:#7A2233">기록 남기기</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDone }}">
+      <div style="position:absolute;inset:0;background:#14110F;color:#F7F5F1;display:flex;flex-direction:column;padding:0 26px 40px">
+        <div style="height:110px;flex:none"></div>
+        <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:rgba(247,245,241,.42)">PROFILE UPDATED</div>
+        <div style="font:italic 30px/1.28 'Instrument Serif',Georgia,serif;margin-top:16px">3rd bottle<br>logged.</div>
+        <div style="font-size:14px;font-weight:600;letter-spacing:-0.03em;margin-top:16px">취향이 조금 더 또렷해졌어요</div>
+        <div style="margin-top:26px;padding-top:18px;border-top:1px solid rgba(247,245,241,.18)">
+          <div style="display:flex;gap:15px;align-items:center;padding:13px 0">
+            <span style="display:block;width:26px;height:26px;flex:none;background:#C08A3E"></span>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600;letter-spacing:-0.03em">단맛 선호가 더 뚜렷해졌어요</div><div style="font-size:11px;color:rgba(247,245,241,.45);margin-top:4px;letter-spacing:-0.02em">달달한 · 3회 연속</div></div>
+          </div>
+          <div style="display:flex;gap:15px;align-items:center;padding:13px 0">
+            <span style="display:block;width:26px;height:26px;flex:none;background:#6B4A55"></span>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600;letter-spacing:-0.03em">떫은맛은 아직 피하는 편</div><div style="font-size:11px;color:rgba(247,245,241,.45);margin-top:4px;letter-spacing:-0.02em">다음 추천에서 제외할게요</div></div>
+          </div>
+        </div>
+        <div style="flex:1"></div>
+        <button type="button" onClick="{{ goSaved }}" style="width:100%;background:#F7F5F1;color:#14110F;border:none;padding:17px 0;font-size:14px;font-weight:600;font-family:inherit;letter-spacing:-0.02em;cursor:pointer" style-hover="background:#7A2233;color:#F7F5F1">내 기록 보기</button>
+        <button type="button" onClick="{{ goHome }}" style="margin-top:13px;background:none;border:none;font-family:inherit;font-size:12px;color:rgba(247,245,241,.5);letter-spacing:-0.02em;cursor:pointer;text-decoration:underline;text-underline-offset:3px">홈으로</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSaved }}">
+      <div style="position:absolute;inset:0;overflow:auto">
+        <div style="padding:22px 22px 0">
+          <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">MY CELLAR</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.035em;margin-top:12px">내 기록</div>
+        </div>
+        <div style="display:flex;gap:0;margin:20px 22px 0;border-bottom:1px solid #14110F">
+          <sc-for list="{{ cellarTabs }}" as="t" hint-placeholder-count="2">
+            <button type="button" onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <div style="padding:6px 22px 28px">
+          <sc-for list="{{ cellarItems }}" as="w" hint-placeholder-count="3">
+            <div style="display:flex;gap:16px;align-items:center;padding:16px 2px;border-bottom:1px solid #E2DDD6">
+              <div style="flex:none;width:44px;height:74px;background:#EDEAE4;display:flex;align-items:flex-end;justify-content:center">
+                <span style="display:block;width:15px;height:44px;border-radius:8px 8px 2px 2px;background:{{ w.color }};margin-bottom:7px;position:relative">
+                  <i style="position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:5px;height:13px;background:{{ w.color }};border-radius:2px"></i>
+                  <i style="position:absolute;left:2px;right:2px;bottom:7px;height:14px;background:rgba(255,255,255,.9)"></i>
+                </span>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13.5px;font-weight:600;letter-spacing:-0.03em">{{ w.name }}</div>
+                <div style="font-size:11px;color:#8C857E;margin-top:4px;letter-spacing:-0.02em">{{ w.origin }}</div>
+                <div style="font-size:11.5px;margin-top:8px;letter-spacing:-0.02em;color:#7A2233">{{ w.note }}</div>
+              </div>
+              <div style="font:9.5px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.06em;flex:none;white-space:nowrap">{{ w.date }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMy }}">
+      <div style="position:absolute;inset:0;overflow:auto">
+        <div style="padding:22px 22px 0">
+          <div style="font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#7A2233">MY PAGE</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.035em;margin-top:12px">배예은 님</div>
+        </div>
+        <button type="button" onClick="{{ goProfile }}" style="display:block;width:100%;text-align:left;background:none;border:none;padding:22px 22px 0;cursor:pointer;font-family:inherit">
+          <div style="background:#14110F;padding:20px">
+            <div style="font:9.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(247,245,241,.42)">TASTE PROFILE</div>
+            <div style="font:italic 22px/1.3 'Instrument Serif',Georgia,serif;color:#F7F5F1;margin-top:11px">The gentle sweet tooth</div>
+            <div style="display:flex;gap:7px;margin-top:16px">
+              <span style="display:block;width:22px;height:22px;background:#C08A3E"></span>
+              <span style="display:block;width:22px;height:22px;background:#8A9A4B"></span>
+              <span style="display:block;width:22px;height:22px;background:#6B4A55;opacity:.35"></span>
+              <span style="display:block;width:22px;height:22px;background:#4A4038;opacity:.35"></span>
+              <span style="flex:1"></span>
+              <span style="font-size:11.5px;color:rgba(247,245,241,.5);letter-spacing:-0.02em;align-self:flex-end">다시 진단하기 →</span>
+            </div>
+          </div>
+        </button>
+        <div style="padding:30px 22px 0">
+          <div style="font-size:13px;font-weight:700;letter-spacing:-0.03em;padding-bottom:11px;border-bottom:1px solid #14110F">나의 기록</div>
+          <sc-for list="{{ myLinks }}" as="l" hint-placeholder-count="3">
+            <button type="button" onClick="{{ l.onClick }}" style="display:flex;width:100%;align-items:baseline;justify-content:space-between;background:none;border:none;border-bottom:1px solid #E2DDD6;padding:15px 2px;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#F0EDE7">
+              <span style="font-size:12.5px;letter-spacing:-0.02em">{{ l.label }}</span>
+              <span style="font:10px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.06em">{{ l.meta }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="padding:28px 22px 34px">
+          <div style="font-size:13px;font-weight:700;letter-spacing:-0.03em;padding-bottom:11px;border-bottom:1px solid #14110F">배우기</div>
+          <button type="button" onClick="{{ goTerms }}" style="display:flex;width:100%;align-items:baseline;justify-content:space-between;background:none;border:none;border-bottom:1px solid #E2DDD6;padding:15px 2px;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#F0EDE7">
+            <span style="font-size:12.5px;letter-spacing:-0.02em">와인 용어 사전</span>
+            <span style="font:10px ui-monospace,Menlo,monospace;color:#A9A29A;letter-spacing:.06em">24 TERMS</span>
+          </button>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #E2DDD6;padding:15px 2px"><span style="font-size:12.5px;letter-spacing:-0.02em">공지사항</span></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #E2DDD6;padding:15px 2px"><span style="font-size:12.5px;letter-spacing:-0.02em">서비스 소개</span></div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <sc-if value="{{ showTabs }}">
+    <div style="flex:none;height:58px;display:flex;align-items:center;border-top:1px solid #E2DDD6;background:#F7F5F1">
+      <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="4">
+        <button type="button" onClick="{{ tb.onClick }}" style="{{ tb.style }}">{{ tb.label }}</button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <div style="flex:none;height:38px;display:flex;align-items:center;justify-content:space-around;background:#F7F5F1;border-top:1px solid #EAE6E0">
+    <i style="display:block;width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:9px solid #6E6862"></i>
+    <i style="display:block;width:12px;height:12px;border:1.6px solid #6E6862;border-radius:50%"></i>
+    <i style="display:block;width:11px;height:11px;border:1.6px solid #6E6862"></i>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:780},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;splash&quot;,&quot;onboardIntro&quot;,&quot;quizTaste&quot;,&quot;quizFood&quot;,&quot;quizOccasion&quot;,&quot;tasteProfile&quot;,&quot;home&quot;,&quot;tagSearch&quot;,&quot;results&quot;,&quot;wineCard&quot;,&quot;wineMore&quot;,&quot;termSheet&quot;,&quot;review&quot;,&quot;reviewDone&quot;,&quot;cellar&quot;,&quot;myPage&quot;],&quot;default&quot;:&quot;splash&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onNavigate&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(id: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { quizPick: null, tags: ['달달한', '가벼운'], saved: false, verdict: null, rtags: [], cellar: '마신 와인' };
+
+  nav(id) { const f = this.props.onNavigate; if (f) f(id); }
+
+  renderVals() {
+    const s = this.props.screen || 'splash';
+    const go = id => () => this.nav(id);
+    const dark = s === 'splash' || s === 'tasteProfile' || s === 'reviewDone';
+
+    const QUIZ = {
+      quizTaste: {
+        kicker: 'STEP 01 · 맛', step: '01 / 03',
+        q: '평소에 이 중에 뭘 더 자주 마셔요?',
+        help: '와인 말고, 아무 음료나 생각해보세요',
+        opts: [
+          { label: '복숭아 주스', sub: '달고 향긋한', c: '#C08A3E' },
+          { label: '자몽 에이드', sub: '새콤하고 산뜻한', c: '#8A9A4B' },
+          { label: '진한 홍차', sub: '떫고 묵직한', c: '#6B4A55' },
+          { label: '아메리카노', sub: '쓰고 드라이한', c: '#4A4038' }
+        ]
+      },
+      quizFood: {
+        kicker: 'STEP 02 · 음식', step: '02 / 03',
+        q: '집에서 술 마실 때, 보통 뭐랑 먹어요?',
+        help: '가장 자주 있는 상황 하나만',
+        opts: [
+          { label: '치킨 · 튀김', sub: '기름진 것', c: '#B4762F' },
+          { label: '치즈 · 과일', sub: '가볍게 집어먹는', c: '#8A9A4B' },
+          { label: '파스타 · 피자', sub: '토마토 · 크림', c: '#7A2233' },
+          { label: '고기 · 스테이크', sub: '묵직한 한 접시', c: '#4A4038' }
+        ]
+      },
+      quizOccasion: {
+        kicker: 'STEP 03 · 상황', step: '03 / 03',
+        q: '와인은 주로 언제 열게 되나요?',
+        help: '이걸로 가격대와 분위기를 맞춰드려요',
+        opts: [
+          { label: '혼자 쉴 때', sub: '한 잔 정도', c: '#6E6862' },
+          { label: '친구 초대', sub: '두세 명이서', c: '#C08A3E' },
+          { label: '기념일', sub: '특별한 날', c: '#7A2233' },
+          { label: '선물용', sum: '', sub: '남에게 줄 것', c: '#4A4038' }
+        ]
+      }
+    };
+    const qz = QUIZ[s];
+    const quizOrder = ['quizTaste', 'quizFood', 'quizOccasion'];
+    const qi = quizOrder.indexOf(s);
+    const picked = this.state.quizPick;
+
+    const quizOptions = (qz ? qz.opts : []).map((o, i) => {
+      const on = picked === i;
+      return {
+        label: o.label, sub: o.sub,
+        onClick: () => this.setState({ quizPick: i }),
+        style: {
+          textAlign: 'left', background: on ? '#14110F' : 'none', color: on ? '#F7F5F1' : '#14110F',
+          border: on ? '1px solid #14110F' : '1px solid #E2DDD6', padding: '16px 15px 18px',
+          cursor: 'pointer', fontFamily: 'inherit'
+        },
+        chipStyle: { display: 'block', width: '30px', height: '30px', background: o.c, opacity: on ? 1 : 0.85 }
+      };
+    });
+
+    const TASTE = [
+      { kr: '단맛', en: 'SWEETNESS', word: '꽤 달아요', c: '#C08A3E', a: 1 },
+      { kr: '신맛', en: 'ACIDITY', word: '산뜻한 편', c: '#8A9A4B', a: 0.75 },
+      { kr: '떫은맛', en: 'TANNIN', word: '거의 없어요', c: '#6B4A55', a: 0.28 },
+      { kr: '무게감', en: 'BODY', word: '가벼워요', c: '#4A4038', a: 0.3 }
+    ];
+    const tasteRows = TASTE.map(t => ({
+      kr: t.kr, en: t.en, word: t.word,
+      swatchOnLight: { display: 'block', width: '30px', height: '30px', flex: 'none', background: t.c, opacity: t.a },
+      swatchOnDark: { display: 'block', width: '30px', height: '30px', flex: 'none', background: t.c, opacity: Math.max(t.a, 0.32) }
+    }));
+
+    const sw = (c, a) => ({ display: 'inline-block', width: '18px', height: '18px', background: c, opacity: a, flex: 'none' });
+    const wines = [
+      { name: '코스타딜라', origin: '프랑스 · 오렌지 펫낫', blurb: '복숭아 통조림처럼 달아요', price: '25,000', color: '#B4762F', tags: ['달달한', '가벼운'], swatch: sw('#C08A3E', 1) },
+      { name: '피안델레비네', origin: '이탈리아 · 람브루스코', blurb: '탄산이 톡, 딸기 사탕 맛', price: '32,600', color: '#7A2233', tags: ['달달한', '톡 쏘는'], swatch: sw('#C08A3E', 0.85) },
+      { name: '살로몽 운토호', origin: '오스트리아 · 그뤼너', blurb: '레몬처럼 산뜻하고 가벼워요', price: '25,000', color: '#8A9A4B', tags: ['산뜻한', '가벼운'], swatch: sw('#8A9A4B', 0.9) },
+      { name: '투썩 짐퍼', origin: '프랑스 · 보르도', blurb: '떫은맛이 있어 조금 어른의 맛', price: '32,600', color: '#4A2230', tags: ['묵직한', '떫은'], swatch: sw('#6B4A55', 0.9) }
+    ];
+
+    const TAGS = [
+      { title: '맛', en: 'TASTE', tags: ['달달한', '산뜻한', '부드러운', '떫은', '드라이한', '톡 쏘는'] },
+      { title: '무게', en: 'BODY', tags: ['가벼운', '적당한', '묵직한'] },
+      { title: '뭐랑 먹을까', en: 'PAIRING', tags: ['치킨이랑', '치즈랑', '파스타랑', '고기랑', '혼자서'] },
+      { title: '얼마나', en: 'PRICE', tags: ['2만원 아래', '2~4만원', '4만원 위'] }
+    ];
+    const tagGroups = TAGS.map(g => ({
+      title: g.title, en: g.en,
+      tags: g.tags.map(label => {
+        const on = this.state.tags.indexOf(label) >= 0;
+        return {
+          label,
+          onClick: () => this.setState(st => ({ tags: on ? st.tags.filter(t => t !== label) : st.tags.concat(label) })),
+          style: {
+            background: on ? '#14110F' : 'none', color: on ? '#F7F5F1' : '#14110F',
+            border: on ? '1px solid #14110F' : '1px solid #D6D0C8', padding: '8px 13px',
+            fontFamily: 'inherit', fontSize: '12px', letterSpacing: '-0.02em', cursor: 'pointer', borderRadius: '99px'
+          }
+        };
+      })
+    }));
+
+    const VERDICTS = ['또 마실래요', '괜찮았어요', '내 취향 아녜요'];
+    const verdicts = VERDICTS.map(label => {
+      const on = this.state.verdict === label;
+      return {
+        label, onClick: () => this.setState({ verdict: label }),
+        style: {
+          flex: 1, background: on ? '#14110F' : 'none', color: on ? '#F7F5F1' : '#14110F',
+          border: on ? '1px solid #14110F' : '1px solid #D6D0C8', padding: '15px 4px',
+          fontFamily: 'inherit', fontSize: '12px', fontWeight: 600, letterSpacing: '-0.03em', cursor: 'pointer'
+        }
+      };
+    });
+    const reviewTags = ['달았어요', '떫었어요', '가벼웠어요', '탄산이 있었어요', '과일향', '꽃향'].map(label => {
+      const on = this.state.rtags.indexOf(label) >= 0;
+      return {
+        label,
+        onClick: () => this.setState(st => ({ rtags: on ? st.rtags.filter(t => t !== label) : st.rtags.concat(label) })),
+        style: {
+          background: on ? '#7A2233' : 'none', color: on ? '#F7F5F1' : '#14110F',
+          border: on ? '1px solid #7A2233' : '1px solid #D6D0C8', padding: '8px 13px',
+          fontFamily: 'inherit', fontSize: '12px', letterSpacing: '-0.02em', cursor: 'pointer', borderRadius: '99px'
+        }
+      };
+    });
+
+    const cellarTabs = ['마신 와인', '저장한 와인'].map(label => {
+      const on = this.state.cellar === label;
+      return {
+        label, onClick: () => this.setState({ cellar: label }),
+        style: {
+          background: 'none', border: 'none', padding: '0 0 11px', marginRight: '22px', cursor: 'pointer',
+          fontFamily: 'inherit', fontSize: '13px', letterSpacing: '-0.03em',
+          fontWeight: on ? 700 : 400, color: on ? '#14110F' : '#A9A29A',
+          borderBottom: on ? '2px solid #14110F' : '2px solid transparent', marginBottom: '-1px'
+        }
+      };
+    });
+    const drunk = [
+      { name: '코스타딜라', origin: '프랑스 · 오렌지 펫낫', note: '또 마실래요 · 달았어요', date: '09.01', color: '#B4762F' },
+      { name: '피안델레비네', origin: '이탈리아 · 람브루스코', note: '괜찮았어요 · 탄산', date: '08.22', color: '#7A2233' },
+      { name: '투썩 짐퍼', origin: '프랑스 · 보르도', note: '내 취향 아녜요 · 떫었어요', date: '08.09', color: '#4A2230' }
+    ];
+    const savedList = [
+      { name: '살로몽 운토호', origin: '오스트리아 · 그뤼너', note: '치즈랑 먹어보기', date: '저장', color: '#8A9A4B' },
+      { name: '코스타딜라', origin: '프랑스 · 오렌지 펫낫', note: '선물용 후보', date: '저장', color: '#B4762F' }
+    ];
+
+    const TAB = [
+      { label: '홈', id: 'home' },
+      { label: '찾기', id: 'tagSearch' },
+      { label: '내 기록', id: 'cellar' },
+      { label: '마이', id: 'myPage' }
+    ];
+    const activeTab = { home: 'home', tagSearch: 'tagSearch', results: 'tagSearch', cellar: 'cellar', myPage: 'myPage' }[s];
+    const tabs = TAB.map(t => ({
+      label: t.label, onClick: go(t.id),
+      style: {
+        flex: 1, background: 'none', border: 'none', cursor: 'pointer', padding: '0',
+        fontFamily: 'inherit', fontSize: '11.5px', letterSpacing: '-0.02em',
+        fontWeight: activeTab === t.id ? 700 : 400, color: activeTab === t.id ? '#14110F' : '#A9A29A'
+      }
+    }));
+
+    const nextId = { quizTaste: 'quizFood', quizFood: 'quizOccasion', quizOccasion: 'tasteProfile' }[s];
+    const prevId = { quizTaste: 'onboardIntro', quizFood: 'quizTaste', quizOccasion: 'quizFood' }[s];
+    const ready = picked !== null;
+
+    return {
+      isSplash: s === 'splash', isIntro: s === 'onboardIntro', isQuiz: !!qz,
+      isProfile: s === 'tasteProfile', isHome: s === 'home', isSearch: s === 'tagSearch',
+      isResults: s === 'results', isCard: s === 'wineCard', isMore: s === 'wineMore',
+      isTerms: s === 'termSheet', isReview: s === 'review', isDone: s === 'reviewDone',
+      isSaved: s === 'cellar', isMy: s === 'myPage',
+      showTabs: ['home', 'tagSearch', 'results', 'cellar', 'myPage'].indexOf(s) >= 0,
+      statusColor: dark ? '#F7F5F1' : '#14110F',
+      statusBg: dark ? '#14110F' : '#F7F5F1',
+      goIntro: go('onboardIntro'), goQ1: go('quizTaste'), goHome: go('home'),
+      goSearch: go('tagSearch'), goResults: go('results'), goCard: go('wineCard'),
+      goMore: go('wineMore'), goTerms: go('termSheet'), goReview: go('review'),
+      goDone: go('reviewDone'), goSaved: go('cellar'), goProfile: go('tasteProfile'),
+      quizBack: go(prevId || 'onboardIntro'),
+      quizNext: () => { if (ready) { this.setState({ quizPick: null }); this.nav(nextId); } },
+      quizKicker: qz ? qz.kicker : '', quizQuestion: qz ? qz.q : '', quizHelp: qz ? qz.help : '',
+      quizStepLabel: qz ? qz.step : '',
+      quizProgressStyle: { position: 'absolute', left: 0, top: 0, bottom: 0, width: ((qi + 1) / 3 * 100) + '%', background: '#7A2233' },
+      quizOptions,
+      quizNextLabel: ready ? '다음' : '하나만 골라주세요',
+      quizNextStyle: {
+        width: '100%', background: ready ? '#14110F' : '#E2DDD6', color: ready ? '#F7F5F1' : '#A9A29A',
+        border: 'none', padding: '17px 0', fontSize: '14px', fontWeight: 600, fontFamily: 'inherit',
+        letterSpacing: '-0.02em', cursor: ready ? 'pointer' : 'default'
+      },
+      introSteps: [
+        { n: '1', t: '좋아하는 맛 고르기', d: '주스, 홍차 같은 익숙한 것으로' },
+        { n: '2', t: '자주 먹는 음식 고르기', d: '치킨이든 파스타든 그대로' },
+        { n: '3', t: '마시는 상황 고르기', d: '혼술인지, 선물인지' }
+      ],
+      tasteRows, wines,
+      homeTags: ['달달한', '가벼운', '치킨이랑', '2만원 아래', '톡 쏘는', '선물용'],
+      tagGroups,
+      tagCountLabel: this.state.tags.length ? this.state.tags.length + '개 조건으로 찾기' : '조건을 골라주세요',
+      activeTags: this.state.tags.length ? this.state.tags : ['전체'],
+      resultCount: '조건에 맞는 와인 12병',
+      aromas: [
+        { label: '복숭아', bg: '#EBCFA8' },
+        { label: '흰 꽃', bg: '#E6E3D6' },
+        { label: '레몬', bg: '#E4E1B4' }
+      ],
+      pairings: [
+        { food: '치킨', why: '단맛이 기름진 맛을 씻어줘요' },
+        { food: '과일 · 치즈', why: '가벼워서 서로 안 눌러요' },
+        { food: '샐러드', why: '산뜻함끼리 잘 맞아요' },
+        { food: '떡볶이', why: '매운맛을 단맛이 눌러줘요' }
+      ],
+      occasions: ['혼자 쉴 때', '친구 초대', '가볍게 한 잔', '첫 와인으로'],
+      saveBtnLabel: this.state.saved ? '저장됨' : '저장하기',
+      saveBtnStyle: {
+        background: this.state.saved ? '#F7F5F1' : 'none', color: this.state.saved ? '#14110F' : '#F7F5F1',
+        border: '1px solid rgba(247,245,241,.5)', padding: '7px 14px', cursor: 'pointer',
+        fontFamily: 'inherit', fontSize: '11.5px', letterSpacing: '-0.02em', borderRadius: '99px'
+      },
+      toggleSave: () => this.setState(st => ({ saved: !st.saved })),
+      verdicts, reviewTags, cellarTabs,
+      cellarItems: this.state.cellar === '마신 와인' ? drunk : savedList,
+      myLinks: [
+        { label: '마신 와인', meta: '3병', onClick: go('cellar') },
+        { label: '저장한 와인', meta: '2병', onClick: go('cellar') },
+        { label: '내가 쓴 기록', meta: '3개', onClick: go('cellar') }
+      ],
+      tabs
+    };
+  }
+}
+</script>
+</body>
+</html>

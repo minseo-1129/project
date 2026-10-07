@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"><style>body{margin:0;background:#EFEBE4}a{color:#C4603A}a:hover{color:#A44B26}*{box-sizing:border-box}</style></helmet>
+<div style="width:360px;height:780px;position:relative;overflow:hidden;background:#FAF8F5;font-family:Pretendard,system-ui,sans-serif;color:#17150F;-webkit-font-smoothing:antialiased">
+
+<sc-if value="{{ isSplash }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#FAF8F5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px" onClick="{{ goTaste }}">
+<div style="width:74px;height:74px;border-radius:50%;border:1.5px solid #C4603A;display:flex;align-items:center;justify-content:center"><div style="width:12px;height:12px;border-radius:50%;background:#C4603A"></div></div>
+<div style="font-size:30px;font-weight:600;letter-spacing:-0.03em">레플리</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;letter-spacing:0.16em;color:#A9A39A;text-transform:uppercase">recipe playlist</div>
+<div style="position:absolute;bottom:56px;font-size:13px;color:#A9A39A">화면을 눌러 시작</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTaste }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#FAF8F5;font-size:12px;font-weight:600"><span>9:41</span><span style="display:flex;gap:3px;align-items:center"><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></span></div>
+<div style="padding:14px 24px 0">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;letter-spacing:0.14em;color:#C4603A">STEP 1 / 3</div>
+<div style="font-size:26px;font-weight:600;letter-spacing:-0.03em;line-height:1.28;margin-top:10px">어떤 맛에<br>가장 자주 손이 가나요</div>
+<div style="font-size:13px;color:#6E685D;margin-top:8px;line-height:1.5">누를수록 커집니다. 크기가 곧 취향 가중치예요.</div>
+</div>
+<div style="position:relative;flex:1;margin:2px 10px 0">
+<sc-for list="{{ bubbles }}" as="b" hint-placeholder-count="7">
+<button onClick="{{ b.tap }}" style="position:absolute;left:{{ b.x }}px;top:{{ b.y }}px;width:{{ b.d }}px;height:{{ b.d }}px;margin-left:{{ b.off }}px;margin-top:{{ b.off }}px;z-index:{{ b.z }};border-radius:50%;border:{{ b.border }};cursor:pointer;background:{{ b.bg }};color:{{ b.fg }};font-family:Pretendard,sans-serif;font-size:{{ b.fs }}px;font-weight:500;letter-spacing:-0.02em;white-space:nowrap;transition:all .38s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;justify-content:center">{{ b.name }}</button>
+</sc-for>
+</div>
+<div style="padding:0 24px 26px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:7px">
+<sc-for list="{{ weightKey }}" as="w" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:5px"><div style="width:{{ w.d }}px;height:{{ w.d }}px;border-radius:50%;background:{{ w.bg }};border:{{ w.border }}"></div></div>
+</sc-for>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;letter-spacing:0.08em;color:#A9A39A;margin-left:3px">WEIGHT 0 → 3</div>
+</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;letter-spacing:0.08em;color:#A9A39A">{{ tasteCount }} PICKED</div>
+</div>
+<button onClick="{{ goKitchen }}" style="width:100%;height:52px;border-radius:14px;border:none;background:#17150F;color:#FAF8F5;font-family:Pretendard,sans-serif;font-size:15px;font-weight:600;cursor:pointer">다음</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isKitchen }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="padding:14px 24px 0">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;letter-spacing:0.14em;color:#C4603A">STEP 2 / 3</div>
+<div style="font-size:26px;font-weight:600;letter-spacing:-0.03em;line-height:1.28;margin-top:10px">당신의 부엌은<br>어떤 조건인가요</div>
+<div style="font-size:13px;color:#6E685D;margin-top:8px;line-height:1.5">난이도와 계량 방식이 여기에 맞춰 바뀝니다.</div>
+</div>
+<div style="flex:1;overflow:auto;padding:22px 24px 0;display:flex;flex-direction:column;gap:22px">
+<sc-for list="{{ kitchenQs }}" as="q" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:13px;font-weight:600;color:#17150F">{{ q.label }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ q.opts }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.tap }}" style="padding:9px 14px;border-radius:10px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;white-space:nowrap;flex:none;cursor:pointer">{{ o.name }}</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="padding:16px 24px 26px">
+<button onClick="{{ goPantry }}" style="width:100%;height:52px;border-radius:14px;border:none;background:#17150F;color:#FAF8F5;font-family:Pretendard,sans-serif;font-size:15px;font-weight:600;cursor:pointer">다음</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPantry }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="padding:14px 24px 0">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;letter-spacing:0.14em;color:#C4603A">STEP 3 / 3</div>
+<div style="font-size:26px;font-weight:600;letter-spacing:-0.03em;line-height:1.28;margin-top:10px">지금 냉장고에<br>남아 있는 것</div>
+<div style="font-size:13px;color:#6E685D;margin-top:8px;line-height:1.5">인터뷰 5명 중 5명이 "집에 있는 재료"로 메뉴를 정했습니다. 그래서 이게 홈 첫 줄이 됩니다.</div>
+</div>
+<div style="flex:1;overflow:auto;padding:20px 24px 0">
+<div style="font-family:Pretendard,sans-serif;font-size:11px;font-weight:500;color:#A9A39A">자주 담는 재료</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+<sc-for list="{{ pantryChips }}" as="c" hint-placeholder-count="12">
+<button onClick="{{ c.tap }}" style="padding:10px 14px;border-radius:999px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;white-space:nowrap;flex:none;cursor:pointer">{{ c.name }}</button>
+</sc-for>
+<button onClick="{{ goPantryAdd }}" style="display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;border:1px dashed #C4603A;background:#FBF1EC;color:#C4603A;font-family:Pretendard,sans-serif;font-size:13px;font-weight:600;white-space:nowrap;flex:none;cursor:pointer"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1.6v8.8M1.6 6h8.8" stroke="#C4603A" stroke-width="1.6" stroke-linecap="round"></path></svg>직접 추가</button>
+</div>
+</div>
+<div style="padding:16px 24px 26px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:8px">
+<div style="width:6px;height:6px;border-radius:50%;background:#2E8062"></div>
+<div style="font-size:12px;color:#2E8062;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ pantryList }}</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;color:#A9A39A">{{ pantryCount }}</div>
+</div>
+<button onClick="{{ goBuilding }}" style="width:100%;height:52px;border-radius:14px;border:none;background:#C4603A;color:#fff;font-family:Pretendard,sans-serif;font-size:15px;font-weight:600;cursor:pointer">플레이리스트 받기</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPantryAdd }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;background:#FAF8F5">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="padding:8px 24px 0;display:flex;align-items:center;gap:12px">
+<button onClick="{{ goPantry }}" style="border:none;background:none;cursor:pointer;padding:0;display:flex"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3.6 5.6 9l5.4 5.4" stroke="#17150F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">재료 추가</div>
+</div>
+<div style="padding:14px 24px 0">
+<div style="display:flex;align-items:center;gap:9px;height:46px;padding:0 14px;border-radius:13px;background:#fff;border:1px solid #E8E2D8">
+<svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.2" stroke="#A9A39A" stroke-width="1.5"></circle><path d="M12.1 12.1 15.6 15.6" stroke="#A9A39A" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<input value="{{ q }}" onChange="{{ setQ }}" placeholder="재료 이름을 입력하세요" style="flex:1;border:none;outline:none;background:none;font-family:Pretendard,sans-serif;font-size:13.5px;color:#17150F" />
+<button onClick="{{ clearQ }}" style="border:none;background:none;cursor:pointer;padding:0;display:flex"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><path d="M5 5l8 8M13 5l-8 8" stroke="#C0B9AD" stroke-width="1.5" stroke-linecap="round"></path></svg></button>
+</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<button style="flex:1;height:42px;border-radius:11px;border:1px dashed #D4CCC0;background:#fff;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+<svg width="15" height="15" viewBox="0 0 18 18" fill="none"><rect x="2.2" y="4.4" width="13.6" height="10.4" rx="2.2" stroke="#6E685D" stroke-width="1.4"></rect><circle cx="9" cy="9.6" r="2.6" stroke="#6E685D" stroke-width="1.4"></circle><path d="M6.6 4.4 7.6 2.6h2.8l1 1.8" stroke="#6E685D" stroke-width="1.4"></path></svg>
+<span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.08em;color:#6E685D">PHOTO</span>
+</button>
+<button style="flex:1;height:42px;border-radius:11px;border:1px solid #C4603A;background:#FBF1EC;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer">
+<svg width="15" height="15" viewBox="0 0 18 18" fill="none"><path d="M9 2.6a2.2 2.2 0 0 1 2.2 2.2v3.4a2.2 2.2 0 0 1-4.4 0V4.8A2.2 2.2 0 0 1 9 2.6Z" stroke="#C4603A" stroke-width="1.4"></path><path d="M4.6 8.6a4.4 4.4 0 0 0 8.8 0M9 13.2v2.2" stroke="#C4603A" stroke-width="1.4" stroke-linecap="round"></path></svg>
+<span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.08em;color:#C4603A">VOICE</span>
+</button>
+</div>
+</div>
+<div style="flex:1;overflow:auto;padding:18px 24px 0">
+<sc-if value="{{ canCustom }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ addCustom }}" style="width:100%;display:flex;align-items:center;gap:10px;padding:14px;border-radius:13px;border:1px solid #C4603A;background:#FBF1EC;cursor:pointer;margin-bottom:16px;text-align:left">
+<svg width="16" height="16" viewBox="0 0 12 12" fill="none"><path d="M6 1.6v8.8M1.6 6h8.8" stroke="#C4603A" stroke-width="1.6" stroke-linecap="round"></path></svg>
+<span style="flex:1;font-family:Pretendard,sans-serif;font-size:13.5px;font-weight:600;color:#C4603A">{{ customLabel }}</span>
+</button>
+</sc-if>
+<sc-if value="{{ addedCount }}" hint-placeholder-val="{{ 0 }}">
+<div style="margin-bottom:18px">
+<div style="font-family:Pretendard,sans-serif;font-size:11px;font-weight:500;color:#2E8062">방금 담은 재료 · 탭해서 빼기</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+<sc-for list="{{ addedChips }}" as="a" hint-placeholder-count="2">
+<button onClick="{{ a.tap }}" style="display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:999px;border:1px solid #2E8062;background:#E9F1EC;color:#2E8062;font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;white-space:nowrap;flex:none;cursor:pointer">{{ a.name }}<svg width="10" height="10" viewBox="0 0 18 18" fill="none"><path d="M5 5l8 8M13 5l-8 8" stroke="#2E8062" stroke-width="2" stroke-linecap="round"></path></svg></button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-for list="{{ suggestGroups }}" as="g" hint-placeholder-count="4">
+<div style="margin-bottom:20px">
+<div style="font-size:12.5px;font-weight:600;color:#17150F">{{ g.label }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+<sc-for list="{{ g.items }}" as="c" hint-placeholder-count="6">
+<button onClick="{{ c.tap }}" style="display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:999px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;white-space:nowrap;flex:none;cursor:pointer">{{ c.name }}<span style="font-size:11px;opacity:0.7">{{ c.mark }}</span></button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="padding:12px 24px 26px;border-top:1px solid #EFE9E0;background:#FAF8F5;display:flex;align-items:center;gap:12px">
+<div style="flex:1">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.1em;color:#A9A39A">MY KITCHEN</div>
+<div style="font-size:12.5px;color:#2E8062;font-weight:500;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:190px">{{ pantryList }}</div>
+</div>
+<button onClick="{{ goPantry }}" style="height:48px;padding:0 24px;border-radius:13px;border:none;background:#17150F;color:#FAF8F5;font-family:Pretendard,sans-serif;font-size:14.5px;font-weight:600;cursor:pointer">{{ pantryCount }}개 담기</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBuilding }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#FAF8F5;display:flex;flex-direction:column;justify-content:center;padding:0 34px">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10.5px;letter-spacing:0.14em;color:#C4603A">BUILDING YOUR PLAYLIST</div>
+<div style="font-size:27px;font-weight:600;letter-spacing:-0.03em;line-height:1.3;margin-top:14px">선우님 부엌에 맞는<br>레시피를 고르고 있어요</div>
+<div style="height:3px;border-radius:2px;background:#EAE3D8;margin-top:28px;overflow:hidden"><div style="height:100%;width:{{ buildPct }};background:#C4603A"></div></div>
+<div style="font-size:13px;color:#6E685D;margin-top:14px">{{ buildStep }}</div>
+<div style="margin-top:32px;display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:13px;background:#fff;border:1px solid #E8E2D8">
+<div style="width:6px;height:6px;border-radius:50%;background:#C4603A"></div>
+<div style="flex:1;font-size:13px;color:#4E4941">취향 {{ tasteCount }}개 · 가중치 반영</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:13px;background:#fff;border:1px solid #E8E2D8">
+<div style="width:6px;height:6px;border-radius:50%;background:#2E8062"></div>
+<div style="flex:1;font-size:13px;color:#4E4941;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">보유 재료 {{ pantryCount }}개 · {{ pantryList }}</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:13px;background:#fff;border:1px solid #E8E2D8">
+<div style="width:6px;height:6px;border-radius:50%;background:#17150F"></div>
+<div style="flex:1;font-size:13px;color:#4E4941">계량 단위 · 밥숟가락 + 머그로 환산</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600;background:#FAF8F5"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="flex:1;overflow:auto;padding-bottom:132px">
+<div style="padding:8px 24px 0;display:flex;align-items:flex-end;justify-content:space-between">
+<div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;letter-spacing:0.14em;color:#A9A39A">WED 19:40</div>
+<div style="font-size:24px;font-weight:600;letter-spacing:-0.03em;margin-top:6px">선우님의 저녁</div>
+</div>
+<button onClick="{{ goSearch }}" style="width:38px;height:38px;border-radius:50%;border:1px solid #E8E2D8;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.2" stroke="#6E685D" stroke-width="1.5"></circle><path d="M12.1 12.1 15.6 15.6" stroke="#6E685D" stroke-width="1.5" stroke-linecap="round"></path></svg></button>
+</div>
+
+<div style="margin:20px 16px 0;padding:18px;border-radius:18px;background:#fff;border:1px solid #E8E2D8">
+<div style="display:flex;align-items:center;gap:7px">
+<div style="width:6px;height:6px;border-radius:50%;background:#2E8062"></div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10.5px;letter-spacing:0.12em;color:#2E8062">IN YOUR KITCHEN</div>
+</div>
+<div style="font-size:19px;font-weight:600;letter-spacing:-0.02em;margin-top:10px;line-height:1.35">계란 · 우유 · 식빵으로<br>지금 만들 수 있는 3가지</div>
+<div style="display:flex;gap:10px;margin-top:14px">
+<button onClick="{{ goPreview }}" style="flex:1;border:none;padding:0;background:none;cursor:pointer;text-align:left">
+<div style="height:88px;border-radius:12px;background:repeating-linear-gradient(45deg,#F0EAE1,#F0EAE1 6px,#E7DFD3 6px,#E7DFD3 12px);display:flex;align-items:flex-end;padding:7px"><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:8.5px;color:#9A9287">french toast</span></div>
+<div style="font-size:13px;font-weight:600;margin-top:8px;color:#17150F">프렌치 토스트</div>
+<div style="font-size:11px;color:#8A8478;margin-top:3px">12분 · 재료 4/4</div>
+</button>
+<div style="flex:1">
+<div style="height:88px;border-radius:12px;background:repeating-linear-gradient(45deg,#F0EAE1,#F0EAE1 6px,#E7DFD3 6px,#E7DFD3 12px);display:flex;align-items:flex-end;padding:7px"><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:8.5px;color:#9A9287">egg sandwich</span></div>
+<div style="font-size:13px;font-weight:600;margin-top:8px">계란 샌드위치</div>
+<div style="font-size:11px;color:#8A8478;margin-top:3px">9분 · 재료 4/4</div>
+</div>
+<div style="flex:1">
+<div style="height:88px;border-radius:12px;background:repeating-linear-gradient(45deg,#F0EAE1,#F0EAE1 6px,#E7DFD3 6px,#E7DFD3 12px);display:flex;align-items:flex-end;padding:7px"><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:8.5px;color:#9A9287">milk pudding</span></div>
+<div style="font-size:13px;font-weight:600;margin-top:8px">우유 푸딩</div>
+<div style="font-size:11px;color:#8A8478;margin-top:3px">15분 · 재료 3/4</div>
+</div>
+</div>
+<button onClick="{{ goSearch }}" style="margin-top:14px;width:100%;height:40px;border-radius:11px;border:1px solid #E8E2D8;background:#FAF8F5;font-family:Pretendard,sans-serif;font-size:12.5px;font-weight:500;color:#6E685D;cursor:pointer">재료 바꾸기</button>
+</div>
+
+<div style="margin-top:28px;padding:0 24px">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<div style="font-size:15px;font-weight:600">취향 플레이리스트</div>
+<div style="font-family:Pretendard,sans-serif;font-size:11.5px;color:#A9A39A">달달한 · 간단</div>
+</div>
+</div>
+<div style="display:flex;gap:12px;padding:14px 24px 0;overflow:auto">
+<sc-for list="{{ playlists }}" as="p" hint-placeholder-count="3">
+<div style="flex:none;width:132px">
+<div style="height:132px;border-radius:14px;background:repeating-linear-gradient(45deg,#EFE9E0,#EFE9E0 6px,#E5DDD1 6px,#E5DDD1 12px);display:flex;align-items:flex-end;padding:9px"><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:8.5px;color:#9A9287">{{ p.en }}</span></div>
+<div style="font-size:13px;font-weight:600;margin-top:9px;line-height:1.35">{{ p.title }}</div>
+<div style="font-size:11px;color:#8A8478;margin-top:3px">{{ p.meta }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="margin-top:26px;padding:0 24px">
+<div style="font-size:15px;font-weight:600;margin-bottom:12px">한 손도 쓰기 싫은 날</div>
+<div style="border:1px solid #E8E2D8;border-radius:16px;background:#fff;overflow:hidden">
+<sc-for list="{{ handsFree }}" as="h" hint-placeholder-count="3">
+<button onClick="{{ h.tap }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;border:none;border-bottom:1px solid #F2EDE5;background:#fff;cursor:pointer;text-align:left">
+<div style="width:44px;height:44px;border-radius:9px;flex:none;background:repeating-linear-gradient(45deg,#EFE9E0,#EFE9E0 5px,#E5DDD1 5px,#E5DDD1 10px)"></div>
+<div style="flex:1">
+<div style="font-size:13.5px;font-weight:600;font-family:Pretendard,sans-serif;color:#17150F">{{ h.title }}</div>
+<div style="font-size:11px;color:#8A8478;margin-top:3px;font-family:Pretendard,sans-serif">{{ h.meta }}</div>
+</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;color:#C4603A;letter-spacing:0.08em">{{ h.tag }}</div>
+</button>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0">
+<button onClick="{{ goPlay }}" style="width:100%;display:flex;align-items:center;gap:11px;padding:10px 16px;background:#17150F;border:none;cursor:pointer;text-align:left">
+<div style="width:34px;height:34px;border-radius:7px;flex:none;background:repeating-linear-gradient(45deg,#3A352C,#3A352C 5px,#2E2A22 5px,#2E2A22 10px)"></div>
+<div style="flex:1">
+<div style="font-size:12.5px;font-weight:600;color:#FAF8F5;font-family:Pretendard,sans-serif">프렌치 토스트</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;color:#8E877A;margin-top:2px;letter-spacing:0.06em">STEP 2 / 4 · HANDS-FREE</div>
+</div>
+<div style="width:28px;height:28px;border-radius:50%;background:#C4603A;display:flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M4.2 2.8 9.4 6 4.2 9.2Z" fill="#fff"></path></svg></div>
+</button>
+<div style="display:flex;background:#FAF8F5;border-top:1px solid #E8E2D8;padding:9px 0 22px">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M2.6 7.6 9 2.6l6.4 5v7a.9.9 0 0 1-.9.9H3.5a.9.9 0 0 1-.9-.9Z" stroke="#17150F" stroke-width="1.5" stroke-linejoin="round"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9px;letter-spacing:0.08em">HOME</span></div>
+<button onClick="{{ goSearch }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;border:none;background:none;cursor:pointer"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.2" stroke="#A9A39A" stroke-width="1.5"></circle><path d="M12.1 12.1 15.6 15.6" stroke="#A9A39A" stroke-width="1.5" stroke-linecap="round"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9px;letter-spacing:0.08em;color:#A9A39A">SEARCH</span></button>
+<button onClick="{{ goPlaylist }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;border:none;background:none;cursor:pointer"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M3 4.8h8M3 9h8M3 13.2h5" stroke="#A9A39A" stroke-width="1.5" stroke-linecap="round"></path><path d="M13.6 12V6.6L16.6 9.3Z" fill="#A9A39A"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9px;letter-spacing:0.08em;color:#A9A39A">MY LIST</span></button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSearch }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="padding:8px 24px 0;display:flex;align-items:center;gap:12px">
+<button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;padding:0;display:flex"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3.6 5.6 9l5.4 5.4" stroke="#17150F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">재료로 찾기</div>
+</div>
+<div style="padding:16px 24px 0">
+<div style="display:flex;align-items:center;gap:9px;height:46px;padding:0 14px;border-radius:13px;background:#F1ECE4;border:1px solid #E8E2D8">
+<svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.2" stroke="#A9A39A" stroke-width="1.5"></circle><path d="M12.1 12.1 15.6 15.6" stroke="#A9A39A" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<span style="font-size:13.5px;color:#A9A39A">재료 이름 · 사진 · 말로 찾기</span>
+</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<button style="flex:1;height:40px;border-radius:11px;border:1px dashed #D4CCC0;background:#fff;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><rect x="2.2" y="4.4" width="13.6" height="10.4" rx="2.2" stroke="#6E685D" stroke-width="1.4"></rect><circle cx="9" cy="9.6" r="2.6" stroke="#6E685D" stroke-width="1.4"></circle><path d="M6.6 4.4 7.6 2.6h2.8l1 1.8" stroke="#6E685D" stroke-width="1.4"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.08em;color:#6E685D">PHOTO</span></button>
+<button onClick="{{ sayFind }}" style="flex:1;height:40px;border-radius:11px;border:1px solid #C4603A;background:#FBF1EC;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><path d="M9 2.6a2.2 2.2 0 0 1 2.2 2.2v3.4a2.2 2.2 0 0 1-4.4 0V4.8A2.2 2.2 0 0 1 9 2.6Z" stroke="#C4603A" stroke-width="1.4"></path><path d="M4.6 8.6a4.4 4.4 0 0 0 8.8 0M9 13.2v2.2" stroke="#C4603A" stroke-width="1.4" stroke-linecap="round"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.08em;color:#C4603A">VOICE</span></button>
+</div>
+</div>
+<div style="flex:1;overflow:auto;padding:24px 24px 0">
+<div style="font-family:Pretendard,sans-serif;font-size:11px;font-weight:500;color:#2E8062;letter-spacing:0.01em">MY KITCHEN · 탭해서 빼기</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+<sc-for list="{{ pantryChips }}" as="c" hint-placeholder-count="8">
+<button onClick="{{ c.tap }}" style="padding:9px 13px;border-radius:999px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;white-space:nowrap;flex:none;cursor:pointer">{{ c.name }}</button>
+</sc-for>
+</div>
+<div style="margin-top:26px;display:flex;align-items:baseline;justify-content:space-between">
+<div style="font-size:14.5px;font-weight:600">{{ matchCount }}개 레시피</div>
+<div style="font-family:Pretendard,sans-serif;font-size:11px;color:#A9A39A">SORT · 재료 일치순</div>
+</div>
+<div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ results }}" as="r" hint-placeholder-count="4">
+<button onClick="{{ r.tap }}" style="display:flex;align-items:center;gap:12px;padding:11px;border:1px solid #E8E2D8;border-radius:14px;background:#fff;cursor:pointer;text-align:left">
+<div style="width:56px;height:56px;border-radius:10px;flex:none;background:repeating-linear-gradient(45deg,#EFE9E0,#EFE9E0 5px,#E5DDD1 5px,#E5DDD1 10px)"></div>
+<div style="flex:1">
+<div style="font-size:14px;font-weight:600;font-family:Pretendard,sans-serif;color:#17150F">{{ r.title }}</div>
+<div style="font-size:11.5px;color:#8A8478;margin-top:4px;font-family:Pretendard,sans-serif">{{ r.meta }}</div>
+<div style="font-size:11px;color:{{ r.subFg }};margin-top:4px;font-family:Pretendard,sans-serif">{{ r.sub }}</div>
+</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;font-weight:500;color:#2E8062">{{ r.match }}</div>
+</button>
+</sc-for>
+</div>
+<div style="height:30px"></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPreview }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#FAF8F5">
+<div style="position:absolute;inset:0;padding:0 24px">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="display:flex;align-items:center;gap:12px;margin-top:8px">
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3.6 5.6 9l5.4 5.4" stroke="#17150F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">재료로 찾기</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+<div style="padding:9px 13px;border-radius:999px;border:1px solid #2E8062;background:#E9F1EC;color:#2E8062;font-size:13px;font-weight:500">계란</div>
+<div style="padding:9px 13px;border-radius:999px;border:1px solid #2E8062;background:#E9F1EC;color:#2E8062;font-size:13px;font-weight:500">우유</div>
+<div style="padding:9px 13px;border-radius:999px;border:1px solid #2E8062;background:#E9F1EC;color:#2E8062;font-size:13px;font-weight:500">식빵</div>
+<div style="padding:9px 13px;border-radius:999px;border:1px solid #2E8062;background:#E9F1EC;color:#2E8062;font-size:13px;font-weight:500">설탕</div>
+</div>
+<div style="margin-top:22px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:12px;padding:11px;border:1px solid #C4603A;border-radius:14px;background:#fff">
+<div style="width:56px;height:56px;border-radius:10px;flex:none;background:repeating-linear-gradient(45deg,#EFE9E0,#EFE9E0 5px,#E5DDD1 5px,#E5DDD1 10px)"></div>
+<div style="flex:1"><div style="font-size:14px;font-weight:600">프렌치 토스트</div><div style="font-size:11.5px;color:#8A8478;margin-top:4px">12분 · 4단계 · 팬 1개</div></div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;color:#2E8062">4/4</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;padding:11px;border:1px solid #E8E2D8;border-radius:14px;background:#fff">
+<div style="width:56px;height:56px;border-radius:10px;flex:none;background:repeating-linear-gradient(45deg,#EFE9E0,#EFE9E0 5px,#E5DDD1 5px,#E5DDD1 10px)"></div>
+<div style="flex:1"><div style="font-size:14px;font-weight:600">계란 샌드위치</div><div style="font-size:11.5px;color:#8A8478;margin-top:4px">9분 · 3단계 · 팬 1개</div></div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;color:#2E8062">4/4</div>
+</div>
+</div>
+</div>
+<div style="position:absolute;inset:0;background:rgba(23,21,15,0.34)" onClick="{{ goHome }}"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;background:#FAF8F5;border-radius:22px 22px 0 0;padding:22px 24px 26px">
+<div style="width:36px;height:4px;border-radius:2px;background:#DDD5C9;margin:0 auto 18px"></div>
+<div style="font-family:Pretendard,sans-serif;font-size:12px;font-weight:600;color:#C4603A">PD 인페디 · 12분</div>
+<div style="font-size:25px;font-weight:600;letter-spacing:-0.03em;margin-top:8px">프렌치 토스트</div>
+<div style="display:flex;gap:8px;margin-top:16px">
+<div style="flex:1;padding:12px;border-radius:12px;background:#fff;border:1px solid #E8E2D8"><div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;color:#A9A39A;letter-spacing:0.08em">STEPS</div><div style="font-size:17px;font-weight:600;margin-top:5px">4</div></div>
+<div style="flex:1;padding:12px;border-radius:12px;background:#fff;border:1px solid #E8E2D8"><div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;color:#A9A39A;letter-spacing:0.08em">HANDS</div><div style="font-size:17px;font-weight:600;margin-top:5px">0회</div></div>
+<div style="flex:1;padding:12px;border-radius:12px;background:#fff;border:1px solid #E8E2D8"><div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;color:#A9A39A;letter-spacing:0.08em">PAN</div><div style="font-size:17px;font-weight:600;margin-top:5px">1개</div></div>
+</div>
+<div style="margin-top:16px;border-radius:14px;border:1px solid #E8E2D8;background:#fff;overflow:hidden">
+<div style="padding:11px 14px;border-bottom:1px solid #F2EDE5;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12.5px;font-weight:600">재료 4</span><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;color:#2E8062;letter-spacing:0.06em">MY KITCHEN 4/4</span></div>
+<sc-for list="{{ ingredients }}" as="g" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #F7F3EC">
+<div style="width:5px;height:5px;border-radius:50%;background:#2E8062"></div>
+<div style="flex:1;font-size:13px">{{ g.name }}</div>
+<div style="font-size:12.5px;color:#6E685D">{{ g.amt }}</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10.5px;color:#C4603A">{{ g.mine }}</div>
+</div>
+</sc-for>
+</div>
+<div style="font-size:11.5px;color:#8A8478;margin-top:9px;line-height:1.5">우측 값은 <b style="color:#C4603A;font-weight:600">당신 집 도구 기준</b>으로 환산한 양입니다. (밥숟가락 15ml · 머그 250ml)</div>
+<div style="display:flex;gap:10px;margin-top:18px">
+<button onClick="{{ goHome }}" style="width:96px;height:52px;border-radius:14px;border:1px solid #E8E2D8;background:#fff;font-family:Pretendard,sans-serif;font-size:14px;font-weight:500;color:#6E685D;cursor:pointer">나중에</button>
+<button onClick="{{ goPlay }}" style="flex:1;height:52px;border-radius:14px;border:none;background:#C4603A;color:#fff;font-family:Pretendard,sans-serif;font-size:15px;font-weight:600;cursor:pointer">핸즈프리로 플레이</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlay }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#14120E;color:#F2EEE7;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600;background:#14120E;color:#F2EEE7"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #F2EEE7;border-radius:2px;display:block"></i></div>
+<div style="padding:6px 22px 0;display:flex;align-items:center;justify-content:space-between">
+<button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;padding:0;display:flex"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.4 7 9 11.6 13.6 7" stroke="#8E877A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<div style="font-family:Pretendard,sans-serif;font-size:13px;font-weight:600;color:#B5AEA1">프렌치 토스트</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10.5px;color:#8E877A">{{ stepLabel }}</div>
+</div>
+<div style="display:flex;gap:5px;padding:16px 22px 0">
+<sc-for list="{{ stepBars }}" as="s" hint-placeholder-count="4">
+<div style="flex:1;height:3px;border-radius:2px;background:#2E2A22;overflow:hidden"><div style="height:100%;width:{{ s.w }};background:#C4603A"></div></div>
+</sc-for>
+</div>
+<div style="flex:1;padding:30px 22px 0;display:flex;flex-direction:column">
+<div style="font-family:Pretendard,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:0.04em;color:#C4603A">{{ measureTag }}</div>
+<div style="font-size:34px;font-weight:600;letter-spacing:-0.035em;line-height:1.24;margin-top:14px;text-wrap:pretty">{{ stepText }}</div>
+<div style="margin-top:20px;padding:14px 16px;border-radius:14px;background:#1E1B16;border:1px solid #2E2A22">
+<div style="font-family:Pretendard,sans-serif;font-size:11px;font-weight:500;color:#8E877A">당신 집 도구 기준</div>
+<div style="font-size:17px;font-weight:600;margin-top:6px;color:#F2EEE7">{{ stepMeasure }}</div>
+</div>
+<div style="margin-top:auto;margin-bottom:18px">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;letter-spacing:0.1em;color:#5F594E">NEXT</div>
+<div style="font-size:15px;color:#8E877A;margin-top:6px;line-height:1.4">{{ nextText }}</div>
+</div>
+</div>
+<div style="padding:0 22px 26px">
+<div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:16px;background:{{ micBg }};border:1px solid {{ micBd }}">
+<div style="width:9px;height:9px;border-radius:50%;background:{{ micDot }}"></div>
+<div style="flex:1">
+<div style="font-size:13px;font-weight:600;color:#F2EEE7">{{ micTitle }}</div>
+<div style="font-size:11.5px;color:#8E877A;margin-top:3px">{{ micHint }}</div>
+</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:22px;font-weight:500;color:#F2EEE7">{{ countdown }}</div>
+</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<sc-for list="{{ voiceCmds }}" as="v" hint-placeholder-count="3">
+<button onClick="{{ v.tap }}" style="flex:1;height:44px;border-radius:12px;border:1px solid #2E2A22;background:#1E1B16;color:#F2EEE7;font-family:Pretendard,sans-serif;font-size:13px;font-weight:500;white-space:nowrap;flex:none;cursor:pointer">“{{ v.label }}”</button>
+</sc-for>
+</div>
+<div style="text-align:center;font-size:11px;color:#5F594E;margin-top:11px">화면을 만지지 않아도 {{ autoSecs }}초 후 다음 단계로 넘어갑니다</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDone }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#14120E;color:#F2EEE7;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 30px;text-align:center">
+<div style="width:56px;height:56px;border-radius:50%;border:1.5px solid #C4603A;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 18 18" fill="none"><path d="M4 9.4 7.2 12.6 14 5.8" stroke="#C4603A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div style="font-size:27px;font-weight:600;letter-spacing:-0.03em;margin-top:22px">완성했어요</div>
+<div style="font-size:14px;color:#8E877A;margin-top:10px;line-height:1.55">화면을 만진 횟수 <b style="color:#F2EEE7;font-weight:600">0회</b><br>4단계 전부 음성과 자동진행으로 끝냈습니다</div>
+<button onClick="{{ goPlaylist }}" style="margin-top:30px;width:100%;height:52px;border-radius:14px;border:none;background:#C4603A;color:#fff;font-family:Pretendard,sans-serif;font-size:15px;font-weight:600;cursor:pointer">내 플레이리스트에 담기</button>
+<button onClick="{{ goHome }}" style="margin-top:10px;width:100%;height:48px;border-radius:14px;border:1px solid #2E2A22;background:none;color:#8E877A;font-family:Pretendard,sans-serif;font-size:14px;cursor:pointer">홈으로</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlaylist }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:600"><span>9:41</span><i style="width:14px;height:8px;border:1px solid #17150F;border-radius:2px;display:block"></i></div>
+<div style="padding:8px 24px 0;display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:12px">
+<button onClick="{{ goHome }}" style="border:none;background:none;cursor:pointer;padding:0;display:flex"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3.6 5.6 9l5.4 5.4" stroke="#17150F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<div style="font-size:17px;font-weight:600;letter-spacing:-0.02em">내 플레이리스트</div>
+</div>
+<button style="border:none;background:none;cursor:pointer;padding:0;display:flex"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="4.2" cy="9" r="1.35" fill="#6E685D"></circle><circle cx="9" cy="9" r="1.35" fill="#6E685D"></circle><circle cx="13.8" cy="9" r="1.35" fill="#6E685D"></circle></svg></button>
+</div>
+<div style="flex:1;overflow:auto;padding:20px 24px 0">
+<div style="padding:18px;border-radius:18px;background:#17150F;color:#FAF8F5">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.12em;color:#8E877A">MOST PLAYED</div>
+<div style="font-size:20px;font-weight:600;letter-spacing:-0.02em;margin-top:9px">혼자 먹기 딱 좋은 디저트</div>
+<div style="font-size:12px;color:#8E877A;margin-top:7px">5개 레시피 · 평균 13분 · 핸즈프리 4</div>
+<button onClick="{{ goPlay }}" style="margin-top:15px;height:42px;padding:0 20px;border-radius:11px;border:none;background:#C4603A;color:#fff;font-family:Pretendard,sans-serif;font-size:13.5px;font-weight:600;cursor:pointer">이어서 플레이</button>
+</div>
+<div style="margin-top:22px;display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ myList }}" as="m" hint-placeholder-count="5">
+<button onClick="{{ m.tap }}" style="display:flex;align-items:center;gap:12px;padding:11px 4px;border:none;border-bottom:1px solid #EFE9E0;background:none;cursor:pointer;text-align:left">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;color:#C0B9AD;width:16px">{{ m.n }}</div>
+<div style="width:48px;height:48px;border-radius:9px;flex:none;background:repeating-linear-gradient(45deg,#EFE9E0,#EFE9E0 5px,#E5DDD1 5px,#E5DDD1 10px)"></div>
+<div style="flex:1">
+<div style="font-size:13.5px;font-weight:600;font-family:Pretendard,sans-serif;color:#17150F">{{ m.title }}</div>
+<div style="font-size:11px;color:#8A8478;margin-top:3px;font-family:Pretendard,sans-serif">{{ m.meta }}</div>
+</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;color:{{ m.tagFg }};letter-spacing:0.06em">{{ m.tag }}</div>
+</button>
+</sc-for>
+</div>
+<div style="height:30px"></div>
+</div>
+<div style="display:flex;background:#FAF8F5;border-top:1px solid #E8E2D8;padding:9px 0 22px">
+<button onClick="{{ goHome }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;border:none;background:none;cursor:pointer"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M2.6 7.6 9 2.6l6.4 5v7a.9.9 0 0 1-.9.9H3.5a.9.9 0 0 1-.9-.9Z" stroke="#A9A39A" stroke-width="1.5" stroke-linejoin="round"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9px;letter-spacing:0.08em;color:#A9A39A">HOME</span></button>
+<button onClick="{{ goSearch }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;border:none;background:none;cursor:pointer"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.2" stroke="#A9A39A" stroke-width="1.5"></circle><path d="M12.1 12.1 15.6 15.6" stroke="#A9A39A" stroke-width="1.5" stroke-linecap="round"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9px;letter-spacing:0.08em;color:#A9A39A">SEARCH</span></button>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M3 4.8h8M3 9h8M3 13.2h5" stroke="#17150F" stroke-width="1.5" stroke-linecap="round"></path><path d="M13.6 12V6.6L16.6 9.3Z" fill="#17150F"></path></svg><span style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9px;letter-spacing:0.08em">MY LIST</span></div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:780},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;splash&quot;,&quot;taste&quot;,&quot;kitchen&quot;,&quot;pantry&quot;,&quot;pantryAdd&quot;,&quot;building&quot;,&quot;home&quot;,&quot;search&quot;,&quot;preview&quot;,&quot;play&quot;,&quot;done&quot;,&quot;playlist&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;frozen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onNavigate&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s: string) =&gt; void&quot;}}">
+const STEPS = [
+  {tag:'MEASURE · 개수', text:'계란 2개를 볼에 깨 넣고\n노른자를 풀어주세요', measure:'계란 2개 · 젓가락으로 20번', next:'우유 붓기'},
+  {tag:'MEASURE · 부피', text:'우유를 붓고\n한 방향으로 저어주세요', measure:'250ml = 당신의 머그 가득 1컵', next:'설탕 넣기'},
+  {tag:'MEASURE · 무게', text:'설탕을 넣고\n완전히 녹을 때까지 섞어주세요', measure:'50g = 밥숟가락 수북하게 3스푼', next:'식빵 담그기'},
+  {tag:'HEAT · 불 세기', text:'식빵을 30초 담갔다가\n팬에 올려주세요', measure:'중불 = 하이라이트 다이얼 3 / 5', next:'앞뒤 2분씩 굽고 완성'}
+];
+const AUTO = 9;
+class Component extends DCLogic {
+  state = {
+    cur: null, step: 0, t: 0, paused: false, heard: null,
+    q: '', added: [],
+    tastes: {'달달한':2,'매콤한':1,'고소한':0,'국물있는':3,'바삭한':1,'새콤한':0,'짭짤한':0},
+    kitchen: {'주거형태':'자취','요리 빈도':'주 4~5회','요리 숙련도':'하','계량 도구':'밥숟가락 + 머그'},
+    pantry: ['계란','우유','식빵','설탕']
+  };
+  componentDidMount(){ this.iv = setInterval(() => {
+    if (this.props.frozen) return;
+    if (this.screen === 'building') {
+      this.setState(s => {
+        const t = s.t + 0.1;
+        if (t >= 2.1) { this.nav('home'); return {t:0}; }
+        return {t};
+      });
+      return;
+    }
+    if (this.screen !== 'play' || this.state.paused) return;
+    this.setState(s => {
+      const t = s.t + 0.1;
+      if (t < AUTO) return {t};
+      if (s.step >= STEPS.length - 1) { this.nav('done'); return {t:0, step:0}; }
+      return {t:0, step:s.step + 1, heard:null};
+    });
+  }, 100); }
+  componentWillUnmount(){ clearInterval(this.iv); }
+  componentDidUpdate(prev){ if (prev.screen !== this.props.screen) this.setState({cur:null, step:0, t:0, paused:false, heard:null}); }
+  get screen(){ return this.state.cur || this.props.screen || 'splash'; }
+  nav(s){ this.setState({cur:s, step:0, t:0, paused:false, heard:null}); if (this.props.onNavigate) this.props.onNavigate(s); }
+  go(s){ return () => this.nav(s); }
+  renderVals(){
+    const sc = this.screen, st = this.state, cur = STEPS[st.step];
+    const POS = [[92,80,84],[224,66,72],[52,198,68],[178,192,88],[280,162,64],[100,314,74],[234,308,78]];
+    const SKIN = [
+      {bg:'transparent', border:'1px dashed #DDD5C9', fg:'#A9A39A'},
+      {bg:'#F4EDE4', border:'1px solid #EBE1D4', fg:'#6E685D'},
+      {bg:'#EFC8B4', border:'none', fg:'#17150F'},
+      {bg:'#C4603A', border:'none', fg:'#FFFFFF'}
+    ];
+    const bubbles = Object.keys(st.tastes).map((name, i) => {
+      const lv = st.tastes[name], p = POS[i], d = p[2] + lv * 15, sk = SKIN[lv];
+      return {name, d, off: -d / 2, z: lv + 1, fs: (12.5 + lv * 1.7).toFixed(1), x: p[0], y: p[1],
+        bg: sk.bg, border: sk.border, fg: sk.fg,
+        tap: () => this.setState(s => ({tastes: {...s.tastes, [name]: (s.tastes[name] + 1) % 4}}))};
+    });
+    const weightKey = [10, 14, 18, 22].map((d, i) => ({d, bg: SKIN[i].bg, border: SKIN[i].border}));
+    const CAT = [
+      ['냉장', ['계란','우유','치즈','두부','버터','요거트','김치','베이컨']],
+      ['채소', ['대파','양파','감자','당근','토마토','애호박','시금치','마늘']],
+      ['단백질', ['닭가슴살','참치','삼겹살','새우','연어','스팸']],
+      ['주식 · 양념', ['식빵','밥','라면','파스타면','설탕','간장','고추장','올리브유']]
+    ];
+    const has = (n) => st.pantry.indexOf(n) >= 0;
+    const toggle = (n) => this.setState(s => ({
+      pantry: s.pantry.indexOf(n) >= 0 ? s.pantry.filter(p => p !== n) : s.pantry.concat(n),
+      added: s.pantry.indexOf(n) >= 0 ? s.added.filter(p => p !== n) : [n].concat(s.added.filter(p => p !== n)).slice(0, 6)
+    }));
+    const chip = (name) => ({name, bg: has(name) ? '#E9F1EC' : '#fff', fg: has(name) ? '#2E8062' : '#8A8478',
+      bd: has(name) ? '#2E8062' : '#E8E2D8', mark: has(name) ? '✓' : '＋', tap: () => toggle(name)});
+    const q = st.q.trim();
+    const flat = CAT.reduce((a, c) => a.concat(c[1]), []);
+    const suggestGroups = q
+      ? [{label: '“' + q + '” 검색 결과', items: flat.filter(n => n.indexOf(q) >= 0).map(chip)}]
+      : CAT.map(([label, items]) => ({label, items: items.map(chip)}));
+    const canCustom = !!q && flat.indexOf(q) < 0;
+    const bp = Math.min(1, st.t / 2.1);
+    const KQ = [
+      ['주거형태', ['자취','기숙사','동거','기타']],
+      ['요리 빈도', ['주 1회 이하','주 2~3회','주 4~5회','주 6회 이상']],
+      ['요리 숙련도', ['상','중','하']],
+      ['계량 도구', ['정식 계량스푼','밥숟가락 + 머그','종이컵','눈대중']]
+    ];
+    const kitchenQs = KQ.map(([label, opts]) => ({label, opts: opts.map(name => {
+      const on = st.kitchen[label] === name;
+      return {name, bg: on ? '#17150F' : '#fff', fg: on ? '#FAF8F5' : '#6E685D', bd: on ? '#17150F' : '#E8E2D8',
+        tap: () => this.setState(s => ({kitchen: {...s.kitchen, [label]: name}}))};
+    })}));
+    const ALL = ['계란','우유','식빵','설탕','김치','두부','대파','참치','감자','치즈','닭가슴살','토마토'];
+    const pantryChips = ALL.map(name => {
+      const on = st.pantry.indexOf(name) >= 0;
+      return {name, bg: on ? '#E9F1EC' : '#fff', fg: on ? '#2E8062' : '#8A8478', bd: on ? '#2E8062' : '#E8E2D8',
+        tap: () => this.setState(s => ({pantry: on ? s.pantry.filter(p => p !== name) : s.pantry.concat(name)}))};
+    });
+    const pct = Math.min(1, st.t / AUTO);
+    return {
+      isSplash: sc==='splash', isTaste: sc==='taste', isKitchen: sc==='kitchen', isPantry: sc==='pantry',
+      isHome: sc==='home', isSearch: sc==='search', isPreview: sc==='preview', isPlay: sc==='play',
+      isDone: sc==='done', isPlaylist: sc==='playlist',
+      isPantryAdd: sc==='pantryAdd', isBuilding: sc==='building',
+      goTaste: this.go('taste'), goKitchen: this.go('kitchen'), goPantry: this.go('pantry'),
+      goHome: this.go('home'), goSearch: this.go('search'), goPreview: this.go('preview'),
+      goPlay: this.go('play'), goPlaylist: this.go('playlist'),
+      goPantryAdd: this.go('pantryAdd'), goBuilding: this.go('building'),
+      bubbles, kitchenQs, pantryChips, pantryCount: st.pantry.length,
+      weightKey, tasteCount: Object.keys(st.tastes).filter(k => st.tastes[k] > 0).length,
+      q: st.q,
+      setQ: (e) => this.setState({q: e.target.value}),
+      clearQ: () => this.setState({q: ''}),
+      suggestGroups, canCustom,
+      customLabel: '“' + q + '” 직접 추가하기',
+      addCustom: () => { if (canCustom) { toggle(q); this.setState({q: ''}); } },
+      addedChips: st.added.map(name => ({name, tap: () => toggle(name)})),
+      addedCount: st.added.length,
+      pantryList: st.pantry.join(' · '),
+      buildPct: (bp * 100).toFixed(1) + '%',
+      buildStep: bp < 0.34 ? '취향 가중치 반영 중' : bp < 0.68 ? '부엌 조건에 맞춰 난이도 정렬 중' : '보유 재료와 대조 중',
+      playlists: [
+        {en:'late night', title:'야식이지만 가벼운', meta:'6개 · 15분 이하'},
+        {en:'one pan', title:'팬 하나로 끝', meta:'8개 · 설거지 최소'},
+        {en:'sweet', title:'달달한 게 필요한 날', meta:'5개 · 디저트'}
+      ],
+      handsFree: [
+        {title:'프렌치 토스트', meta:'12분 · 4단계', tag:'HANDS 0', tap: this.go('preview')},
+        {title:'참치 김치볶음밥', meta:'14분 · 5단계', tag:'HANDS 0', tap: this.go('preview')},
+        {title:'두부 스테이크', meta:'18분 · 6단계', tag:'HANDS 1', tap: this.go('preview')}
+      ],
+      matchCount: 12 + st.pantry.length * 3,
+      results: [
+        {title:'프렌치 토스트', meta:'12분 · 4단계 · 팬 1개', sub:'계란 · 우유 · 식빵 · 설탕', subFg:'#2E8062', match:'4/4', tap: this.go('preview')},
+        {title:'계란 샌드위치', meta:'9분 · 3단계 · 팬 1개', sub:'계란 · 식빵 · 마요네즈', subFg:'#2E8062', match:'4/4', tap: this.go('preview')},
+        {title:'우유 푸딩', meta:'15분 · 4단계 · 냄비 1개', sub:'젤라틴 없음 → 전분 대체 가능', subFg:'#C4603A', match:'3/4', tap: this.go('preview')},
+        {title:'계란찜', meta:'11분 · 3단계 · 냄비 1개', sub:'새우젓 없음 → 소금 대체 가능', subFg:'#C4603A', match:'3/4', tap: this.go('preview')}
+      ],
+      ingredients: [
+        {name:'계란', amt:'2개', mine:'2개'},
+        {name:'우유', amt:'250ml', mine:'머그 1컵'},
+        {name:'설탕', amt:'50g', mine:'밥숟가락 3'},
+        {name:'식빵', amt:'2조각', mine:'2조각'}
+      ],
+      stepLabel: 'STEP ' + (st.step + 1) + ' / ' + STEPS.length,
+      stepBars: STEPS.map((_, i) => ({w: i < st.step ? '100%' : i === st.step ? (pct * 100).toFixed(1) + '%' : '0%'})),
+      measureTag: cur.tag, stepText: cur.text, stepMeasure: cur.measure, nextText: cur.next,
+      countdown: st.paused ? '||' : Math.max(0, Math.ceil(AUTO - st.t)) + 's',
+      autoSecs: AUTO,
+      micBg: st.paused ? '#2A211B' : '#1E1B16',
+      micBd: st.paused ? '#C4603A' : '#2E2A22',
+      micDot: st.paused ? '#C4603A' : '#2E8062',
+      micTitle: st.heard ? '“' + st.heard + '” 인식됨' : st.paused ? '일시정지' : '듣고 있어요',
+      micHint: st.paused ? '“플레이”라고 말하면 이어서 진행합니다' : '손 대지 않고 말로 멈추거나 넘길 수 있어요',
+      voiceCmds: [
+        {label:'멈춰줘', tap: () => this.setState({paused:true, heard:'멈춰줘'})},
+        {label:'플레이', tap: () => this.setState({paused:false, heard:'플레이'})},
+        {label:'다음', tap: () => this.setState(s => s.step >= STEPS.length-1 ? (this.nav('done'), {}) : ({step:s.step+1, t:0, heard:'다음', paused:false}))}
+      ],
+      myList: [
+        {n:'01', title:'프렌치 토스트', meta:'12분 · 3번 플레이', tag:'HANDS 0', tagFg:'#C4603A', tap: this.go('preview')},
+        {n:'02', title:'버터 쿠키', meta:'25분 · 1번 플레이', tag:'HANDS 2', tagFg:'#A9A39A', tap: this.go('preview')},
+        {n:'03', title:'팬케이크', meta:'14분 · 2번 플레이', tag:'HANDS 0', tagFg:'#C4603A', tap: this.go('preview')},
+        {n:'04', title:'치즈 크로플', meta:'9분 · 5번 플레이', tag:'HANDS 0', tagFg:'#C4603A', tap: this.go('preview')},
+        {n:'05', title:'야채 샌드위치', meta:'11분 · 1번 플레이', tag:'HANDS 1', tagFg:'#A9A39A', tap: this.go('preview')}
+      ],
+      sayFind: () => this.nav('search')
+    };
+  }
+}
+</script>
+</body>
+</html>

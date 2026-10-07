@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #EDEDE8; font-family: 'Noto Sans KR', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #2547D0; text-decoration: none; }
+  a:hover { color: #12203A; }
+  .obs::-webkit-scrollbar { width: 0; height: 0; }
+</style>
+</helmet>
+<div style="width:360px;height:780px;background:#EDEDE8;color:#12203A;display:flex;flex-direction:column;overflow:hidden;position:relative;font-family:'Noto Sans KR',sans-serif">
+
+  <sc-if value="{{ showStatus }}" hint-placeholder-val="{{ true }}">
+    <div style="height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#EDEDE8;color:#12203A">
+      <span style="font-size:13px;font-weight:500;letter-spacing:-0.01em">9:41</span>
+      <div style="display:flex;align-items:center;gap:5px">
+        <div style="display:flex;align-items:flex-end;gap:2px">
+          <div style="width:3px;height:4px;background:#12203A;border-radius:1px"></div>
+          <div style="width:3px;height:6px;background:#12203A;border-radius:1px"></div>
+          <div style="width:3px;height:8px;background:#12203A;border-radius:1px"></div>
+          <div style="width:3px;height:10px;background:#12203A;border-radius:1px"></div>
+        </div>
+        <div style="width:12px;height:10px;border-radius:2px;background:#12203A;opacity:0.9"></div>
+        <div style="width:22px;height:11px;border:1.5px solid #12203A;border-radius:3px;padding:1.5px;display:flex">
+          <div style="flex:1;background:#12203A;border-radius:1px"></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div class="obs" style="flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none">
+
+  <!-- ══ 01 INTRO ══ -->
+  <sc-if value="{{ isIntro }}">
+    <div style="padding:80px 24px 32px;display:flex;flex-direction:column;height:100%;box-sizing:border-box">
+      <div style="display:flex;align-items:center;gap:3px;margin-bottom:44px">
+        <div style="font-size:20px;font-weight:700;letter-spacing:0.34em;color:#12203A">ORBIT</div>
+        <div style="width:7px;height:7px;border-radius:999px;background:#2547D0;margin-bottom:2px"></div>
+      </div>
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E;letter-spacing:0.14em;margin-bottom:14px">STAGE-AWARE HEALTH COACH</div>
+      <div style="font-size:28px;font-weight:700;line-height:1.32;letter-spacing:-0.02em;text-wrap:pretty">지금 궤도에서<br />한 달 뒤 어디에<br />있을지부터 봅니다</div>
+      <div style="font-size:13px;font-weight:400;color:#545E6E;line-height:1.7;margin-top:18px;text-wrap:pretty">기록을 다 채운 다음이 아니라, 시작하기 전에 변화를 먼저 보여드려요.</div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">시작하기</div>
+        <div style="height:48px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400;color:#545E6E">이미 계정이 있어요</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 02 PROFILE ══ -->
+  <sc-if value="{{ isProfile }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">STEP 1 / 4</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:32px">나에 대해 알려주세요</div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:10px">이름</div>
+      <div style="height:48px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;padding:0 20px;font-size:14px;color:#545E6E;margin-bottom:22px">이름을 알려주세요</div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:10px">성별</div>
+      <div style="display:flex;gap:10px;margin-bottom:22px">
+        <div style="flex:1;height:48px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500">남</div>
+        <div style="flex:1;height:48px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:400">여</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:22px">
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500;margin-bottom:10px">키</div>
+          <div style="height:48px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;padding:0 20px;font-size:14px;color:#545E6E">cm</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:500;margin-bottom:10px">몸무게</div>
+          <div style="height:48px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;padding:0 20px;font-size:14px;color:#545E6E">kg</div>
+        </div>
+      </div>
+      <div style="flex:1;min-height:20px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">다음으로</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 03 STAGE SURVEY ══ -->
+  <sc-if value="{{ isStage }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">STEP 2 / 4 · STAGES OF CHANGE</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">나의 건강 단계를<br />알아보아요</div>
+      <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:26px">답에 따라 앱 전체가 다르게 동작합니다. 나중에 바꿀 수 있어요.</div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:14px">현재 규칙적인 운동을 하고 계십니까?</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:16px 20px;display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;flex:0 0 14px">01</div>
+          <div style="font-size:13px;font-weight:400;line-height:1.5">아니오, 앞으로 6개월 안에 시작할 계획이 없습니다</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:16px 20px;display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;flex:0 0 14px">02</div>
+          <div style="font-size:13px;font-weight:400;line-height:1.5">아니오, 그러나 6개월 안에 시작할 계획이 있습니다</div>
+        </div>
+        <div style="border-radius:20px;background:#12203A;color:#fff;padding:16px 20px;display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#8FA0BC;flex:0 0 14px">03</div>
+          <div style="font-size:13px;font-weight:500;line-height:1.5">아니오, 운동을 하고 있지만 규칙적으로 하지는 않습니다</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:16px 20px;display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;flex:0 0 14px">04</div>
+          <div style="font-size:13px;font-weight:400;line-height:1.5">예, 그러나 규칙적으로 운동한 기간이 6개월이 되지 않습니다</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:16px 20px;display:flex;align-items:center;gap:14px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;flex:0 0 14px">05</div>
+          <div style="font-size:13px;font-weight:400;line-height:1.5">예, 규칙적인 운동을 시작한 지 6개월 이상 되었습니다</div>
+        </div>
+      </div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">다음으로</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 04 STAGE RESULT ══ -->
+  <sc-if value="{{ isStageResult }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">YOUR STAGE</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px">준비 단계에 계세요</div>
+      <div style="display:flex;gap:5px;margin-bottom:12px">
+        <div style="flex:1;height:6px;border-radius:999px;background:#2547D0"></div>
+        <div style="flex:1;height:6px;border-radius:999px;background:#2547D0"></div>
+        <div style="flex:1;height:6px;border-radius:999px;background:#12203A"></div>
+        <div style="flex:1;height:6px;border-radius:999px;background:#D9D9D3"></div>
+        <div style="flex:1;height:6px;border-radius:999px;background:#D9D9D3"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;margin-bottom:26px">
+        <span>무관심</span><span>관심</span><span style="color:#12203A">준비</span><span>행동</span><span>유지</span>
+      </div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:20px;margin-bottom:12px">
+        <div style="font-size:12px;font-weight:400;color:#545E6E;margin-bottom:10px">준비 단계에서는</div>
+        <div style="font-size:15px;font-weight:500;line-height:1.6;text-wrap:pretty">큰 목표보다 <span style="color:#0B6E51">한 번에 지킬 수 있는 루틴 하나</span>가 더 오래 갑니다</div>
+      </div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:20px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;font-weight:400;color:#545E6E">이 단계에서 앱이 바꾸는 것</div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:6px;height:6px;border-radius:999px;background:#2547D0;margin-top:6px;flex:0 0 6px"></div>
+          <div style="font-size:13px;font-weight:400;line-height:1.55">체지방률·골격근량 대신 물·수면·걸음으로 시작</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:6px;height:6px;border-radius:999px;background:#2547D0;margin-top:6px;flex:0 0 6px"></div>
+          <div style="font-size:13px;font-weight:400;line-height:1.55">미달은 숨기고, 지킨 것만 세어 보여줍니다</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:6px;height:6px;border-radius:999px;background:#2547D0;margin-top:6px;flex:0 0 6px"></div>
+          <div style="font-size:13px;font-weight:400;line-height:1.55">루틴은 한 번에 하나만 제안합니다</div>
+        </div>
+      </div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">목표 설정하기</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 05 GOAL PURPOSE ══ -->
+  <sc-if value="{{ isGoalPurpose }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">STEP 3 / 4</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:28px">목표를 설정해볼까요?</div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:14px">운동을 하는 목적을 알려주세요</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">체중 감량하기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">체력 기르기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">근육 만들기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">균형 잡힌 생활하기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">스트레스 해소하기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#12203A;color:#fff;font-size:13px;font-weight:500">유연성 기르기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#12203A;color:#fff;font-size:13px;font-weight:500">취미 갖기</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#12203A;color:#fff;font-size:13px;font-weight:500">건강 관리하기</div>
+      </div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:14px">운동 시 도움이 필요한 영역을 골라주세요</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <div style="padding:11px 17px;border-radius:999px;background:#12203A;color:#fff;font-size:13px;font-weight:500">습관 형성</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">식단 정보</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">운동법 학습</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">운동 계획 수립</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#12203A;color:#fff;font-size:13px;font-weight:500">운동 의지</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">신체 변화 기록</div>
+        <div style="padding:11px 17px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);font-size:13px;font-weight:400">전문 지식</div>
+      </div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:28px">다음으로</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 06 CONCERN ══ -->
+  <sc-if value="{{ isConcern }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">STEP 3 / 4 · ADVANCED</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">어떤 게 막히나요?</div>
+      <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:24px">고민을 적으면 루틴과 코칭 방향이 여기서 갈립니다.</div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);padding:20px;min-height:120px;margin-bottom:14px">
+        <div style="font-size:14px;font-weight:400;line-height:1.7;color:#12203A">늘 같은 운동만 하는 것 같고, 원하는 대로 몸이 만들어지지 않아요. 운동 방법 문제인지 생활 습관 문제인지 모르겠어요.</div>
+      </div>
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.08em;margin-bottom:12px">DETECTED · 3</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <div style="padding:10px 16px;border-radius:999px;background:#2547D0;color:#fff;font-size:12px;font-weight:500">루틴 정체</div>
+        <div style="padding:10px 16px;border-radius:999px;background:#2547D0;color:#fff;font-size:12px;font-weight:500">원인 불명확</div>
+        <div style="padding:10px 16px;border-radius:999px;background:#2547D0;color:#fff;font-size:12px;font-weight:500">체성분 목표</div>
+      </div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">다음으로</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 07 ROUTINE PICK ══ -->
+  <sc-if value="{{ isRoutinePick }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">STEP 4 / 4</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">함께 지켜 볼<br />루틴 하나를 골라주세요</div>
+      <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:24px">하나로 시작해서 2주 뒤에 늘립니다.</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:18px 20px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">건강은 충분한 수분 섭취에서 시작한답니다</div>
+          <div style="font-size:18px;font-weight:700;margin-bottom:4px">물 마시기</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">일 6회 · 1분</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:18px 20px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">우리 몸은 잠을 잘 때 비로소 회복할 수 있어요</div>
+          <div style="font-size:18px;font-weight:700;margin-bottom:4px">충분히 자기</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">주 7회 · 7시간</div>
+        </div>
+        <div style="border-radius:20px;background:#12203A;color:#fff;padding:18px 20px;position:relative">
+          <div style="font-size:11px;font-weight:400;color:#9FB0CC;margin-bottom:8px">만 보가 어렵다면 절반이라도 채워보자구요</div>
+          <div style="font-size:18px;font-weight:700;margin-bottom:4px">적당히 걷기</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#9FB0CC">주 5회 · 5000보</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:18px 20px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">가끔은 다른 자세를 취하는 것도 나쁘지 않죠</div>
+          <div style="font-size:18px;font-weight:700;margin-bottom:4px">스트레칭 하기</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">주 5회 · 5분</div>
+        </div>
+      </div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">다음으로</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 08 ROUTINE DETAIL ══ -->
+  <sc-if value="{{ isRoutineDetail }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">STEP 4 / 4 · ADVANCED</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:28px">운동 루틴을<br />알려주세요</div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">일정</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;padding:0 18px;font-size:13px;font-weight:400">주 5회</div>
+        <div style="font-size:12px;color:#545E6E;font-weight:400">또는</div>
+      </div>
+      <div style="display:flex;gap:5px;margin-bottom:24px">
+        <div style="flex:1;height:38px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400">일</div>
+        <div style="flex:1;height:38px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">월</div>
+        <div style="flex:1;height:38px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">화</div>
+        <div style="flex:1;height:38px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">수</div>
+        <div style="flex:1;height:38px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400">목</div>
+        <div style="flex:1;height:38px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">금</div>
+        <div style="flex:1;height:38px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">토</div>
+      </div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">시간대</div>
+      <div style="display:flex;gap:8px;margin-bottom:24px">
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">새벽</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500">아침</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">낮</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">저녁</div>
+      </div>
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">종류</div>
+      <div style="display:flex;gap:8px;margin-bottom:10px">
+        <div style="flex:1;height:44px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500">헬스</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">산책</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">홈트</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500">러닝</div>
+      </div>
+      <div style="height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;padding:0 18px;font-size:13px;color:#545E6E">기타</div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">다음으로</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 09 FORECAST PREVIEW ══ -->
+  <sc-if value="{{ isForecastPreview }}">
+    <div style="padding:32px 24px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#2547D0;letter-spacing:0.12em;margin-bottom:10px">BEFORE YOU START</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">이 루틴을 지키면<br />4주 뒤 이렇게 됩니다</div>
+      <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:22px">기록을 시작하기 전에 먼저 보여드려요.</div>
+      <div style="border-radius:24px;background:#12203A;color:#fff;padding:22px 20px;margin-bottom:12px">
+        <div style="font-size:12px;font-weight:400;color:#9FB0CC;margin-bottom:16px">적당히 걷기 · 주 5회 5000보</div>
+        <div style="display:flex;align-items:flex-end;gap:6px;height:74px;margin-bottom:14px">
+          <div style="flex:1;height:34%;background:rgba(255,255,255,0.28);border-radius:3px"></div>
+          <div style="flex:1;height:42%;background:rgba(255,255,255,0.28);border-radius:3px"></div>
+          <div style="flex:1;height:38%;background:rgba(255,255,255,0.28);border-radius:3px"></div>
+          <div style="flex:1;height:52%;background:rgba(255,255,255,0.5);border-radius:3px"></div>
+          <div style="flex:1;height:64%;background:rgba(255,255,255,0.5);border-radius:3px"></div>
+          <div style="flex:1;height:78%;background:#6BDCB2;border-radius:3px"></div>
+          <div style="flex:1;height:92%;background:#6BDCB2;border-radius:3px"></div>
+          <div style="flex:1;height:100%;background:#6BDCB2;border-radius:3px"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#8FA0BC;margin-bottom:18px">
+          <span>NOW</span><span>W2</span><span>W4</span>
+        </div>
+        <div style="font-size:22px;font-weight:700;line-height:1.35;letter-spacing:-0.02em">주 평균 걸음<br />2,580보 → 5,100보</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:12px">
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">수면</div>
+          <div style="font-size:17px;font-weight:700;margin-bottom:3px">+41분</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">6H39M → 7H20M</div>
+        </div>
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">수분</div>
+          <div style="font-size:17px;font-weight:700;margin-bottom:3px">+1.5컵</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">4.0 → 5.5 CUPS</div>
+        </div>
+      </div>
+      <div style="border-radius:20px;border:1px solid rgba(18,32,58,0.14);padding:14px 16px;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;line-height:1.7">가정 · 동일 단계 사용자 기록 기반 추정치</div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">이 궤도로 시작하기</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 10 HOME · BEGINNER ══ -->
+  <sc-if value="{{ isHomeBeginner }}">
+    <div style="padding:24px 20px 12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">2024-05-21 · TUE</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em">적당히 걷기 3일째</div>
+        </div>
+        <div style="width:38px;height:38px;border-radius:999px;background:#DEDED8;flex:0 0 38px"></div>
+      </div>
+
+      <div style="border-radius:24px;background:#12203A;color:#fff;padding:20px;margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:12px;font-weight:500;color:#9FB0CC">이대로 4주 뒤</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#6BDCB2;letter-spacing:0.08em">ON TRACK</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;line-height:1.4;letter-spacing:-0.02em;margin-bottom:16px">주 평균 걸음<br />5,100보에 도달해요</div>
+        <div style="display:flex;align-items:flex-end;gap:4px;height:44px">
+          <div style="flex:1;height:32%;background:rgba(255,255,255,0.25);border-radius:2px"></div>
+          <div style="flex:1;height:44%;background:rgba(255,255,255,0.25);border-radius:2px"></div>
+          <div style="flex:1;height:38%;background:rgba(255,255,255,0.25);border-radius:2px"></div>
+          <div style="flex:1;height:56%;background:rgba(255,255,255,0.45);border-radius:2px"></div>
+          <div style="flex:1;height:70%;background:#6BDCB2;border-radius:2px"></div>
+          <div style="flex:1;height:84%;background:#6BDCB2;border-radius:2px"></div>
+          <div style="flex:1;height:100%;background:#6BDCB2;border-radius:2px"></div>
+        </div>
+      </div>
+
+      <div style="height:52px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;margin-bottom:16px">오늘의 루틴 기록하기</div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">이번 주에 지킨 것</div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;margin-bottom:12px">
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:14px">
+          <div style="font-size:30px;font-weight:700;letter-spacing:-0.03em">3</div>
+          <div style="font-size:13px;font-weight:400;color:#545E6E">일 연속 · 목표 5일</div>
+        </div>
+        <div style="display:flex;gap:5px">
+          <div style="flex:1;height:34px;border-radius:10px;background:#0B6E51"></div>
+          <div style="flex:1;height:34px;border-radius:10px;background:#0B6E51"></div>
+          <div style="flex:1;height:34px;border-radius:10px;background:#0B6E51"></div>
+          <div style="flex:1;height:34px;border-radius:10px;background:#E4E4DE"></div>
+          <div style="flex:1;height:34px;border-radius:10px;background:#E4E4DE"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-bottom:12px">
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">걸음 수</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:3px">2,582</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0">+348 VS YDAY</div>
+        </div>
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">수분 섭취</div>
+          <div style="display:flex;gap:5px;margin-bottom:10px">
+            <div style="width:11px;height:11px;border-radius:999px;background:#2547D0"></div>
+            <div style="width:11px;height:11px;border-radius:999px;background:#2547D0"></div>
+            <div style="width:11px;height:11px;border-radius:999px;background:#2547D0"></div>
+            <div style="width:11px;height:11px;border-radius:999px;background:#2547D0"></div>
+            <div style="width:11px;height:11px;border-radius:999px;background:#DEDED8"></div>
+            <div style="width:11px;height:11px;border-radius:999px;background:#DEDED8"></div>
+          </div>
+          <div style="font-size:19px;font-weight:700">4컵</div>
+        </div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px 18px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:6px">수면 시간</div>
+          <div style="font-size:19px;font-weight:700">7시간 12분</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:3px;height:32px">
+          <div style="width:5px;height:60%;background:#C3C7D0;border-radius:2px"></div>
+          <div style="width:5px;height:80%;background:#C3C7D0;border-radius:2px"></div>
+          <div style="width:5px;height:50%;background:#C3C7D0;border-radius:2px"></div>
+          <div style="width:5px;height:90%;background:#C3C7D0;border-radius:2px"></div>
+          <div style="width:5px;height:100%;background:#2547D0;border-radius:2px"></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 11 HOME · ADVANCED ══ -->
+  <sc-if value="{{ isHomeAdvanced }}">
+    <div style="padding:24px 20px 12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">17TH LOG · 2024-05-21</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em">유지 단계 6주째</div>
+        </div>
+        <div style="width:38px;height:38px;border-radius:999px;background:#DEDED8;flex:0 0 38px"></div>
+      </div>
+
+      <div style="border-radius:24px;background:#12203A;color:#fff;padding:20px;margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div style="font-size:12px;font-weight:500;color:#9FB0CC">목표까지 예상</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#6BDCB2;letter-spacing:0.08em">52 DAYS</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
+          <div style="font-size:38px;font-weight:700;letter-spacing:-0.035em">62.8</div>
+          <div style="font-size:14px;font-weight:500;color:#9FB0CC">kg → 60.0kg</div>
+        </div>
+        <div style="height:8px;border-radius:999px;background:rgba(255,255,255,0.2);margin:14px 0 10px;overflow:hidden">
+          <div style="width:38%;height:100%;background:#6BDCB2;border-radius:999px"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#8FA0BC">
+          <span>골격근 +0.3</span><span>체지방 -1.3</span>
+        </div>
+      </div>
+
+      <div style="height:52px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;margin-bottom:16px">오늘의 루틴 기록하기</div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">오늘의 지표</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px">
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">체지방률</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:3px">20.1%</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">-0.4 THIS WK</div>
+        </div>
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">골격근량</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:3px">28.3kg</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">+0.2 THIS WK</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:16px">
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">섭취 열량</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:3px">1,842</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">P48 / C56 / F10</div>
+        </div>
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">운동 시간</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:3px">64분</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">07:30 - 08:34</div>
+        </div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px">
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.1em;margin-bottom:10px">COACHING</div>
+        <div style="font-size:15px;font-weight:500;line-height:1.55;margin-bottom:6px">근력운동을 주 1회 추가하면 목표일이 52일 → 41일</div>
+        <div style="font-size:12px;font-weight:400;color:#545E6E">루틴을 수정해볼까요?</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 12 LOG ══ -->
+  <sc-if value="{{ isLog }}">
+    <div style="padding:24px 20px 12px">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">17TH LOG</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px">2024-05-21 기록</div>
+
+      <div style="display:flex;gap:6px;margin-bottom:18px">
+        <div style="flex:1;height:36px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">쉬움</div>
+        <div style="flex:1;height:36px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);color:#545E6E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400">보통</div>
+        <div style="flex:1;height:36px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);color:#545E6E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400">힘듦</div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div style="font-size:12px;font-weight:500;color:#545E6E">운동 기록</div>
+          <div style="width:34px;height:34px;border-radius:999px;background:#12203A"></div>
+        </div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:3px">헬스</div>
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">07:30 - 08:34 · 64MIN</div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;margin-bottom:10px">
+        <div style="font-size:12px;font-weight:500;color:#545E6E;margin-bottom:12px">식단 기록</div>
+        <div style="display:flex;gap:8px;margin-bottom:14px">
+          <div style="flex:1;height:34px;border-radius:999px;background:#EDEDE8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:400;color:#545E6E">아침</div>
+          <div style="flex:1;height:34px;border-radius:999px;background:#12203A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#fff">점심</div>
+          <div style="flex:1;height:34px;border-radius:999px;background:#EDEDE8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:400;color:#545E6E">저녁</div>
+        </div>
+        <div style="font-size:24px;font-weight:700;margin-bottom:6px">679 kcal</div>
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">C 56G / P 48G / F 10G</div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;margin-bottom:10px">
+        <div style="font-size:12px;font-weight:500;color:#545E6E;margin-bottom:10px">체성분 기록</div>
+        <div style="font-size:24px;font-weight:700;margin-bottom:6px">64.9 kg</div>
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">FAT 20KG / MUSCLE 28KG</div>
+      </div>
+
+      <div style="height:52px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;margin-bottom:10px">
+        <div style="font-size:14px;font-weight:500">걸음 수</div>
+        <div style="font-size:14px;font-weight:700">4,689 보</div>
+      </div>
+      <div style="height:52px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;margin-bottom:10px">
+        <div style="font-size:14px;font-weight:500">수면</div>
+        <div style="font-size:14px;font-weight:700">00:01 - 06:12</div>
+      </div>
+      <div style="height:52px;border-radius:999px;border:1px dashed rgba(18,32,58,0.24);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:400;color:#545E6E">＋</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 13 LOG ADD ══ -->
+  <sc-if value="{{ isLogAdd }}">
+    <div style="padding:24px 20px 12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px">
+        <div style="font-size:20px;font-weight:700;letter-spacing:-0.02em">무엇을 기록할까요?</div>
+        <div style="font-size:18px;color:#545E6E">✕</div>
+      </div>
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.1em;margin-bottom:12px">RECOMMENDED FOR YOUR STAGE</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+        <div style="border-radius:20px;background:#12203A;color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:3px">수분 섭취</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#9FB0CC">1 TAP · 3SEC</div>
+          </div>
+          <div style="font-size:20px;font-weight:400">＋</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:3px">수면 시간</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">AUTO · WEARABLE</div>
+          </div>
+          <div style="font-size:20px;font-weight:400">＋</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:3px">걸음 수</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">AUTO · WEARABLE</div>
+          </div>
+          <div style="font-size:20px;font-weight:400">＋</div>
+        </div>
+      </div>
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:12px">LATER · ADVANCED METRICS</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="border-radius:18px;background:#E4E6E9;padding:15px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:14px;font-weight:400;color:#545E6E">체지방률</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">STAGE 4+</div>
+        </div>
+        <div style="border-radius:18px;background:#E4E6E9;padding:15px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:14px;font-weight:400;color:#545E6E">골격근량</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">STAGE 4+</div>
+        </div>
+        <div style="border-radius:18px;background:#E4E6E9;padding:15px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:14px;font-weight:400;color:#545E6E">영양성분 상세</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">STAGE 4+</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 14 REPORT ══ -->
+  <sc-if value="{{ isReport }}">
+    <div style="padding:24px 20px 12px">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">2024 · MAY · WEEK 3</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:18px">주간 리포트</div>
+
+      <div style="height:52px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;margin-bottom:22px">예상 변화 및 목표 계산기</div>
+
+      <div style="font-size:15px;font-weight:700;margin-bottom:12px">체성분</div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 18px 14px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">
+          <div style="width:8px;height:8px;border-radius:999px;background:#12203A"></div>
+          <div style="font-size:11px;font-weight:500;color:#545E6E">체중</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:86px;padding-left:24px;position:relative">
+          <div style="position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">
+            <span>70</span><span>60</span><span>0</span>
+          </div>
+          <div style="flex:1;height:72%;background:#12203A;border-radius:3px"></div>
+          <div style="flex:1;height:82%;background:#12203A;border-radius:3px"></div>
+          <div style="flex:1;height:76%;background:#12203A;border-radius:3px"></div>
+          <div style="flex:1;height:78%;background:#2547D0;border-radius:3px"></div>
+          <div style="flex:1;height:4%;background:#DEDED8;border-radius:3px"></div>
+          <div style="flex:1;height:4%;background:#DEDED8;border-radius:3px"></div>
+          <div style="flex:1;height:70%;background:#A9B7E8;border-radius:3px"></div>
+        </div>
+        <div style="display:flex;gap:8px;padding-left:24px;margin-top:8px">
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">S</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">M</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">T</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#12203A;font-weight:500">W</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">T</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">F</div>
+          <div style="flex:1;text-align:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">S</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-bottom:22px">
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">체지방률</div>
+          <div style="font-size:20px;font-weight:700;margin-bottom:4px">20.1%</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">LAST 05-20</div>
+        </div>
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">골격근량</div>
+          <div style="font-size:20px;font-weight:700;margin-bottom:4px">28.3kg</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">LAST 05-20</div>
+        </div>
+      </div>
+
+      <div style="font-size:15px;font-weight:700;margin-bottom:12px">식단</div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px">
+        <div style="display:flex;gap:14px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:8px;height:8px;border-radius:999px;background:#C3C7D0"></div><div style="font-size:10px;font-weight:500;color:#545E6E">탄수</div></div>
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:8px;height:8px;border-radius:999px;background:#545E6E"></div><div style="font-size:10px;font-weight:500;color:#545E6E">지방</div></div>
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:8px;height:8px;border-radius:999px;background:#2547D0"></div><div style="font-size:10px;font-weight:500;color:#545E6E">단백질</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:10px;height:80px">
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:2px">
+            <div style="height:44%;background:#2547D0;border-radius:2px"></div>
+            <div style="height:16%;background:#545E6E;border-radius:2px"></div>
+            <div style="height:34%;background:#C3C7D0;border-radius:2px"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:2px">
+            <div style="height:52%;background:#2547D0;border-radius:2px"></div>
+            <div style="height:12%;background:#545E6E;border-radius:2px"></div>
+            <div style="height:30%;background:#C3C7D0;border-radius:2px"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:2px">
+            <div style="height:40%;background:#2547D0;border-radius:2px"></div>
+            <div style="height:20%;background:#545E6E;border-radius:2px"></div>
+            <div style="height:36%;background:#C3C7D0;border-radius:2px"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:2px">
+            <div style="height:58%;background:#2547D0;border-radius:2px"></div>
+            <div style="height:10%;background:#545E6E;border-radius:2px"></div>
+            <div style="height:26%;background:#C3C7D0;border-radius:2px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 15 FORECAST · BEGINNER ══ -->
+  <sc-if value="{{ isForecast }}">
+    <div style="padding:24px 20px 12px">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.1em;margin-bottom:6px">FORECAST</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px">나의 예상 변화</div>
+
+      <div style="display:flex;gap:10px;margin-bottom:20px">
+        <div style="flex:1;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;line-height:1.5;margin-bottom:12px">MAY · W2<br />지난 주 요약</div>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:46px;margin-bottom:12px">
+            <div style="flex:1;height:56%;background:#C3C7D0;border-radius:2px"></div>
+            <div style="flex:1;height:74%;background:#C3C7D0;border-radius:2px"></div>
+            <div style="flex:1;height:44%;background:#C3C7D0;border-radius:2px"></div>
+            <div style="flex:1;height:88%;background:#C3C7D0;border-radius:2px"></div>
+            <div style="flex:1;height:62%;background:#C3C7D0;border-radius:2px"></div>
+            <div style="flex:1;height:50%;background:#C3C7D0;border-radius:2px"></div>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px">6시간 39분</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;line-height:1.6">기상 불균형<br />취침 균형</div>
+        </div>
+        <div style="flex:1;border-radius:20px;background:#12203A;color:#fff;padding:16px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#9FB0CC;line-height:1.5;margin-bottom:12px">MAY · W3<br />이번 주 예상</div>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:46px;margin-bottom:12px">
+            <div style="flex:1;height:70%;background:#6BDCB2;border-radius:2px"></div>
+            <div style="flex:1;height:86%;background:#6BDCB2;border-radius:2px"></div>
+            <div style="flex:1;height:78%;background:#6BDCB2;border-radius:2px"></div>
+            <div style="flex:1;height:94%;background:#6BDCB2;border-radius:2px"></div>
+            <div style="flex:1;height:82%;background:#6BDCB2;border-radius:2px"></div>
+            <div style="flex:1;height:88%;background:#6BDCB2;border-radius:2px"></div>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px">7시간 55분</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#9FB0CC;line-height:1.6">기상 균형<br />취침 균형</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">최근 변화 포인트</div>
+      <div style="display:flex;gap:10px;overflow:hidden;margin-bottom:22px">
+        <div style="flex:0 0 132px;border-radius:20px;background:#2547D0;color:#fff;padding:16px">
+          <div style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.85);margin-bottom:12px">수분 섭취</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:6px">4컵</div>
+          <div style="font-size:10px;font-weight:400;color:rgba(255,255,255,0.8);line-height:1.5">지난 주보다<br />2컵 많아요</div>
+        </div>
+        <div style="flex:0 0 132px;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:500;color:#545E6E;margin-bottom:12px">취침 시각</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:6px">23:40</div>
+          <div style="font-size:10px;font-weight:400;color:#545E6E;line-height:1.5">지난 주보다<br />1시간 빨라요</div>
+        </div>
+        <div style="flex:0 0 132px;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:500;color:#545E6E;margin-bottom:12px">걸음 수</div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:6px">2,582</div>
+          <div style="font-size:10px;font-weight:400;color:#545E6E;line-height:1.5">지난 주보다<br />348보 많아요</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:14px">변화 체크리스트</div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(18,32,58,0.1)">
+          <div style="font-size:13px;font-weight:400">더 개운한 기분으로 일어났어요</div>
+          <div style="width:22px;height:22px;border-radius:999px;background:#DEDED8;flex:0 0 22px"></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(18,32,58,0.1)">
+          <div style="font-size:13px;font-weight:400">잠 드는 데 걸리는 시간이 줄었어요</div>
+          <div style="width:22px;height:22px;border-radius:999px;background:#0B6E51;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex:0 0 22px">✓</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0">
+          <div style="font-size:13px;font-weight:400">저녁 시간에 팔 다리가 덜 부어요</div>
+          <div style="width:22px;height:22px;border-radius:999px;background:#0B6E51;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex:0 0 22px">✓</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 16 FORECAST · ADVANCED ══ -->
+  <sc-if value="{{ isForecastAdvanced }}">
+    <div style="padding:24px 20px 12px">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.1em;margin-bottom:6px">FORECAST · BODY COMPOSITION</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:18px">한 달 뒤 예상</div>
+
+      <div style="border-radius:24px;background:#12203A;color:#fff;padding:18px;margin-bottom:12px">
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#8FA0BC;letter-spacing:0.08em;margin-bottom:16px">05.20 — 06.18 PROJECTED</div>
+        <div style="position:relative;height:100px;margin-bottom:10px">
+          <div style="position:absolute;inset:0;display:flex;align-items:flex-end;gap:2px">
+            <div style="flex:1;height:52%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:58%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:48%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:62%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:55%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:66%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:50%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:60%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:70%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:56%;background:#26344F;border-radius:1px"></div>
+            <div style="flex:1;height:64%;background:#38486B;border-radius:1px"></div>
+            <div style="flex:1;height:72%;background:#38486B;border-radius:1px"></div>
+            <div style="flex:1;height:58%;background:#38486B;border-radius:1px"></div>
+            <div style="flex:1;height:68%;background:#38486B;border-radius:1px"></div>
+            <div style="flex:1;height:76%;background:#38486B;border-radius:1px"></div>
+          </div>
+          <svg viewBox="0 0 300 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+            <polyline points="10,26 82,32 154,38 226,46 292,54" fill="none" stroke="#6BDCB2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            <circle cx="10" cy="26" r="4.5" fill="#12203A" stroke="#6BDCB2" stroke-width="2.5"></circle>
+            <circle cx="82" cy="32" r="4.5" fill="#12203A" stroke="#6BDCB2" stroke-width="2.5"></circle>
+            <circle cx="154" cy="38" r="4.5" fill="#12203A" stroke="#6BDCB2" stroke-width="2.5"></circle>
+            <circle cx="226" cy="46" r="4.5" fill="#12203A" stroke="#6BDCB2" stroke-width="2.5"></circle>
+            <circle cx="292" cy="54" r="5" fill="#6BDCB2"></circle>
+          </svg>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#8FA0BC;margin-bottom:16px">
+          <span>05.20</span><span>05.27</span><span>06.04</span><span>06.11</span><span>06.18</span>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <div style="padding:7px 13px;border-radius:999px;background:#2547D0;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;font-weight:400">체중 -1.8</div>
+          <div style="padding:7px 13px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.24);font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#6BDCB2">골격근 +0.3</div>
+          <div style="padding:7px 13px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.24);font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#6BDCB2">체지방 -1.3</div>
+        </div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;margin-bottom:22px">
+        <div style="font-size:11px;font-weight:500;color:#545E6E;margin-bottom:8px">현재로부터의 예측</div>
+        <div style="font-size:18px;font-weight:700;line-height:1.4;margin-bottom:5px">52일 동안 현재 생활을 유지하면</div>
+        <div style="font-size:12px;font-weight:400;color:#545E6E">원하는 목표를 달성할 수 있어요</div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">시간 단축을 위한 코칭</div>
+      <div style="display:flex;gap:10px;overflow:hidden;margin-bottom:22px">
+        <div style="flex:0 0 150px;border-radius:20px;background:#2547D0;color:#fff;padding:16px">
+          <div style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.85);margin-bottom:12px">운동 방향</div>
+          <div style="font-size:16px;font-weight:700;margin-bottom:6px">근력운동 추가</div>
+          <div style="font-size:10px;font-weight:500;color:#CDF5E7">-11일 단축</div>
+        </div>
+        <div style="flex:0 0 150px;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:500;color:#545E6E;margin-bottom:12px">식단 방향</div>
+          <div style="font-size:16px;font-weight:700;margin-bottom:6px">저탄고지 식단</div>
+          <div style="font-size:10px;font-weight:500;color:#0B6B4F">-7일 단축</div>
+        </div>
+        <div style="flex:0 0 150px;border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px">
+          <div style="font-size:11px;font-weight:500;color:#545E6E;margin-bottom:12px">취침 시각</div>
+          <div style="font-size:16px;font-weight:700;margin-bottom:6px">23시 40분</div>
+          <div style="font-size:10px;font-weight:500;color:#0B6B4F">-4일 단축</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">추천 루틴</div>
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.1);padding:18px 20px">
+        <div style="font-size:11px;font-weight:400;color:#545E6E;margin-bottom:8px">매일 조금씩 줄여나가는 탄수화물 섭취, 함께해요</div>
+        <div style="font-size:18px;font-weight:700;margin-bottom:4px">저탄고지 식단</div>
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">일 7회 · 식단 및 영양성분 기록</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 17 FORECAST CALCULATOR ══ -->
+  <sc-if value="{{ isForecastCalc }}">
+    <div style="padding:24px 20px 12px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">GOAL CALCULATOR</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px">예상 변화 계산기</div>
+
+      <div style="height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 20px;width:150px;margin-bottom:24px">
+        <div style="font-size:13px;font-weight:500">체성분</div>
+        <div style="font-size:10px;color:#545E6E">▼</div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:14px">목표를 입력해주세요</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:26px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:0 0 62px;font-size:12px;font-weight:400;color:#545E6E">체중</div>
+          <div style="flex:1;height:44px;border-radius:999px;background:#EDEDE8;border:1px solid rgba(18,32,58,0.1);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:13px;color:#545E6E">62.8 kg</div>
+          <div style="flex:1;height:44px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:13px;font-weight:400">60.0 kg</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:0 0 62px;font-size:12px;font-weight:400;color:#545E6E">체지방률</div>
+          <div style="flex:1;height:44px;border-radius:999px;background:#EDEDE8;border:1px solid rgba(18,32,58,0.1);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:13px;color:#545E6E">20.1 %</div>
+          <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:12px;color:#545E6E">목표치</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:0 0 62px;font-size:12px;font-weight:400;color:#545E6E">골격근량</div>
+          <div style="flex:1;height:44px;border-radius:999px;background:#EDEDE8;border:1px solid rgba(18,32,58,0.1);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:13px;color:#545E6E">28.3 kg</div>
+          <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:12px;color:#545E6E">목표치</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:14px">목표 달성 기간을 알려주세요</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;padding:0 20px;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:12px;color:#545E6E">2024-06-25 까지</div>
+        <div style="font-size:12px;color:#545E6E;font-weight:400">또는</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">1주</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500">2주</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">한 달</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400">무관</div>
+      </div>
+      <div style="flex:1;min-height:24px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:24px">계산하기</div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 18 SELF COMPARE ══ -->
+  <sc-if value="{{ isSelfCompare }}">
+    <div style="padding:24px 20px 12px">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.1em;margin-bottom:6px">SELF · WEEK OVER WEEK</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">지난 주의 나와<br />이번 주의 나</div>
+      <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:22px">내 안의 변화를 살펴보아요</div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="font-size:13px;font-weight:500">수면 시간</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">+41M</div>
+          </div>
+          <div style="height:8px;border-radius:999px;background:#E4E4DE;position:relative;margin-bottom:12px">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:62%;background:#2547D0;border-radius:999px"></div>
+            <div style="position:absolute;left:62%;top:-3px;width:14px;height:14px;border-radius:999px;background:#0B6E51;border:2px solid #FBFBF9"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">
+            <span>지난 주 6H39M</span><span style="color:#12203A">이번 주 7H20M</span>
+          </div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="font-size:13px;font-weight:500">걸음 수</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">+21%</div>
+          </div>
+          <div style="height:8px;border-radius:999px;background:#E4E4DE;position:relative;margin-bottom:12px">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:74%;background:#2547D0;border-radius:999px"></div>
+            <div style="position:absolute;left:74%;top:-3px;width:14px;height:14px;border-radius:999px;background:#0B6E51;border:2px solid #FBFBF9"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">
+            <span>지난 주 2,234</span><span style="color:#12203A">이번 주 2,712</span>
+          </div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="font-size:13px;font-weight:500">수분 섭취</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">+1.5 CUPS</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:12px">
+            <div style="flex:1;height:24px;border-radius:6px;background:#2547D0"></div>
+            <div style="flex:1;height:24px;border-radius:6px;background:#2547D0"></div>
+            <div style="flex:1;height:24px;border-radius:6px;background:#2547D0"></div>
+            <div style="flex:1;height:24px;border-radius:6px;background:#0B6E51"></div>
+            <div style="flex:1;height:24px;border-radius:6px;background:#0B6E51"></div>
+            <div style="flex:1;height:24px;border-radius:6px;background:#E4E4DE"></div>
+            <div style="flex:1;height:24px;border-radius:6px;background:#E4E4DE"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">
+            <span>지난 주 4.0</span><span style="color:#12203A">이번 주 5.5</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius:20px;background:#12203A;color:#fff;padding:18px 20px;margin-top:16px">
+        <div style="font-size:11px;font-weight:500;color:#9FB0CC;margin-bottom:8px">가장 크게 바뀐 것</div>
+        <div style="font-size:17px;font-weight:700;line-height:1.45">취침 시각이 1시간 빨라졌고, 수면이 41분 늘었어요</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 19 ROUTINE EDIT ══ -->
+  <sc-if value="{{ isRoutineEdit }}">
+    <div style="padding:24px 20px 12px">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">MY ROUTINES</div>
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px">루틴 관리</div>
+
+      <div style="border-radius:20px;background:#12203A;color:#fff;padding:18px 20px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#6BDCB2;letter-spacing:0.08em">ACTIVE · DAY 3</div>
+          <div style="font-size:11px;font-weight:500;color:#9FB0CC">수정</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:4px">적당히 걷기</div>
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#9FB0CC">주 5회 · 5000보</div>
+      </div>
+
+      <div style="border-radius:20px;background:#E4E6E9;padding:18px 20px;margin-bottom:20px">
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.08em;margin-bottom:10px">UNLOCKS IN 11 DAYS</div>
+        <div style="font-size:17px;font-weight:700;color:#545E6E;margin-bottom:6px">두 번째 루틴</div>
+        <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6">첫 루틴을 2주 지키면 하나 더 추가할 수 있어요</div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">지난 루틴</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="border-radius:18px;border:1px solid rgba(18,32,58,0.12);padding:15px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:14px;font-weight:500;margin-bottom:3px">물 마시기</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">04.22 - 05.06 · 12/14 DAYS</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">86%</div>
+        </div>
+        <div style="border-radius:18px;border:1px solid rgba(18,32,58,0.12);padding:15px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:14px;font-weight:500;margin-bottom:3px">스트레칭 하기</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">04.08 - 04.21 · 9/14 DAYS</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">64%</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 20 ME ══ -->
+  <sc-if value="{{ isMe }}">
+    <div style="padding:24px 20px 12px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+        <div style="width:56px;height:56px;border-radius:999px;background:#12203A;color:#fff;flex:0 0 56px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700">박</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;margin-bottom:4px">박서연</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E">SINCE 2024-05-18 · 3 DAYS</div>
+        </div>
+      </div>
+
+      <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;margin-bottom:20px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:12px;font-weight:500;color:#545E6E">나의 행동 변화 단계</div>
+          <div style="font-size:11px;font-weight:500;color:#2547D0">다시 진단</div>
+        </div>
+        <div style="font-size:18px;font-weight:700;margin-bottom:14px">준비 단계</div>
+        <div style="display:flex;gap:5px;margin-bottom:10px">
+          <div style="flex:1;height:6px;border-radius:999px;background:#2547D0"></div>
+          <div style="flex:1;height:6px;border-radius:999px;background:#2547D0"></div>
+          <div style="flex:1;height:6px;border-radius:999px;background:#12203A"></div>
+          <div style="flex:1;height:6px;border-radius:999px;background:#E4E4DE"></div>
+          <div style="flex:1;height:6px;border-radius:999px;background:#E4E4DE"></div>
+        </div>
+        <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;line-height:1.6">단계가 바뀌면 기록 항목과 리포트 깊이가 함께 바뀝니다</div>
+      </div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">화면 밀도</div>
+      <div style="display:flex;gap:8px;margin-bottom:22px">
+        <div style="flex:1;height:44px;border-radius:999px;background:#12203A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">간단히</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);color:#545E6E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400">보통</div>
+        <div style="flex:1;height:44px;border-radius:999px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.12);color:#545E6E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400">자세히</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(18,32,58,0.1)">
+          <div style="font-size:14px;font-weight:400">신체 정보</div>
+          <div style="font-size:12px;color:#545E6E">›</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(18,32,58,0.1)">
+          <div style="font-size:14px;font-weight:400">웨어러블 연동</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6B4F">CONNECTED</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(18,32,58,0.1)">
+          <div style="font-size:14px;font-weight:400">목표 다시 설정</div>
+          <div style="font-size:12px;color:#545E6E">›</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0">
+          <div style="font-size:14px;font-weight:400">데이터 내보내기</div>
+          <div style="font-size:12px;color:#545E6E">›</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 21 HOME · DAY 0 ══ -->
+  <sc-if value="{{ isHomeDay0 }}">
+    <div style="padding:24px 20px 12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.1em;margin-bottom:6px">2024-05-18 · SAT · DAY 1</div>
+          <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em">궤도에 올랐어요</div>
+        </div>
+        <div style="width:38px;height:38px;border-radius:999px;background:#DEDED8;flex:0 0 38px"></div>
+      </div>
+
+      <div style="border-radius:24px;background:#FBFBF9;border:1.5px dashed rgba(37,71,208,0.35);padding:20px;margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:12px;font-weight:500;color:#545E6E">이대로 4주 뒤</div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.08em">3일 뒤 열림</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;line-height:1.4;letter-spacing:-0.02em;margin-bottom:6px;color:#12203A">3일치 기록이 모이면<br />예상 변화를 그려드려요</div>
+        <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:16px">지금 궤도를 그리면 남의 평균일 뿐이에요</div>
+        <div style="display:flex;align-items:flex-end;gap:4px;height:44px;margin-bottom:14px">
+          <div style="flex:1;height:32%;background:#E4E4DE;border-radius:2px"></div>
+          <div style="flex:1;height:44%;background:#E4E4DE;border-radius:2px"></div>
+          <div style="flex:1;height:38%;background:#E4E4DE;border-radius:2px"></div>
+          <div style="flex:1;height:56%;background:#E4E4DE;border-radius:2px"></div>
+          <div style="flex:1;height:70%;background:#EFEFEA;border-radius:2px"></div>
+          <div style="flex:1;height:84%;background:#EFEFEA;border-radius:2px"></div>
+          <div style="flex:1;height:100%;background:#EFEFEA;border-radius:2px"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="display:flex;gap:5px;flex:1">
+            <div style="flex:1;height:6px;border-radius:999px;background:#2547D0"></div>
+            <div style="flex:1;height:6px;border-radius:999px;background:#E4E4DE"></div>
+            <div style="flex:1;height:6px;border-radius:999px;background:#E4E4DE"></div>
+          </div>
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.06em">1 / 3 DAYS</div>
+        </div>
+      </div>
+
+      <div style="height:52px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;margin-bottom:16px">오늘의 루틴 기록하기</div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">내가 고른 루틴</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:4px">적당히 걷기</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">주 5회 · 5000보</div>
+          </div>
+          <div style="width:26px;height:26px;border-radius:999px;border:2px solid #D5D5CE;flex:0 0 26px"></div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:18px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:4px">물 마시기</div>
+            <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:11px;color:#545E6E">일 6회 · 1분</div>
+          </div>
+          <div style="width:26px;height:26px;border-radius:999px;border:2px solid #D5D5CE;flex:0 0 26px"></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══ 22 STAGE UPGRADE ══ -->
+  <sc-if value="{{ isStageUp }}">
+    <div style="padding:24px 20px 12px;display:flex;flex-direction:column;min-height:100%;box-sizing:border-box">
+      <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#0B6E51;letter-spacing:0.1em;margin-bottom:24px">STAGE UPDATED</div>
+
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+        <div style="width:52px;height:52px;border-radius:999px;background:#E4E4DE;color:#545E6E;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex:0 0 52px">3</div>
+        <div style="flex:1;height:2px;background:linear-gradient(to right,#D5D5CE,#0B6E51)"></div>
+        <div style="width:60px;height:60px;border-radius:999px;background:#0B6E51;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex:0 0 60px">5</div>
+      </div>
+
+      <div style="font-size:24px;font-weight:700;line-height:1.35;letter-spacing:-0.02em;margin-bottom:10px">준비 단계에서<br />유지 단계로 올라섰어요</div>
+      <div style="font-size:13px;font-weight:400;color:#545E6E;line-height:1.6;margin-bottom:24px">6주 동안 목표의 80%를 지켰습니다</div>
+
+      <div style="font-size:13px;font-weight:500;margin-bottom:12px">앞으로 이렇게 바뀝니다</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px 18px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.08em;margin-bottom:8px">+ ADDED</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:4px">체성분 기록</div>
+          <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6">골격근량과 체지방률을 따로 남길 수 있어요</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px 18px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#2547D0;letter-spacing:0.08em;margin-bottom:8px">+ DEEPER</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:4px">주 단위 리포트</div>
+          <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6">일 단위 대신 주 흐름과 지난 주 대비로 보여드려요</div>
+        </div>
+        <div style="border-radius:20px;background:#FBFBF9;border:1px solid rgba(18,32,58,0.09);padding:16px 18px">
+          <div style="font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;letter-spacing:0.08em;margin-bottom:8px">— SIMPLIFIED</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:4px">매일 체크 알림</div>
+          <div style="font-size:12px;font-weight:400;color:#545E6E;line-height:1.6">습관이 자리잡아 주 1회로 줄였어요</div>
+        </div>
+      </div>
+
+      <div style="border-radius:20px;border:1px solid rgba(18,32,58,0.14);padding:14px 16px;font-family:'IBM Plex Mono','Noto Sans KR',monospace;font-size:10px;color:#545E6E;line-height:1.7">단계는 언제든 나에서 되돌릴 수 있어요</div>
+      <div style="flex:1;min-height:20px"></div>
+      <div style="height:56px;border-radius:999px;background:#2547D0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin-top:20px">달라진 홈 보기</div>
+    </div>
+  </sc-if>
+
+  </div>
+
+  <sc-if value="{{ showTabs }}">
+    <div style="flex:0 0 64px;height:64px;border-top:1px solid rgba(18,32,58,0.12);background:#EDEDE8;display:flex;align-items:center;color:#545E6E">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ tabHome }}">
+        <div style="width:16px;height:16px;border-radius:5px;border:2px solid currentColor"></div>
+        <div style="font-size:10px;font-weight:500">홈</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ tabLog }}">
+        <div style="width:16px;height:16px;border-radius:999px;border:2px solid currentColor"></div>
+        <div style="font-size:10px;font-weight:500">기록</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ tabForecast }}">
+        <div style="width:16px;height:16px;border:2px solid currentColor;border-radius:2px;transform:rotate(45deg)"></div>
+        <div style="font-size:10px;font-weight:500">예상</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ tabReport }}">
+        <div style="width:16px;height:16px;display:flex;align-items:flex-end;gap:2px">
+          <div style="flex:1;height:60%;background:currentColor;border-radius:1px"></div>
+          <div style="flex:1;height:100%;background:currentColor;border-radius:1px"></div>
+          <div style="flex:1;height:40%;background:currentColor;border-radius:1px"></div>
+        </div>
+        <div style="font-size:10px;font-weight:500">리포트</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ tabMe }}">
+        <div style="width:16px;height:16px;border-radius:999px;border:2px solid currentColor"></div>
+        <div style="font-size:10px;font-weight:500">나</div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:780},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;homeBeginner&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;intro&quot;,&quot;profile&quot;,&quot;stage&quot;,&quot;stageResult&quot;,&quot;goalPurpose&quot;,&quot;concern&quot;,&quot;routinePick&quot;,&quot;routineDetail&quot;,&quot;forecastPreview&quot;,&quot;homeBeginner&quot;,&quot;homeAdvanced&quot;,&quot;log&quot;,&quot;logAdd&quot;,&quot;report&quot;,&quot;forecast&quot;,&quot;forecastAdvanced&quot;,&quot;forecastCalc&quot;,&quot;selfCompare&quot;,&quot;routineEdit&quot;,&quot;me&quot;,&quot;homeDay0&quot;,&quot;stageUp&quot;]},&quot;showChrome&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.props.screen ?? 'homeBeginner';
+    const onb = ['intro','profile','stage','stageResult','goalPurpose','concern','routinePick','routineDetail','forecastPreview'];
+    const A = '#2547D0', I = '#545E6E';
+    const homeSet = ['homeBeginner','homeAdvanced','homeDay0'];
+    const logSet = ['log','logAdd'];
+    const fcSet = ['forecast','forecastAdvanced','forecastCalc','selfCompare'];
+    const chrome = this.props.showChrome ?? true;
+    return {
+      showStatus: chrome && s !== 'goalPurpose' && s !== 'routinePick' && s !== 'routineDetail' && s !== 'concern',
+      showTabs: chrome && onb.indexOf(s) === -1 && s !== 'stageUp',
+      isIntro: s === 'intro',
+      isProfile: s === 'profile',
+      isStage: s === 'stage',
+      isStageResult: s === 'stageResult',
+      isGoalPurpose: s === 'goalPurpose',
+      isConcern: s === 'concern',
+      isRoutinePick: s === 'routinePick',
+      isRoutineDetail: s === 'routineDetail',
+      isForecastPreview: s === 'forecastPreview',
+      isHomeBeginner: s === 'homeBeginner',
+      isHomeAdvanced: s === 'homeAdvanced',
+      isLog: s === 'log',
+      isLogAdd: s === 'logAdd',
+      isReport: s === 'report',
+      isForecast: s === 'forecast',
+      isForecastAdvanced: s === 'forecastAdvanced',
+      isForecastCalc: s === 'forecastCalc',
+      isSelfCompare: s === 'selfCompare',
+      isRoutineEdit: s === 'routineEdit',
+      isMe: s === 'me',
+      isHomeDay0: s === 'homeDay0',
+      isStageUp: s === 'stageUp',
+      tabHome: homeSet.indexOf(s) > -1 ? A : I,
+      tabLog: logSet.indexOf(s) > -1 ? A : I,
+      tabForecast: fcSet.indexOf(s) > -1 ? A : I,
+      tabReport: s === 'report' ? A : I,
+      tabMe: (s === 'me' || s === 'routineEdit') ? A : I
+    };
+  }
+}
+</script>
+</body>
+</html>
