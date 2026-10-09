@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#E6E6E3; }
+  a { color:#8A5A3A; text-decoration:none; }
+  a:hover { color:#6E4529; }
+</style>
+</helmet>
+<div style="min-height:100vh;background:#E6E6E3;color:#1F1F1E;font-family:'Jost','Gowun Dodum','Apple SD Gothic Neo',sans-serif;padding:36px 40px 80px;display:grid;grid-template-columns:420px 1fr;gap:44px;align-items:start">
+
+  <div style="position:sticky;top:36px;display:grid;gap:20px;max-height:calc(100vh - 72px);overflow:auto">
+    <div style="width:375px;height:812px;box-shadow:0 18px 50px rgba(0,0,0,.18);border:1px solid rgba(31,31,30,.14)">
+      <dc-import name="CuppoScreen" screen="{{ screen }}" theme="{{ theme }}" accent="{{ accent }}" hint-size="375px,812px"></dc-import>
+    </div>
+    <div style="width:375px;display:grid;gap:14px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:16px">{{ activeName }}</span>
+        <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;opacity:.4">{{ activeKey }}</span>
+      </div>
+      <div style="font-size:12px;opacity:.5;line-height:1.7">{{ activeNote }}</div>
+      <div style="display:flex;gap:8px;padding-top:4px">
+        <button onClick="{{ setLight }}" style="all:unset;cursor:pointer;flex:1;height:38px;display:grid;place-items:center;font-size:12px;letter-spacing:.06em;border:1px solid {{ lightBd }};background:{{ lightBg }}">라이트</button>
+        <button onClick="{{ setDark }}" style="all:unset;cursor:pointer;flex:1;height:38px;display:grid;place-items:center;font-size:12px;letter-spacing:.06em;border:1px solid {{ darkBd }};background:{{ darkBg }}">다크</button>
+      </div>
+      <div style="font-size:11px;opacity:.4;line-height:1.7">폰 안에서 직접 탭해 이동할 수 있습니다. 오른쪽 썸네일을 누르면 해당 화면으로 점프합니다.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;gap:34px">
+    <div style="display:grid;gap:12px">
+      <div style="font-size:11px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">INTERACTIVE PROTOTYPE · 16 SCREENS</div>
+      <div style="font-size:44px;font-weight:300;letter-spacing:.04em">CUPPO</div>
+      <div style="font-size:14px;opacity:.55;line-height:1.9;max-width:720px">2023년 원본 화면을 복원하고, 정보 위계와 선택 상태만 정돈했습니다. 카메라 · 리포트 · 위젯 세 화면은 당시 넣지 못했던 기능을 같은 문법으로 확장한 것입니다.</div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4">FLOWS</div>
+      <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+        <span style="font-size:12px;opacity:.45;width:96px">첫 진입</span>
+        <sc-for list="{{ flowA }}" as="st" hint-placeholder-count="4">
+          <button onClick="{{ st.select }}" style="all:unset;cursor:pointer;font-size:12px;padding:7px 12px;border:1px solid {{ st.bd }};background:{{ st.bg }};border-radius:20px">{{ st.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+        <span style="font-size:12px;opacity:.45;width:96px">기록 흐름</span>
+        <sc-for list="{{ flowB }}" as="st" hint-placeholder-count="5">
+          <button onClick="{{ st.select }}" style="all:unset;cursor:pointer;font-size:12px;padding:7px 12px;border:1px solid {{ st.bd }};background:{{ st.bg }};border-radius:20px">{{ st.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+        <span style="font-size:12px;opacity:.45;width:96px">탐색</span>
+        <sc-for list="{{ flowC }}" as="st" hint-placeholder-count="4">
+          <button onClick="{{ st.select }}" style="all:unset;cursor:pointer;font-size:12px;padding:7px 12px;border:1px solid {{ st.bd }};background:{{ st.bg }};border-radius:20px">{{ st.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+        <span style="font-size:12px;opacity:.45;width:96px">신규 기능</span>
+        <sc-for list="{{ flowD }}" as="st" hint-placeholder-count="4">
+          <button onClick="{{ st.select }}" style="all:unset;cursor:pointer;font-size:12px;padding:7px 12px;border:1px solid {{ st.bd }};background:{{ st.bg }};border-radius:20px">{{ st.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,206px);gap:22px">
+      <sc-for list="{{ screens }}" as="s" hint-placeholder-count="16">
+        <button onClick="{{ s.select }}" style="all:unset;cursor:pointer;display:grid;gap:10px;text-align:left">
+          <div style="width:206px;height:447px;overflow:hidden;position:relative;border:1px solid {{ s.bd }};box-shadow:{{ s.shadow }};background-image:url('assets/paper.png');background-size:cover">
+            <sc-if value="{{ s.live }}">
+              <div style="width:375px;height:812px;transform:scale(0.55);transform-origin:top left;text-align:left;pointer-events:none">
+                <dc-import name="CuppoScreen" screen="{{ s.key }}" theme="{{ theme }}" accent="{{ accent }}" hint-size="375px,812px"></dc-import>
+              </div>
+            </sc-if>
+            <sc-if value="{{ s.pending }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:9px">
+                <span style="font-size:12px;opacity:.4">{{ s.name }}</span>
+                <span style="font-size:9px;letter-spacing:.14em;font-family:'IBM Plex Mono',monospace;opacity:.25">LOADING</span>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <span style="font-size:13px">{{ s.name }}</span>
+            <span style="font-size:10px;font-family:'IBM Plex Mono',monospace;opacity:.35">{{ s.num }}</span>
+          </div>
+          <span style="font-size:11px;opacity:.42;line-height:1.6">{{ s.note }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  SCREENS = [
+    { key: 'launch', name: '런치', note: '앱 아이콘 · 로딩 에셋 원본 그대로' },
+    { key: 'onboarding', name: '온보딩', note: '3단계 · 일러스트로 기능 설명' },
+    { key: 'empty', name: '빈 상태', note: '커피링을 0잔 표시로 재사용' },
+    { key: 'feed', name: '카드 피드', note: '원본 핵심 화면 · 월 헤더 sticky' },
+    { key: 'grid', name: '그리드 갤러리', note: '같은 기록을 3열 썸네일로' },
+    { key: 'calendar', name: '캘린더', note: '날짜 칸에 그날의 잔 그림' },
+    { key: 'search', name: '검색 · 필터', note: '태그 칩 + 제목·메모 검색' },
+    { key: 'menu', name: '메뉴 선택', note: 'STEP 1 · 메뉴 8종' },
+    { key: 'custom', name: '레시피 커스텀', note: 'STEP 2 · 원본 화면 정돈' },
+    { key: 'save', name: '저장', note: '제목 · 메모 · 사진 진입' },
+    { key: 'camera', name: '카메라 · 누끼', note: '신규 · 배경 제거 후 카드에' },
+    { key: 'detail', name: '기록 상세', note: '레시피 4칸 요약 · 카페인' },
+    { key: 'share', name: '카드 공유', note: '신규 · 4:5 이미지로 저장' },
+    { key: 'report', name: '취향 리포트', note: '신규 · 조합 · 분포 · 카페인' },
+    { key: 'settings', name: '설정', note: '다크 모드 토글 실제 동작' },
+    { key: 'widget', name: '위젯', note: '신규 · 원탭 기록' }
+  ];
+  state = { screen: 'feed', theme: 'light' };
+
+  renderVals() {
+    const accent = this.state.theme === 'dark' ? '#C08A5C' : '#8A5A3A';
+    const cur = this.SCREENS.find(s => s.key === this.state.screen) || this.SCREENS[3];
+    const chip = key => {
+      const s = this.SCREENS.find(x => x.key === key) || {};
+      return {
+        label: s.name || key,
+        bd: this.state.screen === key ? accent : 'rgba(31,31,30,.2)',
+        bg: this.state.screen === key ? 'rgba(138,90,58,.08)' : 'transparent',
+        select: () => this.setState({ screen: key })
+      };
+    };
+
+    return {
+      screen: this.state.screen, theme: this.state.theme, accent,
+      activeName: cur.name, activeKey: cur.key.toUpperCase(), activeNote: cur.note,
+      setLight: () => this.setState({ theme: 'light' }),
+      setDark: () => this.setState({ theme: 'dark' }),
+      lightBd: this.state.theme === 'light' ? '#8A5A3A' : 'rgba(31,31,30,.2)',
+      lightBg: this.state.theme === 'light' ? 'rgba(138,90,58,.08)' : 'transparent',
+      darkBd: this.state.theme === 'dark' ? '#8A5A3A' : 'rgba(31,31,30,.2)',
+      darkBg: this.state.theme === 'dark' ? 'rgba(138,90,58,.08)' : 'transparent',
+      flowA: ['launch', 'onboarding', 'empty', 'menu'].map(chip),
+      flowB: ['feed', 'menu', 'custom', 'save', 'detail'].map(chip),
+      flowC: ['feed', 'grid', 'calendar', 'search'].map(chip),
+      flowD: ['camera', 'report', 'widget', 'share'].map(chip),
+      screens: this.SCREENS.map((s, i) => ({
+        key: s.key, name: s.name, note: s.note,
+        num: String(i + 1).padStart(2, '0'),
+        live: true,
+        pending: false,
+        bd: this.state.screen === s.key ? accent : 'rgba(31,31,30,.14)',
+        shadow: this.state.screen === s.key ? '0 10px 26px rgba(138,90,58,.22)' : '0 6px 18px rgba(0,0,0,.07)',
+        select: () => this.setState({ screen: s.key })
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

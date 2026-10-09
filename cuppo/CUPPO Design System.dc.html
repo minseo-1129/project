@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EDEDEA; }
+  a { color:#8A5A3A; text-decoration:none; }
+  a:hover { color:#6E4529; }
+</style>
+</helmet>
+<div style="width:1400px;margin:0 auto;background-image:url('assets/paper.png');background-size:cover;color:#1F1F1E;font-family:'Jost','Gowun Dodum','Apple SD Gothic Neo',sans-serif;padding:0 0 120px">
+
+  <div style="padding:96px 80px 72px;display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;border-bottom:1px solid rgba(31,31,30,.16)">
+    <div>
+      <div style="font-size:12px;letter-spacing:.28em;font-family:'IBM Plex Mono',monospace;opacity:.45">DESIGN SYSTEM BOARD · 2026 RESTORATION</div>
+      <div style="font-size:96px;letter-spacing:.16em;font-weight:300;line-height:1;margin:26px 0 0">CUPPO</div>
+      <div style="font-size:20px;margin-top:22px;line-height:1.7">커피 기록 앱 · 2023 개인 프로젝트<br><span style="opacity:.5;font-size:16px">PM · UX Research · UI Design / iOS · Android</span></div>
+      <div style="font-size:14px;opacity:.55;margin-top:28px;max-width:640px;line-height:1.9">종이 텍스처 위에 손그림 커피 일러스트를 얹고, 가로 카드 한 장을 필름 한 컷처럼 쓰는 앱. 이 보드는 원본 에셋과 타입 정리표에서 추출한 값을 그대로 옮기고, 어긋난 위계만 정돈한 결과입니다.</div>
+    </div>
+    <div style="display:flex;gap:26px;align-items:flex-end">
+      <div style="display:grid;justify-items:center;gap:12px">
+        <img src="assets/appicon.png" style="width:104px;height:104px;border-radius:23px">
+        <span style="font-size:11px;letter-spacing:.12em;opacity:.4;font-family:'IBM Plex Mono',monospace">iOS</span>
+      </div>
+      <div style="display:grid;justify-items:center;gap:12px">
+        <img src="assets/appicon_aos.png" style="width:104px;height:104px;border-radius:52px">
+        <span style="font-size:11px;letter-spacing:.12em;opacity:.4;font-family:'IBM Plex Mono',monospace">ANDROID</span>
+      </div>
+      <img src="assets/ring.png" style="width:130px;height:130px;object-fit:contain;opacity:.9">
+    </div>
+  </div>
+
+  <div style="padding:72px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">01 · COLOR</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">팔레트 8색</div>
+    <div style="font-size:14px;opacity:.5;margin-top:12px">종이 두 장(라이트·다크)과 잉크 두 단계, 필름 카드 채움 하나, 커피 브라운 액센트 두 단계. 경계선은 색을 새로 만들지 않고 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">currentColor 20%</span>로 파생시켜 두 테마에서 같은 규칙으로 동작합니다.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px">
+      <sc-for list="{{ colors }}" as="c" hint-placeholder-count="8">
+        <div style="border:1px solid rgba(31,31,30,.14)">
+          <div style="height:132px;background:{{ c.bg }};border-bottom:1px solid rgba(31,31,30,.1)"></div>
+          <div style="padding:16px 18px 18px;display:grid;gap:7px">
+            <span style="font-size:15px">{{ c.name }}</span>
+            <span style="font-size:12px;font-family:'IBM Plex Mono',monospace;opacity:.55">{{ c.hex }}</span>
+            <span style="font-size:12px;opacity:.45;line-height:1.6">{{ c.use }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">02 · TYPE</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">타입 4단계</div>
+    <div style="font-size:14px;opacity:.5;margin-top:12px">원본은 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">Goyang</span> 한 벌에 12–22px. 웹에 배포 가능한 Goyang이 없어 라틴·숫자는 Jost, 한글은 Gowun Dodum으로 대체했습니다. 기하학적 원형 제로와 얇은 획이라는 원본의 성격은 유지됩니다.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px">
+      <div style="border:1px solid rgba(31,31,30,.14);padding:32px 34px">
+        <div style="font-size:11px;letter-spacing:.2em;font-family:'IBM Plex Mono',monospace;opacity:.4">LATIN &amp; NUMERALS — JOST 300</div>
+        <div style="font-size:80px;font-weight:300;letter-spacing:.04em;margin-top:18px">2o22</div>
+        <div style="font-size:36px;font-weight:300;letter-spacing:.06em;margin-top:6px">FEBRUARY</div>
+        <div style="font-size:14px;opacity:.45;margin-top:20px;font-family:'IBM Plex Mono',monospace">0123456789 · CUPPO</div>
+      </div>
+      <div style="border:1px solid rgba(31,31,30,.14);padding:32px 34px">
+        <div style="font-size:11px;letter-spacing:.2em;font-family:'IBM Plex Mono',monospace;opacity:.4">HANGUL — GOWUN DODUM</div>
+        <div style="font-size:44px;margin-top:22px;line-height:1.4">오늘의 커피는?</div>
+        <div style="font-size:22px;opacity:.45;margin-top:10px">#아메리카노 · 따뜻하게 · 우유거품</div>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(31,31,30,.14);margin-top:28px">
+      <sc-for list="{{ typeRows }}" as="t" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:110px 1fr 220px 200px;gap:24px;align-items:baseline;padding:22px 30px;border-bottom:1px solid rgba(31,31,30,.08)">
+          <span style="font-size:12px;font-family:'IBM Plex Mono',monospace;opacity:.5">{{ t.px }}</span>
+          <span style="font-size:{{ t.size }};line-height:1.3">{{ t.sample }}</span>
+          <span style="font-size:13px;opacity:.5">{{ t.role }}</span>
+          <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;opacity:.4">{{ t.spec }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">03 · LAYOUT</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">간격과 프레임</div>
+    <div style="display:grid;grid-template-columns:375px 1fr;gap:56px;margin-top:34px;align-items:start">
+      <div style="position:relative;width:375px;height:500px;border:1px solid rgba(31,31,30,.2);background-image:url('assets/paper.png');background-size:cover">
+        <div style="position:absolute;left:0;right:0;top:0;height:44px;background:rgba(138,90,58,.1);border-bottom:1px dashed rgba(138,90,58,.5);display:grid;place-items:center;font-size:10px;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;color:#8A5A3A">STATUS 44</div>
+        <div style="position:absolute;left:0;top:44px;bottom:83px;width:20px;background:rgba(138,90,58,.08);border-right:1px dashed rgba(138,90,58,.4)"></div>
+        <div style="position:absolute;right:0;top:44px;bottom:83px;width:20px;background:rgba(138,90,58,.08);border-left:1px dashed rgba(138,90,58,.4)"></div>
+        <div style="position:absolute;left:20px;right:20px;top:106px;height:190px;border:1px solid rgba(31,31,30,.3);display:grid;place-items:center;font-size:11px;letter-spacing:.08em;font-family:'IBM Plex Mono',monospace;opacity:.5">FILM CARD 335 × 190</div>
+        <div style="position:absolute;left:20px;right:20px;top:312px;height:16px;background:rgba(138,90,58,.14);display:grid;place-items:center;font-size:9px;font-family:'IBM Plex Mono',monospace;color:#8A5A3A">GAP 16</div>
+        <div style="position:absolute;left:20px;right:20px;top:344px;height:60px;border:1px solid rgba(31,31,30,.2);display:grid;place-items:center;font-size:11px;font-family:'IBM Plex Mono',monospace;opacity:.4">NEXT CARD</div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:83px;background:rgba(138,90,58,.1);border-top:1px dashed rgba(138,90,58,.5);display:grid;place-items:center;font-size:10px;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;color:#8A5A3A">TAB BAR 83</div>
+      </div>
+      <div style="display:grid;gap:0;padding-top:6px">
+        <sc-for list="{{ specs }}" as="sp" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:220px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid rgba(31,31,30,.1)">
+            <span style="font-size:14px;opacity:.5">{{ sp.k }}</span>
+            <span style="font-size:15px">{{ sp.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">04 · ILLUSTRATION</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">일러스트 인벤토리</div>
+    <div style="font-size:14px;opacity:.5;margin-top:12px">메뉴 8종 × 온도 2종이 기본 잔이고, 장식 선택이 변형 파일을 부릅니다 — 따뜻한 잔의 휘핑은 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">_wip</span>, 아이스의 얼음 추가는 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">_ice</span>. 아메리카노는 휘핑 변형이 없어 기본 잔을 유지합니다.</div>
+    <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:16px;margin-top:34px">
+      <sc-for list="{{ hotSet }}" as="h" hint-placeholder-count="8">
+        <div style="display:grid;justify-items:center;gap:10px">
+          <div style="width:100%;aspect-ratio:1;border:1px solid rgba(31,31,30,.12);display:grid;place-items:center;background:#FBFBF9">
+            <img decoding="async" src="{{ h.img }}" style="width:82%;height:82%;object-fit:contain">
+          </div>
+          <span style="font-size:12px">{{ h.name }}</span>
+          <span style="font-size:10px;font-family:'IBM Plex Mono',monospace;opacity:.4">{{ h.file }}</span>
+        </div>
+      </sc-for>
+      <sc-for list="{{ iceSet }}" as="h" hint-placeholder-count="8">
+        <div style="display:grid;justify-items:center;gap:10px">
+          <div style="width:100%;aspect-ratio:1;border:1px solid rgba(31,31,30,.12);display:grid;place-items:center;background:#FBFBF9">
+            <img decoding="async" src="{{ h.img }}" style="width:82%;height:82%;object-fit:contain">
+          </div>
+          <span style="font-size:12px">{{ h.name }}</span>
+          <span style="font-size:10px;font-family:'IBM Plex Mono',monospace;opacity:.4">{{ h.file }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px;padding-top:36px;border-top:1px solid rgba(31,31,30,.12)">
+      <sc-for list="{{ selSet }}" as="s" hint-placeholder-count="12">
+        <div style="display:grid;justify-items:center;gap:9px">
+          <div style="width:100%;aspect-ratio:1;border:1px solid rgba(31,31,30,.12);display:grid;place-items:center">
+            <img decoding="async" src="{{ s.img }}" style="width:66%;height:66%;object-fit:contain">
+          </div>
+          <span style="font-size:11px">{{ s.name }}</span>
+          <span style="font-size:9px;font-family:'IBM Plex Mono',monospace;opacity:.4">{{ s.group }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">05 · COMPONENTS</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">컴포넌트 6</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px">
+
+      <div style="border:1px solid rgba(31,31,30,.14);padding:30px">
+        <div style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4">01 FILM CARD</div>
+        <div style="display:grid;gap:16px;margin-top:22px">
+          <div style="height:190px;border:1px solid rgba(31,31,30,.22);display:grid;grid-template-rows:auto 1fr auto;padding:13px 15px 12px;box-sizing:border-box">
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:12px">#아메리카노</span>
+              <span style="font-size:12px;opacity:.45;font-family:'IBM Plex Mono',monospace">2022.02.10</span>
+            </div>
+            <div style="display:grid;place-items:center;min-height:0"><img decoding="async" src="assets/hotdrinks/hotame.png" style="height:108px;object-fit:contain"></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:14px">출근 전 한 잔</span>
+              <span style="font-size:11px;opacity:.4;font-family:'IBM Plex Mono',monospace">08:20</span>
+            </div>
+          </div>
+          <div style="height:190px;border:1px solid rgba(31,31,30,.22);background:#333333;color:#F1F0EC;display:grid;grid-template-rows:auto 1fr auto;padding:13px 15px 12px;box-sizing:border-box">
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:12px">#아메리카노</span>
+              <span style="font-size:12px;opacity:.45;font-family:'IBM Plex Mono',monospace">2022.02.15</span>
+            </div>
+            <div style="display:grid;place-items:center;min-height:0">
+              <div style="width:120px;height:104px;display:grid;place-items:center;background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.16) 0 5px, transparent 5px 11px);border:1px dashed rgba(255,255,255,.35)">
+                <span style="font-size:10px;letter-spacing:.12em;font-family:'IBM Plex Mono',monospace;opacity:.75">PHOTO</span>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:14px">야근 각오</span>
+              <span style="font-size:11px;opacity:.4;font-family:'IBM Plex Mono',monospace">21:05</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:13px;opacity:.5;line-height:1.8;margin-top:20px">16:9 가로 카드. 위 행은 태그·날짜(12px), 아래 행은 제목(14px)·시각. 원본에서 채움색 <span style="font-family:'IBM Plex Mono',monospace">#333</span>이던 카드는 사진 기록 전용 상태로 재정의했습니다.</div>
+      </div>
+
+      <div style="border:1px solid rgba(31,31,30,.14);padding:30px">
+        <div style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4">02 SEGMENTED TABS + 03 OPTION TILE</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px">
+          <span style="font-size:14px;text-align:center;padding-bottom:7px;border-bottom:1.5px solid transparent;opacity:.35">온도</span>
+          <span style="font-size:14px;text-align:center;padding-bottom:7px;border-bottom:1.5px solid #1F1F1E">우유</span>
+          <span style="font-size:14px;text-align:center;padding-bottom:7px;border-bottom:1.5px solid transparent;opacity:.35">시럽</span>
+          <span style="font-size:14px;text-align:center;padding-bottom:7px;border-bottom:1.5px solid transparent;opacity:.35">장식</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:20px">
+          <div style="height:86px;border:1px solid rgba(31,31,30,.18);display:grid;place-items:center;align-content:center;gap:4px">
+            <img decoding="async" src="assets/sel/none.png" style="width:44px;height:44px;object-fit:contain">
+            <span style="font-size:11px;opacity:.65">없음</span>
+          </div>
+          <div style="height:86px;border:1px solid rgba(31,31,30,.18);display:grid;place-items:center;align-content:center;gap:4px">
+            <img decoding="async" src="assets/sel/milk.png" style="width:44px;height:44px;object-fit:contain">
+            <span style="font-size:11px;opacity:.65">우유</span>
+          </div>
+          <div style="height:86px;border:1px solid #8A5A3A;background:rgba(31,31,30,.05);display:grid;place-items:center;align-content:center;gap:4px;position:relative">
+            <img decoding="async" src="assets/sel/milkfoam.png" style="width:44px;height:44px;object-fit:contain">
+            <span style="font-size:11px;opacity:.65">우유거품</span>
+            <span style="position:absolute;top:6px;right:8px;font-size:11px;color:#8A5A3A">✓</span>
+          </div>
+        </div>
+        <div style="font-size:13px;opacity:.5;line-height:1.8;margin-top:20px">원본 선택 타일에는 선택 상태 표시가 없었습니다. 브라운 1px 테두리 + 5% 채움 + 우상단 체크로 상태를 명시했습니다.</div>
+        <div style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4;margin-top:34px">04 TAB BAR</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);align-items:start;margin-top:18px;padding:14px 0 8px;border-top:1px solid rgba(31,31,30,.1)">
+          <div style="display:grid;justify-items:center;gap:6px"><img src="assets/tab_cards.png" style="width:21px;height:21px;opacity:.28"></div>
+          <div style="display:grid;justify-items:center;gap:6px"><img src="assets/tab_main.png" style="width:21px;height:21px"><span style="font-size:10px;letter-spacing:.06em">카드</span></div>
+          <div style="display:grid;justify-items:center;gap:6px"><img src="assets/tab_settings.png" style="width:21px;height:21px;opacity:.28"></div>
+        </div>
+        <div style="font-size:13px;opacity:.5;line-height:1.8;margin-top:16px">아이콘만으로는 의미가 서지 않아 <b style="font-weight:500">활성 탭에만</b> 10px 라벨을 붙였습니다. 미니멀은 유지하고 모호함만 제거하는 절충입니다.</div>
+      </div>
+
+      <div style="border:1px solid rgba(31,31,30,.14);padding:30px">
+        <div style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4">05 BOTTOM SHEET</div>
+        <div style="margin-top:22px;border:1px solid rgba(31,31,30,.12);background-image:url('assets/paper.png');background-size:cover;padding:8px 20px 20px">
+          <div style="width:38px;height:3px;border-radius:2px;background:rgba(31,31,30,.2);margin:8px auto 14px"></div>
+          <div style="font-size:16px;padding:17px 2px;border-bottom:1px solid rgba(31,31,30,.12)">레시피 편집</div>
+          <div style="font-size:16px;padding:17px 2px;border-bottom:1px solid rgba(31,31,30,.12)">카드 이미지로 저장</div>
+          <div style="font-size:16px;padding:17px 2px;color:#8A5A3A">기록 삭제</div>
+        </div>
+        <div style="font-size:13px;opacity:.5;line-height:1.8;margin-top:18px">월 선택·편집·삭제는 모두 같은 시트 규격(종이 텍스처, 상단 핸들, 17px 행 패딩)을 씁니다.</div>
+      </div>
+
+      <div style="border:1px solid rgba(31,31,30,.14);padding:30px">
+        <div style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4">06 TAG ROW + TOAST + BUTTONS</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+          <span style="padding:7px 13px;border:1px solid #8A5A3A;background:rgba(31,31,30,.05);font-size:12px;border-radius:20px">전체</span>
+          <span style="padding:7px 13px;border:1px solid rgba(31,31,30,.2);font-size:12px;border-radius:20px">#아메리카노</span>
+          <span style="padding:7px 13px;border:1px solid rgba(31,31,30,.2);font-size:12px;border-radius:20px">#카페라떼</span>
+          <span style="padding:7px 13px;border:1px solid rgba(31,31,30,.2);font-size:12px;border-radius:20px">#핫초코</span>
+        </div>
+        <div style="margin-top:22px;background:#2A2A28;color:#F3F3F1;padding:15px 18px;font-size:13px">2월 28일 기록이 저장됐어요</div>
+        <div style="display:grid;gap:11px;margin-top:22px">
+          <div style="height:52px;background:#8A5A3A;color:#F5F3F0;display:grid;place-items:center;font-size:14px;letter-spacing:.1em">저장</div>
+          <div style="height:52px;border:1px solid rgba(31,31,30,.26);display:grid;place-items:center;font-size:14px;letter-spacing:.06em">공유하기</div>
+        </div>
+        <div style="font-size:13px;opacity:.5;line-height:1.8;margin-top:20px">주 버튼은 브라운 면, 보조 버튼은 헤어라인 테두리. 원본에 없던 유일한 면색 요소이며, 저장·다음처럼 흐름을 끝내는 동작에만 씁니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">06 · DARK</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">다크 테마</div>
+    <div style="font-size:14px;opacity:.5;margin-top:12px">원본 에셋에 다크 종이와 다크 커피링이 함께 있었습니다. 잉크와 종이를 뒤집고 경계선은 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">currentColor</span> 파생값을 그대로 쓰기 때문에 규칙이 한 벌로 유지됩니다. 액센트만 <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">#C08A5C</span>로 밝혀 대비를 확보합니다.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px">
+      <div style="background-image:url('assets/paper.png');background-size:cover;border:1px solid rgba(31,31,30,.14);padding:34px;display:grid;gap:20px;align-content:start">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.4">LIGHT</span>
+          <img src="assets/ring.png" style="width:52px;height:52px;object-fit:contain">
+        </div>
+        <div style="height:150px;border:1px solid rgba(31,31,30,.22);display:grid;place-items:center"><img decoding="async" src="assets/icedrinks/icelatte_ice.png" style="height:110px;object-fit:contain"></div>
+        <div style="font-size:14px">오후 3시의 리셋</div>
+      </div>
+      <div style="background-image:url('assets/paper_dark.png');background-size:cover;border:1px solid rgba(31,31,30,.14);padding:34px;display:grid;gap:20px;align-content:start;color:#EDEDEA">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.5">DARK</span>
+          <img src="assets/ring_dark.png" style="width:52px;height:52px;object-fit:contain">
+        </div>
+        <div style="height:150px;border:1px solid rgba(237,237,234,.22);display:grid;place-items:center"><img decoding="async" src="assets/icedrinks/icelatte_ice.png" style="height:110px;object-fit:contain"></div>
+        <div style="font-size:14px">오후 3시의 리셋</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">07 · DIAGNOSIS</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">원본에서 손본 것</div>
+    <div style="font-size:14px;opacity:.5;margin-top:12px">'타이포·간격·정렬만 정돈' 범위를 지켰습니다. 아래 여섯 가지 외에는 원본 구성과 화면 논리를 그대로 유지했습니다.</div>
+    <div style="border:1px solid rgba(31,31,30,.14);margin-top:34px">
+      <div style="display:grid;grid-template-columns:56px 1fr 1fr;gap:28px;padding:20px 30px;border-bottom:1px solid rgba(31,31,30,.14);font-size:11px;letter-spacing:.16em;font-family:'IBM Plex Mono',monospace;opacity:.45">
+        <span>#</span><span>원본</span><span>정돈</span>
+      </div>
+      <sc-for list="{{ diffs }}" as="d" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:56px 1fr 1fr;gap:28px;padding:24px 30px;border-bottom:1px solid rgba(31,31,30,.08);align-items:start">
+          <span style="font-size:12px;font-family:'IBM Plex Mono',monospace;opacity:.35">{{ d.n }}</span>
+          <span style="font-size:14px;opacity:.55;line-height:1.8">{{ d.before }}</span>
+          <span style="font-size:14px;line-height:1.8">{{ d.after }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:80px 80px 0">
+    <div style="font-size:12px;letter-spacing:.24em;font-family:'IBM Plex Mono',monospace;opacity:.45">08 · NEW</div>
+    <div style="font-size:34px;font-weight:300;margin-top:14px">2026에 더한 기능</div>
+    <div style="font-size:14px;opacity:.5;margin-top:12px">당시 기술로 못 넣었던 것과, 기록이 쌓였을 때만 가능한 것들. 모두 기존 화면 문법 안에서 동작합니다.</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:34px">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+        <div style="border:1px solid rgba(31,31,30,.14);padding:24px 22px;display:grid;gap:12px;align-content:start">
+          <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;opacity:.35">{{ f.n }}</span>
+          <span style="font-size:17px;line-height:1.5">{{ f.title }}</span>
+          <span style="font-size:13px;opacity:.5;line-height:1.8">{{ f.body }}</span>
+          <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;opacity:.4;padding-top:4px">{{ f.screen }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      colors: [
+        { name: '종이 · 라이트', hex: '#F3F3F1', bg: 'url("assets/paper.png") center/cover', use: '앱 전체 배경. 텍스처 이미지 그대로 사용' },
+        { name: '종이 · 다크', hex: '#2C2C2B', bg: 'url("assets/paper_dark.png") center/cover', use: '다크 테마 배경' },
+        { name: '잉크', hex: '#1F1F1E', bg: '#1F1F1E', use: '본문·제목. 보조 정보는 opacity로 파생' },
+        { name: '잉크 · 다크', hex: '#EDEDEA', bg: '#EDEDEA', use: '다크 테마 본문' },
+        { name: '필름 다크', hex: '#333333', bg: '#333333', use: '사진 기록 카드 채움 (원본 값 유지)' },
+        { name: '커피 브라운', hex: '#8A5A3A', bg: '#8A5A3A', use: '액센트. 주 버튼·선택 상태·차트' },
+        { name: '브라운 · 다크', hex: '#C08A5C', bg: '#C08A5C', use: '다크 테마 액센트' },
+        { name: '헤어라인', hex: 'currentColor 20%', bg: 'repeating-linear-gradient(90deg,#1F1F1E 0 1px,transparent 1px 7px)', use: '카드·구분선. 색을 새로 만들지 않음' }
+      ],
+      typeRows: [
+        { px: '22 / 300', size: '22px', sample: 'FEBRUARY', role: '월 헤더 (원본 month 22)', spec: 'JOST · LS .06em' },
+        { px: '20 / 400', size: '20px', sample: '오후 3시의 리셋', role: '기록 제목, 커스텀 태그', spec: 'GOWUN DODUM' },
+        { px: '16 / 400', size: '16px', sample: '오늘의 커피는?', role: '본문, 설정 행, 입력값', spec: 'GOWUN DODUM' },
+        { px: '14 / 400', size: '14px', sample: '카드 제목 · 라벨 · 버튼', role: '카드 제목, 라벨, 버튼', spec: 'MIXED' },
+        { px: '12 / 400', size: '12px', sample: '#아메리카노 · 2022.02.10', role: '태그, 날짜, 캡션', spec: 'PLEX MONO for 숫자' }
+      ],
+      specs: [
+        { k: '화면', v: '375 × 812 (원본 스크린샷 1125×2436 / @3x)' },
+        { k: '사이드 마진', v: '20px 고정 — 헤더·카드·탭바 모두 동일' },
+        { k: '카드', v: '335 × 190 · 16:9 · 헤어라인 1px · 라운드 없음' },
+        { k: '카드 내부', v: '패딩 13 / 15 / 12 · 3행 그리드(태그·일러스트·제목)' },
+        { k: '카드 간격', v: '16px' },
+        { k: '리스트 헤더', v: 'sticky · 종이 텍스처를 배경으로 깔아 스크롤 시 글자 겹침 제거' },
+        { k: '탭바 · 상태바', v: '83 / 44 — 스크롤 영역은 그 사이만 차지' }
+      ],
+      hotSet: [
+        { name: '아메리카노', file: 'hotame', img: 'assets/hotdrinks/hotame.png' },
+        { name: '카페라떼', file: 'hotlatte', img: 'assets/hotdrinks/hotlatte.png' },
+        { name: '카푸치노', file: 'hotcup', img: 'assets/hotdrinks/hotcup.png' },
+        { name: '카페모카', file: 'hotmocha', img: 'assets/hotdrinks/hotmocha.png' },
+        { name: '핫초코', file: 'hotcho', img: 'assets/hotdrinks/hotcho.png' },
+        { name: '카라멜크림', file: 'hotcrm', img: 'assets/hotdrinks/hotcrm.png' },
+        { name: '말차라떼', file: 'hotmat', img: 'assets/hotdrinks/hotmat.png' },
+        { name: '딸기라떼', file: 'hotstrw', img: 'assets/hotdrinks/hotstrw.png' }
+      ],
+      iceSet: [
+        { name: '아이스 아메리카노', file: 'iceame_ice', img: 'assets/icedrinks/iceame_ice.png' },
+        { name: '아이스 라떼', file: 'icelatte_ice', img: 'assets/icedrinks/icelatte_ice.png' },
+        { name: '아이스 카푸치노', file: 'icecup_ice', img: 'assets/icedrinks/icecup_ice.png' },
+        { name: '아이스 모카', file: 'icemocha_ice', img: 'assets/icedrinks/icemocha_ice.png' },
+        { name: '아이스 초코', file: 'icecho_ice', img: 'assets/icedrinks/icecho_ice.png' },
+        { name: '아이스 카라멜', file: 'icecrm_ice', img: 'assets/icedrinks/icecrm_ice.png' },
+        { name: '아이스 말차', file: 'icemat_ice', img: 'assets/icedrinks/icemat_ice.png' },
+        { name: '아이스 딸기', file: 'icestrw_ice', img: 'assets/icedrinks/icestrw_ice.png' }
+      ],
+      selSet: [
+        { name: '따뜻하게', group: '온도', img: 'assets/sel/hot.png' },
+        { name: '차갑게', group: '온도', img: 'assets/sel/ice.png' },
+        { name: '없음', group: '공통', img: 'assets/sel/none.png' },
+        { name: '우유', group: '우유', img: 'assets/sel/milk.png' },
+        { name: '우유거품', group: '우유', img: 'assets/sel/milkfoam.png' },
+        { name: '초코', group: '시럽', img: 'assets/sel/chojar.png' },
+        { name: '카라멜', group: '시럽', img: 'assets/sel/crmjar.png' },
+        { name: '모카', group: '시럽', img: 'assets/sel/mochajar.png' },
+        { name: '말차', group: '시럽', img: 'assets/sel/matjar.png' },
+        { name: '딸기', group: '시럽', img: 'assets/sel/strwjar.png' },
+        { name: '휘핑', group: '장식', img: 'assets/sel/whipper.png' },
+        { name: '얼음 추가', group: '장식', img: 'assets/sel/icecube.png' }
+      ],
+      diffs: [
+        { n: '01', before: '카드 안 제목이 하단 좌측에 12px 한 줄로만 놓여, 태그·날짜와 무게가 같았습니다.', after: '제목 14px 잉크 100%, 태그·날짜 12px 45%. 시각을 우하단에 두어 세 정보의 층을 분리했습니다.' },
+        { n: '02', before: '커스텀 탭 이름이 화면마다 달랐습니다 (장식 / 휘핑).', after: '온도 · 우유 · 시럽 · 장식으로 통일. 휘핑은 장식 그룹의 한 옵션이 됩니다.' },
+        { n: '03', before: '선택 타일이 빈 사각형이라 무엇이 선택됐는지 알 수 없었습니다.', after: '브라운 테두리 + 5% 채움 + 체크. 선택한 값은 상단 일러스트에 즉시 반영됩니다.' },
+        { n: '04', before: '메뉴를 고르는 단계가 없어 첫 진입 시 태그가 이미 정해져 있었습니다.', after: 'STEP 1 메뉴 · STEP 2 레시피로 두 단계 명시. 상단 진행 표시를 모노스페이스 캡션으로 넣었습니다.' },
+        { n: '05', before: '월 헤더가 스크롤과 함께 밀려 올라가 현재 달을 잃었습니다.', after: '헤더 sticky + 종이 텍스처 배경. 헤더를 눌러 연·월을 바꾸는 시트로 연결했습니다.' },
+        { n: '06', before: '탭바 아이콘 세 개의 의미가 모호했고, 설정은 아이콘과 우상단 톱니로 두 곳에 있었습니다.', after: '활성 탭에만 10px 라벨. 설정 진입점은 탭바 하나로 정리했습니다.' }
+      ],
+      features: [
+        { n: 'F1', title: '사진 촬영 → 배경 제거', body: '찍은 잔만 오려 카드에 넣습니다. 원본의 #333 카드가 사진 카드의 자리가 됩니다.', screen: 'SCREEN · camera' },
+        { n: 'F2', title: '유사 일러스트 추천', body: '오린 사진 대신 비슷한 잔 그림으로 바꿀 수 있습니다. 그리드에서 톤이 유지됩니다.', screen: 'SCREEN · camera' },
+        { n: 'F3', title: '월간 취향 리포트', body: '가장 많이 마신 조합, 메뉴 분포, 아이스 비율을 기록에서 계산합니다.', screen: 'SCREEN · report' },
+        { n: 'F4', title: '카페인 흐름', body: '일 400mg 기준선을 넘은 날만 브라운으로 칠합니다. 숫자는 기록에서 합산합니다.', screen: 'SCREEN · report' },
+        { n: 'F5', title: '위젯 원탭 기록', body: '자주 마신 조합 3개를 홈에 올려 탭 한 번으로 레시피까지 저장합니다.', screen: 'SCREEN · widget' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

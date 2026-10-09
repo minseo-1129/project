@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; }
+  a { color:#8A5A3A; text-decoration:none; }
+  a:hover { color:#6E4529; }
+  #cuppo *::-webkit-scrollbar { width:0; height:0; }
+  @keyframes cuppoIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  @keyframes cuppoUp { from { transform:translateY(100%); } to { transform:none; } }
+  @keyframes cuppoPulse { 0%,100% { opacity:.35; } 50% { opacity:.9; } }
+</style>
+</helmet>
+<div id="cuppo" style="width:375px;height:812px;position:relative;overflow:hidden;background-image:{{ pageBg }};background-size:cover;background-position:center;color:{{ ink }};font-family:'Jost','Gowun Dodum','Apple SD Gothic Neo',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;text-wrap:pretty">
+
+  <sc-if value="{{ chrome }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;top:0;left:0;right:0;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:14px;font-weight:500;letter-spacing:.01em;z-index:30;color:{{ statusInk }}">
+      <span>9:41</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <div style="display:flex;align-items:flex-end;gap:2px;height:10px">
+          <div style="width:3px;height:4px;background:currentColor;border-radius:1px"></div>
+          <div style="width:3px;height:6px;background:currentColor;border-radius:1px"></div>
+          <div style="width:3px;height:8px;background:currentColor;border-radius:1px"></div>
+          <div style="width:3px;height:10px;background:currentColor;border-radius:1px"></div>
+        </div>
+        <div style="width:23px;height:11px;border:1px solid currentColor;border-radius:3px;padding:1.5px;box-sizing:border-box">
+          <div style="width:80%;height:100%;background:currentColor;border-radius:1px"></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isLaunch }}">
+    <div style="position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:0">
+      <img src="assets/appicon.png" style="width:92px;height:92px;border-radius:20px;object-fit:cover">
+      <div style="font-size:26px;letter-spacing:.34em;font-weight:300;margin:26px 0 0 12px">CUPPO</div>
+      <div style="font-size:12px;letter-spacing:.16em;opacity:.4;margin-top:8px;font-family:'IBM Plex Mono',monospace">COFFEE, RECORDED</div>
+      <img src="assets/loading.gif" style="width:110px;margin-top:46px;mix-blend-mode:multiply;opacity:.8">
+    </div>
+    <div style="position:absolute;bottom:44px;left:0;right:0;text-align:center;font-size:12px;opacity:.3;font-family:'IBM Plex Mono',monospace">2023 · PERSONAL PROJECT</div>
+  </sc-if>
+
+  <sc-if value="{{ isOnboard }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;display:grid;grid-template-rows:1fr auto;padding:0 28px 40px">
+      <div style="display:grid;place-items:center;align-content:center;gap:0;animation:cuppoIn .4s ease both">
+        <img decoding="async" src="{{ ob.img }}" style="width:210px;height:210px;object-fit:contain">
+        <div style="font-size:22px;line-height:1.5;text-align:center;margin-top:34px">{{ ob.title }}</div>
+        <div style="font-size:14px;line-height:1.8;text-align:center;opacity:.5;margin-top:14px;max-width:250px">{{ ob.body }}</div>
+      </div>
+      <div style="display:grid;gap:26px;justify-items:center">
+        <div style="display:flex;gap:7px">
+          <div style="width:6px;height:6px;border-radius:50%;background:currentColor;opacity:{{ ob.d0 }}"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:currentColor;opacity:{{ ob.d1 }}"></div>
+          <div style="width:6px;height:6px;border-radius:50%;background:currentColor;opacity:{{ ob.d2 }}"></div>
+        </div>
+        <button onClick="{{ ob.next }}" style="all:unset;cursor:pointer;width:100%;height:52px;border:1px solid color-mix(in srgb, currentColor 30%, transparent);display:grid;place-items:center;font-size:14px;letter-spacing:.1em">{{ ob.cta }}</button>
+        <button onClick="{{ navFeed }}" style="all:unset;cursor:pointer;font-size:12px;opacity:.35;letter-spacing:.04em">건너뛰기</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isEmpty }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:83px;display:grid;grid-template-rows:auto 1fr;padding:0 20px">
+      <div style="padding:22px 0 0">
+        <div style="font-size:12px;letter-spacing:.14em;opacity:.4;font-family:'IBM Plex Mono',monospace">2022</div>
+        <div style="font-size:22px;letter-spacing:.06em;font-weight:300">FEBRUARY</div>
+      </div>
+      <div style="display:grid;place-items:center;align-content:center;gap:0;padding-bottom:40px">
+        <div style="position:relative;width:170px;height:170px;display:grid;place-items:center">
+          <img decoding="async" src="{{ ringImg }}" style="position:absolute;inset:0;width:170px;height:170px;object-fit:contain;opacity:.5">
+          <div style="font-size:12px;opacity:.35;font-family:'IBM Plex Mono',monospace">0 CUPS</div>
+        </div>
+        <div style="font-size:16px;margin-top:30px">아직 이번 달 기록이 없어요</div>
+        <div style="font-size:14px;opacity:.45;margin-top:10px">오늘 마신 한 잔부터 남겨볼까요</div>
+        <button onClick="{{ navMenu }}" style="all:unset;cursor:pointer;margin-top:34px;padding:0 30px;height:48px;border:1px solid color-mix(in srgb, currentColor 30%, transparent);display:grid;place-items:center;font-size:14px;letter-spacing:.08em">첫 기록 남기기</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isFeed }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:83px;overflow:auto">
+      <div style="position:sticky;top:0;z-index:10;background-image:{{ pageBg }};background-size:cover;padding:20px 20px 14px;display:flex;align-items:flex-end;justify-content:space-between">
+        <button onClick="{{ openMonth }}" style="all:unset;cursor:pointer;text-align:left">
+          <div style="font-size:12px;letter-spacing:.14em;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ monthYear }}</div>
+          <div style="font-size:22px;letter-spacing:.06em;font-weight:300;display:flex;align-items:center;gap:8px">{{ monthName }}<span style="font-size:11px;opacity:.35;transform:translateY(1px)">▾</span></div>
+        </button>
+        <div style="display:flex;align-items:center;gap:16px;padding-bottom:5px">
+          <button onClick="{{ navSearch }}" style="all:unset;cursor:pointer;width:22px;height:22px;display:grid;place-items:center">
+            <div style="width:13px;height:13px;border:1.4px solid currentColor;border-radius:50%;position:relative;opacity:.6">
+              <div style="position:absolute;width:6px;height:1.4px;background:currentColor;bottom:-1px;right:-6px;transform:rotate(45deg);transform-origin:left center"></div>
+            </div>
+          </button>
+          <button onClick="{{ toggleView }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:1fr 1fr;gap:2px;width:16px;opacity:.6">
+            <div style="height:7px;background:currentColor"></div><div style="height:7px;background:currentColor"></div>
+            <div style="height:7px;background:currentColor"></div><div style="height:7px;background:currentColor"></div>
+          </button>
+        </div>
+      </div>
+      <div style="display:grid;gap:16px;padding:2px 20px 28px">
+        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="3">
+          <button onClick="{{ c.open }}" style="all:unset;cursor:pointer;display:block;text-align:left">
+            <div style="height:190px;border:1px solid color-mix(in srgb, currentColor 22%, transparent);background:{{ c.bg }};color:{{ c.fg }};display:grid;grid-template-rows:auto 1fr auto;padding:13px 15px 12px;box-sizing:border-box;animation:cuppoIn .35s ease both">
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-size:12px;letter-spacing:.02em">{{ c.tag }}</span>
+                <span style="font-size:12px;opacity:.45;font-family:'IBM Plex Mono',monospace;letter-spacing:.02em">{{ c.date }}</span>
+              </div>
+              <div style="display:grid;place-items:center;min-height:0">
+                <sc-if value="{{ c.isPhoto }}">
+                  <div style="width:120px;height:104px;display:grid;place-items:center;background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.16) 0 5px, transparent 5px 11px);border:1px dashed rgba(255,255,255,.35)">
+                    <span style="font-size:10px;letter-spacing:.12em;font-family:'IBM Plex Mono',monospace;opacity:.75">PHOTO</span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ c.isDrawn }}" hint-placeholder-val="{{ true }}">
+                  <img decoding="async" src="{{ c.img }}" style="height:108px;object-fit:contain">
+                </sc-if>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-size:14px">{{ c.title }}</span>
+                <span style="font-size:11px;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ c.time }}</span>
+              </div>
+            </div>
+          </button>
+        </sc-for>
+        <div style="text-align:center;font-size:11px;opacity:.3;letter-spacing:.12em;font-family:'IBM Plex Mono',monospace;padding:8px 0 4px">{{ monthCount }}</div>
+      </div>
+    </div>
+    <button onClick="{{ navMenu }}" style="all:unset;cursor:pointer;position:absolute;right:20px;bottom:99px;width:52px;height:52px;border-radius:50%;background:{{ accent }};color:#F5F3F0;display:grid;place-items:center;z-index:15;box-shadow:0 6px 18px rgba(0,0,0,.14)">
+      <span style="position:relative;display:block;width:18px;height:18px">
+        <span style="position:absolute;top:50%;left:0;width:18px;height:1.5px;margin-top:-0.75px;background:currentColor"></span>
+        <span style="position:absolute;left:50%;top:0;height:18px;width:1.5px;margin-left:-0.75px;background:currentColor"></span>
+      </span>
+    </button>
+  </sc-if>
+
+  <sc-if value="{{ isGrid }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:83px;overflow:auto">
+      <div style="position:sticky;top:0;z-index:10;background-image:{{ pageBg }};background-size:cover;padding:20px 20px 14px;display:flex;align-items:flex-end;justify-content:space-between">
+        <button onClick="{{ openMonth }}" style="all:unset;cursor:pointer;text-align:left">
+          <div style="font-size:12px;letter-spacing:.14em;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ monthYear }}</div>
+          <div style="font-size:22px;letter-spacing:.06em;font-weight:300;display:flex;align-items:center;gap:8px">{{ monthName }}<span style="font-size:11px;opacity:.35;transform:translateY(1px)">▾</span></div>
+        </button>
+        <button onClick="{{ toggleView }}" style="all:unset;cursor:pointer;display:grid;gap:3px;width:16px;padding-bottom:6px">
+          <div style="height:2px;background:currentColor"></div>
+          <div style="height:2px;background:currentColor"></div>
+          <div style="height:2px;background:currentColor"></div>
+        </button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;padding:2px 20px 28px;background:color-mix(in srgb, currentColor 12%, transparent)">
+        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="9">
+          <button onClick="{{ c.open }}" style="all:unset;cursor:pointer;aspect-ratio:1;background:{{ c.gridBg }};display:grid;place-items:center;position:relative">
+            <img decoding="async" src="{{ c.img }}" style="width:76%;height:76%;object-fit:contain;opacity:{{ c.gridOp }}">
+            <span style="position:absolute;bottom:6px;left:7px;font-size:9px;letter-spacing:.06em;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ c.day }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCal }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:83px;overflow:auto;padding:0 20px">
+      <div style="padding:20px 0 18px;display:flex;align-items:flex-end;justify-content:space-between">
+        <button onClick="{{ openMonth }}" style="all:unset;cursor:pointer;text-align:left">
+          <div style="font-size:12px;letter-spacing:.14em;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ monthYear }}</div>
+          <div style="font-size:22px;letter-spacing:.06em;font-weight:300;display:flex;align-items:center;gap:8px">{{ monthName }}<span style="font-size:11px;opacity:.35;transform:translateY(1px)">▾</span></div>
+        </button>
+        <button onClick="{{ navReport }}" style="all:unset;cursor:pointer;font-size:12px;letter-spacing:.06em;opacity:.55;border-bottom:1px solid color-mix(in srgb, currentColor 35%, transparent);padding-bottom:3px">이 달의 취향</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:0;font-size:10px;opacity:.35;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-align:center;padding-bottom:8px">
+        <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">
+        <sc-for list="{{ days }}" as="d" hint-placeholder-count="35">
+          <button onClick="{{ d.open }}" style="all:unset;cursor:pointer;aspect-ratio:.86;display:grid;place-items:center;position:relative;opacity:{{ d.op }}">
+            <sc-if value="{{ d.has }}"><img decoding="async" src="{{ d.img }}" style="width:88%;height:88%;object-fit:contain"></sc-if>
+            <span style="position:absolute;top:2px;left:4px;font-size:9px;font-family:'IBM Plex Mono',monospace;opacity:.5">{{ d.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="margin-top:26px;padding-top:18px;border-top:1px solid color-mix(in srgb, currentColor 18%, transparent);display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-size:14px">{{ calSummary }}</span>
+        <span style="font-size:12px;opacity:.45;letter-spacing:.02em">{{ calCaffeine }}</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSearch }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;display:grid;grid-template-rows:auto auto 1fr">
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 20px 10px">
+        <button onClick="{{ navFeed }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300;width:22px">←</button>
+        <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="메뉴 · 제목 · 메모 검색" style="all:unset;flex:1;font-family:inherit;font-size:16px;border-bottom:1px solid color-mix(in srgb, currentColor 25%, transparent);padding:6px 2px;color:inherit">
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;padding:14px 20px 16px">
+        <sc-for list="{{ tags }}" as="t" hint-placeholder-count="8">
+          <button onClick="{{ t.pick }}" style="all:unset;cursor:pointer;padding:7px 13px;border:1px solid {{ t.bd }};background:{{ t.bg }};font-size:12px;letter-spacing:.02em;border-radius:20px">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div style="overflow:auto;padding:4px 20px 28px">
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="4">
+          <button onClick="{{ r.open }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent);text-align:left;width:100%">
+            <img decoding="async" src="{{ r.img }}" style="width:56px;height:56px;object-fit:contain">
+            <div style="display:grid;gap:5px;min-width:0">
+              <span style="font-size:14px">{{ r.title }}</span>
+              <span style="font-size:12px;opacity:.45">{{ r.sub }}</span>
+            </div>
+            <span style="font-size:11px;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ r.date }}</span>
+          </button>
+        </sc-for>
+        <div style="text-align:center;font-size:11px;opacity:.3;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;padding:18px 0">{{ resultCount }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMenu }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;display:grid;grid-template-rows:auto 1fr auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 22px 0">
+        <button onClick="{{ navFeed }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300">←</button>
+        <span style="font-size:11px;letter-spacing:.14em;opacity:.35;font-family:'IBM Plex Mono',monospace">STEP 1 / 2</span>
+      </div>
+      <div style="display:grid;place-items:center;align-content:center;gap:0;padding:0 20px">
+        <div style="font-size:16px">오늘의 커피는?</div>
+        <div style="font-size:20px;opacity:.4;margin-top:8px">{{ draftTag }}</div>
+        <img decoding="async" src="{{ draftImg }}" style="width:210px;height:210px;object-fit:contain;margin-top:26px">
+      </div>
+      <div style="padding:0 20px 34px">
+        <div style="font-size:12px;opacity:.4;letter-spacing:.04em;padding-bottom:12px">메뉴</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+          <sc-for list="{{ menuTiles }}" as="m" hint-placeholder-count="8">
+            <button onClick="{{ m.pick }}" style="all:unset;cursor:pointer;display:grid;justify-items:center;gap:5px;padding:9px 2px 8px;border:1px solid {{ m.bd }};background:{{ m.bg }}">
+              <img decoding="async" src="{{ m.img }}" style="width:40px;height:40px;object-fit:contain">
+              <span style="font-size:10px;text-align:center;line-height:1.3">{{ m.name }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <button onClick="{{ navCustom }}" style="all:unset;cursor:pointer;margin-top:18px;width:100%;height:52px;background:{{ accent }};color:#F5F3F0;display:grid;place-items:center;font-size:14px;letter-spacing:.1em">다음</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCustom }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;display:grid;grid-template-rows:auto 1fr auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 22px 0">
+        <button onClick="{{ navMenu }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300">←</button>
+        <button onClick="{{ navSave }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300;color:{{ accent }}">✓</button>
+      </div>
+      <div style="display:grid;place-items:center;align-content:center;gap:0">
+        <div style="font-size:16px">오늘의 커피는?</div>
+        <div style="font-size:20px;opacity:.4;margin-top:8px">{{ draftTag }}</div>
+        <img decoding="async" src="{{ draftImg }}" style="width:216px;height:216px;object-fit:contain;margin-top:20px"></div>
+      <div style="padding:0 0 30px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);padding:0 20px 16px">
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+            <button onClick="{{ g.pick }}" style="all:unset;cursor:pointer;text-align:center;font-size:14px;padding-bottom:7px;opacity:{{ g.op }};border-bottom:1.5px solid {{ g.bd }}">{{ g.name }}</button>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:6px 20px 0">
+          <sc-for list="{{ options }}" as="o" hint-placeholder-count="3">
+            <button onClick="{{ o.pick }}" style="all:unset;cursor:pointer;height:86px;border:1px solid {{ o.bd }};background:{{ o.bg }};display:grid;place-items:center;align-content:center;gap:4px;position:relative">
+              <img decoding="async" src="{{ o.img }}" style="width:44px;height:44px;object-fit:contain">
+              <span style="font-size:11px;opacity:.65">{{ o.name }}</span>
+              <sc-if value="{{ o.on }}"><span style="position:absolute;top:6px;right:8px;font-size:11px;color:{{ accent }}">✓</span></sc-if>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSave }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;overflow:auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 22px 18px">
+        <button onClick="{{ navCustom }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300">←</button>
+        <span style="font-size:11px;letter-spacing:.14em;opacity:.35;font-family:'IBM Plex Mono',monospace">STEP 2 / 2</span>
+      </div>
+      <div style="padding:0 20px 30px;display:grid;gap:26px">
+        <div style="height:190px;border:1px solid color-mix(in srgb, currentColor 22%, transparent);display:grid;grid-template-rows:auto 1fr auto;padding:13px 15px 12px;box-sizing:border-box">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font-size:12px">{{ draftTag }}</span>
+            <span style="font-size:12px;opacity:.45;font-family:'IBM Plex Mono',monospace">{{ today }}</span>
+          </div>
+          <div style="display:grid;place-items:center;min-height:0"><img decoding="async" src="{{ draftImg }}" style="height:108px;object-fit:contain"></div>
+          <div style="font-size:14px;opacity:.5">{{ draftTitlePreview }}</div>
+        </div>
+        <div style="display:grid;gap:8px">
+          <span style="font-size:12px;opacity:.4;letter-spacing:.04em">제목</span>
+          <input value="{{ draftTitle }}" onChange="{{ onTitle }}" placeholder="한 줄로 남기기" style="all:unset;font-family:inherit;font-size:16px;border-bottom:1px solid color-mix(in srgb, currentColor 22%, transparent);padding:6px 2px;color:inherit">
+        </div>
+        <div style="display:grid;gap:8px">
+          <span style="font-size:12px;opacity:.4;letter-spacing:.04em">메모</span>
+          <textarea value="{{ draftMemo }}" onChange="{{ onMemo }}" placeholder="맛, 장소, 기분" rows="3" style="all:unset;font-family:inherit;font-size:14px;line-height:1.7;border-bottom:1px solid color-mix(in srgb, currentColor 22%, transparent);padding:6px 2px;color:inherit;resize:none"></textarea>
+        </div>
+        <button onClick="{{ navCamera }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent);border-bottom:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:14px">사진으로 남기기</span>
+          <span style="display:flex;align-items:center;gap:9px">
+            <span style="font-size:10px;letter-spacing:.06em;padding:4px 8px;border:1px solid {{ accentSoft }};color:{{ accent }}">배경 자동 제거</span>
+            <span style="font-size:15px;opacity:.3">›</span>
+          </span>
+        </button>
+        <button onClick="{{ saveRecord }}" style="all:unset;cursor:pointer;height:52px;background:{{ accent }};color:#F5F3F0;display:grid;place-items:center;font-size:14px;letter-spacing:.1em">저장</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isCamera }}">
+    <div style="position:absolute;inset:0;background:#1B1B1A;color:#F1F0EC;display:grid;grid-template-rows:auto 1fr auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:58px 22px 0">
+        <button onClick="{{ navSave }}" style="all:unset;cursor:pointer;font-size:18px;font-weight:300">✕</button>
+        <span style="font-size:11px;letter-spacing:.14em;opacity:.5;font-family:'IBM Plex Mono',monospace">{{ camLabel }}</span>
+      </div>
+      <div style="display:grid;place-items:center;align-content:center;gap:0">
+        <sc-if value="{{ camAim }}">
+          <div style="width:250px;height:250px;position:relative;display:grid;place-items:center">
+            <div style="position:absolute;inset:0;border:1px solid rgba(255,255,255,.18)"></div>
+            <div style="position:absolute;top:-1px;left:-1px;width:26px;height:26px;border-top:2px solid #F1F0EC;border-left:2px solid #F1F0EC"></div>
+            <div style="position:absolute;top:-1px;right:-1px;width:26px;height:26px;border-top:2px solid #F1F0EC;border-right:2px solid #F1F0EC"></div>
+            <div style="position:absolute;bottom:-1px;left:-1px;width:26px;height:26px;border-bottom:2px solid #F1F0EC;border-left:2px solid #F1F0EC"></div>
+            <div style="position:absolute;bottom:-1px;right:-1px;width:26px;height:26px;border-bottom:2px solid #F1F0EC;border-right:2px solid #F1F0EC"></div>
+            <div style="width:100%;height:100%;background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 6px, transparent 6px 13px);display:grid;place-items:center">
+              <span style="font-size:10px;letter-spacing:.14em;font-family:'IBM Plex Mono',monospace;opacity:.45">CAMERA FEED</span>
+            </div>
+          </div>
+          <div style="font-size:13px;opacity:.6;margin-top:26px">컵이 사각형 안에 들어오게 맞춰주세요</div>
+        </sc-if>
+        <sc-if value="{{ camWork }}">
+          <img src="assets/loading.gif" style="width:120px;filter:invert(1);opacity:.75">
+          <div style="font-size:14px;margin-top:24px">배경을 지우고 있어요</div>
+          <div style="font-size:12px;opacity:.45;margin-top:9px">잔만 남기는 중 · 3초</div>
+        </sc-if>
+        <sc-if value="{{ camDone }}">
+          <div style="width:210px;height:210px;background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.12) 0 5px, transparent 5px 12px);border:1px dashed rgba(255,255,255,.3);display:grid;place-items:center">
+            <span style="font-size:10px;letter-spacing:.12em;font-family:'IBM Plex Mono',monospace;opacity:.6">CUT-OUT PHOTO</span>
+          </div>
+          <div style="font-size:14px;margin-top:26px">배경을 지웠어요</div>
+          <div style="font-size:12px;opacity:.5;margin-top:8px">비슷한 일러스트로 바꿀 수도 있어요</div>
+          <div style="display:flex;gap:10px;margin-top:18px">
+            <sc-for list="{{ camSuggest }}" as="s" hint-placeholder-count="3">
+              <button onClick="{{ s.pick }}" style="all:unset;cursor:pointer;width:62px;height:62px;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;background:rgba(255,255,255,.9)">
+                <img decoding="async" src="{{ s.img }}" style="width:80%;height:80%;object-fit:contain">
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <div style="padding:0 24px 40px;display:grid;justify-items:center;gap:20px">
+        <sc-if value="{{ camAim }}">
+          <button onClick="{{ shoot }}" style="all:unset;cursor:pointer;width:66px;height:66px;border-radius:50%;border:2px solid rgba(255,255,255,.85);display:grid;place-items:center">
+            <div style="width:52px;height:52px;border-radius:50%;background:#F1F0EC"></div>
+          </button>
+        </sc-if>
+        <sc-if value="{{ camDone }}">
+          <button onClick="{{ usePhoto }}" style="all:unset;cursor:pointer;width:100%;height:52px;background:#F1F0EC;color:#1B1B1A;display:grid;place-items:center;font-size:14px;letter-spacing:.1em">이 컷으로 기록</button>
+          <button onClick="{{ retake }}" style="all:unset;cursor:pointer;font-size:12px;opacity:.5">다시 찍기</button>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isDetail }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;overflow:auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 18px">
+        <button onClick="{{ navBackFeed }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300;padding:0 2px">←</button>
+        <button onClick="{{ openSheet }}" style="all:unset;cursor:pointer;width:24px;height:24px;display:grid;place-items:center">
+          <img src="assets/menu.png" style="width:18px;height:18px;object-fit:contain;filter:{{ iconFilter }};opacity:.6">
+        </button>
+      </div>
+      <div style="padding:0 20px 34px;display:grid;gap:0">
+        <div style="height:200px;border:1px solid color-mix(in srgb, currentColor 22%, transparent);background:{{ rec.bg }};color:{{ rec.fg }};display:grid;place-items:center;box-sizing:border-box">
+          <sc-if value="{{ rec.isPhoto }}">
+            <div style="width:150px;height:130px;background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.16) 0 5px, transparent 5px 11px);border:1px dashed rgba(255,255,255,.32);display:grid;place-items:center">
+              <span style="font-size:10px;letter-spacing:.12em;font-family:'IBM Plex Mono',monospace;opacity:.7">PHOTO</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ rec.isDrawn }}" hint-placeholder-val="{{ true }}">
+            <img decoding="async" src="{{ rec.img }}" style="height:150px;object-fit:contain">
+          </sc-if>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 0">
+          <span style="font-size:12px">{{ rec.tag }}</span>
+          <span style="font-size:12px;opacity:.45;font-family:'IBM Plex Mono',monospace">{{ rec.dateFull }}</span>
+        </div>
+        <div style="font-size:20px;padding:14px 0 0;line-height:1.5">{{ rec.title }}</div>
+        <div style="font-size:14px;line-height:1.9;opacity:.6;padding:12px 0 0">{{ rec.memo }}</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:26px;padding-top:20px;border-top:1px solid color-mix(in srgb, currentColor 16%, transparent)">
+          <sc-for list="{{ rec.recipe }}" as="p" hint-placeholder-count="4">
+            <div style="display:grid;justify-items:center;gap:7px">
+              <img decoding="async" src="{{ p.img }}" style="width:34px;height:34px;object-fit:contain">
+              <span style="font-size:10px;opacity:.35;letter-spacing:.04em">{{ p.label }}</span>
+              <span style="font-size:12px">{{ p.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:18px;border-top:1px solid color-mix(in srgb, currentColor 16%, transparent);font-size:12px;opacity:.5">
+          <span>카페인 {{ rec.caffeine }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace">{{ rec.time }}</span>
+        </div>
+        <button onClick="{{ navShare }}" style="all:unset;cursor:pointer;margin-top:26px;height:50px;border:1px solid color-mix(in srgb, currentColor 28%, transparent);display:grid;place-items:center;font-size:14px;letter-spacing:.06em">카드 이미지로 저장</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isShare }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;display:grid;grid-template-rows:auto 1fr auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 22px 0">
+        <button onClick="{{ navDetailBack }}" style="all:unset;cursor:pointer;font-size:18px;font-weight:300">✕</button>
+        <span style="font-size:11px;letter-spacing:.14em;opacity:.35;font-family:'IBM Plex Mono',monospace">4 : 5</span>
+      </div>
+      <div style="display:grid;place-items:center;align-content:center">
+        <div style="width:264px;height:330px;background:{{ shareBg }};border:1px solid color-mix(in srgb, currentColor 20%, transparent);display:grid;grid-template-rows:auto 1fr auto;padding:20px;box-sizing:border-box">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:11px">
+            <span>{{ rec.tag }}</span>
+            <span style="opacity:.45;font-family:'IBM Plex Mono',monospace">{{ rec.dateFull }}</span>
+          </div>
+          <div style="display:grid;place-items:center;min-height:0"><img decoding="async" src="{{ rec.img }}" style="height:160px;object-fit:contain"></div>
+          <div style="display:grid;gap:12px">
+            <span style="font-size:15px">{{ rec.title }}</span>
+            <span style="font-size:10px;letter-spacing:.3em;opacity:.35;font-family:'Jost',sans-serif">CUPPO</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 20px 36px;display:grid;gap:11px">
+        <button onClick="{{ toastSaved }}" style="all:unset;cursor:pointer;height:52px;background:{{ accent }};color:#F5F3F0;display:grid;place-items:center;font-size:14px;letter-spacing:.1em">이미지 저장</button>
+        <button onClick="{{ toastShared }}" style="all:unset;cursor:pointer;height:52px;border:1px solid color-mix(in srgb, currentColor 26%, transparent);display:grid;place-items:center;font-size:14px;letter-spacing:.06em">공유하기</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isReport }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;overflow:auto">
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 20px 4px">
+        <button onClick="{{ navCal }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300">←</button>
+        <span style="font-size:14px">2월의 취향</span>
+      </div>
+      <div style="padding:22px 20px 40px;display:grid;gap:32px">
+        <div style="display:grid;justify-items:center;gap:0">
+          <span style="font-size:12px;opacity:.4;letter-spacing:.04em">가장 많이 마신 조합</span>
+          <img decoding="async" src="{{ top.img }}" style="width:150px;height:150px;object-fit:contain;margin-top:12px">
+          <span style="font-size:20px;margin-top:12px">{{ top.name }}</span>
+          <span style="font-size:12px;opacity:.5;margin-top:8px">{{ top.detail }}</span>
+        </div>
+        <div style="display:grid;gap:13px">
+          <span style="font-size:12px;opacity:.4;letter-spacing:.04em">메뉴 분포</span>
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:76px 1fr 28px;gap:11px;align-items:center">
+              <span style="font-size:12px;opacity:.7">{{ b.name }}</span>
+              <div style="height:5px;background:color-mix(in srgb, currentColor 10%, transparent);position:relative">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:{{ b.pct }};background:{{ accent }}"></div>
+              </div>
+              <span style="font-size:11px;opacity:.45;text-align:right;font-family:'IBM Plex Mono',monospace">{{ b.count }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;gap:13px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font-size:12px;opacity:.4;letter-spacing:.04em">카페인 흐름</span>
+            <span style="font-size:11px;opacity:.35">{{ cafNote }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:7px;align-items:end;height:104px">
+            <sc-for list="{{ caf }}" as="c" hint-placeholder-count="7">
+              <div style="display:grid;align-content:end;justify-items:center;gap:7px;height:100%">
+                <span style="font-size:9px;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ c.mg }}</span>
+                <div style="width:100%;height:{{ c.h }};background:{{ c.fill }}"></div>
+                <span style="font-size:9px;opacity:.35;font-family:'IBM Plex Mono',monospace">{{ c.day }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <span style="font-size:11px;opacity:.35;line-height:1.7">{{ cafHint }}</span>
+        </div>
+        <div style="display:grid;gap:11px;padding-top:22px;border-top:1px solid color-mix(in srgb, currentColor 16%, transparent)">
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span style="opacity:.5">이번 달</span><span>{{ stat.cups }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span style="opacity:.5">아이스 비율</span><span>{{ stat.ice }}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px"><span style="opacity:.5">가장 자주 마신 시간</span><span>{{ stat.hour }}</span></div>
+        </div>
+        <span style="font-size:10px;opacity:.28;letter-spacing:.08em;font-family:'IBM Plex Mono',monospace">DEMO DATA · 12 RECORDS</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSettings }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:83px;overflow:auto">
+      <div style="padding:22px 20px 26px">
+        <div style="font-size:12px;letter-spacing:.14em;opacity:.4;font-family:'IBM Plex Mono',monospace">SETTINGS</div>
+        <div style="font-size:22px;letter-spacing:.04em;font-weight:300">설정</div>
+      </div>
+      <div style="padding:0 20px 30px;display:grid;gap:0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:16px">다크 모드</span>
+          <button onClick="{{ toggleTheme }}" style="all:unset;cursor:pointer;width:46px;height:26px;border-radius:14px;background:{{ switchBg }};position:relative;transition:background .2s">
+            <div style="position:absolute;top:3px;left:{{ switchX }};width:20px;height:20px;border-radius:50%;background:#F5F3F0;transition:left .2s"></div>
+          </button>
+        </div>
+        <button onClick="{{ navWidget }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:16px">위젯 · 원탭 기록</span><span style="font-size:15px;opacity:.3">›</span>
+        </button>
+        <button onClick="{{ navReport }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:16px">월간 취향 리포트</span><span style="font-size:15px;opacity:.3">›</span>
+        </button>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:16px">기록 알림</span>
+          <span style="font-size:14px;opacity:.45;font-family:'IBM Plex Mono',monospace">20:00</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:16px">카페인 목표</span>
+          <span style="font-size:14px;opacity:.45;font-family:'IBM Plex Mono',monospace">400mg / 일</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:17px 0;border-top:1px solid color-mix(in srgb, currentColor 14%, transparent);border-bottom:1px solid color-mix(in srgb, currentColor 14%, transparent)">
+          <span style="font-size:16px">기록 내보내기</span>
+          <span style="font-size:12px;opacity:.4">CSV · 이미지</span>
+        </div>
+        <div style="display:grid;justify-items:center;gap:9px;padding:44px 0 10px">
+          <img src="assets/appicon.png" style="width:52px;height:52px;border-radius:12px">
+          <span style="font-size:11px;letter-spacing:.24em;opacity:.4">CUPPO</span>
+          <span style="font-size:10px;opacity:.28;font-family:'IBM Plex Mono',monospace">v1.0 · 2023</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isWidget }}">
+    <div style="position:absolute;left:0;right:0;top:44px;bottom:0;overflow:auto">
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 20px 4px">
+        <button onClick="{{ navSettings }}" style="all:unset;cursor:pointer;font-size:19px;font-weight:300">←</button>
+        <span style="font-size:14px">위젯 · 원탭 기록</span>
+      </div>
+      <div style="padding:24px 20px 40px;display:grid;gap:26px">
+        <div style="border:1px solid color-mix(in srgb, currentColor 18%, transparent);border-radius:22px;padding:17px 19px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center">
+          <div style="display:grid;gap:7px">
+            <span style="font-size:11px;opacity:.4;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace">TODAY</span>
+            <span style="font-size:16px">오늘의 커피</span>
+            <span style="font-size:11px;opacity:.45">한 번 눌러 바로 기록</span>
+          </div>
+          <div style="display:flex;gap:7px">
+            <sc-for list="{{ quick }}" as="q" hint-placeholder-count="3">
+              <button onClick="{{ q.tap }}" style="all:unset;cursor:pointer;width:54px;height:66px;border:1px solid color-mix(in srgb, currentColor 16%, transparent);border-radius:12px;display:grid;place-items:center;align-content:center;gap:2px">
+                <img decoding="async" src="{{ q.img }}" style="width:34px;height:34px;object-fit:contain">
+                <span style="font-size:8px;opacity:.5;text-align:center;line-height:1.2">{{ q.name }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="font-size:13px;line-height:1.9;opacity:.55">자주 마신 조합 3개를 위젯에 올려둡니다. 탭 한 번으로 온도·우유·시럽까지 그대로 기록됩니다.</div>
+        <div style="display:grid;gap:0">
+          <span style="font-size:12px;opacity:.4;letter-spacing:.04em;padding-bottom:6px">위젯에 올릴 조합</span>
+          <sc-for list="{{ quick }}" as="q" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-top:1px solid color-mix(in srgb, currentColor 12%, transparent)">
+              <img decoding="async" src="{{ q.img }}" style="width:44px;height:44px;object-fit:contain">
+              <div style="display:grid;gap:4px">
+                <span style="font-size:14px">{{ q.name }}</span>
+                <span style="font-size:11px;opacity:.45">{{ q.sub }}</span>
+              </div>
+              <span style="font-size:11px;opacity:.4;font-family:'IBM Plex Mono',monospace">{{ q.count }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tabs }}">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:83px;display:grid;grid-template-columns:repeat(3,1fr);align-items:start;padding-top:13px;z-index:20">
+      <button onClick="{{ navCal }}" style="all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;padding:6px 0;text-align:center">
+        <img src="assets/tab_cards.png" style="width:21px;height:21px;object-fit:contain;filter:{{ iconFilter }};opacity:{{ opCal }}">
+        <sc-if value="{{ isCal }}"><span style="font-size:10px;letter-spacing:.06em">캘린더</span></sc-if>
+      </button>
+      <button onClick="{{ navFeed }}" style="all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;padding:6px 0;text-align:center">
+        <img src="assets/tab_main.png" style="width:21px;height:21px;object-fit:contain;filter:{{ iconFilter }};opacity:{{ opFeed }}">
+        <sc-if value="{{ isCards }}" hint-placeholder-val="{{ true }}"><span style="font-size:10px;letter-spacing:.06em">카드</span></sc-if>
+      </button>
+      <button onClick="{{ navSettings }}" style="all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;padding:6px 0;text-align:center">
+        <img src="assets/tab_settings.png" style="width:21px;height:21px;object-fit:contain;filter:{{ iconFilter }};opacity:{{ opSet }}">
+        <sc-if value="{{ isSettings }}"><span style="font-size:10px;letter-spacing:.06em">설정</span></sc-if>
+      </button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ monthOpen }}">
+    <div onClick="{{ closeMonth }}" style="position:absolute;inset:0;background:rgba(20,20,19,.34);z-index:40"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;z-index:41;background-image:{{ pageBg }};background-size:cover;padding:24px 20px 34px;animation:cuppoUp .26s ease both;box-shadow:0 -8px 30px rgba(0,0,0,.12)">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:20px">
+        <button onClick="{{ prevYear }}" style="all:unset;cursor:pointer;font-size:17px;opacity:.45;padding:0 8px">‹</button>
+        <span style="font-size:20px;letter-spacing:.1em;font-weight:300">{{ pickYear }}</span>
+        <button onClick="{{ nextYear }}" style="all:unset;cursor:pointer;font-size:17px;opacity:.45;padding:0 8px">›</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+        <sc-for list="{{ months }}" as="m" hint-placeholder-count="12">
+          <button onClick="{{ m.pick }}" style="all:unset;cursor:pointer;height:56px;border:1px solid {{ m.bd }};background:{{ m.bg }};display:grid;place-items:center;align-content:center;gap:5px">
+            <span style="font-size:14px;font-family:'Jost',sans-serif;opacity:{{ m.op }}">{{ m.label }}</span>
+            <div style="width:4px;height:4px;border-radius:50%;background:{{ m.dot }}"></div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sheetOpen }}">
+    <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(20,20,19,.34);z-index:40"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;z-index:41;background-image:{{ pageBg }};background-size:cover;padding:8px 20px 30px;animation:cuppoUp .24s ease both;box-shadow:0 -8px 30px rgba(0,0,0,.12)">
+      <div style="width:38px;height:3px;border-radius:2px;background:color-mix(in srgb, currentColor 20%, transparent);margin:8px auto 14px"></div>
+      <button onClick="{{ navCustom }}" style="all:unset;cursor:pointer;display:block;width:100%;text-align:left;font-size:16px;padding:17px 2px;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">레시피 편집</button>
+      <button onClick="{{ navShare }}" style="all:unset;cursor:pointer;display:block;width:100%;text-align:left;font-size:16px;padding:17px 2px;border-bottom:1px solid color-mix(in srgb, currentColor 12%, transparent)">카드 이미지로 저장</button>
+      <button onClick="{{ deleteRec }}" style="all:unset;cursor:pointer;display:block;width:100%;text-align:left;font-size:16px;padding:17px 2px;color:{{ accent }}">기록 삭제</button>
+      <button onClick="{{ closeSheet }}" style="all:unset;cursor:pointer;display:grid;place-items:center;width:100%;height:50px;margin-top:12px;border:1px solid color-mix(in srgb, currentColor 20%, transparent);font-size:14px">취소</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toastOn }}">
+    <div style="position:absolute;left:20px;right:20px;bottom:106px;z-index:50;background:{{ toastBg }};color:{{ toastFg }};padding:15px 18px;font-size:13px;letter-spacing:.02em;animation:cuppoIn .22s ease both;box-shadow:0 8px 24px rgba(0,0,0,.16)">{{ toast }}</div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:375,&quot;height&quot;:812},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;launch&quot;,&quot;onboarding&quot;,&quot;empty&quot;,&quot;feed&quot;,&quot;grid&quot;,&quot;calendar&quot;,&quot;search&quot;,&quot;menu&quot;,&quot;custom&quot;,&quot;save&quot;,&quot;camera&quot;,&quot;detail&quot;,&quot;share&quot;,&quot;report&quot;,&quot;settings&quot;,&quot;widget&quot;],&quot;default&quot;:&quot;feed&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#8A5A3A&quot;,&quot;options&quot;:[&quot;#8A5A3A&quot;,&quot;#3F3F3D&quot;,&quot;#7A6A55&quot;,&quot;#A8663C&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;showChrome&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;프레임&quot;}}">
+class Component extends DCLogic {
+  MENUS = [
+    { k: 'ame', name: '아메리카노', caf: 120 },
+    { k: 'latte', name: '카페라떼', caf: 100 },
+    { k: 'cup', name: '카푸치노', caf: 100 },
+    { k: 'mocha', name: '카페모카', caf: 110 },
+    { k: 'cho', name: '핫초코', caf: 20 },
+    { k: 'crm', name: '카라멜크림', caf: 95 },
+    { k: 'mat', name: '말차라떼', caf: 60 },
+    { k: 'strw', name: '딸기라떼', caf: 0 }
+  ];
+  GROUPS = [
+    { key: 'temp', name: '온도', opts: [['hot', '따뜻하게'], ['ice', '차갑게']] },
+    { key: 'milk', name: '우유', opts: [['none', '없음'], ['milk', '우유'], ['milkfoam', '우유거품']] },
+    { key: 'syrup', name: '시럽', opts: [['none', '없음'], ['chojar', '초코'], ['crmjar', '카라멜'], ['mochajar', '모카'], ['matjar', '말차'], ['strwjar', '딸기']] },
+    { key: 'deco', name: '장식', opts: [['none', '없음'], ['whipper', '휘핑'], ['icecube', '얼음 추가']] }
+  ];
+  OB = [
+    { img: 'assets/hotdrinks/hotlatte_wip.png', title: '오늘 마신 커피,\n한 장의 카드로', body: '메뉴를 고르고 온도·우유·시럽까지 그대로 남깁니다.' },
+    { img: 'assets/icedrinks/icemocha_ice.png', title: '취향은 쌓일 때\n보입니다', body: '한 달치 기록이 모이면 가장 많이 마신 조합을 알려줍니다.' },
+    { img: 'assets/hotdrinks/hotcup_wip.png', title: '사진도, 그림도\n괜찮아요', body: '찍은 사진은 배경을 지워 카드에 넣거나 비슷한 일러스트로 바꿉니다.' }
+  ];
+
+  state = {
+    screen: null, theme: null, view: 'list', ob: 0,
+    sel: 'temp', detailId: 3, sheetOpen: false, monthOpen: false,
+    pickYear: 2022, camStage: 'aim', photo: false, query: '', filter: null,
+    toast: null, records: this.seed(),
+    draft: { k: 'ame', temp: 'hot', milk: 'none', syrup: 'none', deco: 'none', title: '', memo: '' }
+  };
+
+  seed() {
+    const r = [
+      [10, 'ame', 'hot', 'none', 'none', 'none', '출근 전 한 잔', '얕게 볶은 원두. 산미가 또렷하다.', '08:20'],
+      [10, 'latte', 'ice', 'milk', 'none', 'icecube', '오후 3시의 리셋', '얼음 많이. 회의 끝나고.', '15:10'],
+      [11, 'cho', 'hot', 'milk', 'chojar', 'whipper', '비 오는 날', '마시멜로 대신 휘핑.', '20:40'],
+      [12, 'cup', 'hot', 'milkfoam', 'none', 'whipper', '주말 아침', '거품이 두꺼워서 좋았다.', '09:55'],
+      [13, 'latte', 'ice', 'milkfoam', 'none', 'icecube', '친구랑 수다', '두 시간 앉아 있었다.', '14:30'],
+      [15, 'ame', 'ice', 'none', 'none', 'icecube', '야근 각오', '두 잔째. 손이 떨렸다.', '21:05'],
+      [16, 'mocha', 'ice', 'milk', 'mochajar', 'icecube', '단 게 필요한 날', '초코가 진했다.', '16:20'],
+      [18, 'mat', 'hot', 'milk', 'matjar', 'none', '커피 대신', '카페인을 줄여보는 중.', '11:00'],
+      [19, 'latte', 'hot', 'milk', 'none', 'none', '새 카페 발견', '창가 자리가 좋았다.', '13:15'],
+      [21, 'crm', 'ice', 'milk', 'crmjar', 'whipper', '기분 전환', '너무 달아서 반만 마셨다.', '17:40'],
+      [24, 'strw', 'ice', 'milk', 'strwjar', 'icecube', '커피 아닌 날', '딸기 알갱이가 씹혔다.', '15:50'],
+      [26, 'ame', 'hot', 'none', 'none', 'none', '오늘도 같은 걸', '결국 아메리카노로 돌아온다.', '08:05']
+    ];
+    return r.map((x, i) => ({
+      id: i + 1, d: x[0], k: x[1], temp: x[2], milk: x[3], syrup: x[4], deco: x[5],
+      title: x[6], memo: x[7], time: x[8], photo: i === 5
+    }));
+  }
+
+  menu(k) { return this.MENUS.find(m => m.k === k) || this.MENUS[0]; }
+  imgFor(r) {
+    const base = r.temp === 'hot' ? 'assets/hotdrinks/hot' + r.k : 'assets/icedrinks/ice' + r.k;
+    if (r.temp === 'hot' && r.deco === 'whipper' && r.k !== 'ame') return base + '_wip.png';
+    if (r.temp === 'ice' && r.deco === 'icecube') return base + '_ice.png';
+    return base + '.png';
+  }
+  selImg(k) { return 'assets/sel/' + k + '.png'; }
+  optName(group, key) {
+    const g = this.GROUPS.find(x => x.key === group);
+    const o = g.opts.find(x => x[0] === key);
+    return o ? o[1] : '없음';
+  }
+  tagFor(r) { return '#' + this.menu(r.k).name; }
+  dateFor(r) { return '2022.02.' + String(r.d).padStart(2, '0'); }
+  sorted() { return this.state.records.slice().sort((a, b) => a.d - b.d || (a.time < b.time ? -1 : 1)); }
+  theme() { return this.state.theme || this.props.theme || 'light'; }
+  dark() { return this.theme() === 'dark'; }
+  screen() { return this.state.screen || this.props.screen || 'feed'; }
+  go(s) { this.setState({ screen: s, sheetOpen: false, monthOpen: false }); }
+  flash(t) {
+    this.setState({ toast: t });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: null }), 2200);
+  }
+  componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._c); }
+  componentDidUpdate(prev) {
+    const patch = {};
+    if (prev.screen !== this.props.screen && this.state.screen) patch.screen = null;
+    if (prev.theme !== this.props.theme && this.state.theme) patch.theme = null;
+    if (Object.keys(patch).length) this.setState(patch);
+  }
+
+  renderVals() {
+    const dark = this.dark();
+    const s = this.screen();
+    const accent = this.props.accent || (dark ? '#C08A5C' : '#8A5A3A');
+    const ink = dark ? '#EDEDEA' : '#1F1F1E';
+    const recs = this.sorted();
+    const rec = this.state.records.find(r => r.id === this.state.detailId) || recs[0];
+    const d = this.state.draft;
+
+    const cards = recs.map(r => ({
+      tag: this.tagFor(r), date: this.dateFor(r), title: r.title, time: r.time,
+      day: String(r.d).padStart(2, '0'), img: this.imgFor(r),
+      isPhoto: !!r.photo, isDrawn: !r.photo,
+      bg: r.photo ? '#333333' : 'transparent',
+      fg: r.photo ? '#F1F0EC' : 'inherit',
+      gridBg: dark ? '#252524' : '#FAFAF8',
+      gridOp: r.photo ? 0.25 : 1,
+      open: () => this.setState({ screen: 'detail', detailId: r.id })
+    }));
+
+    const byDay = {};
+    recs.forEach(r => { byDay[r.d] = byDay[r.d] || r; });
+    const days = [];
+    for (let i = 0; i < 2; i++) days.push({ label: '', img: '', has: false, op: 0, open: () => {} });
+    for (let n = 1; n <= 28; n++) {
+      const r = byDay[n];
+      days.push({
+        label: String(n), img: r ? this.imgFor(r) : '', has: !!r, op: r ? 1 : 0.3,
+        open: r ? () => this.setState({ screen: 'detail', detailId: r.id }) : () => this.go('menu')
+      });
+    }
+
+    const counts = {};
+    recs.forEach(r => { counts[r.k] = (counts[r.k] || 0) + 1; });
+    const max = Math.max(1, ...Object.values(counts));
+    const bars = Object.keys(counts).sort((a, b) => counts[b] - counts[a]).map(k => ({
+      name: this.menu(k).name, count: counts[k] + '잔', pct: Math.round(counts[k] / max * 100) + '%'
+    }));
+    const topKey = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0] || 'ame';
+    const topRec = recs.filter(r => r.k === topKey)[0] || recs[0];
+    const iceCount = recs.filter(r => r.temp === 'ice').length;
+    const cafByDay = {};
+    recs.forEach(r => { cafByDay[r.d] = (cafByDay[r.d] || 0) + this.menu(r.k).caf; });
+    const cafDays = [10, 11, 12, 13, 15, 16, 18];
+    const cafMax = 400;
+    const caf = cafDays.map(n => {
+      const mg = cafByDay[n] || 0;
+      return {
+        day: String(n), mg: mg || '·',
+        h: Math.max(3, Math.round(mg / cafMax * 90)) + 'px',
+        fill: mg > 200 ? accent : 'color-mix(in srgb, currentColor 26%, transparent)'
+      };
+    });
+
+    const tagList = [{ label: '전체', key: null }].concat(
+      this.MENUS.filter(m => counts[m.k]).map(m => ({ label: '#' + m.name, key: m.k }))
+    );
+    const tags = tagList.map(t => ({
+      label: t.label,
+      bd: this.state.filter === t.key ? accent : 'color-mix(in srgb, currentColor 20%, transparent)',
+      bg: this.state.filter === t.key ? 'color-mix(in srgb, currentColor 7%, transparent)' : 'transparent',
+      pick: () => this.setState({ filter: t.key })
+    }));
+    const q = this.state.query.trim();
+    const results = recs.filter(r => {
+      if (this.state.filter && r.k !== this.state.filter) return false;
+      if (!q) return true;
+      return (this.menu(r.k).name + r.title + r.memo).indexOf(q) >= 0;
+    }).map(r => ({
+      img: this.imgFor(r), title: r.title, date: this.dateFor(r).slice(5),
+      sub: this.tagFor(r) + ' · ' + this.optName('temp', r.temp),
+      open: () => this.setState({ screen: 'detail', detailId: r.id })
+    }));
+
+    const menuTiles = this.MENUS.map(m => ({
+      name: m.name, img: 'assets/hotdrinks/hot' + m.k + '.png',
+      bd: d.k === m.k ? accent : 'color-mix(in srgb, currentColor 18%, transparent)',
+      bg: d.k === m.k ? 'color-mix(in srgb, currentColor 7%, transparent)' : 'transparent',
+      pick: () => this.setState({ draft: Object.assign({}, d, { k: m.k }) })
+    }));
+    const groups = this.GROUPS.map(g => ({
+      name: g.name, op: this.state.sel === g.key ? 1 : 0.35,
+      bd: this.state.sel === g.key ? 'currentColor' : 'transparent',
+      pick: () => this.setState({ sel: g.key })
+    }));
+    const cur = this.GROUPS.find(g => g.key === this.state.sel) || this.GROUPS[0];
+    const options = cur.opts.map(o => ({
+      name: o[1], img: this.selImg(o[0]), on: d[cur.key] === o[0],
+      bd: d[cur.key] === o[0] ? accent : 'color-mix(in srgb, currentColor 18%, transparent)',
+      bg: d[cur.key] === o[0] ? 'color-mix(in srgb, currentColor 7%, transparent)' : 'transparent',
+      pick: () => this.setState({ draft: Object.assign({}, d, { [cur.key]: o[0] }) })
+    }));
+
+    const months = [];
+    for (let m = 1; m <= 12; m++) {
+      const has = this.state.pickYear === 2022 && m === 2;
+      const on = has;
+      months.push({
+        label: String(m).padStart(2, '0'), op: has ? 1 : 0.4,
+        bd: on ? accent : 'color-mix(in srgb, currentColor 14%, transparent)',
+        bg: on ? 'color-mix(in srgb, currentColor 7%, transparent)' : 'transparent',
+        dot: has ? accent : 'transparent',
+        pick: () => this.setState({ monthOpen: false })
+      });
+    }
+
+    const quick = [
+      { k: 'ame', temp: 'hot', label: '따뜻한 아메리카노', n: 3 },
+      { k: 'latte', temp: 'ice', label: '아이스 카페라떼', n: 3 },
+      { k: 'cup', temp: 'hot', label: '카푸치노', n: 1 }
+    ].map(x => ({
+      name: this.menu(x.k).name, sub: this.optName('temp', x.temp) + ' · 저장된 레시피',
+      count: x.n + '잔', img: this.imgFor({ k: x.k, temp: x.temp, deco: 'none' }),
+      tap: () => this.flash(this.menu(x.k).name + ' 한 잔 기록했어요')
+    }));
+
+    const camSuggest = ['latte', 'cup', 'mocha'].map(k => ({
+      img: 'assets/hotdrinks/hot' + k + '.png',
+      pick: () => { this.setState({ draft: Object.assign({}, d, { k }), photo: false, screen: 'save' }); this.flash('일러스트로 바꿨어요'); }
+    }));
+
+    const recipe = [
+      { label: '온도', value: this.optName('temp', rec.temp), img: this.selImg(rec.temp) },
+      { label: '우유', value: this.optName('milk', rec.milk), img: this.selImg(rec.milk) },
+      { label: '시럽', value: this.optName('syrup', rec.syrup), img: this.selImg(rec.syrup) },
+      { label: '장식', value: this.optName('deco', rec.deco), img: this.selImg(rec.deco) }
+    ];
+
+    const ob = this.OB[this.state.ob];
+
+    return {
+      pageBg: dark ? 'url("assets/paper_dark.png")' : 'url("assets/paper.png")',
+      ink, accent,
+      accentSoft: 'color-mix(in srgb, ' + accent + ' 45%, transparent)',
+      ringImg: dark ? 'assets/ring_dark.png' : 'assets/ring.png',
+      iconFilter: dark ? 'invert(1)' : 'none',
+      statusInk: s === 'camera' ? '#F1F0EC' : ink,
+      shareBg: dark ? '#242423' : '#FBFBF9',
+      chrome: this.props.showChrome !== false,
+      tabs: this.props.showChrome !== false && ['feed', 'grid', 'calendar', 'settings', 'empty'].indexOf(s) >= 0,
+
+      isLaunch: s === 'launch', isOnboard: s === 'onboarding', isEmpty: s === 'empty',
+      isFeed: s === 'feed', isGrid: s === 'grid', isCal: s === 'calendar', isSearch: s === 'search',
+      isMenu: s === 'menu', isCustom: s === 'custom', isSave: s === 'save', isCamera: s === 'camera',
+      isDetail: s === 'detail', isShare: s === 'share', isReport: s === 'report',
+      isSettings: s === 'settings', isWidget: s === 'widget',
+      isCards: s === 'feed' || s === 'grid',
+      opCal: s === 'calendar' ? 1 : 0.28,
+      opFeed: (s === 'feed' || s === 'grid') ? 1 : 0.28,
+      opSet: s === 'settings' ? 1 : 0.28,
+
+      monthYear: '2022', monthName: 'FEBRUARY',
+      monthCount: recs.length + ' CUPS',
+      calSummary: '이번 달 ' + recs.length + '잔',
+      calCaffeine: '아이스 ' + iceCount + ' · 핫 ' + (recs.length - iceCount),
+      cards, days, bars, caf,
+      cafNote: '일 400mg 기준', cafHint: '15일과 21일에 하루 두 잔을 넘겼습니다. 목표선에 닿은 날은 브라운으로 표시됩니다.',
+      top: {
+        img: this.imgFor(topRec), name: this.optName('temp', topRec.temp) + ' ' + this.menu(topKey).name,
+        detail: this.optName('milk', topRec.milk) + ' · ' + this.optName('deco', topRec.deco) + ' · ' + counts[topKey] + '잔'
+      },
+      stat: {
+        cups: recs.length + '잔',
+        ice: Math.round(iceCount / recs.length * 100) + '%',
+        hour: '오후 3시 무렵'
+      },
+
+      query: this.state.query, tags, results,
+      resultCount: results.length + ' RESULTS',
+      onQuery: e => this.setState({ query: e.target.value }),
+
+      draftTag: '#' + this.menu(d.k).name,
+      draftImg: this.imgFor(d),
+      draftTitle: d.title, draftMemo: d.memo,
+      draftTitlePreview: d.title || '제목 없음',
+      today: '2022.02.28',
+      onTitle: e => this.setState({ draft: Object.assign({}, d, { title: e.target.value }) }),
+      onMemo: e => this.setState({ draft: Object.assign({}, d, { memo: e.target.value }) }),
+      menuTiles, groups, options, months, quick, camSuggest,
+      pickYear: String(this.state.pickYear),
+
+      rec: {
+        tag: this.tagFor(rec), dateFull: this.dateFor(rec), title: rec.title, memo: rec.memo,
+        time: rec.time, img: this.imgFor(rec), isPhoto: !!rec.photo, isDrawn: !rec.photo,
+        bg: rec.photo ? '#333333' : 'transparent', fg: rec.photo ? '#F1F0EC' : 'inherit',
+        caffeine: this.menu(rec.k).caf + 'mg', recipe
+      },
+
+      ob: {
+        img: ob.img, title: ob.title, body: ob.body,
+        cta: this.state.ob === 2 ? '시작하기' : '다음',
+        d0: this.state.ob === 0 ? 1 : 0.2, d1: this.state.ob === 1 ? 1 : 0.2, d2: this.state.ob === 2 ? 1 : 0.2,
+        next: () => this.state.ob === 2 ? this.go('empty') : this.setState({ ob: this.state.ob + 1 })
+      },
+
+      switchBg: dark ? accent : 'color-mix(in srgb, currentColor 18%, transparent)',
+      switchX: dark ? '23px' : '3px',
+      toggleTheme: () => this.setState({ theme: dark ? 'light' : 'dark' }),
+
+      navFeed: () => this.go('feed'), navGrid: () => this.go('grid'),
+      navCal: () => this.go('calendar'), navSearch: () => this.go('search'),
+      navMenu: () => this.go('menu'), navCustom: () => this.go('custom'),
+      navSave: () => this.go('save'), navCamera: () => this.setState({ screen: 'camera', camStage: 'aim' }),
+      navDetailBack: () => this.go('detail'), navBackFeed: () => this.go('feed'),
+      navShare: () => this.go('share'), navReport: () => this.go('report'),
+      navSettings: () => this.go('settings'), navWidget: () => this.go('widget'),
+      toggleView: () => this.go(s === 'grid' ? 'feed' : 'grid'),
+
+      openMonth: () => this.setState({ monthOpen: true }),
+      closeMonth: () => this.setState({ monthOpen: false }),
+      monthOpen: this.state.monthOpen,
+      prevYear: () => this.setState({ pickYear: this.state.pickYear - 1 }),
+      nextYear: () => this.setState({ pickYear: this.state.pickYear + 1 }),
+
+      sheetOpen: this.state.sheetOpen,
+      openSheet: () => this.setState({ sheetOpen: true }),
+      closeSheet: () => this.setState({ sheetOpen: false }),
+      deleteRec: () => {
+        this.setState({
+          records: this.state.records.filter(r => r.id !== rec.id),
+          sheetOpen: false, screen: 'feed'
+        });
+        this.flash('기록을 삭제했어요');
+      },
+
+      camAim: this.state.camStage === 'aim',
+      camWork: this.state.camStage === 'work',
+      camDone: this.state.camStage === 'done',
+      camLabel: this.state.camStage === 'done' ? 'CUT-OUT' : 'CAMERA',
+      shoot: () => {
+        this.setState({ camStage: 'work' });
+        clearTimeout(this._c);
+        this._c = setTimeout(() => this.setState({ camStage: 'done' }), 1500);
+      },
+      retake: () => this.setState({ camStage: 'aim' }),
+      usePhoto: () => { this.setState({ photo: true, screen: 'save' }); this.flash('누끼 컷을 카드에 넣었어요'); },
+
+      saveRecord: () => {
+        const id = Math.max(0, ...this.state.records.map(r => r.id)) + 1;
+        const next = Object.assign({}, d, {
+          id, d: 28, time: '09:41', photo: this.state.photo,
+          title: d.title || '오늘의 한 잔', memo: d.memo || ''
+        });
+        this.setState({
+          records: this.state.records.concat([next]), screen: 'feed', photo: false,
+          draft: { k: 'ame', temp: 'hot', milk: 'none', syrup: 'none', deco: 'none', title: '', memo: '' }
+        });
+        this.flash('2월 28일 기록이 저장됐어요');
+      },
+      toastSaved: () => this.flash('사진 앱에 저장했어요'),
+      toastShared: () => this.flash('공유 시트를 열었어요'),
+      toastOn: !!this.state.toast, toast: this.state.toast,
+      toastBg: dark ? '#EDEDEA' : '#2A2A28',
+      toastFg: dark ? '#1F1F1E' : '#F3F3F1'
+    };
+  }
+}
+
+</script>
+</body>
+</html>
