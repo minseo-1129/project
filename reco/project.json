@@ -10,7 +10,7 @@
     "compare"
   ],
   "evidenceScreen": "welcome",
-  "prototype": "prototype.html",
+  "prototype": "original-prototype.html",
   "flows": [
     {
       "id": "experience",

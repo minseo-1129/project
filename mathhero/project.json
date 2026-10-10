@@ -10,7 +10,7 @@
     "review"
   ],
   "evidenceScreen": "map",
-  "prototype": "prototype.html",
+  "prototype": "original-prototype.html",
   "flows": [
     {
       "id": "pages",

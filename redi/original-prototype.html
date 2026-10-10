@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#EDEBE6;font-family:'Noto Sans KR',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#231815;text-decoration:underline;text-underline-offset:3px}
+a:hover{color:#8A7F6E}
+*{box-sizing:border-box}
+::-webkit-scrollbar{width:0;height:0}
+</style></helmet>
+
+<div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;gap:36px;padding:44px 44px 80px">
+
+  <aside style="width:236px;flex:none;position:sticky;top:44px;display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div style="display:flex;align-items:baseline;gap:9px">
+        <span style="font:900 30px/1 'Noto Sans KR',sans-serif;letter-spacing:-.03em;color:#231815">REDI</span>
+        <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:#9A938A">re-diary</span>
+      </div>
+      <div style="width:52px;height:4px;background:#231815"></div>
+      <span style="font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:#7C7469;text-wrap:pretty">인터랙티브 프로토타입 · 17화면. 칩·시간·그리드·도트 모두 실제로 눌러 동작한다.</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ rail }}" as="r" hint-placeholder-count="17">
+        <div onClick="{{ r.go }}" style="{{ r.style }}" style-hover="background:#E3E0D9">
+          <span style="width:26px;flex:none;font:500 10px/1.4 'IBM Plex Mono',monospace;color:{{ r.numColor }}">{{ r.no }}</span>
+          <span style="flex:1;font:{{ r.weight }} 12px/1.4 'Noto Sans KR',sans-serif;color:{{ r.textColor }}">{{ r.ko }}</span>
+          <span style="width:5px;height:5px;border-radius:999px;background:{{ r.dot }};flex:none"></span>
+        </div>
+      </sc-for>
+    </div>
+  </aside>
+
+  <div style="flex:none;display:flex;flex-direction:column;gap:18px;align-items:center">
+    <div style="width:360px;height:780px;background:#fff;border:1px solid #D9D5CE;box-shadow:0 18px 48px -20px rgba(35,24,21,.32);display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+      <div style="height:30px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#fff">
+        <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:#231815">21:40</span>
+        <div style="display:flex;gap:5px;align-items:center">
+          <span style="width:15px;height:7px;border:1px solid #231815;border-radius:1px"></span>
+          <span style="width:3px;height:7px;background:#231815"></span>
+        </div>
+      </div>
+
+      <div style="height:48px;flex:none;display:flex;align-items:center;padding:0 14px;border-bottom:1px solid #F0EEEA;background:#fff">
+        <div onClick="{{ back }}" style="min-width:30px;flex:none;height:30px;display:flex;align-items:center;justify-content:{{ backAlign }};cursor:pointer;padding-right:{{ backPad }}">
+          <sc-if value="{{ hasBack }}" hint-placeholder-val="{{ true }}">
+            <span style="font:400 17px/1 'Noto Sans KR',sans-serif;color:#231815">←</span>
+          </sc-if>
+        </div>
+        <span style="flex:1;text-align:center;font:700 14.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ title }}</span>
+        <div style="min-width:30px;flex:none;display:flex;justify-content:flex-end">
+          <sc-if value="{{ hasSkip }}" hint-placeholder-val="{{ true }}">
+            <span style="font:400 11.5px/1 'Noto Sans KR',sans-serif;color:#A9A199;white-space:nowrap">건너뛰기</span>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;background:#fff">
+
+        <sc-if value="{{ isOnboard }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:24px 22px 20px;display:flex;gap:8px;align-items:center">
+            <sc-for list="{{ obSteps }}" as="s" hint-placeholder-count="4">
+              <span style="font:{{ s.w }} 12.5px/1 'IBM Plex Mono',monospace;color:{{ s.c }}">{{ s.n }}</span>
+            </sc-for>
+            <span style="flex:1"></span>
+            <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#C4BEB5">SETUP</span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isOb1 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:4px 22px 28px;display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <h1 style="margin:0;font:700 24px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815;text-wrap:pretty">생활 관리에서<br>어떤 점이 어려웠나요?</h1>
+              <p style="margin:0;font:400 13.5px/1.7 'Noto Sans KR',sans-serif;color:#8A8278">여러 개를 골라도 괜찮아요.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ ob1Items }}" as="i" hint-placeholder-count="5">
+                <div onClick="{{ i.go }}" style="{{ i.style }}" style-hover="border-color:#CFCAC2">
+                  <span style="flex:1;font:{{ i.weight }} 13.5px/1.5 'Noto Sans KR',sans-serif;color:{{ i.color }}">{{ i.ko }}</span>
+                  <span style="width:16px;height:16px;border-radius:999px;border:1px solid {{ i.markBorder }};background:{{ i.markBg }};flex:none"></span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isOb2 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:4px 22px 28px;display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <h1 style="margin:0;font:700 24px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815;text-wrap:pretty">어떤 생활 영역을<br>관리하고 싶어요?</h1>
+              <p style="margin:0;font:400 13.5px/1.7 'Noto Sans KR',sans-serif;color:#8A8278">고른 영역만 목표와 리포트에 나타나요.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <sc-for list="{{ ob2Items }}" as="i" hint-placeholder-count="6">
+                <div onClick="{{ i.go }}" style="{{ i.style }}">
+                  <span style="width:22px;height:22px;border-radius:3px;background:{{ i.hex }};flex:none"></span>
+                  <span style="font:{{ i.weight }} 13px/1.4 'Noto Sans KR',sans-serif;color:{{ i.color }}">{{ i.ko }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:0;font:400 12px/1.7 'Noto Sans KR',sans-serif;color:#A9A199;text-wrap:pretty">회색 시간은 기록되지 않은 시간이라 선택 대상이 아니에요.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isOb3 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:4px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <h1 style="margin:0;font:700 24px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815;text-wrap:pretty">기상과 취침 시각을<br>정해요.</h1>
+              <p style="margin:0;font:400 13.5px/1.7 'Noto Sans KR',sans-serif;color:#8A8278">하루의 시작과 끝이 되는 기준이에요.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ ob3Rows }}" as="r" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;gap:9px">
+                  <span style="font:400 12px/1 'Noto Sans KR',sans-serif;color:#8A8278">{{ r.ko }}</span>
+                  <div style="display:flex;align-items:center;gap:0;border:1px solid #E7E7E7">
+                    <div onClick="{{ r.dec }}" style="width:52px;height:56px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-right:1px solid #F0EEEA" style-hover="background:#FAF9F6"><span style="font:400 17px/1 'Noto Sans KR',sans-serif;color:#8A8278">−</span></div>
+                    <span style="flex:1;text-align:center;font:500 24px/1 'IBM Plex Mono',monospace;color:#231815">{{ r.value }}</span>
+                    <div onClick="{{ r.inc }}" style="width:52px;height:56px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-left:1px solid #F0EEEA" style-hover="background:#FAF9F6"><span style="font:400 17px/1 'Noto Sans KR',sans-serif;color:#8A8278">+</span></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background:#F5F5F5;padding:16px 18px;display:flex;align-items:baseline;justify-content:space-between">
+              <span style="font:400 12.5px/1 'Noto Sans KR',sans-serif;color:#5C544A">계획된 수면</span>
+              <span style="font:700 15px/1 'IBM Plex Mono',monospace;color:#231815">{{ plannedSleep }}</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isOb4 }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:4px 22px 28px;display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <h1 style="margin:0;font:700 24px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815;text-wrap:pretty">마지막이에요,<br>영역별 목표 시간을 정해요.</h1>
+              <p style="margin:0;font:400 13.5px/1.7 'Noto Sans KR',sans-serif;color:#8A8278">하루에 지킬 최소 시간이면 충분해요.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ ob4Rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="width:18px;height:18px;border-radius:3px;background:{{ r.hex }};flex:none"></span>
+                  <span style="flex:1;font:400 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ r.ko }}</span>
+                  <div style="display:flex;align-items:center;border:1px solid #E7E7E7">
+                    <div onClick="{{ r.dec }}" style="width:36px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#8A8278">−</span></div>
+                    <span style="width:62px;text-align:center;font:500 14px/1 'IBM Plex Mono',monospace;color:#231815">{{ r.label }}</span>
+                    <div onClick="{{ r.inc }}" style="width:36px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#8A8278">+</span></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between">
+                <span style="font:400 12px/1 'Noto Sans KR',sans-serif;color:#8A8278">하루 24시간 대비</span>
+                <span style="font:500 12px/1 'IBM Plex Mono',monospace;color:{{ budgetColor }}">{{ budgetLabel }}</span>
+              </div>
+              <div style="height:14px;background:#F0EEEA;display:flex;overflow:hidden">
+                <sc-for list="{{ budgetBar }}" as="b" hint-placeholder-count="5">
+                  <span style="width:{{ b.w }};background:{{ b.c }}"></span>
+                </sc-for>
+              </div>
+              <sc-if value="{{ overBudget }}" hint-placeholder-val="{{ false }}">
+                <span style="font:700 12px/1.6 'Noto Sans KR',sans-serif;color:#231815">목표 합이 24시간을 넘었어요. 어느 영역을 줄일까요?</span>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isRec }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <div style="display:flex;flex-direction:column;gap:5px">
+                <span style="font:700 20px/1.3 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">오늘의 기록</span>
+                <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;color:#A9A199">{{ today }}</span>
+              </div>
+              <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#A9A199">{{ recordedLabel }}</span>
+            </div>
+
+            <sc-if value="{{ hasQueue }}" hint-placeholder-val="{{ true }}">
+              <div style="border:1px solid #E7E7E7;padding:20px 20px 18px;display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between">
+                  <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A9A199">PASSIVE · 확인 필요</span>
+                  <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#231815">{{ queueCount }}</span>
+                </div>
+                <p style="margin:0;font:700 16.5px/1.6 'Noto Sans KR',sans-serif;color:#231815;text-wrap:pretty">{{ queueText }}</p>
+                <div style="display:flex;gap:8px">
+                  <div onClick="{{ queueYes }}" style="flex:1;height:46px;background:#F5F1E8;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#EFE9DC"><span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">네, 맞아요</span></div>
+                  <div onClick="{{ queueNo }}" style="flex:1;height:46px;border:1px solid #E7E7E7;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 13.5px/1 'Noto Sans KR',sans-serif;color:#5C544A">아니에요</span></div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ queueDone }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px solid #F0EEEA;background:#FAF9F6;padding:20px;display:flex;flex-direction:column;gap:7px">
+                <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#C4BEB5">PASSIVE · 확인 완료</span>
+                <span style="font:400 13px/1.6 'Noto Sans KR',sans-serif;color:#8A8278">오늘 센서가 추정한 기록을 모두 확인했어요.</span>
+              </div>
+            </sc-if>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">직접 기록하기</span>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ recEntries }}" as="e" hint-placeholder-count="3">
+                  <div onClick="{{ e.go }}" style="{{ e.style }}" style-hover="background:#FAF9F6">
+                    <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                      <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ e.ko }}</span>
+                      <span style="font:400 11.5px/1.5 'Noto Sans KR',sans-serif;color:#8A8278">{{ e.desc }}</span>
+                    </div>
+                    <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:{{ e.badgeColor }};flex:none">{{ e.badge }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between">
+                <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">하루 그리드</span>
+                <span onClick="{{ goGrid }}" style="font:400 11.5px/1 'Noto Sans KR',sans-serif;color:#8A8278;cursor:pointer;text-decoration:underline;text-underline-offset:3px">편집</span>
+              </div>
+              <div style="display:flex;gap:9px;align-items:flex-start">
+                <div style="display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,26px);gap:5px;flex:1">
+                  <sc-for list="{{ gridPreview }}" as="g" hint-placeholder-count="24">
+                    <span style="background:{{ g }};border-radius:{{ cellRadius }}"></span>
+                  </sc-for>
+                </div>
+                <div style="display:grid;grid-template-rows:repeat(4,26px);gap:5px">
+                  <sc-for list="{{ hourAxis }}" as="h" hint-placeholder-count="4">
+                    <span style="font:500 9.5px/26px 'IBM Plex Mono',monospace;color:#C4BEB5">{{ h }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:700 19px/1.35 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">칸을 눌러 무엇을 했는지 채워요.</span>
+              <span style="font:400 12.5px/1.7 'Noto Sans KR',sans-serif;color:#8A8278">한 칸은 1시간이에요. 남은 회색 시간 <strong style="font-weight:700;color:#231815">{{ greyCount }}칸</strong></span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,44px);gap:6px;flex:1">
+                <sc-for list="{{ gridCells }}" as="c" hint-placeholder-count="24">
+                  <div onClick="{{ c.go }}" style="{{ c.style }}">
+                    <span style="font:500 9px/1 'IBM Plex Mono',monospace;color:{{ c.labelColor }}">{{ c.hour }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:grid;grid-template-rows:repeat(4,44px);gap:6px">
+                <sc-for list="{{ hourAxis }}" as="h" hint-placeholder-count="4">
+                  <span style="font:500 9.5px/44px 'IBM Plex Mono',monospace;color:#C4BEB5">{{ h }}</span>
+                </sc-for>
+              </div>
+            </div>
+            <div style="border-top:1px solid #F0EEEA;padding-top:18px;display:flex;flex-direction:column;gap:12px">
+              <span style="font:400 12px/1 'Noto Sans KR',sans-serif;color:#8A8278">{{ paletteHint }}</span>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+                <sc-for list="{{ palette }}" as="p" hint-placeholder-count="6">
+                  <div onClick="{{ p.go }}" style="{{ p.style }}">
+                    <span style="width:16px;height:16px;border-radius:3px;background:{{ p.hex }};flex:none"></span>
+                    <span style="font:400 11.5px/1.3 'Noto Sans KR',sans-serif;color:#231815">{{ p.ko }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMoment }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:700 19px/1.35 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">지금 이 순간을 기록해요.</span>
+              <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;color:#A9A199">{{ momentTime }} · 하루 3회 알림</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">지금 무엇을 하고 있어요?</span>
+              <div style="display:flex;flex-wrap:wrap;gap:7px">
+                <sc-for list="{{ momentAreas }}" as="a" hint-placeholder-count="5">
+                  <div onClick="{{ a.go }}" style="{{ a.style }}">
+                    <span style="width:12px;height:12px;border-radius:2px;background:{{ a.hex }};flex:none"></span>
+                    <span style="font:{{ a.weight }} 12.5px/1 'Noto Sans KR',sans-serif;color:{{ a.color }}">{{ a.ko }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <sc-if value="{{ hasSubs }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:11px;border-top:1px solid #F0EEEA;padding-top:20px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between">
+                  <span style="font:400 12.5px/1 'Noto Sans KR',sans-serif;color:#5C544A">{{ subLabel }}</span>
+                  <span style="font:400 10.5px/1 'Noto Sans KR',sans-serif;color:#C4BEB5">선택</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:7px">
+                  <sc-for list="{{ momentSubs }}" as="b" hint-placeholder-count="4">
+                    <div onClick="{{ b.go }}" style="{{ b.style }}">
+                      <span style="font:{{ b.weight }} 12px/1 'Noto Sans KR',sans-serif;color:{{ b.color }}">{{ b.ko }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between">
+                <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">지금 기분은 어때요?</span>
+                <span style="font:400 10.5px/1 'Noto Sans KR',sans-serif;color:#C4BEB5">전혀 아니다 → 매우 그렇다</span>
+              </div>
+              <sc-for list="{{ affectRows }}" as="a" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="width:52px;font:400 12.5px/1 'Noto Sans KR',sans-serif;color:#5C544A;flex:none">{{ a.ko }}</span>
+                  <div style="flex:1;display:flex;gap:6px">
+                    <sc-for list="{{ a.dots }}" as="d" hint-placeholder-count="5">
+                      <div onClick="{{ d.go }}" style="{{ d.style }}"></div>
+                    </sc-for>
+                  </div>
+                  <span style="width:16px;text-align:right;font:500 12px/1 'IBM Plex Mono',monospace;color:{{ a.valColor }};flex:none">{{ a.valLabel }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background:#F5F5F5;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A9A199">EMA</span>
+              <span style="font:400 12.5px/1.7 'Noto Sans KR',sans-serif;color:#5C544A;text-wrap:pretty">이 기록은 같은 시각의 위치·활동량 데이터와 함께 저장돼요.</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDiary }}" hint-placeholder-val="{{ true }}">
+          <sc-if value="{{ showDiaryNav }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:22px 22px 0;display:flex;gap:8px;align-items:center">
+              <sc-for list="{{ diarySteps }}" as="s" hint-placeholder-count="3">
+                <span style="font:{{ s.w }} 12.5px/1 'IBM Plex Mono',monospace;color:{{ s.c }}">{{ s.n }}</span>
+              </sc-for>
+              <span style="flex:1"></span>
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#C4BEB5">{{ diaryDate }}</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showD1 }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:26px">
+              <div style="display:flex;flex-direction:column;gap:18px">
+                <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">오늘 하루는 어땠어요?</span>
+                <div style="display:flex;gap:7px">
+                  <sc-for list="{{ satScale }}" as="s" hint-placeholder-count="5">
+                    <div onClick="{{ s.go }}" style="{{ s.style }}">
+                      <span style="font:{{ s.weight }} 12px/1 'Noto Sans KR',sans-serif;color:{{ s.color }}">{{ s.ko }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between">
+                  <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">어떤 기분이 있었나요?</span>
+                  <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#A9A199">{{ moodCount }}</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:7px">
+                  <sc-for list="{{ moodChips }}" as="m" hint-placeholder-count="10">
+                    <div onClick="{{ m.go }}" style="{{ m.style }}">
+                      <span style="font:{{ m.weight }} 12.5px/1 'Noto Sans KR',sans-serif;color:{{ m.color }}">{{ m.ko }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showD2 }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:26px">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">식사는 어떻게 했어요?</span>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <sc-for list="{{ mealRows }}" as="m" hint-placeholder-count="3">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="width:42px;font:400 13px/1 'Noto Sans KR',sans-serif;color:#5C544A;flex:none">{{ m.ko }}</span>
+                      <div style="flex:1;display:flex;gap:6px">
+                        <sc-for list="{{ m.opts }}" as="o" hint-placeholder-count="3">
+                          <div onClick="{{ o.go }}" style="{{ o.style }}">
+                            <span style="font:{{ o.weight }} 12px/1 'Noto Sans KR',sans-serif;color:{{ o.color }}">{{ o.ko }}</span>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">오늘 날씨는요?</span>
+                <div style="display:flex;flex-wrap:wrap;gap:7px">
+                  <sc-for list="{{ weatherChips }}" as="w" hint-placeholder-count="5">
+                    <div onClick="{{ w.go }}" style="{{ w.style }}">
+                      <span style="font:{{ w.weight }} 12.5px/1 'Noto Sans KR',sans-serif;color:{{ w.color }}">{{ w.ko }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showD3 }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:24px">
+              <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">마지막으로 세 가지만요.</span>
+              <sc-for list="{{ d3Rows }}" as="r" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:11px">
+                  <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">{{ r.ko }}</span>
+                  <div style="display:flex;gap:6px">
+                    <sc-for list="{{ r.opts }}" as="o" hint-placeholder-count="5">
+                      <div onClick="{{ o.go }}" style="{{ o.style }}">
+                        <span style="font:{{ o.weight }} 11.5px/1 'Noto Sans KR',sans-serif;color:{{ o.color }}">{{ o.ko }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <sc-if value="{{ isStat }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:20px 22px 28px;display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;border:1px solid #E7E7E7">
+              <sc-for list="{{ statTabs }}" as="t" hint-placeholder-count="2">
+                <div onClick="{{ t.go }}" style="{{ t.style }}">
+                  <span style="font:{{ t.weight }} 13px/1 'Noto Sans KR',sans-serif;color:{{ t.color }}">{{ t.ko }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#C4BEB5">←</span>
+              <span style="font:500 13px/1 'IBM Plex Mono',monospace;color:#231815">{{ weekRange }}</span>
+              <span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#C4BEB5">→</span>
+            </div>
+
+            <sc-if value="{{ statLife }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <div style="background:#F5F5F5;padding:18px 18px 20px;display:flex;flex-direction:column;gap:11px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between">
+                    <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">생활 균형 분석</span>
+                    <span style="font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#A9A199">WEEKLY</span>
+                  </div>
+                  <p style="margin:0;font:700 15.5px/1.65 'Noto Sans KR',sans-serif;color:#231815;text-wrap:pretty">평일 수면이 목표보다 40분 짧아요.<br>대신 주말에 몰아서 자고 있어요.</p>
+                  <span style="font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:#8A8278">내 목표(7h 30m) 기준</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                    <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">하루 구성</span>
+                    <span style="font:400 10.5px/1 'Noto Sans KR',sans-serif;color:#A9A199">월 → 일 · 굵은 날이 오늘</span>
+                  </div>
+                  <div style="display:flex;align-items:flex-end;gap:8px;height:150px">
+                    <sc-for list="{{ statBars }}" as="b" hint-placeholder-count="7">
+                      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px">
+                        <div style="width:100%;height:130px;display:flex;flex-direction:column;justify-content:flex-end">
+                          <sc-for list="{{ b.segs }}" as="s" hint-placeholder-count="4">
+                            <span style="height:{{ s.h }};background:{{ s.c }}"></span>
+                          </sc-for>
+                        </div>
+                        <span style="font:{{ b.dayW }} 10px/1 'Noto Sans KR',sans-serif;color:{{ b.dayC }}">{{ b.day }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px 12px;padding-top:12px;border-top:1px solid #F5F3EF">
+                    <sc-for list="{{ statLegend }}" as="l" hint-placeholder-count="6">
+                      <div style="display:flex;align-items:center;gap:6px">
+                        <span style="width:9px;height:9px;border-radius:2px;background:{{ l.hex }};flex:none"></span>
+                        <span style="font:400 10.5px/1 'Noto Sans KR',sans-serif;color:#8A8278;white-space:nowrap">{{ l.ko }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:13px;border-top:1px solid #F0EEEA;padding-top:20px">
+                  <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">목표 달성 추이</span>
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="width:9px;flex:none"></span>
+                    <span style="width:56px;flex:none"></span>
+                    <div style="flex:1;display:flex;gap:5px">
+                      <sc-for list="{{ achieveAxis }}" as="d" hint-placeholder-count="7">
+                        <span style="flex:1;max-width:15px;text-align:center;font:{{ d.w }} 9.5px/1 'IBM Plex Mono',monospace;color:{{ d.c }}">{{ d.ko }}</span>
+                      </sc-for>
+                    </div>
+                    <span style="width:26px;flex:none"></span>
+                  </div>
+                  <sc-for list="{{ achieveRows }}" as="a" hint-placeholder-count="4">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="width:9px;height:9px;border-radius:2px;background:{{ a.hex }};flex:none"></span>
+                      <span style="width:56px;font:400 12px/1 'Noto Sans KR',sans-serif;color:#5C544A;flex:none">{{ a.ko }}</span>
+                      <div style="flex:1;display:flex;gap:5px">
+                        <sc-for list="{{ a.dots }}" as="d" hint-placeholder-count="7">
+                          <span style="{{ d.style }}"></span>
+                        </sc-for>
+                      </div>
+                      <span style="width:26px;text-align:right;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#231815;flex:none">{{ a.count }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div onClick="{{ goHl }}" style="height:50px;background:#F5F1E8;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#EFE9DC">
+                  <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">영역별 하이라이트 보기</span>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ statMood }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <div style="background:#F5F5F5;padding:18px 18px 20px;display:flex;flex-direction:column;gap:11px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between">
+                    <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">정서 분석</span>
+                    <span style="font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#A9A199">WEEKLY</span>
+                  </div>
+                  <p style="margin:0;font:700 15.5px/1.65 'Noto Sans KR',sans-serif;color:#231815;text-wrap:pretty">수면이 짧았던 날에 스트레스가 높았어요.<br>수·목에 특히 그랬어요.</p>
+                  <span style="font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:#8A8278">하루 3회 EMA 응답 평균</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                    <span style="font:700 15px/1 'Noto Sans KR',sans-serif;color:#231815">정서 추이</span>
+                    <span style="font:400 10.5px/1 'Noto Sans KR',sans-serif;color:#A9A199">연할수록 낮음 · 진할수록 높음</span>
+                  </div>
+
+                  <div style="display:flex;flex-direction:column;gap:5px">
+                    <div style="display:flex;align-items:center;gap:7px">
+                      <span style="width:54px;flex:none"></span>
+                      <div style="flex:1;display:flex;gap:4px">
+                        <sc-for list="{{ weekAxis }}" as="d" hint-placeholder-count="7">
+                          <span style="flex:1;text-align:center;font:{{ d.w }} 9.5px/1 'IBM Plex Mono',monospace;color:{{ d.c }}">{{ d.ko }}</span>
+                        </sc-for>
+                      </div>
+                      <span style="width:54px;flex:none;text-align:right;font:500 8.5px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#C4BEB5">AVG · WoW</span>
+                    </div>
+                    <sc-for list="{{ affectHeat }}" as="r" hint-placeholder-count="3">
+                      <div style="display:flex;align-items:center;gap:7px">
+                        <div style="width:54px;flex:none;display:flex;align-items:center;gap:5px">
+                          <span style="width:8px;height:8px;border-radius:2px;background:{{ r.hex }};flex:none"></span>
+                          <span style="font:400 11px/1 'Noto Sans KR',sans-serif;color:#5C544A;white-space:nowrap">{{ r.ko }}</span>
+                        </div>
+                        <div style="flex:1;display:flex;gap:4px">
+                          <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="7">
+                            <span style="{{ c.style }}"></span>
+                          </sc-for>
+                        </div>
+                        <div style="width:54px;flex:none;display:flex;align-items:baseline;justify-content:flex-end;gap:4px">
+                          <span style="font:500 12px/1 'IBM Plex Mono',monospace;color:#231815">{{ r.avg }}</span>
+                          <span style="font:500 9.5px/1 'IBM Plex Mono',monospace;color:{{ r.deltaColor }}">{{ r.delta }}</span>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+
+                  <div style="display:flex;flex-direction:column;gap:13px;border-top:1px solid #F0EEEA;padding-top:18px">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">같은 주의 생활과 겹쳐 보기</span>
+                      <span style="font:400 11px/1.6 'Noto Sans KR',sans-serif;color:#A9A199;text-wrap:pretty">같은 날짜 축 위에 놓을 뿐, 원인을 말하지는 않아요.</span>
+                    </div>
+                    <div style="display:flex;gap:6px">
+                      <sc-for list="{{ overlayChips }}" as="o" hint-placeholder-count="4">
+                        <div onClick="{{ o.go }}" style="{{ o.style }}">
+                          <span style="font:{{ o.weight }} 11.5px/1 'Noto Sans KR',sans-serif;color:{{ o.color }}">{{ o.ko }}</span>
+                        </div>
+                      </sc-for>
+                    </div>
+                    <div style="display:flex;align-items:flex-end;gap:7px">
+                      <span style="width:54px;flex:none;font:400 11px/1.4 'Noto Sans KR',sans-serif;color:#5C544A">{{ overlayLabel }}</span>
+                      <div style="flex:1;display:flex;gap:4px;align-items:flex-end;height:58px">
+                        <sc-for list="{{ overlayBars }}" as="b" hint-placeholder-count="7">
+                          <div style="flex:1;height:58px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px">
+                            <span style="{{ b.style }}"></span>
+                          </div>
+                        </sc-for>
+                      </div>
+                      <span style="width:54px;flex:none;text-align:right;font:500 11px/1 'IBM Plex Mono',monospace;color:#231815">{{ overlayAvg }}</span>
+                    </div>
+                    <p style="margin:0;font:400 12px/1.75 'Noto Sans KR',sans-serif;color:#5C544A;background:#F5F5F5;padding:14px 15px;text-wrap:pretty">{{ overlayNote }}</p>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isHl }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:18px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;gap:5px">
+              <sc-for list="{{ hlTabs }}" as="t" hint-placeholder-count="4">
+                <div onClick="{{ t.go }}" style="{{ t.style }}">
+                  <span style="font:{{ t.weight }} 12.5px/1 'Noto Sans KR',sans-serif;color:{{ t.color }}">{{ t.ko }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="background:#F7F6F3;padding:16px 16px 18px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="width:11px;height:11px;border-radius:3px;background:{{ hl.hex }};flex:none"></span>
+                <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">{{ hl.ko }}</span>
+                <span style="flex:1"></span>
+                <span style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#A9A199">{{ hl.caption }}</span>
+                <div onClick="{{ hlToggleWhy }}" style="{{ hlWhyStyle }}">
+                  <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:{{ hlWhyColor }}">?</span>
+                </div>
+              </div>
+
+              <sc-if value="{{ hlWhyOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="background:#231815;padding:15px 16px;display:flex;flex-direction:column;gap:8px">
+                  <span style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8A7F6E">왜 이렇게 보여주나요?</span>
+                  <p style="margin:0;font:400 12px/1.75 'Noto Sans KR',sans-serif;color:#fff;text-wrap:pretty">{{ hl.why }}</p>
+                </div>
+              </sc-if>
+
+              <div style="display:flex;align-items:flex-end;gap:11px">
+                <span style="font:700 34px/1 'IBM Plex Mono',monospace;letter-spacing:-.03em;color:#231815">{{ hl.avg }}</span>
+                <div style="display:flex;flex-direction:column;gap:3px;padding-bottom:3px">
+                  <span style="font:500 12px/1 'IBM Plex Mono',monospace;color:#5C544A">{{ hl.delta }}</span>
+                  <span style="font:400 9.5px/1 'Noto Sans KR',sans-serif;color:#A9A199">지난주 대비</span>
+                </div>
+                <span style="flex:1"></span>
+                <span style="{{ hlStatusStyle }}">{{ hl.status }}</span>
+              </div>
+              <span style="font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">{{ hl.avgLabel }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between">
+                <span style="font:700 12.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ hl.chartTitle }}</span>
+                <span style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#A9A199">06.09 – 06.15</span>
+              </div>
+              <div style="position:relative;height:112px">
+                <div style="position:absolute;left:0;right:36px;top:0;bottom:18px;display:flex;align-items:flex-end;gap:5px">
+                  <sc-for list="{{ hlBars }}" as="b" hint-placeholder-count="7">
+                    <div style="flex:1;height:94px;display:flex;flex-direction:column;justify-content:flex-end">
+                      <span style="{{ b.style }}"></span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="position:absolute;left:0;right:36px;top:{{ hlRefTop }};height:1px;background:#231815;opacity:.55"></div>
+                <span style="position:absolute;right:0;top:{{ hlRefLabelTop }};font:500 9px/1 'IBM Plex Mono',monospace;color:#231815;background:#fff;padding-left:5px">{{ hl.refLabel }}</span>
+                <div style="position:absolute;left:0;right:36px;bottom:0;display:flex;gap:5px">
+                  <sc-for list="{{ hlDayAxis }}" as="a" hint-placeholder-count="7">
+                    <span style="flex:1;text-align:center;font:{{ a.w }} 9.5px/1 'IBM Plex Mono',monospace;color:{{ a.c }}">{{ a.ko }}</span>
+                  </sc-for>
+                </div>
+              </div>
+              <span style="font:400 10.5px/1.55 'Noto Sans KR',sans-serif;color:#8A8278">{{ hl.chartNote }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:11px;border-top:1px solid #E7E4DF;padding-top:22px">
+              <span style="font:700 12.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ hl.breakTitle }}</span>
+              <sc-for list="{{ hlBreakdown }}" as="b" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="width:88px;flex:none;font:400 11.5px/1.3 'Noto Sans KR',sans-serif;color:#5C544A">{{ b.ko }}</span>
+                  <div style="flex:1;min-width:0;height:7px;background:#F3F1ED">
+                    <span style="display:block;height:7px;width:{{ b.w }};background:{{ b.c }}"></span>
+                  </div>
+                  <span style="width:52px;text-align:right;flex:none;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#231815">{{ b.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;background:#F5F5F5">
+              <sc-for list="{{ hl.cells }}" as="c" hint-placeholder-count="3">
+                <div style="flex:1;padding:13px 5px;display:flex;flex-direction:column;gap:6px;align-items:center">
+                  <span style="font:400 10px/1.3 'Noto Sans KR',sans-serif;color:#8A8278;text-align:center">{{ c.k }}</span>
+                  <span style="font:700 14px/1 'IBM Plex Mono','Noto Sans KR',monospace;color:#231815">{{ c.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isReport }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:32px 26px 34px;display:flex;flex-direction:column;gap:30px">
+            <div style="display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#A9A199">WEEKLY REPORT</span>
+              <span style="font:700 21px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">이번 주의 나</span>
+              <div style="width:44px;height:3px;background:#231815"></div>
+              <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;color:#8A8278">{{ weekRange }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:400 11.5px/1 'Noto Sans KR',sans-serif;color:#8A8278">한 주의 시간</span>
+              <div style="display:flex;flex-direction:column;gap:5px">
+                <sc-for list="{{ reportWeek }}" as="r" hint-placeholder-count="7">
+                  <div style="display:flex;align-items:center;gap:9px">
+                    <span style="width:16px;font:400 10.5px/1 'Noto Sans KR',sans-serif;color:#A9A199;flex:none">{{ r.day }}</span>
+                    <div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(24,1fr);gap:2px">
+                      <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="24">
+                        <span style="height:13px;background:{{ c }}"></span>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+                <div style="display:flex;align-items:center;gap:9px;padding-top:3px">
+                  <span style="width:16px;flex:none"></span>
+                  <div style="flex:1;min-width:0;display:flex;justify-content:space-between">
+                    <sc-for list="{{ reportHours }}" as="h" hint-placeholder-count="5">
+                      <span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#C4BEB5">{{ h }}</span>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px 10px;padding-top:10px;border-top:1px solid #F5F3EF">
+                <sc-for list="{{ statLegend }}" as="l" hint-placeholder-count="6">
+                  <div style="display:flex;align-items:center;gap:5px">
+                    <span style="width:8px;height:8px;background:{{ l.hex }};flex:none"></span>
+                    <span style="font:400 10px/1 'Noto Sans KR',sans-serif;color:#8A8278;white-space:nowrap">{{ l.ko }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #E7E7E7">
+              <sc-for list="{{ reportNotes }}" as="n" hint-placeholder-count="3">
+                <div style="display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid #F2EFEA">
+                  <div style="width:74px;flex:none;display:flex;flex-direction:column;gap:6px">
+                    <span style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A9A199">{{ n.tag }}</span>
+                    <span style="font:700 24px/1 'IBM Plex Mono',monospace;letter-spacing:-.02em;color:#231815">{{ n.metric }}</span>
+                    <span style="font:400 10px/1.4 'Noto Sans KR',sans-serif;color:#8A8278">{{ n.metricSub }}</span>
+                  </div>
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:11px">
+                    <p style="margin:0;font:400 13px/1.75 'Noto Sans KR',sans-serif;color:#3A332B;text-wrap:pretty">{{ n.text }}</p>
+                    <div style="display:flex;align-items:flex-end;gap:4px;height:30px">
+                      <sc-for list="{{ n.bars }}" as="b" hint-placeholder-count="7">
+                        <div style="flex:1;height:30px;display:flex;flex-direction:column;justify-content:flex-end">
+                          <span style="{{ b.style }}"></span>
+                        </div>
+                      </sc-for>
+                    </div>
+                    <div style="display:flex;gap:4px">
+                      <sc-for list="{{ dayLabels }}" as="d" hint-placeholder-count="7">
+                        <span style="flex:1;text-align:center;font:400 8.5px/1 'IBM Plex Mono',monospace;color:#C4BEB5">{{ d }}</span>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;background:#F5F5F5;border-top:1px solid #E7E7E7">
+              <sc-for list="{{ reportCells }}" as="c" hint-placeholder-count="3">
+                <div style="flex:1;padding:16px 6px;display:flex;flex-direction:column;gap:7px;align-items:center">
+                  <span style="font:400 10.5px/1.3 'Noto Sans KR',sans-serif;color:#8A8278;text-align:center">{{ c.k }}</span>
+                  <span style="font:700 15px/1 'IBM Plex Mono',monospace;color:#231815">{{ c.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:center;padding-top:4px">
+              <span style="font:400 11.5px/1.7 'Noto Sans KR',sans-serif;color:#A9A199;text-align:center;text-wrap:pretty">다음 주에도 같은 시간에 리포트를 보내드려요.</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMy }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:24px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:baseline;gap:9px">
+                <span style="font:700 20px/1.3 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">기록 62일째</span>
+                <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;color:#A9A199">since 04.12</span>
+              </div>
+              <div style="display:flex;background:#F5F5F5">
+                <sc-for list="{{ myStats }}" as="c" hint-placeholder-count="3">
+                  <div style="flex:1;padding:15px 6px;display:flex;flex-direction:column;gap:7px;align-items:center">
+                    <span style="font:400 10.5px/1.3 'Noto Sans KR',sans-serif;color:#8A8278;text-align:center">{{ c.k }}</span>
+                    <span style="font:700 15px/1 'IBM Plex Mono',monospace;color:#231815">{{ c.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <sc-for list="{{ myGroups }}" as="g" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:11px">
+                <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#A9A199">{{ g.tag }}</span>
+                <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #F0EEEA">
+                  <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+                    <div onClick="{{ i.go }}" style="display:flex;align-items:center;gap:12px;padding:16px 2px;border-bottom:1px solid #F0EEEA;cursor:pointer" style-hover="background:#FAF9F6">
+                      <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                        <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ i.ko }}</span>
+                        <span style="font:400 11.5px/1.5 'Noto Sans KR',sans-serif;color:#8A8278">{{ i.desc }}</span>
+                      </div>
+                      <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:{{ i.valColor }};flex:none">{{ i.val }}</span>
+                      <span style="font:400 13px/1 'Noto Sans KR',sans-serif;color:#CFCAC2;flex:none">→</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMyData }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">무엇이 자동으로 기록되나요?</span>
+              <p style="margin:0;font:400 12.5px/1.75 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">끄면 그 영역은 직접 기록으로 넘어가요. 언제든 다시 켤 수 있어요.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;border:1px solid #E7E7E7;padding:15px 16px">
+              <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">헬스 커넥트</span>
+                <span style="font:400 11.5px/1.5 'Noto Sans KR',sans-serif;color:#8A8278">{{ healthState }}</span>
+              </div>
+              <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:#8A8278">{{ healthBadge }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #F0EEEA">
+              <sc-for list="{{ sensorRows }}" as="r" hint-placeholder-count="4">
+                <div style="padding:17px 2px;border-bottom:1px solid #F0EEEA;display:flex;flex-direction:column;gap:11px">
+                  <div style="display:flex;align-items:center;gap:12px">
+                    <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                      <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:{{ r.titleColor }}">{{ r.ko }}</span>
+                      <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:#A9A199">{{ r.src }}</span>
+                    </div>
+                    <div onClick="{{ r.go }}" style="{{ r.toggleStyle }}">
+                      <span style="{{ r.knobStyle }}"></span>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:5px;padding-left:2px">
+                    <span style="font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:{{ r.bodyColor }}">{{ r.derives }}</span>
+                    <span style="font:400 11px/1.5 'Noto Sans KR',sans-serif;color:#C4BEB5">→ {{ r.maps }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background:#F5F5F5;padding:16px 18px;display:flex;flex-direction:column;gap:7px">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A9A199">저장 위치</span>
+              <span style="font:400 12.5px/1.7 'Noto Sans KR',sans-serif;color:#5C544A;text-wrap:pretty">원본 센서값은 기기에 남고, 서버로는 가공된 변수만 보내요.</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMyGoal }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">목표를 다시 정해요.</span>
+              <p style="margin:0;font:400 12.5px/1.75 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">04.12에 정한 목표를 쓰고 있어요. 학기가 바뀌었다면 지금 고쳐요.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">하루의 경계</span>
+              <sc-for list="{{ ob3Rows }}" as="r" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="flex:1;font:400 13px/1 'Noto Sans KR',sans-serif;color:#5C544A">{{ r.ko }}</span>
+                  <div style="display:flex;align-items:center;border:1px solid #E7E7E7">
+                    <div onClick="{{ r.dec }}" style="width:36px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#8A8278">−</span></div>
+                    <span style="width:62px;text-align:center;font:500 14px/1 'IBM Plex Mono',monospace;color:#231815">{{ r.value }}</span>
+                    <div onClick="{{ r.inc }}" style="width:36px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#8A8278">+</span></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #F0EEEA;padding-top:22px">
+              <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">영역별 목표 시간</span>
+              <sc-for list="{{ ob4Rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="width:18px;height:18px;border-radius:3px;background:{{ r.hex }};flex:none"></span>
+                  <span style="flex:1;font:400 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">{{ r.ko }}</span>
+                  <div style="display:flex;align-items:center;border:1px solid #E7E7E7">
+                    <div onClick="{{ r.dec }}" style="width:36px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#8A8278">−</span></div>
+                    <span style="width:62px;text-align:center;font:500 14px/1 'IBM Plex Mono',monospace;color:#231815">{{ r.label }}</span>
+                    <div onClick="{{ r.inc }}" style="width:36px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#FAF9F6"><span style="font:400 15px/1 'Noto Sans KR',sans-serif;color:#8A8278">+</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="display:flex;flex-direction:column;gap:9px;padding-top:4px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between">
+                  <span style="font:400 12px/1 'Noto Sans KR',sans-serif;color:#8A8278">하루 24시간 대비</span>
+                  <span style="font:500 12px/1 'IBM Plex Mono',monospace;color:{{ budgetColor }}">{{ budgetLabel }}</span>
+                </div>
+                <div style="height:14px;background:#F0EEEA;display:flex;overflow:hidden">
+                  <sc-for list="{{ budgetBar }}" as="b" hint-placeholder-count="5">
+                    <span style="width:{{ b.w }};background:{{ b.c }}"></span>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+            <div onClick="{{ goOb2 }}" style="display:flex;align-items:center;gap:12px;padding:15px 16px;border:1px solid #E7E7E7;cursor:pointer" style-hover="background:#FAF9F6">
+              <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                <span style="font:700 13px/1 'Noto Sans KR',sans-serif;color:#231815">관리할 영역 고치기</span>
+                <span style="font:400 11.5px/1.5 'Noto Sans KR',sans-serif;color:#8A8278">지금 4개 영역을 보고 있어요</span>
+              </div>
+              <span style="font:400 13px/1 'Noto Sans KR',sans-serif;color:#CFCAC2">→</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMyReport }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">리포트를 언제 받을까요?</span>
+              <p style="margin:0;font:400 12.5px/1.75 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">한 주가 끝나고, 다음 주 계획을 세우기 전이 좋아요.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">요일</span>
+              <div style="display:flex;gap:6px">
+                <sc-for list="{{ reportDays }}" as="d" hint-placeholder-count="7">
+                  <div onClick="{{ d.go }}" style="{{ d.style }}">
+                    <span style="font:{{ d.weight }} 12.5px/1 'Noto Sans KR',sans-serif;color:{{ d.color }}">{{ d.ko }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:#231815">시각</span>
+              <div style="display:flex;align-items:center;border:1px solid #E7E7E7">
+                <div onClick="{{ reportHourDec }}" style="width:52px;height:56px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-right:1px solid #F0EEEA" style-hover="background:#FAF9F6"><span style="font:400 17px/1 'Noto Sans KR',sans-serif;color:#8A8278">−</span></div>
+                <span style="flex:1;text-align:center;font:500 24px/1 'IBM Plex Mono',monospace;color:#231815">{{ reportHourLabel }}</span>
+                <div onClick="{{ reportHourInc }}" style="width:52px;height:56px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-left:1px solid #F0EEEA" style-hover="background:#FAF9F6"><span style="font:400 17px/1 'Noto Sans KR',sans-serif;color:#8A8278">+</span></div>
+              </div>
+            </div>
+            <div style="background:#F5F5F5;padding:18px;display:flex;flex-direction:column;gap:7px">
+              <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A9A199">다음 리포트</span>
+              <span style="font:700 15px/1.6 'Noto Sans KR',sans-serif;color:#231815">{{ nextReport }}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #F0EEEA;padding-top:20px">
+              <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">기록 알림</span>
+                <span style="font:400 11.5px/1.5 'Noto Sans KR',sans-serif;color:#8A8278">하루 3회 시점 기록 · 밤 10시 일기</span>
+              </div>
+              <div onClick="{{ notifyGo }}" style="{{ notifyToggle }}">
+                <span style="{{ notifyKnob }}"></span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMyArchive }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">받은 리포트</span>
+              <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#A9A199">9주</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #F0EEEA">
+              <sc-for list="{{ archive }}" as="a" hint-placeholder-count="6">
+                <div onClick="{{ a.go }}" style="{{ a.style }}">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between">
+                    <span style="font:500 12.5px/1 'IBM Plex Mono',monospace;color:#231815">{{ a.range }}</span>
+                    <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:{{ a.rateColor }}">{{ a.rate }}</span>
+                  </div>
+                  <span style="font:{{ a.weight }} 13px/1.6 'Noto Sans KR',sans-serif;color:{{ a.textColor }};text-wrap:pretty">{{ a.line }}</span>
+                  <div style="display:grid;grid-template-columns:repeat(24,1fr);gap:1.5px;padding-top:2px">
+                    <sc-for list="{{ a.strip }}" as="c" hint-placeholder-count="24">
+                      <span style="height:7px;background:{{ c }}"></span>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMyPrivacy }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:22px 22px 28px;display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span style="font:700 19px/1.4 'Noto Sans KR',sans-serif;letter-spacing:-.02em;color:#231815">수집하는 정보</span>
+              <p style="margin:0;font:400 12.5px/1.75 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">2024.03.01 개정 · 만 14세 미만은 보호자 동의가 필요해요.</p>
+            </div>
+            <div style="border:1px solid #E7E7E7">
+              <div style="display:grid;grid-template-columns:1fr 1fr;background:#231815">
+                <span style="padding:11px 14px;font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#fff">항목</span>
+                <span style="padding:11px 14px;font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#fff">목적 · 보관</span>
+              </div>
+              <sc-for list="{{ privacyRows }}" as="r" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #F2EEE8">
+                  <span style="padding:13px 14px;font:400 12px/1.6 'Noto Sans KR',sans-serif;color:#231815;text-wrap:pretty">{{ r.k }}</span>
+                  <span style="padding:13px 14px;font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:#8A8278;border-left:1px solid #F2EEE8;text-wrap:pretty">{{ r.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;border:1px solid #E7E7E7;padding:16px">
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+                <span style="font:700 13.5px/1 'Noto Sans KR',sans-serif;color:#231815">연구용 제공 동의</span>
+                <span style="font:400 11.5px/1.6 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">식별 정보를 지운 통계값만 제공해요. 거부해도 앱은 그대로 써요.</span>
+              </div>
+              <div onClick="{{ researchGo }}" style="{{ researchToggle }}">
+                <span style="{{ researchKnob }}"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #F0EEEA">
+              <sc-for list="{{ privacyLinks }}" as="l" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:12px;padding:16px 2px;border-bottom:1px solid #F0EEEA">
+                  <span style="flex:1;font:400 13px/1 'Noto Sans KR',sans-serif;color:{{ l.color }}">{{ l.ko }}</span>
+                  <span style="font:500 10.5px/1 'IBM Plex Mono',monospace;color:#A9A199">{{ l.val }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+
+      <sc-if value="{{ hasPrimary }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:none;padding:12px 22px 16px;background:#fff;border-top:1px solid #F5F3EF">
+          <div onClick="{{ primaryGo }}" style="{{ primaryStyle }}">
+            <span style="font:700 14px/1 'Noto Sans KR',sans-serif;color:{{ primaryColor }}">{{ primaryLabel }}</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasTabs }}" hint-placeholder-val="{{ false }}">
+        <div style="height:58px;flex:none;border-top:1px solid #EFEDE9;display:flex;background:#fff">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+            <div onClick="{{ t.go }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+              <span style="width:18px;height:18px;border-radius:4px;background:{{ t.bg }}"></span>
+              <span style="font:{{ t.weight }} 9.5px/1 'Noto Sans KR',sans-serif;color:{{ t.color }}">{{ t.ko }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <div onClick="{{ prevScreen }}" style="padding:8px 16px;border:1px solid #D9D5CE;cursor:pointer;background:#fff" style-hover="background:#F7F5F1"><span style="font:400 11.5px/1 'Noto Sans KR',sans-serif;color:#5C544A">← 이전</span></div>
+      <span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#8A8278">{{ screenPos }}</span>
+      <div onClick="{{ nextScreen }}" style="padding:8px 16px;border:1px solid #D9D5CE;cursor:pointer;background:#fff" style-hover="background:#F7F5F1"><span style="font:400 11.5px/1 'Noto Sans KR',sans-serif;color:#5C544A">다음 →</span></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ notesOn }}" hint-placeholder-val="{{ true }}">
+    <aside style="width:268px;flex:none;position:sticky;top:44px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#9A938A;text-transform:uppercase">Design note</span>
+        <span style="flex:1;height:1px;background:#DCD8D1"></span>
+      </div>
+      <div style="background:#fff;border:1px solid #DCD8D1;padding:22px 20px 24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:700 15px/1.45 'Noto Sans KR',sans-serif;color:#231815;text-wrap:pretty">{{ note.title }}</span>
+        <p style="margin:0;font:400 12.5px/1.8 'Noto Sans KR',sans-serif;color:#5C544A;text-wrap:pretty">{{ note.body }}</p>
+        <sc-if value="{{ note.hasBasis }}" hint-placeholder-val="{{ false }}">
+          <div style="border-top:1px solid #F0EEEA;padding-top:13px;display:flex;flex-direction:column;gap:7px">
+            <span style="font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#A9A199">근거</span>
+            <p style="margin:0;font:400 12px/1.75 'Noto Sans KR',sans-serif;color:#8A8278;text-wrap:pretty">{{ note.basis }}</p>
+          </div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ note.isChanged }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#231815;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8A8278">STRUCTURE CHANGED</span>
+          <span style="font:400 12px/1.7 'Noto Sans KR',sans-serif;color:#fff;text-wrap:pretty">이 화면은 구조를 바꾼 5건 중 하나예요.</span>
+        </div>
+      </sc-if>
+    </aside>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;프레젠테이션&quot;,&quot;label&quot;:&quot;디자인 노트 패널&quot;},&quot;gridShape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;square&quot;,&quot;circle&quot;],&quot;default&quot;:&quot;square&quot;,&quot;tsType&quot;:&quot;'square' | 'circle'&quot;,&quot;section&quot;:&quot;원본 비교&quot;,&quot;label&quot;:&quot;하루 그리드 셀 모양&quot;},&quot;diaryMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;stepped&quot;,&quot;single&quot;],&quot;default&quot;:&quot;stepped&quot;,&quot;tsType&quot;:&quot;'stepped' | 'single'&quot;,&quot;section&quot;:&quot;원본 비교&quot;,&quot;label&quot;:&quot;하루 일기 구조&quot;}}">
+const C = {
+  sleep:'#C2C9D1', ex:'#FFCC71', study:'#F09F7F',
+  active:'#B7BB95', media:'#D6D8C5', grey:'#EFEFEF',
+  dep:'#8590C8', anx:'#33CCCC', str:'#AA78EA'
+};
+const AREAS = [
+  { key:'sleep', ko:'수면', hex:C.sleep },
+  { key:'ex', ko:'운동', hex:C.ex },
+  { key:'study', ko:'공부', hex:C.study },
+  { key:'active', ko:'적극적 여가', hex:C.active },
+  { key:'media', ko:'미디어 여가', hex:C.media },
+  { key:'grey', ko:'회색 시간', hex:C.grey }
+];
+const SCREENS = [
+  { key:'ob1', no:'01', ko:'목표 설정 · 어려움', title:'목표 설정', group:'setup' },
+  { key:'ob2', no:'02', ko:'목표 설정 · 관심 영역', title:'목표 설정', group:'setup' },
+  { key:'ob3', no:'03', ko:'목표 설정 · 기상 / 취침', title:'목표 설정', group:'setup' },
+  { key:'ob4', no:'04', ko:'목표 설정 · 목표 시간', title:'목표 설정', group:'setup' },
+  { key:'rec', no:'05', ko:'기록 메인', title:'기록', group:'record' },
+  { key:'grid', no:'06', ko:'하루 그리드 기록', title:'하루 그리드', group:'record' },
+  { key:'moment', no:'07', ko:'시점 기록 · EMA', title:'지금 기록', group:'record' },
+  { key:'d1', no:'08', ko:'하루 일기 · 평가 / 기분', title:'하루 일기', group:'record' },
+  { key:'d2', no:'09', ko:'하루 일기 · 식사 / 날씨', title:'하루 일기', group:'record' },
+  { key:'d3', no:'10', ko:'하루 일기 · 여가 / 학업 / 수면', title:'하루 일기', group:'record' },
+  { key:'stat', no:'11', ko:'통계 · 생활', title:'통계', group:'stat' },
+  { key:'statm', no:'12', ko:'통계 · 정서', title:'통계', group:'stat' },
+  { key:'hl_sleep', no:'13', ko:'하이라이트 · 수면', title:'하이라이트', group:'stat' },
+  { key:'hl_ex', no:'14', ko:'하이라이트 · 운동', title:'하이라이트', group:'stat' },
+  { key:'hl_leisure', no:'15', ko:'하이라이트 · 여가', title:'하이라이트', group:'stat' },
+  { key:'hl_study', no:'16', ko:'하이라이트 · 공부', title:'하이라이트', group:'stat' },
+  { key:'report', no:'17', ko:'주간 리포트', title:'주간 리포트', group:'report' },
+  { key:'my', no:'18', ko:'마이 메인', title:'마이', group:'my' },
+  { key:'my_data', no:'19', ko:'데이터 연결 · 헬스 커넥트', title:'데이터 연결', group:'my' },
+  { key:'my_goal', no:'20', ko:'목표 수정', title:'목표 수정', group:'my' },
+  { key:'my_report', no:'21', ko:'리포트 받는 시간', title:'리포트 설정', group:'my' },
+  { key:'my_archive', no:'22', ko:'리포트 아카이브', title:'받은 리포트', group:'my' },
+  { key:'my_privacy', no:'23', ko:'개인정보 처리방침', title:'개인정보', group:'my' }
+];
+const GROUP_DOT = { setup:'#C2C9D1', record:'#F09F7F', stat:'#B7BB95', report:'#231815', my:'#8590C8' };
+
+const SUBS = {
+  sleep:['수면','낮잠'],
+  ex:['걷기','달리기','헬스','구기운동'],
+  study:['학원','자습','인강','방과후','숙제'],
+  active:['독서','친구 만남','문화생활','여행','취미'],
+  media:['핸드폰','게임','TV · 유튜브','누워있기']
+};
+
+const SENSORS = [
+  { key:'location', ko:'위치', src:'GPS · 5분 주기', derives:'장소 다양성 · 집 체류 시간 · 이동 반경', maps:'적극적 여가 추정' },
+  { key:'motion', ko:'활동량', src:'가속도계 · 걸음 수', derives:'걸음 수 · 활동 강도 · 정지 시간', maps:'운동 · 수면 추정' },
+  { key:'screen', ko:'화면 사용', src:'화면 켜짐 · 앱 사용 시간', derives:'사용 시간 · 야간 사용 · 잠금 해제 횟수', maps:'미디어 여가 추정' },
+  { key:'sleep', ko:'수면', src:'헬스 커넥트', derives:'취침 · 기상 시각 · 수면 단계', maps:'수면 자동 기록' }
+];
+
+const HL = {
+  hl_sleep:{ ko:'수면', hex:C.sleep, caption:'DAILY · 권장 기준',
+    avg:'7h 21m', delta:'+18m', status:'기준 미달', statusOn:true,
+    avgLabel:'일평균 수면 — 권장 기준보다 39분 부족',
+    why:'수면은 꾸준한 습관이 중요해요. 그래서 하루 총 수면 시간을 기준으로 보여주고, 청소년 권장 수면 시간인 8–10시간과 비교해요.',
+    refLabel:'8h', chartTitle:'하루 수면 시간', chartNote:'가로선은 권장 최소치예요',
+    dayVals:[7.0,6.8,6.2,5.9,7.3,9.3,9.0], max:10, ref:8,
+    breakTitle:'평균 구성',
+    breakdown:[{ko:'평일 평균',v:'6h 38m',pct:55},{ko:'주말 평균',v:'9h 09m',pct:76},{ko:'낮잠 합계',v:'2h 00m',pct:17}],
+    cells:[{k:'취침 시각',v:'00:50'},{k:'기상 시각',v:'06:44'},{k:'어제',v:'5h 54m'}] },
+  hl_ex:{ ko:'운동', hex:C.ex, caption:'WEEKLY · 내 목표',
+    avg:'3일', delta:'+1일', status:'목표 달성', statusOn:false,
+    avgLabel:'이번 주 운동한 날 — 목표 주 2회 초과',
+    why:'운동은 총시간보다 이번 주에 실천했는지가 더 중요해요. 그래서 주간 단위로 요약하고, 내 목표를 기준으로 판단해요.',
+    refLabel:'30m', chartTitle:'하루 운동 시간', chartNote:'가로선은 1회 목표 시간이에요',
+    dayVals:[0,0.7,0,0.55,0,0.92,0], max:1, ref:0.5,
+    breakTitle:'활동 내역',
+    breakdown:[{ko:'걷기',v:'1h 05m',pct:74},{ko:'달리기',v:'40m',pct:42},{ko:'헬스',v:'25m',pct:26}],
+    cells:[{k:'운동한 날',v:'3일'},{k:'총 시간',v:'2h 10m'},{k:'1회 평균',v:'43m'}] },
+  hl_leisure:{ ko:'여가', hex:C.active, caption:'WEEKLY · 권장 기준',
+    avg:'26m', delta:'−7m', status:'권장 범위 내', statusOn:false,
+    avgLabel:'일평균 미디어 여가 — 권장 상한 이내',
+    why:'여가는 권장 기준과 비교해요. 특히 미디어 여가는 스스로 과한지 판단하기 어려울 수 있어, 객관적인 기준을 함께 보여줘요.',
+    refLabel:'2h', chartTitle:'하루 미디어 여가 시간', chartNote:'가로선은 권장 상한이에요',
+    dayVals:[0.2,0.3,0.4,0.5,0.3,0.8,0.5], max:2.4, ref:2,
+    breakTitle:'여가 구성',
+    breakdown:[{ko:'적극적 여가',v:'5h 40m',pct:66},{ko:'미디어',v:'3h 00m',pct:34},{ko:'누워있기',v:'1h 10m',pct:12}],
+    cells:[{k:'주요 여가',v:'독서'},{k:'여가 총량',v:'9h 50m'},{k:'미디어 비중',v:'30%'}] },
+  hl_study:{ ko:'공부', hex:C.study, caption:'DAILY · 내 목표',
+    avg:'2h 32m', delta:'−12m', status:'목표 미달', statusOn:true,
+    avgLabel:'일평균 공부 — 목표보다 28분 부족',
+    why:'공부는 하루 단위로 보여주고, 내 목표와 비교해요. 권장 시간보다 오래 공부해도 부족하다고 느낄 수 있기 때문이에요.',
+    refLabel:'3h', chartTitle:'하루 공부 시간', chartNote:'가로선은 내 일일 목표예요',
+    dayVals:[3.0,3.3,3.6,2.6,3.0,1.1,1.1], max:4.5, ref:3,
+    breakTitle:'시간 구성',
+    breakdown:[{ko:'학원 · 방과후',v:'8h 10m',pct:70},{ko:'자습',v:'6h 00m',pct:52},{ko:'인강',v:'3h 30m',pct:28}],
+    cells:[{k:'어제',v:'2h 36m'},{k:'주간 총량',v:'17h 40m'},{k:'목표 달성',v:'3/7'}] }
+};
+const HL_H = 94;
+
+const NOTES = {
+  ob1:{ title:'문제 인식부터 묻는다', body:'첫 화면이 기능 소개가 아니라 질문이다. 여기서 고른 어려움이 이후 목표 화면의 기본값과 리포트의 강조 순서를 정한다.' },
+  ob2:{ title:'선택한 영역만 등장한다', body:'6색 팔레트를 온보딩에서 미리 노출해, 이 색이 앱 전체에서 같은 의미로 쓰인다는 것을 처음부터 학습시킨다. 회색 시간은 기록되지 않은 시간이라 선택 대상에서 뺐다.' },
+  ob3:{ title:'하루의 경계를 먼저 정한다', body:'기상·취침 시각이 24칸 그리드의 시작점이자 수면 자동 추정의 기준이 된다. 계획된 수면량을 즉시 계산해 보여준다.' },
+  ob4:{ title:'타임블록 표기를 걷어냈다', body:'원본에는 시간 입력과 함께 채울 타임블록 개수 표기가 있었다. 지웠고, 대신 24시간 대비 비율을 스택 바로 보여준다. 합이 24시간을 넘으면 그 자리에서 경고한다.', isChanged:true, basis:'청소년은 빈 시간을 거의 두지 않아 블록 개수가 정보가 되지 못했다. 기획 단계에서도 삭제 검토 대상이던 항목.' },
+  rec:{ title:'에이전트 자리를 큐로 바꿨다', body:'원본 상단에는 빈 원(에이전트 이미지)과 O / X 버튼이 화면 절반을 차지했다. 구현되지 않은 기능이 레이아웃의 주인이었다. 실제로 남는 것은 패시브 데이터 확인 문구뿐이라 그것만 카드 한 장으로 남겼다.', isChanged:true, basis:'당시 AI API를 연결할 수 없어 비워둔 자리였다. 액티브·패시브 두 경로가 만나는 지점은 "센서 추정을 사용자가 확인한다"는 이 인터랙션이다.' },
+  grid:{ title:'원형 셀 → 사각 셀', body:'셀을 눌러 색을 칠하는 기록 방식은 그대로다. 모양만 원에서 사각으로 바꿨다. 인접한 같은 색이 하나의 블록으로 붙어 읽혀야 "몇 시간 연속"이 보인다.', isChanged:true, basis:'그리드의 목적은 남은 칸을 세는 것이 아니라 시간의 덩어리를 보는 것이다. 원형 셀은 후자를 보여주지 못한다.' },
+  moment:{ title:'정서는 생활과 다른 축', body:'우울·불안·스트레스 3지표를 5단 도트로 받는다. 채도 높은 3색은 생활 6색과 절대 섞이지 않는다 — 정서는 생활의 결과가 아니라 별개 축이라는 원본의 판단을 유지했다.' },
+  d1:{ title:'7섹션을 3스텝으로', body:'원본은 만족도·기분·식사·날씨·여가·학업·수면의 질 7개를 한 화면에 세로로 쌓아 스크롤이 매우 길었다. 3스텝으로 나눠 각 스텝이 한 화면에서 끝난다.', isChanged:true, basis:'매일 밤 정해진 시간에만 열리는, 매일 반복되는 폼이다. 스크롤 길이가 그대로 이탈률이 된다.' },
+  d2:{ title:'스텝 2 — 사실 기록', body:'식사와 날씨는 판단이 필요 없는 사실 항목이다. 3지 선택으로 묶어 탭 수를 최소화했다.' },
+  d3:{ title:'스텝 3 — 5단 평가', body:'여가 만족도·학업 성취감·수면의 질을 같은 5단 스케일로 통일했다. 서로 다른 스케일을 섞으면 매일 다시 읽어야 한다.' },
+  stat:{ title:'문장이 그래프보다 위에', body:'생활 균형 분석 문장을 그래프 위로 올렸다. 하단 목표 달성 추이의 도트에는 달성 카운트를 붙여 세지 않아도 되게 했다.', isChanged:true, basis:'카드소팅에서 참여자들은 모든 영역에서 원자료보다 해석 요인을 압도적으로 자주 "도움됨"으로 분류했다. 추세를 고른 사람은 오히려 적었다.' },
+  statm:{ title:'해석을 대신하지 않고, 겹쳐 보게 한다', body:'3지표를 7일 히트맵 한 판으로 합쳤다. 막대 세 벌보다 어느 요일에 무엇이 올라갔는지가 한눈에 읽히고, 주 평균 옆의 전주 대비 증감이 "변하고 있는가"에 답한다. 아래에는 같은 날짜 축 위에 생활 데이터를 겹쳐 볼 수 있는 전환을 뒀다.', isChanged:true, basis:'시스템이 인과를 단정하면 청소년은 자기 경험과 어긋나는 결론을 받아들이지 않는다. 리포트는 판단을 내리지 않고 자기 삶을 평가할 재료만 제공해야 한다는 것이 연구의 결론이었다 — 그래서 겹쳐 볼 축은 사용자가 고르고, 문장은 관계를 묻는 형태로 끝난다.' },
+  hl_sleep:{ title:'수면 — 일간 요약 · 권장 기준', body:'수면은 습관화가 목적이라 매일의 총량이 중요하다. 그래서 기본 요약 창이 일간이고, 판단 기준은 객관적 권장 수면 시간이다.', basis:'인터뷰에서 수면과 공부는 일간 요약을 선호했다. 습관을 만들려면 매일의 값이 필요하다는 이유였다.' },
+  hl_ex:{ title:'운동 — 주간 요약 · 내 목표', body:'주간 요약이 먼저 오고, 판정 기준을 권장량에서 내 목표로 바꿨다. 기준선은 권장량이 아니라 1회 목표 시간이고, 상태 라벨도 "과다"가 아니라 "목표 달성"이다.', basis:'참여자들은 주 2–3회 30분이면 충분하다고 보았지만 권장 기준은 매일 1시간이었다. 권장으로 평가하면 늘 실패한 사람이 된다.' },
+  hl_leisure:{ title:'여가 — 주간 요약 · 권장 기준', body:'여가만 권장 기준을 유지했다. 막대는 미디어 여가의 하루 총량이고, 구성은 아래 "여가 구성" 목록에서 따로 읽는다.', basis:'핸드폰·게임이 과한지 스스로 판단하기 어려워 객관적 잣대를 원한 유일한 영역이었다.' },
+  hl_study:{ title:'공부 — 일간 요약 · 내 목표', body:'일간 요약에 내 목표 기준. 두 축이 영역마다 독립적으로 정해진다는 것을 보여주는 조합이다.', basis:'권장 학습 시간은 1–3시간이지만 참여자들은 그보다 오래 하고도 부족하다고 느꼈다. 권장 기준이 오히려 왜곡을 만든다.' },
+  report:{ title:'리포트 시안을 앱 안으로', body:'중앙 정렬 제목 + 짧은 검은 밑줄, 넉넉한 여백 — 원본 리포트 시안의 톤을 그대로 가져와 앱 화면으로 편입했다. 7일 × 24시간 그리드가 한 화면에 들어온다.' },
+  my:{ title:'마이 탭을 새로 채웠다', body:'원본에는 4번째 탭이 자리만 있고 화면이 없었다. 패시브 수집이 절반인 플랫폼에서 가장 먼저 필요한 것은 "무엇이 수집되고 있는지"와 "그것을 끌 수 있는지"다. 마이를 데이터 관리 화면으로 정의했다.', isChanged:true, basis:'액티브·패시브 이중 수집 구조에서 동의는 온보딩 1회로 끝나지 않는다. 센서별로 언제든 되돌릴 수 있어야 수집이 정당해진다.' },
+  my_data:{ title:'센서별로 켜고 끈다', body:'헬스 커넥트와 기기 센서를 한 목록에 놓고, 각 항목이 어떤 값으로 가공되어 어떤 생활 영역이 되는지 함께 적었다. 토글은 즉시 반영되고, 끈 항목은 그 영역이 직접 기록으로 넘어간다.', basis:'센서 → 파생 변수 → 생활 영역 매핑은 연구 단계에서 이미 정의돼 있었지만 화면에 노출된 적이 없었다.' },
+  my_goal:{ title:'온보딩을 다시 열 수 있게', body:'목표는 한 번 정하고 끝나는 값이 아니다. 온보딩 4단계와 같은 컨트롤을 그대로 재사용해, 학습한 조작 방법이 유지된다.', basis:'인터뷰에서 학기·방학에 따라 생활 리듬이 크게 달라진다는 진술이 반복됐다.' },
+  my_report:{ title:'리포트를 언제 받을지', body:'요일과 시각을 직접 정한다. 리포트는 푸시로 도착하는 유일한 콘텐츠이므로, 받는 시점이 곧 열어보는 확률이다.', basis:'주간 요약을 선호한 영역(운동·여가)의 근거는 "다음 주에 계획을 넣겠다"는 것이었다. 리포트는 다음 주가 시작되기 전에 닿아야 한다.' },
+  my_archive:{ title:'지난 리포트를 되돌아본다', body:'주간 리포트를 목록으로 쌓아, 한 주 단위 비교가 아니라 장기 변화를 볼 수 있게 했다. 각 항목은 그 주의 기록률과 핵심 문장 한 줄을 미리 보여준다.', basis:'카드소팅에서 추세(trend)를 도움됨으로 고른 사람은 적었지만, 지난 리포트를 다시 보고 싶다는 요구는 별개로 있었다.' },
+  my_privacy:{ title:'읽을 수 있는 처리방침', body:'수집 항목·목적·보관 기간·제3자 제공을 표로 정리하고, 연구용 제공 동의만 별도 토글로 분리했다. 미성년자 대상 서비스이므로 보호자 동의 상태도 함께 표시한다.', basis:'청소년 대상 연구 플랫폼은 보호자 동의가 전제다. 동의 상태를 앱 안에서 확인할 수 있어야 한다.' }
+};
+
+class Component extends DCLogic {
+  state = {
+    screen:'ob1',
+    hlWhy:false,
+    ob1:{ 1:true },
+    ob2:{ sleep:true, study:true, ex:true, active:true },
+    wake:7*60, bed:23*60,
+    goals:{ sleep:450, ex:30, study:180, active:60 },
+    queue:0,
+    grid:null,
+    brush:'study',
+    selCell:null,
+    affect:{ dep:0, anx:0, str:0 },
+    moodViz:'dev',
+    overlay:'sleep',
+    devMetric:'str',
+    momentArea:'study',
+    momentSub:null,
+    sensors:{ location:true, motion:true, screen:true, sleep:true },
+    reportDay:6, reportHour:20, research:true, notify:true,
+    sat:null,
+    moods:{},
+    meals:{ b:null, l:null, d:null },
+    weather:null,
+    d3:{ leisure:null, study:null, sleep:null },
+    statTab:'life'
+  };
+
+  componentDidMount() {
+    const base = [
+      'sleep','sleep','sleep','sleep','sleep','sleep',
+      'sleep','grey','study','study','study','study',
+      'study','study','ex','media','media','active',
+      'active','grey','grey','sleep','sleep','sleep'
+    ];
+    this.setState({ grid: base });
+  }
+
+  go = k => () => this.setState({ screen:k, selCell:null, hlWhy:false });
+
+  fmt(m) {
+    const h = Math.floor(((m % 1440) + 1440) % 1440 / 60);
+    const mm = ((m % 60) + 60) % 60;
+    return String(h).padStart(2,'0') + ':' + String(mm).padStart(2,'0');
+  }
+  dur(m) {
+    const h = Math.floor(m / 60), mm = m % 60;
+    return mm ? h + 'h ' + String(mm).padStart(2,'0') + 'm' : h + 'h';
+  }
+
+  chip(on, extra) {
+    return 'display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;cursor:pointer;border:1px solid ' +
+      (on ? '#F5F1E8' : '#E7E7E7') + ';background:' + (on ? '#F5F1E8' : '#fff') + (extra || '');
+  }
+  boxRow(on) {
+    return 'display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;border:1px solid ' +
+      (on ? '#F5F1E8' : '#E7E7E7') + ';background:' + (on ? '#F5F1E8' : '#fff');
+  }
+  seg(on) {
+    return 'flex:1;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:2px;border:1px solid ' +
+      (on ? '#F5F1E8' : '#E7E7E7') + ';background:' + (on ? '#F5F1E8' : '#fff');
+  }
+
+  renderVals() {
+    const s = this.state;
+    const sc = s.screen;
+    const cur = SCREENS.find(x => x.key === sc) || SCREENS[0];
+    const idx = SCREENS.indexOf(cur);
+    const diaryMode = this.props.diaryMode ?? 'stepped';
+    const gridShape = this.props.gridShape ?? 'square';
+    const notesOn = this.props.showNotes ?? true;
+    const cellRadius = gridShape === 'circle' ? '999px' : '2px';
+
+    const isDiary = sc === 'd1' || sc === 'd2' || sc === 'd3';
+    const single = diaryMode === 'single';
+    const isHl = sc.startsWith('hl_');
+    const hl = HL[isHl ? sc : 'hl_sleep'];
+    const grid = s.grid || new Array(24).fill('grey');
+
+    const rail = SCREENS.map(x => {
+      const on = x.key === sc;
+      return {
+        no:x.no, ko:x.ko, go:this.go(x.key),
+        style:'display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:pointer;background:' + (on ? '#231815' : 'transparent'),
+        weight:on ? '700' : '400',
+        textColor:on ? '#fff' : '#5C544A',
+        numColor:on ? '#8A8278' : '#B8B1A7',
+        dot:on ? GROUP_DOT[x.group] : 'transparent'
+      };
+    });
+
+    const goalSum = Object.values(s.goals).reduce((a,b) => a+b, 0);
+    const over = goalSum > 1440;
+    const budgetBar = [
+      { k:'sleep', c:C.sleep }, { k:'study', c:C.study },
+      { k:'ex', c:C.ex }, { k:'active', c:C.active }
+    ].map(x => ({ w: (s.goals[x.k] / 1440 * 100) + '%', c:x.c }));
+    if (!over) budgetBar.push({ w: ((1440 - goalSum) / 1440 * 100) + '%', c:'#F0EEEA' });
+
+    const QUEUE = [
+      '어젯밤 23:50부터 오늘 07:00까지 잠을 잔 게 맞나요?',
+      '오후 4시에 30분 정도 걸었어요. 운동으로 기록할까요?',
+      '저녁 7시부터 두 시간, 학원에 있었던 것 같아요. 맞나요?'
+    ];
+
+    const affectRows = [
+      { key:'dep', ko:'우울', hex:C.dep },
+      { key:'anx', ko:'불안', hex:C.anx },
+      { key:'str', ko:'스트레스', hex:C.str }
+    ].map(a => {
+      const v = s.affect[a.key];
+      return {
+        ko:a.ko,
+        valLabel:v ? String(v) : '—',
+        valColor:v ? '#231815' : '#C4BEB5',
+        dots:[1,2,3,4,5].map(n => ({
+          go:() => this.setState({ affect:{ ...s.affect, [a.key]: v === n ? 0 : n } }),
+          style:'flex:1;height:30px;cursor:pointer;border-radius:2px;background:' +
+            (n <= v ? a.hex : '#F2F1EE') + ';opacity:' + (n <= v ? (0.35 + 0.16 * n) : 1)
+        }))
+      };
+    });
+
+    const MOODS = ['행복한','뿌듯한','설레는','평온한','피곤한','짜증나는','불안한','외로운','속상한','지루한'];
+    const SAT = ['최악','아쉬움','보통','좋음','최고'];
+    const WEATHER = ['맑음','흐림','비','눈','더움'];
+    const MEAL_OPTS = ['안 먹음','간단히','제대로'];
+    const FIVE = ['1','2','3','4','5'];
+
+    const statBars = [
+      [['sleep',44],['study',40],['media',18],['active',12],['grey',16]],
+      [['sleep',40],['study',46],['media',20],['ex',10],['grey',14]],
+      [['sleep',36],['study',50],['media',22],['active',8],['grey',14]],
+      [['sleep',42],['study',38],['media',16],['ex',12],['grey',22]],
+      [['sleep',38],['study',44],['media',24],['active',10],['grey',14]],
+      [['sleep',58],['study',14],['media',30],['ex',14],['grey',14]],
+      [['sleep',54],['study',18],['media',28],['active',16],['grey',14]]
+    ];
+    const DAYS = ['월','화','수','목','금','토','일'];
+
+    const achieveRows = [
+      { ko:'수면', hex:C.sleep, d:[1,1,0,1,0,1,1] },
+      { ko:'운동', hex:C.ex, d:[0,1,0,1,0,1,0] },
+      { ko:'공부', hex:C.study, d:[1,1,1,0,1,0,1] },
+      { ko:'적극적 여가', hex:C.active, d:[1,0,1,0,1,1,1] }
+    ].map(a => ({
+      ko:a.ko, hex:a.hex,
+      count:a.d.filter(Boolean).length + '/7',
+      dots:a.d.map(v => ({
+        style:'flex:1;aspect-ratio:1;max-width:15px;border-radius:999px;background:' +
+          (v ? a.hex : 'transparent') + ';border:1px solid ' + (v ? a.hex : '#E4E0D9')
+      }))
+    }));
+
+    const hexA = (hex, a) => {
+      const n = parseInt(hex.slice(1), 16);
+      return 'rgba(' + (n >> 16) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+    };
+    const affectHeat = [
+      { ko:'우울', hex:C.dep, v:[2,2,3,2,1,2,2], prev:2.4 },
+      { ko:'불안', hex:C.anx, v:[3,3,4,4,2,2,3], prev:2.6 },
+      { ko:'스트레스', hex:C.str, v:[3,4,5,5,3,2,2], prev:2.9 }
+    ].map(m => {
+      const avg = m.v.reduce((a,b) => a+b, 0) / m.v.length;
+      const d = avg - m.prev;
+      return {
+        ko:m.ko, hex:m.hex,
+        avg:avg.toFixed(1),
+        delta:(d > 0 ? '+' : d < 0 ? '−' : '±') + Math.abs(d).toFixed(1),
+        deltaColor: Math.abs(d) < 0.15 ? '#C4BEB5' : (d > 0 ? '#231815' : '#A9A199'),
+        cells:m.v.map(v => ({
+          style:'flex:1;height:26px;border-radius:2px;background:' +
+            (v ? hexA(m.hex, 0.14 + v * 0.16) : '#F5F4F1')
+        }))
+      };
+    });
+
+    const OVERLAY = {
+      sleep:{ ko:'수면', unit:'h', hex:C.sleep, v:[6.8,6.5,5.9,5.6,7.0,9.2,8.8], max:10,
+        note:'스트레스가 가장 높았던 수·목은 수면이 가장 짧았던 날이기도 해요. 같은 날 다른 일도 있었을 테니, 짚이는 게 있는지 떠올려 보세요.' },
+      study:{ ko:'공부', unit:'h', hex:C.study, v:[3.5,4.0,4.5,3.2,3.8,1.2,1.6], max:6,
+        note:'공부 시간이 가장 길었던 수요일에 불안도 가장 높았어요. 늘 그런 것은 아닐 수 있어요 — 다른 주와도 비교해 보세요.' },
+      media:{ ko:'미디어', unit:'h', hex:C.media, v:[1.5,1.8,2.0,2.4,2.2,3.0,2.8], max:4,
+        note:'미디어 시간이 가장 길었던 주말에 우울 점수는 낮은 편이었어요. 이 관계를 어떻게 읽을지는 본인이 가장 잘 알아요.' },
+      ex:{ ko:'운동', unit:'h', hex:C.ex, v:[0,0.6,0,0.5,0,0.8,0], max:1,
+        note:'운동한 날은 화·목·토 세 번이었어요. 그날의 정서와 나란히 놓고 보면 어떤가요?' }
+    };
+    const ovKey = s.overlay || 'sleep';
+    const ov = OVERLAY[ovKey];
+    const ovAvg = ov.v.reduce((a,b) => a+b, 0) / ov.v.length;
+
+    const reportWeek = [
+      'ssssssgttttttmmaagggsss','sssssgttttttttmmaggssss'
+    ];
+    const RW = [
+      ['sleep',7],['grey',1],['study',6],['media',2],['active',2],['grey',2],['sleep',4],
+    ];
+    const buildRow = pattern => {
+      const out = [];
+      pattern.forEach(([k,n]) => { for (let i=0;i<n;i++) out.push(C[k]); });
+      while (out.length < 24) out.push(C.grey);
+      return out.slice(0,24);
+    };
+    const reportRows = [
+      [['sleep',7],['grey',1],['study',7],['media',2],['active',2],['grey',1],['sleep',4]],
+      [['sleep',6],['grey',1],['study',8],['ex',1],['media',2],['grey',2],['sleep',4]],
+      [['sleep',6],['study',9],['media',3],['active',1],['grey',1],['sleep',4]],
+      [['sleep',7],['grey',1],['study',6],['ex',1],['media',2],['grey',3],['sleep',4]],
+      [['sleep',6],['grey',1],['study',7],['media',4],['active',1],['grey',1],['sleep',4]],
+      [['sleep',9],['ex',1],['media',5],['active',2],['study',2],['grey',1],['sleep',4]],
+      [['sleep',9],['media',4],['active',3],['study',3],['grey',1],['sleep',4]]
+    ].map((p,i) => ({ day:DAYS[i], cells:buildRow(p) }));
+
+    const primaryMap = {
+      ob1:{ label:'다음으로', to:'ob2', on:Object.values(s.ob1).some(Boolean) },
+      ob2:{ label:'다음으로', to:'ob3', on:Object.values(s.ob2).some(Boolean) },
+      ob3:{ label:'다음으로', to:'ob4', on:true },
+      ob4:{ label:over ? '목표를 24시간 안으로 맞춰주세요' : '설정 완료', to:'rec', on:!over },
+      grid:{ label:'저장하기', to:'rec', on:true },
+      moment:{ label:'기록하기', to:'rec', on:!!s.momentArea },
+      d1:{ label:'다음으로', to:single ? 'stat' : 'd2', on:true },
+      d2:{ label:'다음으로', to:'d3', on:true },
+      d3:{ label:'일기 저장하기', to:'stat', on:true },
+      report:{ label:'통계로 돌아가기', to:'stat', on:true },
+      my_goal:{ label:over ? '목표를 24시간 안으로 맞춰주세요' : '저장하기', to:'my', on:!over },
+      my_report:{ label:'저장하기', to:'my', on:true }
+    };
+    const p = primaryMap[single && isDiary ? 'd1' : sc];
+
+    const backMap = { ob2:'ob1', ob3:'ob2', ob4:'ob3', grid:'rec', moment:'rec', d1:'rec', d2:'d1', d3:'d2', statm:'stat', report:'stat',
+      my_data:'my', my_goal:'my', my_report:'my', my_archive:'my', my_privacy:'my' };
+    const backTo = isHl ? 'stat' : backMap[sc];
+
+    const greyCount = grid.filter(g => g === 'grey').length;
+    const brushKo = (AREAS.find(a => a.key === s.brush) || AREAS[0]).ko;
+
+    return {
+      rail, notesOn, cellRadius,
+      note: { ...(NOTES[sc] || NOTES.ob1), hasBasis: !!(NOTES[sc] && NOTES[sc].basis), isChanged: !!(NOTES[sc] && NOTES[sc].isChanged) },
+      title: cur.title,
+      screenPos: cur.no + ' / ' + SCREENS.length,
+      hasBack: !!backTo,
+      back: backTo ? this.go(backTo) : (() => {}),
+      hasSkip: cur.group === 'setup' || isDiary || sc === 'moment',
+      backAlign: 'flex-start',
+      backPad: cur.group === 'setup' ? '26px' : '0px',
+      prevScreen: this.go(SCREENS[(idx + 16) % 17].key),
+      nextScreen: this.go(SCREENS[(idx + 1) % 17].key),
+
+      isOnboard: cur.group === 'setup',
+      obSteps: ['1','2','3','4'].map((n,i) => ({
+        n, w: i === idx ? '700' : '400', c: i === idx ? '#231815' : '#CFCAC2'
+      })),
+
+      isOb1: sc === 'ob1',
+      ob1Items: ['시간 개념이 부족해요','동기 부여가 어려워요','계획을 세워도 안 지켜져요','뭘 했는지 기억이 안 나요','기분이 오르내려요'].map((ko,i) => {
+        const on = !!s.ob1[i];
+        return {
+          ko, go:() => this.setState({ ob1:{ ...s.ob1, [i]:!on } }),
+          style:this.boxRow(on), weight:on ? '700' : '400', color:'#231815',
+          markBorder:on ? '#231815' : '#DEDAD3', markBg:on ? '#231815' : 'transparent'
+        };
+      }),
+
+      isOb2: sc === 'ob2',
+      ob2Items: AREAS.filter(a => a.key !== 'grey').map(a => {
+        const on = !!s.ob2[a.key];
+        return {
+          ko:a.ko, hex:a.hex,
+          go:() => this.setState({ ob2:{ ...s.ob2, [a.key]:!on } }),
+          style:this.boxRow(on) + ';padding:15px 14px',
+          weight:on ? '700' : '400', color:'#231815'
+        };
+      }),
+
+      isOb3: sc === 'ob3',
+      ob3Rows: [
+        { ko:'기상 시각', key:'wake' },
+        { ko:'취침 시각', key:'bed' }
+      ].map(r => ({
+        ko:r.ko, value:this.fmt(s[r.key]),
+        dec:() => this.setState({ [r.key]: s[r.key] - 30 }),
+        inc:() => this.setState({ [r.key]: s[r.key] + 30 })
+      })),
+      plannedSleep: this.dur((((s.wake - s.bed) % 1440) + 1440) % 1440),
+
+      isOb4: sc === 'ob4',
+      ob4Rows: AREAS.filter(a => s.ob2[a.key]).map(a => ({
+        ko:a.ko, hex:a.hex, label:this.dur(s.goals[a.key] || 0),
+        dec:() => this.setState({ goals:{ ...s.goals, [a.key]:Math.max(0,(s.goals[a.key]||0) - 30) } }),
+        inc:() => this.setState({ goals:{ ...s.goals, [a.key]:(s.goals[a.key]||0) + 30 } })
+      })),
+      budgetBar, overBudget:over,
+      budgetLabel: this.dur(goalSum) + ' / 24h',
+      budgetColor: over ? '#231815' : '#8A8278',
+
+      isRec: sc === 'rec',
+      today: '6월 12일 목요일',
+      recordedLabel: '기록 ' + (24 - greyCount) + '/24칸',
+      hasQueue: s.queue < QUEUE.length,
+      queueDone: s.queue >= QUEUE.length,
+      queueText: QUEUE[Math.min(s.queue, QUEUE.length - 1)],
+      queueCount: (s.queue + 1) + ' / ' + QUEUE.length,
+      queueYes: () => this.setState({ queue:s.queue + 1 }),
+      queueNo: () => this.setState({ queue:s.queue + 1 }),
+      recEntries: [
+        { ko:'지금 이 순간', desc:'무엇을 하는지와 기분을 짧게', badge:'3회 중 2회', key:'moment' },
+        { ko:'하루 일기', desc:'하루를 마치고 3단계로', badge: single ? '한 화면' : '3단계', key:'d1' },
+        { ko:'하루 그리드', desc:'시간별로 무엇을 했는지 칠하기', badge:greyCount + '칸 남음', key:'grid' }
+      ].map(e => ({
+        ...e, go:this.go(e.key),
+        style:'display:flex;align-items:center;gap:12px;padding:15px 16px;border:1px solid #E7E7E7;cursor:pointer;background:#fff',
+        badgeColor:'#A9A199'
+      })),
+      goGrid: this.go('grid'),
+      gridPreview: grid.map(k => C[k]),
+      hourAxis: ['06','12','18','24'],
+
+      isGrid: sc === 'grid',
+      greyCount,
+      paletteHint: s.selCell === null ? '색을 고르고 칸을 누르면 칠해져요 · 현재 ' + brushKo : (s.selCell + 1) + '시 칸에 무엇을 채울까요?',
+      gridCells: grid.map((k,i) => {
+        const sel = s.selCell === i;
+        return {
+          hour: String(i + 1).padStart(2,'0'),
+          labelColor: k === 'grey' ? '#BDB7AE' : 'rgba(35,24,21,.42)',
+          go: () => {
+            const next = grid.slice();
+            next[i] = s.brush;
+            this.setState({ grid:next, selCell:i });
+          },
+          style:'display:flex;align-items:flex-start;justify-content:flex-end;padding:3px 4px;cursor:pointer;background:' +
+            C[k] + ';border-radius:' + cellRadius + ';outline:' + (sel ? '2px solid #231815' : 'none') + ';outline-offset:1px'
+        };
+      }),
+      palette: AREAS.map(a => ({
+        ko:a.ko, hex:a.hex,
+        go:() => this.setState({ brush:a.key }),
+        style:'display:flex;align-items:center;gap:7px;padding:10px 10px;cursor:pointer;border:1px solid ' +
+          (s.brush === a.key ? '#231815' : '#E7E7E7') + ';background:#fff'
+      })),
+
+      isMoment: sc === 'moment',
+      momentTime: '오후 4시 30분',
+      momentAreas: AREAS.filter(a => a.key !== 'grey').map(a => {
+        const on = s.momentArea === a.key;
+        return {
+          ko:a.ko, hex:a.hex,
+          go:() => this.setState({ momentArea:a.key, momentSub:null }),
+          style:this.chip(on), weight:on ? '700' : '400', color:'#231815'
+        };
+      }),
+      hasSubs: !!(s.momentArea && SUBS[s.momentArea]),
+      subLabel: '어떤 활동이었어요?',
+      momentSubs: (SUBS[s.momentArea] || []).map(ko => {
+        const on = s.momentSub === ko;
+        return {
+          ko, go:() => this.setState({ momentSub:on ? null : ko }),
+          style:this.chip(on) + ';padding:8px 14px', weight:on ? '700' : '400',
+          color:on ? '#231815' : '#8A8278'
+        };
+      }),
+      affectRows,
+
+      isDiary,
+      showDiaryNav: isDiary && !single,
+      diaryDate: '06.12 THU',
+      diarySteps: ['1','2','3'].map((n,i) => ({
+        n, w: sc === 'd' + (i+1) ? '700' : '400', c: sc === 'd' + (i+1) ? '#231815' : '#CFCAC2'
+      })),
+      showD1: isDiary && (single || sc === 'd1'),
+      showD2: isDiary && (single || sc === 'd2'),
+      showD3: isDiary && (single || sc === 'd3'),
+      satScale: SAT.map((ko,i) => {
+        const on = s.sat === i + 1;
+        return {
+          ko, go:() => this.setState({ sat:i + 1 }),
+          style:this.seg(on) + ';height:52px;flex-direction:column',
+          weight:on ? '700' : '400', color:on ? '#231815' : '#8A8278'
+        };
+      }),
+      moodChips: MOODS.map((ko,i) => {
+        const on = !!s.moods[i];
+        return {
+          ko, go:() => this.setState({ moods:{ ...s.moods, [i]:!on } }),
+          style:this.chip(on), weight:on ? '700' : '400', color:on ? '#231815' : '#5C544A'
+        };
+      }),
+      moodCount: Object.values(s.moods).filter(Boolean).length + '개 선택',
+      mealRows: [
+        { ko:'아침', key:'b' }, { ko:'점심', key:'l' }, { ko:'저녁', key:'d' }
+      ].map(m => ({
+        ko:m.ko,
+        opts:MEAL_OPTS.map((ko,i) => {
+          const on = s.meals[m.key] === i;
+          return {
+            ko, go:() => this.setState({ meals:{ ...s.meals, [m.key]:i } }),
+            style:this.seg(on), weight:on ? '700' : '400', color:on ? '#231815' : '#8A8278'
+          };
+        })
+      })),
+      weatherChips: WEATHER.map((ko,i) => {
+        const on = s.weather === i;
+        return {
+          ko, go:() => this.setState({ weather:i }),
+          style:this.chip(on), weight:on ? '700' : '400', color:on ? '#231815' : '#5C544A'
+        };
+      }),
+      d3Rows: [
+        { ko:'여가는 만족스러웠나요?', key:'leisure' },
+        { ko:'학업 성취감은 어땠어요?', key:'study' },
+        { ko:'잠은 잘 잤어요?', key:'sleep' }
+      ].map(r => ({
+        ko:r.ko,
+        opts:FIVE.map((ko,i) => {
+          const on = s.d3[r.key] === i + 1;
+          return {
+            ko, go:() => this.setState({ d3:{ ...s.d3, [r.key]:i + 1 } }),
+            style:this.seg(on), weight:on ? '700' : '400', color:on ? '#231815' : '#8A8278'
+          };
+        })
+      })),
+
+      isStat: sc === 'stat' || sc === 'statm',
+      statLife: sc === 'stat',
+      statMood: sc === 'statm',
+      statTabs: [
+        { ko:'생활', key:'stat' }, { ko:'정서', key:'statm' }
+      ].map(t => {
+        const on = sc === t.key;
+        return {
+          ko:t.ko, go:this.go(t.key),
+          style:'flex:1;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:' +
+            (on ? '#F5F1E8' : '#fff'),
+          weight:on ? '700' : '400', color:on ? '#231815' : '#A9A199'
+        };
+      }),
+      weekRange: '06.09 – 06.15',
+      statBars: statBars.map((segs,i) => ({
+        day:DAYS[i],
+        dayW: i === 3 ? '700' : '400',
+        dayC: i === 3 ? '#231815' : '#A9A199',
+        segs:segs.map(([k,h]) => ({ h:h + 'px', c:C[k] }))
+      })),
+      statLegend: AREAS.map(a => ({ ko:a.ko, hex:a.hex })),
+      achieveRows,
+      achieveAxis: DAYS.map((ko,i) => ({ ko, w: i === 3 ? '500' : '400', c: i === 3 ? '#231815' : '#C4BEB5' })),
+      goHl: this.go('hl_sleep'),
+      affectHeat,
+      weekAxis: DAYS.map((ko,i) => ({ ko, w: i === 3 ? '500' : '400', c: i === 3 ? '#231815' : '#C4BEB5' })),
+      overlayChips: Object.keys(OVERLAY).map(k => {
+        const on = k === ovKey;
+        return {
+          ko:OVERLAY[k].ko,
+          go:() => this.setState({ overlay:k }),
+          style:'flex:1;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid ' +
+            (on ? '#231815' : '#E7E7E7') + ';background:#fff',
+          weight:on ? '700' : '400', color:on ? '#231815' : '#8A8278'
+        };
+      }),
+      overlayLabel: ov.ko + ' 시간',
+      overlayAvg: '평균 ' + ovAvg.toFixed(1) + ov.unit,
+      overlayBars: ov.v.map(v => ({
+        style:'display:block;height:' + Math.max(2, v / ov.max * 58) + 'px;background:' + (v ? ov.hex : '#EFEDE9')
+      })),
+      overlayNote: ov.note,
+      dayLabels: DAYS,
+
+      isHl,
+      hlTabs: [
+        { ko:'수면', key:'hl_sleep' }, { ko:'운동', key:'hl_ex' },
+        { ko:'여가', key:'hl_leisure' }, { ko:'공부', key:'hl_study' }
+      ].map(t => {
+        const on = sc === t.key;
+        return {
+          ko:t.ko, go:this.go(t.key),
+          style:'flex:1;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid ' +
+            (on ? '#231815' : '#E7E7E7') + ';background:' + (on ? '#231815' : '#fff'),
+          weight:on ? '700' : '400', color:on ? '#fff' : '#8A8278'
+        };
+      }),
+      hl,
+      hlBars: hl.dayVals.map((v,i) => ({
+        style:'display:block;height:' + (v ? Math.max(3, v / hl.max * HL_H) : 3) + 'px;background:' +
+          (v ? (i === 3 ? '#231815' : hl.hex) : '#EFEDE9')
+      })),
+      hlRefTop: (HL_H - hl.ref / hl.max * HL_H) + 'px',
+      hlRefLabelTop: (HL_H - hl.ref / hl.max * HL_H - 5) + 'px',
+      hlDayAxis: DAYS.map((ko,i) => ({ ko, w: i === 3 ? '500' : '400', c: i === 3 ? '#231815' : '#C4BEB5' })),
+      hlBreakdown: hl.breakdown.map(b => ({ ko:b.ko, v:b.v, w:b.pct + '%', c:hl.hex })),
+      hlStatusStyle: 'padding:5px 10px;font:700 11px/1 \'Noto Sans KR\',sans-serif;color:' +
+        (hl.statusOn ? '#231815' : '#5C544A') + ';background:' + (hl.statusOn ? '#F5F1E8' : '#F3F1ED'),
+      hlWhyOpen: this.state.hlWhy,
+      hlToggleWhy: () => this.setState({ hlWhy: !this.state.hlWhy }),
+      hlWhyStyle: 'width:21px;height:21px;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;border:1px solid ' +
+        (this.state.hlWhy ? '#231815' : '#DEDAD3') + ';background:' + (this.state.hlWhy ? '#231815' : '#fff'),
+      hlWhyColor: this.state.hlWhy ? '#fff' : '#8A8278',
+
+      isReport: sc === 'report',
+      reportWeek: reportRows,
+      reportHours: ['00','06','12','18','24'],
+      reportNotes: [
+        { tag:'BALANCE', metric:'32%', metricSub:'평일 공부 비중',
+          text:'평일에는 공부가 깨어 있는 시간의 3분의 1이었고, 주말에는 그 자리를 수면과 여가가 채웠어요.',
+          v:[40,46,50,38,44,14,18], c:C.study, max:50 },
+        { tag:'AFFECT', metric:'4.5', metricSub:'수·목 스트레스',
+          text:'수면이 짧았던 수·목에 스트레스가 가장 높았어요. 같은 날 다른 일도 있었을 거예요.',
+          v:[3,4,5,5,3,2,2], c:C.str, max:5 },
+        { tag:'NEXT', metric:'+1회', metricSub:'목표까지',
+          text:'운동을 한 번 더 넣으면 목표한 주 3회에 닿아요. 빈 요일은 월·수·금이에요.',
+          v:[0,36,0,30,0,44,0], c:C.ex, max:44 }
+      ].map(n => ({
+        tag:n.tag, metric:n.metric, metricSub:n.metricSub, text:n.text,
+        bars:n.v.map(v => ({
+          style:'display:block;height:' + (v ? Math.max(3, v / n.max * 30) : 3) + 'px;background:' + (v ? n.c : '#EFEDE9')
+        }))
+      })),
+      reportCells: [
+        { k:'기록한 날', v:'7/7' }, { k:'회색 시간', v:'11%' }, { k:'목표 달성', v:'19/28' }
+      ],
+
+      hasPrimary: !!p,
+      primaryLabel: p ? p.label : '',
+      primaryGo: p && p.on ? this.go(p.to) : (() => {}),
+      primaryStyle: 'height:50px;display:flex;align-items:center;justify-content:center;cursor:' +
+        (p && p.on ? 'pointer' : 'default') + ';background:' + (p && p.on ? '#F5F1E8' : '#F6F5F3'),
+      primaryColor: p && p.on ? '#231815' : '#C4BEB5',
+
+      hasTabs: ['rec','stat','statm','report'].includes(sc) || isHl,
+      tabs: [
+        { ko:'기록', key:'rec' }, { ko:'통계', key:'stat' },
+        { ko:'투두', key:'stat' }, { ko:'마이', key:'rec' }
+      ].map((t,i) => {
+        const on = (i === 0 && sc === 'rec') || (i === 1 && (sc === 'stat' || sc === 'statm' || isHl || sc === 'report'));
+        return {
+          ko:t.ko, go:this.go(t.key),
+          bg:on ? '#231815' : '#D8D4CD',
+          weight:on ? '700' : '400',
+          color:on ? '#231815' : '#A9A199'
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

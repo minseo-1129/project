@@ -10,7 +10,7 @@
     "report"
   ],
   "evidenceScreen": "grid",
-  "prototype": "prototype.html",
+  "prototype": "original-prototype.html",
   "flows": [
     {
       "id": "setup",

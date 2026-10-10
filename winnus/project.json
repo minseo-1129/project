@@ -10,7 +10,7 @@
     "reviewDone"
   ],
   "evidenceScreen": "tasteProfile",
-  "prototype": "prototype.html",
+  "prototype": "original-prototype.html",
   "flows": [
     {
       "id": "flow1",

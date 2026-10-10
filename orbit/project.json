@@ -10,7 +10,7 @@
     "homeBeginner"
   ],
   "evidenceScreen": "stage",
-  "prototype": "prototype.html",
+  "prototype": "original-prototype.html",
   "flows": [
     {
       "id": "beginner",
