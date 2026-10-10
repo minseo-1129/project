@@ -1,0 +1,47 @@
+{
+  "type": "mobile",
+  "component": "PicoScreen",
+  "width": 393,
+  "height": 852,
+  "defaultScreen": "home",
+  "keyScreens": [
+    "capture",
+    "home",
+    "wardrobe"
+  ],
+  "evidenceScreen": "capture",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "flow1",
+      "screens": [
+        "onboarding",
+        "capture",
+        "confirm"
+      ]
+    },
+    {
+      "id": "flow2",
+      "screens": [
+        "home",
+        "outfit",
+        "shop"
+      ]
+    },
+    {
+      "id": "flow3",
+      "screens": [
+        "wardrobe",
+        "item",
+        "my"
+      ]
+    },
+    {
+      "id": "flow4",
+      "screens": [
+        "notify",
+        "time"
+      ]
+    }
+  ]
+}

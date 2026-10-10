@@ -1,0 +1,26 @@
+{
+  "type": "gallery",
+  "component": "KiketchScreen",
+  "width": 1194,
+  "height": 834,
+  "defaultScreen": "home",
+  "keyScreens": [
+    "chapter",
+    "sketch",
+    "filled"
+  ],
+  "evidenceScreen": "chapter",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "pages",
+      "screens": [
+        "home",
+        "chapter",
+        "hill",
+        "sketch",
+        "filled"
+      ]
+    }
+  ]
+}

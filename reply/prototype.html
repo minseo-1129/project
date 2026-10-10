@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"><style>body{margin:0;background:#EFEBE4}a{color:#C4603A}a:hover{color:#A44B26}*{box-sizing:border-box}</style></helmet>
+<div style="min-height:100vh;background:#EFEBE4;font-family:Pretendard,system-ui,sans-serif;color:#17150F;padding:28px 32px 60px">
+<div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+<div style="font-size:19px;font-weight:600;letter-spacing:-0.02em">레플리 · 인터랙티브 프로토타입</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:11px;letter-spacing:0.1em;color:#8A8478">2021 REDESIGN · 12 SCREENS</div>
+</div>
+<div style="display:flex;gap:36px;align-items:flex-start">
+
+<div style="position:sticky;top:20px;flex:none;max-height:calc(100vh - 72px);overflow:auto">
+<div style="width:396px;padding:18px;border-radius:32px;background:#fff;border:1px solid #E0D9CE;box-shadow:0 12px 40px rgba(23,21,15,0.10)">
+<div style="border-radius:20px;overflow:hidden;border:1px solid #EFE9E0">
+<dc-import name="ReplyScreen" screen="{{ screen }}" on-navigate="{{ onNav }}" hint-size="360px,780px"></dc-import>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding:0 4px">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10.5px;letter-spacing:0.1em;color:#8A8478">{{ screenLabel }}</div>
+<button onClick="{{ reset }}" style="height:30px;padding:0 12px;border-radius:8px;border:1px solid #E0D9CE;background:#FAF8F5;font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.08em;color:#6E685D;cursor:pointer">RESET</button>
+</div>
+</div>
+<div style="width:396px;margin-top:14px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #E0D9CE">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10px;letter-spacing:0.1em;color:#8A8478">TRY</div>
+<div style="font-size:12.5px;color:#4E4941;margin-top:8px;line-height:1.65">버블을 여러 번 눌러 취향 가중치 키우기 · 홈에서 재료 카드 → 프리뷰 → <b style="font-weight:600">핸즈프리로 플레이</b> · 플레이 화면은 9초마다 자동 진행, <b style="font-weight:600">“멈춰줘”</b>로 정지</div>
+</div>
+</div>
+
+<div style="flex:1;min-width:0">
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+<div style="margin-bottom:34px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:10.5px;letter-spacing:0.12em;color:#C4603A">{{ g.no }}</div>
+<div style="font-size:14px;font-weight:600;font-family:Pretendard,sans-serif">{{ g.name }}</div>
+<div style="font-size:11.5px;color:#8A8478;font-family:Pretendard,sans-serif">{{ g.note }}</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:18px">
+<sc-for list="{{ g.screens }}" as="s" hint-placeholder-count="4">
+<button onClick="{{ s.tap }}" style="text-align:left;padding:0;border:1px solid {{ s.bd }};border-radius:16px;background:#fff;cursor:pointer;overflow:hidden;box-shadow:{{ s.shadow }}">
+<div style="width:198px;height:429px;overflow:hidden;position:relative;text-align:left">
+<div style="width:360px;height:780px;transform:scale(0.55);transform-origin:top left;text-align:left;pointer-events:none">
+<dc-import name="ReplyScreen" screen="{{ s.id }}" frozen="{{ true }}" hint-size="360px,780px"></dc-import>
+</div>
+</div>
+<div style="padding:10px 12px;border-top:1px solid #EFE9E0;text-align:left">
+<div style="font-size:12.5px;font-weight:600;font-family:Pretendard,sans-serif;color:#17150F">{{ s.name }}</div>
+<div style="font-family:'IBM Plex Mono',Pretendard,monospace;font-size:9.5px;letter-spacing:0.08em;color:#A9A39A;margin-top:4px">{{ s.id }}</div>
+</div>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const GROUPS = [
+  {no:'FLOW 01', name:'온보딩 · 취향 설정', note:'가입 시 취향·부엌 조건·보유 재료를 한 번에', ids:[['splash','스플래시'],['taste','취향 버블'],['kitchen','부엌 조건'],['pantry','냉장고 재료'],['pantryAdd','재료 직접 추가'],['building','플레이리스트 생성']]},
+  {no:'FLOW 02', name:'재료가 먼저인 진입', note:'홈 첫 블록이 곧 보유 재료 추천', ids:[['home','홈'],['search','재료 검색'],['preview','레시피 프리뷰']]},
+  {no:'FLOW 03', name:'손을 쓰지 않는 플레이', note:'자동진행 + 음성 + 내 도구 기준 계량', ids:[['play','쿡 모드'],['done','완료'],['playlist','내 플레이리스트']]}
+];
+class Component extends DCLogic {
+  state = { screen: 'home' };
+  renderVals(){
+    const cur = this.state.screen;
+    return {
+      screen: cur,
+      screenLabel: 'CURRENT · ' + cur.toUpperCase(),
+      onNav: (s) => this.setState({screen: s}),
+      reset: () => this.setState({screen: 'splash'}),
+      groups: GROUPS.map(g => ({no:g.no, name:g.name, note:g.note, screens: g.ids.map(([id, name]) => ({
+        id, name,
+        bd: cur === id ? '#C4603A' : '#E0D9CE',
+        shadow: cur === id ? '0 8px 24px rgba(196,96,58,0.18)' : '0 1px 3px rgba(23,21,15,0.05)',
+        tap: () => this.setState({screen: id})
+      }))}))
+    };
+  }
+}
+</script>
+</body>
+</html>

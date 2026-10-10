@@ -1,0 +1,31 @@
+{
+  "type": "gallery",
+  "component": "MathHeroScreen",
+  "width": 1280,
+  "height": 800,
+  "defaultScreen": "main",
+  "keyScreens": [
+    "map",
+    "play",
+    "review"
+  ],
+  "evidenceScreen": "map",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "pages",
+      "screens": [
+        "main",
+        "map",
+        "region",
+        "play",
+        "clear",
+        "review",
+        "board",
+        "profile",
+        "clan",
+        "tutorial"
+      ]
+    }
+  ]
+}

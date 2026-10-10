@@ -1,0 +1,45 @@
+{
+  "type": "web",
+  "component": null,
+  "width": 1200,
+  "height": 720,
+  "defaultScreen": "finished",
+  "keyScreens": [
+    "finished",
+    "translucent",
+    "exploded"
+  ],
+  "evidenceScreen": "finished",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "experience",
+      "screens": [
+        "finished",
+        "translucent",
+        "exploded"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "drawings",
+      "href": "drawings.html"
+    }
+  ],
+  "webStates": [
+    {
+      "id": "finished",
+      "selector": "[data-mode=\"finished\"]"
+    },
+    {
+      "id": "translucent",
+      "selector": "[data-mode=\"translucent\"]"
+    },
+    {
+      "id": "exploded",
+      "selector": "[data-mode=\"exploded\"]"
+    }
+  ],
+  "nativeViewport": true
+}

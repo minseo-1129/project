@@ -1,0 +1,64 @@
+{
+  "type": "mobile",
+  "component": "RediScreen",
+  "width": 360,
+  "height": 780,
+  "defaultScreen": "ob1",
+  "keyScreens": [
+    "grid",
+    "stat",
+    "report"
+  ],
+  "evidenceScreen": "grid",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "setup",
+      "screens": [
+        "ob1",
+        "ob2",
+        "ob3",
+        "ob4"
+      ]
+    },
+    {
+      "id": "record",
+      "screens": [
+        "rec",
+        "grid",
+        "moment",
+        "d1",
+        "d2",
+        "d3"
+      ]
+    },
+    {
+      "id": "stat",
+      "screens": [
+        "stat",
+        "statm",
+        "hl_sleep",
+        "hl_ex",
+        "hl_leisure",
+        "hl_study"
+      ]
+    },
+    {
+      "id": "report",
+      "screens": [
+        "report"
+      ]
+    },
+    {
+      "id": "my",
+      "screens": [
+        "my",
+        "my_data",
+        "my_goal",
+        "my_report",
+        "my_archive",
+        "my_privacy"
+      ]
+    }
+  ]
+}

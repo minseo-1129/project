@@ -1,0 +1,43 @@
+{
+  "type": "mobile",
+  "component": "ReplyScreen",
+  "width": 360,
+  "height": 780,
+  "defaultScreen": "home",
+  "keyScreens": [
+    "pantry",
+    "preview",
+    "play"
+  ],
+  "evidenceScreen": "pantry",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "flow1",
+      "screens": [
+        "splash",
+        "taste",
+        "kitchen",
+        "pantry",
+        "pantryAdd",
+        "building"
+      ]
+    },
+    {
+      "id": "flow2",
+      "screens": [
+        "home",
+        "search",
+        "preview"
+      ]
+    },
+    {
+      "id": "flow3",
+      "screens": [
+        "play",
+        "done",
+        "playlist"
+      ]
+    }
+  ]
+}
