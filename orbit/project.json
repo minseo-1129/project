@@ -1,0 +1,60 @@
+{
+  "type": "mobile",
+  "component": "ORBITScreen",
+  "width": 360,
+  "height": 780,
+  "defaultScreen": "homeBeginner",
+  "keyScreens": [
+    "stage",
+    "forecastPreview",
+    "homeBeginner"
+  ],
+  "evidenceScreen": "stage",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "beginner",
+      "screens": [
+        "intro",
+        "profile",
+        "stage",
+        "stageResult",
+        "goalPurpose",
+        "routinePick",
+        "forecastPreview",
+        "homeDay0",
+        "homeBeginner",
+        "log",
+        "logAdd",
+        "forecast",
+        "selfCompare",
+        "report",
+        "routineEdit",
+        "stageUp",
+        "me"
+      ]
+    },
+    {
+      "id": "advanced",
+      "screens": [
+        "intro",
+        "profile",
+        "stage",
+        "stageResult",
+        "goalPurpose",
+        "concern",
+        "routineDetail",
+        "forecastPreview",
+        "homeAdvanced",
+        "log",
+        "report",
+        "forecastAdvanced",
+        "forecastCalc",
+        "selfCompare",
+        "routineEdit",
+        "stageUp",
+        "me"
+      ]
+    }
+  ]
+}

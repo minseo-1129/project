@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>The Lighthouse — 3D 아카이브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.184.0/build/three.module.js",
+    "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js",
+    "three/addons/exporters/OBJExporter.js": "https://unpkg.com/three@0.184.0/examples/jsm/exporters/OBJExporter.js",
+    "three/addons/exporters/GLTFExporter.js": "https://unpkg.com/three@0.184.0/examples/jsm/exporters/GLTFExporter.js"
+  },
+  "integrity": {
+    "https://unpkg.com/three@0.184.0/build/three.module.js": "sha384-8FCZ1eVO6it4+pbec2aDtnTrwjWXZLJRC+MAGCIPDgsYnUrl/E0A2YlF8ioMKI/J",
+    "https://unpkg.com/three@0.184.0/build/three.core.js": "sha384-dw2ooPewaEIrAgl6oFDBmmBWCE9oW9LxRGcfwZ0hLvEprzo202wXl7vCYHRlSnOT",
+    "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js": "sha384-4rziNxOBZKQ69i+w+f89KJ55TCYquwchVbByQwmaOeIOXdOU2PLDn3kOfXHwIJC9",
+    "https://unpkg.com/three@0.184.0/examples/jsm/exporters/OBJExporter.js": "sha384-nbwtoZENJD3Vq+ACK0CuGQdPMuDWHkamC2KJD70EV5nfg6jQjfppKOea07YJN+N3",
+    "https://unpkg.com/three@0.184.0/examples/jsm/exporters/GLTFExporter.js": "sha384-VofkvpG6HERhFCYbsUOHeNXBCqID2nfqkQqnVzE1jc/oPcz+qJ13ADdXH08hE+cQ"
+  }
+}
+</script>
+<style>
+  html, body { margin: 0; height: 100%; background: #f2f1ec; transition: background .8s; }
+  three-d-stage:not(:defined) { visibility: hidden; }
+  three-d-stage { display: block; position: absolute; inset: 0; }
+  .ui { position: absolute; z-index: 5; font-family: 'Jost', 'Noto Sans KR', Helvetica, sans-serif; color: #16181a; }
+
+  .head { top: 28px; left: 32px; display: flex; align-items: flex-start; gap: 14px; }
+  .mark { width: 22px; height: 22px; background: #ef6b4e; flex: none; margin-top: 3px; }
+  .title { font-size: 22px; letter-spacing: 0.16em; font-weight: 500; line-height: 1.25; }
+  .sub { margin-top: 6px; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; letter-spacing: 0.02em; color: #6a6d70; }
+
+  .controls { top: 112px; left: 32px; display: grid; gap: 8px; justify-items: start; }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > span { font-size: 10px; letter-spacing: 0.18em; color: #8c8f92; width: 46px; }
+  .controls button {
+    font: inherit; font-size: 12px; letter-spacing: 0.08em; padding: 9px 15px;
+    border: 1px solid #d8d5cd; background: #fbfaf7; color: #16181a; cursor: pointer;
+    border-radius: 2px; white-space: nowrap; transition: background .18s, border-color .18s, color .18s;
+  }
+  .controls button:hover { border-color: #37bfc9; }
+  .controls button[aria-pressed="true"] { background: #16181a; border-color: #16181a; color: #fbfaf7; }
+  body.night .ui { color: #f2f1ec; }
+  body.night .sub, body.night .row > span { color: #9aa0a8; }
+  body.night .legend { color: #c8ccd2; }
+  body.night .legend h4 { color: #f2f1ec; }
+  body.night .controls button { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22); color: #f2f1ec; }
+  body.night .controls button[aria-pressed="true"] { background: #f2f1ec; border-color: #f2f1ec; color: #16181a; }
+
+  .legend { bottom: 62px; left: 32px; font-family: 'Noto Sans KR', sans-serif; font-size: 11.5px; line-height: 1.9; color: #4b4e51; }
+  .legend h4 { margin: 0 0 8px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.18em; color: #16181a; font-weight: 500; }
+  .legend ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .legend li { display: flex; align-items: center; gap: 9px; }
+  .legend i { width: 9px; height: 9px; border-radius: 50%; flex: none; border: 1px solid rgba(0,0,0,.12); }
+  .hint { margin-top: 12px; color: #8c8f92; font-size: 11px; }
+</style>
+</head>
+<body><a href="drawings.html" style="position:fixed;left:16px;bottom:16px;z-index:9999;background:#F4F1EC;color:#16130F;text-decoration:none;padding:10px 14px;font:500 12px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em">DRAWINGS →</a>
+<three-d-stage name="the-lighthouse" background="#f2f1ec" autorotate></three-d-stage>
+
+<div class="ui head">
+  <div class="mark"></div>
+  <div>
+    <div class="title">THE<br>LIGHTHOUSE</div>
+    <div class="sub">아두이노 부직포 가습기 · 무드등 — 300 × 200 × 95 mm</div>
+  </div>
+</div>
+
+<div class="ui controls">
+  <div class="row"><span>STATE</span>
+    <button type="button" data-mode="finished" aria-pressed="true">완성</button>
+    <button type="button" data-mode="translucent" aria-pressed="false">반투명</button>
+    <button type="button" data-mode="exploded" aria-pressed="false">분해도</button>
+  </div>
+  <div class="row"><span>LIGHT</span>
+    <button type="button" data-light="day" aria-pressed="true">창가 낮</button>
+    <button type="button" data-light="night" aria-pressed="false">야간 무드등</button>
+  </div>
+  <div class="row"><span>MOTION</span>
+    <button type="button" data-run="toggle" aria-pressed="false">작동 재생</button>
+  </div>
+</div>
+
+<div class="ui legend">
+  <h4>STRUCTURE</h4>
+  <ul>
+    <li><i style="background:#f4f2ec"></i>등대 — 흰 부직포 3장 + OHP 필름 등명기실, 노란 무드등</li>
+    <li><i style="background:#6d8c46"></i>이끼 육지 · 나무 모형 (왼쪽 L자 띠)</li>
+    <li><i style="background:#ded7c8"></i>우드락 돌 아치 — 수중 펌프를 덮어 물결만 보이게</li>
+    <li><i style="background:#8ed0da"></i>물 · 모래 자갈 바닥 (수면 20 mm)</li>
+    <li><i style="background:#e6ebea"></i>아크릴 판 — 수반과 전장부의 경계</li>
+    <li><i style="background:#1c7f96"></i>전장부 — 아두이노 우노 · 만능기판 · 9V 전지</li>
+    <li><i style="background:#c4552e"></i>센서 — 수위 센서(수반), 조도 센서(전면)</li>
+  </ul>
+</div>
+
+<script src="three-d-stage.js"></script>
+<script type="module" src="lighthouse-model.js"></script>
+<script>
+  function group(sel, b) {
+    document.querySelectorAll(sel).forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+  }
+  document.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => {
+    group('[data-mode]', b);
+    window.lighthouse && window.lighthouse.mode(b.dataset.mode);
+  }));
+  document.querySelectorAll('[data-light]').forEach((b) => b.addEventListener('click', () => {
+    group('[data-light]', b);
+    document.body.classList.toggle('night', b.dataset.light === 'night');
+    window.lighthouse && window.lighthouse.light(b.dataset.light);
+  }));
+  const runBtn = document.querySelector('[data-run]');
+  runBtn.addEventListener('click', () => {
+    const on = runBtn.getAttribute('aria-pressed') !== 'true';
+    runBtn.setAttribute('aria-pressed', String(on));
+    runBtn.textContent = on ? '작동 정지' : '작동 재생';
+    window.lighthouse && window.lighthouse.run(on);
+  });
+</script>
+</body>
+</html>

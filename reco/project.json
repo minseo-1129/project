@@ -1,0 +1,42 @@
+{
+  "type": "web",
+  "component": null,
+  "width": 1000,
+  "height": 760,
+  "defaultScreen": "welcome",
+  "keyScreens": [
+    "welcome",
+    "branch",
+    "compare"
+  ],
+  "evidenceScreen": "welcome",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "experience",
+      "screens": [
+        "welcome",
+        "branch",
+        "compare"
+      ]
+    }
+  ],
+  "webStates": [
+    {
+      "id": "welcome"
+    },
+    {
+      "id": "branch",
+      "props": {
+        "moodStep": false
+      },
+      "buttonText": "Start"
+    },
+    {
+      "id": "compare",
+      "props": {
+        "summaryStyle": "compare"
+      }
+    }
+  ]
+}

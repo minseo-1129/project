@@ -1,0 +1,48 @@
+{
+  "type": "mobile",
+  "component": "CuppoScreen",
+  "width": 375,
+  "height": 812,
+  "defaultScreen": "feed",
+  "keyScreens": [
+    "menu",
+    "custom",
+    "feed"
+  ],
+  "evidenceScreen": "menu",
+  "prototype": "CUPPO Prototype.dc.html",
+  "flows": [
+    {
+      "id": "record",
+      "screens": [
+        "launch",
+        "onboarding",
+        "empty",
+        "menu",
+        "custom",
+        "save",
+        "detail"
+      ]
+    },
+    {
+      "id": "browse",
+      "screens": [
+        "feed",
+        "grid",
+        "calendar",
+        "search"
+      ]
+    },
+    {
+      "id": "more",
+      "screens": [
+        "camera",
+        "report",
+        "widget",
+        "share",
+        "settings"
+      ]
+    }
+  ],
+  "themes": true
+}

@@ -1,0 +1,52 @@
+{
+  "type": "mobile",
+  "component": "WinnusScreenV2",
+  "width": 360,
+  "height": 780,
+  "defaultScreen": "splash",
+  "keyScreens": [
+    "tasteProfile",
+    "wineCard",
+    "reviewDone"
+  ],
+  "evidenceScreen": "tasteProfile",
+  "prototype": "prototype.html",
+  "flows": [
+    {
+      "id": "flow1",
+      "screens": [
+        "splash",
+        "onboardIntro",
+        "quizTaste",
+        "quizFood",
+        "quizOccasion",
+        "tasteProfile"
+      ]
+    },
+    {
+      "id": "flow2",
+      "screens": [
+        "home",
+        "tagSearch",
+        "results"
+      ]
+    },
+    {
+      "id": "flow3",
+      "screens": [
+        "wineCard",
+        "wineMore",
+        "termSheet"
+      ]
+    },
+    {
+      "id": "flow4",
+      "screens": [
+        "review",
+        "reviewDone",
+        "cellar",
+        "myPage"
+      ]
+    }
+  ]
+}
