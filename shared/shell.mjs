@@ -6,9 +6,21 @@ const resizeObserver = new ResizeObserver(entries => {
   for (const {target} of entries) fitFrame(target);
 });
 const frames = new Set();
+// Mount read-only gallery screens as they enter the viewport.
+const thumbnailObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const frame = entry.target.querySelector('iframe');
+    if (frame?.dataset.source) {
+      frame.src = frame.dataset.source;
+      delete frame.dataset.source;
+    }
+    thumbnailObserver.unobserve(entry.target);
+  }
+}, {rootMargin:'100px'});
 let config, content, selected, selectedFlow, theme = 'light';
 let screenControls = [];
-let selectedPanel, counter, galleryLabel;
+let selectedPanel, counter, galleryLabel, flowCards;
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -126,6 +138,11 @@ function preview(screen, readonly = false, native = config.component !== null ||
     frame.tabIndex = -1;
     frame.setAttribute('aria-hidden', 'true');
   } else frames.add(frame);
+  if (readonly && config.component) {
+    frame.dataset.source = frame.src;
+    frame.removeAttribute('src');
+    thumbnailObserver.observe(node);
+  }
   node.append(frame);
   resizeObserver.observe(node);
   return node;
@@ -138,11 +155,15 @@ function device(screen) {
 function browser(screen) {
   const node = el('div', 'browser');
   const toolbar = el('div', 'toolbar');
-  toolbar.append(el('span', '', '●  ●  ●'), link(`${text('title')} / interactive prototype`, config.prototype));
+  toolbar.append(el('span', '', '●  ●  ●'), el('span', '', `${text('title')} / interactive prototype`));
   node.append(toolbar, preview(screen));
   return node;
 }
-function openPrototype() { return link('Open full prototype ↗', config.prototype, 'action'); }
+function prototypeHeading() {
+  const node = el('section', 'prototype-heading');
+  node.append(el('p', 'label', config.type.toUpperCase() + ' / INTERACTIVE PROTOTYPE'), el('h1', '', text('title')), copy('summary'));
+  return node;
+}
 function screenText(screen) {
   return content[`flow.${selectedFlow}.${screen}.body`] ?? text(`screen.${screen}.body`);
 }
@@ -224,6 +245,12 @@ function flowNavigation() {
       groups.forEach(([other, id]) => other.setAttribute('aria-pressed', String(id === selectedFlow)));
       list.replaceChildren(...navigator(flow.screens, 'screen-list').children);
       renderMarkdown(text(`flow.${flow.id}.body`), galleryLabel);
+      if (flowCards) {
+        const replacement = cards(flow.screens);
+        flowCards.replaceWith(replacement);
+        flowCards = replacement;
+        screenControls = screenControls.filter(control => control.isConnected);
+      }
       updateSelection(flow.screens[0]);
     });
     groups.push([button, flow.id]);
@@ -273,23 +300,24 @@ function prototypeExperience() {
     const live = el('div', 'live-panel');
     live.append(el('p', 'label', `LIVE PREVIEW / ${config.width} × ${config.height}`), device(selected), transport());
     if (config.themes) live.append(themePicker());
-    live.append(openPrototype());
     const gallery = el('div', 'stack');
     galleryLabel = copy(`flow.${selectedFlow}.body`);
-    gallery.append(el('p', 'label', 'FLOW GALLERY'), el('h3', '', text('flow.title')), galleryLabel, flowNavigation(), cards(config.keyScreens), rationale());
+    flowCards = cards(config.flows.find(flow => flow.id === selectedFlow).screens);
+    gallery.append(el('p', 'label', 'FULL FLOW'), flowNavigation(), galleryLabel, flowCards);
+    live.append(rationale());
     node.append(live, gallery);
   } else if (config.type === 'gallery') {
     const main = el('div', 'stack');
     const player = el('div', 'landscape-player');
     counter = el('p', 'label');
     player.append(counter, preview(selected));
-    main.append(player, cards(config.keyScreens), openPrototype());
+    main.append(player, cards(allScreens()));
     const side = el('div', 'stack');
     side.append(el('p', 'label', 'PAGES / SELECT A SCENE'), navigator(allScreens()), rationale());
     node.append(main, side);
   } else {
     const main = el('div', 'stack');
-    main.append(browser(selected), navigator(allScreens()), openPrototype());
+    main.append(browser(selected), navigator(allScreens()));
     const side = el('div', 'stack');
     side.append(panel('INTERACTION GUIDE', 'guide.title', 'guide.body'));
     if (config.links?.length) {
@@ -336,7 +364,7 @@ function caseStudy() {
   const layout = el('div', `experience-${config.type}`);
   if (config.type === 'mobile') {
     const live = el('div','live-panel');
-    live.append(device(selected),openPrototype());
+    live.append(device(selected),link('프로토타입 탐색 ↗','./','action'));
     const story = el('div','stack');
     story.append(cards(config.keyScreens),panel('FLOW RATIONALE','case.flow.title','case.flow.body'));
     layout.append(live,story);
@@ -406,15 +434,10 @@ async function start() {
   selected = config.defaultScreen;
   selectedFlow = config.flows.find(flow => flow.screens.includes(selected))?.id || config.flows[0].id;
   document.title = `${text('title')} · ${view === 'case' ? 'UX portfolio' : 'Prototype'}`;
-  const node = el('main','shell');
-  node.append(header(),rule(),intro());
-  if (view === 'case') node.append(...caseStudy());
-  else {
-    node.append(rule(),el('div','explore-heading'));
-    const heading = node.lastChild;
-    heading.append(el('p','label','01 / EXPLORE THE PROTOTYPE'),el('h2','',text('explore.title')),copy('explore.body'));
-    node.append(prototypeExperience(),pair(panel('CONTEXT','context.title','context.body'),panel('DESIGN DECISION','decision.title','decision.body')));
-  }
+  const node = el('main',`shell ${view === 'case' ? 'portfolio-page' : 'prototype-page'}`);
+  node.append(header(),rule());
+  if (view === 'case') node.append(intro(),...caseStudy());
+  else node.append(prototypeHeading(),prototypeExperience(),pair(panel('CONTEXT','context.title','context.body'),panel('DESIGN DECISION','decision.title','decision.body')));
   node.append(rule(),footer());
   app.replaceChildren(node);
   updateSelection(selected,false);

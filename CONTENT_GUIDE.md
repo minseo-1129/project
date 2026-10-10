@@ -49,7 +49,8 @@ ORBIT은 같은 화면의 설명이 입문자·숙련자 플로우에서 다를 
 | `<project>/case-study.html` | UX 포트폴리오 셸 진입점 |
 | `<project>/project.json` | 화면 크기, 컴포넌트 이름, 화면과 플로우 연결 |
 | `<project>/viewer.html` | 기존 화면 컴포넌트를 실행하는 미리보기 |
-| `<project>/prototype.html` | 변경 전 전체 프로토타입. 원래 동작을 확인할 수 있는 링크 |
+| `<project>/prototype.html` | 기존 주소에서도 리디자인된 프로토타입을 바로 표시 |
+| `<project>/original-prototype.html` | 변경 전 원본 보존 및 웹 인터랙션 실행용 |
 | `cuppo/CUPPO Prototype.dc.html` | CUPPO의 기존 전체 프로토타입 |
 | `<project>/docs/` | 기획·연구·발표 등 참고 자료 |
 | `shared/shell.css` | 모든 프로젝트의 공통 디자인 |
@@ -79,3 +80,7 @@ python -m http.server 8000
 ## 디자인 기준
 
 Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158), UX portfolio master(31:2 / 31:147 / 31:277)를 공통 CSS와 레이아웃으로 옮겼습니다. 1440px 기준의 56px 바깥 여백, 종이·민트 배경, 둥근 설명 패널, 모바일 / 갤러리 / 웹의 서로 다른 미리보기 구조를 사용합니다. 화면 크기를 유지하며 미리보기를 축소하고 작은 브라우저에서는 세로로 재배치합니다.
+
+## 페이지 구성
+
+프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 현재 플로우의 전체 화면을, 갤러리는 전체 페이지를 탐색할 수 있습니다. UX 포트폴리오는 `case-study.html`에 있으며 콘텐츠 폭·간격·타이포그래피를 함께 공유합니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.
