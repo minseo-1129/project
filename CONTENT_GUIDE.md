@@ -79,8 +79,21 @@ python -m http.server 8000
 
 ## 디자인 기준
 
-Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158), UX portfolio master(31:2 / 31:147 / 31:277)를 공통 CSS와 레이아웃으로 옮겼습니다. 1440px 기준의 56px 바깥 여백, 종이·민트 배경, 둥근 설명 패널, 모바일 / 갤러리 / 웹의 서로 다른 미리보기 구조를 사용합니다. 화면 크기를 유지하며 미리보기를 축소하고 작은 브라우저에서는 세로로 재배치합니다.
+Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158)와 Components 페이지(2:2)의 컴포넌트를 공통 CSS와 레이아웃으로 옮겼습니다. 프로토타입 페이지는 모든 프로젝트가 **같은 순서의 에디토리얼 한 단(최대 760px)**을 사용합니다.
+
+| 순서 | 사용한 master 컴포넌트 |
+|---|---|
+| 헤더 | Shell v2 / Header |
+| 프로젝트 소개 + ROLE·PERIOD·SCOPE | Project intro + Metadata |
+| 01 / EXPLORE THE PROTOTYPE | 플로우·상태 선택: Shell v2 / Navigation |
+| 미리보기 | 모바일: Device / Mobile · 갤러리: Shell v2 / Landscape player · 웹: Browser / Desktop |
+| 화면 목록 | Screen Card (가로 스크롤) — 모바일·갤러리 |
+| 선택한 화면 설명 | Shell v2 / Explanation |
+| 02 / CONTEXT & DECISION | Shell v2 / Explanation × 2 |
+| 푸터 | Action / Prototype Link |
+
+미리보기 형태는 `project.json`의 `type`으로 정합니다. KIKETCH·MATHHERO는 `gallery`, reco·THE LIGHTHOUSE는 `web`, 나머지는 `mobile`입니다. Moment Card·Interaction State Card·Flow Step 등 케이스 스터디용 컴포넌트는 다음 단계에서 UX 포트폴리오 페이지를 통일할 때 사용합니다.
 
 ## 페이지 구성
 
-프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 현재 플로우의 전체 화면을, 갤러리는 전체 페이지를 탐색할 수 있습니다. UX 포트폴리오는 `case-study.html`에 있으며 콘텐츠 폭·간격·타이포그래피를 함께 공유합니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.
+프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 플로우를 고른 뒤 화면 카드나 ‹ › 버튼으로 이동하고, 선택한 화면 설명이 폰 옆에 표시됩니다. 갤러리는 장면 카드로, 웹은 상태 버튼으로 이동합니다. UX 포트폴리오는 `case-study.html`에 있으며 아직 기존 넓은 레이아웃을 사용합니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.

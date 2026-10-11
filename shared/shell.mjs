@@ -18,6 +18,7 @@ const thumbnailObserver = new IntersectionObserver(entries => {
     thumbnailObserver.unobserve(entry.target);
   }
 }, {rootMargin:'100px'});
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let config, content, selected, selectedFlow, theme = 'light';
 let screenControls = [];
 let selectedPanel, counter, galleryLabel, flowCards;
@@ -82,6 +83,7 @@ function preview(screen, readonly = false, native = config.component !== null ||
   node.dataset.height = config.height;
   node.dataset.native = String(native);
   node.dataset.readonly = String(readonly);
+  node.style.setProperty('--screen-ratio', `${config.width} / ${config.height}`);
   const frame = el('iframe');
   if (config.component) {
     const url = new URL('viewer.html', location.href);
@@ -159,11 +161,6 @@ function browser(screen) {
   node.append(toolbar, preview(screen));
   return node;
 }
-function prototypeHeading() {
-  const node = el('section', 'prototype-heading');
-  node.append(el('p', 'label', config.type.toUpperCase() + ' / INTERACTIVE PROTOTYPE'), el('h1', '', text('title')), copy('summary'));
-  return node;
-}
 function screenText(screen) {
   return content[`flow.${selectedFlow}.${screen}.body`] ?? text(`screen.${screen}.body`);
 }
@@ -181,6 +178,9 @@ function updateSelection(screen, send = true) {
   const flow = config.flows.find(flow => flow.id === selectedFlow);
   const index = flow.screens.indexOf(screen);
   if (counter) counter.textContent = `${String((index >= 0 ? index : allScreens().indexOf(screen)) + 1).padStart(2, '0')} / ${String(index >= 0 ? flow.screens.length : allScreens().length).padStart(2, '0')} · ${text(`screen.${screen}.title`, screen)}`;
+  const strip = document.querySelector('.filmstrip .screen-cards');
+  const active = strip?.querySelector('[aria-pressed=true]');
+  if (active) strip.scrollTo({left: active.offsetLeft - (strip.clientWidth - active.offsetWidth) / 2, behavior: reducedMotion.matches ? 'auto' : 'smooth'});
   if (send) for (const frame of frames) {
     if (config.component) frame.contentWindow?.postMessage({type:'portfolio:select', screen, theme}, location.origin);
     else {
@@ -208,20 +208,20 @@ function navigator(screens, className = 'navigation') {
   return node;
 }
 function rationale() {
-  selectedPanel = el('div', 'panel');
+  selectedPanel = el('div', 'panel explanation');
   selectedPanel.setAttribute('aria-live', 'polite');
   selectedPanel.append(el('p', 'panel-label', config.type === 'gallery' ? 'SELECTED SCENE' : 'SELECTED SCREEN / DESIGN RATIONALE'), el('h3'), el('div', 'copy'));
   return selectedPanel;
 }
-function cards(screens) {
+function cards(screens, numbered = false) {
   const node = el('div', 'screen-cards');
-  for (const screen of screens) {
+  for (const [index, screen] of screens.entries()) {
     const card = el('button', 'screen-card');
     card.type = 'button';
     card.dataset.screen = screen;
     card.setAttribute('aria-pressed', String(screen === selected));
     card.setAttribute('aria-label', `${text(`screen.${screen}.title`, screen)} 화면 선택`);
-    card.append(preview(screen, true), el('span', 'panel-label', screen.toUpperCase()), el('h3', '', text(`screen.${screen}.title`, screen)));
+    card.append(preview(screen, true), el('span', 'panel-label', numbered ? String(index + 1).padStart(2, '0') : screen.toUpperCase()), el('h3', '', text(`screen.${screen}.title`, screen)));
     const description = el('div', 'copy');
     renderMarkdown(text(`screen.${screen}.caption`, screenText(screen)), description);
     card.append(description);
@@ -230,37 +230,6 @@ function cards(screens) {
     node.append(card);
   }
   return node;
-}
-function flowNavigation() {
-  const node = el('div', 'navigation');
-  node.setAttribute('aria-label', '프로토타입 플로우 선택');
-  const list = navigator(config.flows.find(flow => flow.id === selectedFlow).screens, 'screen-list');
-  const groups = [];
-  for (const flow of config.flows) {
-    const button = el('button', 'pill', text(`flow.${flow.id}.title`, flow.id));
-    button.type = 'button';
-    button.setAttribute('aria-pressed', String(flow.id === selectedFlow));
-    button.addEventListener('click', () => {
-      selectedFlow = flow.id;
-      groups.forEach(([other, id]) => other.setAttribute('aria-pressed', String(id === selectedFlow)));
-      list.replaceChildren(...navigator(flow.screens, 'screen-list').children);
-      renderMarkdown(text(`flow.${flow.id}.body`), galleryLabel);
-      if (flowCards) {
-        const replacement = cards(flow.screens);
-        flowCards.replaceWith(replacement);
-        flowCards = replacement;
-        screenControls = screenControls.filter(control => control.isConnected);
-      }
-      updateSelection(flow.screens[0]);
-    });
-    groups.push([button, flow.id]);
-    node.append(button);
-  }
-  const wrapper = el('div', 'stack');
-  const details = el('details','screen-details');
-  details.append(el('summary','','전체 화면 선택'),list);
-  wrapper.append(node, details);
-  return wrapper;
 }
 function transport() {
   const node = el('div', 'transport');
@@ -294,39 +263,92 @@ function themePicker() {
   }
   return node;
 }
-function prototypeExperience() {
-  const node = el('div', `${config.type}-layout`);
-  if (config.type === 'mobile') {
-    const live = el('div', 'live-panel');
-    live.append(el('p', 'label', `LIVE PREVIEW / ${config.width} × ${config.height}`), device(selected), transport());
-    if (config.themes) live.append(themePicker());
-    const gallery = el('div', 'stack');
-    galleryLabel = copy(`flow.${selectedFlow}.body`);
-    flowCards = cards(config.flows.find(flow => flow.id === selectedFlow).screens);
-    gallery.append(el('p', 'label', 'FULL FLOW'), flowNavigation(), galleryLabel, flowCards);
-    live.append(rationale());
-    node.append(live, gallery);
-  } else if (config.type === 'gallery') {
-    const main = el('div', 'stack');
-    const player = el('div', 'landscape-player');
-    counter = el('p', 'label');
-    player.append(counter, preview(selected));
-    main.append(player, cards(allScreens()));
-    const side = el('div', 'stack');
-    side.append(el('p', 'label', 'PAGES / SELECT A SCENE'), navigator(allScreens()), rationale());
-    node.append(main, side);
-  } else {
-    const main = el('div', 'stack');
-    main.append(browser(selected), navigator(allScreens()));
-    const side = el('div', 'stack');
-    side.append(panel('INTERACTION GUIDE', 'guide.title', 'guide.body'));
-    if (config.links?.length) {
-      const nav = el('nav', 'stack');
-      for (const item of config.links) nav.append(link(text(`link.${item.id}`, item.id), item.href, 'pill'));
-      side.append(nav);
-    }
-    node.append(main, side);
+// Prototype page: one editorial column built from the Figma prototype masters
+// (Shell v2 header, explanation, navigation, device / landscape player / browser).
+function explanation(label, titleKey, bodyKey) {
+  const node = panel(label, titleKey, bodyKey);
+  node.classList.add('explanation');
+  return node;
+}
+function prototypeIntro() {
+  const node = el('section', 'proto-intro');
+  const metadata = el('dl', 'metadata');
+  for (const key of ['role', 'period', 'scope']) {
+    const item = el('div');
+    item.append(el('dt', '', key), el('dd', '', text(key, '확인 예정')));
+    metadata.append(item);
   }
+  node.append(el('p', 'label', `PROTOTYPE / ${config.type.toUpperCase()}`), el('h1', '', text('title')), copy('summary'), metadata);
+  return node;
+}
+function flowSwitcher() {
+  const node = el('div', 'navigation');
+  node.setAttribute('role', 'group');
+  node.setAttribute('aria-label', '프로토타입 플로우 선택');
+  for (const flow of config.flows) {
+    const button = el('button', 'pill', text(`flow.${flow.id}.title`, flow.id));
+    button.type = 'button';
+    button.dataset.flow = flow.id;
+    button.setAttribute('aria-pressed', String(flow.id === selectedFlow));
+    button.addEventListener('click', () => {
+      selectedFlow = flow.id;
+      for (const child of node.children) child.setAttribute('aria-pressed', String(child.dataset.flow === selectedFlow));
+      renderMarkdown(text(`flow.${flow.id}.body`), galleryLabel);
+      const replacement = cards(flow.screens, true);
+      flowCards.replaceWith(replacement);
+      flowCards = replacement;
+      screenControls = screenControls.filter(control => control.isConnected);
+      updateSelection(flow.screens[0]);
+    });
+    node.append(button);
+  }
+  return node;
+}
+function stage() {
+  const node = el('div', `stage stage-${config.type}`);
+  const head = el('p', 'label', `${config.type === 'gallery' ? 'SCENE' : 'LIVE PREVIEW'} / ${config.width} × ${config.height}`);
+  const controls = transport();
+  if (config.themes) controls.append(themePicker());
+  if (config.type === 'mobile') {
+    const side = el('div', 'stage-side');
+    side.append(rationale(), controls);
+    node.append(head, device(selected), side);
+  } else {
+    node.append(head, config.type === 'web' ? browser(selected) : preview(selected), controls);
+  }
+  return node;
+}
+function filmstrip() {
+  const node = el('div', `filmstrip filmstrip-${config.type}`);
+  const screens = config.flows.find(flow => flow.id === selectedFlow).screens;
+  galleryLabel = copy(`flow.${selectedFlow}.body`);
+  // Skip the flow note when it only repeats the explore guidance above.
+  if (text(`flow.${selectedFlow}.body`) === text('explore.body') && config.flows.length === 1) galleryLabel.hidden = true;
+  flowCards = cards(screens, true);
+  node.append(el('p', 'label', config.type === 'gallery' ? 'PAGES / SELECT A SCENE' : 'FLOW GALLERY'), galleryLabel, flowCards);
+  return node;
+}
+function prototypeExplore() {
+  const node = el('section', 'proto-explore');
+  node.append(el('p', 'label', '01 / EXPLORE THE PROTOTYPE'), el('h2', '', text('explore.title')), copy('explore.body'));
+  if (config.type === 'mobile' && config.flows.length > 1) node.append(flowSwitcher());
+  if (config.type === 'web') node.append(navigator(allScreens()));
+  node.append(stage());
+  if (config.type !== 'web') node.append(filmstrip());
+  if (config.type === 'gallery') node.append(rationale());
+  if (config.type === 'web') {
+    node.append(rationale(), explanation('INTERACTION GUIDE', 'guide.title', 'guide.body'));
+    if (config.links?.length) {
+      const nav = el('nav', 'navigation');
+      for (const item of config.links) nav.append(link(text(`link.${item.id}`, item.id), item.href, 'pill'));
+      node.append(nav);
+    }
+  }
+  return node;
+}
+function prototypeContext() {
+  const node = el('section', 'proto-context');
+  node.append(el('p', 'label', '02 / CONTEXT & DECISION'), explanation('CONTEXT', 'context.title', 'context.body'), explanation('DESIGN DECISION', 'decision.title', 'decision.body'));
   return node;
 }
 function footer() {
@@ -437,7 +459,7 @@ async function start() {
   const node = el('main',`shell ${view === 'case' ? 'portfolio-page' : 'prototype-page'}`);
   node.append(header(),rule());
   if (view === 'case') node.append(intro(),...caseStudy());
-  else node.append(prototypeHeading(),prototypeExperience(),pair(panel('CONTEXT','context.title','context.body'),panel('DESIGN DECISION','decision.title','decision.body')));
+  else node.append(prototypeIntro(),rule(),prototypeExplore(),rule(),prototypeContext());
   node.append(rule(),footer());
   app.replaceChildren(node);
   updateSelection(selected,false);
