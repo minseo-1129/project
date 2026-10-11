@@ -79,7 +79,15 @@ python -m http.server 8000
 
 ## 디자인 기준
 
-Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158)와 Components 페이지(2:2)의 컴포넌트를 공통 CSS와 레이아웃으로 옮겼습니다. 프로토타입 페이지는 모든 프로젝트가 **같은 순서의 에디토리얼 한 단(최대 760px)**을 사용합니다.
+현재 페이지의 기준 Figma 파일은 [Portfolio Shell · Editorial Masters](https://www.figma.com/design/QYU8fvrEvra9UU5ZP1Vfsq)입니다. 이 파일의 페이지 구성은 다음과 같습니다.
+
+- `00 · Projects`: 프로젝트 목록. 각 카드에서 실제 페이지와 Figma master로 이동합니다.
+- `01 · Foundations`: 색·글꼴·레이아웃 규칙
+- `02 · Components`: 사용된 컴포넌트
+- `03 · Prototype masters`: 프로토타입 master 3종
+- `04 · Case study masters`: 케이스 스터디 master 3종. 선택 섹션은 `Show …` 속성으로 켭니다.
+
+처음 옮겨 온 원본은 Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158)와 Components 페이지(2:2)입니다. 프로토타입 페이지는 모든 프로젝트가 **같은 순서의 에디토리얼 한 단(최대 760px)**을 사용합니다.
 
 | 순서 | 사용한 master 컴포넌트 |
 |---|---|
