@@ -35,6 +35,7 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
       assert.ok(fs.statSync(new URL('viewer.html',dir)).size>0);
     }
     for(const item of config.links||[])assert.ok(fs.statSync(new URL(item.href,dir)).size>0);
+    for(const id of config.caseSections||[])assert.ok(['evidence','steps','validation'].includes(id),`${project}: ${id}`);
   }
 });
 test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=>{

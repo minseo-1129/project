@@ -47,7 +47,7 @@ ORBIT은 같은 화면의 설명이 입문자·숙련자 플로우에서 다를 
 | `<project>/content.md` | 프로젝트별 설명 글. 두 페이지가 함께 사용 |
 | `<project>/index.html` | 공통 셸 진입점 |
 | `<project>/case-study.html` | UX 포트폴리오 셸 진입점 |
-| `<project>/project.json` | 화면 크기, 컴포넌트 이름, 화면과 플로우 연결 |
+| `<project>/project.json` | 화면 크기, 컴포넌트 이름, 화면과 플로우 연결, 케이스 스터디 선택 섹션(`caseSections`) |
 | `<project>/viewer.html` | 기존 화면 컴포넌트를 실행하는 미리보기 |
 | `<project>/prototype.html` | 기존 주소에서도 리디자인된 프로토타입을 바로 표시 |
 | `<project>/original-prototype.html` | 변경 전 원본 보존 및 웹 인터랙션 실행용 |
@@ -92,8 +92,30 @@ Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158)
 | 02 / CONTEXT & DECISION | Shell v2 / Explanation × 2 |
 | 푸터 | Action / Prototype Link |
 
-미리보기 형태는 `project.json`의 `type`으로 정합니다. KIKETCH·MATHHERO는 `gallery`, reco·THE LIGHTHOUSE는 `web`, 나머지는 `mobile`입니다. Moment Card·Interaction State Card·Flow Step 등 케이스 스터디용 컴포넌트는 다음 단계에서 UX 포트폴리오 페이지를 통일할 때 사용합니다.
+미리보기 형태는 `project.json`의 `type`으로 정합니다. KIKETCH·MATHHERO는 `gallery`, reco·THE LIGHTHOUSE는 `web`, 나머지는 `mobile`입니다.
+
+## 케이스 스터디 섹션
+
+UX 포트폴리오(`case-study.html`)도 같은 에디토리얼 한 단을 사용합니다. 섹션은 **모든 프로젝트에 항상 나오는 필수 섹션**과 **프로젝트별로 켜는 선택 섹션**으로 나뉩니다. 섹션 번호(01, 02…)는 표시되는 섹션 수에 맞춰 자동으로 매겨집니다.
+
+| 순서 | 섹션 | 구분 | 언제 쓰나 | content.md 항목 |
+|---|---|---|---|---|
+| 1 | PROBLEM & CONTEXT | 필수 | 누가 어떤 상황에서 무엇을 필요로 했는지 | `case.problem.*`, `case.need.*`, `case.question.*` |
+| 2 | EVIDENCE & INSIGHT | 선택 `evidence` | 인터뷰·설문·리서치 문서 등 근거 자료가 있을 때 | `case.evidence.*`, `case.source.*`, `case.insight.*`, `case.implication.*` |
+| 3 | DESIGN DIRECTION | 필수 | 핵심 설계 결정과 그 이유 | `case.direction.title`, `case.decision.*` |
+| 3 안 | 4단계 흐름(Flow Step) | 선택 `steps` | 사용자 여정을 4단계로 설명할 수 있을 때 | `case.step1~4.*` |
+| 4 | EXPERIENCE & DESIGN | 필수 | 실제 화면과 설계 (모바일: 폰 + 핵심 화면 카드 / 갤러리: 핵심 장면 + 전후 비교 / 웹: 브라우저 + 상태 카드) | `case.experience.title`, `case.flow.*` 또는 `case.hero/before/after.*` 또는 `case.state1~3.*` |
+| 5 | VALIDATION & ITERATION | 선택 `validation` | 사용성 테스트 등 실제 검증과 그 뒤 수정이 있을 때 | `case.validation.title`, `case.check.*`, `case.iteration.*` |
+| 6 | OUTCOME & REFLECTION | 필수 | 현재 결과(또는 범위)와 다음 질문 | `case.outcome.title`, `case.result.*`, `case.reflection.*` |
+
+선택 섹션은 `project.json`에 켤 항목을 적습니다. 적지 않으면 필수 섹션만 표시됩니다.
+
+```json
+"caseSections": ["evidence", "steps", "validation"]
+```
+
+현재는 모든 프로젝트가 필수 섹션만 표시합니다. 근거 자료(`docs/`)와 검증 결과가 아직 없고, 흐름 단계 설명도 빈칸이기 때문입니다. 숨긴 섹션의 글은 `content.md`에 그대로 남아 있으니, 내용을 채운 뒤 `caseSections`에 추가하면 바로 표시됩니다.
 
 ## 페이지 구성
 
-프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 플로우를 고른 뒤 화면 카드나 ‹ › 버튼으로 이동하고, 선택한 화면 설명이 폰 옆에 표시됩니다. 갤러리는 장면 카드로, 웹은 상태 버튼으로 이동합니다. UX 포트폴리오는 `case-study.html`에 있으며 아직 기존 넓은 레이아웃을 사용합니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.
+프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 플로우를 고른 뒤 화면 카드나 ‹ › 버튼으로 이동하고, 선택한 화면 설명이 폰 옆에 표시됩니다. 갤러리는 장면 카드로, 웹은 상태 버튼으로 이동합니다. UX 포트폴리오는 `case-study.html`에 있으며 같은 에디토리얼 한 단과 위의 섹션 규칙을 사용합니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.

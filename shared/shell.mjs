@@ -54,19 +54,6 @@ function header() {
   node.append(link('RESEARCH / PROTOTYPE LIBRARY', '../'), nav);
   return node;
 }
-function intro() {
-  const node = el('section', 'intro');
-  const main = el('div', 'intro-copy');
-  main.append(el('p', 'label', `${view === 'case' ? 'UX PORTFOLIO' : 'PROTOTYPE'} SHELL / ${config.type.toUpperCase()}`), el('h1', '', text('title')), copy('summary'));
-  const metadata = el('dl', 'metadata');
-  for (const key of ['role', 'period', 'scope']) {
-    const item = el('div');
-    item.append(el('dt', '', key), el('dd', '', text(key, '확인 예정')));
-    metadata.append(item);
-  }
-  node.append(main, metadata);
-  return node;
-}
 function fitFrame(preview) {
   const frame = preview.querySelector('iframe');
   if (!frame || preview.dataset.native === 'false') return;
@@ -263,14 +250,14 @@ function themePicker() {
   }
   return node;
 }
-// Prototype page: one editorial column built from the Figma prototype masters
-// (Shell v2 header, explanation, navigation, device / landscape player / browser).
+// Both pages: one editorial column built from the Figma prototype and UX
+// portfolio masters (Shell v2 header, explanation, navigation, preview frames).
 function explanation(label, titleKey, bodyKey) {
   const node = panel(label, titleKey, bodyKey);
   node.classList.add('explanation');
   return node;
 }
-function prototypeIntro() {
+function pageIntro() {
   const node = el('section', 'proto-intro');
   const metadata = el('dl', 'metadata');
   for (const key of ['role', 'period', 'scope']) {
@@ -278,7 +265,7 @@ function prototypeIntro() {
     item.append(el('dt', '', key), el('dd', '', text(key, '확인 예정')));
     metadata.append(item);
   }
-  node.append(el('p', 'label', `PROTOTYPE / ${config.type.toUpperCase()}`), el('h1', '', text('title')), copy('summary'), metadata);
+  node.append(el('p', 'label', `${view === 'case' ? 'UX PORTFOLIO' : 'PROTOTYPE'} / ${config.type.toUpperCase()}`), el('h1', '', text('title')), copy('summary'), metadata);
   return node;
 }
 function flowSwitcher() {
@@ -357,61 +344,91 @@ function footer() {
   return node;
 }
 function section(label, key) {
-  const node = el('section', 'section');
-  node.append(rule(), el('p', 'label', label), el('h2', '', text(key)));
+  const node = el('section', 'proto-explore');
+  node.append(el('p', 'label', label), el('h2', '', text(key)));
   return node;
 }
-function pair(a, b) { const node = el('div', 'two-cols'); node.append(a, b); return node; }
-function moment(screen, label, titleKey, bodyKey) {
-  const node = el('figure', 'moment');
+function moment(screen, label, titleKey, bodyKey, size = 'medium') {
+  const node = el('figure', `moment moment-${size}`);
   node.append(preview(screen, true), el('p', 'label', label), el('h3', '', text(titleKey)), copy(bodyKey));
   return node;
 }
+function stateCard(state, index) {
+  const node = el('article', 'state-card');
+  const body = el('div', 'state-copy');
+  body.append(el('p', 'panel-label', `STATE / 0${index + 1}`), el('h3', '', text(`case.state${index + 1}.title`)));
+  for (const [label, key] of [['TRIGGER', 'trigger'], ['RESPONSE', 'response'], ['PURPOSE', 'purpose']]) {
+    const item = copy(`case.state${index + 1}.${key}`);
+    item.prepend(el('p', 'state-term', label));
+    body.append(item);
+  }
+  node.append(preview(state.id, true, true), body);
+  return node;
+}
+// Case study sections. Required ones always render; optional ones render only
+// when listed in project.json "caseSections" (evidence, steps, validation).
+const optionalCaseSections = ['evidence', 'steps', 'validation'];
 function caseStudy() {
-  const problem = section('01 / PROBLEM & CONTEXT', 'case.problem.title');
-  problem.append(pair(panel('USER NEED','case.need.title','case.need.body'), panel('DESIGN QUESTION','case.question.title','case.question.body')));
-  const evidence = section('02 / EVIDENCE & INSIGHT', 'case.evidence.title');
-  const interpretation = el('div', 'stack');
-  interpretation.append(panel('INSIGHT','case.insight.title','case.insight.body'), panel('DESIGN IMPLICATION','case.implication.title','case.implication.body'));
-  evidence.append(pair(moment(config.evidenceScreen || config.keyScreens[0], 'SOURCE / HTML IMPLEMENTATION', 'case.source.title', 'case.source.body'), interpretation));
-  const direction = section('03 / DESIGN DIRECTION', 'case.direction.title');
-  const steps = el('div', 'flow-steps');
-  for (let i=1; i<=4; i++) {
-    const step = el('div', 'flow-step');
-    step.append(el('p','panel-label',`0${i}`), el('h3','',text(`case.step${i}.title`)),copy(`case.step${i}.body`));
-    steps.append(step);
-  }
-  direction.append(steps,panel('KEY DESIGN DECISION','case.decision.title','case.decision.body'));
-  const experience = section('04 / EXPERIENCE DESIGN','case.experience.title');
-  const layout = el('div', `experience-${config.type}`);
-  if (config.type === 'mobile') {
-    const live = el('div','live-panel');
-    live.append(device(selected),link('프로토타입 탐색 ↗','./','action'));
-    const story = el('div','stack');
-    story.append(cards(config.keyScreens),panel('FLOW RATIONALE','case.flow.title','case.flow.body'));
-    layout.append(live,story);
-  } else if (config.type === 'gallery') {
-    layout.append(moment(selected,'KEY EXPERIENCE','case.hero.title','case.hero.body'),pair(moment(config.keyScreens[0],'01 / BEFORE','case.before.title','case.before.body'),moment(config.keyScreens.at(-1),'02 / AFTER','case.after.title','case.after.body')));
-  } else {
-    const states = el('div','state-cards');
-    for (const [index,state] of (config.webStates || []).entries()) {
-      const card = el('article','state-card panel');
-      card.append(preview(state.id,true,true),el('p','panel-label',`STATE / 0${index+1}`),el('h3','',text(`case.state${index+1}.title`)));
-      for (const [label,key] of [['TRIGGER','trigger'],['RESPONSE','response'],['PURPOSE','purpose']]) {
-        const body = copy(`case.state${index+1}.${key}`);
-        body.prepend(el('p','',label));
-        card.append(body);
+  const enabled = new Set(config.caseSections || []);
+  for (const id of enabled) if (!optionalCaseSections.includes(id)) throw new Error(`project.json의 caseSections에 알 수 없는 섹션이 있습니다: ${id}`);
+  const problem = label => {
+    const node = section(label('PROBLEM & CONTEXT'), 'case.problem.title');
+    node.append(explanation('USER NEED', 'case.need.title', 'case.need.body'), explanation('DESIGN QUESTION', 'case.question.title', 'case.question.body'));
+    return node;
+  };
+  const evidence = label => {
+    const node = section(label('EVIDENCE & INSIGHT'), 'case.evidence.title');
+    node.append(moment(config.evidenceScreen || config.keyScreens[0], 'EVIDENCE / SOURCE', 'case.source.title', 'case.source.body'), explanation('INSIGHT', 'case.insight.title', 'case.insight.body'), explanation('DESIGN IMPLICATION', 'case.implication.title', 'case.implication.body'));
+    return node;
+  };
+  const direction = label => {
+    const node = section(label('DESIGN DIRECTION'), 'case.direction.title');
+    if (enabled.has('steps')) {
+      const steps = el('div', 'flow-steps');
+      for (let i = 1; i <= 4; i++) {
+        const step = el('div', 'flow-step');
+        step.append(el('p', 'panel-label', `0${i}`), el('h3', '', text(`case.step${i}.title`)), copy(`case.step${i}.body`));
+        steps.append(step);
       }
-      states.append(card);
+      node.append(steps);
     }
-    layout.append(browser(selected),states);
-  }
-  experience.append(layout);
-  const validation = section('05 / VALIDATION & ITERATION','case.validation.title');
-  validation.append(pair(panel('VALIDATION','case.check.title','case.check.body'),panel('ITERATION','case.iteration.title','case.iteration.body')));
-  const outcome = section('06 / OUTCOME & REFLECTION','case.outcome.title');
-  outcome.append(pair(panel('OUTCOME','case.result.title','case.result.body'),panel('REFLECTION','case.reflection.title','case.reflection.body')));
-  return [problem,evidence,direction,experience,validation,outcome];
+    node.append(explanation('KEY DESIGN DECISION', 'case.decision.title', 'case.decision.body'));
+    return node;
+  };
+  const experience = label => {
+    const node = section(label('EXPERIENCE & DESIGN'), 'case.experience.title');
+    if (config.type === 'mobile') {
+      const stageNode = el('div', 'stage stage-mobile stage-case');
+      const side = el('div', 'stage-side');
+      side.append(explanation('FLOW RATIONALE', 'case.flow.title', 'case.flow.body'), link('프로토타입 탐색 ↗', './', 'action'));
+      stageNode.append(el('p', 'label', `KEY EXPERIENCE / ${config.width} × ${config.height}`), device(selected), side);
+      const keyCards = cards(config.keyScreens, true);
+      keyCards.classList.add('key-cards');
+      node.append(stageNode, keyCards);
+    } else if (config.type === 'gallery') {
+      const pairNode = el('div', 'moment-pair');
+      pairNode.append(moment(config.keyScreens[0], '01 / BEFORE', 'case.before.title', 'case.before.body'), moment(config.keyScreens.at(-1), '02 / AFTER', 'case.after.title', 'case.after.body'));
+      node.append(moment(selected, 'KEY EXPERIENCE', 'case.hero.title', 'case.hero.body', 'large'), pairNode);
+    } else {
+      const states = el('div', 'state-cards');
+      (config.webStates || []).forEach((state, index) => states.append(stateCard(state, index)));
+      node.append(browser(selected), states);
+    }
+    return node;
+  };
+  const validation = label => {
+    const node = section(label('VALIDATION & ITERATION'), 'case.validation.title');
+    node.append(explanation('VALIDATION', 'case.check.title', 'case.check.body'), explanation('ITERATION', 'case.iteration.title', 'case.iteration.body'));
+    return node;
+  };
+  const outcome = label => {
+    const node = section(label('OUTCOME & REFLECTION'), 'case.outcome.title');
+    node.append(explanation('OUTCOME', 'case.result.title', 'case.result.body'), explanation('REFLECTION', 'case.reflection.title', 'case.reflection.body'));
+    return node;
+  };
+  const order = [problem, enabled.has('evidence') && evidence, direction, experience, enabled.has('validation') && validation, outcome].filter(Boolean);
+  const nodes = order.map((build, index) => build(name => `${String(index + 1).padStart(2, '0')} / ${name}`));
+  return nodes.flatMap((node, index) => index ? [rule(), node] : [node]);
 }
 window.addEventListener('message', event => {
   if (event.origin !== location.origin || ![...frames].some(frame => frame.contentWindow === event.source)) return;
@@ -456,10 +473,10 @@ async function start() {
   selected = config.defaultScreen;
   selectedFlow = config.flows.find(flow => flow.screens.includes(selected))?.id || config.flows[0].id;
   document.title = `${text('title')} · ${view === 'case' ? 'UX portfolio' : 'Prototype'}`;
-  const node = el('main',`shell ${view === 'case' ? 'portfolio-page' : 'prototype-page'}`);
-  node.append(header(),rule());
-  if (view === 'case') node.append(intro(),...caseStudy());
-  else node.append(prototypeIntro(),rule(),prototypeExplore(),rule(),prototypeContext());
+  const node = el('main',`shell editorial ${view === 'case' ? 'portfolio-page' : 'prototype-page'}`);
+  node.append(header(),rule(),pageIntro(),rule());
+  if (view === 'case') node.append(...caseStudy());
+  else node.append(prototypeExplore(),rule(),prototypeContext());
   node.append(rule(),footer());
   app.replaceChildren(node);
   updateSelection(selected,false);
