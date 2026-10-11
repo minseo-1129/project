@@ -1,127 +1,129 @@
-# 글 수정과 자료 정리
+# Editing content and adding projects
 
-각 프로젝트의 **`content.md`만 수정하면** 프로토타입 페이지와 UX 포트폴리오 페이지가 같은 글을 읽습니다. 별도의 빌드 단계는 없습니다. GitHub에서 수정 후 커밋하면 해당 브랜치의 파일이 바뀝니다. 공개 페이지는 GitHub Pages에 연결된 브랜치가 배포된 뒤 반영됩니다.
+**Design lives in Figma; text lives on GitHub.** All ten projects share one layout in `shared/`. Each project folder holds only its own text (`.md`) and settings (`project.json`). There is no build step: commit a `.md` change and refresh the page.
 
-## 가장 먼저 수정할 곳
+- Design source: [Portfolio Shell Masters v2](https://www.figma.com/design/UM54OetxcnbmbQibK4HqVy)
+  - `00 Projects`: project list and the mapping from code to Figma
+  - `01 Foundations`: colour, type and grid
+  - `02 Components`
+  - `03 Prototype masters`: flow, screen, gallery and web
+  - `04 Case study masters`
+- Code that follows it: `shared/shell.css` (tokens and layout), `shared/shell.mjs` (component structure)
 
-1. 프로젝트 폴더의 `content.md`를 엽니다.
-2. `프로젝트 이름`, `한 줄 소개`, `담당 역할`, `프로젝트 기간`, `사용 도구` 아래 글을 바꿉니다.
-3. 화면별 `카드 설명`은 짧은 소개, `상세 설명`은 선택한 화면 옆의 설명입니다.
-4. `케이스 스터디` 항목에 결과 요약·문제·리서치·핵심 결정·임팩트·배운 점·디자인 시스템을 작성합니다.
-5. 변경을 커밋하고 페이지를 새로고침합니다.
+## Which file to edit
 
-제목 뒤의 `<!-- summary -->` 같은 **항목 ID는 유지**하세요. 제목의 한글은 바꿔도 됩니다. 같은 ID를 두 번 쓰면 오류가 표시됩니다.
+| What you want to change | File |
+|---|---|
+| Project name, one-line summary, role, period, tools, screen descriptions | `<project>/content.md` |
+| Case study body (problem, research, decisions, outcome, …) | `<project>/case-study.md` |
+| English version | `<project>/content.en.md`, `<project>/case-study.en.md` |
+| Preview type, screen order, flows, themes, design system link | `<project>/project.json` |
+| Research material | `<project>/docs/` (+ list it in `docs/README.md`) |
+| Shared design (applies to every project) | `shared/shell.css`, `shared/shell.mjs` → update Figma as well |
+
+### Recommended workflow (per project)
+
+1. Put the research material in `docs/` (or attach it in a request to Claude).
+2. **Fill `case-study.md` in Korean.** A Claude draft is fine to start from; check the numbers and quotes against the source.
+3. Fill `content.md`: the intro and screen descriptions.
+4. Fill the English files with the same field IDs (a translation draft is fine to start from).
+5. Check with `python -m http.server 8000` → `http://localhost:8000/<project>/case-study.html` (add `?lang=en` for English).
+6. Commit.
+
+You do **not** need to copy the Figma file for each project. Copy a Figma page and ask for an implementation only in these cases:
+
+- you want a new block that is not in the masters (for example a different chart or a video section);
+- you want to change the layout or visuals of a particular project.
+
+In those cases, add the design to `02 Components` / `04 Case study masters` in the Figma file and ask Claude to "apply node X" — the change then reaches every project.
+
+## Basic rules
+
+- Keep the field ID at the end of each heading (`<!-- summary -->`). The heading text itself can be changed. Using the same ID twice is an error.
+- A field that contains only `[bracketed text]` counts as **blank**.
+  - Required blocks show a blank-field prompt.
+  - Optional blocks stay hidden.
+- The body supports paragraphs, `**bold**`, `` `code` ``, `[links](docs/a.pdf)` and `- lists`. HTML does not run.
+- Do not invent numbers that are not in the data.
 
 ```md
-## 한 줄 소개 <!-- summary -->
+## One-line summary <!-- summary -->
 
-이 프로젝트가 누구의 어떤 일을 돕는지 작성합니다.
-
-## 담당 역할 <!-- role -->
-
-UX 기획 · 인터랙션 디자인
-
-## 배경 설명 <!-- context.body -->
-
-첫 번째 문단입니다.
-
-두 번째 문단에는 **강조할 내용**과 [관련 자료](docs/research.pdf)를 넣을 수 있습니다.
+Write whose task this project helps with, and what that task is.
 ```
 
-본문은 문단, `**굵은 글씨**`, `인라인 코드`, 링크, `- 목록`을 지원합니다. 원시 HTML은 실행하지 않고 글자로 표시합니다. 제목·역할·기간·화면 이름은 일반 텍스트로 표시합니다. 내용이 길어지면 카드와 섹션 높이가 늘어나고 작은 화면에서는 세로로 쌓입니다.
+## Case-study blocks (`case-study.md`)
 
-ORBIT은 같은 화면의 설명이 입문자·숙련자 플로우에서 다를 수 있어 `flow.beginner.화면ID.body`, `flow.advanced.화면ID.body`가 별도로 있습니다. 선택한 플로우의 설명이 우선됩니다.
+The order is fixed: **Problem → Research → (Persona) → Insights → (Journey) → Key decisions → Outcome → (Impact) → (Learnings) → (Design system)**.
 
-## 프로젝트별 셸
+- Blocks in parentheses are optional and appear only when filled in.
+- Numbers (`01 · PROBLEM`) are assigned automatically, in display order.
 
-| 종류 | 프로젝트 |
+| Block | Field ID | Format |
+|---|---|---|
+| Problem | `case.problem.lead` | One sentence |
+| | `case.problem.points` | `- factor — explanation` |
+| Research | `case.research.lead` | Method, participants, hypothesis |
+| | `case.research.bars` | `### Chart title · TAG` then `- item: number` |
+| | `case.research.numbers` | `- 87% — caption` (up to 3) |
+| | `case.research.table` | `- header | header | header` first line, then `- value | value | value` |
+| | `case.research.quotes` | `- "quote" — speaker` |
+| | `case.research.observed` | `- observation` |
+| | `case.research.source` | Source note (one line) |
+| Persona (optional) | `case.persona.name` / `profile` / `quote` | Text |
+| | `case.persona.goals` / `frustrations` | `- item` |
+| Insights | `case.insights` | `### Design rule` then evidence prose |
+| Journey (optional) | `case.journey.lead` | One sentence |
+| | `case.journey.stages` | `### Stage · EN`, then `- Mood: label · 1–5`, `- Moment:`, `- Pain:`, `- Opportunity:` |
+| Key decisions | `case.decisions` | `### Decision title`, prose, `- Before:` `- After:` `- Evidence:` `- Screen: screenID` |
+| Outcome | `case.outcome.lead` | Outcome summary (final screens are shown automatically from `keyScreens`) |
+| | `case.outcome.changes` | `- Added: …`, `- Removed: …`, `- Changed: …` |
+| Impact (optional) | `case.impact` | `- KIND: value` (e.g. `- USABILITY TEST: completion rate 62% → 91%`) |
+| Learnings (optional) | `case.learnings` | Prose |
+| Design system (optional) | `case.system.palette` | `` - `#F3F3F1` name `` |
+| | `case.system.type` | `- ROLE | typeface | size` |
+| | `case.system.body` | Principles |
+
+- **Research:** fill at least one of bars, numbers, table, quotes or observed. If all are blank, the "add a result" box appears.
+- **Labels in English files:** use `Before/After/Evidence/Screen`, `Mood/Moment/Pain/Opportunity` and `Added/Removed/Changed` in place of the Korean labels.
+- **Outcome images:**
+  - mobile: the device plus `keyScreens`;
+  - gallery: the `case.hero` / `before` / `after` scenes;
+  - web: state cards.
+
+## English version
+
+- Turn it on with `?lang=en` or the KO/EN toggle in the top-right corner. The choice is remembered.
+- `content.en.md` and `case-study.en.md` use the **same field IDs** as the Korean files.
+- Fields that are blank in English fall back to the Korean text. A Korean field that is also a prompt shows the English prompt instead.
+- UI labels (section names, buttons) are in the `UI` dictionary at the top of `shared/shell.mjs`.
+
+## `project.json`
+
+| Key | Meaning |
 |---|---|
-| 모바일 | ORBIT, PICO, REPLY, WINNUS, REDI, CUPPO |
-| 갤러리 / 페이지 탐색 | KIKETCH, MATHHERO |
-| 웹 | THE LIGHTHOUSE, reco |
+| `type` | `mobile` · `gallery` (KIKETCH, MATHHERO) · `web` (reco, THE LIGHTHOUSE) |
+| `layout` | Mobile only. Default `flow` (flow tabs + screen thumbnails); `screen` (whole-screen pills, CUPPO) |
+| `flows` | Flow IDs and screen order. Flow and screen names go in `content.md` (`flow.<id>.title`, `screen.<id>.title`) |
+| `keyScreens` | Screens shown under Outcome in the case study |
+| `themes` | `true` shows the light/dark toggle |
+| `designSystem` | File name of the design-system board (shown as a link at the bottom of the Design system block) |
 
-## 파일 역할
+## Adding a new project
 
-| 파일 | 수정하는 내용 |
-|---|---|
-| `<project>/content.md` | 프로젝트별 설명 글. 두 페이지가 함께 사용 |
-| `<project>/index.html` | 공통 셸 진입점 |
-| `<project>/case-study.html` | UX 포트폴리오 셸 진입점 |
-| `<project>/project.json` | 화면 크기, 컴포넌트 이름, 화면과 플로우 연결, 디자인 시스템 보드(`designSystem`) |
-| `<project>/viewer.html` | 기존 화면 컴포넌트를 실행하는 미리보기 |
-| `<project>/prototype.html` | 기존 주소에서도 리디자인된 프로토타입을 바로 표시 |
-| `<project>/original-prototype.html` | 변경 전 원본 보존 및 웹 인터랙션 실행용 |
-| `cuppo/CUPPO Prototype.dc.html` | CUPPO의 기존 전체 프로토타입 |
-| `<project>/docs/` | 기획·연구·발표 등 참고 자료 |
-| `shared/shell.css` | 모든 프로젝트의 공통 디자인 |
-| `shared/shell.mjs` | 공통 레이아웃과 화면 선택 |
-| `shared/content.mjs` | MD 읽기와 글 표시 |
+1. Create a folder by copying an existing project of the same type (`mobile` / `gallery` / `web`): `index.html`, `case-study.html`, `viewer.html`, `project.json`.
+2. Add the screen component (`<Name>Screen.dc.html`) and change `component`, `width`, `height` and `flows` in `project.json`.
+3. Copy `content.md` and `case-study.md` (plus the `.en.md` files) and fill them in.
+4. Add the folder name to `shared/projects.json`.
+5. Run `node --test tests/content.test.mjs`. It checks field IDs, flow links and block formats.
 
-기존 화면 컴포넌트와 에셋은 그대로 재사용합니다. REDI는 기존 페이지의 폰 부분을 `RediScreen.dc.html`로 분리했습니다. 앱 화면 안의 문구는 각 `Screen.dc.html`에 남아 있고, 이 작업의 `content.md`는 **바깥 셸과 포트폴리오 설명**을 관리합니다.
-
-## 자료 올리기
-
-각 프로젝트의 `docs/`에 자료를 넣고 `docs/README.md` 목록에 파일명·자료 종류·참고할 내용·날짜를 적어 주세요. 포트폴리오에서 보여줄 근거는 MD 본문에 링크로 연결할 수 있습니다.
-
-자료가 너무 커서 로컬에 보관한다면 목록에 파일명과 보관 위치를 적어두세요. 로컬 파일은 자동으로 읽을 수 없으므로 작업할 때 첨부하거나 접근 가능한 링크를 전달해야 합니다.
-
-현재 초안은 저장소의 구현과 설명을 바탕으로 작성됐습니다. 역할·기간·검증·성과의 빈칸은 원자료를 확인한 뒤 작성하세요. Figma 텍스트와 GitHub MD는 자동 동기화되지 않습니다.
-
-## 로컬에서 확인하기
-
-저장소 루트에서:
+## Running locally
 
 ```sh
 python -m http.server 8000
 ```
 
-브라우저에서 `http://localhost:8000/`를 열면 전체 프로젝트 목록이 보입니다. 파일을 더블클릭하는 `file://` 방식은 MD와 화면 컴포넌트를 불러오지 못하므로 HTTP 서버가 필요합니다. 기존 DC 실행 환경의 React·폰트와 Lighthouse의 Three.js는 원래 사용하던 CDN을 이용합니다.
+Open `http://localhost:8000/`. The `file://` method cannot load the md files.
 
-## 디자인 기준
-
-현재 페이지의 기준 Figma 파일은 [Portfolio Shell · Editorial Masters](https://www.figma.com/design/QYU8fvrEvra9UU5ZP1Vfsq)입니다. 이 파일의 페이지 구성은 다음과 같습니다.
-
-- `00 · Projects`: 프로젝트 목록. 각 카드에서 실제 페이지와 Figma master로 이동합니다.
-- `01 · Foundations`: 색·글꼴·레이아웃 규칙
-- `02 · Components`: 사용된 컴포넌트
-- `03 · Prototype masters`: 프로토타입 master 3종
-- `04 · Case study masters`: 케이스 스터디 master 3종 (리서치 흐름 8개 섹션)
-
-처음 옮겨 온 원본은 Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158)와 Components 페이지(2:2)입니다. 프로토타입 페이지는 모든 프로젝트가 **같은 순서의 에디토리얼 한 단(최대 760px)**을 사용합니다.
-
-| 순서 | 사용한 master 컴포넌트 |
-|---|---|
-| 헤더 | Shell v2 / Header |
-| 프로젝트 소개 + ROLE·PERIOD·SCOPE | Project intro + Metadata |
-| 01 / EXPLORE THE PROTOTYPE | 플로우·상태 선택: Shell v2 / Navigation |
-| 미리보기 | 모바일: Device / Mobile · 갤러리: Shell v2 / Landscape player · 웹: Browser / Desktop |
-| 화면 목록 | Screen Card (가로 스크롤) — 모바일·갤러리 |
-| 선택한 화면 설명 | Shell v2 / Explanation |
-| 02 / CONTEXT & DECISION | Shell v2 / Explanation × 2 |
-| 푸터 | Action / Prototype Link |
-
-미리보기 형태는 `project.json`의 `type`으로 정합니다. KIKETCH·MATHHERO는 `gallery`, reco·THE LIGHTHOUSE는 `web`, 나머지는 `mobile`입니다.
-
-## 케이스 스터디 섹션
-
-UX 포트폴리오(`case-study.html`)는 모든 프로젝트가 같은 리서치 흐름을 따릅니다. 맨 위 소개(제목 + ROLE · TIME · TOOLS) 다음에 아래 8개 섹션이 이 순서로 나옵니다.
-
-| 순서 | 섹션 | 담는 내용 | content.md 항목 |
-|---|---|---|---|
-| 소개 | Title + Role / Time / Tools | 프로젝트 이름, 한 줄 소개, 역할·기간·도구 | `title`, `summary`, `role`, `period`, `tools` |
-| 01 | OUTCOME | 무엇을 만들었고 지금 어떤 상태인지 먼저 요약 | `case.outcome.title`, `case.outcome.body` |
-| 02 | PROBLEM | 누가 어떤 상황에서 어려웠는지, 설계 질문 | `case.problem.title`, `case.need.*`, `case.question.*` |
-| 03 | RESEARCH | 조사 방법·참여자, 핵심 발견 | `case.research.title`, `case.method.*`, `case.findings.*` |
-| 04 | KEY DECISIONS | 발견이 바꾼 핵심 결정 3개 | `case.decisions.title`, `case.decision1~3.*` |
-| 05 | FINAL SCREENS | 최종 화면 (모바일: 폰 + 핵심 화면 / 갤러리: 핵심 장면 + 전후 / 웹: 브라우저 + 상태 카드) | `case.experience.title`, `case.flow.*` 또는 `case.hero/before/after.*` 또는 `case.state1~3.*` |
-| 06 | IMPACT | 측정했거나 확인한 변화 | `case.impact.title`, `case.impact.body` |
-| 07 | LEARNINGS | 배운 점, 다음에 다르게 할 점 | `case.learnings.title`, `case.learnings.body` |
-| 08 | DESIGN SYSTEM | 팔레트·타입·컴포넌트 원칙 | `case.system.title`, `case.system.body`, `case.system.palette` |
-
-`case.system.palette`에 `` - `#F3F3F1` 종이 `` 형식으로 한 줄에 하나씩 적으면 색 칩으로 표시됩니다. 디자인 시스템 보드 파일이 있으면 `project.json`의 `"designSystem"`에 파일명을 적어 버튼으로 연결합니다(CUPPO).
-
-`[ ]`로 감싼 문장은 아직 채우지 않은 빈칸 안내문입니다. 데이터에 없는 숫자는 쓰지 말고, 근거 자료는 `docs/`에 올린 뒤 링크해 주세요.
-
-## 페이지 구성
-
-프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 플로우를 고른 뒤 화면 카드나 ‹ › 버튼으로 이동하고, 선택한 화면 설명이 폰 옆에 표시됩니다. 갤러리는 장면 카드로, 웹은 상태 버튼으로 이동합니다. UX 포트폴리오는 `case-study.html`에 있으며 같은 에디토리얼 한 단과 위의 섹션 순서를 사용합니다. 저장소 루트의 프로젝트 목록도 같은 에디토리얼 한 단의 리스트입니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.
+- Responsive widths: 1440 (editorial column 760 / breakout 1120), ≤800 tablet, ≤480 mobile (based on 390).
+- The Figma 390 masters follow the same breakpoints.

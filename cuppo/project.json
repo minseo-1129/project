@@ -45,5 +45,6 @@
     }
   ],
   "themes": true,
-  "designSystem": "CUPPO Design System.dc.html"
+  "designSystem": "CUPPO Design System.dc.html",
+  "layout": "screen"
 }
