@@ -35,7 +35,8 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
       assert.ok(fs.statSync(new URL('viewer.html',dir)).size>0);
     }
     for(const item of config.links||[])assert.ok(fs.statSync(new URL(item.href,dir)).size>0);
-    for(const id of config.caseSections||[])assert.ok(['evidence','steps','validation'].includes(id),`${project}: ${id}`);
+    if(config.designSystem)assert.ok(fs.statSync(new URL(config.designSystem,dir)).size>0,`${project}: designSystem`);
+    for(const key of ['tools','case.outcome.title','case.problem.title','case.research.title','case.decisions.title','case.decision1.title','case.experience.title','case.impact.title','case.learnings.title','case.system.title'])assert.ok(key in fields,`${project}: ${key}`);
   }
 });
 test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=>{

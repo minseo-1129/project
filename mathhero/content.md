@@ -19,6 +19,10 @@ MATHHERO
 
 [프로젝트 기간을 입력해 주세요]
 
+## 사용 도구 <!-- tools -->
+
+[사용한 도구를 입력해 주세요 (예: Figma · HTML/CSS)]
+
 ## 플랫폼과 범위 <!-- scope -->
 
 Gallery / page navigation
@@ -59,193 +63,147 @@ Gallery / page navigation
 
 장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
 
-## 포트폴리오 · case.problem.title <!-- case.problem.title -->
-
-문제 풀이 뒤에 남는 학습
-
-## 포트폴리오 · case.need.title <!-- case.need.title -->
-
-사용 상황과 필요
-
-## 포트폴리오 · case.need.body <!-- case.need.body -->
-
-현재 구현은 내 방, 맵, 문제 풀이, 클리어, 오답 수조를 연결합니다. 클랜과 프로필, 튜토리얼 장면도 함께 탐색할 수 있습니다.
-
-## 포트폴리오 · case.question.title <!-- case.question.title -->
-
-이번 설계에서 다룰 질문
-
-## 포트폴리오 · case.question.body <!-- case.question.body -->
-
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
-
-## 포트폴리오 · case.evidence.title <!-- case.evidence.title -->
-
-현재 구현과 설계 의도
-
-## 포트폴리오 · case.source.title <!-- case.source.title -->
-
-화면으로 확인하는 구현
-
-## 포트폴리오 · case.source.body <!-- case.source.body -->
-
-출처: 저장소의 mathhero/prototype.html 및 화면 구현 파일. 이 화면은 현재 구현의 예시이며 사용자 연구 결과는 아닙니다.
-
-## 포트폴리오 · case.insight.title <!-- case.insight.title -->
-
-소스에서 확인할 수 있는 내용
-
-## 포트폴리오 · case.insight.body <!-- case.insight.body -->
-
-현재 구현은 내 방, 맵, 문제 풀이, 클리어, 오답 수조를 연결합니다. 클랜과 프로필, 튜토리얼 장면도 함께 탐색할 수 있습니다.
-
-## 포트폴리오 · case.implication.title <!-- case.implication.title -->
-
-결과를 복습의 진입점으로
-
-## 포트폴리오 · case.implication.body <!-- case.implication.body -->
-
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
-
-## 포트폴리오 · case.direction.title <!-- case.direction.title -->
-
-내 방에서 문제 풀이와 복습으로
-
-## 포트폴리오 · case.decision.title <!-- case.decision.title -->
-
-결과를 복습의 진입점으로
-
-## 포트폴리오 · case.decision.body <!-- case.decision.body -->
-
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
-
-## 포트폴리오 · case.experience.title <!-- case.experience.title -->
-
-내 방에서 문제 풀이와 복습으로
-
-## 포트폴리오 · case.flow.title <!-- case.flow.title -->
-
-화면이 이어지는 이유
-
-## 포트폴리오 · case.flow.body <!-- case.flow.body -->
-
-장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.hero.title <!-- case.hero.title -->
-
-내 방에서 문제 풀이와 복습으로
-
-## 포트폴리오 · case.hero.body <!-- case.hero.body -->
-
-장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.before.title <!-- case.before.title -->
-
-경험의 시작
-
-## 포트폴리오 · case.before.body <!-- case.before.body -->
-
-복습 구역이 맵에 상시 노드로 존재. 난이도는 색 대신 라벨로 명시.
-
-## 포트폴리오 · case.after.title <!-- case.after.title -->
-
-행동 뒤의 장면
-
-## 포트폴리오 · case.after.body <!-- case.after.body -->
-
-원본에 없던 화면. 방 수조의 오답을 유형으로 묶어 한 번에 연습.
-
-## 포트폴리오 · case.input.title <!-- case.input.title -->
-
-사용자가 해볼 행동
-
-## 포트폴리오 · case.input.body <!-- case.input.body -->
-
-장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.response.title <!-- case.response.title -->
-
-화면에서 확인할 반응
-
-## 포트폴리오 · case.response.body <!-- case.response.body -->
-
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
-
-## 포트폴리오 · case.validation.title <!-- case.validation.title -->
-
-검증 자료와 수정 과정을 더하기
-
-## 포트폴리오 · case.check.title <!-- case.check.title -->
-
-실제 검증 자료를 추가해 주세요
-
-## 포트폴리오 · case.check.body <!-- case.check.body -->
-
-[참여자, 방법, 과제, 관찰 결과를 작성하고 관련 자료를 연결해 주세요. 실제로 확인한 결과와 아직 검증하지 않은 가설을 구분해 주세요.]
-
-## 포트폴리오 · case.iteration.title <!-- case.iteration.title -->
-
-구현된 선택과 앞으로의 수정
-
-## 포트폴리오 · case.iteration.body <!-- case.iteration.body -->
-
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
-
-[검증 뒤 바꾼 점이 있다면 전후 화면과 수정 이유를 추가해 주세요.]
-
-## 포트폴리오 · case.outcome.title <!-- case.outcome.title -->
-
-현재 결과와 다음 질문
-
-## 포트폴리오 · case.result.title <!-- case.result.title -->
+## 케이스 스터디 · 결과 요약 제목 <!-- case.outcome.title -->
 
 현재 프로토타입의 범위
 
-## 포트폴리오 · case.result.body <!-- case.result.body -->
+## 케이스 스터디 · 결과 요약 <!-- case.outcome.body -->
 
 게임 장면을 탐색하며 수학 문제를 풀고, 결과에서 오답 복습으로 이어지는 학습 프로토타입.
 
 [확인된 성과가 있다면 근거와 함께 추가해 주세요.]
 
-## 포트폴리오 · case.reflection.title <!-- case.reflection.title -->
+## 케이스 스터디 · 문제 제목 <!-- case.problem.title -->
+
+문제 풀이 뒤에 남는 학습
+
+## 케이스 스터디 · 사용자 필요 제목 <!-- case.need.title -->
+
+사용 상황과 필요
+
+## 케이스 스터디 · 사용자 필요 <!-- case.need.body -->
+
+현재 구현은 내 방, 맵, 문제 풀이, 클리어, 오답 수조를 연결합니다. 클랜과 프로필, 튜토리얼 장면도 함께 탐색할 수 있습니다.
+
+## 케이스 스터디 · 설계 질문 제목 <!-- case.question.title -->
+
+이번 설계에서 다룰 질문
+
+## 케이스 스터디 · 설계 질문 <!-- case.question.body -->
+
+기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
+
+## 케이스 스터디 · 리서치 제목 <!-- case.research.title -->
+
+[리서치에서 알게 된 것]
+
+## 케이스 스터디 · 리서치 방법 제목 <!-- case.method.title -->
+
+조사 방법
+
+## 케이스 스터디 · 리서치 방법 <!-- case.method.body -->
+
+[방법·참여자 수·기간을 작성하고, 관련 자료를 docs/에 올린 뒤 링크해 주세요.]
+
+## 케이스 스터디 · 핵심 발견 제목 <!-- case.findings.title -->
+
+핵심 발견
+
+## 케이스 스터디 · 핵심 발견 <!-- case.findings.body -->
+
+[인용 가능한 숫자나 발언과 함께 발견을 정리해 주세요. 데이터에 없는 숫자는 쓰지 않습니다.]
+
+## 케이스 스터디 · 핵심 결정 제목 <!-- case.decisions.title -->
+
+내 방에서 문제 풀이와 복습으로
+
+## 케이스 스터디 · 결정 1 제목 <!-- case.decision1.title -->
+
+결과를 복습의 진입점으로
+
+## 케이스 스터디 · 결정 1 <!-- case.decision1.body -->
+
+기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
+
+## 케이스 스터디 · 결정 2 제목 <!-- case.decision2.title -->
+
+[두 번째 핵심 결정]
+
+## 케이스 스터디 · 결정 2 <!-- case.decision2.body -->
+
+[무엇을 선택했고, 어떤 대안을 버렸는지, 그 근거는 무엇인지 작성해 주세요.]
+
+## 케이스 스터디 · 결정 3 제목 <!-- case.decision3.title -->
+
+[세 번째 핵심 결정]
+
+## 케이스 스터디 · 결정 3 <!-- case.decision3.body -->
+
+[무엇을 선택했고, 어떤 대안을 버렸는지, 그 근거는 무엇인지 작성해 주세요.]
+
+## 케이스 스터디 · 최종 화면 제목 <!-- case.experience.title -->
+
+내 방에서 문제 풀이와 복습으로
+
+## 케이스 스터디 · flow.title <!-- case.flow.title -->
+
+화면이 이어지는 이유
+
+## 케이스 스터디 · flow.body <!-- case.flow.body -->
+
+장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
+
+## 케이스 스터디 · hero.title <!-- case.hero.title -->
+
+내 방에서 문제 풀이와 복습으로
+
+## 케이스 스터디 · hero.body <!-- case.hero.body -->
+
+장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
+
+## 케이스 스터디 · before.title <!-- case.before.title -->
+
+경험의 시작
+
+## 케이스 스터디 · before.body <!-- case.before.body -->
+
+복습 구역이 맵에 상시 노드로 존재. 난이도는 색 대신 라벨로 명시.
+
+## 케이스 스터디 · after.title <!-- case.after.title -->
+
+행동 뒤의 장면
+
+## 케이스 스터디 · after.body <!-- case.after.body -->
+
+원본에 없던 화면. 방 수조의 오답을 유형으로 묶어 한 번에 연습.
+
+## 케이스 스터디 · 임팩트 제목 <!-- case.impact.title -->
+
+[측정했거나 확인한 변화]
+
+## 케이스 스터디 · 임팩트 <!-- case.impact.body -->
+
+[참여자, 방법, 과제, 관찰 결과를 작성하고 관련 자료를 연결해 주세요. 실제로 확인한 결과와 아직 검증하지 않은 가설을 구분해 주세요.]
+
+## 케이스 스터디 · 배운 점 제목 <!-- case.learnings.title -->
 
 다음에 확인하고 싶은 점
 
-## 포트폴리오 · case.reflection.body <!-- case.reflection.body -->
+## 케이스 스터디 · 배운 점 <!-- case.learnings.body -->
 
 [사용자가 어디에서 멈추는지, 설명이 충분한지, 다음 행동이 분명한지 확인할 질문을 작성해 주세요.]
 
-## 포트폴리오 · case.step1.title <!-- case.step1.title -->
+## 케이스 스터디 · 디자인 시스템 제목 <!-- case.system.title -->
 
-장면 탐색
+[이 프로젝트의 디자인 시스템]
 
-## 포트폴리오 · case.step1.body <!-- case.step1.body -->
+## 케이스 스터디 · 디자인 시스템 설명 <!-- case.system.body -->
 
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
+[팔레트·타입·컴포넌트 원칙을 작성해 주세요. 원본에서 반드시 살린 요소가 있다면 함께 적어 주세요.]
 
-## 포트폴리오 · case.step2.title <!-- case.step2.title -->
+## 케이스 스터디 · 디자인 시스템 팔레트 <!-- case.system.palette -->
 
-문제 풀이
-
-## 포트폴리오 · case.step2.body <!-- case.step2.body -->
-
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
-
-## 포트폴리오 · case.step3.title <!-- case.step3.title -->
-
-결과 확인
-
-## 포트폴리오 · case.step3.body <!-- case.step3.body -->
-
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
-
-## 포트폴리오 · case.step4.title <!-- case.step4.title -->
-
-복습
-
-## 포트폴리오 · case.step4.body <!-- case.step4.body -->
-
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
+[- `#HEX` 이름 형식으로 한 줄에 하나씩 작성하면 색 칩으로 표시됩니다.]
 
 ## 플로우 · flow.pages.title <!-- flow.pages.title -->
 

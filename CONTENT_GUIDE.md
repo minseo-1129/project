@@ -5,9 +5,9 @@
 ## 가장 먼저 수정할 곳
 
 1. 프로젝트 폴더의 `content.md`를 엽니다.
-2. `프로젝트 이름`, `한 줄 소개`, `담당 역할`, `프로젝트 기간` 아래 글을 바꿉니다.
+2. `프로젝트 이름`, `한 줄 소개`, `담당 역할`, `프로젝트 기간`, `사용 도구` 아래 글을 바꿉니다.
 3. 화면별 `카드 설명`은 짧은 소개, `상세 설명`은 선택한 화면 옆의 설명입니다.
-4. `포트폴리오` 항목에 배경·근거·설계 결정·검증·회고를 작성합니다.
+4. `케이스 스터디` 항목에 결과 요약·문제·리서치·핵심 결정·임팩트·배운 점·디자인 시스템을 작성합니다.
 5. 변경을 커밋하고 페이지를 새로고침합니다.
 
 제목 뒤의 `<!-- summary -->` 같은 **항목 ID는 유지**하세요. 제목의 한글은 바꿔도 됩니다. 같은 ID를 두 번 쓰면 오류가 표시됩니다.
@@ -47,7 +47,7 @@ ORBIT은 같은 화면의 설명이 입문자·숙련자 플로우에서 다를 
 | `<project>/content.md` | 프로젝트별 설명 글. 두 페이지가 함께 사용 |
 | `<project>/index.html` | 공통 셸 진입점 |
 | `<project>/case-study.html` | UX 포트폴리오 셸 진입점 |
-| `<project>/project.json` | 화면 크기, 컴포넌트 이름, 화면과 플로우 연결, 케이스 스터디 선택 섹션(`caseSections`) |
+| `<project>/project.json` | 화면 크기, 컴포넌트 이름, 화면과 플로우 연결, 디자인 시스템 보드(`designSystem`) |
 | `<project>/viewer.html` | 기존 화면 컴포넌트를 실행하는 미리보기 |
 | `<project>/prototype.html` | 기존 주소에서도 리디자인된 프로토타입을 바로 표시 |
 | `<project>/original-prototype.html` | 변경 전 원본 보존 및 웹 인터랙션 실행용 |
@@ -85,7 +85,7 @@ python -m http.server 8000
 - `01 · Foundations`: 색·글꼴·레이아웃 규칙
 - `02 · Components`: 사용된 컴포넌트
 - `03 · Prototype masters`: 프로토타입 master 3종
-- `04 · Case study masters`: 케이스 스터디 master 3종. 선택 섹션은 `Show …` 속성으로 켭니다.
+- `04 · Case study masters`: 케이스 스터디 master 3종 (리서치 흐름 8개 섹션)
 
 처음 옮겨 온 원본은 Figma 파일 `8XPWPHJ3rSvDT3YsGDishg`의 Prototype master(29:2 / 29:82 / 29:158)와 Components 페이지(2:2)입니다. 프로토타입 페이지는 모든 프로젝트가 **같은 순서의 에디토리얼 한 단(최대 760px)**을 사용합니다.
 
@@ -104,26 +104,24 @@ python -m http.server 8000
 
 ## 케이스 스터디 섹션
 
-UX 포트폴리오(`case-study.html`)도 같은 에디토리얼 한 단을 사용합니다. 섹션은 **모든 프로젝트에 항상 나오는 필수 섹션**과 **프로젝트별로 켜는 선택 섹션**으로 나뉩니다. 섹션 번호(01, 02…)는 표시되는 섹션 수에 맞춰 자동으로 매겨집니다.
+UX 포트폴리오(`case-study.html`)는 모든 프로젝트가 같은 리서치 흐름을 따릅니다. 맨 위 소개(제목 + ROLE · TIME · TOOLS) 다음에 아래 8개 섹션이 이 순서로 나옵니다.
 
-| 순서 | 섹션 | 구분 | 언제 쓰나 | content.md 항목 |
-|---|---|---|---|---|
-| 1 | PROBLEM & CONTEXT | 필수 | 누가 어떤 상황에서 무엇을 필요로 했는지 | `case.problem.*`, `case.need.*`, `case.question.*` |
-| 2 | EVIDENCE & INSIGHT | 선택 `evidence` | 인터뷰·설문·리서치 문서 등 근거 자료가 있을 때 | `case.evidence.*`, `case.source.*`, `case.insight.*`, `case.implication.*` |
-| 3 | DESIGN DIRECTION | 필수 | 핵심 설계 결정과 그 이유 | `case.direction.title`, `case.decision.*` |
-| 3 안 | 4단계 흐름(Flow Step) | 선택 `steps` | 사용자 여정을 4단계로 설명할 수 있을 때 | `case.step1~4.*` |
-| 4 | EXPERIENCE & DESIGN | 필수 | 실제 화면과 설계 (모바일: 폰 + 핵심 화면 카드 / 갤러리: 핵심 장면 + 전후 비교 / 웹: 브라우저 + 상태 카드) | `case.experience.title`, `case.flow.*` 또는 `case.hero/before/after.*` 또는 `case.state1~3.*` |
-| 5 | VALIDATION & ITERATION | 선택 `validation` | 사용성 테스트 등 실제 검증과 그 뒤 수정이 있을 때 | `case.validation.title`, `case.check.*`, `case.iteration.*` |
-| 6 | OUTCOME & REFLECTION | 필수 | 현재 결과(또는 범위)와 다음 질문 | `case.outcome.title`, `case.result.*`, `case.reflection.*` |
+| 순서 | 섹션 | 담는 내용 | content.md 항목 |
+|---|---|---|---|
+| 소개 | Title + Role / Time / Tools | 프로젝트 이름, 한 줄 소개, 역할·기간·도구 | `title`, `summary`, `role`, `period`, `tools` |
+| 01 | OUTCOME | 무엇을 만들었고 지금 어떤 상태인지 먼저 요약 | `case.outcome.title`, `case.outcome.body` |
+| 02 | PROBLEM | 누가 어떤 상황에서 어려웠는지, 설계 질문 | `case.problem.title`, `case.need.*`, `case.question.*` |
+| 03 | RESEARCH | 조사 방법·참여자, 핵심 발견 | `case.research.title`, `case.method.*`, `case.findings.*` |
+| 04 | KEY DECISIONS | 발견이 바꾼 핵심 결정 3개 | `case.decisions.title`, `case.decision1~3.*` |
+| 05 | FINAL SCREENS | 최종 화면 (모바일: 폰 + 핵심 화면 / 갤러리: 핵심 장면 + 전후 / 웹: 브라우저 + 상태 카드) | `case.experience.title`, `case.flow.*` 또는 `case.hero/before/after.*` 또는 `case.state1~3.*` |
+| 06 | IMPACT | 측정했거나 확인한 변화 | `case.impact.title`, `case.impact.body` |
+| 07 | LEARNINGS | 배운 점, 다음에 다르게 할 점 | `case.learnings.title`, `case.learnings.body` |
+| 08 | DESIGN SYSTEM | 팔레트·타입·컴포넌트 원칙 | `case.system.title`, `case.system.body`, `case.system.palette` |
 
-선택 섹션은 `project.json`에 켤 항목을 적습니다. 적지 않으면 필수 섹션만 표시됩니다.
+`case.system.palette`에 `` - `#F3F3F1` 종이 `` 형식으로 한 줄에 하나씩 적으면 색 칩으로 표시됩니다. 디자인 시스템 보드 파일이 있으면 `project.json`의 `"designSystem"`에 파일명을 적어 버튼으로 연결합니다(CUPPO).
 
-```json
-"caseSections": ["evidence", "steps", "validation"]
-```
-
-현재는 모든 프로젝트가 필수 섹션만 표시합니다. 근거 자료(`docs/`)와 검증 결과가 아직 없고, 흐름 단계 설명도 빈칸이기 때문입니다. 숨긴 섹션의 글은 `content.md`에 그대로 남아 있으니, 내용을 채운 뒤 `caseSections`에 추가하면 바로 표시됩니다.
+`[ ]`로 감싼 문장은 아직 채우지 않은 빈칸 안내문입니다. 데이터에 없는 숫자는 쓰지 말고, 근거 자료는 `docs/`에 올린 뒤 링크해 주세요.
 
 ## 페이지 구성
 
-프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 플로우를 고른 뒤 화면 카드나 ‹ › 버튼으로 이동하고, 선택한 화면 설명이 폰 옆에 표시됩니다. 갤러리는 장면 카드로, 웹은 상태 버튼으로 이동합니다. UX 포트폴리오는 `case-study.html`에 있으며 같은 에디토리얼 한 단과 위의 섹션 규칙을 사용합니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.
+프로젝트의 `index.html`과 기존 `prototype.html` 주소는 같은 리디자인된 인터랙티브 페이지를 표시합니다. 별도의 Full prototype 진입 버튼은 없습니다. 모바일은 플로우를 고른 뒤 화면 카드나 ‹ › 버튼으로 이동하고, 선택한 화면 설명이 폰 옆에 표시됩니다. 갤러리는 장면 카드로, 웹은 상태 버튼으로 이동합니다. UX 포트폴리오는 `case-study.html`에 있으며 같은 에디토리얼 한 단과 위의 섹션 순서를 사용합니다. 저장소 루트의 프로젝트 목록도 같은 에디토리얼 한 단의 리스트입니다. `original-prototype.html`은 변경 전 원본 보존 및 웹 인터랙션 실행용으로 남겨둔 파일입니다.

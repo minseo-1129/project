@@ -19,6 +19,10 @@ reco
 
 [프로젝트 기간을 입력해 주세요]
 
+## 사용 도구 <!-- tools -->
+
+[사용한 도구를 입력해 주세요 (예: Figma · HTML/CSS)]
+
 ## 플랫폼과 범위 <!-- scope -->
 
 Web experience
@@ -59,193 +63,195 @@ Web experience
 
 프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
 
-## 포트폴리오 · case.problem.title <!-- case.problem.title -->
-
-해석을 제안하고 사용자가 확인하는 과정
-
-## 포트폴리오 · case.need.title <!-- case.need.title -->
-
-사용 상황과 필요
-
-## 포트폴리오 · case.need.body <!-- case.need.body -->
-
-기존 구현은 사용자가 한 말과 가능한 패턴, 다음 단계를 구분합니다. 패턴을 먼저 펼치는 방식과 요청 뒤 보여주는 방식을 비교할 수 있습니다.
-
-## 포트폴리오 · case.question.title <!-- case.question.title -->
-
-이번 설계에서 다룰 질문
-
-## 포트폴리오 · case.question.body <!-- case.question.body -->
-
-같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
-
-## 포트폴리오 · case.evidence.title <!-- case.evidence.title -->
-
-현재 구현과 설계 의도
-
-## 포트폴리오 · case.source.title <!-- case.source.title -->
-
-화면으로 확인하는 구현
-
-## 포트폴리오 · case.source.body <!-- case.source.body -->
-
-출처: 저장소의 reco/prototype.html 및 화면 구현 파일. 이 화면은 현재 구현의 예시이며 사용자 연구 결과는 아닙니다.
-
-## 포트폴리오 · case.insight.title <!-- case.insight.title -->
-
-소스에서 확인할 수 있는 내용
-
-## 포트폴리오 · case.insight.body <!-- case.insight.body -->
-
-기존 구현은 사용자가 한 말과 가능한 패턴, 다음 단계를 구분합니다. 패턴을 먼저 펼치는 방식과 요청 뒤 보여주는 방식을 비교할 수 있습니다.
-
-## 포트폴리오 · case.implication.title <!-- case.implication.title -->
-
-사용자의 말과 해석을 구분하기
-
-## 포트폴리오 · case.implication.body <!-- case.implication.body -->
-
-같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
-
-## 포트폴리오 · case.direction.title <!-- case.direction.title -->
-
-대화와 해석을 확인하고 수정하기
-
-## 포트폴리오 · case.decision.title <!-- case.decision.title -->
-
-사용자의 말과 해석을 구분하기
-
-## 포트폴리오 · case.decision.body <!-- case.decision.body -->
-
-같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
-
-## 포트폴리오 · case.experience.title <!-- case.experience.title -->
-
-대화와 해석을 확인하고 수정하기
-
-## 포트폴리오 · case.flow.title <!-- case.flow.title -->
-
-화면이 이어지는 이유
-
-## 포트폴리오 · case.flow.body <!-- case.flow.body -->
-
-프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.hero.title <!-- case.hero.title -->
-
-대화와 해석을 확인하고 수정하기
-
-## 포트폴리오 · case.hero.body <!-- case.hero.body -->
-
-프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.before.title <!-- case.before.title -->
-
-경험의 시작
-
-## 포트폴리오 · case.before.body <!-- case.before.body -->
-
-프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.after.title <!-- case.after.title -->
-
-행동 뒤의 장면
-
-## 포트폴리오 · case.after.body <!-- case.after.body -->
-
-프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.input.title <!-- case.input.title -->
-
-사용자가 해볼 행동
-
-## 포트폴리오 · case.input.body <!-- case.input.body -->
-
-프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
-
-## 포트폴리오 · case.response.title <!-- case.response.title -->
-
-화면에서 확인할 반응
-
-## 포트폴리오 · case.response.body <!-- case.response.body -->
-
-같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
-
-## 포트폴리오 · case.validation.title <!-- case.validation.title -->
-
-검증 자료와 수정 과정을 더하기
-
-## 포트폴리오 · case.check.title <!-- case.check.title -->
-
-실제 검증 자료를 추가해 주세요
-
-## 포트폴리오 · case.check.body <!-- case.check.body -->
-
-[참여자, 방법, 과제, 관찰 결과를 작성하고 관련 자료를 연결해 주세요. 실제로 확인한 결과와 아직 검증하지 않은 가설을 구분해 주세요.]
-
-## 포트폴리오 · case.iteration.title <!-- case.iteration.title -->
-
-구현된 선택과 앞으로의 수정
-
-## 포트폴리오 · case.iteration.body <!-- case.iteration.body -->
-
-같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
-
-[검증 뒤 바꾼 점이 있다면 전후 화면과 수정 이유를 추가해 주세요.]
-
-## 포트폴리오 · case.outcome.title <!-- case.outcome.title -->
-
-현재 결과와 다음 질문
-
-## 포트폴리오 · case.result.title <!-- case.result.title -->
+## 케이스 스터디 · 결과 요약 제목 <!-- case.outcome.title -->
 
 현재 프로토타입의 범위
 
-## 포트폴리오 · case.result.body <!-- case.result.body -->
+## 케이스 스터디 · 결과 요약 <!-- case.outcome.body -->
 
 대화에서 사용자의 말을 정리하고, 가능한 패턴을 제안한 뒤 확인·수정하는 과정을 탐색하는 웹 프로토타입.
 
 [확인된 성과가 있다면 근거와 함께 추가해 주세요.]
 
-## 포트폴리오 · case.reflection.title <!-- case.reflection.title -->
+## 케이스 스터디 · 문제 제목 <!-- case.problem.title -->
+
+해석을 제안하고 사용자가 확인하는 과정
+
+## 케이스 스터디 · 사용자 필요 제목 <!-- case.need.title -->
+
+사용 상황과 필요
+
+## 케이스 스터디 · 사용자 필요 <!-- case.need.body -->
+
+기존 구현은 사용자가 한 말과 가능한 패턴, 다음 단계를 구분합니다. 패턴을 먼저 펼치는 방식과 요청 뒤 보여주는 방식을 비교할 수 있습니다.
+
+## 케이스 스터디 · 설계 질문 제목 <!-- case.question.title -->
+
+이번 설계에서 다룰 질문
+
+## 케이스 스터디 · 설계 질문 <!-- case.question.body -->
+
+같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
+
+## 케이스 스터디 · 리서치 제목 <!-- case.research.title -->
+
+[리서치에서 알게 된 것]
+
+## 케이스 스터디 · 리서치 방법 제목 <!-- case.method.title -->
+
+조사 방법
+
+## 케이스 스터디 · 리서치 방법 <!-- case.method.body -->
+
+[방법·참여자 수·기간을 작성하고, 관련 자료를 docs/에 올린 뒤 링크해 주세요.]
+
+## 케이스 스터디 · 핵심 발견 제목 <!-- case.findings.title -->
+
+핵심 발견
+
+## 케이스 스터디 · 핵심 발견 <!-- case.findings.body -->
+
+[인용 가능한 숫자나 발언과 함께 발견을 정리해 주세요. 데이터에 없는 숫자는 쓰지 않습니다.]
+
+## 케이스 스터디 · 핵심 결정 제목 <!-- case.decisions.title -->
+
+대화와 해석을 확인하고 수정하기
+
+## 케이스 스터디 · 결정 1 제목 <!-- case.decision1.title -->
+
+사용자의 말과 해석을 구분하기
+
+## 케이스 스터디 · 결정 1 <!-- case.decision1.body -->
+
+같은 블록의 순서를 달리해 해석이 언제 나타나는지 비교합니다. 제안된 패턴을 확인하거나 수정하는 선택지는 기존 프로토타입에 유지됩니다.
+
+## 케이스 스터디 · 결정 2 제목 <!-- case.decision2.title -->
+
+[두 번째 핵심 결정]
+
+## 케이스 스터디 · 결정 2 <!-- case.decision2.body -->
+
+[무엇을 선택했고, 어떤 대안을 버렸는지, 그 근거는 무엇인지 작성해 주세요.]
+
+## 케이스 스터디 · 결정 3 제목 <!-- case.decision3.title -->
+
+[세 번째 핵심 결정]
+
+## 케이스 스터디 · 결정 3 <!-- case.decision3.body -->
+
+[무엇을 선택했고, 어떤 대안을 버렸는지, 그 근거는 무엇인지 작성해 주세요.]
+
+## 케이스 스터디 · 최종 화면 제목 <!-- case.experience.title -->
+
+대화와 해석을 확인하고 수정하기
+
+## 케이스 스터디 · flow.title <!-- case.flow.title -->
+
+화면이 이어지는 이유
+
+## 케이스 스터디 · flow.body <!-- case.flow.body -->
+
+프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
+
+## 케이스 스터디 · hero.title <!-- case.hero.title -->
+
+대화와 해석을 확인하고 수정하기
+
+## 케이스 스터디 · hero.body <!-- case.hero.body -->
+
+프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
+
+## 케이스 스터디 · before.title <!-- case.before.title -->
+
+경험의 시작
+
+## 케이스 스터디 · before.body <!-- case.before.body -->
+
+프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
+
+## 케이스 스터디 · after.title <!-- case.after.title -->
+
+행동 뒤의 장면
+
+## 케이스 스터디 · after.body <!-- case.after.body -->
+
+프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
+
+## 케이스 스터디 · state1.title <!-- case.state1.title -->
+
+대화의 시작
+
+## 케이스 스터디 · state1.trigger <!-- case.state1.trigger -->
+
+시작 화면의 안내를 읽습니다.
+
+## 케이스 스터디 · state1.response <!-- case.state1.response -->
+
+대화와 요약, 사용자의 확인 과정이 안내됩니다.
+
+## 케이스 스터디 · state1.purpose <!-- case.state1.purpose -->
+
+무엇을 해볼 수 있는지 예상합니다.
+
+## 케이스 스터디 · state2.title <!-- case.state2.title -->
+
+대화 맥락 선택
+
+## 케이스 스터디 · state2.trigger <!-- case.state2.trigger -->
+
+Start를 누르고 대화할 상황을 선택합니다.
+
+## 케이스 스터디 · state2.response <!-- case.state2.response -->
+
+이야기할 상황의 선택지가 표시됩니다.
+
+## 케이스 스터디 · state2.purpose <!-- case.state2.purpose -->
+
+대화의 출발점을 구체적으로 고릅니다.
+
+## 케이스 스터디 · state3.title <!-- case.state3.title -->
+
+해석의 순서 비교
+
+## 케이스 스터디 · state3.trigger <!-- case.state3.trigger -->
+
+비교 화면에서 같은 대화의 두 구성을 봅니다.
+
+## 케이스 스터디 · state3.response <!-- case.state3.response -->
+
+요청 뒤 열리는 패턴과 처음부터 열린 패턴을 나란히 보여줍니다.
+
+## 케이스 스터디 · state3.purpose <!-- case.state3.purpose -->
+
+정보가 나타나는 순서의 차이를 비교합니다.
+
+## 케이스 스터디 · 임팩트 제목 <!-- case.impact.title -->
+
+[측정했거나 확인한 변화]
+
+## 케이스 스터디 · 임팩트 <!-- case.impact.body -->
+
+[참여자, 방법, 과제, 관찰 결과를 작성하고 관련 자료를 연결해 주세요. 실제로 확인한 결과와 아직 검증하지 않은 가설을 구분해 주세요.]
+
+## 케이스 스터디 · 배운 점 제목 <!-- case.learnings.title -->
 
 다음에 확인하고 싶은 점
 
-## 포트폴리오 · case.reflection.body <!-- case.reflection.body -->
+## 케이스 스터디 · 배운 점 <!-- case.learnings.body -->
 
 [사용자가 어디에서 멈추는지, 설명이 충분한지, 다음 행동이 분명한지 확인할 질문을 작성해 주세요.]
 
-## 포트폴리오 · case.step1.title <!-- case.step1.title -->
+## 케이스 스터디 · 디자인 시스템 제목 <!-- case.system.title -->
 
-대화
+[이 프로젝트의 디자인 시스템]
 
-## 포트폴리오 · case.step1.body <!-- case.step1.body -->
+## 케이스 스터디 · 디자인 시스템 설명 <!-- case.system.body -->
 
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
+[팔레트·타입·컴포넌트 원칙을 작성해 주세요. 원본에서 반드시 살린 요소가 있다면 함께 적어 주세요.]
 
-## 포트폴리오 · case.step2.title <!-- case.step2.title -->
+## 케이스 스터디 · 디자인 시스템 팔레트 <!-- case.system.palette -->
 
-말 정리
-
-## 포트폴리오 · case.step2.body <!-- case.step2.body -->
-
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
-
-## 포트폴리오 · case.step3.title <!-- case.step3.title -->
-
-패턴 확인
-
-## 포트폴리오 · case.step3.body <!-- case.step3.body -->
-
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
-
-## 포트폴리오 · case.step4.title <!-- case.step4.title -->
-
-수정
-
-## 포트폴리오 · case.step4.body <!-- case.step4.body -->
-
-[이 단계의 사용자 목표와 설계 의도를 작성해 주세요]
+[- `#HEX` 이름 형식으로 한 줄에 하나씩 작성하면 색 칩으로 표시됩니다.]
 
 ## 플로우 · flow.experience.title <!-- flow.experience.title -->
 
@@ -266,54 +272,6 @@ Web experience
 ## 인터랙티브 경험 · 상세 설명 <!-- screen.experience.body -->
 
 프로토타입의 예시 대화를 따라가며 요약과 가능한 패턴을 확인해 보세요. 비교 화면에서는 같은 정보가 나타나는 순서를 살펴볼 수 있습니다.
-
-## 웹 상태 1 · title <!-- case.state1.title -->
-
-대화의 시작
-
-## 웹 상태 1 · trigger <!-- case.state1.trigger -->
-
-시작 화면의 안내를 읽습니다.
-
-## 웹 상태 1 · response <!-- case.state1.response -->
-
-대화와 요약, 사용자의 확인 과정이 안내됩니다.
-
-## 웹 상태 1 · purpose <!-- case.state1.purpose -->
-
-무엇을 해볼 수 있는지 예상합니다.
-
-## 웹 상태 2 · title <!-- case.state2.title -->
-
-대화 맥락 선택
-
-## 웹 상태 2 · trigger <!-- case.state2.trigger -->
-
-Start를 누르고 대화할 상황을 선택합니다.
-
-## 웹 상태 2 · response <!-- case.state2.response -->
-
-이야기할 상황의 선택지가 표시됩니다.
-
-## 웹 상태 2 · purpose <!-- case.state2.purpose -->
-
-대화의 출발점을 구체적으로 고릅니다.
-
-## 웹 상태 3 · title <!-- case.state3.title -->
-
-해석의 순서 비교
-
-## 웹 상태 3 · trigger <!-- case.state3.trigger -->
-
-비교 화면에서 같은 대화의 두 구성을 봅니다.
-
-## 웹 상태 3 · response <!-- case.state3.response -->
-
-요청 뒤 열리는 패턴과 처음부터 열린 패턴을 나란히 보여줍니다.
-
-## 웹 상태 3 · purpose <!-- case.state3.purpose -->
-
-정보가 나타나는 순서의 차이를 비교합니다.
 
 ## 웹 상태 1 · title <!-- screen.welcome.title -->
 

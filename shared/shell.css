@@ -149,3 +149,44 @@ h3{font-size:18px;line-height:26px;letter-spacing:-.015em}
 .state-copy .state-term{color:var(--ink);font-weight:500}
 @media(max-width:800px){.portfolio-page .moment-pair{grid-template-columns:1fr}.portfolio-page .proto-explore>.moment-medium>.preview{height:320px}.portfolio-page .state-card{grid-template-columns:1fr}}
 @media(max-width:480px){.portfolio-page .flow-steps,.portfolio-page .key-cards{grid-template-columns:1fr 1fr}.portfolio-page .flow-step{padding:16px}.portfolio-page .state-card{padding:16px}.portfolio-page .action{width:100%}}
+
+/* Case study: research-led story (Outcome → … → Design system). */
+.portfolio-page .outcome{background:var(--dark);color:var(--white);border-radius:24px;padding:32px;gap:16px}
+.portfolio-page .outcome>.label{color:var(--lime)}
+.portfolio-page .outcome>h2{color:var(--white)}
+.portfolio-page .outcome .copy{color:rgba(255,255,255,.78);font-size:18px;line-height:28px}
+.portfolio-page .outcome .copy strong{color:var(--white)}
+.portfolio-page .proto-explore>.copy{font-size:18px;line-height:28px}
+.decisions{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.decision{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid var(--line)}
+.decision:last-child{border-bottom:1px solid var(--line)}
+.decision-number{font:500 32px/40px var(--body);color:var(--blue);letter-spacing:-.02em}
+.decision-copy{display:flex;flex-direction:column;gap:8px;min-width:0}
+.decision-copy .copy{font-size:18px;line-height:28px}
+.palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.swatch{display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--white)}
+.swatch-color{grid-row:1/3;width:40px;height:40px;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(24,36,32,.12)}
+.swatch-name{font-size:14px;line-height:20px;color:var(--ink)}
+.swatch-hex{font:500 11px/16px var(--mono);color:var(--muted)}
+
+/* Projects index: editorial list. */
+.index-page .proto-intro h1{font-size:64px;line-height:72px;letter-spacing:-.03em}
+.index-lead{font-size:20px;line-height:32px;color:var(--muted);max-width:640px}
+.project-list{list-style:none;margin:0;padding:0;counter-reset:none}
+.project-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:32px 0;border-top:1px solid var(--line)}
+.project-row:last-child{border-bottom:1px solid var(--line)}
+.project-number{font:500 13px/40px var(--mono);color:var(--muted)}
+.project-copy{display:flex;flex-direction:column;gap:10px;min-width:0}
+.project-copy>.label{color:var(--blue)}
+.project-copy h2{font-size:36px;line-height:44px;letter-spacing:-.02em}
+.project-copy h2 a{transition:color .15s}
+.project-row:hover h2 a{color:var(--blue)}
+.project-summary{font-size:18px;line-height:28px;color:var(--muted)}
+.project-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.project-links a{display:inline-flex;align-items:center;min-height:40px;padding:8px 16px;border-radius:20px;background:var(--white);font-size:14px;line-height:22px;color:var(--ink)}
+.project-links a:first-child{background:var(--dark);color:var(--white)}
+.project-links a:hover{background:var(--blue);color:var(--white)}
+.index-page .about{max-width:none;color:var(--ink)}
+@media(max-width:800px){.index-page .proto-intro h1{font-size:48px;line-height:56px}.project-row,.decision{grid-template-columns:48px minmax(0,1fr)}.project-copy h2{font-size:30px;line-height:38px}.portfolio-page .outcome{padding:24px}}
+@media(max-width:480px){.index-page .proto-intro h1{font-size:40px;line-height:48px}.index-lead,.project-summary,.decision-copy .copy,.portfolio-page .outcome .copy{font-size:16px;line-height:26px}.project-row,.decision{grid-template-columns:1fr;gap:8px;padding:24px 0}.project-number{line-height:18px}.decision-number{font-size:24px;line-height:32px}.project-copy h2{font-size:26px;line-height:34px}}
+.stage-case .stage-side{position:static}

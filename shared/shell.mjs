@@ -260,12 +260,12 @@ function explanation(label, titleKey, bodyKey) {
 function pageIntro() {
   const node = el('section', 'proto-intro');
   const metadata = el('dl', 'metadata');
-  for (const key of ['role', 'period', 'scope']) {
+  for (const [key, label] of [['role', 'ROLE'], ['period', 'TIME'], ['tools', 'TOOLS']]) {
     const item = el('div');
-    item.append(el('dt', '', key), el('dd', '', text(key, '확인 예정')));
+    item.append(el('dt', '', label), el('dd', '', text(key, '확인 예정')));
     metadata.append(item);
   }
-  node.append(el('p', 'label', `${view === 'case' ? 'UX PORTFOLIO' : 'PROTOTYPE'} / ${config.type.toUpperCase()}`), el('h1', '', text('title')), copy('summary'), metadata);
+  node.append(el('p', 'label', `${view === 'case' ? 'CASE STUDY' : 'PROTOTYPE'} / ${config.type.toUpperCase()}`), el('h1', '', text('title')), copy('summary'), metadata);
   return node;
 }
 function flowSwitcher() {
@@ -365,70 +365,74 @@ function stateCard(state, index) {
   node.append(preview(state.id, true, true), body);
   return node;
 }
-// Case study sections. Required ones always render; optional ones render only
-// when listed in project.json "caseSections" (evidence, steps, validation).
-const optionalCaseSections = ['evidence', 'steps', 'validation'];
+// Case study: one research-led story shared by every project.
+function decisions() {
+  const node = el('ol', 'decisions');
+  for (let i = 1; i <= 3; i++) {
+    const item = el('li', 'decision');
+    const body = el('div', 'decision-copy');
+    body.append(el('h3', '', text(`case.decision${i}.title`)), copy(`case.decision${i}.body`));
+    item.append(el('span', 'decision-number', String(i).padStart(2, '0')), body);
+    node.append(item);
+  }
+  return node;
+}
+function palette() {
+  const node = el('div', 'palette');
+  for (const line of text('case.system.palette').split('\n')) {
+    const match = line.match(/^[-*]\s*`?(#[0-9a-f]{3,8})`?\s*(.*)$/i);
+    if (!match) continue;
+    const chip = el('div', 'swatch');
+    const color = el('span', 'swatch-color');
+    color.style.background = match[1];
+    chip.append(color, el('span', 'swatch-name', match[2] || match[1]), el('span', 'swatch-hex', match[1].toUpperCase()));
+    node.append(chip);
+  }
+  return node.children.length ? node : null;
+}
+function finalScreens(node) {
+  if (config.type === 'mobile') {
+    const stageNode = el('div', 'stage stage-mobile stage-case');
+    const side = el('div', 'stage-side');
+    side.append(explanation('FLOW RATIONALE', 'case.flow.title', 'case.flow.body'), link('프로토타입 탐색 ↗', './', 'action'));
+    stageNode.append(el('p', 'label', `KEY EXPERIENCE / ${config.width} × ${config.height}`), device(selected), side);
+    const keyCards = cards(config.keyScreens, true);
+    keyCards.classList.add('key-cards');
+    node.append(stageNode, keyCards);
+  } else if (config.type === 'gallery') {
+    const pairNode = el('div', 'moment-pair');
+    pairNode.append(moment(config.keyScreens[0], '01 / BEFORE', 'case.before.title', 'case.before.body'), moment(config.keyScreens.at(-1), '02 / AFTER', 'case.after.title', 'case.after.body'));
+    node.append(moment(selected, 'KEY EXPERIENCE', 'case.hero.title', 'case.hero.body', 'large'), pairNode);
+  } else {
+    const states = el('div', 'state-cards');
+    (config.webStates || []).forEach((state, index) => states.append(stateCard(state, index)));
+    node.append(browser(selected), states);
+  }
+}
 function caseStudy() {
-  const enabled = new Set(config.caseSections || []);
-  for (const id of enabled) if (!optionalCaseSections.includes(id)) throw new Error(`project.json의 caseSections에 알 수 없는 섹션이 있습니다: ${id}`);
-  const problem = label => {
-    const node = section(label('PROBLEM & CONTEXT'), 'case.problem.title');
-    node.append(explanation('USER NEED', 'case.need.title', 'case.need.body'), explanation('DESIGN QUESTION', 'case.question.title', 'case.question.body'));
-    return node;
-  };
-  const evidence = label => {
-    const node = section(label('EVIDENCE & INSIGHT'), 'case.evidence.title');
-    node.append(moment(config.evidenceScreen || config.keyScreens[0], 'EVIDENCE / SOURCE', 'case.source.title', 'case.source.body'), explanation('INSIGHT', 'case.insight.title', 'case.insight.body'), explanation('DESIGN IMPLICATION', 'case.implication.title', 'case.implication.body'));
-    return node;
-  };
-  const direction = label => {
-    const node = section(label('DESIGN DIRECTION'), 'case.direction.title');
-    if (enabled.has('steps')) {
-      const steps = el('div', 'flow-steps');
-      for (let i = 1; i <= 4; i++) {
-        const step = el('div', 'flow-step');
-        step.append(el('p', 'panel-label', `0${i}`), el('h3', '', text(`case.step${i}.title`)), copy(`case.step${i}.body`));
-        steps.append(step);
-      }
-      node.append(steps);
-    }
-    node.append(explanation('KEY DESIGN DECISION', 'case.decision.title', 'case.decision.body'));
-    return node;
-  };
-  const experience = label => {
-    const node = section(label('EXPERIENCE & DESIGN'), 'case.experience.title');
-    if (config.type === 'mobile') {
-      const stageNode = el('div', 'stage stage-mobile stage-case');
-      const side = el('div', 'stage-side');
-      side.append(explanation('FLOW RATIONALE', 'case.flow.title', 'case.flow.body'), link('프로토타입 탐색 ↗', './', 'action'));
-      stageNode.append(el('p', 'label', `KEY EXPERIENCE / ${config.width} × ${config.height}`), device(selected), side);
-      const keyCards = cards(config.keyScreens, true);
-      keyCards.classList.add('key-cards');
-      node.append(stageNode, keyCards);
-    } else if (config.type === 'gallery') {
-      const pairNode = el('div', 'moment-pair');
-      pairNode.append(moment(config.keyScreens[0], '01 / BEFORE', 'case.before.title', 'case.before.body'), moment(config.keyScreens.at(-1), '02 / AFTER', 'case.after.title', 'case.after.body'));
-      node.append(moment(selected, 'KEY EXPERIENCE', 'case.hero.title', 'case.hero.body', 'large'), pairNode);
-    } else {
-      const states = el('div', 'state-cards');
-      (config.webStates || []).forEach((state, index) => states.append(stateCard(state, index)));
-      node.append(browser(selected), states);
-    }
-    return node;
-  };
-  const validation = label => {
-    const node = section(label('VALIDATION & ITERATION'), 'case.validation.title');
-    node.append(explanation('VALIDATION', 'case.check.title', 'case.check.body'), explanation('ITERATION', 'case.iteration.title', 'case.iteration.body'));
-    return node;
-  };
-  const outcome = label => {
-    const node = section(label('OUTCOME & REFLECTION'), 'case.outcome.title');
-    node.append(explanation('OUTCOME', 'case.result.title', 'case.result.body'), explanation('REFLECTION', 'case.reflection.title', 'case.reflection.body'));
-    return node;
-  };
-  const order = [problem, enabled.has('evidence') && evidence, direction, experience, enabled.has('validation') && validation, outcome].filter(Boolean);
-  const nodes = order.map((build, index) => build(name => `${String(index + 1).padStart(2, '0')} / ${name}`));
-  return nodes.flatMap((node, index) => index ? [rule(), node] : [node]);
+  const sections = [
+    ['OUTCOME', 'case.outcome.title', node => {
+      node.classList.add('outcome');
+      node.append(copy('case.outcome.body'));
+    }],
+    ['PROBLEM', 'case.problem.title', node => node.append(explanation('USER NEED', 'case.need.title', 'case.need.body'), explanation('DESIGN QUESTION', 'case.question.title', 'case.question.body'))],
+    ['RESEARCH', 'case.research.title', node => node.append(explanation('METHOD', 'case.method.title', 'case.method.body'), explanation('KEY FINDINGS', 'case.findings.title', 'case.findings.body'))],
+    ['KEY DECISIONS', 'case.decisions.title', node => node.append(decisions())],
+    ['FINAL SCREENS', 'case.experience.title', finalScreens],
+    ['IMPACT', 'case.impact.title', node => node.append(copy('case.impact.body'))],
+    ['LEARNINGS', 'case.learnings.title', node => node.append(copy('case.learnings.body'))],
+    ['DESIGN SYSTEM', 'case.system.title', node => {
+      const chips = palette();
+      if (chips) node.append(chips);
+      node.append(copy('case.system.body'));
+      if (config.designSystem) node.append(link('디자인 시스템 보드 열기 ↗', config.designSystem, 'action'));
+    }],
+  ];
+  return sections.flatMap(([name, key, fill], index) => {
+    const node = section(`${String(index + 1).padStart(2, '0')} / ${name}`, key);
+    fill(node);
+    return index ? [rule(), node] : [node];
+  });
 }
 window.addEventListener('message', event => {
   if (event.origin !== location.origin || ![...frames].some(frame => frame.contentWindow === event.source)) return;
@@ -440,28 +444,33 @@ async function renderProjects() {
   const response = await fetch('./shared/projects.json');
   if (!response.ok) throw new Error('프로젝트 목록을 불러올 수 없습니다.');
   const projects = await response.json();
-  const node = el('main','shell');
-  const head = el('header','shell-header');
-  head.append(el('p','','RESEARCH / PROTOTYPE LIBRARY'),link('ABOUT','#about'));
-  node.append(head,rule(),el('p','label','PROJECTS'),el('h1','','Projects'));
-  const grid = el('div','project-grid');
-  await Promise.all(projects.map(async project => {
+  const entries = await Promise.all(projects.map(async project => {
     const response = await fetch(`./${project}/content.md`,{cache:'no-cache'});
     if (!response.ok) throw new Error(`${project} 콘텐츠를 불러올 수 없습니다.`);
-    const c = parseContent(await response.text());
-    const card = el('article','project-card');
-    const links = el('div','project-card-links');
-    links.append(link('Prototype ↗',`./${project}/`),link('Case study ↗',`./${project}/case-study.html`));
-    card.append(el('p','label',c.scope),el('h3','',c.title),el('p','',c.summary),links);
-    // Preserve the registry order even when requests finish out of order.
-    card.dataset.project = project;
-    grid.append(card);
+    return [project, parseContent(await response.text())];
   }));
-  for (const project of projects) grid.append(grid.querySelector(`[data-project="${project}"]`));
-  const about = el('section','section about');
+  const node = el('main','shell editorial index-page');
+  const head = el('header','shell-header');
+  head.append(el('p','','RESEARCH / PROTOTYPE LIBRARY'),link('ABOUT','#about'));
+  const intro = el('section','proto-intro');
+  intro.append(el('p','label',`SELECTED WORK · ${String(projects.length).padStart(2,'0')} PROJECTS`),el('h1','','Projects'),el('p','index-lead','지난 UI/UX 작업을 실제로 눌러 볼 수 있는 프로토타입으로 복원하고, 각 설계의 배경과 결정을 케이스 스터디로 정리했습니다.'));
+  const list = el('ol','project-list');
+  // Promise.all keeps the registry order.
+  for (const [index,[project,c]] of entries.entries()) {
+    const item = el('li','project-row');
+    const body = el('div','project-copy');
+    const title = el('h2');
+    title.append(link(c.title,`./${project}/`));
+    const links = el('div','project-links');
+    links.append(link('Prototype ↗',`./${project}/`),link('Case study ↗',`./${project}/case-study.html`));
+    body.append(el('p','label',c.scope || ''),title,el('p','project-summary',c.summary || ''),links);
+    item.append(el('span','project-number',String(index+1).padStart(2,'0')),body);
+    list.append(item);
+  }
+  const about = el('section','proto-intro about');
   about.id = 'about';
-  about.append(rule(),el('p','label','ABOUT THIS ARCHIVE'),el('h2','','디자인과 프로토타입을 함께'),el('p','','프로젝트의 실제 화면을 탐색하고, 각 설계의 배경과 의도를 함께 살펴보세요.'));
-  node.append(grid,about);
+  about.append(el('p','label','ABOUT THIS ARCHIVE'),el('h2','','디자인과 프로토타입을 함께'),el('p','index-lead','프로젝트의 실제 화면을 탐색하고, 각 설계의 배경과 의도를 함께 살펴보세요.'));
+  node.append(head,rule(),intro,list,rule(),about);
   app.replaceChildren(node);
 }
 async function start() {
