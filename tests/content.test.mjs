@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
-import {parseContent,safeHref} from '../shared/content.mjs';
+import {parseContent,safeHref,isBlank,listItems,splitItem,subsections} from '../shared/content.mjs';
 const originalCommit = 'c3ad5a70d8021e80b68615a2db8136ce43a89fcb';
 
 test('글과 항목 제목을 수정해도 같은 ID에서 읽고 긴 문단을 보존한다',()=>{
@@ -35,6 +35,14 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
       assert.ok(fs.statSync(new URL('viewer.html',dir)).size>0);
     }
     for(const item of config.links||[])assert.ok(fs.statSync(new URL(item.href,dir)).size>0);
+    if(config.designSystem)assert.ok(fs.statSync(new URL(config.designSystem,dir)).size>0,`${project}: designSystem`);
+    assert.ok('tools' in fields,`${project}: tools`);
+    assert.ok(['mobile','gallery','web'].includes(config.type),`${project}: type`);
+    if(config.layout)assert.ok(config.type==='mobile'&&['flow','screen'].includes(config.layout),`${project}: layout`);
+    const caseFields=parseContent(fs.readFileSync(new URL('case-study.md',dir),'utf8'),{requireTitle:false});
+    for(const key of ['case.problem.lead','case.research.lead','case.insights','case.decisions','case.outcome.lead'])assert.ok(key in caseFields,`${project}: ${key}`);
+    for(const item of listItems(caseFields['case.research.bars']?.split('\n').filter(l=>!l.startsWith('###')).join('\n')))assert.match(item,/: \d+$/,`${project}: bar ${item}`);
+    for(const lang of ['content.en.md','case-study.en.md']){const url=new URL(lang,dir);if(fs.existsSync(url))parseContent(fs.readFileSync(url,'utf8'),{requireTitle:false});}
   }
 });
 test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=>{
@@ -48,4 +56,11 @@ test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=
   assert.ok(redi.includes("screen:this.props.screen || 'ob1'"));
   assert.ok(!redi.includes('<aside'));
   assert.ok(redi.includes('finish')||redi.includes('grid'));
+});
+
+test('케이스 스터디 블록 문법: 빈칸·목록·하위 제목',()=>{
+  assert.ok(isBlank('[작성 필요]'));assert.ok(isBlank('  '));assert.ok(!isBlank('내용'));
+  assert.deepEqual(listItems('- 87% — 어렵다\n본문\n- 69% — 흥미'),['87% — 어렵다','69% — 흥미']);
+  assert.deepEqual(splitItem('가설 | 결과 | 87%',/\s*\|\s*/),['가설','결과','87%']);
+  assert.deepEqual(subsections('### 계기 · TRIGGER\n- 감정: 기대 · 4\n### 탐색\n본문').map(s=>s.title),['계기 · TRIGGER','탐색']);
 });

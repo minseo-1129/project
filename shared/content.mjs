@@ -1,5 +1,5 @@
 /** Human-readable Markdown sections with stable field IDs in heading comments. */
-export function parseContent(source) {
+export function parseContent(source, {requireTitle = true} = {}) {
   const fields = Object.create(null);
   let key = null;
   let lines = [];
@@ -16,7 +16,7 @@ export function parseContent(source) {
     } else if (key) lines.push(line);
   }
   flush();
-  if (!fields.title) throw new Error('프로젝트 이름(title)을 입력해 주세요.');
+  if (requireTitle && !fields.title) throw new Error('프로젝트 이름(title)을 입력해 주세요.');
   return fields;
 }
 
@@ -65,4 +65,33 @@ export function renderMarkdown(source, target) {
       target.append(p);
     }
   }
+}
+
+/** A field counts as empty when it is blank or only a [bracketed prompt]. */
+export function isBlank(value) {
+  const text = (value ?? '').trim();
+  return !text || (text.startsWith('[') && text.endsWith(']'));
+}
+
+/** `- item` lines of a field. */
+export function listItems(value) {
+  if (isBlank(value)) return [];
+  return value.split('\n').map(line => line.match(/^\s*[-*]\s+(.*)$/)).filter(Boolean).map(match => match[1].trim());
+}
+
+/** Split `a — b`, `a: b` or `a | b | c` into trimmed parts. */
+export function splitItem(item, separator = /\s+—\s+|\s*\|\s*|:\s+/) {
+  return item.split(separator).map(part => part.trim());
+}
+
+/** `### title` sub-sections inside a field, each with the text below it. */
+export function subsections(value) {
+  if (isBlank(value)) return [];
+  const sections = [];
+  for (const line of value.split('\n')) {
+    const heading = line.match(/^###\s+(.+)$/);
+    if (heading) sections.push({title: heading[1].trim(), lines: []});
+    else if (sections.length) sections.at(-1).lines.push(line);
+  }
+  return sections.map(({title, lines}) => ({title, body: lines.join('\n').trim()}));
 }
