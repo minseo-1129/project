@@ -15,7 +15,7 @@ const UI = {
   ko: {library: 'RESEARCH / PROTOTYPE LIBRARY', projects: 'PROJECTS', prototype: 'PROTOTYPE', caseStudy: 'CASE STUDY', selected: 'SELECTED WORK', count: n => `${n} PROJECTS`,
     indexTitle: 'Projects', indexLead: '지난 UI/UX 작업을 실제로 눌러 볼 수 있는 프로토타입으로 복원하고, 각 설계의 배경과 결정을 케이스 스터디로 정리했습니다.',
     openPrototype: '프로토타입 ↗', openCase: '케이스 스터디 ↗', back: '← 전체 프로젝트', toCase: '케이스 스터디 →', toPrototype: '프로토타입 →',
-    flows: '플로우', flowScreens: '이 플로우의 화면', allScreens: '전체 화면', allScenes: '전체 장면', states: '상태', theme: '테마', prev: '이전 화면', next: '다음 화면',
+    flows: '플로우', flowScreens: '이 플로우의 화면', allScreens: '전체 화면', allScenes: '전체 장면', states: '상태', theme: '테마', prev: '이전 화면', next: '다음 화면', prevStage: '이전 단계', nextStage: '다음 단계',
     context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', todo: '[작성 필요]',
     mobile: 'MOBILE PROTOTYPE', gallery: 'GALLERY PROTOTYPE', web: 'WEB EXPERIENCE', error: '페이지를 불러오지 못했어요',
     errorHint: '로컬에서는 HTTP 서버로 열어 주세요. GitHub에서는 콘텐츠 파일의 제목과 항목 ID를 확인해 주세요.', resultSlot: '결과 블록(막대 · 숫자 · 표 · 인용 · 관찰) 중 하나 이상을 case-study.md에 작성해 주세요.',
@@ -24,7 +24,7 @@ const UI = {
   en: {library: 'RESEARCH / PROTOTYPE LIBRARY', projects: 'PROJECTS', prototype: 'PROTOTYPE', caseStudy: 'CASE STUDY', selected: 'SELECTED WORK', count: n => `${n} PROJECTS`,
     indexTitle: 'Projects', indexLead: 'Past UI/UX work restored as prototypes you can actually click through, with case studies on the reasoning and decisions behind each design.',
     openPrototype: 'Prototype ↗', openCase: 'Case study ↗', back: '← All projects', toCase: 'Case study →', toPrototype: 'Prototype →',
-    flows: 'Flows', flowScreens: 'Screens in this flow', allScreens: 'All screens', allScenes: 'All scenes', states: 'States', theme: 'Theme', prev: 'Previous screen', next: 'Next screen',
+    flows: 'Flows', flowScreens: 'Screens in this flow', allScreens: 'All screens', allScenes: 'All scenes', states: 'States', theme: 'Theme', prev: 'Previous screen', next: 'Next screen', prevStage: 'Previous stage', nextStage: 'Next stage',
     context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', todo: '[To be written]',
     mobile: 'MOBILE PROTOTYPE', gallery: 'GALLERY PROTOTYPE', web: 'WEB EXPERIENCE', error: 'This page could not be loaded',
     errorHint: 'Open the site through an HTTP server locally. On GitHub, check the headings and field IDs in the content files.', resultSlot: 'Add at least one result (bars, numbers, table, quotes or observations) to case-study.md.',
@@ -452,8 +452,8 @@ function journeyBlock(body) {
     const col = el('div', 'stage');
     const head = el('div', 'stage-head');
     head.append(el('h3', '', name), el('span', 'mono', en || ''));
-    const moodBox = el('div', 'mood');
-    moodBox.style.setProperty('--level', String(Math.min(5, Math.max(1, Number(level) || 3))));
+    const moodBox = el('div', Number(level) ? 'mood' : 'mood no-level');
+    if (Number(level)) moodBox.style.setProperty('--level', String(Math.min(5, Math.max(1, Number(level)))));
     moodBox.append(el('span', '', mood || ''));
     const pain = el('div', 'pain');
     pain.append(el('p', 'mono', UI.pain), md(fields['불편'] || fields.Pain || ''));
@@ -462,7 +462,25 @@ function journeyBlock(body) {
     col.append(head, moodBox, md(fields['순간'] || fields.Moment || ''), pain, opportunity);
     stages.append(col);
   }
-  body.append(stages);
+  // Below 800px the stages become one-per-view slides with their own controls.
+  const count = stages.children.length;
+  const nav = el('div', 'journey-nav');
+  const counter = el('span', 'mono', count ? `01 / ${pad(count)}` : '');
+  const controls = el('div', 'transport');
+  const step = dir => () => stages.scrollBy({left: dir * stages.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  const prev = el('button', '', '‹'); prev.type = 'button'; prev.setAttribute('aria-label', UI.prevStage); prev.addEventListener('click', step(-1));
+  const next = el('button', '', '›'); next.type = 'button'; next.setAttribute('aria-label', UI.nextStage); next.addEventListener('click', step(1));
+  controls.append(prev, next);
+  nav.append(counter, controls);
+  const sync = () => {
+    const index = Math.round(stages.scrollLeft / Math.max(1, stages.clientWidth));
+    counter.textContent = `${pad(Math.min(count, index + 1))} / ${pad(count)}`;
+    prev.disabled = index <= 0;
+    next.disabled = index >= count - 1;
+  };
+  stages.addEventListener('scroll', () => requestAnimationFrame(sync), {passive: true});
+  requestAnimationFrame(sync);
+  body.append(nav, stages);
 }
 function decisionsBlock(body) {
   const items = subsections(content['case.decisions']);

@@ -182,6 +182,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .stage-head .mono{font-size:9px}
 .mood{position:relative;height:46px;background:var(--surface-2);padding:6px 8px;font-size:11px;color:var(--body)}
 .mood::after{content:'';position:absolute;left:0;right:0;bottom:0;height:calc(var(--level) * 7px);background:var(--line-strong)}
+.mood.no-level{height:auto}
+.mood.no-level::after{display:none}
+.journey-nav{display:none}
+.transport button:disabled{opacity:.3;cursor:default}
 .stage>.copy{font-size:12px;line-height:19px;color:var(--ink)}
 .pain{padding-top:10px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
 .pain .copy,.opportunity .copy{font-size:12px;line-height:19px}
@@ -242,7 +246,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .block{grid-template-columns:1fr;gap:16px;padding:32px 0}
   .block-wide{width:100%;margin-left:0;transform:none}
   .block-wide>.block-label{padding-left:0}
-  .journey{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:220px;overflow-x:auto;scrollbar-width:thin}
+  .journey-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .journey{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+  .journey::-webkit-scrollbar{display:none}
+  .journey>.stage{scroll-snap-align:start;border-right:0;padding:16px 0}
   .final-mobile{grid-template-columns:1fr;justify-items:center}
   .final-copy{width:100%}
   .scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
