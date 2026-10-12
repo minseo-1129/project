@@ -223,6 +223,7 @@ function screenControl(screen, className, children) {
   node.dataset.screen = screen;
   node.setAttribute('aria-pressed', String(screen === selected));
   node.setAttribute('aria-label', screenTitle(screen));
+  node.title = screenTitle(screen);
   node.append(...children);
   node.addEventListener('click', () => updateSelection(screen));
   controls.push(node);
