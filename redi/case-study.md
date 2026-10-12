@@ -1,6 +1,6 @@
 # REDI 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Outcome → Impact → Learnings → Design system -->
+<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
 <!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
 <!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
 
@@ -86,55 +86,15 @@
 - 이후: [바꾼 뒤 무엇이 달라졌는지]
 - 근거: [이 결정을 만든 발견]
 
-## 결과 <!-- case.outcome.lead -->
-
-생활과 정서를 직접 기록하고, 센서 추정을 확인하며 통계와 주간 리포트로 돌아보는 모바일 프로토타입.
-
-[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
-
-## 바뀐 것 <!-- case.outcome.changes -->
-
-[- 제거: … / - 추가: … / - 변경: …]
-
-## 최종 화면 · flow.title <!-- case.flow.title -->
-
-화면이 이어지는 이유
-
-## 최종 화면 · flow.body <!-- case.flow.body -->
-
-플로우와 화면을 선택해 칩·시간 조절·하루 그리드·정서 도트를 직접 눌러 보세요. 데이터 연결 화면의 센서 토글도 확인할 수 있습니다.
-
-## 최종 화면 · hero.title <!-- case.hero.title -->
-
-목표 설정부터 기록과 주간 리포트까지
-
-## 최종 화면 · hero.body <!-- case.hero.body -->
-
-플로우와 화면을 선택해 칩·시간 조절·하루 그리드·정서 도트를 직접 눌러 보세요. 데이터 연결 화면의 센서 토글도 확인할 수 있습니다.
-
-## 최종 화면 · before.title <!-- case.before.title -->
-
-경험의 시작
-
-## 최종 화면 · before.body <!-- case.before.body -->
-
-셀을 눌러 색을 칠하는 기록 방식은 그대로다. 모양만 원에서 사각으로 바꿨다. 인접한 같은 색이 하나의 블록으로 붙어 읽혀야 "몇 시간 연속"이 보인다.
-
-## 최종 화면 · after.title <!-- case.after.title -->
-
-행동 뒤의 장면
-
-## 최종 화면 · after.body <!-- case.after.body -->
-
-중앙 정렬 제목 + 짧은 검은 밑줄, 넉넉한 여백 — 원본 리포트 시안의 톤을 그대로 가져와 앱 화면으로 편입했다. 7일 × 24시간 그리드가 한 화면에 들어온다.
-
 ## 임팩트 <!-- case.impact -->
 
 [- PUBLICATION: … / - AWARD: … / - METRIC: …]
 
-## 배운 점 <!-- case.learnings -->
+## 결과 · takeaway <!-- case.outcome.lead -->
 
-[사용자가 어디에서 멈추는지, 설명이 충분한지, 다음 행동이 분명한지 확인할 질문을 작성해 주세요.]
+생활과 정서를 직접 기록하고, 센서 추정을 확인하며 통계와 주간 리포트로 돌아보는 모바일 프로토타입.
+
+[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
 
 ## 디자인 시스템 <!-- case.system.body -->
 

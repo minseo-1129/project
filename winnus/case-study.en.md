@@ -1,6 +1,6 @@
 # WINNUS case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -99,51 +99,11 @@ The original HTML introduces each wine with one sentence and a colour cue first,
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A mobile service prototype for exploring wine through everyday taste words and logging what you drank.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Choose the taste onboarding, browsing, wine card or log flow. See how taste is shown with colour and words, and how detail unfolds on tap.
-
-## case.hero.title <!-- case.hero.title -->
-
-From taste setup to wine card and log
-
-## case.hero.body <!-- case.hero.body -->
-
-Choose the taste onboarding, browsing, wine card or log flow. See how taste is shown with colour and words, and how detail unfolds on tap.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-Returns the result as a name, colour and words rather than a score — a direct application of coding results 1 and 2.
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-Shows right away how the log changed the profile, giving a reason to come back next time.
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

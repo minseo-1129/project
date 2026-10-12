@@ -1,6 +1,6 @@
 # THE LIGHTHOUSE case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -78,99 +78,11 @@ Finished, translucent and exploded views and day / night lighting are compared o
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A web archive for exploring a lighthouse-shaped humidifier and mood light in 3D. Compare the finished, translucent and exploded states, and day and night lighting.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Drag the 3D view to rotate it and press finished, translucent and exploded. Compare day and night lighting, play the motion, and open the drawings page.
-
-## case.hero.title <!-- case.hero.title -->
-
-Explore the product's structure and states
-
-## case.hero.body <!-- case.hero.body -->
-
-Drag the 3D view to rotate it and press finished, translucent and exploded. Compare day and night lighting, play the motion, and open the drawings page.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-Drag the 3D view to rotate it and press finished, translucent and exploded. Compare day and night lighting, play the motion, and open the drawings page.
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-Drag the 3D view to rotate it and press finished, translucent and exploded. Compare day and night lighting, play the motion, and open the drawings page.
-
-## case.state1.title <!-- case.state1.title -->
-
-Finished exterior
-
-## case.state1.trigger <!-- case.state1.trigger -->
-
-Rotate the model or select the finished state.
-
-## case.state1.response <!-- case.state1.response -->
-
-The finished product's exterior and structure notes appear.
-
-## case.state1.purpose <!-- case.state1.purpose -->
-
-Understand the overall form of the product first.
-
-## case.state2.title <!-- case.state2.title -->
-
-Translucent structure
-
-## case.state2.trigger <!-- case.state2.trigger -->
-
-Select the translucent button.
-
-## case.state2.response <!-- case.state2.response -->
-
-The internal structure shows through the shell.
-
-## case.state2.purpose <!-- case.state2.purpose -->
-
-Compare the exterior with the parts inside.
-
-## case.state3.title <!-- case.state3.title -->
-
-Exploded view
-
-## case.state3.trigger <!-- case.state3.trigger -->
-
-Select the exploded-view button.
-
-## case.state3.response <!-- case.state3.response -->
-
-The product's parts are shown pulled apart.
-
-## case.state3.purpose <!-- case.state3.purpose -->
-
-See how each part is placed and connected.
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

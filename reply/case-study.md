@@ -1,6 +1,6 @@
 # REPLY 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Outcome → Impact → Learnings → Design system -->
+<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
 <!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
 <!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
 
@@ -161,57 +161,13 @@
 - 근거: 여러 채널에 흩어진 레시피를 한곳에서 관리하고, 다양한 레시피와 의견을 공유하려는 요구를 반영했음.
 - 화면: playlist
 
-## 결과 <!-- case.outcome.lead -->
-
-레플리는 취향과 보유 재료를 바탕으로 레시피를 고르고, 내 속도에 맞춰 조리하며, 마음에 든 레시피를 보관하고 공유하는 서비스임. 인터뷰에서 도출한 요구를 페르소나·사용 시나리오·스토리보드·정보구조·화면 설계로 구체화했음.
-
-레시피 탐색에서 끝나는 경험을 넘어, 실제로 요리를 따라 만들고 다시 사용하는 과정까지 하나의 서비스로 구상.
-
-## 바뀐 것 <!-- case.outcome.changes -->
-
-[]
-
-## 최종 화면 · flow.title <!-- case.flow.title -->
-
-재료 선택 · 레시피 확인 · 조리
-
-## 최종 화면 · flow.body <!-- case.flow.body -->
-
-보유 재료를 탐색의 시작점으로 삼고, 조리 전에는 필요한 정보를 확인하며, 조리 중에는 단계별 안내를 따라가는 서비스 흐름임.
-
-## 최종 화면 · hero.title <!-- case.hero.title -->
-
-고르고, 플레이하고, 보관하는 레플리
-
-## 최종 화면 · hero.body <!-- case.hero.body -->
-
-취향과 재료에 맞는 레시피를 선택하고, 내 속도로 조리한 뒤, 플레이리스트에 보관해 다시 사용할 수 있도록 설계했음.
-
-## 최종 화면 · before.title <!-- case.before.title -->
-
-레시피 선택
-
-## 최종 화면 · before.body <!-- case.before.body -->
-
-취향과 보유 재료, 난이도와 소요시간을 기준으로 만들 수 있는 요리를 고릅니다.
-
-## 최종 화면 · after.title <!-- case.after.title -->
-
-조리와 보관
-
-## 최종 화면 · after.body <!-- case.after.body -->
-
-단계별 안내에 맞춰 조리하고, 마음에 든 레시피를 플레이리스트에 보관함.
-
 ## 임팩트 <!-- case.impact -->
 
 [- PUBLICATION: … / - AWARD: … / - METRIC: …]
 
-## 배운 점 <!-- case.learnings -->
+## 결과 · takeaway <!-- case.outcome.lead -->
 
-리서치를 통해 레시피의 정보량뿐 아니라 정보를 제공하는 시점도 중요하다는 점을 배웠음. 재료와 난이도는 조리 전에, 계량과 진행 안내는 손을 사용하는 조리 중에 도움이 되어야 함.
-
-또한 글·사진·영상에 대한 선호가 서로 달라, 하나의 보기 방식으로 모든 사용자의 요구를 충족하기 어렵다는 점을 확인했음. 익숙한 음악 플레이어의 조작 방식을 요리 상황에 적용하면서, 사용자가 표현 방식과 진행 속도를 선택할 수 있는 서비스 방향을 구체화했음.
+[이 프로젝트의 takeaway를 한두 문단으로 작성해 주세요.]
 
 ## 디자인 시스템 <!-- case.system.body -->
 

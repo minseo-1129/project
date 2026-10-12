@@ -1,6 +1,6 @@
 # REPLY case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -78,51 +78,9 @@ Cook mode shows step progression, voice-related controls and measurements in the
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
-Explore recipes from your taste, kitchen and the ingredients you have, then follow along in cook mode while cooking.
-
-[Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Move through taste setup, ingredient-led browsing and cook mode. You can try cook mode's step progression and its controls directly.
-
-## case.hero.title <!-- case.hero.title -->
-
-From ingredients to recipe and cook mode
-
-## case.hero.body <!-- case.hero.body -->
-
-Move through taste setup, ingredient-led browsing and cook mode. You can try cook mode's step progression and its controls directly.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-Taste, kitchen and ingredients in one go at sign-up
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-Auto-advance + voice + measurements in your own tools
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
+[Write the takeaway of this project in one or two paragraphs.]
 
 ## case.system.body <!-- case.system.body -->
 

@@ -1,6 +1,6 @@
 # PICO case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -78,51 +78,11 @@ The build's design notes focus on reducing friction when registering and putting
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A mobile prototype for registering clothes and browsing the outfit suggested each night, plus your wardrobe data.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Pick a flow, then move through capture, recognition check, outfit and wardrobe screens. The original screens and buttons work as they did.
-
-## case.hero.title <!-- case.hero.title -->
-
-Building a wardrobe and tonight's outfit
-
-## case.hero.body <!-- case.hero.body -->
-
-Pick a flow, then move through capture, recognition check, outfit and wardrobe screens. The original screens and buttons work as they did.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-No choices on the first screen — straight to the camera
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-ID, colour, size and times worn read in one grid
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

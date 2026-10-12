@@ -109,7 +109,8 @@ function pageHead(eyebrow, title, summaryKey) {
 }
 function footerNav(forwardLabel, forwardHref) {
   const node = el('footer', 'footer-nav');
-  node.append(link(UI.back, withLang('../'), 'btn btn-outline btn-lg'), link(forwardLabel, withLang(forwardHref), 'btn btn-dark btn-lg'));
+  node.append(link(UI.back, withLang('../'), 'btn btn-outline btn-lg'));
+  if (forwardLabel) node.append(link(forwardLabel, withLang(forwardHref), 'btn btn-dark btn-lg'));
   return node;
 }
 
@@ -359,7 +360,7 @@ function prototypePage() {
     }
     nodes.push(stage);
   }
-  nodes.push(footerNav(UI.toCase, 'case-study.html'));
+  nodes.push(footerNav(config.caseStudy === true ? UI.toCase : null, 'case-study.html'));
   return nodes;
 }
 
@@ -524,47 +525,9 @@ function decisionsBlock(body) {
   });
   body.append(list);
 }
-function finalScreens(body) {
-  if (config.type === 'mobile') {
-    const row = el('div', 'final-mobile');
-    const side = el('div', 'final-copy');
-    side.append(el('h3', '', text('case.flow.title')), copy('case.flow.body'));
-    row.append(device(selected), side);
-    const keys = el('div', 'key-screens');
-    config.keyScreens.forEach((screen, index) => keys.append(thumb(screen, index + 1)));
-    body.append(row, keys);
-  } else if (config.type === 'gallery') {
-    const hero = el('figure', 'moment');
-    hero.append(preview(selected, true), el('h3', '', text('case.hero.title')), copy('case.hero.body'));
-    const pair = el('div', 'moment-pair');
-    for (const [screen, key] of [[config.keyScreens[0], 'before'], [config.keyScreens.at(-1), 'after']]) { const item = el('figure', 'moment'); item.append(preview(screen, true), el('p', 'mono', UI[key]), el('h3', '', text(`case.${key}.title`)), copy(`case.${key}.body`)); pair.append(item); }
-    body.append(hero, pair);
-  } else {
-    body.append(browser(selected));
-    (config.webStates || []).forEach((state, index) => {
-      const card = el('article', 'state-card');
-      const col = el('div');
-      col.append(el('p', 'mono blue', `STATE · ${pad(index + 1)}`), el('h3', '', text(`case.state${index + 1}.title`)));
-      for (const [name, key] of [['TRIGGER', 'trigger'], ['RESPONSE', 'response'], ['PURPOSE', 'purpose']]) { const line = el('div', 'state-line'); line.append(el('span', 'mono', name), copy(`case.state${index + 1}.${key}`)); col.append(line); }
-      card.append(preview(state.id, true, true), col);
-      body.append(card);
-    });
-  }
-}
+// Outcome is the closing takeaway: prose only. Screens live in the prototype.
 function outcomeBlock(body) {
-  finalScreens(body);
   body.append(copy('case.outcome.lead', 'body-text'));
-  const changes = listItems(content['case.outcome.changes']);
-  if (!changes.length) return;
-  const list = el('div', 'changes');
-  for (const item of changes) {
-    const [kind, ...rest] = splitItem(item, /:\s+/);
-    const sign = /추가|added/i.test(kind) ? '+' : /제거|removed/i.test(kind) ? '−' : '~';
-    const row = el('div', `change${sign === '+' ? ' is-added' : ''}`);
-    row.append(el('span', 'mono', sign), md(rest.join(': ') || kind));
-    list.append(row);
-  }
-  body.append(list);
 }
 function impactBlock(body) {
   body.append(hairList(listItems(content['case.impact']), item => { const [key, ...value] = splitItem(item, /:\s+/); const row = el('div', 'impact-row'); row.append(el('span', 'mono', key), md(value.join(': '))); return row; }));
@@ -590,9 +553,8 @@ function caseStudy() {
     ['INSIGHTS', insightsBlock, true],
     ['JOURNEY', journeyBlock, subsections(content['case.journey.stages']).length > 0, true],
     ['KEY DECISIONS', decisionsBlock, true],
-    ['OUTCOME', outcomeBlock, true],
     ['IMPACT', impactBlock, listItems(content['case.impact']).length > 0],
-    ['LEARNINGS', body => body.append(copy('case.learnings', 'body-text')), filled('case.learnings')],
+    ['OUTCOME', outcomeBlock, true],
     ['DESIGN SYSTEM', systemBlock, filled('case.system.body') || filled('case.system.palette')],
   ].filter(([, , shown]) => shown);
   return blocks.map(([name, build, , wide], index) => {
@@ -624,16 +586,17 @@ async function renderProjects() {
   if (!response.ok) throw new Error('프로젝트 목록을 불러올 수 없습니다.');
   const projects = await response.json();
   // Promise.all keeps the registry order.
-  const entries = await Promise.all(projects.map(async project => [project, await loadContent(`./${project}/content`)]));
+  const entries = await Promise.all(projects.map(async project => [project, await loadContent(`./${project}/content`), await fetch(`./${project}/project.json`).then(r => r.ok ? r.json() : {}).catch(() => ({}))]));
   const grid = el('ol', 'project-grid');
-  for (const [index, [project, c]] of entries.entries()) {
+  for (const [index, [project, c, projectConfig]] of entries.entries()) {
     const card = el('li', 'project-card');
     const meta = el('div', 'project-meta');
     meta.append(el('span', 'mono', pad(index + 1)), el('span', 'mono blue', c.scope || ''));
     const title = el('h2');
     title.append(link(c.title, withLang(`./${project}/`)));
     const links = el('div', 'project-links');
-    links.append(link(UI.openPrototype, withLang(`./${project}/`), 'btn btn-dark'), link(UI.openCase, withLang(`./${project}/case-study.html`), 'btn btn-outline'));
+    links.append(link(UI.openPrototype, withLang(`./${project}/`), 'btn btn-dark'));
+    if (projectConfig.caseStudy === true) links.append(link(UI.openCase, withLang(`./${project}/case-study.html`), 'btn btn-outline'));
     card.append(meta, title, md(c.summary || ''), links);
     grid.append(card);
   }
