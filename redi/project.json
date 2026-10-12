@@ -1,15 +1,15 @@
 {
   "type": "mobile",
-  "component": "RediScreen",
+  "component": "REDIScreen",
   "width": 360,
   "height": 780,
   "defaultScreen": "ob1",
   "keyScreens": [
-    "grid",
+    "rec",
     "stat",
     "report"
   ],
-  "evidenceScreen": "grid",
+  "evidenceScreen": "rec",
   "prototype": "original-prototype.html",
   "flows": [
     {
@@ -25,8 +25,6 @@
       "id": "record",
       "screens": [
         "rec",
-        "grid",
-        "moment",
         "d1",
         "d2",
         "d3"

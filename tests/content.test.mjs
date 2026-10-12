@@ -52,10 +52,10 @@ test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=
   }
   const originals=['orbit/ORBITScreen.dc.html','kiketch/KiketchScreen.dc.html','pico/PicoScreen.dc.html','reply/ReplyScreen.dc.html','winnus/WinnusScreenV2.dc.html','mathhero/MathHeroScreen.dc.html','cuppo/CuppoScreen.dc.html','cuppo/CUPPO Prototype.dc.html','lighthouse/three-d-stage.js','lighthouse/lighthouse-model.js'];
   for(const file of originals)assert.deepEqual(fs.readFileSync(new URL('../'+file,import.meta.url)),execFileSync('git',['show',`${originalCommit}:${file}`]),file);
-  const redi=fs.readFileSync(new URL('../redi/RediScreen.dc.html',import.meta.url),'utf8');
-  assert.ok(redi.includes("screen:this.props.screen || 'ob1'"));
-  assert.ok(!redi.includes('<aside'));
-  assert.ok(redi.includes('finish')||redi.includes('grid'));
+  const redi=fs.readFileSync(new URL('../redi/REDIScreen.dc.html',import.meta.url),'utf8');
+  const rediConfig=JSON.parse(fs.readFileSync(new URL('../redi/project.json',import.meta.url),'utf8'));
+  for(const screen of rediConfig.flows.flatMap(f=>f.screens))assert.ok(redi.includes(`key:'${screen}'`),`redi: ${screen}`);
+  assert.ok(redi.includes('this.props.onNavigate'));
 });
 
 test('케이스 스터디 블록 문법: 빈칸·목록·하위 제목',()=>{

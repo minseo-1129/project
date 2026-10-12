@@ -154,30 +154,6 @@ In the original, an empty circle (the agent image) and O / X buttons took half t
 
 In the original, an empty circle (the agent image) and O / X buttons took half the screen — an unbuilt feature owned the layout. Only the passive-data check really remained, so it stays as a single card.
 
-## screen.grid.title <!-- screen.grid.title -->
-
-Day-grid log
-
-## screen.grid.caption <!-- screen.grid.caption -->
-
-Logging by tapping cells to colour them is unchanged; only the shape moved from circles to squares. Adjacent cells of the same colour must read as one block for “hours in a row” to show.
-
-## screen.grid.body <!-- screen.grid.body -->
-
-Logging by tapping cells to colour them is unchanged; only the shape moved from circles to squares. Adjacent cells of the same colour must read as one block for “hours in a row” to show.
-
-## screen.moment.title <!-- screen.moment.title -->
-
-Momentary log · EMA
-
-## screen.moment.caption <!-- screen.moment.caption -->
-
-Depression, anxiety and stress are recorded on five-dot scales. The three saturated colours never mix with the six life colours — keeping the original's view that mood is a separate axis, not a result of daily life.
-
-## screen.moment.body <!-- screen.moment.body -->
-
-Depression, anxiety and stress are recorded on five-dot scales. The three saturated colours never mix with the six life colours — keeping the original's view that mood is a separate axis, not a result of daily life.
-
 ## screen.d1.title <!-- screen.d1.title -->
 
 Daily diary · rating / mood
