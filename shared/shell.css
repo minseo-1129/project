@@ -276,3 +276,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .type-row .mono:last-child{display:none}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+/* Standalone Markdown evidence images preserve their original proportions. */
+.content-image{margin:16px 0;max-width:100%;min-width:0}
+.content-image>a{display:block;background:var(--white);border:1px solid var(--line);padding:12px;color:inherit}
+.content-image img{display:block;width:100%;max-width:100%;height:auto}
+.content-image figcaption{margin-top:8px;color:var(--muted);font-size:11px;line-height:18px;overflow-wrap:anywhere}
+.content-image>a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}

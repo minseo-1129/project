@@ -45,6 +45,7 @@ In those cases, add the design to `02 Components` / `04 Case study masters` in t
   - Optional blocks stay hidden.
 - The body supports paragraphs, `**bold**`, `` `code` ``, `[links](docs/a.pdf)` and `- lists`. HTML does not run.
 - Do not invent numbers that are not in the data.
+- Add an evidence image on its own line: `![Description](assets/case-study/image.png)`. Leave a blank line before and after it. The description becomes the caption, and clicking the image opens the original file.
 
 ```md
 ## One-line summary <!-- summary -->

@@ -50,6 +50,32 @@ export function renderMarkdown(source, target) {
   target.replaceChildren();
   if (!source) return;
   for (const block of source.split(/\n\s*\n/)) {
+    const image = block.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (image) {
+      const href = safeHref(image[2]);
+      if (href) {
+        const figure = document.createElement('figure');
+        figure.className = 'content-image';
+        const link = document.createElement('a');
+        link.href = href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const img = document.createElement('img');
+        img.src = href;
+        img.alt = image[1];
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        link.append(img);
+        figure.append(link);
+        if (image[1]) {
+          const caption = document.createElement('figcaption');
+          caption.textContent = image[1];
+          figure.append(caption);
+        }
+        target.append(figure);
+        continue;
+      }
+    }
     const lines = block.split('\n');
     if (lines.every(line => /^[-*]\s/.test(line))) {
       const list = document.createElement('ul');
