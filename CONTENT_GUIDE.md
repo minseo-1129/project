@@ -126,4 +126,4 @@ python -m http.server 8000
 Open `http://localhost:8000/`. The `file://` method cannot load the md files.
 
 - Responsive widths: 1440 (editorial column 760 / breakout 1120), ≤800 tablet, ≤480 mobile (based on 390).
-- The Figma 390 masters follow the same breakpoints.
+- In Figma, every master and block is a component set with a `Breakpoint` property (`1440` / `390`). The 390 variants are built from the same components, so editing a shared component updates both widths; layout differences (stacking, padding) live in the 390 variant.
