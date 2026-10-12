@@ -70,6 +70,22 @@ Experienced · Stage 5
 
 Detailed setup, goal progress and deeper metrics.
 
+## Flow section · Onboarding <!-- group.onboarding.title -->
+
+Onboarding
+
+## Flow section · Monitoring <!-- group.monitoring.title -->
+
+Monitoring
+
+## Flow section · Calculator <!-- group.calculator.title -->
+
+Calculator
+
+## Flow section · Report & me <!-- group.reportMe.title -->
+
+Report & me
+
 ## screen.intro.title <!-- screen.intro.title -->
 
 Entry
@@ -362,17 +378,9 @@ Beginner branch, unchanged — the screen that answered the interview line “gi
 
 The core of the redesign. The forecast, buried behind the calculator in the original, now closes onboarding, so both user types meet their highest-rated feature first.
 
-## flow.beginner.homeDay0.body <!-- flow.beginner.homeDay0.body -->
-
-The cost of putting the forecast at the top of home. With zero logs, drawing a trajectory from other people's averages would make the promise a lie, so the screen shows a locked state with a three-day countdown.
-
 ## flow.beginner.homeBeginner.body <!-- flow.beginner.homeBeginner.body -->
 
 The forecast stays pinned at the top. Below it, “what you kept this week” counts only filled days instead of the original's empty “?h ?m” fields.
-
-## flow.beginner.log.body <!-- flow.beginner.log.body -->
-
-Original structure kept, with a three-step perceived-difficulty scale added at the top.
 
 ## flow.beginner.logAdd.body <!-- flow.beginner.logAdd.body -->
 
@@ -385,10 +393,6 @@ Keeps the original's last week / this week comparison cards.
 ## flow.beginner.selfCompare.body <!-- flow.beginner.selfCompare.body -->
 
 The reference point of the original “my health position” moves from the participant average to the user's own last week, replacing the removed community.
-
-## flow.beginner.report.body <!-- flow.beginner.report.body -->
-
-Unlike the original, which showed body-composition charts even to beginners, only Stage 3 items appear here.
 
 ## flow.beginner.routineEdit.body <!-- flow.beginner.routineEdit.body -->
 

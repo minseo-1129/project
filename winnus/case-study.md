@@ -1,6 +1,6 @@
 # WINNUS 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Outcome → Impact → Learnings → Design system -->
+<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
 <!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
 <!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
 
@@ -101,55 +101,15 @@
 - 이후: [바꾼 뒤 무엇이 달라졌는지]
 - 근거: [이 결정을 만든 발견]
 
-## 결과 <!-- case.outcome.lead -->
-
-일상적인 취향 표현으로 와인을 탐색하고, 마신 경험을 기록하는 모바일 서비스 프로토타입.
-
-[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
-
-## 바뀐 것 <!-- case.outcome.changes -->
-
-[- 제거: … / - 추가: … / - 변경: …]
-
-## 최종 화면 · flow.title <!-- case.flow.title -->
-
-화면이 이어지는 이유
-
-## 최종 화면 · flow.body <!-- case.flow.body -->
-
-취향 온보딩·탐색·와인 카드·기록 흐름을 선택해 보세요. 색과 말로 취향을 보여주는 방식, 눌러 펼치는 정보를 살펴볼 수 있습니다.
-
-## 최종 화면 · hero.title <!-- case.hero.title -->
-
-취향 설정부터 와인 카드와 기록까지
-
-## 최종 화면 · hero.body <!-- case.hero.body -->
-
-취향 온보딩·탐색·와인 카드·기록 흐름을 선택해 보세요. 색과 말로 취향을 보여주는 방식, 눌러 펼치는 정보를 살펴볼 수 있습니다.
-
-## 최종 화면 · before.title <!-- case.before.title -->
-
-경험의 시작
-
-## 최종 화면 · before.body <!-- case.before.body -->
-
-결과를 점수가 아니라 이름·색·말로 돌려줍니다. 코딩 결과 1·2번의 직접 적용.
-
-## 최종 화면 · after.title <!-- case.after.title -->
-
-행동 뒤의 장면
-
-## 최종 화면 · after.body <!-- case.after.body -->
-
-기록이 프로필을 어떻게 바꿨는지 즉시 보여줘 다음 회차의 동기를 만듭니다.
-
 ## 임팩트 <!-- case.impact -->
 
 [- PUBLICATION: … / - AWARD: … / - METRIC: …]
 
-## 배운 점 <!-- case.learnings -->
+## 결과 · takeaway <!-- case.outcome.lead -->
 
-[사용자가 어디에서 멈추는지, 설명이 충분한지, 다음 행동이 분명한지 확인할 질문을 작성해 주세요.]
+일상적인 취향 표현으로 와인을 탐색하고, 마신 경험을 기록하는 모바일 서비스 프로토타입.
+
+[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
 
 ## 디자인 시스템 <!-- case.system.body -->
 

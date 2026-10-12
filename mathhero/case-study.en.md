@@ -1,6 +1,6 @@
 # MATHHERO case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -78,51 +78,11 @@ The original HTML stresses moving from the clear screen into review, with the ro
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A learning prototype: explore game scenes, solve maths problems, and go from the result straight into reviewing mistakes.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Move with the scene list or the buttons on screen. See how the map, regions, problem solving, clear screen and review connect.
-
-## case.hero.title <!-- case.hero.title -->
-
-From my room to problem solving and review
-
-## case.hero.body <!-- case.hero.body -->
-
-Move with the scene list or the buttons on screen. See how the map, regions, problem solving, clear screen and review connect.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-The review zone is always a node on the map. Difficulty is labelled in words, not colour.
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-A screen the original did not have. Mistakes from the room's tank are grouped by type and practised together.
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

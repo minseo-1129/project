@@ -1,6 +1,6 @@
 # KIKETCH case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -78,51 +78,11 @@ Drawing doesn't end in the sketchbook — it fills the empty spot on the hill. A
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A children's drawing experience: explore pop-up book scenes and fill the gaps with drawings of your own. Bookshelf, chapters, hill, sketchbook and the finished scene follow one another.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Pick a scene on the right or move with the buttons on screen. Tap the empty sticky note on the hill, draw on the paper, then use “stick it on the hill” to see the finished scene.
-
-## case.hero.title <!-- case.hero.title -->
-
-Open the book and finish the scene with a drawing
-
-## case.hero.body <!-- case.hero.body -->
-
-Pick a scene on the right or move with the buttons on screen. Tap the empty sticky note on the hill, draw on the paper, then use “stick it on the hill” to see the finished scene.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-Chosen by pictures alone, no words
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-Sticks in place and moves a little
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

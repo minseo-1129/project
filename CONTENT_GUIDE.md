@@ -55,7 +55,9 @@ Write whose task this project helps with, and what that task is.
 
 ## Case-study blocks (`case-study.md`)
 
-The order is fixed: **Problem → Research → (Persona) → Insights → (Journey) → Key decisions → Outcome → (Impact) → (Learnings) → (Design system)**.
+The order is fixed: **Problem → Research → (Persona) → Insights → (Journey) → Key decisions → (Impact) → Outcome → (Design system)**.
+
+Outcome is the closing takeaway: one or two paragraphs of prose, with no screens. Supporting images belong in Key decisions, and screens stay in the prototype. Add a screen to a decision with `- Screen:` only when the decision needs it.
 
 - Blocks in parentheses are optional and appear only when filled in.
 - Numbers (`01 · PROBLEM`) are assigned automatically, in display order.
@@ -77,20 +79,14 @@ The order is fixed: **Problem → Research → (Persona) → Insights → (Journ
 | Journey (optional) | `case.journey.lead` | One sentence |
 | | `case.journey.stages` | `### Stage · EN`, then `- Mood: label · 1–5`, `- Moment:`, `- Pain:`, `- Opportunity:` |
 | Key decisions | `case.decisions` | `### Decision title`, prose, `- Before:` `- After:` `- Evidence:` `- Screen: screenID` |
-| Outcome | `case.outcome.lead` | Outcome summary (final screens are shown automatically from `keyScreens`) |
-| | `case.outcome.changes` | `- Added: …`, `- Removed: …`, `- Changed: …` |
 | Impact (optional) | `case.impact` | `- KIND: value` (e.g. `- USABILITY TEST: completion rate 62% → 91%`) |
-| Learnings (optional) | `case.learnings` | Prose |
+| Outcome | `case.outcome.lead` | The takeaway, in prose |
 | Design system (optional) | `case.system.palette` | `` - `#F3F3F1` name `` |
 | | `case.system.type` | `- ROLE | typeface | size` |
 | | `case.system.body` | Principles |
 
 - **Research:** fill at least one of bars, numbers, table, quotes or observed. If all are blank, the "add a result" box appears.
-- **Labels in English files:** use `Before/After/Evidence/Screen`, `Mood/Moment/Pain/Opportunity` and `Added/Removed/Changed` in place of the Korean labels.
-- **Outcome images:**
-  - mobile: the device plus `keyScreens`;
-  - gallery: the `case.hero` / `before` / `after` scenes;
-  - web: state cards.
+- **Labels in English files:** use `Before/After/Evidence/Screen` and `Mood/Moment/Pain/Opportunity` in place of the Korean labels.
 
 ## English version
 
@@ -106,7 +102,8 @@ The order is fixed: **Problem → Research → (Persona) → Insights → (Journ
 | `type` | `mobile` · `gallery` (KIKETCH, MATHHERO) · `web` (reco, THE LIGHTHOUSE) |
 | `layout` | Mobile only. Default `flow` (flow tabs + screen thumbnails); `screen` (whole-screen pills, CUPPO) |
 | `flows` | Flow IDs and screen order. Flow and screen names go in `content.md` (`flow.<id>.title`, `screen.<id>.title`) |
-| `keyScreens` | Screens shown under Outcome in the case study |
+| `keyScreens` | Representative screens (kept for reference; the case study no longer shows them) |
+| `caseStudy` | `true` shows the "Case study" links on the project list and below the prototype. Leave it out while the case study is being rewritten; the page itself stays reachable at `case-study.html` |
 | `themes` | `true` shows the light/dark toggle |
 | `designSystem` | File name of the design-system board (shown as a link at the bottom of the Design system block) |
 

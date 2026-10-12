@@ -1,6 +1,6 @@
 # reco case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -78,99 +78,11 @@ The same blocks in a different order show when the interpretation appears. The c
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A web prototype for organising what the user said in a conversation, suggesting possible patterns, then confirming or editing them.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Follow the sample conversation and look at the summary and possible patterns. The comparison screen shows the order in which the same information appears.
-
-## case.hero.title <!-- case.hero.title -->
-
-Check and edit the conversation and its interpretation
-
-## case.hero.body <!-- case.hero.body -->
-
-Follow the sample conversation and look at the summary and possible patterns. The comparison screen shows the order in which the same information appears.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-Follow the sample conversation and look at the summary and possible patterns. The comparison screen shows the order in which the same information appears.
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-Follow the sample conversation and look at the summary and possible patterns. The comparison screen shows the order in which the same information appears.
-
-## case.state1.title <!-- case.state1.title -->
-
-Starting the conversation
-
-## case.state1.trigger <!-- case.state1.trigger -->
-
-Read the guidance on the start screen.
-
-## case.state1.response <!-- case.state1.response -->
-
-The conversation, summary and the user's confirmation steps are explained.
-
-## case.state1.purpose <!-- case.state1.purpose -->
-
-Anticipate what you can do.
-
-## case.state2.title <!-- case.state2.title -->
-
-Choosing the context
-
-## case.state2.trigger <!-- case.state2.trigger -->
-
-Press Start and choose a situation to talk about.
-
-## case.state2.response <!-- case.state2.response -->
-
-Options for situations to talk about appear.
-
-## case.state2.purpose <!-- case.state2.purpose -->
-
-Choose a concrete starting point for the conversation.
-
-## case.state3.title <!-- case.state3.title -->
-
-Comparing the order of interpretation
-
-## case.state3.trigger <!-- case.state3.trigger -->
-
-On the comparison screen, see two layouts of the same conversation.
-
-## case.state3.response <!-- case.state3.response -->
-
-Shows the pattern opened on request beside the pattern open from the start.
-
-## case.state3.purpose <!-- case.state3.purpose -->
-
-Compare differences in the order information appears.
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

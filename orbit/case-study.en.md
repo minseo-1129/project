@@ -1,6 +1,6 @@
 # ORBIT case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey, Removed / Added / Changed in outcome changes. -->
+<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
 
 ## case.problem.lead <!-- case.problem.lead -->
 
@@ -81,51 +81,11 @@ The design intent noted in the original HTML is to move the forecast to the end 
 - After: [what changed]
 - Evidence: [the finding behind this decision]
 
-## case.outcome.lead <!-- case.outcome.lead -->
+## Outcome · takeaway <!-- case.outcome.lead -->
 
 A health-routine service that adjusts how much help it gives to the user's stage of behaviour change. Beginners and experienced users get different setups and home screens.
 
 [Add verified results with their evidence.]
-
-## case.outcome.changes <!-- case.outcome.changes -->
-
-[- Removed: … / - Added: … / - Changed: …]
-
-## case.flow.title <!-- case.flow.title -->
-
-Why these screens belong together
-
-## case.flow.body <!-- case.flow.body -->
-
-Look at the stage check, then switch between the beginner and experienced flows. Compare when the forecast appears — before any logging — and how much the home screen shows.
-
-## case.hero.title <!-- case.hero.title -->
-
-From stage check to forecast and home
-
-## case.hero.body <!-- case.hero.body -->
-
-Look at the stage check, then switch between the beginner and experienced flows. Compare when the forecast appears — before any logging — and how much the home screen shows.
-
-## case.before.title <!-- case.before.title -->
-
-Where the experience starts
-
-## case.before.body <!-- case.before.body -->
-
-Kept from the original. The five-stage questions stay as they were, with one added line: “your answer changes the whole app”.
-
-## case.after.title <!-- case.after.title -->
-
-The scene after the change
-
-## case.after.body <!-- case.after.body -->
-
-The forecast stays pinned at the top. Below it, “what you kept this week” counts only filled days instead of the original's empty “?h ?m” fields.
-
-## case.learnings <!-- case.learnings -->
-
-[Questions to check next: where people stop, whether the explanation is enough, whether the next action is clear.]
 
 ## case.system.body <!-- case.system.body -->
 

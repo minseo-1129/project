@@ -1,6 +1,6 @@
 # PICO 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Outcome → Impact → Learnings → Design system -->
+<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
 <!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
 <!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
 
@@ -80,55 +80,15 @@
 - 이후: [바꾼 뒤 무엇이 달라졌는지]
 - 근거: [이 결정을 만든 발견]
 
-## 결과 <!-- case.outcome.lead -->
-
-옷을 등록하고, 매일 밤 제안받는 코디와 옷장 정보를 살펴보는 모바일 프로토타입.
-
-[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
-
-## 바뀐 것 <!-- case.outcome.changes -->
-
-[- 제거: … / - 추가: … / - 변경: …]
-
-## 최종 화면 · flow.title <!-- case.flow.title -->
-
-화면이 이어지는 이유
-
-## 최종 화면 · flow.body <!-- case.flow.body -->
-
-플로우를 선택한 뒤 촬영·인식 확인·코디·옷장 화면을 이동해 보세요. 기존 화면과 버튼의 동작은 그대로 볼 수 있습니다.
-
-## 최종 화면 · hero.title <!-- case.hero.title -->
-
-옷장 등록과 오늘 밤의 코디
-
-## 최종 화면 · hero.body <!-- case.hero.body -->
-
-플로우를 선택한 뒤 촬영·인식 확인·코디·옷장 화면을 이동해 보세요. 기존 화면과 버튼의 동작은 그대로 볼 수 있습니다.
-
-## 최종 화면 · before.title <!-- case.before.title -->
-
-경험의 시작
-
-## 최종 화면 · before.body <!-- case.before.body -->
-
-첫 화면에서 선택지를 없애고 촬영으로 바로 보낸다
-
-## 최종 화면 · after.title <!-- case.after.title -->
-
-행동 뒤의 장면
-
-## 최종 화면 · after.body <!-- case.after.body -->
-
-ID·색·사이즈·착용 횟수가 한 격자에서 읽힌다
-
 ## 임팩트 <!-- case.impact -->
 
 [- PUBLICATION: … / - AWARD: … / - METRIC: …]
 
-## 배운 점 <!-- case.learnings -->
+## 결과 · takeaway <!-- case.outcome.lead -->
 
-[사용자가 어디에서 멈추는지, 설명이 충분한지, 다음 행동이 분명한지 확인할 질문을 작성해 주세요.]
+옷을 등록하고, 매일 밤 제안받는 코디와 옷장 정보를 살펴보는 모바일 프로토타입.
+
+[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
 
 ## 디자인 시스템 <!-- case.system.body -->
 

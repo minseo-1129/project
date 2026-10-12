@@ -1,6 +1,6 @@
 # KIKETCH 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Outcome → Impact → Learnings → Design system -->
+<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
 <!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
 <!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
 
@@ -80,55 +80,15 @@
 - 이후: [바꾼 뒤 무엇이 달라졌는지]
 - 근거: [이 결정을 만든 발견]
 
-## 결과 <!-- case.outcome.lead -->
-
-팝업북 장면을 탐색하고, 빈자리에 직접 그린 그림을 붙이는 어린이 그리기 경험. 책장·챕터·언덕·스케치북·완성 장면이 이어집니다.
-
-[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
-
-## 바뀐 것 <!-- case.outcome.changes -->
-
-[- 제거: … / - 추가: … / - 변경: …]
-
-## 최종 화면 · flow.title <!-- case.flow.title -->
-
-화면이 이어지는 이유
-
-## 최종 화면 · flow.body <!-- case.flow.body -->
-
-오른쪽에서 장면을 고르거나 화면 속 버튼으로 이동하세요. 언덕의 빈 포스트잇을 누르고 종이에 그린 뒤, “언덕에 붙이기”로 완성 장면을 확인할 수 있습니다.
-
-## 최종 화면 · hero.title <!-- case.hero.title -->
-
-책을 열고, 그림으로 장면을 완성하기
-
-## 최종 화면 · hero.body <!-- case.hero.body -->
-
-오른쪽에서 장면을 고르거나 화면 속 버튼으로 이동하세요. 언덕의 빈 포스트잇을 누르고 종이에 그린 뒤, “언덕에 붙이기”로 완성 장면을 확인할 수 있습니다.
-
-## 최종 화면 · before.title <!-- case.before.title -->
-
-경험의 시작
-
-## 최종 화면 · before.body <!-- case.before.body -->
-
-글자 없이 그림으로만 고른다
-
-## 최종 화면 · after.title <!-- case.after.title -->
-
-행동 뒤의 장면
-
-## 최종 화면 · after.body <!-- case.after.body -->
-
-자리에 붙고 살짝 움직인다
-
 ## 임팩트 <!-- case.impact -->
 
 [- PUBLICATION: … / - AWARD: … / - METRIC: …]
 
-## 배운 점 <!-- case.learnings -->
+## 결과 · takeaway <!-- case.outcome.lead -->
 
-[사용자가 어디에서 멈추는지, 설명이 충분한지, 다음 행동이 분명한지 확인할 질문을 작성해 주세요.]
+팝업북 장면을 탐색하고, 빈자리에 직접 그린 그림을 붙이는 어린이 그리기 경험. 책장·챕터·언덕·스케치북·완성 장면이 이어집니다.
+
+[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
 
 ## 디자인 시스템 <!-- case.system.body -->
 

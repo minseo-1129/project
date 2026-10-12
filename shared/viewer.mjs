@@ -4,6 +4,7 @@ try {
   const response = await fetch('project.json');
   if (!response.ok) throw new Error('프로젝트 설정을 불러올 수 없습니다.');
   const config = await response.json();
+  for (const flow of config.flows) if (!flow.screens && flow.groups) flow.screens = flow.groups.flatMap(group => group.screens);
   const screens = [...new Set(config.flows.flatMap(flow => flow.screens))];
   const requested = params.get('screen');
   const initial = screens.includes(requested) ? requested : config.defaultScreen;
