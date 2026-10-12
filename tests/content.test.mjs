@@ -24,7 +24,10 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
   for(const project of projects){
     const dir=new URL(`../${project}/`,import.meta.url);
     const config=JSON.parse(fs.readFileSync(new URL('project.json',dir),'utf8'));
+    for(const flow of config.flows)if(!flow.screens&&flow.groups)flow.screens=flow.groups.flatMap(g=>g.screens);
+    for(const group of config.flows.flatMap(f=>f.groups||[]))assert.ok(group.id&&group.screens?.length,`${project}: group`);
     const fields=parseContent(fs.readFileSync(new URL('content.md',dir),'utf8'));
+    for(const group of config.flows.flatMap(f=>f.groups||[]))assert.ok(fields[`group.${group.id}.title`],`${project}: group.${group.id}.title`);
     const screens=[...new Set(config.flows.flatMap(f=>f.screens))];
     assert.ok(screens.includes(config.defaultScreen),project);
     for(const key of config.keyScreens)assert.ok(screens.includes(key),`${project}: ${key}`);

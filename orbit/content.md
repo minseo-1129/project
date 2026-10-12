@@ -79,6 +79,22 @@ Mobile prototype
 
 상세 설정과 목표 진행, 심화 지표를 확인합니다.
 
+## 플로우 구간 · 온보딩 <!-- group.onboarding.title -->
+
+온보딩
+
+## 플로우 구간 · 모니터링 <!-- group.monitoring.title -->
+
+모니터링
+
+## 플로우 구간 · 계산기 <!-- group.calculator.title -->
+
+계산기
+
+## 플로우 구간 · 리포트 및 나 <!-- group.reportMe.title -->
+
+리포트 및 나
+
 ## 진입 · 화면 이름 <!-- screen.intro.title -->
 
 진입
@@ -371,17 +387,9 @@ Mobile prototype
 
 리디자인의 핵심. 원본에서 계산기 뒤에 묻혀 있던 예상 변화를 온보딩 마지막 화면으로 끌어올렸습니다. 두 타입 모두 가장 높게 평가한 기능을 가장 먼저 만나게 합니다.
 
-## 플로우 · flow.beginner.homeDay0.body <!-- flow.beginner.homeDay0.body -->
-
-예상 변화를 홈 최상단에 올린 대가로 생긴 화면. 기록이 0일 때 남의 평균으로 궤도를 그리면 약속이 거짓이 됩니다. 대신 잠근 상태를 그대로 보여주고 3일 카운트다운을 겁니다.
-
 ## 플로우 · flow.beginner.homeBeginner.body <!-- flow.beginner.homeBeginner.body -->
 
 예상 변화가 상단 고정. 그 아래는 "이번 주에 지킨 것" — 원본의 "?시간 ?분" 빈칸 대신 채운 칸만 셉니다.
-
-## 플로우 · flow.beginner.log.body <!-- flow.beginner.log.body -->
-
-원본 구조 유지. 상단에 체감 난이도 3단계를 추가했습니다.
 
 ## 플로우 · flow.beginner.logAdd.body <!-- flow.beginner.logAdd.body -->
 
@@ -394,10 +402,6 @@ Mobile prototype
 ## 플로우 · flow.beginner.selfCompare.body <!-- flow.beginner.selfCompare.body -->
 
 원본 "나의 건강 위치"의 기준점을 참여자 평균에서 지난 주 나로 바꿨습니다. 커뮤니티를 걷어낸 자리를 대체합니다.
-
-## 플로우 · flow.beginner.report.body <!-- flow.beginner.report.body -->
-
-입문자에게도 체성분 차트를 보여주던 원본과 달리, 여기서는 Stage 3 기준 항목만 노출됩니다.
 
 ## 플로우 · flow.beginner.routineEdit.body <!-- flow.beginner.routineEdit.body -->
 

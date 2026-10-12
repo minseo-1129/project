@@ -193,7 +193,7 @@ function updateSelection(screen, send = true) {
   const list = navigationList();
   const index = list.indexOf(screen);
   if (detail.counter) detail.counter.textContent = `${pad(index + 1)} / ${pad(list.length)}`;
-  if (detail.kicker) detail.kicker.textContent = isFlowLayout() ? text(`flow.${selectedFlow}.title`, selectedFlow) : `${pad(allScreens().indexOf(screen) + 1)} ${screen.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase()}`;
+  if (detail.kicker) detail.kicker.textContent = isFlowLayout() ? [text(`flow.${selectedFlow}.title`, selectedFlow), groupOf(screen) && text(`group.${groupOf(screen).id}.title`, groupOf(screen).id)].filter(Boolean).join(' · ') : `${pad(allScreens().indexOf(screen) + 1)} ${screen.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase()}`;
   if (detail.title) detail.title.textContent = screenTitle(screen);
   if (detail.note) renderMarkdown(screenNote(screen), detail.note);
   if (send) for (const frame of frames) {
@@ -271,10 +271,25 @@ function detailPanel() {
   return node;
 }
 function flowThumbs(flow) {
-  const node = el('div', 'thumbs');
-  flow.screens.forEach((screen, index) => node.append(thumb(screen, index + 1)));
+  if (!flow.groups) {
+    const node = el('div', 'thumbs');
+    flow.screens.forEach((screen, index) => node.append(thumb(screen, index + 1)));
+    return node;
+  }
+  const node = el('div', 'thumb-groups');
+  let number = 0;
+  flow.groups.forEach((group, index) => {
+    const section = el('div', 'thumb-group');
+    const head = el('p', 'thumb-group-head');
+    head.append(el('span', 'mono', pad(index + 1)), el('span', '', text(`group.${group.id}.title`, group.id)), el('span', 'mono', pad(group.screens.length)));
+    const grid = el('div', 'thumbs');
+    group.screens.forEach(screen => grid.append(thumb(screen, ++number)));
+    section.append(head, grid);
+    node.append(section);
+  });
   return node;
 }
+function groupOf(screen) { return currentFlow()?.groups?.find(group => group.screens.includes(screen)); }
 function screenPills() {
   const node = el('div', 'pills');
   allScreens().forEach((screen, index) => node.append(screenControl(screen, 'pill', [el('span', '', `${pad(index + 1)} ${screenTitle(screen)}`)])));
@@ -657,6 +672,8 @@ async function start() {
   const response = await fetch('project.json');
   if (!response.ok) throw new Error('project.json을 불러올 수 없습니다.');
   config = await response.json();
+  // A flow may list its screens directly or in named groups (e.g. onboarding → monitoring).
+  for (const flow of config.flows) if (!flow.screens && flow.groups) flow.screens = flow.groups.flatMap(group => group.screens);
   content = await loadContent('content');
   if (view === 'case') Object.assign(content, await loadContent('case-study', false));
   selected = config.defaultScreen;

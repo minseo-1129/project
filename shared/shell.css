@@ -97,6 +97,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .detail-theme{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-top:24px}
 .detail-theme .section-label{margin:0}
 .thumbs{display:grid;grid-template-columns:repeat(auto-fill,136px);gap:16px 12px}
+.thumb-groups{display:grid;gap:28px}
+.thumb-group{display:grid;gap:12px}
+.thumb-group-head{display:flex;align-items:baseline;gap:10px;padding-bottom:8px;border-bottom:1px solid var(--line);font:700 13px/20px var(--kr);color:var(--ink)}
+.thumb-group-head .mono:last-child{margin-left:auto}
 .thumb{display:flex;flex-direction:column;gap:6px;border:0;background:none;padding:0;text-align:left;min-width:0}
 .thumb-media{display:block;border-radius:8px;overflow:hidden;outline:2px solid transparent;outline-offset:-2px;background:var(--surface)}
 .thumb-media .preview{aspect-ratio:var(--ratio)}

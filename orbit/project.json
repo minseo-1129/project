@@ -14,46 +14,83 @@
   "flows": [
     {
       "id": "beginner",
-      "screens": [
-        "intro",
-        "profile",
-        "stage",
-        "stageResult",
-        "goalPurpose",
-        "routinePick",
-        "forecastPreview",
-        "homeDay0",
-        "homeBeginner",
-        "log",
-        "logAdd",
-        "forecast",
-        "selfCompare",
-        "report",
-        "routineEdit",
-        "stageUp",
-        "me"
+      "groups": [
+        {
+          "id": "onboarding",
+          "screens": [
+            "intro",
+            "profile",
+            "stage",
+            "stageResult",
+            "goalPurpose",
+            "routinePick",
+            "forecastPreview"
+          ]
+        },
+        {
+          "id": "monitoring",
+          "screens": [
+            "homeBeginner",
+            "logAdd"
+          ]
+        },
+        {
+          "id": "calculator",
+          "screens": [
+            "forecast",
+            "selfCompare"
+          ]
+        },
+        {
+          "id": "reportMe",
+          "screens": [
+            "routineEdit",
+            "stageUp",
+            "me"
+          ]
+        }
       ]
     },
     {
       "id": "advanced",
-      "screens": [
-        "intro",
-        "profile",
-        "stage",
-        "stageResult",
-        "goalPurpose",
-        "concern",
-        "routineDetail",
-        "forecastPreview",
-        "homeAdvanced",
-        "log",
-        "report",
-        "forecastAdvanced",
-        "forecastCalc",
-        "selfCompare",
-        "routineEdit",
-        "stageUp",
-        "me"
+      "groups": [
+        {
+          "id": "onboarding",
+          "screens": [
+            "intro",
+            "profile",
+            "stage",
+            "stageResult",
+            "goalPurpose",
+            "concern",
+            "routineDetail",
+            "forecastPreview"
+          ]
+        },
+        {
+          "id": "monitoring",
+          "screens": [
+            "homeAdvanced",
+            "log"
+          ]
+        },
+        {
+          "id": "calculator",
+          "screens": [
+            "report",
+            "forecastCalc",
+            "forecastAdvanced"
+          ]
+        },
+        {
+          "id": "reportMe",
+          "screens": [
+            "selfCompare",
+            "routineEdit",
+            "stageUp",
+            "me"
+          ]
+        }
       ]
     }
   ]
