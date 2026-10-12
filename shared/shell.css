@@ -256,8 +256,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .project-grid{grid-template-columns:1fr;gap:24px}
   .device{width:min(300px,100%);height:auto;aspect-ratio:300/650}
   .thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pills{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-  .pill{padding:0 10px}
+  .pills{grid-template-columns:repeat(2,minmax(0,1fr))}
   .scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .context-pair,.two-lists,.moment-pair,.before-after,.changes{grid-template-columns:1fr}
   .context-pair>div+div{padding:12px 0 0;border-left:0;border-top:1px solid var(--line-strong)}
