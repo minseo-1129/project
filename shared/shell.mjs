@@ -588,19 +588,23 @@ async function renderProjects() {
   // Promise.all keeps the registry order.
   const entries = await Promise.all(projects.map(async project => [project, await loadContent(`./${project}/content`), await fetch(`./${project}/project.json`).then(r => r.ok ? r.json() : {}).catch(() => ({}))]));
   const grid = el('ol', 'project-grid');
-  for (const [index, [project, c, projectConfig]] of entries.entries()) {
+  // A project is listed only when something is open to visitors: its prototype (unless "showPrototype": false) or a published case study.
+  const visible = entries.filter(([, , cfg]) => cfg.showPrototype !== false || cfg.caseStudy === true);
+  for (const [index, [project, c, projectConfig]] of visible.entries()) {
+    const hasPrototype = projectConfig.showPrototype !== false;
+    const hasCase = projectConfig.caseStudy === true;
     const card = el('li', 'project-card');
     const meta = el('div', 'project-meta');
     meta.append(el('span', 'mono', pad(index + 1)), el('span', 'mono blue', c.scope || ''));
     const title = el('h2');
-    title.append(link(c.title, withLang(`./${project}/`)));
+    title.append(link(c.title, withLang(hasPrototype ? `./${project}/` : `./${project}/case-study.html`)));
     const links = el('div', 'project-links');
-    links.append(link(UI.openPrototype, withLang(`./${project}/`), 'btn btn-dark'));
-    if (projectConfig.caseStudy === true) links.append(link(UI.openCase, withLang(`./${project}/case-study.html`), 'btn btn-outline'));
+    if (hasPrototype) links.append(link(UI.openPrototype, withLang(`./${project}/`), 'btn btn-dark'));
+    if (hasCase) links.append(link(UI.openCase, withLang(`./${project}/case-study.html`), 'btn btn-outline'));
     card.append(meta, title, md(c.summary || ''), links);
     grid.append(card);
   }
-  const head = pageHead(`${UI.selected} · ${UI.count(projects.length)}`, UI.indexTitle);
+  const head = pageHead(`${UI.selected} · ${UI.count(visible.length)}`, UI.indexTitle);
   head.append(el('p', 'summary', UI.indexLead));
   const node = el('main', 'shell v2 index-page');
   node.append(topBar([[UI.library]]), head, grid);

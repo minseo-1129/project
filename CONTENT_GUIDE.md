@@ -103,6 +103,7 @@ Outcome is the closing takeaway: one or two paragraphs of prose, with no screens
 | `layout` | Mobile only. Default `flow` (flow tabs + screen thumbnails); `screen` (whole-screen pills, CUPPO) |
 | `flows` | Flow IDs and screen order. Flow and screen names go in `content.md` (`flow.<id>.title`, `screen.<id>.title`) |
 | `keyScreens` | Representative screens (kept for reference; the case study no longer shows them) |
+| `showPrototype` | `false` hides the project's prototype from the project list (KIKETCH and MATH HERO, which have no public prototype). A project with neither a prototype nor a published case study is left off the list; the page stays reachable by URL |
 | `caseStudy` | `true` shows the "Case study" links on the project list and below the prototype. Leave it out while the case study is being rewritten; the page itself stays reachable at `case-study.html` |
 | `themes` | `true` shows the light/dark toggle |
 | `designSystem` | File name of the design-system board (shown as a link at the bottom of the Design system block) |
