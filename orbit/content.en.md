@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A health-routine service that adjusts how much help it gives to the user's stage of behaviour change. Beginners and experienced users get different setups and home screens.
+A personalised health-routine service that adapts goals, tracking, and information density to each user's stage of behaviour change.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Different starting points in one service
 
 ## context.body <!-- context.body -->
 
-The build separates Stage 3 beginners from Stage 5 experienced users. After the stage check, the setup, the log items and the amount of information on home all change.
+User research revealed differences between beginners and experienced users in goal setting, behaviour tracking, and information needs.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Show the value before asking for logs
 
 ## decision.body <!-- decision.body -->
 
-The design intent noted in the original HTML is to move the forecast to the end of onboarding. The calculator stays as a tool for adjusting a forecast the user has already seen.
+Goal setting, tracking options, and home-screen content are tailored to Stage 3 beginners and Stage 5 experienced users.
 
 ## guide.title <!-- guide.title -->
 
@@ -84,11 +84,11 @@ Calculator
 
 ## Flow section · Report & me <!-- group.reportMe.title -->
 
-Report & me
+Reports
 
 ## screen.intro.title <!-- screen.intro.title -->
 
-Entry
+Get started
 
 ## screen.intro.caption <!-- screen.intro.caption -->
 
@@ -100,7 +100,7 @@ Promise the forecast first — not after every log has been filled in.
 
 ## screen.profile.title <!-- screen.profile.title -->
 
-Basic info
+Basic information
 
 ## screen.profile.caption <!-- screen.profile.caption -->
 
@@ -124,7 +124,7 @@ Kept from the original. The five-stage questions stay as they were, with one add
 
 ## screen.stageResult.title <!-- screen.stageResult.title -->
 
-Stage result · new
+Stage result
 
 ## screen.stageResult.caption <!-- screen.stageResult.caption -->
 
@@ -136,7 +136,7 @@ A screen the original did not have. It fills the silence after asking for a stag
 
 ## screen.goalPurpose.title <!-- screen.goalPurpose.title -->
 
-Purpose · areas of help
+Goals & support areas
 
 ## screen.goalPurpose.caption <!-- screen.goalPurpose.caption -->
 
@@ -148,7 +148,7 @@ Two original screens merged into one. Both used the same chip component and had 
 
 ## screen.routinePick.title <!-- screen.routinePick.title -->
 
-Pick one routine
+Choose a routine
 
 ## screen.routinePick.caption <!-- screen.routinePick.caption -->
 
@@ -160,7 +160,7 @@ Beginner branch, unchanged — the screen that answered the interview line “gi
 
 ## screen.forecastPreview.title <!-- screen.forecastPreview.title -->
 
-Forecast before you start · axis
+Forecast preview
 
 ## screen.forecastPreview.caption <!-- screen.forecastPreview.caption -->
 
@@ -208,7 +208,7 @@ Original structure kept, with a three-step perceived-difficulty scale added at t
 
 ## screen.logAdd.title <!-- screen.logAdd.title -->
 
-Add a log item
+Add tracking item
 
 ## screen.logAdd.caption <!-- screen.logAdd.caption -->
 
@@ -232,7 +232,7 @@ Keeps the original's last week / this week comparison cards.
 
 ## screen.selfCompare.title <!-- screen.selfCompare.title -->
 
-Last week's me · new
+Weekly comparison
 
 ## screen.selfCompare.caption <!-- screen.selfCompare.caption -->
 
@@ -268,7 +268,7 @@ The second routine unlocks after 11 days. One at a time.
 
 ## screen.stageUp.title <!-- screen.stageUp.title -->
 
-Stage up · new
+Stage progression
 
 ## screen.stageUp.caption <!-- screen.stageUp.caption -->
 
@@ -280,7 +280,7 @@ Onboarding promised the app changes with the stage, so the moment the stage chan
 
 ## screen.me.title <!-- screen.me.title -->
 
-Me
+Settings
 
 ## screen.me.caption <!-- screen.me.caption -->
 
@@ -292,7 +292,7 @@ Retake the stage check any time; users set the screen density themselves.
 
 ## screen.concern.title <!-- screen.concern.title -->
 
-Concerns
+Share challenges
 
 ## screen.concern.caption <!-- screen.concern.caption -->
 
@@ -304,7 +304,7 @@ The original voice Q&A becomes text input with tag extraction. It drops the depe
 
 ## screen.routineDetail.title <!-- screen.routineDetail.title -->
 
-Routine details
+Routine settings
 
 ## screen.routineDetail.caption <!-- screen.routineDetail.caption -->
 
@@ -352,87 +352,87 @@ Kept from the original — but it is no longer the way into the forecast; it adj
 
 ## flow.beginner.intro.body <!-- flow.beginner.intro.body -->
 
-Promise the forecast first — not after every log has been filled in.
+Introduces goals and predicted outcomes early to motivate routine adoption.
 
 ## flow.beginner.profile.body <!-- flow.beginner.profile.body -->
 
-Same as the original. A mono caption now says this is step 1 of 4.
+Collects basic user details and shows progress through onboarding
 
 ## flow.beginner.stage.body <!-- flow.beginner.stage.body -->
 
-Kept from the original. The five-stage questions stay as they were, with one added line: “your answer changes the whole app”.
+Assesses users' stage of behaviour change and explains how their answers shape the experience
 
 ## flow.beginner.stageResult.body <!-- flow.beginner.stageResult.body -->
 
-A screen the original did not have. It fills the silence after asking for a stage, promising in three lines what the app will change at this stage.
+Explains the assessment result and how the experience adapts to the user's stage.
 
 ## flow.beginner.goalPurpose.body <!-- flow.beginner.goalPurpose.body -->
 
-Two original screens merged into one. Both used the same chip component and had room to spare.
+Combines health goals and support areas into one streamlined selection screen.
 
 ## flow.beginner.routinePick.body <!-- flow.beginner.routinePick.body -->
 
-Beginner branch, unchanged — the screen that answered the interview line “give me options and lead me for now”.
+Offers a curated set of routines in response to beginners' need for guided choices.
 
 ## flow.beginner.forecastPreview.body <!-- flow.beginner.forecastPreview.body -->
 
-The core of the redesign. The forecast, buried behind the calculator in the original, now closes onboarding, so both user types meet their highest-rated feature first.
+Closes onboarding with an explainable AI forecast of the selected routine’s potential impact.
 
 ## flow.beginner.homeBeginner.body <!-- flow.beginner.homeBeginner.body -->
 
-The forecast stays pinned at the top. Below it, “what you kept this week” counts only filled days instead of the original's empty “?h ?m” fields.
+Keeps the forecast visible and shows completed days this week to simplify tracking.
 
 ## flow.beginner.logAdd.body <!-- flow.beginner.logAdd.body -->
 
-Items unlock by stage. Body-fat and muscle mass open from Stage 4.
+Prioritises simple and automatic tracking; body-composition metrics unlock from Stage 4.
 
 ## flow.beginner.forecast.body <!-- flow.beginner.forecast.body -->
 
-Keeps the original's last week / this week comparison cards.
+Compares last week's and this week's forecasts to show progress at a glance.
 
 ## flow.beginner.selfCompare.body <!-- flow.beginner.selfCompare.body -->
 
-The reference point of the original “my health position” moves from the participant average to the user's own last week, replacing the removed community.
+Replaces peer averages with last week's personal data to highlight individual progress.
 
 ## flow.beginner.routineEdit.body <!-- flow.beginner.routineEdit.body -->
 
-The second routine unlocks after 11 days. One at a time.
+Beginners focus on one routine, with a second unlocked after 11 days.
 
 ## flow.beginner.stageUp.body <!-- flow.beginner.stageUp.body -->
 
-Onboarding promised the app changes with the stage, so the moment the stage changes has to say what changes: added, deeper and reduced.
+Recognises sustained routine practice with a stage update and explains changes to available features.
 
 ## flow.beginner.me.body <!-- flow.beginner.me.body -->
 
-Retake the stage check any time; users set the screen density themselves.
+Lets users reassess their stage and adjust information density at any time.
 
 ## flow.advanced.intro.body <!-- flow.advanced.intro.body -->
 
-Same entry point. The branch happens after the stage check.
+Uses the same entry screen before guiding users to a stage-specific flow.
 
 ## flow.advanced.profile.body <!-- flow.advanced.profile.body -->
 
-Same as the original.
+Collects basic user details and shows progress through onboarding.
 
 ## flow.advanced.stage.body <!-- flow.advanced.stage.body -->
 
-Same questions, different result. Choosing 4 or 5 leads to the experienced flow.
+Directs users assessed at Stage 4 or 5 to the experienced-user flow.
 
 ## flow.advanced.stageResult.body <!-- flow.advanced.stageResult.body -->
 
-Tells users in advance that in the maintenance stage, “against the goal line” becomes the reference.
+Explains that progress in the maintenance stage is measured against the user's goal.
 
 ## flow.advanced.goalPurpose.body <!-- flow.advanced.goalPurpose.body -->
 
-Shared with the beginner flow.
+Combines health goals and support areas into one streamlined selection screen.
 
 ## flow.advanced.concern.body <!-- flow.advanced.concern.body -->
 
-The original voice Q&A becomes text input with tag extraction. It drops the dependency on speech-to-text, which was never built, while keeping the order interviewees praised: “it asked about my difficulties first”.
+Builds on interview feedback by asking about challenges first, using free text and preset tags.
 
 ## flow.advanced.routineDetail.body <!-- flow.advanced.routineDetail.body -->
 
-Experienced branch. Schedule, time of day and type are set directly. Unchanged from the original.
+Lets experienced users customise routine type, schedule, and time of day.
 
 ## flow.advanced.forecastPreview.body <!-- flow.advanced.forecastPreview.body -->
 
@@ -440,36 +440,36 @@ Experienced users get the same promise first.
 
 ## flow.advanced.homeAdvanced.body <!-- flow.advanced.homeAdvanced.body -->
 
-The forecast turns into a countdown to the goal date. One coaching line at the bottom — information that only lived deep in the original.
+Replaces the forecast with a countdown to the goal date and adds concise coaching tips.
 
 ## flow.advanced.log.body <!-- flow.advanced.log.body -->
 
-Same screen as for beginners, with more items unlocked.
+Unlocks detailed tracking, including body-composition metrics, for experienced users.
 
 ## flow.advanced.report.body <!-- flow.advanced.report.body -->
 
-Body-composition and diet charts. Fully open only at Stage 5.
+Provides body-composition and diet charts to help users review weekly progress.
 
 ## flow.advanced.forecastAdvanced.body <!-- flow.advanced.forecastAdvanced.body -->
 
-The forecast graph kept from the original. The coaching card adds “n days sooner” to connect behaviour and result directly.
+Shows how many days a behaviour could save, linking coaching advice to predicted outcomes.
 
 ## flow.advanced.forecastCalc.body <!-- flow.advanced.forecastCalc.body -->
 
-Kept from the original — but it is no longer the way into the forecast; it adjusts one the user has already seen.
+Builds on the forecast with a calculator for exploring detailed goal scenarios.
 
 ## flow.advanced.selfCompare.body <!-- flow.advanced.selfCompare.body -->
 
-Comparison with yourself, which experienced users preferred in interviews. The original only compared with the participant average.
+Reflects experienced users' preference for comparing their own progress rather than peer averages.
 
 ## flow.advanced.routineEdit.body <!-- flow.advanced.routineEdit.body -->
 
-Experienced users run several routines at once.
+Enables experienced users to manage multiple routines at once.
 
 ## flow.advanced.stageUp.body <!-- flow.advanced.stageUp.body -->
 
-Same screen as for beginners; for experienced users it unlocks the full Stage 5 report.
+Highlights the full Stage 5 report made available to experienced users.
 
 ## flow.advanced.me.body <!-- flow.advanced.me.body -->
 
-Same.
+Lets users reassess their stage and adjust information density at any time.

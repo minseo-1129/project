@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A web prototype for organising what the user said in a conversation, suggesting possible patterns, then confirming or editing them.
+A conversational agent supporting reflection on social prescribing experiences and exploring how AI summaries are presented.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Suggesting an interpretation the user confirms
 
 ## context.body <!-- context.body -->
 
-The build separates what the user said, possible patterns and next steps. You can compare showing the pattern up front with showing it only on request.
+The prototype explores how users' own words, suggested patterns and next steps are presented, and when AI interpretations appear.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Keeping the user's words apart from the interpretation
 
 ## decision.body <!-- decision.body -->
 
-The same blocks in a different order show when the interpretation appears. The choice to confirm or edit a suggested pattern stays in the original prototype.
+Separates users' words, suggested patterns and next steps. Compares upfront and on-demand interpretations while retaining pattern confirmation and editing.
 
 ## guide.title <!-- guide.title -->
 
@@ -76,7 +76,7 @@ Follow the sample conversation and look at the summary and possible patterns. Th
 
 ## screen.welcome.title <!-- screen.welcome.title -->
 
-Starting the conversation
+Start a conversation
 
 ## screen.welcome.body <!-- screen.welcome.body -->
 
@@ -84,11 +84,11 @@ Anticipate what you can do.
 
 ## screen.welcome.caption <!-- screen.welcome.caption -->
 
-Anticipate what you can do.
+Introduces the self-reflection experience and guides users into the conversation
 
 ## screen.branch.title <!-- screen.branch.title -->
 
-Choosing the context
+Choose a context
 
 ## screen.branch.body <!-- screen.branch.body -->
 
@@ -96,11 +96,11 @@ Choose a concrete starting point for the conversation.
 
 ## screen.branch.caption <!-- screen.branch.caption -->
 
-Choose a concrete starting point for the conversation.
+Lets users choose a context to begin their self-reflection
 
 ## screen.compare.title <!-- screen.compare.title -->
 
-Comparing the order of interpretation
+Interpretation order
 
 ## screen.compare.body <!-- screen.compare.body -->
 
@@ -108,4 +108,8 @@ Compare differences in the order information appears.
 
 ## screen.compare.caption <!-- screen.compare.caption -->
 
-Compare differences in the order information appears.
+Compares showing suggested patterns upfront or on request by changing the order of the same content.
+
+## scope <!-- scope -->
+
+Web prototype

@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A web archive for exploring a lighthouse-shaped humidifier and mood light in 3D. Compare the finished, translucent and exploded states, and day and night lighting.
+A 3D web prototype of a lighthouse-inspired humidifier and mood light, combining fabric-based evaporation, gentle waves and sensor-responsive lighting.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ The product's exterior and inner structure together
 
 ## context.body <!-- context.body -->
 
-The web build explains the basin, electronics, sensors and lighting of the lighthouse humidifier and mood light state by state in 3D. Hardware test material can be added separately.
+Explored an alternative to plastic humidifier discs and how ambient lighting and gentle waves could create a relaxing everyday experience.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Explaining the structure through state changes
 
 ## decision.body <!-- decision.body -->
 
-Finished, translucent and exploded views and day / night lighting are compared on the same model. The product description and parts list stay on the original 3D page.
+Combined fabric-based evaporation with an island-and-lighthouse design. Water level controls lighting and the pump, while ambient light adjusts brightness.
 
 ## guide.title <!-- guide.title -->
 
@@ -76,11 +76,11 @@ Drag the 3D view to rotate it and press finished, translucent and exploded. Comp
 
 ## link.drawings <!-- link.drawings -->
 
-View drawings ↗
+View project ↗
 
 ## screen.finished.title <!-- screen.finished.title -->
 
-Finished exterior
+Assembled view
 
 ## screen.finished.body <!-- screen.finished.body -->
 
@@ -88,11 +88,11 @@ Understand the overall form of the product first.
 
 ## screen.finished.caption <!-- screen.finished.caption -->
 
-Understand the overall form of the product first.
+Presents the assembled lighthouse-inspired design, showing the humidifier and mood light as one product
 
 ## screen.translucent.title <!-- screen.translucent.title -->
 
-Translucent structure
+Translucent view
 
 ## screen.translucent.body <!-- screen.translucent.body -->
 
@@ -100,7 +100,7 @@ Compare the exterior with the parts inside.
 
 ## screen.translucent.caption <!-- screen.translucent.caption -->
 
-Compare the exterior with the parts inside.
+Uses a translucent shell to reveal the water reservoir, electronics, sensors and lighting.
 
 ## screen.exploded.title <!-- screen.exploded.title -->
 
@@ -112,4 +112,8 @@ See how each part is placed and connected.
 
 ## screen.exploded.caption <!-- screen.exploded.caption -->
 
-See how each part is placed and connected.
+Separates the components to show how they are arranged and connected.
+
+## scope <!-- scope -->
+
+Web prototype

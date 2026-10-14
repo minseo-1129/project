@@ -9,7 +9,7 @@ THE LIGHTHOUSE
 
 ## 한 줄 소개 <!-- summary -->
 
-등대 형태의 가습기·무드등 구조를 3D로 탐색하는 웹 아카이브. 완성·반투명·분해도와 낮·밤 조명 상태를 비교할 수 있습니다.
+부직포 기화식 가습과 잔잔한 물결, 센서 반응형 조명을 섬과 등대 풍경에 담은 3D 웹 프로토타입.
 
 ## 담당 역할 <!-- role -->
 
@@ -25,7 +25,7 @@ THE LIGHTHOUSE
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Web experience
+Web prototype
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 
@@ -45,7 +45,7 @@ Web experience
 
 ## 배경 설명 <!-- context.body -->
 
-현재 웹 구현은 등대 가습기·무드등의 수반·전장부·센서·조명 구조를 3D 상태별로 설명합니다. 실제 하드웨어 검증 자료는 별도로 추가할 수 있습니다.
+가습기의 플라스틱 디스크를 대체하고, 무드등과 잔잔한 물결을 결합해 일상 속 휴식 경험을 제공하는 방식을 탐색함.
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -53,7 +53,7 @@ Web experience
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-완성·반투명·분해도와 낮·밤 조명을 같은 모델에서 비교합니다. 제품 설명과 구조 목록은 기존 3D 페이지에 유지됩니다.
+부직포 기화식 구조와 등대·섬 형태를 결합함. 수위에 따라 조명과 펌프가 작동하고, 주변 밝기에 따라 조명이 조절되도록 설계함.
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
@@ -85,7 +85,7 @@ Web experience
 
 ## link.drawings <!-- link.drawings -->
 
-도면 보기 ↗
+프로젝트 보기 ↗
 
 ## 웹 상태 1 · title <!-- screen.finished.title -->
 
@@ -97,7 +97,7 @@ Web experience
 
 ## 웹 상태 1 · caption <!-- screen.finished.caption -->
 
-제품의 전체 형태를 먼저 이해합니다.
+등대 형태의 외관과 가습기·무드등이 결합된 제품 디자인을 전체적으로 보여줌.
 
 ## 웹 상태 2 · title <!-- screen.translucent.title -->
 
@@ -109,7 +109,7 @@ Web experience
 
 ## 웹 상태 2 · caption <!-- screen.translucent.caption -->
 
-외형과 내부 부품의 관계를 비교합니다.
+외형을 반투명 처리해 수반·전장부·센서·조명의 내부 배치를 보여줌.
 
 ## 웹 상태 3 · title <!-- screen.exploded.title -->
 
@@ -121,5 +121,4 @@ Web experience
 
 ## 웹 상태 3 · caption <!-- screen.exploded.caption -->
 
-각 부품의 배치와 연결을 살펴봅니다.
-
+부품을 분리해 구성 요소의 배치와 연결 관계를 한눈에 살펴보도록 함.
