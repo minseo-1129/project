@@ -22,5 +22,6 @@
         "filled"
       ]
     }
-  ]
+  ],
+  "showPrototype": false
 }

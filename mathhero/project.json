@@ -27,5 +27,6 @@
         "tutorial"
       ]
     }
-  ]
+  ],
+  "showPrototype": false
 }
