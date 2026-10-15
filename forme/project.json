@@ -1,0 +1,26 @@
+{
+  "type": "gallery",
+  "component": null,
+  "width": 1280,
+  "height": 800,
+  "defaultScreen": "hero",
+  "keyScreens": [
+    "hero",
+    "promises",
+    "stars"
+  ],
+  "evidenceScreen": "hero",
+  "prototype": "gallery.html",
+  "flows": [
+    {
+      "id": "day",
+      "screens": [
+        "hero",
+        "promises",
+        "doing",
+        "stars"
+      ]
+    }
+  ],
+  "caseStudy": true
+}

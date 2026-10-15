@@ -20,7 +20,7 @@ test('중복 항목과 이름 누락은 오류로 표시하고 위험한 링크�
 });
 const projects=JSON.parse(fs.readFileSync(new URL('../shared/projects.json',import.meta.url),'utf8'));
 test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 서로 연결된다',()=>{
-  assert.equal(projects.length,10);
+  assert.equal(projects.length,12);
   for(const project of projects){
     const dir=new URL(`../${project}/`,import.meta.url);
     const config=JSON.parse(fs.readFileSync(new URL('project.json',dir),'utf8'));
@@ -51,7 +51,7 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
   }
 });
 test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=>{
-  for(const project of projects.filter(p=>p!=='cuppo')){
+  for(const project of projects.filter(p=>!['cuppo','sweetalk','forme'].includes(p))){
     const original=execFileSync('git',['show',`${originalCommit}:${project}/index.html`]);
     assert.deepEqual(fs.readFileSync(new URL(`../${project}/original-prototype.html`,import.meta.url)),original,project);
   }

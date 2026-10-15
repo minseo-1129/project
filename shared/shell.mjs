@@ -137,7 +137,10 @@ function preview(screen, readonly = false, native = config.component !== null ||
     if (readonly) url.searchParams.set('readonly', '1');
     frame.src = url.href;
   } else {
-    frame.src = new URL(config.prototype, location.href).href;
+    // Static pages without click states (image galleries, videos) open on the requested screen directly.
+    const url = new URL(config.prototype, location.href);
+    if (!config.webStates?.length) url.searchParams.set('portfolioState', screen);
+    frame.src = url.href;
     frame.dataset.screen = screen;
     if (config.webStates?.length) frame.addEventListener('load', () => applyWebState(frame, readonly));
   }
