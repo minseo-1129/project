@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A children's drawing experience: explore pop-up book scenes and fill the gaps with drawings of your own. Bookshelf, chapters, hill, sketchbook and the finished scene follow one another.
+A children's picture book: the child fills empty sticky notes in pop-up scenes with their own drawings, which then come alive as a character.
 
 ## role <!-- role -->
 
