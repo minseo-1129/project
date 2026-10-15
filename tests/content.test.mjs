@@ -43,7 +43,9 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
     assert.ok(['mobile','gallery','web'].includes(config.type),`${project}: type`);
     if(config.layout)assert.ok(config.type==='mobile'&&['flow','screen'].includes(config.layout),`${project}: layout`);
     const caseFields=parseContent(fs.readFileSync(new URL('case-study.md',dir),'utf8'),{requireTitle:false});
-    for(const key of ['case.problem.lead','case.research.lead','case.insights','case.decisions','case.outcome.lead'])assert.ok(key in caseFields,`${project}: ${key}`);
+    const freeLayout=Object.keys(caseFields).some(key=>key.startsWith('case.section.'));
+    if(freeLayout)for(const key of Object.keys(caseFields).filter(key=>key.startsWith('case.'))){assert.ok(/^case\.(section\.[a-z0-9-]+|persona\.\w+|journey\.\w+)$/.test(key),`${project}: free-layout field ${key}`);}
+    else for(const key of ['case.problem.lead','case.research.lead','case.insights','case.decisions','case.outcome.lead'])assert.ok(key in caseFields,`${project}: ${key}`);
     for(const item of listItems(caseFields['case.research.bars']?.split('\n').filter(l=>!l.startsWith('###')).join('\n')))assert.match(item,/: \d+$/,`${project}: bar ${item}`);
     for(const lang of ['content.en.md','case-study.en.md']){const url=new URL(lang,dir);if(fs.existsSync(url))parseContent(fs.readFileSync(url,'utf8'),{requireTitle:false});}
   }

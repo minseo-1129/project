@@ -1,103 +1,43 @@
-# MATHHERO 케이스 스터디
+# MATH HERO 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
-<!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
-<!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
+<!-- 자유 배치 케이스 스터디: `case.section.<id>` 섹션이 파일 순서대로 나옵니다. 작성 형식은 CONTENT_GUIDE.md의 '자유 배치 케이스 스터디'를 참고하세요. -->
 
-## 문제 한 문장 <!-- case.problem.lead -->
+## Overview <!-- case.section.overview -->
 
-현재 구현은 내 방, 맵, 문제 풀이, 클리어, 오답 수조를 연결합니다. 클랜과 프로필, 튜토리얼 장면도 함께 탐색할 수 있습니다.
+수학 문제를 풀어 해커 조직 ‘미노스’를 막는, 초등학생용 SF 수학 게임
 
-## 문제를 만든 요인 <!-- case.problem.points -->
+평범한 초등학생인 플레이어는 인공지능 로봇 ‘코비’의 요청으로 가상현실 차원에 들어가, 수학 문제를 풀어 악성 코드를 제거하고 보안 툴을 설치하고 해커를 검거한다. 1학년부터 6학년까지 여섯 차원을 모두 지키면 게임이 끝난다.
 
-[- 요인 — 설명 형식으로 2~4줄]
+- **Unity** · Platform — 유니티 게임
+- **1인칭** · View — 1인칭 시점
+- **SF** · Genre — 공상과학
+- **6차원** · Stages — 차원마다 이지·노멀·하드
 
-## 리서치 요약 <!-- case.research.lead -->
+## Flow <!-- case.section.flow -->
 
-[조사 방법(설문·인터뷰·테스트)과 참여자, 확인한 가설을 한두 문장으로]
+접속부터 보상까지, 학교 단위로 함께 플레이한다.
 
-## 결과 · 막대그래프 <!-- case.research.bars -->
+1. **접속** — 로그인
+2. **캐릭터** — 이름·성별·학교·학년
+3. **튜토리얼** — 조작법·수학 수준 평가
+4. **첫 보상** — 펫·아이템·방
+5. **플레이** — 차원·난이도 선택
+6. **보상** — 경험치·다음 단계
 
-[### 그룹 제목 · ENGLISH TAG 아래에 - 항목: 숫자]
+화면 구조 — 메인(상점·옷장·리더보드·이벤트·펫·방·클랜) → 맵(차원·난이도) → 플레이(문제·답변·힌트)
 
-## 결과 · 큰 숫자 <!-- case.research.numbers -->
+## Screens <!-- case.section.screens -->
 
-[- 87% — 설명 형식, 1~3개]
+UI 기획 — 메인, 맵, 플레이, 클랜
 
-## 결과 · 표 <!-- case.research.table -->
+![메인 — 캐릭터와 펫이 있는 내 방에서 가상 월드로](assets/case-study/01-main.jpg)
 
-[- 가설 | 결과 | 데이터]
+![맵 — 차원별 스테이지 로드맵과 별점, 난이도 전환](assets/case-study/02-map.jpg)
 
-## 결과 · 인용 <!-- case.research.quotes -->
+![스테이지 설명 — 스토리와 학습 목표를 먼저 보여준다](assets/case-study/03-stage-info.jpg)
 
-[- “인용문” — 출처]
+![플레이 — 왼쪽은 전투 장면, 오른쪽은 문제와 선지](assets/case-study/04-play.jpg)
 
-## 결과 · 관찰 <!-- case.research.observed -->
+![스테이지 클리어 — 맞춘 문항, 소요 시간, 추가 경험치](assets/case-study/05-stage-clear.jpg)
 
-[- 관찰한 사실 한 줄씩]
-
-## 결과 · 출처 <!-- case.research.source -->
-
-[출처 · 자료 이름]
-
-## 페르소나 이름 <!-- case.persona.name -->
-
-[이름]
-
-## 페르소나 정보 <!-- case.persona.profile -->
-
-[- 나이: 23세]
-
-## 페르소나 한마디 <!-- case.persona.quote -->
-
-[“페르소나의 목소리” — **강조할 부분**]
-
-## 페르소나 목표 <!-- case.persona.goals -->
-
-[- 목표 한 줄씩]
-
-## 페르소나 불편 <!-- case.persona.frustrations -->
-
-[- 불편 한 줄씩]
-
-## 인사이트 <!-- case.insights -->
-
-[### 설계 원칙 한 줄 아래에 그 근거]
-
-## 저니 요약 <!-- case.journey.lead -->
-
-[계기부터 재사용까지, 이탈이 가장 큰 구간 한 문장]
-
-## 저니 단계 <!-- case.journey.stages -->
-
-[### 단계 · ENGLISH 아래에 - 감정: 기대 · 4 / - 순간: / - 불편: / - 기회:]
-
-## 핵심 결정 <!-- case.decisions -->
-
-### 결과를 복습의 진입점으로
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
-- 이전: [원본에서 어떻게 했는지]
-- 이후: [바꾼 뒤 무엇이 달라졌는지]
-- 근거: [이 결정을 만든 발견]
-
-## 임팩트 <!-- case.impact -->
-
-[- PUBLICATION: … / - AWARD: … / - METRIC: …]
-
-## 결과 · takeaway <!-- case.outcome.lead -->
-
-게임 장면을 탐색하며 수학 문제를 풀고, 결과에서 오답 복습으로 이어지는 학습 프로토타입.
-
-[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
-
-## 디자인 시스템 <!-- case.system.body -->
-
-[팔레트·타입·컴포넌트 원칙을 작성해 주세요. 원본에서 반드시 살린 요소가 있다면 함께 적어 주세요.]
-
-## 디자인 시스템 · 팔레트 <!-- case.system.palette -->
-
-[- `#HEX` 이름 형식으로 한 줄에 하나씩 작성하면 색 칩으로 표시됩니다.]
-
-## 디자인 시스템 · 타입 <!-- case.system.type -->
-
-[- 역할 | 글꼴 | 크기 / 행간]
+![클랜 보드 — 같은 학교 친구들과 함께하는 클랜](assets/case-study/07-clan-board.jpg)

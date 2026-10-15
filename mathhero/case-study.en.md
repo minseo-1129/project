@@ -1,97 +1,43 @@
-# MATHHERO case study — English
+# MATH HERO case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Overview <!-- case.section.overview -->
 
-The build connects my room, the map, problem solving, the clear screen and the mistake tank. Clan, profile and tutorial scenes can be explored too.
+A sci-fi maths game for primary pupils: solve problems to stop the hacker group ‘Minos’
 
-## case.problem.points <!-- case.problem.points -->
+An ordinary pupil is asked by the AI robot ‘Kobi’ to enter virtual-reality dimensions, where solving maths problems removes malware, installs security tools and catches hackers. The game ends once all six dimensions, Year 1 to Year 6, are safe.
 
-[- Factor — explanation, 2–4 lines]
+- **Unity** · Platform — Built in Unity
+- **First person** · View — First-person view
+- **Sci-fi** · Genre — Science fiction
+- **6 dimensions** · Stages — Easy, normal and hard in each
 
-## case.research.lead <!-- case.research.lead -->
+## Flow <!-- case.section.flow -->
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+From sign-in to rewards, played together as a school.
 
-## case.research.bars <!-- case.research.bars -->
+1. **Sign in** — Log in
+2. **Character** — Name, gender, school, year
+3. **Tutorial** — Controls and a maths-level check
+4. **First reward** — Pet, items, room
+5. **Play** — Choose dimension and difficulty
+6. **Rewards** — Experience and the next stage
 
-[### Group title · TAG, then - Item: number]
+Screen structure — Main (shop, wardrobe, leaderboard, events, pet, room, clan) → Map (dimension, difficulty) → Play (question, answer, hint)
 
-## case.research.numbers <!-- case.research.numbers -->
+## Screens <!-- case.section.screens -->
 
-[- 87% — caption, 1–3 items]
+UI plan — main, map, play, clan
 
-## case.research.table <!-- case.research.table -->
+![Main — from your room with your character and pet out to the virtual world](assets/case-study/01-main.jpg)
 
-[- Hypothesis | Result | Data]
+![Map — a stage roadmap per dimension with stars and a difficulty switch](assets/case-study/02-map.jpg)
 
-## case.research.quotes <!-- case.research.quotes -->
+![Stage info — the story and learning goal come first](assets/case-study/03-stage-info.jpg)
 
-[- “Quote” — source]
+![Play — the battle on the left, the question and choices on the right](assets/case-study/04-play.jpg)
 
-## case.research.observed <!-- case.research.observed -->
+![Stage clear — questions right, time taken, bonus experience](assets/case-study/05-stage-clear.jpg)
 
-[- One observation per line]
-
-## case.research.source <!-- case.research.source -->
-
-[Source · material name]
-
-## case.persona.name <!-- case.persona.name -->
-
-[Name]
-
-## case.persona.profile <!-- case.persona.profile -->
-
-[- Age: 23]
-
-## case.persona.quote <!-- case.persona.quote -->
-
-[“The persona's voice” — **highlight**]
-
-## case.persona.goals <!-- case.persona.goals -->
-
-[- One goal per line]
-
-## case.persona.frustrations <!-- case.persona.frustrations -->
-
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-[### One design rule, with its evidence below]
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### The result as the way into review
-The original HTML stresses moving from the clear screen into review, with the room's mistake tank and the map's review zone as recurring entry points.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A learning prototype: explore game scenes, solve maths problems, and go from the result straight into reviewing mistakes.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+![Clan board — a clan with friends from the same school](assets/case-study/07-clan-board.jpg)

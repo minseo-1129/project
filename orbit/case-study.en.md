@@ -1,100 +1,107 @@
 # ORBIT case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Background <!-- case.section.background -->
 
-The build separates Stage 3 beginners from Stage 5 experienced users. After the stage check, the setup, the log items and the amount of information on home all change.
+People in their 20s say they need health care, and then drop the apps built for it.
 
-## case.problem.points <!-- case.problem.points -->
+- 76.8% — of MZ respondents said they need to manage their health
+- > 50% — of health-application users drop off within the first month
+- 20s — the only age group whose perceived health worsened after COVID-19
 
-[- Factor — explanation, 2–4 lines]
+Sources · Korean health-perception survey, MZ health-management survey and health-app retention data, as cited in the team's research deck.
 
-## case.research.lead <!-- case.research.lead -->
+## Research <!-- case.section.research -->
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+Interviews surfaced that user readiness matters.
 
-## case.research.bars <!-- case.research.bars -->
+- **Behavioural stage** — Participants differed in where they stood on changing their behaviour.
+- **Motivation & willpower** — How they pursued motivation and relied on willpower varied.
+- **Assistive devices** — Whether and how they used assistive devices differed.
+- **Integrated information** — They wanted information beyond exercise itself.
 
-[### Group title · TAG, then - Item: number]
+Using the Stages of Change model, participants split in two: beginner and advanced.
 
-## case.research.numbers <!-- case.research.numbers -->
+## Literature review <!-- case.section.literature -->
 
-[- 87% — caption, 1–3 items]
+Three fields framed the problem: digital health, personalisation and behaviour change.
 
-## case.research.table <!-- case.research.table -->
+- **Digital health** — AI's ability to manage and learn from large data makes digital health effective, and lets care adapt as health changes.
+- **Personalisation** — Personalisation usually targets content. It should also shape how the user and system interact, so people keep going.
+- **Behaviour change** — Health behaviour moves through five stages. The will, level and outside support people need differ at each one.
 
-[- Hypothesis | Result | Data]
+Strategies from the Transtheoretical Model were split by user: consciousness raising, outcome expectancies and self-monitoring for the primary user; contingency management and self-efficacy for the secondary user.
 
-## case.research.quotes <!-- case.research.quotes -->
+## User mapping <!-- case.section.mapping -->
 
-- “Give me options and lead me for now” — ORBIT · beginner interview
-- “I liked that it asked about my difficulties first” — ORBIT · interview
+Placed on five attributes, participants grouped into two user types.
 
-## case.research.observed <!-- case.research.observed -->
+- Attribute | Scale | Primary · beginner | Secondary · experienced
+- Health practice | Everyday ↔ Expert | Everyday end | Expert end
+- Will | Low ↔ High | Fairly high | Highest
+- Scope | Broad · shallow ↔ Narrow · deep | Broad and shallow | Narrow and deep
+- System role | Prompts action ↔ Recommends | In between | Recommends
+- Agency | Passive ↔ Active | Passive to middle | Active
 
-- Beginners started when they were given options
-- Experienced users wanted to compare with their own last week rather than the participant average
-- Asking about difficulties first was well received
+The grouped participants became the primary user (beginner); the participant at the expert end became the secondary user (experienced).
 
-## case.research.source <!-- case.research.source -->
+## Two users <!-- case.section.users -->
 
-Source · screen notes in the original ORBIT prototype. Interview method and participant count need to be confirmed from the source material.
+Same goal, different starting points.
 
-## case.persona.name <!-- case.persona.name -->
+- - | Primary · beginner | Secondary · experienced
+- Who | **Park Seo-yeon** · 29 · office worker | **Kim Jae-min** · 22 · university student
+- Quote | “I need someone beside me who keeps me going.” | “Is it my method or my habits? Tell me what I can actually do.”
+- Goals | Simple health habits I can do every day. Care that bends to my daily routine. | A professional plan tailored to my goals. Understand why my progress stalls.
+- Frustrations | Work leaves little time for health. Failing to follow through drains my motivation. | Nowhere to ask when questions come up mid-workout. Planning and sticking to it alone is hard.
 
-[Name]
+## Two flows <!-- case.section.flows -->
 
-## case.persona.profile <!-- case.persona.profile -->
+Same question, different depth.
 
-[- Age: 23]
+The two flows differ in what it takes to set a goal and track behaviour: the number of questions asked and the depth of interpretation.
 
-## case.persona.quote <!-- case.persona.quote -->
+1. **Both** — Answer the same five-stage question
+2. **Beginner / Advanced** — Beginners pick one routine from four predefined options // Advanced users describe what is stalling and configure a schedule
+3. **Then** — Both meet the forecast
 
-[“The persona's voice” — **highlight**]
+- **Explainable AI** — Each suggestion explains why it was made and what to expect by keeping the health behaviour, so users stay motivated by understanding, not by being told.
 
-## case.persona.goals <!-- case.persona.goals -->
+## Usability test <!-- case.section.usability -->
 
-[- One goal per line]
+Wizard of Oz · 6 participants · both flows each
 
-## case.persona.frustrations <!-- case.persona.frustrations -->
+Everyone experienced both prototypes, then completed the SUS and a debrief interview.
 
-[- One frustration per line]
+### SUS score · 0–100
 
-## case.insights <!-- case.insights -->
+- Beginner flow: 90
+- Advanced flow: 86.25
 
-[### One design rule, with its evidence below]
+Both flows scored well above the 68 benchmark. Split by group, each flow did best with the people it was built for: experienced users gave the advanced flow 96, while beginners gave it 82.
 
-## case.journey.lead <!-- case.journey.lead -->
+- Flow | Beginners · n=3 | Experienced · n=3 | All
+- Beginner flow | 90 | 91 | 90
+- Advanced flow | 82 | **96** | 86.25
 
-[From trigger to return: the stage where people drop off most, in one sentence]
+## Debrief <!-- case.section.debrief -->
 
-## case.journey.stages <!-- case.journey.stages -->
+The forecast was the only feature both user types rated highly on usefulness and effectiveness.
 
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
+### Effects participants named unprompted
 
-## case.decisions <!-- case.decisions -->
+- **Motivation to stick to the plan** · 01 — Imagining a predicted version of themselves kept them going.
+- **Planning their week around it** · 02 — The forecast became a reason to plan.
+- **Seeing themselves objectively** · 03 — Change became something they could see.
 
-### Show the value before asking for logs
-The design intent noted in the original HTML is to move the forecast to the end of onboarding. The calculator stays as a tool for adjusting a forecast the user has already seen.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
+- “Imagining a predicted version of myself was what would keep me going.” — Participant · Beginner
+- “I would hold a self-set period precisely because the end was visible.” — Participant · Advanced
 
-## Outcome · takeaway <!-- case.outcome.lead -->
+### What each feature taught us
 
-A health-routine service that adjusts how much help it gives to the user's stage of behaviour change. Beginners and experienced users get different setups and home screens.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+1. **Stage survey · goal setting** — Beginners wanted to be led through choices; experienced users valued room to explain their problem. Asking about stage first made the app feel open to everyone. // “Give me options and just lead me at first.”
+2. **Health logging** — Beginners liked easy, familiar metrics such as water and sleep instead of body fat; experienced users liked tracking what they already check. Logging felt like managing health together with the system. // “Logging every day feels like wrapping up my day; that would keep me going.”
+3. **Comparison** — Beginners preferred simple visuals and comparison with people like them; experienced users preferred comparing against their past selves. // “Being rated among people like me is really nice.”
+4. **Forecast** — Both groups rated it highly. They asked to see change over longer, adjustable periods, weekly or monthly. // “Seeing the change clearly would change my motivation itself.”
+5. **Content recommendation** — Participants liked that recommendations draw on their own behaviour and goals, not just what they viewed recently. They asked for saving and notifications. // “Not having to search YouTube would be great.”

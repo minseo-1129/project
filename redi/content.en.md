@@ -8,11 +8,11 @@ A mobile service for tracking daily activities and mood through manual logs and 
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Researcher
 
 ## period <!-- period -->
 
-[Project period]
+Sep 2022 – Aug 2024
 
 ## tools <!-- tools -->
 
@@ -345,3 +345,7 @@ Summarises data collection, purpose, retention and sharing in a table, with sepa
 ## screen.my_privacy.body <!-- screen.my_privacy.body -->
 
 Data collected, purpose, retention and third-party sharing are laid out in a table, with consent for research use as its own toggle. Because the service is for minors, guardian consent status is shown too.
+
+## org <!-- org -->
+
+HAII

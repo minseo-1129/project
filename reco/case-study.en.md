@@ -1,97 +1,69 @@
-# reco case study — English
+# RECO case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Challenges <!-- case.section.challenges -->
 
-The build separates what the user said, possible patterns and next steps. You can compare showing the pattern up front with showing it only on request.
+Both groups valued social prescribing. Both struggled to keep participation going between sessions.
 
-## case.problem.points <!-- case.problem.points -->
+Two participatory workshops: one with link workers, one with young people aged 16–25 who had used social activities for their mental health. Each group mapped its journey, named barriers, then imagined how an agent could help.
 
-[- Factor — explanation, 2–4 lines]
+- Link workers | Young people
+- **Systematic burdens** · 9-to-5 hours, admin work, service pushbacks | **Logistical constraints** · Cost, transport, clashes with school or work
+- **Engagement issues** · High drop-off; hard to get genuine feedback | **Emotional challenges** · Brain fog, fatigue, social anxiety, pressure to perform
+- **Emotional barriers** · Fear of judgement, anxiety about leaving home, stigma | **Communication gaps** · Inconsistent provision, little meaningful follow-up
+- **Resource gaps** · Few age-appropriate, up-to-date local resources | **Navigational loads** · Unaware of options; no induction before joining
+- **Relational tensions** · Mismatched role expectations; autonomy vs guidance | **Personalisation gaps** · Generic support; hard to name own needs and goals
 
-## case.research.lead <!-- case.research.lead -->
+- “Sometimes it feels like they’re just answering what they think you want to hear.” — Link worker 1
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+## Mapping on the journey <!-- case.section.mapping -->
 
-## case.research.bars <!-- case.research.bars -->
+Ten expectations, placed on the journey: which belong to a session, and which need to run between sessions.
 
-[### Group title · TAG, then - Item: number]
+### Link workers
 
-## case.research.numbers <!-- case.research.numbers -->
+- Expectation | Lane | When on the journey
+- Session logger | Time bounded | At each session
+- Resource directory | Time bounded | At each session
+- Activity recommender | Time bounded | At each session
+- Interest bank | Backend · continuous, hidden | Throughout
+- Goal tracker | Regular check | Throughout
 
-[- 87% — caption, 1–3 items]
+### Young people
 
-## case.research.table <!-- case.research.table -->
+- Expectation | Lane | When on the journey
+- Activity connector | Time bounded | From session 1 to the prescribed activity; not needed after it
+- Personal profiler | Backend · continuous, hidden | Throughout
+- Goal planner & Check-in mate | Regular check | Throughout
+- Social companion | Tone · interactional quality | Sets the tone throughout
 
-[- Hypothesis | Result | Data]
+Session logging and resource directories mattered to the service but did not need a conversation with the young person. What both groups needed between sessions (goals, interests, mood, barriers, how an activity felt) could only surface through ongoing dialogue.
 
-## case.research.quotes <!-- case.research.quotes -->
+## Agent structure <!-- case.section.structure -->
 
-[- “Quote” — source]
+Aggregated, the expectations collapse into one agent with check-ins at its centre.
 
-## case.research.observed <!-- case.research.observed -->
+- Lane | Function | Role
+- Tone | Social companion | Companion-like interactional tone
+- Backend | Interest bank + Personal profiler | Evolving personal attributes
+- Regular check | **Goal tracker + planner + Check-in mate** | Reflective check-ins for participation sense-making
+- Time bounded | Activity recommender + Activity connector | From session 1 to the prescribed activity
+- Time bounded | Session preparation & consented summary | From the activity to session 2
+- Outside the agent | Session logger · Resource directory | At each session, with the link worker
 
-[- One observation per line]
+- **Foster youth awareness** · Mechanism 1 — Daily reflection lets young people self-monitor mood and goals and make sense of how activities felt.
+- **Enable informed care** · Mechanism 2 — With consent, activity feedback and patterns in mood, goals and engagement reach the link worker over time.
 
-## case.research.source <!-- case.research.source -->
+## Four paths <!-- case.section.paths -->
 
-[Source · material name]
+Every check-in starts with mood, branches by the kind of day, and ends with a consented summary.
 
-## case.persona.name <!-- case.persona.name -->
+1. **Mood check** — “How was your day?” (1–5 scale or weather analogy)
+2. **One of four reflections** — Chosen by the kind of day
+3. **Summary and consent** — “Here’s what we talked about. Is it okay to share this with your link worker?”
 
-[Name]
-
-## case.persona.profile <!-- case.persona.profile -->
-
-[- Age: 23]
-
-## case.persona.quote <!-- case.persona.quote -->
-
-[“The persona's voice” — **highlight**]
-
-## case.persona.goals <!-- case.persona.goals -->
-
-[- One goal per line]
-
-## case.persona.frustrations <!-- case.persona.frustrations -->
-
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-[### One design rule, with its evidence below]
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### Keeping the user's words apart from the interpretation
-The same blocks in a different order show when the interpretation appears. The choice to confirm or edit a suggested pattern stays in the original prototype.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A web prototype for organising what the user said in a conversation, suggesting possible patterns, then confirming or editing them.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+- **Session reflection** · Session — After a session with a link worker // “How did the session go for you today?” // Log agreed plans and outcomes · recall session notes
+- **Goal reflection** · Typical day — No session, activity or homework // “What did you do today to move closer to your goal?” // Track steps toward goals · sustain motivation and accountability
+- **Activity reflection** · Activity day — After an activity or homework // “Did you go to the activity? What went well or didn’t?” // Mood and activity effects · reasons for not attending · likes and dislikes
+- **Session planning** · Before a session — The day before a scheduled session // “You’ve got a session tomorrow. What would you expect?” // Clarify expectations · review progress and feedback

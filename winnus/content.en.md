@@ -8,11 +8,11 @@ A mobile service that helps wine beginners explore wines through familiar sensor
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Designer
 
 ## period <!-- period -->
 
-[Project period]
+Aug 2021 – Dec 2021
 
 ## tools <!-- tools -->
 
@@ -277,3 +277,7 @@ Places the taste profile at the top and makes the glossary an entry point for fu
 ## screen.myPage.body <!-- screen.myPage.body -->
 
 The taste profile sits at the top of the card, with the glossary attached as a way into learning.
+
+## org <!-- org -->
+
+UMC

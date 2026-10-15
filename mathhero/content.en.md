@@ -8,11 +8,11 @@ A learning prototype: explore game scenes, solve maths problems, and go from the
 
 ## role <!-- role -->
 
-[Your role]
+Product Designer
 
 ## period <!-- period -->
 
-[Project period]
+Jan 2022 – Mar 2022
 
 ## tools <!-- tools -->
 
@@ -181,3 +181,7 @@ Adds an “I'm not sure” option — removing guesses makes the diagnosis more 
 ## screen.tutorial.body <!-- screen.tutorial.body -->
 
 Adds an “I'm not sure” option — removing guesses makes the diagnosis more accurate.
+
+## org <!-- org -->
+
+Woongjin

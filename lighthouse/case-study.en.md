@@ -1,97 +1,40 @@
 # THE LIGHTHOUSE case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Concept <!-- case.section.concept -->
 
-The web build explains the basin, electronics, sensors and lighting of the lighthouse humidifier and mood light state by state in 3D. Hardware test material can be added separately.
+A humidifier and mood light: pour in water, the lighthouse lights up and gentle waves roll
 
-## case.problem.points <!-- case.problem.points -->
+- **Fabric humidifier** · Organic — An eco-friendly fabric humidifier that uses evaporation instead of a plastic disc
+- **Mood light** · Healing — The light turns on the moment water is poured in, and its brightness follows the room's light
+- **Waves** · Nature — A seaside scene with a lighthouse, like sitting on an island watching the waves
 
-[- Factor — explanation, 2–4 lines]
+## References <!-- case.section.references -->
 
-## case.research.lead <!-- case.research.lead -->
+A system driven by Arduino water-level and light sensors
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+- **Water Lamp** · Witaya Junma — A lamp whose LED turns on as water rises past an ultrasonic sensor; the rippling water throws light onto the wall. // → Water as a switch: a water-level sensor
+- **Night Light** · Egrobotics — A mood lamp that turns on as the room darkens and off as it brightens, using a light sensor. // → Beyond on and off: light readings set the brightness
 
-## case.research.bars <!-- case.research.bars -->
+## Form <!-- case.section.form -->
 
-[### Group title · TAG, then - Item: number]
+A humidifier shaped as an island, sea and lighthouse on a water tank
 
-## case.research.numbers <!-- case.research.numbers -->
+![Design sketch: 30 cm tank, lighthouse 15 cm tall and 6 cm wide, Arduino and light sensor below the fabric lighthouse](assets/case-study/00-sketch.jpg)
 
-[- 87% — caption, 1–3 items]
+![An island and lighthouse that also work as an interior object](assets/case-study/01-before.jpg)
 
-## case.research.table <!-- case.research.table -->
+![The light turns on once water poured into the tank reaches the sand](assets/case-study/02-after.jpg)
 
-[- Hypothesis | Result | Data]
+## Specification <!-- case.section.specification -->
 
-## case.research.quotes <!-- case.research.quotes -->
+Two sensors drive the light and the pump.
 
-[- “Quote” — source]
-
-## case.research.observed <!-- case.research.observed -->
-
-[- One observation per line]
-
-## case.research.source <!-- case.research.source -->
-
-[Source · material name]
-
-## case.persona.name <!-- case.persona.name -->
-
-[Name]
-
-## case.persona.profile <!-- case.persona.profile -->
-
-[- Age: 23]
-
-## case.persona.quote <!-- case.persona.quote -->
-
-[“The persona's voice” — **highlight**]
-
-## case.persona.goals <!-- case.persona.goals -->
-
-[- One goal per line]
-
-## case.persona.frustrations <!-- case.persona.frustrations -->
-
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-[### One design rule, with its evidence below]
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### Explaining the structure through state changes
-Finished, translucent and exploded views and day / night lighting are compared on the same model. The product description and parts list stay on the original 3D page.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A web archive for exploring a lighthouse-shaped humidifier and mood light in 3D. Compare the finished, translucent and exploded states, and day and night lighting.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+- Part | Role | Behaviour
+- Water-level sensor | Detects water | At 300 or more the light and pump turn on; when water evaporates below 300 they turn off, so the light going out signals an empty tank
+- Light sensor | Measures ambient light | Maps readings of 200–600 to a light brightness of 1–255
+- Lighthouse light | Mood light | A warm yellow bulb that turns on and dims in response to both sensors
+- Submersible pump | Gentle waves | Hidden under the land model
+- Toggle switch | Power on/off | Lets the user turn the mood light on and off
+- Power | 12 V adapter | External power supply
