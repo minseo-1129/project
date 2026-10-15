@@ -20,7 +20,7 @@ test('중복 항목과 이름 누락은 오류로 표시하고 위험한 링크�
 });
 const projects=JSON.parse(fs.readFileSync(new URL('../shared/projects.json',import.meta.url),'utf8'));
 test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 서로 연결된다',()=>{
-  assert.equal(projects.length,10);
+  assert.equal(projects.length,12);
   for(const project of projects){
     const dir=new URL(`../${project}/`,import.meta.url);
     const config=JSON.parse(fs.readFileSync(new URL('project.json',dir),'utf8'));
@@ -44,14 +44,14 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
     if(config.layout)assert.ok(config.type==='mobile'&&['flow','screen'].includes(config.layout),`${project}: layout`);
     const caseFields=parseContent(fs.readFileSync(new URL('case-study.md',dir),'utf8'),{requireTitle:false});
     const freeLayout=Object.keys(caseFields).some(key=>key.startsWith('case.section.'));
-    if(freeLayout)for(const key of Object.keys(caseFields).filter(key=>key.startsWith('case.'))){assert.ok(/^case\.(section\.[a-z0-9-]+|persona\.\w+|journey\.\w+|system\.\w+)$/.test(key),`${project}: free-layout field ${key}`);}
+    if(freeLayout)for(const key of Object.keys(caseFields).filter(key=>key.startsWith('case.'))){assert.ok(/^case\.(intro|section\.[a-z0-9-]+|persona\.\w+|journey\.\w+|system\.\w+)$/.test(key),`${project}: free-layout field ${key}`);}
     else for(const key of ['case.problem.lead','case.research.lead','case.insights','case.decisions','case.outcome.lead'])assert.ok(key in caseFields,`${project}: ${key}`);
     for(const item of listItems(caseFields['case.research.bars']?.split('\n').filter(l=>!l.startsWith('###')).join('\n')))assert.match(item,/: \d+$/,`${project}: bar ${item}`);
     for(const lang of ['content.en.md','case-study.en.md']){const url=new URL(lang,dir);if(fs.existsSync(url))parseContent(fs.readFileSync(url,'utf8'),{requireTitle:false});}
   }
 });
 test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=>{
-  for(const project of projects.filter(p=>p!=='cuppo')){
+  for(const project of projects.filter(p=>!['cuppo','sweetalk','forme'].includes(p))){
     const original=execFileSync('git',['show',`${originalCommit}:${project}/index.html`]);
     assert.deepEqual(fs.readFileSync(new URL(`../${project}/original-prototype.html`,import.meta.url)),original,project);
   }

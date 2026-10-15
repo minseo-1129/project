@@ -221,3 +221,11 @@ Users set the time of the ritual themselves
 ## org <!-- org -->
 
 SOTA Labs
+
+## subtitle <!-- subtitle -->
+
+AI-Powered Outfit Coordination Service
+
+## tagline <!-- tagline -->
+
+Recognises clothing from photos to suggest styling.

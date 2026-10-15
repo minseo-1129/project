@@ -1,0 +1,32 @@
+{
+  "type": "web",
+  "component": null,
+  "width": 1280,
+  "height": 720,
+  "defaultScreen": "video",
+  "keyScreens": [
+    "video"
+  ],
+  "evidenceScreen": "video",
+  "prototype": "video.html",
+  "flows": [
+    {
+      "id": "call",
+      "screens": [
+        "video"
+      ]
+    }
+  ],
+  "showPrototype": false,
+  "caseStudy": true,
+  "availability": [
+    [
+      "video",
+      true
+    ],
+    [
+      "case",
+      true
+    ]
+  ]
+}

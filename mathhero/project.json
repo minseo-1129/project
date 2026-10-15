@@ -29,5 +29,19 @@
     }
   ],
   "showPrototype": false,
-  "caseStudy": true
+  "caseStudy": true,
+  "availability": [
+    [
+      "prototype",
+      false
+    ],
+    [
+      "screens",
+      true
+    ],
+    [
+      "case",
+      true
+    ]
+  ]
 }

@@ -5,7 +5,7 @@
 
 ## 프로젝트 이름 <!-- title -->
 
-MATHHERO
+Math Hero
 
 ## 한 줄 소개 <!-- summary -->
 
@@ -13,7 +13,7 @@ MATHHERO
 
 ## 담당 역할 <!-- role -->
 
-프로덕트 디자이너
+게임 디자인
 
 ## 프로젝트 기간 <!-- period -->
 
@@ -194,3 +194,11 @@ Gallery / page navigation
 ## 소속 <!-- org -->
 
 웅진
+
+## 부제 <!-- subtitle -->
+
+인터랙티브 AI 수학 게임
+
+## 태그라인 <!-- tagline -->
+
+초등 수학을 개인에게 맞춰 연습하는 적응형 게임.

@@ -8,10 +8,8 @@ A sci-fi maths game for primary pupils: solve problems to stop the hacker group 
 
 An ordinary pupil is asked by the AI robot ‘Kobi’ to enter virtual-reality dimensions, where solving maths problems removes malware, installs security tools and catches hackers. The game ends once all six dimensions, Year 1 to Year 6, are safe.
 
-- **Unity** · Platform — Built in Unity
-- **First person** · View — First-person view
-- **Sci-fi** · Genre — Science fiction
-- **6 dimensions** · Stages — Easy, normal and hard in each
+- Platform | View | Genre | Stages
+- Unity | First person | Sci-fi | 6 dimensions × easy · normal · hard
 
 ## Flow <!-- case.section.flow -->
 

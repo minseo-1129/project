@@ -281,3 +281,11 @@ The taste profile sits at the top of the card, with the glossary attached as a w
 ## org <!-- org -->
 
 UMC
+
+## subtitle <!-- subtitle -->
+
+Multisensory Wine Guide for Beginners
+
+## tagline <!-- tagline -->
+
+Maps taste & aroma profiles into interactive visuals.

@@ -8,11 +8,11 @@ A mobile coffee journal that turns each cup into a card, letting users capture r
 
 ## role <!-- role -->
 
-PM · UX Research · UI Design
+PM · UI Design
 
 ## period <!-- period -->
 
-2023 · original project / restoration period to be confirmed
+2023 · Personal project
 
 ## tools <!-- tools -->
 
@@ -269,3 +269,15 @@ Provides one-tap access to coffee logging through a widget.
 ## screen.widget.body <!-- screen.widget.body -->
 
 New · one-tap logging
+
+## subtitle <!-- subtitle -->
+
+Illustration-based Coffee Diary
+
+## tagline <!-- tagline -->
+
+Visual diary specifically for coffee intake and notes.
+
+## org <!-- org -->
+
+—

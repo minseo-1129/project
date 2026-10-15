@@ -5,7 +5,7 @@
 
 ## 프로젝트 이름 <!-- title -->
 
-KIKETCH
+Kiketch
 
 ## 한 줄 소개 <!-- summary -->
 
@@ -134,3 +134,11 @@ Gallery / page navigation
 ## 소속 <!-- org -->
 
 Dodam
+
+## 부제 <!-- subtitle -->
+
+유아를 위한 인터랙티브 그림책
+
+## 태그라인 <!-- tagline -->
+
+아이가 그린 그림이 상황에 맞는 소리와 함께 움직입니다.

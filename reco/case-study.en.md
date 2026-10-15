@@ -59,11 +59,8 @@ Aggregated, the expectations collapse into one agent with check-ins at its centr
 
 Every check-in starts with mood, branches by the kind of day, and ends with a consented summary.
 
-1. **Mood check** — “How was your day?” (1–5 scale or weather analogy)
-2. **One of four reflections** — Chosen by the kind of day
-3. **Summary and consent** — “Here’s what we talked about. Is it okay to share this with your link worker?”
+@flow down
 
-- **Session reflection** · Session — After a session with a link worker // “How did the session go for you today?” // Log agreed plans and outcomes · recall session notes
-- **Goal reflection** · Typical day — No session, activity or homework // “What did you do today to move closer to your goal?” // Track steps toward goals · sustain motivation and accountability
-- **Activity reflection** · Activity day — After an activity or homework // “Did you go to the activity? What went well or didn’t?” // Mood and activity effects · reasons for not attending · likes and dislikes
-- **Session planning** · Before a session — The day before a scheduled session // “You’ve got a session tomorrow. What would you expect?” // Clarify expectations · review progress and feedback
+- Mood check — “How was your day?” (1–5 scale or weather analogy)
+- **Session reflection** · Session — After a session with a link worker // “How did the session go for you today?” // Log agreed plans and outcomes · recall session notes || **Goal reflection** · Typical day — No session, activity or homework // “What did you do today to move closer to your goal?” // Track steps toward goals · sustain motivation and accountability || **Activity reflection** · Activity day — After an activity or homework // “Did you go to the activity? What went well or didn’t?” // Mood and activity effects · reasons for not attending · likes and dislikes || **Session planning** · Before a session — The day before a scheduled session // “You’ve got a session tomorrow. What would you expect?” // Clarify expectations · review progress and feedback
+- Summary and consent — “Here’s what we talked about. Is it okay to share this with your link worker?”

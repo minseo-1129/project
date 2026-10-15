@@ -111,8 +111,30 @@ Inside a section, each blank-line-separated block is read like this:
 | `- **Title** · tag — text // second line` | Cards (`·` tag and `//` line breaks are optional) |
 | `1. **Title** — text` | A numbered list |
 | `![Caption](assets/…)` | An image; consecutive images form a two-column gallery |
-| `@persona` / `@journey` / `@system` | The persona, journey or design system written in the `case.persona.*` / `case.journey.*` / `case.system.*` fields |
+| `@persona` / `@journey` / `@system` | The persona, journey or design system written in the `case.persona.*` / `case.journey.*` / `case.system.*` fields (`case.persona.photo` adds a portrait) |
 | `@wide` | Lets the section use the wide 1120 column |
+| `#### Heading` | A bold dark sub-heading |
+| `※ note` | A small mono caption (sources, legends) |
+| `- **Title** · tag — text => **Goal** · tag — text` | A card leading to a dark card (requirement → goal, problem → response) |
+| `- **Title** · tag — text >> **87%** caption` | Card rows with an aside on the right |
+| `1. **Title** — ![…](…) // text // Input · … // Output · … // Basis · …` | A row with an image beside it, input/output boxes and a caption |
+| A card line that is only `**82%**` | Shown as a big figure inside the card |
+
+A line on its own before a list changes how that list is drawn:
+
+| Directive | The list below becomes |
+|---|---|
+| `@columns` | A vertical column chart (`- 2002: 8조`) |
+| `@rows` | Rows with a source on the right (`- headline — outlet · date`) |
+| `@meter` (`max=100 mark=68` optional) | Value bars with the figure on the right (`- name: 9,600만 원 — caption`) |
+| `@flow` / `@flow down` | Boxes joined by arrows; ` \|\| ` puts boxes side by side in one step; the last step is dark |
+| `@lanes` | Journey lanes (`- **Stage** — “thought” // → feature`) |
+| `@canvas` | A business model canvas (nine cards in the usual order) |
+| `@stack` | Pairs stacked vertically, or images one per row instead of a gallery |
+
+### Case-study header
+
+`subtitle` and `tagline` in `content.md` appear under the title (without them the summary shows). `case.intro` in `case-study.md` is a large lead line above the first section. `"availability"` in `project.json` sets the pills under the meta row, e.g. `[["prototype", false], ["screens", true], ["case", true]]` (`video` is also available); without it, the pills follow `showPrototype`. The number beside the breadcrumb is the project's position in `shared/projects.json`.
 
 In the English file, write every section in full: a section in `case-study.en.md` replaces the Korean one as a whole.
 

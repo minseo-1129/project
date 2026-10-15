@@ -86,30 +86,6 @@ Anticipate what you can do.
 
 Introduces the self-reflection experience and guides users into the conversation
 
-## screen.branch.title <!-- screen.branch.title -->
-
-Choose a context
-
-## screen.branch.body <!-- screen.branch.body -->
-
-Choose a concrete starting point for the conversation.
-
-## screen.branch.caption <!-- screen.branch.caption -->
-
-Lets users choose a context to begin their self-reflection
-
-## screen.compare.title <!-- screen.compare.title -->
-
-Interpretation order
-
-## screen.compare.body <!-- screen.compare.body -->
-
-Compare differences in the order information appears.
-
-## screen.compare.caption <!-- screen.compare.caption -->
-
-Compares showing suggested patterns upfront or on request by changing the order of the same content.
-
 ## scope <!-- scope -->
 
 Web prototype
@@ -117,3 +93,11 @@ Web prototype
 ## org <!-- org -->
 
 Imperial College London
+
+## subtitle <!-- subtitle -->
+
+Reflective Companion for Social Prescribing
+
+## tagline <!-- tagline -->
+
+Intermediary tool to address mental healthcare gaps.

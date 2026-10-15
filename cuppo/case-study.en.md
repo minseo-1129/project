@@ -19,16 +19,13 @@ Palette and type
 
 The illustration inventory
 
-Eight menus × two temperatures make the base cups, and the topping choice calls a variant file. Cup drawings are not stored; a rule picks them: `hot/ice + menu`, plus whipped cream (`_wip`) or extra ice (`_ice`). Americano has no whipped variant, so it keeps the base cup.
+Eight menus × two temperatures make the base cups, and the topping choice calls a variant file: hot/ice + menu, plus whipped cream (_wip) and extra ice (_ice).
 
-![Eight menus, hot and iced: Americano, latte, cappuccino, mocha, hot chocolate, caramel cream, matcha latte, strawberry latte](assets/case-study/illustrations.png)
+@stack
 
-### Variant rule
+![Eight menus × hot and iced cups](assets/case-study/illustrations.png)
 
-![Variants: latte → whipped (_wip), iced latte → extra ice (_ice)](assets/case-study/variants.png)
-
-
-
+![Variants — base → whipped, iced → extra ice](assets/case-study/variants.png)
 
 ## case.system.palette <!-- case.system.palette -->
 

@@ -10,7 +10,7 @@ People in their 20s say they need health care, and then drop the apps built for 
 - > 50% — of health-application users drop off within the first month
 - 20s — the only age group whose perceived health worsened after COVID-19
 
-Sources · Korean health-perception survey, MZ health-management survey and health-app retention data, as cited in the team's research deck.
+※ Sources · Korean health-perception survey, MZ health-management survey and health-app retention data, as cited in the team's research deck.
 
 ## Research <!-- case.section.research -->
 
@@ -62,9 +62,11 @@ Same question, different depth.
 
 The two flows differ in what it takes to set a goal and track behaviour: the number of questions asked and the depth of interpretation.
 
-1. **Both** — Answer the same five-stage question
-2. **Beginner / Advanced** — Beginners pick one routine from four predefined options // Advanced users describe what is stalling and configure a schedule
-3. **Then** — Both meet the forecast
+@flow
+
+- Both — Answer the same five-stage question
+- Beginner — Picks one routine from four predefined options || Advanced — Describes what is stalling and configures a schedule
+- Then — **Both meet the forecast**
 
 - **Explainable AI** — Each suggestion explains why it was made and what to expect by keeping the health behaviour, so users stay motivated by understanding, not by being told.
 
@@ -74,10 +76,12 @@ Wizard of Oz · 6 participants · both flows each
 
 Everyone experienced both prototypes, then completed the SUS and a debrief interview.
 
-### SUS score · 0–100
+@meter max=100 mark=68
 
-- Beginner flow: 90
-- Advanced flow: 86.25
+- Beginner flow: 90.0
+- Advanced flow: 86.3
+
+※ SUS 0–100 · white line = 68 benchmark
 
 Both flows scored well above the 68 benchmark. Split by group, each flow did best with the people it was built for: experienced users gave the advanced flow 96, while beginners gave it 82.
 
@@ -91,9 +95,9 @@ The forecast was the only feature both user types rated highly on usefulness and
 
 ### Effects participants named unprompted
 
-- **Motivation to stick to the plan** · 01 — Imagining a predicted version of themselves kept them going.
-- **Planning their week around it** · 02 — The forecast became a reason to plan.
-- **Seeing themselves objectively** · 03 — Change became something they could see.
+- **Motivation to stick to the plan** · 01
+- **Planning their week around it** · 02
+- **Seeing themselves objectively** · 03
 
 - “Imagining a predicted version of myself was what would keep me going.” — Participant · Beginner
 - “I would hold a self-set period precisely because the end was visible.” — Participant · Advanced
@@ -105,3 +109,7 @@ The forecast was the only feature both user types rated highly on usefulness and
 3. **Comparison** — Beginners preferred simple visuals and comparison with people like them; experienced users preferred comparing against their past selves. // “Being rated among people like me is really nice.”
 4. **Forecast** — Both groups rated it highly. They asked to see change over longer, adjustable periods, weekly or monthly. // “Seeing the change clearly would change my motivation itself.”
 5. **Content recommendation** — Participants liked that recommendations draw on their own behaviour and goals, not just what they viewed recently. They asked for saving and notifications. // “Not having to search YouTube would be great.”
+
+## case.intro <!-- case.intro -->
+
+A stage-aware health coaching app for Android.
