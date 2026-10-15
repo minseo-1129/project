@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A mobile prototype for registering clothes and browsing the outfit suggested each night, plus your wardrobe data.
+A mobile service that builds a digital wardrobe from clothing photos and suggests outfits each night.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ A wardrobe that links registering with daily use
 
 ## context.body <!-- context.body -->
 
-The original HTML is built from four flows: building the wardrobe, the nightly outfit, the wardrobe as inventory, and changing the arrival time.
+Four connected flows cover clothing registration, nightly outfit suggestions, wardrobe overview, and notification.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Go straight from photo to registration
 
 ## decision.body <!-- decision.body -->
 
-The build's design notes focus on reducing friction when registering and putting the outfit at the centre of the home screen.
+Simplified clothing registration through photo capture and made nightly outfit suggestions the focus of the system.
 
 ## guide.title <!-- guide.title -->
 
@@ -72,7 +72,7 @@ Not a one-line carousel — the whole screen is the outfit
 
 ## flow.flow3.title <!-- flow.flow3.title -->
 
-Wardrobe as inventory
+Wardrobe overview
 
 ## flow.flow3.body <!-- flow.flow3.body -->
 
@@ -80,7 +80,7 @@ ID, colour, size and times worn read in one grid
 
 ## flow.flow4.title <!-- flow.flow4.title -->
 
-Change the arrival time
+Notification settings
 
 ## flow.flow4.body <!-- flow.flow4.body -->
 
@@ -88,11 +88,11 @@ Users set the time of the ritual themselves
 
 ## screen.onboarding.title <!-- screen.onboarding.title -->
 
-Value proposition
+Introduction
 
 ## screen.onboarding.caption <!-- screen.onboarding.caption -->
 
-No choices on the first screen — straight to the camera
+Minimises initial choices and directs users to photo capture to simplify onboarding.
 
 ## screen.onboarding.body <!-- screen.onboarding.body -->
 
@@ -100,11 +100,11 @@ No choices on the first screen — straight to the camera
 
 ## screen.capture.title <!-- screen.capture.title -->
 
-Photograph clothes
+Capture clothing
 
 ## screen.capture.caption <!-- screen.capture.caption -->
 
-No choices on the first screen — straight to the camera
+Makes photo capture the starting point for building a digital wardrobe.
 
 ## screen.capture.body <!-- screen.capture.body -->
 
@@ -112,11 +112,11 @@ No choices on the first screen — straight to the camera
 
 ## screen.confirm.title <!-- screen.confirm.title -->
 
-Check AI recognition
+Review AI results
 
 ## screen.confirm.caption <!-- screen.confirm.caption -->
 
-No choices on the first screen — straight to the camera
+Lets users review AI-recognised clothing details before registration.
 
 ## screen.confirm.body <!-- screen.confirm.body -->
 
@@ -124,11 +124,11 @@ No choices on the first screen — straight to the camera
 
 ## screen.home.title <!-- screen.home.title -->
 
-Three outfits for tonight
+Tonight’s three outfits
 
 ## screen.home.caption <!-- screen.home.caption -->
 
-Not a one-line carousel — the whole screen is the outfit
+Places three nightly outfit suggestions at the centre of the home screen.
 
 ## screen.home.body <!-- screen.home.body -->
 
@@ -136,11 +136,11 @@ Not a one-line carousel — the whole screen is the outfit
 
 ## screen.outfit.title <!-- screen.outfit.title -->
 
-Outfit detail
+Outfit details
 
 ## screen.outfit.caption <!-- screen.outfit.caption -->
 
-Not a one-line carousel — the whole screen is the outfit
+Shows the items in each suggested outfit on a dedicated detail screen.
 
 ## screen.outfit.body <!-- screen.outfit.body -->
 
@@ -148,11 +148,11 @@ Not a one-line carousel — the whole screen is the outfit
 
 ## screen.shop.title <!-- screen.shop.title -->
 
-Suggest missing items
+Missing item
 
 ## screen.shop.caption <!-- screen.shop.caption -->
 
-Not a one-line carousel — the whole screen is the outfit
+Highlights missing wardrobe items needed to complete a suggested outfit.
 
 ## screen.shop.body <!-- screen.shop.body -->
 
@@ -164,7 +164,7 @@ Wardrobe grid
 
 ## screen.wardrobe.caption <!-- screen.wardrobe.caption -->
 
-ID, colour, size and times worn read in one grid
+Arranges wardrobe items in a grid for quick browsing.
 
 ## screen.wardrobe.body <!-- screen.wardrobe.body -->
 
@@ -172,11 +172,11 @@ ID, colour, size and times worn read in one grid
 
 ## screen.item.title <!-- screen.item.title -->
 
-Item spec
+Item details
 
 ## screen.item.caption <!-- screen.item.caption -->
 
-ID, colour, size and times worn read in one grid
+Shows each item’s ID, colour, size, and wear count.
 
 ## screen.item.body <!-- screen.item.body -->
 
@@ -188,7 +188,7 @@ Wardrobe report
 
 ## screen.my.caption <!-- screen.my.caption -->
 
-ID, colour, size and times worn read in one grid
+Summarises wardrobe items and wear counts to show how clothes are used.
 
 ## screen.my.body <!-- screen.my.body -->
 
@@ -200,7 +200,7 @@ Notification history
 
 ## screen.notify.caption <!-- screen.notify.caption -->
 
-Users set the time of the ritual themselves
+Keeps outfit notifications in one place for reviewing past suggestions.
 
 ## screen.notify.body <!-- screen.notify.body -->
 
@@ -208,11 +208,11 @@ Users set the time of the ritual themselves
 
 ## screen.time.title <!-- screen.time.title -->
 
-Change arrival time
+Change notification time
 
 ## screen.time.caption <!-- screen.time.caption -->
 
-Users set the time of the ritual themselves
+Lets users adjust when outfit suggestions arrive to fit their daily routine.
 
 ## screen.time.body <!-- screen.time.body -->
 

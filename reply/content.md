@@ -9,7 +9,7 @@ REPLY
 
 ## 한 줄 소개 <!-- summary -->
 
-취향과 보유 재료로 레시피를 고르고, 내 속도로 조리하며, 플레이리스트에 보관하고 공유하는 1인 가구를 위한 레시피 서비스.
+취향과 보유 재료에 맞는 레시피를 찾고, 음성 인식으로 내 속도에 맞춰 조리하며 레시피를 저장하는 1인 가구용 큐레이션 서비스.
 
 ## 담당 역할 <!-- role -->
 
@@ -45,7 +45,7 @@ Mobile prototype
 
 ## 배경 설명 <!-- context.body -->
 
-요리 관심도와 숙련도가 다른 20대 참여자 5명을 인터뷰했음. 남은 재료를 활용하고, 낯선 계량 단위를 이해하며, 조리 중 화면을 쉽게 조작하려는 요구를 바탕으로 레플리를 설계했음.
+요리 관심도와 숙련도가 다른 20대 5명을 인터뷰함. 남은 재료 활용, 낯선 계량 단위 이해, 조리 중 화면 조작의 어려움을 확인함.
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -65,7 +65,7 @@ Mobile prototype
 
 ## 플로우 · flow.flow1.title <!-- flow.flow1.title -->
 
-온보딩 · 취향과 부엌 조건
+취향·부엌 설정
 
 ## 플로우 · flow.flow1.body <!-- flow.flow1.body -->
 
@@ -73,7 +73,7 @@ Mobile prototype
 
 ## 플로우 · flow.flow2.title <!-- flow.flow2.title -->
 
-보유 재료에서 레시피 선택
+재료로 레시피 찾기
 
 ## 플로우 · flow.flow2.body <!-- flow.flow2.body -->
 
@@ -81,7 +81,7 @@ Mobile prototype
 
 ## 플로우 · flow.flow3.title <!-- flow.flow3.title -->
 
-내 속도로 따라 하는 쿡 모드
+내 속도로 조리하기
 
 ## 플로우 · flow.flow3.body <!-- flow.flow3.body -->
 
@@ -165,7 +165,7 @@ Mobile prototype
 
 ## 홈 · 카드 설명 <!-- screen.home.caption -->
 
-내 재료로 만들 수 있는 요리를 먼저
+내 재료로 만들 수 있는 요리를 먼저 제공
 
 ## 홈 · 상세 설명 <!-- screen.home.body -->
 
