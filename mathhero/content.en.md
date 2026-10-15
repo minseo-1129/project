@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A learning prototype: explore game scenes, solve maths problems, and go from the result straight into reviewing mistakes.
+A sci-fi maths game for primary pupils, where solving problems stops a hacker group. UI planned from my room to the map, problem solving and the clan.
 
 ## role <!-- role -->
 
