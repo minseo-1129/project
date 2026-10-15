@@ -8,11 +8,11 @@ A personalised health-routine service that adapts goals, tracking, and informati
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Researcher
 
 ## period <!-- period -->
 
-[Project period]
+Sep 2024 – Dec 2024
 
 ## tools <!-- tools -->
 
@@ -473,3 +473,7 @@ Highlights the full Stage 5 report made available to experienced users.
 ## flow.advanced.me.body <!-- flow.advanced.me.body -->
 
 Lets users reassess their stage and adjust information density at any time.
+
+## org <!-- org -->
+
+Yonsei University

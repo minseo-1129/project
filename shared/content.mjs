@@ -20,6 +20,13 @@ export function parseContent(source, {requireTitle = true} = {}) {
   return fields;
 }
 
+/** Heading text of each field, keyed by field ID (`## Heading <!-- key -->`). */
+export function parseHeadings(source) {
+  const labels = Object.create(null);
+  for (const match of source.replace(/\r\n?/g, '\n').matchAll(/^##\s+(.+?)\s+<!--\s*([A-Za-z0-9_.-]+)\s*-->\s*$/gm)) labels[match[2]] = match[1].trim();
+  return labels;
+}
+
 export function safeHref(value) {
   const href = value.trim();
   if (!href || /[\u0000-\u0020\u007f\\]/.test(href)) return null;

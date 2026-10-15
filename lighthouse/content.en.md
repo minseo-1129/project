@@ -8,11 +8,11 @@ A 3D web prototype of a lighthouse-inspired humidifier and mood light, combining
 
 ## role <!-- role -->
 
-[Your role]
+Product Designer
 
 ## period <!-- period -->
 
-[Project period]
+Mar 2020 – Jun 2020
 
 ## tools <!-- tools -->
 
@@ -117,3 +117,7 @@ Separates the components to show how they are arranged and connected.
 ## scope <!-- scope -->
 
 Web prototype
+
+## org <!-- org -->
+
+Yonsei University

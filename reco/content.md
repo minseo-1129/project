@@ -13,11 +13,11 @@ reco
 
 ## 담당 역할 <!-- role -->
 
-[담당 역할을 입력해 주세요]
+UX/UI 리서처
 
 ## 프로젝트 기간 <!-- period -->
 
-[프로젝트 기간을 입력해 주세요]
+2024.09 – 현재
 
 ## 사용 도구 <!-- tools -->
 
@@ -118,3 +118,7 @@ Web prototype
 ## 웹 상태 3 · caption <!-- screen.compare.caption -->
 
 동일한 정보의 배치 순서를 바꿔 패턴 해석을 먼저 제시할 때와 요청 시 제시할 때를 비교함.
+
+## 소속 <!-- org -->
+
+Imperial College London

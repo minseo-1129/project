@@ -28,5 +28,6 @@
       ]
     }
   ],
-  "showPrototype": false
+  "showPrototype": false,
+  "caseStudy": true
 }

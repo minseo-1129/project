@@ -8,11 +8,11 @@ A mobile service that builds a digital wardrobe from clothing photos and suggest
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Designer
 
 ## period <!-- period -->
 
-[Project period]
+Dec 2019 – Dec 2020
 
 ## tools <!-- tools -->
 
@@ -217,3 +217,7 @@ Lets users adjust when outfit suggestions arrive to fit their daily routine.
 ## screen.time.body <!-- screen.time.body -->
 
 Users set the time of the ritual themselves
+
+## org <!-- org -->
+
+SOTA Labs

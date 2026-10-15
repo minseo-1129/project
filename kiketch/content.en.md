@@ -8,11 +8,11 @@ A children's drawing experience: explore pop-up book scenes and fill the gaps wi
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Designer
 
 ## period <!-- period -->
 
-[Project period]
+Jun 2019 – Nov 2019
 
 ## tools <!-- tools -->
 
@@ -121,3 +121,7 @@ Sticks in place and moves a little
 ## screen.filled.body <!-- screen.filled.body -->
 
 Sticks in place and moves a little
+
+## org <!-- org -->
+
+Dodam

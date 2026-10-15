@@ -1,99 +1,49 @@
 # CUPPO case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Concept <!-- case.section.concept -->
 
-The repository README describes restoring a 2023 personal project as an HTML prototype. The screens connect menu, recipe, logging and the taste report.
+One cup, one card
 
-## case.problem.points <!-- case.problem.points -->
+A coffee journal that lays hand-drawn coffee illustrations on a paper texture and treats each landscape card like a frame of film. Restoring the 2023 personal project as an HTML prototype, the values were carried over from the original assets as they were, and only the misaligned hierarchy was tidied.
 
-[- Factor — explanation, 2–4 lines]
+## Color & type <!-- case.section.color-type -->
 
-## case.research.lead <!-- case.research.lead -->
+Palette and type
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+@system
 
-## case.research.bars <!-- case.research.bars -->
 
-[### Group title · TAG, then - Item: number]
+## Illustration <!-- case.section.illustration -->
 
-## case.research.numbers <!-- case.research.numbers -->
+The illustration inventory
 
-[- 87% — caption, 1–3 items]
+Eight menus × two temperatures make the base cups, and the topping choice calls a variant file. Cup drawings are not stored; a rule picks them: `hot/ice + menu`, plus whipped cream (`_wip`) or extra ice (`_ice`). Americano has no whipped variant, so it keeps the base cup.
 
-## case.research.table <!-- case.research.table -->
+![Eight menus, hot and iced: Americano, latte, cappuccino, mocha, hot chocolate, caramel cream, matcha latte, strawberry latte](assets/case-study/illustrations.png)
 
-[- Hypothesis | Result | Data]
+### Variant rule
 
-## case.research.quotes <!-- case.research.quotes -->
+![Variants: latte → whipped (_wip), iced latte → extra ice (_ice)](assets/case-study/variants.png)
 
-[- “Quote” — source]
 
-## case.research.observed <!-- case.research.observed -->
 
-[- One observation per line]
-
-## case.research.source <!-- case.research.source -->
-
-[Source · material name]
-
-## case.persona.name <!-- case.persona.name -->
-
-[Name]
-
-## case.persona.profile <!-- case.persona.profile -->
-
-[- Age: 23]
-
-## case.persona.quote <!-- case.persona.quote -->
-
-[“The persona's voice” — **highlight**]
-
-## case.persona.goals <!-- case.persona.goals -->
-
-[- One goal per line]
-
-## case.persona.frustrations <!-- case.persona.frustrations -->
-
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-[### One design rule, with its evidence below]
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### Seeing the same record in several ways
-The same coffee records can be browsed in the feed, grid, calendar and search. The original cup drawings, paper assets and light / dark screens are reused.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A logging app that keeps each cup of coffee as one card. Choose a menu and recipe, then look back through the feed, gallery and calendar.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-No rounded corners, no shadows, no gradients — just paper, hairlines and cup drawings. Instead of the original Goyang typeface the prototype uses **Jost** (Latin and numerals) + **Gowun Dodum** (Korean) + **IBM Plex Mono** (caption numerals). The full palette, type and components are in the [CUPPO Design System](CUPPO%20Design%20System.dc.html).
 
 ## case.system.palette <!-- case.system.palette -->
 
-- `#F3F3F1` Paper
-- `#2C2C2B` Paper (dark)
+- `#F3F3F1` Paper · light
+- `#2C2C2B` Paper · dark
 - `#1F1F1E` Ink
-- `#EDEDEA` Ink (dark)
+- `#EDEDEA` Ink · dark
+- `#333333` Film dark
 - `#8A5A3A` Coffee brown
-- `#C08A5C` Brown (dark)
-- `#333333` Film
+- `#C08A5C` Brown · dark
+
+## case.system.type <!-- case.system.type -->
+
+- 22 / 300 | Jost · FEBRUARY | Month header
+- 20 / 400 | Gowun Dodum · 오후 3시의 리셋 | Record title
+- 16 / 400 | Gowun Dodum · 오늘의 커피는? | Body, inputs
+- 14 / 400 | Card title · label · button | Mixed
+- 12 / 400 | #아메리카노 · 2022.02.10 | Tags, dates, captions (numbers in IBM Plex Mono)

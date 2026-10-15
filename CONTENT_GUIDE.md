@@ -14,7 +14,7 @@
 
 | What you want to change | File |
 |---|---|
-| Project name, one-line summary, role, period, tools, screen descriptions | `<project>/content.md` |
+| Project name, one-line summary, role, period, tools or organisation (`org`, shown instead of tools when filled), screen descriptions | `<project>/content.md` |
 | Case study body (problem, research, decisions, outcome, …) | `<project>/case-study.md` |
 | English version | `<project>/content.en.md`, `<project>/case-study.en.md` |
 | Preview type, screen order, flows, themes, design system link | `<project>/project.json` |
@@ -57,7 +57,7 @@ Write whose task this project helps with, and what that task is.
 
 The order is fixed: **Problem → Research → (Persona) → Insights → (Journey) → Key decisions → (Impact) → Outcome → (Design system)**.
 
-Outcome is the closing takeaway: one or two paragraphs of prose, with no screens. Supporting images belong in Key decisions, and screens stay in the prototype. Add a screen to a decision with `- Screen:` only when the decision needs it.
+Outcome is the closing takeaway: one or two paragraphs of prose, with no screens. It stays hidden until it is written. Supporting images belong in Key decisions, and screens stay in the prototype. Add a screen to a decision with `- Screen:` only when the decision needs it.
 
 - Blocks in parentheses are optional and appear only when filled in.
 - Numbers (`01 · PROBLEM`) are assigned automatically, in display order.
@@ -87,6 +87,34 @@ Outcome is the closing takeaway: one or two paragraphs of prose, with no screens
 
 - **Research:** fill at least one of bars, numbers, table, quotes or observed. If all are blank, the "add a result" box appears.
 - **Labels in English files:** use `Before/After/Evidence/Screen` and `Mood/Moment/Pain/Opportunity` in place of the Korean labels.
+
+## Free-layout case studies (`case.section.*`)
+
+A case study can instead follow its own layout, like the frames on the Figma page `05 · Case studies`. As soon as `case-study.md` contains a `case.section.<id>` field, the page shows only those sections, in file order, numbered automatically. The heading text becomes the block label.
+
+```md
+## Market <!-- case.section.market -->
+
+The first paragraph is the section's lead sentence.
+```
+
+Inside a section, each blank-line-separated block is read like this:
+
+| Write | Shows as |
+|---|---|
+| A paragraph | The first one is the lead; later ones are body text |
+| `### Small heading` | A small blue heading (above a chart it becomes the chart title; `Title · TAG` adds a tag) |
+| `- name: 19` lines | A bar chart |
+| `- 87% — caption — source` | Big numbers (the value must be short and contain a digit) |
+| `- “quote” — speaker` | Quotes |
+| `- a \| b \| c` lines | A table; the first line is the header, `-` leaves a cell empty |
+| `- **Title** · tag — text // second line` | Cards (`·` tag and `//` line breaks are optional) |
+| `1. **Title** — text` | A numbered list |
+| `![Caption](assets/…)` | An image; consecutive images form a two-column gallery |
+| `@persona` / `@journey` / `@system` | The persona, journey or design system written in the `case.persona.*` / `case.journey.*` / `case.system.*` fields |
+| `@wide` | Lets the section use the wide 1120 column |
+
+In the English file, write every section in full: a section in `case-study.en.md` replaces the Korean one as a whole.
 
 ## English version
 

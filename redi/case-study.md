@@ -1,109 +1,68 @@
 # REDI 케이스 스터디
 
-<!-- 블록 순서: Problem → Research → Persona → Insights → Journey → Key decisions → Impact → Outcome → Design system -->
-<!-- [대괄호]로만 된 항목은 빈칸으로 취급합니다. 필수 블록(Problem·Research·Insights·Key decisions·Outcome)은 빈칸 안내가 보이고, 선택 블록은 내용을 채우면 나타납니다. -->
-<!-- 작성 형식은 CONTENT_GUIDE.md의 '케이스 스터디 블록'을 참고하세요. -->
+<!-- 자유 배치 케이스 스터디: `case.section.<id>` 섹션이 파일 순서대로 나옵니다. 작성 형식은 CONTENT_GUIDE.md의 '자유 배치 케이스 스터디'를 참고하세요. -->
 
-## 문제 한 문장 <!-- case.problem.lead -->
+## Context <!-- case.section.context -->
 
-현재 구현은 목표 설정, 하루 기록, 생활·정서 통계, 주간 리포트, 데이터 관리 화면으로 구성됩니다. 센서 데이터는 프로토타입 예시입니다.
+왜 청소년의 하루였나
 
-## 문제를 만든 요인 <!-- case.problem.points -->
+청소년의 하루를 센서(패시브)와 자기기록(액티브) 두 경로로 모으고, 모은 것을 주간 리포트로 되돌려주는 서비스.
 
-[- 요인 — 설명 형식으로 2~4줄]
+코로나 이후 청소년의 생활 리듬은 성인보다 크게 흔들렸다. 수면과 좌식 시간이 늘고, 신체활동과 사회적 교류가 줄었다.
 
-## 리서치 요약 <!-- case.research.lead -->
+생활 불균형은 신체와 정서 양쪽에 남는다. 불규칙한 수면과 결식은 체중 문제로, 지속된 비활동은 골격·심폐 발달 저해로 이어진다. 동시에 일상과 관계의 단절이 심리사회적 발달을 가로막는다.
 
-[조사 방법(설문·인터뷰·테스트)과 참여자, 확인한 가설을 한두 문장으로]
+## Approach <!-- case.section.approach -->
 
-## 결과 · 막대그래프 <!-- case.research.bars -->
+기록 부담은 줄이고, 기록할 이유는 분명하게
 
-[### 그룹 제목 · ENGLISH TAG 아래에 - 항목: 숫자]
+- **친숙한 모양** — 기록 화면을 이미 익숙한 시간표 모양으로 만들었다.
+- **자주 기록하는 영역** — 청소년에게 가장 중요하고 지배적인 영역으로 구성했다.
+- **돌려받는 보상** — 기록의 보상으로 주간 리포트를 준다.
 
-## 결과 · 큰 숫자 <!-- case.research.numbers -->
+- **생활 4영역** — 수면 · 여가 · 공부 · 운동
+- **정서 3지표** — 우울 · 불안 · 스트레스
 
-[- 87% — 설명 형식, 1~3개]
+## System <!-- case.section.system -->
 
-## 결과 · 표 <!-- case.research.table -->
+사용자 데이터 수집에 대한 보상은 리포트로
 
-[- 가설 | 결과 | 데이터]
+센서가 알아서 남기는 것과 사용자가 직접 남기는 것을 합쳐, 생활 4영역과 정서 3지표로 환산하고, 주 1회 리포트로 돌려준다.
 
-## 결과 · 인용 <!-- case.research.quotes -->
+1. **Passive** — 센서 · 위치, 움직임, 화면 사용, 주변 조도
+2. **Active** — 자기기록 · 시간표, 하루 일기, 정서
+3. **Translate** — 생활 4영역 · 정서 3지표
+4. **Return** — 주 1회 리포트
 
-[- “인용문” — 출처]
+## Study <!-- case.section.study -->
 
-## 결과 · 관찰 <!-- case.research.observed -->
+2주 기록 후 8명 청소년 대상 사용성 평가
 
-- 수면과 공부는 일간 요약을 선호했다 — 습관을 만들려면 매일의 값이 필요했다
-- 학기·방학에 따라 생활 리듬이 크게 달라진다는 진술이 반복됐다
-- 시스템이 인과를 단정하면 청소년은 자기 경험과 어긋나는 결론을 받아들이지 않았다
+- **여자 청소년 8명** · Participants — 만 12–17세
+- **2주 연속 시간일지** · Duration — 1시간 단위 24칸 × 7일
+- **반구조적 인터뷰 + 카드소팅** · Method — 약 40분
 
-## 결과 · 출처 <!-- case.research.source -->
+## Findings <!-- case.section.findings -->
 
-출처 · REDI 원본 프로토타입의 화면별 노트. 연구 방법과 참여자 수는 원자료로 확인이 필요합니다.
+1. **수치화 된 원자료보다 해석을 원했다** — 참여자들은 모든 생활 영역에서 원자료(raw data)보다 각 영역에 특화된 해석 요인을 압도적으로 자주 "도움됨"으로 분류했다. // **So the screen must** · 숫자와 그래프가 아니라 해석이 화면의 첫 줄에 와야 한다. 시스템이 해석의 부담을 대신 진다.
+2. **선호하는 요약 방식이 영역마다 달랐다** — 수면과 공부는 일간 요약을, 운동과 여가는 주간 요약을 선호했다. 수면·공부는 습관화가 목적이라 매일의 총량이 중요했고, 운동은 이번 주에 한 번이라도 했는가가 중요했다. // **So the screen must** · 하이라이트를 영역마다 다른 시간 창으로 그린다. 하나로 통일된 요약 방식과 리포트 구성은 오히려 해석을 어렵게 한다.
+3. **행동 평가 기준의 소재지가 달랐다** — 운동과 공부는 개인 목표를, 여가는 객관적 권장 기준을 선호했다. 운동은 주 2회 30분이면 충분하다고 보았지만 권장 기준은 매일 1시간이었고, 여가는 스스로 적정선을 판단하기 어려워했다. // **So the screen must** · 같은 막대 차트라도 영역마다 기준선이 달라야 한다. 운동의 기준선은 권장량이 아니라 내 목표이고, 상태 라벨은 과다가 아니라 목표 달성이다.
 
-## 페르소나 이름 <!-- case.persona.name -->
+## Digital phenotypes <!-- case.section.phenotypes -->
 
-[이름]
+수집한 디지털 피노타입
 
-## 페르소나 정보 <!-- case.persona.profile -->
+- Sensor | User exposure | Feature | Calculation
+- GPS | - | - | Every 5 minutes.
+- - | N | State (Stationary and Transition) | We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states. In this study, we set this threshold to 1 km/h.
+- - | N | Location Variance | We defined location variance to measure the variability in a participant’s GPS location. To calculate location variance, we used only the location data of stationary states.
+- - | N | Entropy | We defined entropy to measure the variability of the time the participant spent at the location clusters.
+- - | N | Normalized Entropy | We defined normalized entropy by dividing the entropy by its maximum value, which is the logarithm of the total number of clusters.
+- - | N | Home Stay | Home stay measured the percentage of time a participant spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
+- - | N | Circadian Movement | If a participant left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
+- Accelerometer | N | Activity | We set the accelerometer sampling rate to 5 Hz. To compress the raw data, we only logged aggregated statistics for each 120-second window. The threshold was empirically set to 0.1 m/s².
+- - | Y | Step Counter | For each detected step we recorded its timestamp, then computed the total number of steps during nighttime (11 PM–7 AM) and daytime (7 AM–11 PM) per day.
+- Camera | N | Ambient Light | The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
+- - | Y | EMA | The number of EMAs fired each day varied, but on average 8 EMAs per day were administered.
 
-[- 나이: 23세]
-
-## 페르소나 한마디 <!-- case.persona.quote -->
-
-[“페르소나의 목소리” — **강조할 부분**]
-
-## 페르소나 목표 <!-- case.persona.goals -->
-
-[- 목표 한 줄씩]
-
-## 페르소나 불편 <!-- case.persona.frustrations -->
-
-[- 불편 한 줄씩]
-
-## 인사이트 <!-- case.insights -->
-
-### 리포트는 판단하지 않는다
-겹쳐 볼 축은 사용자가 고르고, 문장은 관계를 묻는 형태로 끝납니다.
-
-### 수집되는 것을 먼저 보여준다
-패시브 수집이 절반인 플랫폼에서는 무엇이 수집되는지와 끌 수 있는지가 가장 먼저 필요합니다.
-
-## 저니 요약 <!-- case.journey.lead -->
-
-[계기부터 재사용까지, 이탈이 가장 큰 구간 한 문장]
-
-## 저니 단계 <!-- case.journey.stages -->
-
-[### 단계 · ENGLISH 아래에 - 감정: 기대 · 4 / - 순간: / - 불편: / - 기회:]
-
-## 핵심 결정 <!-- case.decisions -->
-
-### 시간의 덩어리가 보이는 기록
-기존 HTML은 하루 그리드를 인접한 사각 셀로 표현합니다. 기록되지 않은 회색 시간과 기록한 시간을 구분하고, 통계와 리포트에서 다시 확인합니다.
-- 이전: [원본에서 어떻게 했는지]
-- 이후: [바꾼 뒤 무엇이 달라졌는지]
-- 근거: [이 결정을 만든 발견]
-
-## 임팩트 <!-- case.impact -->
-
-[- PUBLICATION: … / - AWARD: … / - METRIC: …]
-
-## 결과 · takeaway <!-- case.outcome.lead -->
-
-생활과 정서를 직접 기록하고, 센서 추정을 확인하며 통계와 주간 리포트로 돌아보는 모바일 프로토타입.
-
-[확인된 성과가 있다면 근거와 함께 추가해 주세요.]
-
-## 디자인 시스템 <!-- case.system.body -->
-
-[팔레트·타입·컴포넌트 원칙을 작성해 주세요. 원본에서 반드시 살린 요소가 있다면 함께 적어 주세요.]
-
-## 디자인 시스템 · 팔레트 <!-- case.system.palette -->
-
-[- `#HEX` 이름 형식으로 한 줄에 하나씩 작성하면 색 칩으로 표시됩니다.]
-
-## 디자인 시스템 · 타입 <!-- case.system.type -->
-
-[- 역할 | 글꼴 | 크기 / 행간]
+User exposure: Y = 사용자에게 보이는 값 · N = 백그라운드에서만 쓰는 값

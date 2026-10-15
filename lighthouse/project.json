@@ -41,5 +41,6 @@
       "selector": "[data-mode=\"exploded\"]"
     }
   ],
-  "nativeViewport": true
+  "nativeViewport": true,
+  "caseStudy": true
 }

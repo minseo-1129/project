@@ -1,97 +1,62 @@
 # KIKETCH case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Market <!-- case.section.market -->
 
-Instead of typing, the build offers picture-based chapter choice and drawing on paper. The finished drawing returns to the scene the child was exploring.
+A kids' industry worth at least ₩40 trillion, and growing fast
 
-## case.problem.points <!-- case.problem.points -->
+### Korean kids' industry · KRW trillion
 
-[- Factor — explanation, 2–4 lines]
+- 2002: 8
+- 2007: 19
+- 2012: 27
+- 2017*: 40
 
-## case.research.lead <!-- case.research.lead -->
+KRW trillion · *2017 is an estimate · Source: KT Economic Research Institute
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+- “Catch the ₩40 trillion kids' market”… IT firms add AI and AR — Yonhap News · 2018.05
+- “Growing kids' content market… major firms' sales up 40–60% in three years” — Hankyoreh · 2019.07
+- “Catch the ‘eight-pocket’ generation… the kids' market grows despite the slump” — MoneyS · 2019.09
+- “October's stock-market hot topics: kids, bio, foldables” — Edaily · 2019.11
 
-## case.research.bars <!-- case.research.bars -->
+## Competition <!-- case.section.competition -->
 
-[### Group title · TAG, then - Item: number]
+No service combined emotional stimulation, printing and child-friendliness
 
-## case.research.numbers <!-- case.research.numbers -->
+- Criterion | Kiketch | Play-Doh Touch | PuppetPals | Catch Mind | YouTube Kids | KT Kidsland | Dubrain
+- Emotional stimulation | ○ | × | × | × | △ | × | ×
+- Story | ○ | × | ○ | × | ○ | ○ | ○
+- Participatory | ○ | × | × | ○ | × | ○ | ○
+- Variety · extensibility | ○ | × | △ | △ | ○ | ○ | ○
+- Printing service | ○ | × | × | × | × | × | ×
+- Uses real photos | ○ | ○ | ○ | × | × | ○ | ×
+- Child-friendly | ○ | ○ | × | × | △ | △ | △
 
-[- 87% — caption, 1–3 items]
+○ yes · △ partly · × no · Source: SURF pitch deck
 
-## case.research.table <!-- case.research.table -->
+## Approach <!-- case.section.approach -->
 
-[- Hypothesis | Result | Data]
+The experience KIKETCH set out to give
 
-## case.research.quotes <!-- case.research.quotes -->
+1. Everything, A to Z, is for the child
+2. Focus on emotional development
+3. Leave memories for a lifetime
 
-[- “Quote” — source]
+## Concept <!-- case.section.concept -->
 
-## case.research.observed <!-- case.research.observed -->
+A picture the child finishes themselves
 
-[- One observation per line]
+The child picks an empty sticky note in a scene, draws on paper, and the drawing joins the scene to complete the picture.
 
-## case.research.source <!-- case.research.source -->
+![01 · A scene with empty sticky notes](assets/case-study/01-scene.jpg)
 
-[Source · material name]
+![02 · Picking a sticky note](assets/case-study/02-pick.jpg)
 
-## case.persona.name <!-- case.persona.name -->
+![03 · Drawing with paper and coloured pencils](assets/case-study/03-draw.jpg)
 
-[Name]
+![04 · The drawn sun and tree placed in the scene](assets/case-study/04-done.jpg)
 
-## case.persona.profile <!-- case.persona.profile -->
+### A character of their own to love
 
-[- Age: 23]
-
-## case.persona.quote <!-- case.persona.quote -->
-
-[“The persona's voice” — **highlight**]
-
-## case.persona.goals <!-- case.persona.goals -->
-
-[- One goal per line]
-
-## case.persona.frustrations <!-- case.persona.frustrations -->
-
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-[### One design rule, with its evidence below]
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### Keep the drawing inside the story
-Drawing doesn't end in the sketchbook — it fills the empty spot on the hill. A small movement after placing it tells the child the drawing has entered the scene.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A children's drawing experience: explore pop-up book scenes and fill the gaps with drawings of your own. Bookshelf, chapters, hill, sketchbook and the finished scene follow one another.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+![A character standing on the pop-up book — the child's drawings move and react with life](assets/case-study/05-character.jpg)

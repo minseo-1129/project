@@ -1,97 +1,87 @@
 # PICO case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Problem <!-- case.section.problem -->
 
-The original HTML is built from four flows: building the wardrobe, the nightly outfit, the wardrobe as inventory, and changing the arrival time.
+Both stakeholders, users and online shops, had a gap
 
-## case.problem.points <!-- case.problem.points -->
+- **No mobile wardrobe for organising the clothes you own** · User pain point — **82%** · “When buying clothes, it is hard to choose items that go with what I already have, and finding a shop that sells them is a hassle.” // Survey · 127 people in their 10s–30s
+- **No mobile platform where shops recommend and style products from a user's wardrobe** · Online shop pain point — **85%** · “Online fashion platform fees are a burden, and without knowing what customers actually own, our recommendations are limited.” // Survey · 37 online shops
 
-[- Factor — explanation, 2–4 lines]
+## Journey <!-- case.section.journey -->
 
-## case.research.lead <!-- case.research.lead -->
+A prospective user's journey: features drawn from thoughts and feelings
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+- Stage | Thoughts & feelings | Feature derived
+- Motivation | “Blind date next week! What do I wear? My wardrobe is a mess. :(” | -
+- Launch | “Registering clothes in a few clicks is really handy :)” | Registering the wardrobe must be simple.
+- Engage | “I get a notification when the outfit is ready? No need to keep checking.” “Public reviews help me pick a shop.” “They looked at each of my clothes. I like it, so I'll buy what they recommend.” | Let users review shops to help others choose. Notify users when an outfit is ready.
+- After use | “Signing up to shops was annoying; now I can buy straight from PICO without joining!” | Purchases must not jump to the shop's page. One PICO account should reach every shop.
 
-## case.research.bars <!-- case.research.bars -->
+## Business model <!-- case.section.business-model -->
 
-[### Group title · TAG, then - Item: number]
+Free for users, 3% of sales for shops: the business model canvas of a two-sided platform
 
-## case.research.numbers <!-- case.research.numbers -->
+- **Key partners** — Naver CLOVA AI · AWS · university fashion departments · investors
+- **Key activities** — Building the app · acquiring users and shops · improving service quality
+- **Key resources** — Intellectual assets (papers, AI technology) · team capability
+- **Value propositions** — Convenience · satisfaction · higher sales · time saved · fun · portability
+- **Customer relationships** — Personalised recommendations · personalised styling
+- **Channels** — Direct channel · app platform
+- **Customer segments** — Men in their 20s–30s with little interest in fashion who struggle to put outfits together // Menswear shops that want customer insight and closer contact with customers
+- **Cost structure** — Staff · app build and maintenance · marketing · operations · technology investment
+- **Revenue streams** — 3% commission · data report subscriptions · premium styling subscriptions
 
-[- 87% — caption, 1–3 items]
+Source · PICO business plan (start-up competition deck)
 
-## case.research.table <!-- case.research.table -->
+## Market <!-- case.section.market -->
 
-[- Hypothesis | Result | Data]
+Inside a ₩43 trillion fashion market, wardrobe-based styling on mobile was an empty space.
 
-## case.research.quotes <!-- case.research.quotes -->
+- ₩43tn — Total market · Korean fashion market — Statistics Korea
+- ₩10tn — Serviceable market · online fashion — Statistics Korea
+- ₩6tn — Core market · mobile fashion — Croquis (Zigzag)
 
-[- “Quote” — source]
+### Demand check
 
-## case.research.observed <!-- case.research.observed -->
+- 88% — of users would use it · survey of 127 people in their 10s–30s
+- 78% — of shops would use it · survey of 37 online shops
 
-[- One observation per line]
+The team signed MOUs with 50 partners, including 35 online shops, and secured promotion channels with 930k YouTube subscribers and 300k Instagram followers.
 
-## case.research.source <!-- case.research.source -->
+## Competition <!-- case.section.competition -->
 
-[Source · material name]
+No service combined wardrobe management, shop recommendations and purchase
 
-## case.persona.name <!-- case.persona.name -->
+- Feature | pico | Zigzag | Odd Concepts | Otjang | Omnious | Codi book
+- Personal wardrobe | ○ | × | × | ○ | × | △
+- AI image processing | ○ | × | ○ | × | ○ | ×
+- Shop recommendations | ○ | ○ | ○ | × | ○ | ×
+- Styling | ○ | ○ | ○ | ○ | ○ | ○
+- Purchase link | ○ | ○ | ○ | × | × | ○
 
-[Name]
+○ yes · △ partly · × no
 
-## case.persona.profile <!-- case.persona.profile -->
+### STP
 
-[- Age: 23]
+- **Segmentation** — The mobile fashion platform market
+- **Targeting** — Men in their 20s–30s who struggle to put outfits together
+- **Positioning** — A platform that manages your wardrobe and runs from free styling to purchase
 
-## case.persona.quote <!-- case.persona.quote -->
+### SWOT
 
-[“The persona's voice” — **highlight**]
+- **Strength** — Lower commission than other services // VC and AI infrastructure from earlier start-up experience
+- **Weakness** — Low awareness // Effectiveness not yet proven
+- **Opportunity** — Personalised styling no one offered // A fashion market with room to expand
+- **Threat** — Existing AI services moving into fashion
 
-## case.persona.goals <!-- case.persona.goals -->
+## Revenue model <!-- case.section.revenue -->
 
-[- One goal per line]
+Attracting shops with a 3% commission, below other online fashion platforms (5–13%)
 
-## case.persona.frustrations <!-- case.persona.frustrations -->
+- ₩96m — **Commission** — shops selling ₩8m a month × 20% through PICO × 3% × 2,000 shops
+- ₩50m — **Data subscriptions** — wardrobe data reports at ₩100k a month × 500 shops
+- ₩11.9m — **Premium styling** — styling by social-media influencers at ₩11,900 a month × 1,000 users
 
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-[### One design rule, with its evidence below]
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### Go straight from photo to registration
-The build's design notes focus on reducing friction when registering and putting the outfit at the centre of the home screen.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A mobile prototype for registering clothes and browsing the outfit suggested each night, plus your wardrobe data.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+Together the three streams were projected at **₩150m or more a month** (business-plan estimate).

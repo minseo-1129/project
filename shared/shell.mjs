@@ -1,4 +1,4 @@
-import {parseContent, renderMarkdown, isBlank, listItems, splitItem, subsections} from './content.mjs';
+import {parseContent, parseHeadings, renderMarkdown, isBlank, listItems, splitItem, subsections} from './content.mjs';
 
 // One shell for the projects index, prototype pages and case studies.
 // Layout follows the Figma file "Portfolio Shell Masters v2".
@@ -13,19 +13,19 @@ document.documentElement.lang = lang;
 
 const UI = {
   ko: {library: 'RESEARCH / PROTOTYPE LIBRARY', projects: 'PROJECTS', prototype: 'PROTOTYPE', caseStudy: 'CASE STUDY', selected: 'SELECTED WORK', count: n => `${n} PROJECTS`,
-    indexTitle: 'Projects', indexLead: '지난 UI/UX 작업을 실제로 눌러 볼 수 있는 프로토타입으로 복원하고, 각 설계의 배경과 결정을 케이스 스터디로 정리했습니다.',
+    indexTitle: 'Projects', 
     openPrototype: '프로토타입 ↗', openCase: '케이스 스터디 ↗', back: '← 전체 프로젝트', toCase: '케이스 스터디 →', toPrototype: '프로토타입 →',
     flows: '플로우', flowScreens: '이 플로우의 화면', allScreens: '전체 화면', allScenes: '전체 장면', states: '상태', theme: '테마', prev: '이전 화면', next: '다음 화면', prevStage: '이전 단계', nextStage: '다음 단계',
-    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', todo: '[작성 필요]',
+    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', org: 'ORGANISATION', todo: '[작성 필요]',
     mobile: 'MOBILE PROTOTYPE', gallery: 'GALLERY PROTOTYPE', web: 'WEB EXPERIENCE', error: '페이지를 불러오지 못했어요',
     errorHint: '로컬에서는 HTTP 서버로 열어 주세요. GitHub에서는 콘텐츠 파일의 제목과 항목 ID를 확인해 주세요.', resultSlot: '결과 블록(막대 · 숫자 · 표 · 인용 · 관찰) 중 하나 이상을 case-study.md에 작성해 주세요.',
     hypothesis: 'HYPOTHESIS', result: 'RESULT', data: 'DATA', observed: 'OBSERVED', goals: 'GOALS', frustrations: 'FRUSTRATIONS', pain: 'PAIN', opportunity: 'OPPORTUNITY', before: 'BEFORE', after: 'AFTER', basis: '근거',
     system: '디자인 시스템 보드 열기 ↗', light: 'Light', dark: 'Dark'},
   en: {library: 'RESEARCH / PROTOTYPE LIBRARY', projects: 'PROJECTS', prototype: 'PROTOTYPE', caseStudy: 'CASE STUDY', selected: 'SELECTED WORK', count: n => `${n} PROJECTS`,
-    indexTitle: 'Projects', indexLead: 'Past UI/UX work restored as prototypes you can actually click through, with case studies on the reasoning and decisions behind each design.',
+    indexTitle: 'Projects', 
     openPrototype: 'Prototype ↗', openCase: 'Case study ↗', back: '← All projects', toCase: 'Case study →', toPrototype: 'Prototype →',
     flows: 'Flows', flowScreens: 'Screens in this flow', allScreens: 'All screens', allScenes: 'All scenes', states: 'States', theme: 'Theme', prev: 'Previous screen', next: 'Next screen', prevStage: 'Previous stage', nextStage: 'Next stage',
-    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', todo: '[To be written]',
+    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', org: 'ORGANISATION', todo: '[To be written]',
     mobile: 'MOBILE PROTOTYPE', gallery: 'GALLERY PROTOTYPE', web: 'WEB EXPERIENCE', error: 'This page could not be loaded',
     errorHint: 'Open the site through an HTTP server locally. On GitHub, check the headings and field IDs in the content files.', resultSlot: 'Add at least one result (bars, numbers, table, quotes or observations) to case-study.md.',
     hypothesis: 'HYPOTHESIS', result: 'RESULT', data: 'DATA', observed: 'OBSERVED', goals: 'GOALS', frustrations: 'FRUSTRATIONS', pain: 'PAIN', opportunity: 'OPPORTUNITY', before: 'BEFORE', after: 'AFTER', basis: 'Evidence',
@@ -43,6 +43,7 @@ const thumbnailObserver = new IntersectionObserver(entries => {
   }
 }, {rootMargin: '200px'});
 const frames = new Set();
+const sectionLabels = Object.create(null);
 let config, content, selected, selectedFlow, theme = 'light';
 let controls = [];
 let detail = {};
@@ -544,6 +545,108 @@ function systemBlock(body) {
   if (filled('case.system.body')) body.append(copy('case.system.body', 'body-text'));
   if (config.designSystem) body.append(link(UI.system, config.designSystem, 'btn btn-outline'));
 }
+// ---------- free-layout case study ----------
+// A case study made of `case.section.<id>` fields renders those sections in file order.
+// Each body is read block by block (blank-line separated); see CONTENT_GUIDE.md for the patterns.
+const isStat = item => { const [value, caption] = splitItem(item, /\s+—\s+/); return caption !== undefined && value.length <= 14 && /\d/.test(value) && !value.startsWith('**'); };
+const isQuote = item => /^[“"‘]/.test(item) && /\s—\s/.test(item);
+const isCard = item => /^\*\*[^*]+\*\*(\s+·\s+[^—]+)?\s+—\s+/.test(item);
+const isBar = item => /^.+:\s+-?\d+(\.\d+)?%?$/.test(item);
+function richList(lines, heading) {
+  const ordered = lines.every(line => /^\d+\.\s/.test(line));
+  const items = lines.map(line => line.replace(/^(\d+\.|[-*])\s+/, '').trim());
+  if (!ordered && items.every(item => item.includes(' | '))) {
+    const wrap = el('div', 'gtable-wrap');
+    const table = el('table', 'gtable');
+    items.forEach((item, index) => {
+      const row = el('tr');
+      for (const cell of splitItem(item, /\s+\|\s+/)) { const node = el(index === 0 ? 'th' : 'td'); renderMarkdown(cell === '-' ? '' : cell, node); row.append(node); }
+      table.append(row);
+    });
+    if (splitItem(items[0], /\s+\|\s+/).length > 3) table.classList.add('is-wide');
+    wrap.append(table);
+    return wrap;
+  }
+  if (!ordered && items.every(isQuote)) {
+    const node = el('div', 'quotes');
+    for (const item of items) { const [quote, source] = item.split(/\s+—\s+(?=[^—]*$)/); const box = el('figure', 'quote'); box.append(el('blockquote', '', quote), el('figcaption', 'mono', source || '')); node.append(box); }
+    return node;
+  }
+  if (!ordered && items.every(isStat)) {
+    const node = el('div', 'hero-numbers');
+    for (const item of items) { const [value, ...rest] = item.split(/\s+—\s+/); const cell = el('div', 'hero-number'); cell.append(el('p', 'hero-value', value)); for (const line of rest) cell.append(md(line, 'small')); node.append(cell); }
+    return node;
+  }
+  if (!ordered && items.every(isBar)) {
+    const rows = items.map(item => { const [name, raw] = item.split(/:\s+(?=[^:]*$)/); return {name, raw, value: parseFloat(raw) || 0}; });
+    const max = Math.max(...rows.map(row => row.value), 1);
+    const box = el('div', 'bar-group');
+    if (heading) { const [title, tag] = heading.split(/\s+·\s+/); const head = el('div', 'bar-head'); head.append(el('p', 'strong', title), el('p', 'mono', tag || '')); box.append(head); }
+    for (const row of rows) { const line = el('div', 'bar-row'); const track = el('span', 'bar-track'); const fill = el('span', `bar-fill${row.value === max ? ' is-top' : ''}`); fill.style.width = `${row.value / max * 100}%`; track.append(fill); line.append(el('span', 'bar-name', row.name), track, el('span', 'mono', row.raw)); box.append(line); }
+    return box;
+  }
+  if (!ordered && items.every(isCard)) {
+    const node = el('div', 'cards');
+    for (const item of items) {
+      const [, title, tag, rest] = item.match(/^\*\*([^*]+)\*\*(?:\s+·\s+([^—]+?))?\s+—\s+([\s\S]*)$/);
+      const card = el('div', 'card');
+      if (tag) card.append(el('p', 'mono blue', tag));
+      card.append(el('p', 'strong', title));
+      for (const line of rest.split(/\s+\/\/\s+/)) card.append(md(line, 'small'));
+      node.append(card);
+    }
+    return node;
+  }
+  return hairList(items, item => {
+    const index = items.indexOf(item);
+    const card = item.match(/^\*\*([^*]+)\*\*\s+—\s+([\s\S]*)$/);
+    const row = el('div', ordered ? 'numbered' : '');
+    const col = el('div');
+    if (card) { col.append(el('p', 'strong', card[1])); for (const line of card[2].split(/\s+\/\/\s+/)) col.append(md(line, 'small')); } else col.append(md(item));
+    if (ordered) row.append(el('span', 'mono blue', pad(index + 1)));
+    row.append(col);
+    return row;
+  });
+}
+function richBody(source, body) {
+  let first = true;
+  let heading = null;
+  let gallery = null;
+  for (const raw of source.split(/\n\s*\n/)) {
+    const block = raw.trim();
+    if (!block || /^@wide$/.test(block)) continue;
+    if (block === '@persona') { personaBlock(body); first = false; continue; }
+    if (block === '@journey') { journeyBlock(body); first = false; continue; }
+    if (block === '@system') { systemBlock(body); first = false; continue; }
+    const head = block.match(/^###\s+(.+)$/);
+    if (head) { heading = head[1]; gallery = null; const [title, tag] = heading.split(/\s+·\s+/); const node = el('div', 'sub-head'); node.append(el('p', 'mono blue', tag ? `${title} · ${tag}` : title)); body.append(node); first = false; continue; }
+    if (/^!\[[^\]]*\]\([^)]+\)$/.test(block)) {
+      if (!gallery) { gallery = el('div', 'gallery'); body.append(gallery); }
+      gallery.append(...md(block).children);
+      gallery.classList.toggle('is-multi', gallery.children.length > 1);
+      first = false;
+      continue;
+    }
+    gallery = null;
+    const lines = block.split('\n');
+    if (lines.every(line => /^(\d+\.|[-*])\s/.test(line))) {
+      const list = richList(lines, heading);
+      if (list.classList.contains('bar-group')) {
+        // Consecutive charts share one grid; the chart carries its own heading.
+        if (heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
+        let grid = body.lastElementChild;
+        if (!grid?.classList.contains('bar-groups')) { grid = el('div', 'bar-groups'); body.append(grid); }
+        grid.append(list);
+      } else body.append(list);
+    } else body.append(md(block, first ? 'lead' : 'body-text'));
+    first = false;
+  }
+}
+function freeSections() {
+  return Object.keys(content).filter(key => key.startsWith('case.section.') && !isBlank(content[key]));
+}
+function freeHeading(key) { return sectionLabels[key] || key.slice('case.section.'.length); }
+
 // Required blocks always render (with prompts); optional blocks appear once written.
 function caseStudy() {
   const blocks = [
@@ -554,9 +657,19 @@ function caseStudy() {
     ['JOURNEY', journeyBlock, subsections(content['case.journey.stages']).length > 0, true],
     ['KEY DECISIONS', decisionsBlock, true],
     ['IMPACT', impactBlock, listItems(content['case.impact']).length > 0],
-    ['OUTCOME', outcomeBlock, true],
+    // Outcome stays hidden until the takeaway is written, so a public page never shows the prompt.
+    ['OUTCOME', outcomeBlock, filled('case.outcome.lead')],
     ['DESIGN SYSTEM', systemBlock, filled('case.system.body') || filled('case.system.palette')],
   ].filter(([, , shown]) => shown);
+  const free = freeSections();
+  if (free.length) return free.map((key, index) => {
+    const wide = /(^|\n)@wide\s*($|\n)/.test(content[key]);
+    const node = el('section', `block free-block${wide ? ' block-wide' : ''}`);
+    const body = el('div', 'block-body');
+    richBody(content[key], body);
+    node.append(el('p', 'block-label', `${pad(index + 1)} · ${freeHeading(key).toUpperCase()}`), body);
+    return node;
+  });
   return blocks.map(([name, build, , wide], index) => {
     const node = el('section', `block${wide ? ' block-wide' : ''}`);
     const body = el('div', 'block-body');
@@ -567,7 +680,8 @@ function caseStudy() {
 }
 function metaRow() {
   const node = el('dl', 'meta-row');
-  for (const [key, name] of [['role', UI.role], ['period', UI.time], ['tools', UI.tools]]) { const item = el('div'); item.append(el('dt', 'mono', name), el('dd', isBlank(content[key]) ? 'is-todo' : '', text(key, UI.todo))); node.append(item); }
+  // Organisation replaces Tools when it is filled in.
+  for (const [key, name] of [['role', UI.role], ['period', UI.time], filled('org') ? ['org', UI.org] : ['tools', UI.tools]]) { const item = el('div'); item.append(el('dt', 'mono', name), el('dd', isBlank(content[key]) ? 'is-todo' : '', text(key, UI.todo))); node.append(item); }
   return node;
 }
 function casePage() {
@@ -576,7 +690,7 @@ function casePage() {
     pageHead(`${text('title').toUpperCase()} · ${UI.caseStudy}`, text('title'), 'summary'),
     metaRow(),
     ...caseStudy(),
-    footerNav(UI.toPrototype, './'),
+    footerNav(config.showPrototype === false ? null : UI.toPrototype, './'),
   ];
 }
 
@@ -605,7 +719,6 @@ async function renderProjects() {
     grid.append(card);
   }
   const head = pageHead(`${UI.selected} · ${UI.count(visible.length)}`, UI.indexTitle);
-  head.append(el('p', 'summary', UI.indexLead));
   const node = el('main', 'shell v2 index-page');
   node.append(topBar([[UI.library]]), head, grid);
   app.replaceChildren(node);
@@ -620,10 +733,13 @@ async function fetchText(path, required) {
 // Korean is the source. English replaces a field when it is written, or when
 // both are still prompts (so English pages show English prompts).
 async function loadContent(base, requireTitle = true) {
-  const ko = parseContent(await fetchText(`${base}.md`, true), {requireTitle});
+  const koSource = await fetchText(`${base}.md`, true);
+  const ko = parseContent(koSource, {requireTitle});
+  Object.assign(sectionLabels, parseHeadings(koSource));
   if (lang !== 'en') return ko;
   const source = await fetchText(`${base}.en.md`, false);
   if (!source) return ko;
+  Object.assign(sectionLabels, parseHeadings(source));
   for (const [key, value] of Object.entries(parseContent(source, {requireTitle: false}))) if (value && (!isBlank(value) || isBlank(ko[key]))) ko[key] = value;
   return ko;
 }

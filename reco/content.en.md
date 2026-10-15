@@ -8,11 +8,11 @@ A conversational agent supporting reflection on social prescribing experiences a
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Researcher
 
 ## period <!-- period -->
 
-[Project period]
+Sep 2024 – Present
 
 ## tools <!-- tools -->
 
@@ -113,3 +113,7 @@ Compares showing suggested patterns upfront or on request by changing the order 
 ## scope <!-- scope -->
 
 Web prototype
+
+## org <!-- org -->
+
+Imperial College London

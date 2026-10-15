@@ -1,118 +1,128 @@
 # WINNUS case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns; use Mood / Moment / Pain / Opportunity in the journey. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Hypotheses <!-- case.section.hypotheses -->
 
-The build links the taste quiz, tag browsing, wine cards, and logging and learning. Research figures can be added to the portfolio once checked against the source material.
+Three hypotheses, checked with a survey and interviews.
 
-## case.problem.points <!-- case.problem.points -->
+- **People feel a psychological barrier to wine** · Hypothesis 1 — 69% said they were interested, yet most saw wine as difficult and unfamiliar. // **87%** said “difficult”
+- **People choose wine on subjective cues** · Hypothesis 2 — Respondents relied on taste, aroma and food pairing rather than origin, ABV or vintage. // **92%** prefer subjective cues
+- **Recommendations must match personal taste** · Hypothesis 3 — To cut trial and error, they wanted wine that suits their taste, resembles one they enjoyed, or fits the occasion. // Trial-and-error is the cost
 
-[- Factor — explanation, 2–4 lines]
+## Thematic analysis <!-- case.section.thematic -->
 
-## case.research.lead <!-- case.research.lead -->
+Coded results
 
-I re-read the interview and thematic-coding data from the 2022 senior project. People recognised wine **through colour and words**, not numeric scales.
+### What creates cognitive load · COGNITIVE LOAD
 
-## case.research.bars <!-- case.research.bars -->
+- Too much information: 19
+- Hard to understand: 14
+- Unnecessary information: 10
+- Disorganised: 9
 
-### How people perceive taste and aroma · PERCEPTION
-- Words: 15
-- Colour cues: 11
-- Scale matrix: 1
+### Extra information wanted · ADDITIONAL INFO
 
-### Taste criteria mentioned · TASTE CRITERIA
-- Sweetness: 17
-- Astringency: 4
-- Acidity: 4
-- Body: 1
-
-### Information people wanted · ADDITIONAL INFO
 - Food pairing: 16
 - Occasion: 10
 - Tasting notes: 8
+- All of it: 2
 
-## case.research.numbers <!-- case.research.numbers -->
+### Taste information needed · TASTE CRITERIA
 
-[- 87% — caption, 1–3 items]
+- Sweetness: 17
+- Tannin: 4
+- Acidity: 4
+- Body: 1
 
-## case.research.table <!-- case.research.table -->
+### How taste and aroma are perceived · MEANS OF PERCEPTION
 
-[- Hypothesis | Result | Data]
+- Aroma · illustration: 18
+- Taste · sentences: 15
+- Taste · colour cues: 11
+- Taste · scale ticks: 1
 
-## case.research.quotes <!-- case.research.quotes -->
+## Persona <!-- case.section.persona -->
 
-[- “Quote” — source]
+@persona
 
-## case.research.observed <!-- case.research.observed -->
+## What the data said <!-- case.section.data -->
 
-[- One observation per line]
+1. **Don't use 1–5 scale matrices** — Scale matrices scored 1 for taste and 0 for scent.
+2. **Convey the senses with colour and illustration** — Colour cues and illustration outperformed numbers.
+3. **Show quantity implicitly** — Quantity was the top cognitive-load factor.
 
-## case.research.source <!-- case.research.source -->
+## Journey <!-- case.section.journey -->
 
-Source · WINNUS 2022 interview coding (original-prototype.html). Participant count and method need to be confirmed from the source material.
+@wide
+
+@journey
+
+## Problems → response <!-- case.section.response -->
+
+- **Difficult, technical terms** · Jargon — Body, tannin, acidity: unless you study them, you can neither describe nor understand wine. // → Everyday language first; technical terms open as captions on tap
+- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: knowing all of them before drinking is unrealistic. // → Three onboarding questions compute the classification instead
+- **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. // → One wine card holds it all, complete even as a screenshot
 
 ## case.persona.name <!-- case.persona.name -->
 
-[Name]
+Bae Ye-eun
 
 ## case.persona.profile <!-- case.persona.profile -->
 
-[- Age: 23]
+- Age: 23
+- Gender: Female
+- Occupation: Third-year undergraduate · Sociology
+- Trait: A wine beginner: curious, but without the words to describe her taste
 
 ## case.persona.quote <!-- case.persona.quote -->
 
-[“The persona's voice” — **highlight**]
+“Friends who know wine always pick something sweet I love. Why is whatever I pick just okay? **How do I even describe my taste?**”
 
 ## case.persona.goals <!-- case.persona.goals -->
 
-[- One goal per line]
+- I want to get to know wine without learning the jargon
+- I want recommendations even when I describe things my own way
+- I want to know what is similar to a wine I enjoyed
 
 ## case.persona.frustrations <!-- case.persona.frustrations -->
 
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-### Drop the 1–5 scale
-The scale matrix was mentioned only once as a way to perceive taste; colour cues (11) and words (15) dominated.
-
-### Put sweetness first
-Taste criteria mentioned: sweetness 17 · astringency 4 · acidity 4 · body 1.
-
-### Pairing first, expert notes last
-Requests for more information: food pairing 16 · occasion 10 · tasting notes 8. The top cause of cognitive load was too much information (19).
+- I don't know enough to describe wine
+- Tannin, acidity, body: the terms are too hard
+- My taste is nothing like what the shop staff recommend
 
 ## case.journey.lead <!-- case.journey.lead -->
 
-[From trigger to return: the stage where people drop off most, in one sentence]
+From the trigger to buying again. The biggest drop-off is at the moment of choosing.
 
 ## case.journey.stages <!-- case.journey.stages -->
 
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
+### Trigger · TRIGGER
+- Mood: Expectant
+- Moment: Friends are coming over; wine comes to mind to set the mood.
+- Pain: No criteria at all for what to buy
+- Opportunity: Taste onboarding sets a first criterion for you
 
-## case.decisions <!-- case.decisions -->
+### Search · SEARCH
+- Mood: Confused
+- Moment: Results list origins and grapes; time goes on digging through reviews.
+- Pain: Too much to take in (19) and hard to understand (14)
+- Opportunity: Tag search made only of words you know
 
-### Unfold information when it's needed
-The original HTML introduces each wine with one sentence and a colour cue first, with details opening on tap. The log-complete screen shows how the taste profile changed.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
+### Choice · CHOICE
+- Mood: Anxious
+- Moment: Picking by label design or price; staff recommendations miss.
+- Pain: Every purchase is a gamble
+- Opportunity: A wine card that shows taste first, in colour and sentences
 
-## Outcome · takeaway <!-- case.outcome.lead -->
+### Drinking · DRINKING
+- Mood: Enjoying
+- Moment: The wine was good, but she can't say why.
+- Pain: The experience isn't put into words, so it can't be repeated
+- Opportunity: Log only a sentence verdict and taste tags, with no star ratings
 
-A mobile service prototype for exploring wine through everyday taste words and logging what you drank.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+### Next bottle · NEXT
+- Mood: Starting over
+- Moment: A few weeks later, she can't remember the last wine's name.
+- Pain: Nothing accumulates, so she is back at the start of searching
+- Opportunity: Logs update the taste profile and shape the next recommendation

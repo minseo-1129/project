@@ -1,103 +1,68 @@
 # REDI case study — English
 
-<!-- English text for case-study.md. Same block syntax: use Before / After / Evidence / Screen in decisions, Mood / Moment / Pain / Opportunity in the journey. -->
+<!-- English text for case-study.md. Same section IDs and patterns. -->
 
-## case.problem.lead <!-- case.problem.lead -->
+## Context <!-- case.section.context -->
 
-The build covers goal setting, the daily log, life and mood statistics, the weekly report and data management. Sensor data is sample data.
+Why a teenager's day
 
-## case.problem.points <!-- case.problem.points -->
+A service that collects a teenager's day through two paths, sensors (passive) and self-logging (active), and gives it back as a weekly report.
 
-[- Factor — explanation, 2–4 lines]
+After COVID-19, teenagers' daily rhythms were shaken more than adults'. Sleep and sitting time went up; physical activity and social contact went down.
 
-## case.research.lead <!-- case.research.lead -->
+An unbalanced routine leaves marks on both body and mind. Irregular sleep and skipped meals lead to weight problems, and lasting inactivity holds back bone and cardiopulmonary development. At the same time, losing daily routines and relationships gets in the way of psychosocial development.
 
-[Methods (survey, interviews, tests), participants and the hypotheses you checked, in one or two sentences]
+## Approach <!-- case.section.approach -->
 
-## case.research.bars <!-- case.research.bars -->
+Less effort to log, a clearer reason to log
 
-[### Group title · TAG, then - Item: number]
+- **A familiar shape** — The logging screen takes the shape of a timetable teenagers already know.
+- **Areas they log often** — Built around the areas that matter most and take up most of a teenager's day.
+- **A reward in return** — Logging is rewarded with a weekly report.
 
-## case.research.numbers <!-- case.research.numbers -->
+- **Four life areas** — Sleep · leisure · study · exercise
+- **Three emotional indicators** — Depression · anxiety · stress
 
-[- 87% — caption, 1–3 items]
+## System <!-- case.section.system -->
 
-## case.research.table <!-- case.research.table -->
+Data collection is rewarded with a report
 
-[- Hypothesis | Result | Data]
+What the sensors record on their own and what users log themselves are combined, converted into four life areas and three emotional indicators, and returned as a weekly report.
 
-## case.research.quotes <!-- case.research.quotes -->
+1. **Passive** — Sensors · location, movement, screen use, ambient light
+2. **Active** — Self-logging · timetable, daily diary, emotions
+3. **Translate** — Four life areas · three emotional indicators
+4. **Return** — A weekly report
 
-[- “Quote” — source]
+## Study <!-- case.section.study -->
 
-## case.research.observed <!-- case.research.observed -->
+A usability study with 8 teenagers after two weeks of logging
 
-- Sleep and study were preferred as daily summaries — building a habit needs a value for every day
-- Statements that daily rhythm changes sharply between term time and holidays came up repeatedly
-- When the system asserted cause and effect, teenagers rejected conclusions that did not match their own experience
+- **8 teenage girls** · Participants — Aged 12–17
+- **Two-week time diary** · Duration — 24 hourly cells × 7 days
+- **Semi-structured interview + card sorting** · Method — About 40 minutes
 
-## case.research.source <!-- case.research.source -->
+## Findings <!-- case.section.findings -->
 
-Source · screen notes in the original REDI prototype. Research method and participant count need to be confirmed from the source material.
+1. **They wanted interpretation over raw numbers** — In every life area, participants marked area-specific interpretation as "helpful" far more often than raw data. // **So the screen must** · Put interpretation, not numbers and graphs, on the first line. The system carries the burden of interpreting.
+2. **The preferred summary differed by area** — Sleep and study were wanted as daily summaries, exercise and leisure as weekly ones. Sleep and study were about habit, so the daily total mattered; for exercise, what mattered was whether it happened at all that week. // **So the screen must** · Draw highlights with a different time window per area. One uniform summary and report layout makes interpretation harder.
+3. **Where the benchmark comes from differed** — Exercise and study were judged against personal goals, leisure against an objective recommendation. Participants felt twice a week for 30 minutes was enough exercise, while the recommendation was an hour a day; for leisure, they found it hard to judge the right amount themselves. // **So the screen must** · Give each area its own baseline, even on the same bar chart. For exercise, the baseline is my goal, not the recommended amount, and the status label is goal reached, not too much.
 
-## case.persona.name <!-- case.persona.name -->
+## Digital phenotypes <!-- case.section.phenotypes -->
 
-[Name]
+The digital phenotypes collected
 
-## case.persona.profile <!-- case.persona.profile -->
+- Sensor | User exposure | Feature | Calculation
+- GPS | - | - | Every 5 minutes.
+- - | N | State (Stationary and Transition) | We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states. In this study, we set this threshold to 1 km/h.
+- - | N | Location Variance | We defined location variance to measure the variability in a participant’s GPS location. To calculate location variance, we used only the location data of stationary states.
+- - | N | Entropy | We defined entropy to measure the variability of the time the participant spent at the location clusters.
+- - | N | Normalized Entropy | We defined normalized entropy by dividing the entropy by its maximum value, which is the logarithm of the total number of clusters.
+- - | N | Home Stay | Home stay measured the percentage of time a participant spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
+- - | N | Circadian Movement | If a participant left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
+- Accelerometer | N | Activity | We set the accelerometer sampling rate to 5 Hz. To compress the raw data, we only logged aggregated statistics for each 120-second window. The threshold was empirically set to 0.1 m/s².
+- - | Y | Step Counter | For each detected step we recorded its timestamp, then computed the total number of steps during nighttime (11 PM–7 AM) and daytime (7 AM–11 PM) per day.
+- Camera | N | Ambient Light | The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
+- - | Y | EMA | The number of EMAs fired each day varied, but on average 8 EMAs per day were administered.
 
-[- Age: 23]
-
-## case.persona.quote <!-- case.persona.quote -->
-
-[“The persona's voice” — **highlight**]
-
-## case.persona.goals <!-- case.persona.goals -->
-
-[- One goal per line]
-
-## case.persona.frustrations <!-- case.persona.frustrations -->
-
-[- One frustration per line]
-
-## case.insights <!-- case.insights -->
-
-### The report does not judge
-Users pick which axes to overlay, and sentences end as questions about the relationship.
-
-### Show what is collected first
-On a platform where half the data is collected passively, people first need to know what is collected and whether they can turn it off.
-
-## case.journey.lead <!-- case.journey.lead -->
-
-[From trigger to return: the stage where people drop off most, in one sentence]
-
-## case.journey.stages <!-- case.journey.stages -->
-
-[### Stage · EN, then - Mood: hopeful · 4 / - Moment: / - Pain: / - Opportunity:]
-
-## case.decisions <!-- case.decisions -->
-
-### A log where blocks of time are visible
-The original HTML draws the day grid as adjacent square cells, separates grey unlogged time from logged time, and brings it back in statistics and the report.
-- Before: [what the original did]
-- After: [what changed]
-- Evidence: [the finding behind this decision]
-
-## Outcome · takeaway <!-- case.outcome.lead -->
-
-A mobile prototype for logging daily life and mood yourself, confirming sensor estimates, and looking back through statistics and a weekly report.
-
-[Add verified results with their evidence.]
-
-## case.system.body <!-- case.system.body -->
-
-[Palette, type and component principles. Note any elements kept from the original.]
-
-## case.system.palette <!-- case.system.palette -->
-
-[- `#HEX` name, one per line, shows as colour chips.]
-
-## case.system.type <!-- case.system.type -->
-
-[- Role | Typeface | size / line height]
+User exposure: Y = shown to the user · N = used only in the background

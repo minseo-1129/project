@@ -4,11 +4,11 @@
 
 ## summary <!-- summary -->
 
-A logging app that keeps each cup of coffee as one card. Choose a menu and recipe, then look back through the feed, gallery and calendar.
+A mobile coffee journal that turns each cup into a card, letting users capture recipes and moments and revisit them through a feed, gallery and calendar.
 
 ## role <!-- role -->
 
-[Your role]
+PM · UX Research · UI Design
 
 ## period <!-- period -->
 
@@ -16,7 +16,7 @@ A logging app that keeps each cup of coffee as one card. Choose a menu and recip
 
 ## tools <!-- tools -->
 
-[Tools used (e.g. Figma · HTML/CSS)]
+Figma · HTML/CSS
 
 ## explore.title <!-- explore.title -->
 
@@ -36,7 +36,7 @@ One cup of coffee as one record
 
 ## context.body <!-- context.body -->
 
-The repository README describes restoring a 2023 personal project as an HTML prototype. The screens connect menu, recipe, logging and the taste report.
+A coffee entry combines a menu, recipe, photo and notes. The project explores how these details can be captured together and revisited over time.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Seeing the same record in several ways
 
 ## decision.body <!-- decision.body -->
 
-The same coffee records can be browsed in the feed, grid, calendar and search. The original cup drawings, paper assets and light / dark screens are reused.
+Turns each cup into a card, makes entries accessible through a feed, gallery, calendar and search, and summarises them in a taste report.
 
 ## guide.title <!-- guide.title -->
 
@@ -84,7 +84,7 @@ Launch
 
 ## screen.launch.caption <!-- screen.launch.caption -->
 
-App icon and loading asset as in the original
+Introduces CUPPO’s visual identity through its cup icon and loading screen.
 
 ## screen.launch.body <!-- screen.launch.body -->
 
@@ -96,7 +96,7 @@ Onboarding
 
 ## screen.onboarding.caption <!-- screen.onboarding.caption -->
 
-Three steps · features explained with illustrations
+Introduces key features through a three-step illustrated onboarding flow.
 
 ## screen.onboarding.body <!-- screen.onboarding.body -->
 
@@ -108,7 +108,7 @@ Empty state
 
 ## screen.empty.caption <!-- screen.empty.caption -->
 
-The coffee ring reused to show zero cups
+Uses a coffee stain illustration and a zero-cup count to make the empty state clear.
 
 ## screen.empty.body <!-- screen.empty.body -->
 
@@ -120,7 +120,7 @@ Card feed
 
 ## screen.feed.caption <!-- screen.feed.caption -->
 
-Core screen of the original · sticky month header
+Groups coffee cards by month, with sticky headers for chronological browsing.
 
 ## screen.feed.body <!-- screen.feed.body -->
 
@@ -132,7 +132,7 @@ Grid gallery
 
 ## screen.grid.caption <!-- screen.grid.caption -->
 
-The same records as three-column thumbnails
+Displays the same coffee records in a three-column grid for visual browsing.
 
 ## screen.grid.body <!-- screen.grid.body -->
 
@@ -144,7 +144,7 @@ Calendar
 
 ## screen.calendar.caption <!-- screen.calendar.caption -->
 
-Each date cell shows that day's cup
+Places each day’s cup illustration on the calendar for date-based browsing.
 
 ## screen.calendar.body <!-- screen.calendar.body -->
 
@@ -152,11 +152,11 @@ Each date cell shows that day's cup
 
 ## screen.search.title <!-- screen.search.title -->
 
-Search · filter
+Search & filters
 
 ## screen.search.caption <!-- screen.search.caption -->
 
-Tag chips + title and memo search
+Combines tag filters with title and note search to help users find past entries.
 
 ## screen.search.body <!-- screen.search.body -->
 
@@ -164,11 +164,11 @@ Tag chips + title and memo search
 
 ## screen.menu.title <!-- screen.menu.title -->
 
-Menu choice
+Choose a coffee
 
 ## screen.menu.caption <!-- screen.menu.caption -->
 
-STEP 1 · eight menus
+Lets users choose from eight coffee types as the first step of logging.
 
 ## screen.menu.body <!-- screen.menu.body -->
 
@@ -176,11 +176,11 @@ STEP 1 · eight menus
 
 ## screen.custom.title <!-- screen.custom.title -->
 
-Recipe custom
+Customise recipe
 
 ## screen.custom.caption <!-- screen.custom.caption -->
 
-STEP 2 · original screen tidied
+Lets users customise the selected coffee recipe in the second step.
 
 ## screen.custom.body <!-- screen.custom.body -->
 
@@ -188,11 +188,11 @@ STEP 2 · original screen tidied
 
 ## screen.save.title <!-- screen.save.title -->
 
-Save
+Save entry
 
 ## screen.save.caption <!-- screen.save.caption -->
 
-Title · memo · photo entry
+Saves each coffee as a card with a title, notes and a photo.
 
 ## screen.save.body <!-- screen.save.body -->
 
@@ -200,7 +200,7 @@ Title · memo · photo entry
 
 ## screen.camera.title <!-- screen.camera.title -->
 
-Camera · cut-out
+Background removal
 
 ## screen.camera.caption <!-- screen.camera.caption -->
 
@@ -212,11 +212,11 @@ New · background removed, placed on the card
 
 ## screen.detail.title <!-- screen.detail.title -->
 
-Record detail
+Entry details
 
 ## screen.detail.caption <!-- screen.detail.caption -->
 
-Four-cell recipe summary · caffeine
+Summarises the recipe in four fields alongside caffeine information.
 
 ## screen.detail.body <!-- screen.detail.body -->
 
@@ -228,7 +228,7 @@ Share card
 
 ## screen.share.caption <!-- screen.share.caption -->
 
-New · saved as a 4:5 image
+Exports coffee cards as shareable 4:5 images.
 
 ## screen.share.body <!-- screen.share.body -->
 
@@ -252,7 +252,7 @@ Settings
 
 ## screen.settings.caption <!-- screen.settings.caption -->
 
-Dark-mode toggle that really works
+Lets users switch between light and dark modes for a preferred viewing experience.
 
 ## screen.settings.body <!-- screen.settings.body -->
 
@@ -264,7 +264,7 @@ Widget
 
 ## screen.widget.caption <!-- screen.widget.caption -->
 
-New · one-tap logging
+Provides one-tap access to coffee logging through a widget.
 
 ## screen.widget.body <!-- screen.widget.body -->
 
