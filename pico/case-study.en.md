@@ -26,8 +26,6 @@ A prospective user's journey map
 
 ## Business model <!-- case.section.business-model -->
 
-@wide
-
 Free for users, 3% of sales for shops: the business model canvas of a two-sided platform
 
 @canvas

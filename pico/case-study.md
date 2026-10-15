@@ -26,8 +26,6 @@
 
 ## Business model <!-- case.section.business-model -->
 
-@wide
-
 사용자는 무료로, 쇼핑몰은 거래액의 3%로 — 양면 플랫폼의 비즈니스 모델 캔버스
 
 @canvas

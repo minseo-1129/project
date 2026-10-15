@@ -19,24 +19,28 @@
 
 ## Mapping on the journey <!-- case.section.mapping -->
 
+@wide
+
 열 가지 기대를 여정 위에 놓았다. 세션에 속하는 것과, 세션 사이에 계속 이어져야 하는 것을 나눴다.
 
 ### 링크워커
 
-- 기대 | 레인 | 여정에서의 시점
-- Session logger | 기간 한정 | 세션마다
-- Resource directory | 기간 한정 | 세션마다
-- Activity recommender | 기간 한정 | 세션마다
-- Interest bank | 백엔드 · 지속적, 드러나지 않음 | 전 구간
-- Goal tracker | 정기 체크인 | 전 구간
+@timeline 세션 1 | 처방 활동 | 세션 2
+
+- 기간 한정 — [solid 1] Session logger // Resource directory // Activity recommender || [solid 3] Session logger // Resource directory // Activity recommender
+- 백엔드 — [dashed 1-3] Interest bank
+- 정기 체크인 — [dotted 1-3] Goal tracker
 
 ### 청년
 
-- 기대 | 레인 | 여정에서의 시점
-- Activity connector | 기간 한정 | 세션 1부터 처방 활동까지, 이후에는 필요 없음
-- Personal profiler | 백엔드 · 지속적, 드러나지 않음 | 전 구간
-- Goal planner & Check-in mate | 정기 체크인 | 전 구간
-- Social companion | 톤 · 대화의 질 | 전 구간의 분위기를 정함
+@timeline 세션 1 | 처방 활동 | 세션 2
+
+- 기간 한정 — [solid 1-2] Activity connector || [note 3] 연결 필요 없음
+- 백엔드 — [dashed 1-3] Personal profiler
+- 정기 체크인 — [dotted 1-3] Goal planner & Check-in mate
+- 톤 — [plain 1-3] Social companion // ~전 구간의 분위기를 정함
+
+※ 실선 — 기간 한정 기능 · 파선 — 지속적, 드러나지 않음 · 점선 — 꾸준한 체크인 · 테두리 없음 — 대화의 질
 
 세션 기록과 자원 목록은 서비스에는 중요했지만 청년과의 대화가 필요하지는 않았다. 두 집단이 세션 사이에 필요로 한 것(목표, 관심사, 기분, 장벽, 활동이 어땠는지)은 꾸준한 대화를 통해서만 드러날 수 있었다.
 
@@ -44,13 +48,15 @@
 
 기대를 모으자, 체크인을 중심에 둔 하나의 에이전트로 정리됐다.
 
-- 레인 | 기능 | 역할
-- 톤 | Social companion | 동반자 같은 대화 톤
-- 백엔드 | Interest bank + Personal profiler | 계속 갱신되는 개인 특성
-- 정기 체크인 | **Goal tracker + planner + Check-in mate** | 참여의 의미를 정리하는 성찰형 체크인
-- 기간 한정 | Activity recommender + Activity connector | 세션 1부터 처방 활동까지
-- 기간 한정 | Session preparation & consented summary | 활동 이후부터 세션 2까지
-- 에이전트 밖 | Session logger · Resource directory | 세션마다, 링크워커와 함께
+@timeline 세션 1 | 활동 | 세션 2
+
+- 톤 — [plain 1-3] Social companion // ~동반자 같은 대화 톤
+- 백엔드 — [dashed 1-3] Interest bank + Personal profiler // ~계속 갱신되는 개인 특성
+- 정기 체크인 — [bold 1-3] Goal tracker + planner + Check-in mate // ~참여의 의미를 정리하는 성찰형 체크인
+- 기간 한정 — [solid h1] Activity recommender + Activity connector || [solid h2] Session preparation & consented summary
+- 에이전트 밖 — [muted 1] Session logger // Resource directory || [muted 3] Session logger // Resource directory
+
+※ 실선 — 기간 한정 · 파선 — 지속적, 드러나지 않음 · 굵은 선 — 꾸준한 체크인 · 테두리 없음 — 톤
 
 - **청년의 자기 인식** · Mechanism 1 — 매일의 성찰로 청년이 기분과 목표를 스스로 살피고, 활동이 어땠는지 의미를 정리한다.
 - **정보에 기반한 돌봄** · Mechanism 2 — 동의를 받은 활동 피드백과 기분·목표·참여의 패턴이 시간에 걸쳐 링크워커에게 전달된다.
@@ -62,5 +68,5 @@
 @flow down
 
 - 기분 체크 — “오늘 하루 어땠어?” (1–5 척도 또는 날씨 비유)
-- **세션 성찰** · Session — 링크워커와 세션을 마친 날 // “오늘 세션은 어땠어?” // 합의한 계획과 결과 기록 · 세션 내용 떠올리기 || **목표 성찰** · Typical day — 세션, 활동, 과제가 없는 날 // “오늘 목표에 가까워지려고 무엇을 했어?” // 목표를 향한 걸음 기록 · 동기와 책임감 유지 || **활동 성찰** · Activity day — 활동이나 과제가 있었던 날 // “활동에 다녀왔어? 무엇이 좋았고 무엇이 아쉬웠어?” // 기분과 활동의 효과 · 불참 이유 · 좋았던 점과 싫었던 점 || **세션 준비** · Before a session — 예정된 세션 전날 // “내일 세션이 있네. 어떤 걸 기대해?” // 기대 정리 · 진행 상황과 피드백 돌아보기
+- [solid] **세션 성찰** · Session — 링크워커와 세션을 마친 날 // “오늘 세션은 어땠어?” // 합의한 계획과 결과 기록 · 세션 내용 떠올리기 || [outline] **목표 성찰** · Typical day — 세션, 활동, 과제가 없는 날 // “오늘 목표에 가까워지려고 무엇을 했어?” // 목표를 향한 걸음 기록 · 동기와 책임감 유지 || [blue] **활동 성찰** · Activity day — 활동이나 과제가 있었던 날 // “활동에 다녀왔어? 무엇이 좋았고 무엇이 아쉬웠어?” // 기분과 활동의 효과 · 불참 이유 · 좋았던 점과 싫었던 점 || [dashed] **세션 준비** · Before a session — 예정된 세션 전날 // “내일 세션이 있네. 어떤 걸 기대해?” // 기대 정리 · 진행 상황과 피드백 돌아보기
 - 요약과 동의 — “오늘 나눈 이야기를 정리했어. 링크워커에게 공유해도 될까?”

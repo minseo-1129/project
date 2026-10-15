@@ -51,8 +51,6 @@
 
 ## Storyboard <!-- case.section.storyboard -->
 
-@wide
-
 메뉴 선택부터 조리·계량·음성 조작·플레이리스트 저장까지
 
 ![메뉴 선택부터 조리·계량·음성 조작·플레이리스트 저장까지 이어지는 스토리보드](assets/case-study/storyboard.png)

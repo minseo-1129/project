@@ -50,8 +50,6 @@ We interviewed five people, from a second-year student living alone to an office
 
 ## Storyboard <!-- case.section.storyboard -->
 
-@wide
-
 From choosing a menu to cooking, measuring, voice control and saving to a playlist
 
 ![A storyboard from choosing a menu to cooking, measuring, voice control and saving to a playlist](assets/case-study/storyboard.png)

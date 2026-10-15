@@ -19,38 +19,44 @@ Two participatory workshops: one with link workers, one with young people aged 1
 
 ## Mapping on the journey <!-- case.section.mapping -->
 
+@wide
+
 Ten expectations, placed on the journey: which belong to a session, and which need to run between sessions.
 
 ### Link workers
 
-- Expectation | Lane | When on the journey
-- Session logger | Time bounded | At each session
-- Resource directory | Time bounded | At each session
-- Activity recommender | Time bounded | At each session
-- Interest bank | Backend · continuous, hidden | Throughout
-- Goal tracker | Regular check | Throughout
+@timeline Session 1 | Prescribed activity | Session 2
+
+- Time bounded — [solid 1] Session logger // Resource directory // Activity recommender || [solid 3] Session logger // Resource directory // Activity recommender
+- Backend — [dashed 1-3] Interest bank
+- Regular check — [dotted 1-3] Goal tracker
 
 ### Young people
 
-- Expectation | Lane | When on the journey
-- Activity connector | Time bounded | From session 1 to the prescribed activity; not needed after it
-- Personal profiler | Backend · continuous, hidden | Throughout
-- Goal planner & Check-in mate | Regular check | Throughout
-- Social companion | Tone · interactional quality | Sets the tone throughout
+@timeline Session 1 | Prescribed activity | Session 2
 
-Session logging and resource directories mattered to the service but did not need a conversation with the young person. What both groups needed between sessions (goals, interests, mood, barriers, how an activity felt) could only surface through ongoing dialogue.
+- Time bounded — [solid 1-2] Activity connector || [note 3] No connector needed
+- Backend — [dashed 1-3] Personal profiler
+- Regular check — [dotted 1-3] Goal planner & Check-in mate
+- Tone — [plain 1-3] Social companion // ~sets the tone throughout
+
+※ Solid — bounded function · Dashed — continuous, hidden · Dotted — ongoing check-ins · No border — interactional quality
+
+Session logging and resource directories mattered to the service but did not need a conversation with the young person. What both groups needed between sessions — goals, interests, mood, barriers, how an activity felt — could only surface through ongoing dialogue.
 
 ## Agent structure <!-- case.section.structure -->
 
 Aggregated, the expectations collapse into one agent with check-ins at its centre.
 
-- Lane | Function | Role
-- Tone | Social companion | Companion-like interactional tone
-- Backend | Interest bank + Personal profiler | Evolving personal attributes
-- Regular check | **Goal tracker + planner + Check-in mate** | Reflective check-ins for participation sense-making
-- Time bounded | Activity recommender + Activity connector | From session 1 to the prescribed activity
-- Time bounded | Session preparation & consented summary | From the activity to session 2
-- Outside the agent | Session logger · Resource directory | At each session, with the link worker
+@timeline Session 1 | Activity | Session 2
+
+- Tone — [plain 1-3] Social companion // ~companion-like interactional tone
+- Backend — [dashed 1-3] Interest bank + Personal profiler // ~evolving personal attributes
+- Regular check — [bold 1-3] Goal tracker + planner + Check-in mate // ~reflective check-ins for participation sense-making
+- Time bounded — [solid h1] Activity recommender + Activity connector || [solid h2] Session preparation & consented summary
+- Outside the agent — [muted 1] Session logger // Resource directory || [muted 3] Session logger // Resource directory
+
+※ Solid — bounded · Dashed — continuous, hidden · Bold — ongoing check-ins · No border — tone
 
 - **Foster youth awareness** · Mechanism 1 — Daily reflection lets young people self-monitor mood and goals and make sense of how activities felt.
 - **Enable informed care** · Mechanism 2 — With consent, activity feedback and patterns in mood, goals and engagement reach the link worker over time.
@@ -62,5 +68,5 @@ Every check-in starts with mood, branches by the kind of day, and ends with a co
 @flow down
 
 - Mood check — “How was your day?” (1–5 scale or weather analogy)
-- **Session reflection** · Session — After a session with a link worker // “How did the session go for you today?” // Log agreed plans and outcomes · recall session notes || **Goal reflection** · Typical day — No session, activity or homework // “What did you do today to move closer to your goal?” // Track steps toward goals · sustain motivation and accountability || **Activity reflection** · Activity day — After an activity or homework // “Did you go to the activity? What went well or didn’t?” // Mood and activity effects · reasons for not attending · likes and dislikes || **Session planning** · Before a session — The day before a scheduled session // “You’ve got a session tomorrow. What would you expect?” // Clarify expectations · review progress and feedback
+- [solid] **Session reflection** · Session — After a session with a link worker // “How did the session go for you today?” // Log agreed plans and outcomes · recall session notes || [outline] **Goal reflection** · Typical day — No session, activity or homework // “What did you do today to move closer to your goal?” // Track steps toward goals · sustain motivation and accountability || [blue] **Activity reflection** · Activity day — After an activity or homework // “Did you go to the activity? What went well or didn’t?” // Mood and activity effects · reasons for not attending · likes and dislikes || [dashed] **Session planning** · Before a session — The day before a scheduled session // “You’ve got a session tomorrow. What would you expect?” // Clarify expectations · review progress and feedback
 - Summary and consent — “Here’s what we talked about. Is it okay to share this with your link worker?”
