@@ -1,34 +1,30 @@
 {
   "type": "gallery",
-  "component": "MathHeroScreen",
-  "width": 1280,
-  "height": 800,
+  "component": null,
+  "width": 1306,
+  "height": 688,
   "defaultScreen": "main",
   "keyScreens": [
+    "main",
     "map",
-    "play",
-    "review"
+    "stageInfo"
   ],
-  "evidenceScreen": "map",
-  "prototype": "original-prototype.html",
+  "evidenceScreen": "main",
+  "prototype": "gallery.html",
   "flows": [
     {
       "id": "pages",
       "screens": [
         "main",
         "map",
-        "region",
+        "stageInfo",
         "play",
         "clear",
-        "review",
-        "board",
-        "profile",
-        "clan",
-        "tutorial"
+        "clanRoom",
+        "clanBoard"
       ]
     }
   ],
-  "showPrototype": false,
   "caseStudy": true,
   "availability": [
     [

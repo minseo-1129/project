@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Math Hero · Screens</title>
+<style>
+html,body{margin:0;height:100%;background:#f4f5f8}
+body{display:flex;align-items:center;justify-content:center}
+img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+</style></head>
+<body>
+<img id="screen" alt="">
+<script>
+// The portfolio shell opens this page with ?portfolioState=<screen id>.
+const screens = {
+  "main": [
+    "assets/case-study/01-main.jpg",
+    "메인 · 내 방"
+  ],
+  "map": [
+    "assets/case-study/02-map.jpg",
+    "맵"
+  ],
+  "stageInfo": [
+    "assets/case-study/03-stage-info.jpg",
+    "스테이지 설명"
+  ],
+  "play": [
+    "assets/case-study/04-play.jpg",
+    "플레이"
+  ],
+  "clear": [
+    "assets/case-study/05-stage-clear.jpg",
+    "스테이지 클리어"
+  ],
+  "clanRoom": [
+    "assets/case-study/06-clan-room.jpg",
+    "클랜 아지트"
+  ],
+  "clanBoard": [
+    "assets/case-study/07-clan-board.jpg",
+    "클랜 보드"
+  ]
+};
+const [src, alt] = screens[new URLSearchParams(location.search).get('portfolioState')] || screens.main;
+const image = document.getElementById('screen');
+image.src = src;
+image.alt = alt;
+</script>
+</body></html>

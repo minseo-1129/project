@@ -1,29 +1,28 @@
 {
   "type": "gallery",
-  "component": "KiketchScreen",
-  "width": 1194,
-  "height": 834,
-  "defaultScreen": "home",
+  "component": null,
+  "width": 1024,
+  "height": 768,
+  "defaultScreen": "scene",
   "keyScreens": [
-    "chapter",
-    "sketch",
-    "filled"
+    "scene",
+    "pick",
+    "draw"
   ],
-  "evidenceScreen": "chapter",
-  "prototype": "original-prototype.html",
+  "evidenceScreen": "scene",
+  "prototype": "gallery.html",
   "flows": [
     {
       "id": "pages",
       "screens": [
-        "home",
-        "chapter",
-        "hill",
-        "sketch",
-        "filled"
+        "scene",
+        "pick",
+        "draw",
+        "done",
+        "character"
       ]
     }
   ],
-  "showPrototype": false,
   "caseStudy": true,
   "availability": [
     [

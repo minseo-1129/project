@@ -25,171 +25,43 @@ Math Hero
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Gallery / page navigation
+Gallery / game UI
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 
-내 방에서 문제 풀이와 복습으로
+차원을 지키는 하루
 
 ## 프로토타입 사용 안내 <!-- explore.body -->
 
-장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
+오른쪽에서 화면을 고르면 내 방에서 맵, 문제 풀이, 클리어, 클랜까지 이어지는 UI를 볼 수 있습니다.
 
 ## 플로우 소개 제목 <!-- flow.title -->
 
-내 방에서 문제 풀이와 복습으로
+차원을 지키는 하루
 
 ## 배경 제목 <!-- context.title -->
 
-문제 풀이 뒤에 남는 학습
+수학 문제를 풀어 해커를 막는 SF 게임
 
 ## 배경 설명 <!-- context.body -->
 
-현재 구현은 내 방, 맵, 문제 풀이, 클리어, 오답 수조를 연결합니다. 클랜과 프로필, 튜토리얼 장면도 함께 탐색할 수 있습니다.
+평범한 초등학생인 플레이어가 인공지능 로봇 ‘코비’의 요청으로 가상현실 차원에 들어가, 수학 문제를 풀어 악성 코드를 제거합니다.
 
 ## 설계 결정 제목 <!-- decision.title -->
 
-결과를 복습의 진입점으로
+학교 단위로 함께 플레이하기
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-기존 HTML은 클리어 화면에서 복습으로 이어지는 행동을 강조하고, 방의 오답 수조와 맵의 복습 구역을 반복 진입점으로 둡니다.
+접속부터 보상까지 학교와 학년을 기준으로 이어지고, 클랜은 같은 학교 친구들과 함께합니다.
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
-내 방에서 문제 풀이와 복습으로
+차원을 지키는 하루
 
 ## 웹 조작 안내 설명 <!-- guide.body -->
 
-장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
-
-## 플로우 · flow.pages.title <!-- flow.pages.title -->
-
-장면 탐색
-
-## 플로우 · flow.pages.body <!-- flow.pages.body -->
-
-장면 목록이나 화면 속 버튼으로 이동하세요. 맵·지역·문제 풀이·클리어·복습 장면이 어떻게 연결되는지 살펴볼 수 있습니다.
-
-## 메인 · 내 방 · 화면 이름 <!-- screen.main.title -->
-
-메인 · 내 방
-
-## 메인 · 내 방 · 카드 설명 <!-- screen.main.caption -->
-
-실제 방 그대로 — 책상 모니터=접속, 수조=오답 복습, 창밖은 접속 시간대에 따라 바뀝니다.
-
-## 메인 · 내 방 · 상세 설명 <!-- screen.main.body -->
-
-실제 방 그대로 — 책상 모니터=접속, 수조=오답 복습, 창밖은 접속 시간대에 따라 바뀝니다.
-
-## 맵 · 차원 선택 · 화면 이름 <!-- screen.map.title -->
-
-맵 · 차원 선택
-
-## 맵 · 차원 선택 · 카드 설명 <!-- screen.map.caption -->
-
-복습 구역이 맵에 상시 노드로 존재. 난이도는 색 대신 라벨로 명시.
-
-## 맵 · 차원 선택 · 상세 설명 <!-- screen.map.body -->
-
-복습 구역이 맵에 상시 노드로 존재. 난이도는 색 대신 라벨로 명시.
-
-## 지역 설명 보드 · 화면 이름 <!-- screen.region.title -->
-
-지역 설명 보드
-
-## 지역 설명 보드 · 카드 설명 <!-- screen.region.caption -->
-
-출격(파워 1)과 연습(파워 0)을 분리 — 파워가 없어도 학습은 계속된다.
-
-## 지역 설명 보드 · 상세 설명 <!-- screen.region.body -->
-
-출격(파워 1)과 연습(파워 0)을 분리 — 파워가 없어도 학습은 계속된다.
-
-## 문제 풀이 · 화면 이름 <!-- screen.play.title -->
-
-문제 풀이
-
-## 문제 풀이 · 카드 설명 <!-- screen.play.caption -->
-
-좌측 스테이지는 작게, 우측 문제·힌트가 주역. 선지에 수량 점 표시 · 시간 제한 없음.
-
-## 문제 풀이 · 상세 설명 <!-- screen.play.body -->
-
-좌측 스테이지는 작게, 우측 문제·힌트가 주역. 선지에 수량 점 표시 · 시간 제한 없음.
-
-## 스테이지 클리어 · 화면 이름 <!-- screen.clear.title -->
-
-스테이지 클리어
-
-## 스테이지 클리어 · 카드 설명 <!-- screen.clear.caption -->
-
-결과 뒤에 "놓친 버그 1마리 → 지금 복습" CTA가 가장 큰 버튼.
-
-## 스테이지 클리어 · 상세 설명 <!-- screen.clear.body -->
-
-결과 뒤에 "놓친 버그 1마리 → 지금 복습" CTA가 가장 큰 버튼.
-
-## 복습 · 오답 수조 · 화면 이름 <!-- screen.review.title -->
-
-복습 · 오답 수조
-
-## 복습 · 오답 수조 · 카드 설명 <!-- screen.review.caption -->
-
-원본에 없던 화면. 방 수조의 오답을 유형으로 묶어 한 번에 연습.
-
-## 복습 · 오답 수조 · 상세 설명 <!-- screen.review.body -->
-
-원본에 없던 화면. 방 수조의 오답을 유형으로 묶어 한 번에 연습.
-
-## 리더보드 · 화면 이름 <!-- screen.board.title -->
-
-리더보드
-
-## 리더보드 · 카드 설명 <!-- screen.board.caption -->
-
-기본 탭이 우리 클랜. 지표는 정답률 대신 푼 문제 수. 개인 정답률은 비공개.
-
-## 리더보드 · 상세 설명 <!-- screen.board.body -->
-
-기본 탭이 우리 클랜. 지표는 정답률 대신 푼 문제 수. 개인 정답률은 비공개.
-
-## 프로필 · 화면 이름 <!-- screen.profile.title -->
-
-프로필
-
-## 프로필 · 카드 설명 <!-- screen.profile.caption -->
-
-단원별 상태를 "튼튼해요 / 한 번 더 / 버그 3마리"로 — 아동이 읽을 수 있는 말로.
-
-## 프로필 · 상세 설명 <!-- screen.profile.body -->
-
-단원별 상태를 "튼튼해요 / 한 번 더 / 버그 3마리"로 — 아동이 읽을 수 있는 말로.
-
-## 클랜 아지트 · 보드 · 화면 이름 <!-- screen.clan.title -->
-
-클랜 아지트 · 보드
-
-## 클랜 아지트 · 보드 · 카드 설명 <!-- screen.clan.caption -->
-
-같은 학교 파티 유지. 소집은 경쟁이 아니라 보스 공동 방어.
-
-## 클랜 아지트 · 보드 · 상세 설명 <!-- screen.clan.body -->
-
-같은 학교 파티 유지. 소집은 경쟁이 아니라 보스 공동 방어.
-
-## 튜토리얼 · 수준 평가 · 화면 이름 <!-- screen.tutorial.title -->
-
-튜토리얼 · 수준 평가
-
-## 튜토리얼 · 수준 평가 · 카드 설명 <!-- screen.tutorial.caption -->
-
-"잘 모르겠어요" 선택지 추가 — 찍기를 배제해 진단 정확도를 높인다.
-
-## 튜토리얼 · 수준 평가 · 상세 설명 <!-- screen.tutorial.body -->
-
-"잘 모르겠어요" 선택지 추가 — 찍기를 배제해 진단 정확도를 높인다.
+오른쪽에서 화면을 고르면 내 방에서 맵, 문제 풀이, 클리어, 클랜까지 이어지는 UI를 볼 수 있습니다.
 
 ## 소속 <!-- org -->
 
@@ -202,3 +74,67 @@ Gallery / page navigation
 ## 태그라인 <!-- tagline -->
 
 초등 수학을 개인에게 맞춰 연습하는 적응형 게임.
+
+## flow.pages.title <!-- flow.pages.title -->
+
+화면 순서
+
+## flow.pages.body <!-- flow.pages.body -->
+
+오른쪽에서 화면을 고르면 내 방에서 맵, 문제 풀이, 클리어, 클랜까지 이어지는 UI를 볼 수 있습니다.
+
+## screen.main.title <!-- screen.main.title -->
+
+메인 · 내 방
+
+## screen.main.caption <!-- screen.main.caption -->
+
+캐릭터와 펫이 있는 내 방에서 가상 월드로
+
+## screen.map.title <!-- screen.map.title -->
+
+맵
+
+## screen.map.caption <!-- screen.map.caption -->
+
+차원별 스테이지 로드맵과 별점, 난이도 전환
+
+## screen.stageInfo.title <!-- screen.stageInfo.title -->
+
+스테이지 설명
+
+## screen.stageInfo.caption <!-- screen.stageInfo.caption -->
+
+스토리와 학습 목표를 먼저 보여준다
+
+## screen.play.title <!-- screen.play.title -->
+
+플레이
+
+## screen.play.caption <!-- screen.play.caption -->
+
+왼쪽은 전투 장면, 오른쪽은 문제와 선지
+
+## screen.clear.title <!-- screen.clear.title -->
+
+스테이지 클리어
+
+## screen.clear.caption <!-- screen.clear.caption -->
+
+맞춘 문항, 소요 시간, 추가 경험치
+
+## screen.clanRoom.title <!-- screen.clanRoom.title -->
+
+클랜 아지트
+
+## screen.clanRoom.caption <!-- screen.clanRoom.caption -->
+
+같은 학교 친구들이 모이는 클랜 공간
+
+## screen.clanBoard.title <!-- screen.clanBoard.title -->
+
+클랜 보드
+
+## screen.clanBoard.caption <!-- screen.clanBoard.caption -->
+
+같은 학교 친구들과 함께하는 클랜

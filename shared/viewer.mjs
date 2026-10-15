@@ -10,7 +10,8 @@ try {
   const initial = screens.includes(requested) ? requested : config.defaultScreen;
   const readonly = params.has('readonly');
   const template = document.createElement('x-dc');
-  template.innerHTML = `<div style="width:${config.width}px;height:${config.height}px;overflow:hidden"><dc-import name="${config.component}" screen="{{ screen }}" theme="{{ theme }}" key="{{ version }}" onNavigate="{{ navigate }}" hint-size="${config.width}px,${config.height}px"></dc-import></div>`;
+  // innerHTML lowercases attribute names, so camelCase props use the runtime's own encoding (sc-camel-on-navigate → onNavigate).
+  template.innerHTML = `<div style="width:${config.width}px;height:${config.height}px;overflow:hidden"><dc-import name="${config.component}" screen="{{ screen }}" theme="{{ theme }}" key="{{ version }}" sc-camel-on-navigate="{{ navigate }}" hint-size="${config.width}px,${config.height}px"></dc-import></div>`;
   const logic = document.createElement('script');
   logic.type = 'text/x-dc';
   logic.setAttribute('data-dc-script','');
