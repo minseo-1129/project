@@ -108,7 +108,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .thumb[aria-pressed=true] .thumb-meta{color:var(--blue)}
 .thumb-title{font:500 12px/17px var(--kr);color:var(--ink)}
 .pills{display:grid;grid-template-columns:repeat(2,minmax(0,132px));gap:8px}
-.pill{min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:12px;line-height:19px;color:var(--body);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Long labels wrap to a second line instead of being cut off. */
+.pill{min-height:30px;padding:5px 12px;border-radius:15px;border:1px solid var(--line);background:var(--paper);font-size:12px;line-height:17px;color:var(--body);text-align:left;overflow-wrap:anywhere}
 .pill[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--white)}
 .stage-wide{display:flex;flex-direction:column;gap:24px}
 .stage-wide>.section-label{margin-bottom:-14px}
