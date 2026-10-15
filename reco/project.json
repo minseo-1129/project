@@ -5,9 +5,7 @@
   "height": 760,
   "defaultScreen": "welcome",
   "keyScreens": [
-    "welcome",
-    "branch",
-    "compare"
+    "welcome"
   ],
   "evidenceScreen": "welcome",
   "prototype": "original-prototype.html",
@@ -15,28 +13,13 @@
     {
       "id": "experience",
       "screens": [
-        "welcome",
-        "branch",
-        "compare"
+        "welcome"
       ]
     }
   ],
   "webStates": [
     {
       "id": "welcome"
-    },
-    {
-      "id": "branch",
-      "props": {
-        "moodStep": false
-      },
-      "buttonText": "Start"
-    },
-    {
-      "id": "compare",
-      "props": {
-        "summaryStyle": "compare"
-      }
     }
   ],
   "caseStudy": true

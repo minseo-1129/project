@@ -20,16 +20,13 @@
 
 일러스트 인벤토리
 
-메뉴 8종 × 온도 2종이 기본 잔이고, 장식 선택이 변형 파일을 부른다. 잔 그림은 저장하지 않고 규칙으로 뽑는다: `hot/ice + 메뉴`에 휘핑(`_wip`)과 얼음 추가(`_ice`) 변형을 얹는다. 아메리카노는 휘핑 변형이 없어 기본 잔을 유지한다.
+메뉴 8종 × 온도 2종이 기본 잔이고, 장식 선택이 변형 파일을 부른다: hot/ice + 메뉴에 휘핑(_wip)과 얼음 추가(_ice).
 
-![메뉴 8종 × 따뜻한 잔·아이스 — 아메리카노, 카페라떼, 카푸치노, 카페모카, 핫초코, 카라멜크림, 말차라떼, 딸기라떼](assets/case-study/illustrations.png)
+@stack
 
-### 변형 규칙
+![메뉴 8종 × 따뜻한 잔·아이스](assets/case-study/illustrations.png)
 
-![변형 — 카페라떼 기본 → 휘핑(_wip), 아이스 카페라떼 기본 → 얼음 추가(_ice)](assets/case-study/variants.png)
-
-
-
+![변형 — 기본 → 휘핑, 아이스 → 얼음 추가](assets/case-study/variants.png)
 
 ## 디자인 시스템 · 팔레트 <!-- case.system.palette -->
 

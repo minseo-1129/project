@@ -13,9 +13,9 @@ At the core of ADHD is a deficit in executive function. Children who struggle to
 
 We used the school as a platform and tested the service in a real setting. The child sets and carries out daily tasks by talking with ForMe, while parents follow along in a monitoring app and teachers on a web page.
 
-- **Child** · ForMe tablet app — sets and carries out daily tasks
-- **Parent** · Monitoring app — follows the child's tasks and sends praise
-- **Teacher** · Monitoring web — sees how the class is using it
+- **ForMe · tablet app** · Child — Sets and carries out daily tasks
+- **Monitoring app** · Parent — Follows the child's tasks and sends praise
+- **Monitoring web** · Teacher — Sees how the class is using it
 
 ## Approach <!-- case.section.approach -->
 
@@ -49,7 +49,7 @@ Fun for the result, praise for the process.
 - **Stars · AR character cards** · Result reward — The child gets a star for each promise kept, and a character card on days every promise is kept. Cards come alive through the AR camera.
 - **Parents' voice praise** · Process reward — A praise guide, based on the child's progress and reinforcement praise theory, helps parents record a voice message.
 
-Praise activities linked with home raise young children's self-esteem (Jang, 2012), and parents' responses shape positive self-esteem (Coopersmith, 1976).
+※ Praise activities linked with home raise young children's self-esteem (Jang, 2012), and parents' responses shape positive self-esteem (Coopersmith, 1976).
 
 ## Screens <!-- case.section.screens -->
 

@@ -8,11 +8,11 @@ A voice-enabled recipe curation service for people living alone to discover reci
 
 ## role <!-- role -->
 
-[Your role]
+UX/UI Designer
 
 ## period <!-- period -->
 
-[Project period]
+Sep 2020 – Dec 2020
 
 ## tools <!-- tools -->
 
@@ -221,3 +221,15 @@ Brings recipes users want to cook again into one place.
 ## screen.playlist.body <!-- screen.playlist.body -->
 
 Auto-advance + voice + measurements in your own tools
+
+## subtitle <!-- subtitle -->
+
+Curated Recipes for Single Households
+
+## tagline <!-- tagline -->
+
+Personalised recipes with hands-free voice control. (REPLY)
+
+## org <!-- org -->
+
+Yonsei University

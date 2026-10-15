@@ -16,10 +16,9 @@ Couples apart stay in touch online, yet rarely feel they spend time together.
 
 Each requirement became one design goal.
 
-- Requirement | Design goal | Filter
-- **Non-verbal cues** — sense of being together, fewer misunderstandings | Support your own and partner’s nuance and expression | Face filter
-- **Effective communication** — positive tone; problems handled lightly | Brighten the atmosphere | Voice filter
-- **Full engagement** — attentive, considerate, closer | Share one time and space | Motion filter
+- **Non-verbal cues** · Requirement 1 — Sense of being together, fewer misunderstandings => **Support your own and partner’s nuance and expression** · Design goal 1 — → Face filter
+- **Effective communication** · Requirement 2 — Positive tone; problems handled lightly => **Brighten the atmosphere** · Design goal 2 — → Voice filter
+- **Full engagement** · Requirement 3 — Attentive, considerate, closer => **Share one time and space** · Design goal 3 — → Motion filter
 
 ## Concepts <!-- case.section.concepts -->
 
@@ -33,19 +32,9 @@ The final direction kept what the research valued most, non-verbal cues and a po
 
 ## System <!-- case.section.system -->
 
-Three filters, each answering one design goal.
-
-1. **Face filter** — Reads the user’s expression so both partners can see how they come across. // Input · Frowning or smiling on camera // Output · A prompt with a smile emoticon // Basis · 6/6 had misread a conversation because of a facial expression
-2. **Voice filter** — Users choose words they don’t want to hear; the filter answers them with a joke. // Input · “Sick of it”, “Idiot” // Output · A playful caption or image that turns the moment into laughter // Basis · 5/6 had been frustrated by words they didn’t want to hear
-3. **Motion filter** — Gestures become shared moments in the call. // Input · A body heart or a blown kiss // Output · Background music and effects with heart for both partners // Basis · Design goal 3, share one time and space
-
-![The prototype call with the Face, Voice and Motion filter tabs](assets/case-study/01-prototype.jpg)
-
-### Voice filter output
-
-![The reply to “Idiot”: “Idiot? Whoever says that is the bigger idiot~”](assets/case-study/02-voice-filter.jpg)
-
-![The reply to “Annoying”: “Your annoyed voice is even more annoying~!!”](assets/case-study/03-voice-filter-2.jpg)
+1. **Face filter** — ![Face filter: a caption asking for a smile over a frowning face](assets/case-study/filter-face.jpg) // Reads the user’s expression so both partners can see how they come across. // Input · Frowning or smiling on camera // Output · A prompt with a smile emoticon // Basis · 6/6 had misread a conversation because of a facial expression
+2. **Voice filter** — ![Voice filter: a cat sticker asking for kind words](assets/case-study/filter-voice.jpg) // Users choose words they don’t want to hear; the filter answers them with a joke. // Input · “Sick of it”, “Idiot” // Output · A playful caption or image that turns the moment into laughter // Basis · 5/6 had been frustrated by words they didn’t want to hear
+3. **Motion filter** — ![Motion filter: a sparkling heart above the partner](assets/case-study/filter-motion.jpg) // Gestures become shared moments in the call. // Input · A body heart or a blown kiss // Output · Background music and effects with heart for both partners // Basis · Design goal 3, share one time and space
 
 ## Results <!-- case.section.results -->
 

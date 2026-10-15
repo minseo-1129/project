@@ -5,9 +5,7 @@
   "height": 720,
   "defaultScreen": "finished",
   "keyScreens": [
-    "finished",
-    "translucent",
-    "exploded"
+    "finished"
   ],
   "evidenceScreen": "finished",
   "prototype": "original-prototype.html",
@@ -15,9 +13,7 @@
     {
       "id": "experience",
       "screens": [
-        "finished",
-        "translucent",
-        "exploded"
+        "finished"
       ]
     }
   ],
@@ -31,16 +27,9 @@
     {
       "id": "finished",
       "selector": "[data-mode=\"finished\"]"
-    },
-    {
-      "id": "translucent",
-      "selector": "[data-mode=\"translucent\"]"
-    },
-    {
-      "id": "exploded",
-      "selector": "[data-mode=\"exploded\"]"
     }
   ],
   "nativeViewport": true,
-  "caseStudy": true
+  "caseStudy": true,
+  "hideStageToolbar": true
 }

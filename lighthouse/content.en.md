@@ -90,30 +90,6 @@ Understand the overall form of the product first.
 
 Presents the assembled lighthouse-inspired design, showing the humidifier and mood light as one product
 
-## screen.translucent.title <!-- screen.translucent.title -->
-
-Translucent view
-
-## screen.translucent.body <!-- screen.translucent.body -->
-
-Compare the exterior with the parts inside.
-
-## screen.translucent.caption <!-- screen.translucent.caption -->
-
-Uses a translucent shell to reveal the water reservoir, electronics, sensors and lighting.
-
-## screen.exploded.title <!-- screen.exploded.title -->
-
-Exploded view
-
-## screen.exploded.body <!-- screen.exploded.body -->
-
-See how each part is placed and connected.
-
-## screen.exploded.caption <!-- screen.exploded.caption -->
-
-Separates the components to show how they are arranged and connected.
-
 ## scope <!-- scope -->
 
 Web prototype
@@ -121,3 +97,11 @@ Web prototype
 ## org <!-- org -->
 
 Yonsei University
+
+## subtitle <!-- subtitle -->
+
+Arduino Mood Lamp Humidifier
+
+## tagline <!-- tagline -->
+
+Senses water & light to trigger ambient effects.

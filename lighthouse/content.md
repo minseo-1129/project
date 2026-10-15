@@ -5,7 +5,7 @@
 
 ## 프로젝트 이름 <!-- title -->
 
-THE LIGHTHOUSE
+The Lighthouse
 
 ## 한 줄 소개 <!-- summary -->
 
@@ -99,30 +99,14 @@ Web prototype
 
 등대 형태의 외관과 가습기·무드등이 결합된 제품 디자인을 전체적으로 보여줌.
 
-## 웹 상태 2 · title <!-- screen.translucent.title -->
-
-반투명 구조
-
-## 웹 상태 2 · body <!-- screen.translucent.body -->
-
-외형과 내부 부품의 관계를 비교합니다.
-
-## 웹 상태 2 · caption <!-- screen.translucent.caption -->
-
-외형을 반투명 처리해 수반·전장부·센서·조명의 내부 배치를 보여줌.
-
-## 웹 상태 3 · title <!-- screen.exploded.title -->
-
-분해도
-
-## 웹 상태 3 · body <!-- screen.exploded.body -->
-
-각 부품의 배치와 연결을 살펴봅니다.
-
-## 웹 상태 3 · caption <!-- screen.exploded.caption -->
-
-부품을 분리해 구성 요소의 배치와 연결 관계를 한눈에 살펴보도록 함.
-
 ## 소속 <!-- org -->
 
 연세대학교
+
+## 부제 <!-- subtitle -->
+
+아두이노 무드등 가습기
+
+## 태그라인 <!-- tagline -->
+
+물과 빛을 감지해 분위기 효과를 켭니다.

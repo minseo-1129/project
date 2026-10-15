@@ -8,7 +8,7 @@ A learning prototype: explore game scenes, solve maths problems, and go from the
 
 ## role <!-- role -->
 
-Product Designer
+Game Design
 
 ## period <!-- period -->
 
@@ -185,3 +185,11 @@ Adds an “I'm not sure” option — removing guesses makes the diagnosis more 
 ## org <!-- org -->
 
 Woongjin
+
+## subtitle <!-- subtitle -->
+
+Interactive AI Math Game
+
+## tagline <!-- tagline -->
+
+Adaptive game for personalised elementary math practice.

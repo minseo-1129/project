@@ -349,3 +349,11 @@ Data collected, purpose, retention and third-party sharing are laid out in a tab
 ## org <!-- org -->
 
 HAII
+
+## subtitle <!-- subtitle -->
+
+Digital Phenotype Collection Platform
+
+## tagline <!-- tagline -->
+
+Lifestyle and mood diary for adolescent mental health.

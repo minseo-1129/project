@@ -4,9 +4,7 @@
 
 ## Context <!-- case.section.context -->
 
-Why a teenager's day
-
-A service that collects a teenager's day through two paths, sensors (passive) and self-logging (active), and gives it back as a weekly report.
+### Why a teenager's day
 
 After COVID-19, teenagers' daily rhythms were shaken more than adults'. Sleep and sitting time went up; physical activity and social contact went down.
 
@@ -29,10 +27,11 @@ Data collection is rewarded with a report
 
 What the sensors record on their own and what users log themselves are combined, converted into four life areas and three emotional indicators, and returned as a weekly report.
 
-1. **Passive** — Sensors · location, movement, screen use, ambient light
-2. **Active** — Self-logging · timetable, daily diary, emotions
-3. **Translate** — Four life areas · three emotional indicators
-4. **Return** — A weekly report
+@flow
+
+- Passive — Sensors · location, movement, screen use, ambient light || Active — Self-logging · timetable, daily diary, emotions
+- **Four life areas / three emotional indicators** · Translate
+- **A weekly report** · Return
 
 ## Study <!-- case.section.study -->
 
@@ -44,11 +43,15 @@ A usability study with 8 teenagers after two weeks of logging
 
 ## Findings <!-- case.section.findings -->
 
-1. **They wanted interpretation over raw numbers** — In every life area, participants marked area-specific interpretation as "helpful" far more often than raw data. // **So the screen must** · Put interpretation, not numbers and graphs, on the first line. The system carries the burden of interpreting.
-2. **The preferred summary differed by area** — Sleep and study were wanted as daily summaries, exercise and leisure as weekly ones. Sleep and study were about habit, so the daily total mattered; for exercise, what mattered was whether it happened at all that week. // **So the screen must** · Draw highlights with a different time window per area. One uniform summary and report layout makes interpretation harder.
-3. **Where the benchmark comes from differed** — Exercise and study were judged against personal goals, leisure against an objective recommendation. Participants felt twice a week for 30 minutes was enough exercise, while the recommendation was an hour a day; for leisure, they found it hard to judge the right amount themselves. // **So the screen must** · Give each area its own baseline, even on the same bar chart. For exercise, the baseline is my goal, not the recommended amount, and the status label is goal reached, not too much.
+@stack
+
+- **They wanted interpretation over raw numbers** · 01 · Finding — In every life area, participants marked area-specific interpretation as "helpful" far more often than raw data. => So the screen must — Put interpretation, not numbers and graphs, on the first line. The system carries the burden of interpreting.
+- **The preferred summary differed by area** · 02 · Finding — Sleep and study were wanted as daily summaries, exercise and leisure as weekly ones. Sleep and study were about habit, so the daily total mattered; for exercise, what mattered was whether it happened at all that week. => So the screen must — Draw highlights with a different time window per area. One uniform summary and report layout makes interpretation harder.
+- **Where the benchmark comes from differed** · 03 · Finding — Exercise and study were judged against personal goals, leisure against an objective recommendation. Participants felt twice a week for 30 minutes was enough exercise, while the recommendation was an hour a day; for leisure, they found it hard to judge the right amount themselves. => So the screen must — Give each area its own baseline, even on the same bar chart. For exercise, the baseline is my goal, not the recommended amount, and the status label is goal reached, not too much.
 
 ## Digital phenotypes <!-- case.section.phenotypes -->
+
+@wide
 
 The digital phenotypes collected
 
@@ -65,4 +68,8 @@ The digital phenotypes collected
 - Camera | N | Ambient Light | The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
 - - | Y | EMA | The number of EMAs fired each day varied, but on average 8 EMAs per day were administered.
 
-User exposure: Y = shown to the user · N = used only in the background
+※ User exposure: Y = shown to the user · N = used only in the background
+
+## case.intro <!-- case.intro -->
+
+A service that collects a teenager's day through two paths, sensors (passive) and self-logging (active), and gives it back as a weekly report.

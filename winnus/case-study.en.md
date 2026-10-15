@@ -4,11 +4,9 @@
 
 ## Hypotheses <!-- case.section.hypotheses -->
 
-Three hypotheses, checked with a survey and interviews.
-
-- **People feel a psychological barrier to wine** · Hypothesis 1 — 69% said they were interested, yet most saw wine as difficult and unfamiliar. // **87%** said “difficult”
-- **People choose wine on subjective cues** · Hypothesis 2 — Respondents relied on taste, aroma and food pairing rather than origin, ABV or vintage. // **92%** prefer subjective cues
-- **Recommendations must match personal taste** · Hypothesis 3 — To cut trial and error, they wanted wine that suits their taste, resembles one they enjoyed, or fits the occasion. // Trial-and-error is the cost
+- **People feel a psychological barrier to wine** · Hypothesis 1 — 69% said they were interested, yet most saw wine as difficult and unfamiliar. >> **87%** said “difficult”
+- **People choose wine on subjective cues** · Hypothesis 2 — Respondents relied on taste, aroma and food pairing rather than origin, ABV or vintage. >> **92%** prefer subjective cues
+- **Recommendations must match personal taste** · Hypothesis 3 — To cut trial and error, they wanted wine that suits their taste / resembles one they enjoyed / fits the occasion. >> Trial-and-error is the cost
 
 ## Thematic analysis <!-- case.section.thematic -->
 
@@ -60,9 +58,9 @@ Coded results
 
 ## Problems → response <!-- case.section.response -->
 
-- **Difficult, technical terms** · Jargon — Body, tannin, acidity: unless you study them, you can neither describe nor understand wine. // → Everyday language first; technical terms open as captions on tap
-- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: knowing all of them before drinking is unrealistic. // → Three onboarding questions compute the classification instead
-- **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. // → One wine card holds it all, complete even as a screenshot
+- **Difficult, technical terms** · Jargon — Body, tannin, acidity — unless you study them, you can neither describe nor understand wine. => Design response — → Everyday language first; technical terms open as captions on tap
+- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: knowing all of them before drinking is unrealistic. => Design response — → Three onboarding questions compute the classification instead
+- **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. => Design response — → One wine card holds it all — complete even as a screenshot
 
 ## case.persona.name <!-- case.persona.name -->
 

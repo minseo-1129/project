@@ -477,3 +477,11 @@ Lets users reassess their stage and adjust information density at any time.
 ## org <!-- org -->
 
 Yonsei University
+
+## subtitle <!-- subtitle -->
+
+User Readiness-based Wellbeing Coach
+
+## tagline <!-- tagline -->
+
+Health tracker grounded on the transtheoretical model.

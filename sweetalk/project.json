@@ -18,5 +18,15 @@
     }
   ],
   "showPrototype": false,
-  "caseStudy": true
+  "caseStudy": true,
+  "availability": [
+    [
+      "video",
+      true
+    ],
+    [
+      "case",
+      true
+    ]
+  ]
 }

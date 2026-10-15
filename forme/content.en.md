@@ -113,3 +113,11 @@ Stars for every promise kept
 ## screen.stars.body <!-- screen.stars.body -->
 
 Every night the child reviews the day's promises with ForMe and gets a star for each one kept.
+
+## subtitle <!-- subtitle -->
+
+A School-linked Conversational Agent for Children's Executive Function
+
+## tagline <!-- tagline -->
+
+First graders set and carry out their own daily tasks with ForMe while parents and teachers follow along: a school mental-health support system, published at CHI 2024.

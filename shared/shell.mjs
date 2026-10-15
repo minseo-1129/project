@@ -16,20 +16,22 @@ const UI = {
     indexTitle: 'Projects', 
     openPrototype: '프로토타입 ↗', openCase: '케이스 스터디 ↗', back: '← 전체 프로젝트', toCase: '케이스 스터디 →', toPrototype: '프로토타입 →',
     flows: '플로우', flowScreens: '이 플로우의 화면', allScreens: '전체 화면', allScenes: '전체 장면', states: '상태', theme: '테마', prev: '이전 화면', next: '다음 화면', prevStage: '이전 단계', nextStage: '다음 단계',
-    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', org: 'ORGANISATION', todo: '[작성 필요]',
+    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'PERIOD', tools: 'TOOLS', org: 'ORGANISATION', todo: '[작성 필요]',
     mobile: 'MOBILE PROTOTYPE', gallery: 'GALLERY PROTOTYPE', web: 'WEB EXPERIENCE', error: '페이지를 불러오지 못했어요',
     errorHint: '로컬에서는 HTTP 서버로 열어 주세요. GitHub에서는 콘텐츠 파일의 제목과 항목 ID를 확인해 주세요.', resultSlot: '결과 블록(막대 · 숫자 · 표 · 인용 · 관찰) 중 하나 이상을 case-study.md에 작성해 주세요.',
     hypothesis: 'HYPOTHESIS', result: 'RESULT', data: 'DATA', observed: 'OBSERVED', goals: 'GOALS', frustrations: 'FRUSTRATIONS', pain: 'PAIN', opportunity: 'OPPORTUNITY', before: 'BEFORE', after: 'AFTER', basis: '근거',
-    system: '디자인 시스템 보드 열기 ↗', light: 'Light', dark: 'Dark'},
+    system: '디자인 시스템 보드 열기 ↗', light: 'Light', dark: 'Dark',
+    typeHead: ['Size', 'Sample', 'Role'], available: {prototype: '프로토타입', screens: '화면 디자인', video: '영상', case: '케이스 스터디'}, availableLabel: '공개 자료'},
   en: {library: 'RESEARCH / PROTOTYPE LIBRARY', projects: 'PROJECTS', prototype: 'PROTOTYPE', caseStudy: 'CASE STUDY', selected: 'SELECTED WORK', count: n => `${n} PROJECTS`,
     indexTitle: 'Projects', 
     openPrototype: 'Prototype ↗', openCase: 'Case study ↗', back: '← All projects', toCase: 'Case study →', toPrototype: 'Prototype →',
     flows: 'Flows', flowScreens: 'Screens in this flow', allScreens: 'All screens', allScenes: 'All scenes', states: 'States', theme: 'Theme', prev: 'Previous screen', next: 'Next screen', prevStage: 'Previous stage', nextStage: 'Next stage',
-    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'TIME', tools: 'TOOLS', org: 'ORGANISATION', todo: '[To be written]',
+    context: 'CONTEXT', decision: 'DECISION', role: 'ROLE', time: 'PERIOD', tools: 'TOOLS', org: 'ORGANISATION', todo: '[To be written]',
     mobile: 'MOBILE PROTOTYPE', gallery: 'GALLERY PROTOTYPE', web: 'WEB EXPERIENCE', error: 'This page could not be loaded',
     errorHint: 'Open the site through an HTTP server locally. On GitHub, check the headings and field IDs in the content files.', resultSlot: 'Add at least one result (bars, numbers, table, quotes or observations) to case-study.md.',
     hypothesis: 'HYPOTHESIS', result: 'RESULT', data: 'DATA', observed: 'OBSERVED', goals: 'GOALS', frustrations: 'FRUSTRATIONS', pain: 'PAIN', opportunity: 'OPPORTUNITY', before: 'BEFORE', after: 'AFTER', basis: 'Evidence',
-    system: 'Open the design system board ↗', light: 'Light', dark: 'Dark'},
+    system: 'Open the design system board ↗', light: 'Light', dark: 'Dark',
+    typeHead: ['Size', 'Sample', 'Role'], available: {prototype: 'Prototype', screens: 'Screen design', video: 'Video', case: 'Case study'}, availableLabel: 'Available'},
 }[lang];
 
 const resizeObserver = new ResizeObserver(entries => { for (const {target} of entries) fitFrame(target); });
@@ -45,6 +47,7 @@ const thumbnailObserver = new IntersectionObserver(entries => {
 const frames = new Set();
 const sectionLabels = Object.create(null);
 let config, content, selected, selectedFlow, theme = 'light';
+let projectNumber = '';
 let controls = [];
 let detail = {};
 let flowList;
@@ -91,7 +94,7 @@ function langToggle() {
   }
   return node;
 }
-function topBar(trail) {
+function topBar(trail, number) {
   const node = el('header', 'top-bar');
   const crumbs = el('nav', 'crumbs');
   crumbs.setAttribute('aria-label', 'Breadcrumb');
@@ -99,7 +102,10 @@ function topBar(trail) {
     if (index) crumbs.append(el('span', '', ' / '));
     crumbs.append(href ? link(name, withLang(href)) : el('span', '', name));
   });
-  node.append(crumbs, langToggle());
+  const end = el('div', 'top-end');
+  if (number) end.append(el('span', 'mono top-number', number));
+  end.append(langToggle());
+  node.append(crumbs, end);
   return node;
 }
 function pageHead(eyebrow, title, summaryKey) {
@@ -172,6 +178,8 @@ function applyWebState(frame, readonly) {
     const state = config.webStates.find(item => item.selector && event.target.closest?.(item.selector));
     if (state) updateSelection(state.id, false);
   });
+  // "hideStageToolbar" hides the 3D stage's OBJ/GLB export buttons, a build tool rather than part of the product.
+  if (config.hideStageToolbar) { const bar = frame.contentDocument.querySelector('three-d-stage')?.shadowRoot?.querySelector('.toolbar'); if (bar) bar.style.display = 'none'; }
   // Read-only 3D cards render once instead of running a second WebGL loop.
   if (readonly) {
     const stage = frame.contentDocument.querySelector('three-d-stage');
@@ -257,7 +265,8 @@ function detailPanel() {
     item.append(el('p', 'mono', name), copy(key));
     pair.append(item);
   }
-  node.append(head, titleBlock, pair);
+  // A single-screen prototype has nothing to step through, so it skips the counter and arrows.
+  node.append(...(allScreens().length > 1 ? [head] : []), titleBlock, pair);
   if (config.themes) {
     const themes = el('div', 'theme-toggle');
     for (const name of ['light', 'dark']) {
@@ -334,7 +343,7 @@ function prototypePage() {
     }, flow => pad(flow.screens.length)));
     nodes.push(section);
   }
-  if (layout === 'web') {
+  if (layout === 'web' && allScreens().length > 1) {
     const section = el('section', 'flows');
     const stateTabs = tabs(allScreens().map(id => ({id, label: screenTitle(id)})), item => item.id === selected, item => updateSelection(item.id), item => pad(allScreens().indexOf(item.id) + 1));
     [...stateTabs.children].forEach((tab, index) => { tab.dataset.screen = allScreens()[index]; controls.push(tab); });
@@ -438,7 +447,10 @@ function personaBlock(body) {
   const profile = el('div', 'persona-profile');
   profile.append(el('h3', '', text('case.persona.name')));
   for (const item of listItems(content['case.persona.profile'])) { const [key, value] = splitItem(item, /:\s+/); const row = el('div', 'persona-row'); row.append(el('span', 'tiny', key), el('span', '', value || '')); profile.append(row); }
-  card.append(el('div', 'portrait'), profile);
+  const portrait = el('div', 'portrait');
+  // "case.persona.photo" holds an image path; without it the portrait stays a grey block.
+  if (filled('case.persona.photo')) { const img = el('img'); img.src = content['case.persona.photo'].trim(); img.alt = text('case.persona.name'); img.loading = 'lazy'; portrait.append(img); portrait.classList.add('has-photo'); }
+  card.append(portrait, profile);
   body.append(card);
   if (filled('case.persona.quote')) body.append(copy('case.persona.quote', 'lead quote-lead'));
   const two = el('div', 'two-lists');
@@ -544,7 +556,8 @@ function systemBlock(body) {
     body.append(palette);
   }
   const type = listItems(content['case.system.type']);
-  if (type.length) body.append(hairList(type, item => { const [role, font, spec] = splitItem(item, /\s*\|\s*/); const row = el('div', 'type-row'); row.append(el('span', 'mono', role), el('span', 'type-sample', font || ''), el('span', 'mono', spec || '')); return row; }));
+  // Type rows read "size | sample | role" and render as a plain table, as on the Figma board.
+  if (type.length) body.append(richList([`- ${UI.typeHead.join(' | ')}`, ...type.map(item => `- ${splitItem(item, /\s*\|\s*/).join(' | ')}`)]));
   if (filled('case.system.body')) body.append(copy('case.system.body', 'body-text'));
   if (config.designSystem) body.append(link(UI.system, config.designSystem, 'btn btn-outline'));
 }
@@ -553,11 +566,136 @@ function systemBlock(body) {
 // Each body is read block by block (blank-line separated); see CONTENT_GUIDE.md for the patterns.
 const isStat = item => { const [value, caption] = splitItem(item, /\s+—\s+/); return caption !== undefined && value.length <= 14 && /\d/.test(value) && !value.startsWith('**'); };
 const isQuote = item => /^[“"‘]/.test(item) && /\s—\s/.test(item);
-const isCard = item => /^\*\*[^*]+\*\*(\s+·\s+[^—]+)?\s+—\s+/.test(item);
+const isCard = item => /^\*\*[^*]+\*\*(\s+·\s+[^—]+?)?(\s+—\s+|\s*$)/.test(item);
 const isBar = item => /^.+:\s+-?\d+(\.\d+)?%?$/.test(item);
-function richList(lines, heading) {
+// "**Title** · tag — text // more" → {title, tag, lines}; "Label — text" → {tag, lines}; anything else → {lines}.
+function parseCard(source) {
+  const card = source.match(/^\*\*([^*]+)\*\*(?:\s+·\s+([^—]+?))?(?:\s+—\s+([\s\S]*))?$/);
+  if (card) return {title: card[1], tag: card[2], lines: card[3] ? card[3].split(/\s+\/\/\s+/) : []};
+  const labelled = source.match(/^([^—*“"]{1,40}?)\s+—\s+([\s\S]*)$/);
+  if (labelled) return {tag: labelled[1], lines: labelled[2].split(/\s+\/\/\s+/)};
+  return {lines: source.split(/\s+\/\/\s+/)};
+}
+function cardNode(source, className = 'card') {
+  const {title, tag, lines} = typeof source === 'string' ? parseCard(source) : source;
+  const node = el('div', className);
+  if (tag) node.append(el('p', 'mono card-tag', tag));
+  if (title) node.append(el('p', 'strong', title));
+  // A line that is only a bold figure ("**82%**") is shown large.
+  for (const line of lines) node.append(/^\*\*[^*]{1,16}\*\*$/.test(line) && /\d/.test(line) ? el('p', 'card-figure', line.slice(2, -2)) : md(line, 'small'));
+  return node;
+}
+// A list row's "//" segments: images sit beside the text, "Input ·"/"Output ·" become boxes, "Basis ·" a caption.
+function segmentNodes(segments) {
+  const media = [], text = [], io = el('div', 'io');
+  for (const line of segments) {
+    const box = line.match(/^(Input|Output|입력|출력)\s+·\s+([\s\S]+)$/);
+    if (/^!\[[^\]]*\]\([^)]+\)$/.test(line)) media.push(...md(line).children);
+    else if (box) { const cell = el('div', /^(Output|출력)$/.test(box[1]) ? 'io-box is-out' : 'io-box'); cell.append(el('p', 'mono', box[1].toUpperCase()), md(box[2], 'small')); io.append(cell); }
+    else if (/^(Basis|근거)\s+·\s+/.test(line)) text.push(md(line, 'mono basis'));
+    else text.push(md(line, 'small'));
+  }
+  if (io.children.length) text.splice(text.findIndex(node => node.classList.contains('basis')) >>> 0, 0, io);
+  return {media, text};
+}
+const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack']);
+// Journey lanes: "**Stage** — “thought” // “thought” // → feature" becomes one column per stage.
+function laneChart(items) {
+  const node = el('div', 'lanes');
+  for (const item of items) {
+    const {title, tag, lines} = parseCard(item);
+    const lane = el('div', 'lane');
+    lane.append(el('p', 'lane-head', title || tag || ''));
+    for (const line of lines) {
+      if (/^[“"‘]/.test(line)) lane.append(md(line, 'lane-bubble'));
+      else if (/^→\s*/.test(line)) lane.append(md(line.replace(/^→\s*/, ''), 'lane-feature'));
+      else if (line.trim() !== '-') lane.append(md(line, 'small'));
+    }
+    node.append(lane);
+  }
+  return node;
+}
+function columnChart(items, heading) {
+  const rows = items.map(item => { const [name, raw] = item.split(/:\s+(?=[^:]*$)/); return {name, raw, value: parseFloat(raw.replace(/[^\d.]/g, '')) || 0}; });
+  const max = Math.max(...rows.map(row => row.value), 1);
+  const node = el('div', 'columns-chart');
+  if (heading) node.append(el('p', 'strong columns-title', heading));
+  const plot = el('div', 'columns-plot');
+  for (const row of rows) {
+    const col = el('div', 'column');
+    const bar = el('span', `column-bar${row.value === max ? ' is-top' : ''}`);
+    bar.style.height = `${row.value / max * 100}%`;
+    col.append(el('span', 'column-value', row.raw), bar, el('span', 'mono column-name', row.name));
+    plot.append(col);
+  }
+  node.append(plot);
+  return node;
+}
+function meterChart(items, args) {
+  const rows = items.map(item => { const [head, ...captions] = item.split(/\s+—\s+/); const [name, raw = ''] = head.split(/:\s+(?=[^:]*$)/); return {name, raw, captions, value: parseFloat(raw.replace(/[^\d.]/g, '')) || 0}; });
+  const max = Number(args.max) || Math.max(...rows.map(row => row.value), 1);
+  const node = el('div', 'meter');
+  for (const row of rows) {
+    const line = el('div', 'meter-row');
+    const head = el('div', 'meter-head');
+    head.append(md(row.name, 'strong'), el('span', 'meter-value', row.raw));
+    const track = el('div', 'meter-track');
+    const fill = el('span', `meter-fill${row.value === Math.max(...rows.map(r => r.value)) ? ' is-top' : ''}`);
+    fill.style.width = `${Math.min(100, row.value / max * 100)}%`;
+    track.append(fill);
+    if (args.mark) { const mark = el('span', 'meter-mark'); mark.style.left = `${Number(args.mark) / max * 100}%`; track.append(mark); }
+    line.append(head, track, ...row.captions.map(caption => md(caption, 'small')));
+    node.append(line);
+  }
+  return node;
+}
+function flowChart(items, args) {
+  const down = 'down' in args;
+  const node = el('div', `flow${down ? ' is-down' : ''}`);
+  items.forEach((item, index) => {
+    if (index) node.append(el('span', 'flow-arrow', down ? '↓' : '→'));
+    const step = el('div', `flow-step${index === items.length - 1 && !down ? ' is-last' : ''}`);
+    for (const part of item.split(/\s+\|\|\s+/)) step.append(cardNode(part, 'flow-box'));
+    if (step.children.length > 1) step.classList.add('is-multi');
+    node.append(step);
+  });
+  return node;
+}
+// Business model canvas: nine cards in the usual order (partners, activities, resources, value, relationships, channels, segments, cost, revenue).
+function canvasChart(items) {
+  const node = el('div', 'canvas');
+  items.forEach((item, index) => {
+    const {title, tag, lines} = parseCard(item);
+    const cell = el('div', `canvas-cell c${index + 1}`);
+    cell.append(el('p', 'mono card-tag', title || tag || ''));
+    for (const line of lines) cell.append(md(line, 'small'));
+    node.append(cell);
+  });
+  return node;
+}
+function sourceRows(items) {
+  return hairList(items, item => { const [textPart, source] = item.split(/\s+—\s+(?=[^—]*$)/); const row = el('div', 'source-row'); row.append(md(textPart), el('span', 'mono', source || '')); return row; });
+}
+function richList(lines, heading, mode = null, args = {}) {
   const ordered = lines.every(line => /^\d+\.\s/.test(line));
   const items = lines.map(line => line.replace(/^(\d+\.|[-*])\s+/, '').trim());
+  if (mode === 'columns' && items.every(item => /^.+:\s+\D{0,2}\d[\d,.]*\s?\S{0,3}$/.test(item))) return columnChart(items, heading);
+  if (mode === 'meter') return meterChart(items, args);
+  if (mode === 'flow') return flowChart(items, args);
+  if (mode === 'canvas') return canvasChart(items);
+  if (mode === 'rows') return sourceRows(items);
+  if (mode === 'lanes') return laneChart(items);
+  // "left => right" pairs a card with the dark card it leads to (requirement → goal, problem → response).
+  if (!ordered && items.every(item => /\s=>\s/.test(item))) {
+    const node = el('div', `pairs${mode === 'stack' ? ' is-stacked' : ''}`);
+    for (const item of items) {
+      const [from, to] = item.split(/\s+=>\s+/);
+      const row = el('div', 'pair');
+      row.append(cardNode(from, 'pair-from'), el('span', 'pair-arrow', '→'), cardNode(to, 'pair-to'));
+      node.append(row);
+    }
+    return node;
+  }
   if (!ordered && items.every(item => item.includes(' | '))) {
     const wrap = el('div', 'gtable-wrap');
     const table = el('table', 'gtable');
@@ -567,6 +705,9 @@ function richList(lines, heading) {
       table.append(row);
     });
     if (splitItem(items[0], /\s+\|\s+/).length > 3) table.classList.add('is-wide');
+    // The column named after this project is highlighted, as in a competitor table.
+    const self = splitItem(items[0], /\s+\|\s+/).findIndex(cell => cell.toLowerCase() === text('title').toLowerCase());
+    if (self > 0) for (const row of table.rows) row.cells[self]?.classList.add('is-self');
     wrap.append(table);
     return wrap;
   }
@@ -589,14 +730,16 @@ function richList(lines, heading) {
     return box;
   }
   if (!ordered && items.every(isCard)) {
-    const node = el('div', 'cards');
+    // A final ">> …" segment sits beside the card as an aside (a figure or a short verdict).
+    const aside = items.some(item => /\s>>\s/.test(item));
+    const node = el('div', aside ? 'aside-rows' : 'cards');
     for (const item of items) {
-      const [, title, tag, rest] = item.match(/^\*\*([^*]+)\*\*(?:\s+·\s+([^—]+?))?\s+—\s+([\s\S]*)$/);
-      const card = el('div', 'card');
-      if (tag) card.append(el('p', 'mono blue', tag));
-      card.append(el('p', 'strong', title));
-      for (const line of rest.split(/\s+\/\/\s+/)) card.append(md(line, 'small'));
-      node.append(card);
+      const [main, note] = item.split(/\s+>>\s+/);
+      const card = cardNode(main);
+      if (!aside) { node.append(card); continue; }
+      const row = el('div', 'aside-row');
+      row.append(card, md(note || '', 'aside'));
+      node.append(row);
     }
     return node;
   }
@@ -605,8 +748,11 @@ function richList(lines, heading) {
     const card = item.match(/^\*\*([^*]+)\*\*\s+—\s+([\s\S]*)$/);
     const row = el('div', ordered ? 'numbered' : '');
     const col = el('div');
-    if (card) { col.append(el('p', 'strong', card[1])); for (const line of card[2].split(/\s+\/\/\s+/)) col.append(md(line, 'small')); } else col.append(md(item));
-    if (ordered) row.append(el('span', 'mono blue', pad(index + 1)));
+    let media = [];
+    if (card) { const parts = segmentNodes(card[2].split(/\s+\/\/\s+/)); media = parts.media; col.append(el('p', 'strong', card[1]), ...parts.text); } else col.append(md(item));
+    // A row with an image puts the image first and moves the number above the title.
+    if (media.length) { const figure = el('div', 'row-media'); figure.append(...media); row.append(figure); row.classList.add('has-media'); if (ordered) col.prepend(el('span', 'mono blue row-index', pad(index + 1))); }
+    else if (ordered) row.append(el('span', 'mono blue', pad(index + 1)));
     row.append(col);
     return row;
   });
@@ -615,25 +761,35 @@ function richBody(source, body) {
   let first = true;
   let heading = null;
   let gallery = null;
+  let mode = null, args = {};
   for (const raw of source.split(/\n\s*\n/)) {
     const block = raw.trim();
     if (!block || /^@wide$/.test(block)) continue;
+    // "@columns", "@rows", "@flow", "@meter", "@canvas" shape the list that follows; "key=value" words set options.
+    const directive = block.match(/^@(\w+)((?:\s+[\w=.]+)*)$/);
+    if (directive && blockModes.has(directive[1])) { mode = directive[1]; args = Object.fromEntries(directive[2].trim().split(/\s+/).filter(Boolean).map(word => word.split('='))); continue; }
+    const strongHead = block.match(/^####\s+(.+)$/);
+    if (strongHead) { body.append(md(`**${strongHead[1]}**`, 'sub-title')); gallery = null; first = false; continue; }
+    if (block.startsWith('※ ')) { body.append(md(block.slice(2), 'note-caption')); gallery = null; first = false; continue; }
     if (block === '@persona') { personaBlock(body); first = false; continue; }
     if (block === '@journey') { journeyBlock(body); first = false; continue; }
     if (block === '@system') { systemBlock(body); first = false; continue; }
     const head = block.match(/^###\s+(.+)$/);
-    if (head) { heading = head[1]; gallery = null; const [title, tag] = heading.split(/\s+·\s+/); const node = el('div', 'sub-head'); node.append(el('p', 'mono blue', tag ? `${title} · ${tag}` : title)); body.append(node); first = false; continue; }
+    if (head) { heading = head[1]; gallery = null; const [title, tag] = heading.split(/\s+·\s+/); const node = el('div', 'sub-head'); node.append(el('p', 'mono blue', tag ? `${title} · ${tag}` : title)); body.append(node); continue; }
     if (/^!\[[^\]]*\]\([^)]+\)$/.test(block)) {
-      if (!gallery) { gallery = el('div', 'gallery'); body.append(gallery); }
+      // "@stack" before images keeps them one per row instead of a two-column gallery.
+      if (!gallery) { gallery = el('div', `gallery${mode === 'stack' ? ' is-stack' : ''}`); body.append(gallery); mode = null; }
       gallery.append(...md(block).children);
-      gallery.classList.toggle('is-multi', gallery.children.length > 1);
+      gallery.classList.toggle('is-multi', gallery.children.length > 1 && !gallery.classList.contains('is-stack'));
       first = false;
       continue;
     }
     gallery = null;
     const lines = block.split('\n');
     if (lines.every(line => /^(\d+\.|[-*])\s/.test(line))) {
-      const list = richList(lines, heading);
+      const list = richList(lines, heading, mode, args);
+      mode = null; args = {};
+      if (list.classList.contains('columns-chart') && heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
       if (list.classList.contains('bar-group')) {
         // Consecutive charts share one grid; the chart carries its own heading.
         if (heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
@@ -687,11 +843,37 @@ function metaRow() {
   for (const [key, name] of [['role', UI.role], ['period', UI.time], filled('org') ? ['org', UI.org] : ['tools', UI.tools]]) { const item = el('div'); item.append(el('dt', 'mono', name), el('dd', isBlank(content[key]) ? 'is-todo' : '', text(key, UI.todo))); node.append(item); }
   return node;
 }
+// Case pages carry the project's place in the registry, its subtitle and tagline, and what is open to visitors.
+function caseHead() {
+  const node = pageHead(`${text('title').toUpperCase()} · ${UI.caseStudy}`, text('title'), filled('subtitle') ? null : 'summary');
+  if (filled('subtitle')) node.append(copy('subtitle', 'subtitle'));
+  if (filled('tagline')) node.append(copy('tagline', 'tagline'));
+  return node;
+}
+// "availability" in project.json lists what exists, e.g. [["prototype", false], ["screens", true], ["case", true]].
+// A filled item links to its page when that page is public.
+function availability() {
+  const items = config.availability || [[config.type === 'gallery' ? 'screens' : 'prototype', config.showPrototype !== false], ['case', true]];
+  const node = el('ul', 'availability');
+  node.setAttribute('aria-label', UI.availableLabel);
+  for (const [id, on] of items) {
+    const name = `${on ? '●' : '○'} ${UI.available[id] || id}`;
+    const item = el('li', `avail${on ? ' is-on' : ''}`);
+    if (on && id === 'case') item.append(el('span', '', name)), item.firstChild.setAttribute('aria-current', 'page');
+    else if (on && config.showPrototype !== false) item.append(link(name, withLang('./')));
+    else item.append(el('span', '', name));
+    node.append(item);
+  }
+  return node;
+}
 function casePage() {
+  const intro = filled('case.intro') ? [copy('case.intro', 'case-intro')] : [];
   return [
-    topBar([[UI.projects, '../'], [text('title').toUpperCase()], [UI.caseStudy]]),
-    pageHead(`${text('title').toUpperCase()} · ${UI.caseStudy}`, text('title'), 'summary'),
+    topBar([[UI.projects, '../'], [text('title').toUpperCase()], [UI.caseStudy]], projectNumber),
+    caseHead(),
     metaRow(),
+    availability(),
+    ...intro,
     ...caseStudy(),
     footerNav(config.showPrototype === false ? null : UI.toPrototype, './'),
   ];
@@ -762,6 +944,12 @@ async function start() {
   for (const flow of config.flows) if (!flow.screens && flow.groups) flow.screens = flow.groups.flatMap(group => group.screens);
   content = await loadContent('content');
   if (view === 'case') Object.assign(content, await loadContent('case-study', false));
+  if (view === 'case') {
+    // The case page shows the project's position in the registry, matching the index numbering.
+    const registry = await fetch('../shared/projects.json').then(r => r.ok ? r.json() : []).catch(() => []);
+    const index = registry.indexOf(location.pathname.split('/').filter(Boolean).at(-2));
+    if (index >= 0) projectNumber = pad(index + 1);
+  }
   selected = config.defaultScreen;
   selectedFlow = config.flows.find(flow => flow.screens.includes(selected))?.id || config.flows[0].id;
   document.title = `${text('title')} · ${view === 'case' ? 'Case study' : 'Prototype'}`;

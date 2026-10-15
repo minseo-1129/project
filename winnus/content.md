@@ -5,7 +5,7 @@
 
 ## 프로젝트 이름 <!-- title -->
 
-WINNUS
+Winnus
 
 ## 한 줄 소개 <!-- summary -->
 
@@ -290,3 +290,11 @@ Mobile prototype
 ## 소속 <!-- org -->
 
 UMC
+
+## 부제 <!-- subtitle -->
+
+입문자를 위한 다감각 와인 가이드
+
+## 태그라인 <!-- tagline -->
+
+맛과 향 프로필을 인터랙티브 비주얼로 옮깁니다.

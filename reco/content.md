@@ -5,7 +5,7 @@
 
 ## 프로젝트 이름 <!-- title -->
 
-reco
+RECO
 
 ## 한 줄 소개 <!-- summary -->
 
@@ -95,30 +95,14 @@ Web prototype
 
 자기성찰 대화의 목적을 소개하고 대화를 시작하도록 안내함
 
-## 웹 상태 2 · title <!-- screen.branch.title -->
-
-대화 맥락 선택
-
-## 웹 상태 2 · body <!-- screen.branch.body -->
-
-대화의 출발점을 구체적으로 고릅니다.
-
-## 웹 상태 2 · caption <!-- screen.branch.caption -->
-
-대화의 맥락을 선택해 자기성찰의 출발점을 정하도록 함.
-
-## 웹 상태 3 · title <!-- screen.compare.title -->
-
-해석의 순서 비교
-
-## 웹 상태 3 · body <!-- screen.compare.body -->
-
-정보가 나타나는 순서의 차이를 비교합니다.
-
-## 웹 상태 3 · caption <!-- screen.compare.caption -->
-
-동일한 정보의 배치 순서를 바꿔 패턴 해석을 먼저 제시할 때와 요청 시 제시할 때를 비교함.
-
 ## 소속 <!-- org -->
 
 Imperial College London
+
+## 부제 <!-- subtitle -->
+
+사회적 처방을 위한 성찰 동반자
+
+## 태그라인 <!-- tagline -->
+
+정신건강 돌봄의 공백을 잇는 중간 도구.
