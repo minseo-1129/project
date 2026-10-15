@@ -617,6 +617,7 @@ function richBody(source, body) {
     if (!block || /^@wide$/.test(block)) continue;
     if (block === '@persona') { personaBlock(body); first = false; continue; }
     if (block === '@journey') { journeyBlock(body); first = false; continue; }
+    if (block === '@system') { systemBlock(body); first = false; continue; }
     const head = block.match(/^###\s+(.+)$/);
     if (head) { heading = head[1]; gallery = null; const [title, tag] = heading.split(/\s+·\s+/); const node = el('div', 'sub-head'); node.append(el('p', 'mono blue', tag ? `${title} · ${tag}` : title)); body.append(node); first = false; continue; }
     if (/^!\[[^\]]*\]\([^)]+\)$/.test(block)) {

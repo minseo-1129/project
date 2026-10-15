@@ -13,7 +13,7 @@ CUPPO
 
 ## 담당 역할 <!-- role -->
 
-[담당 역할을 입력해 주세요]
+PM · UX 리서치 · UI 디자인
 
 ## 프로젝트 기간 <!-- period -->
 
@@ -21,7 +21,7 @@ CUPPO
 
 ## 사용 도구 <!-- tools -->
 
-[사용한 도구를 입력해 주세요 (예: Figma · HTML/CSS)]
+Figma · HTML/CSS
 
 ## 플랫폼과 범위 <!-- scope -->
 

@@ -8,7 +8,7 @@ A mobile coffee journal that turns each cup into a card, letting users capture r
 
 ## role <!-- role -->
 
-[Your role]
+PM · UX Research · UI Design
 
 ## period <!-- period -->
 
@@ -16,7 +16,7 @@ A mobile coffee journal that turns each cup into a card, letting users capture r
 
 ## tools <!-- tools -->
 
-[Tools used (e.g. Figma · HTML/CSS)]
+Figma · HTML/CSS
 
 ## explore.title <!-- explore.title -->
 

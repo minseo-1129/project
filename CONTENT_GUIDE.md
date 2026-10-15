@@ -111,7 +111,7 @@ Inside a section, each blank-line-separated block is read like this:
 | `- **Title** · tag — text // second line` | Cards (`·` tag and `//` line breaks are optional) |
 | `1. **Title** — text` | A numbered list |
 | `![Caption](assets/…)` | An image; consecutive images form a two-column gallery |
-| `@persona` / `@journey` | The persona or journey written in the `case.persona.*` / `case.journey.*` fields |
+| `@persona` / `@journey` / `@system` | The persona, journey or design system written in the `case.persona.*` / `case.journey.*` / `case.system.*` fields |
 | `@wide` | Lets the section use the wide 1120 column |
 
 In the English file, write every section in full: a section in `case-study.en.md` replaces the Korean one as a whole.
