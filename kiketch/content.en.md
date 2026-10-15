@@ -20,23 +20,23 @@ Jun 2019 – Nov 2019
 
 ## explore.title <!-- explore.title -->
 
-Open the book and finish the scene with a drawing
+Follow the pop-up book scenes
 
 ## explore.body <!-- explore.body -->
 
-Pick a scene on the right or move with the buttons on screen. Tap the empty sticky note on the hill, draw on the paper, then use “stick it on the hill” to see the finished scene.
+Pick a scene to follow the sequence: choose an empty sticky note, draw on paper and complete the scene.
 
 ## flow.title <!-- flow.title -->
 
-Open the book and finish the scene with a drawing
+Follow the pop-up book scenes
 
 ## context.title <!-- context.title -->
 
-Scenes that lead from choosing to drawing
+A pop-up book finished with the child's drawings
 
 ## context.body <!-- context.body -->
 
-Instead of typing, the build offers picture-based chapter choice and drawing on paper. The finished drawing returns to the scene the child was exploring.
+The child picks an empty sticky note in a scene; the drawing they make on paper joins the scene and completes the picture.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,83 +44,15 @@ Keep the drawing inside the story
 
 ## decision.body <!-- decision.body -->
 
-Drawing doesn't end in the sketchbook — it fills the empty spot on the hill. A small movement after placing it tells the child the drawing has entered the scene.
+Drawing doesn't end in the sketchbook: it fills the empty spot in the scene, and the finished drawing comes alive as a character.
 
 ## guide.title <!-- guide.title -->
 
-Open the book and finish the scene with a drawing
+Follow the pop-up book scenes
 
 ## guide.body <!-- guide.body -->
 
-Pick a scene on the right or move with the buttons on screen. Tap the empty sticky note on the hill, draw on the paper, then use “stick it on the hill” to see the finished scene.
-
-## flow.pages.title <!-- flow.pages.title -->
-
-Scene exploration
-
-## flow.pages.body <!-- flow.pages.body -->
-
-Pick a scene on the right or move with the buttons on screen. Tap the empty sticky note on the hill, draw on the paper, then use “stick it on the hill” to see the finished scene.
-
-## screen.home.title <!-- screen.home.title -->
-
-Home / bookshelf
-
-## screen.home.caption <!-- screen.home.caption -->
-
-Pop-up cover · one button
-
-## screen.home.body <!-- screen.home.body -->
-
-Pop-up cover · one button
-
-## screen.chapter.title <!-- screen.chapter.title -->
-
-Chapter choice
-
-## screen.chapter.caption <!-- screen.chapter.caption -->
-
-Chosen by pictures alone, no words
-
-## screen.chapter.body <!-- screen.chapter.body -->
-
-Chosen by pictures alone, no words
-
-## screen.hill.title <!-- screen.hill.title -->
-
-Hill · empty spot
-
-## screen.hill.caption <!-- screen.hill.caption -->
-
-Sticky note = a place to draw. Tap to enter
-
-## screen.hill.body <!-- screen.hill.body -->
-
-Sticky note = a place to draw. Tap to enter
-
-## screen.sketch.title <!-- screen.sketch.title -->
-
-Sketchbook
-
-## screen.sketch.caption <!-- screen.sketch.caption -->
-
-Drawn straight onto paper
-
-## screen.sketch.body <!-- screen.sketch.body -->
-
-Drawn straight onto paper
-
-## screen.filled.title <!-- screen.filled.title -->
-
-Drawing on the hill
-
-## screen.filled.caption <!-- screen.filled.caption -->
-
-Sticks in place and moves a little
-
-## screen.filled.body <!-- screen.filled.body -->
-
-Sticks in place and moves a little
+Pick a scene to follow the sequence: choose an empty sticky note, draw on paper and complete the scene.
 
 ## org <!-- org -->
 
@@ -133,3 +65,55 @@ Interactive Drawing Book for Early Childhood
 ## tagline <!-- tagline -->
 
 Animates children's drawings with contextual sound.
+
+## scope <!-- scope -->
+
+Gallery / tablet
+
+## flow.pages.title <!-- flow.pages.title -->
+
+Scene sequence
+
+## flow.pages.body <!-- flow.pages.body -->
+
+Pick a scene to follow the sequence: choose an empty sticky note, draw on paper and complete the scene.
+
+## screen.scene.title <!-- screen.scene.title -->
+
+A scene with empty sticky notes
+
+## screen.scene.caption <!-- screen.scene.caption -->
+
+The empty sticky notes mark where to draw
+
+## screen.pick.title <!-- screen.pick.title -->
+
+Picking a sticky note
+
+## screen.pick.caption <!-- screen.pick.caption -->
+
+Choose the note to fill with a drawing
+
+## screen.draw.title <!-- screen.draw.title -->
+
+Drawing on paper
+
+## screen.draw.caption <!-- screen.draw.caption -->
+
+Draw with paper and coloured pencils
+
+## screen.done.title <!-- screen.done.title -->
+
+The drawing in the scene
+
+## screen.done.caption <!-- screen.done.caption -->
+
+The drawn sun and tree complete the picture
+
+## screen.character.title <!-- screen.character.title -->
+
+A character of their own
+
+## screen.character.caption <!-- screen.character.caption -->
+
+A character on the pop-up book moves and reacts with life

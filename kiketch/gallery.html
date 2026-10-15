@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kiketch · Screens</title>
+<style>
+html,body{margin:0;height:100%;background:#f4f5f8}
+body{display:flex;align-items:center;justify-content:center}
+img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+</style></head>
+<body>
+<img id="screen" alt="">
+<script>
+// The portfolio shell opens this page with ?portfolioState=<screen id>.
+const screens = {
+  "scene": [
+    "assets/case-study/01-scene.jpg",
+    "빈 포스트잇이 붙은 장면"
+  ],
+  "pick": [
+    "assets/case-study/02-pick.jpg",
+    "포스트잇 고르기"
+  ],
+  "draw": [
+    "assets/case-study/03-draw.jpg",
+    "종이에 직접 그리기"
+  ],
+  "done": [
+    "assets/case-study/04-done.jpg",
+    "장면에 들어간 그림"
+  ],
+  "character": [
+    "assets/case-study/05-character.jpg",
+    "나만의 애착 캐릭터"
+  ]
+};
+const [src, alt] = screens[new URLSearchParams(location.search).get('portfolioState')] || screens.scene;
+const image = document.getElementById('screen');
+image.src = src;
+image.alt = alt;
+</script>
+</body></html>

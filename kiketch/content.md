@@ -25,27 +25,27 @@ UX/UI 디자이너
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Gallery / page navigation
+Gallery / tablet
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 
-책을 열고, 그림으로 장면을 완성하기
+팝업북 장면을 따라가기
 
 ## 프로토타입 사용 안내 <!-- explore.body -->
 
-오른쪽에서 장면을 고르거나 화면 속 버튼으로 이동하세요. 언덕의 빈 포스트잇을 누르고 종이에 그린 뒤, “언덕에 붙이기”로 완성 장면을 확인할 수 있습니다.
+오른쪽에서 장면을 고르면 빈 포스트잇을 고르고, 종이에 그리고, 장면을 완성하는 순서를 볼 수 있습니다.
 
 ## 플로우 소개 제목 <!-- flow.title -->
 
-책을 열고, 그림으로 장면을 완성하기
+팝업북 장면을 따라가기
 
 ## 배경 제목 <!-- context.title -->
 
-그림을 고르고 그리기로 이어지는 장면
+아이가 그린 그림으로 완성하는 팝업북
 
 ## 배경 설명 <!-- context.body -->
 
-기존 구현은 텍스트 입력 대신 그림 중심의 챕터 선택과 종이 위 그리기를 제공합니다. 완성한 그림은 탐색하던 장면으로 돌아갑니다.
+장면 속 빈 포스트잇을 고르면, 아이가 종이 위에 직접 그린 그림이 장면에 들어가 한 폭을 완성합니다.
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -53,83 +53,15 @@ Gallery / page navigation
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-스케치북에서 끝내지 않고 언덕의 빈자리를 채우도록 연결합니다. 완성 뒤 작은 움직임은 그림이 장면에 들어왔다는 피드백을 제공합니다.
+스케치북에서 끝내지 않고 장면의 빈자리를 채우도록 연결하고, 완성한 그림은 애착 캐릭터가 되어 움직입니다.
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
-책을 열고, 그림으로 장면을 완성하기
+팝업북 장면을 따라가기
 
 ## 웹 조작 안내 설명 <!-- guide.body -->
 
-오른쪽에서 장면을 고르거나 화면 속 버튼으로 이동하세요. 언덕의 빈 포스트잇을 누르고 종이에 그린 뒤, “언덕에 붙이기”로 완성 장면을 확인할 수 있습니다.
-
-## 플로우 · flow.pages.title <!-- flow.pages.title -->
-
-장면 탐색
-
-## 플로우 · flow.pages.body <!-- flow.pages.body -->
-
-오른쪽에서 장면을 고르거나 화면 속 버튼으로 이동하세요. 언덕의 빈 포스트잇을 누르고 종이에 그린 뒤, “언덕에 붙이기”로 완성 장면을 확인할 수 있습니다.
-
-## 홈 / 책장 · 화면 이름 <!-- screen.home.title -->
-
-홈 / 책장
-
-## 홈 / 책장 · 카드 설명 <!-- screen.home.caption -->
-
-팝업북 표지 · 버튼 하나
-
-## 홈 / 책장 · 상세 설명 <!-- screen.home.body -->
-
-팝업북 표지 · 버튼 하나
-
-## 챕터 선택 · 화면 이름 <!-- screen.chapter.title -->
-
-챕터 선택
-
-## 챕터 선택 · 카드 설명 <!-- screen.chapter.caption -->
-
-글자 없이 그림으로만 고른다
-
-## 챕터 선택 · 상세 설명 <!-- screen.chapter.body -->
-
-글자 없이 그림으로만 고른다
-
-## 언덕 · 빈 자리 · 화면 이름 <!-- screen.hill.title -->
-
-언덕 · 빈 자리
-
-## 언덕 · 빈 자리 · 카드 설명 <!-- screen.hill.caption -->
-
-포스트잇 = 그릴 자리. 눌러서 진입
-
-## 언덕 · 빈 자리 · 상세 설명 <!-- screen.hill.body -->
-
-포스트잇 = 그릴 자리. 눌러서 진입
-
-## 스케치북 · 화면 이름 <!-- screen.sketch.title -->
-
-스케치북
-
-## 스케치북 · 카드 설명 <!-- screen.sketch.caption -->
-
-종이에 직접 그려집니다
-
-## 스케치북 · 상세 설명 <!-- screen.sketch.body -->
-
-종이에 직접 그려집니다
-
-## 언덕에 붙은 그림 · 화면 이름 <!-- screen.filled.title -->
-
-언덕에 붙은 그림
-
-## 언덕에 붙은 그림 · 카드 설명 <!-- screen.filled.caption -->
-
-자리에 붙고 살짝 움직인다
-
-## 언덕에 붙은 그림 · 상세 설명 <!-- screen.filled.body -->
-
-자리에 붙고 살짝 움직인다
+오른쪽에서 장면을 고르면 빈 포스트잇을 고르고, 종이에 그리고, 장면을 완성하는 순서를 볼 수 있습니다.
 
 ## 소속 <!-- org -->
 
@@ -142,3 +74,51 @@ Dodam
 ## 태그라인 <!-- tagline -->
 
 아이가 그린 그림이 상황에 맞는 소리와 함께 움직입니다.
+
+## flow.pages.title <!-- flow.pages.title -->
+
+장면 순서
+
+## flow.pages.body <!-- flow.pages.body -->
+
+오른쪽에서 장면을 고르면 빈 포스트잇을 고르고, 종이에 그리고, 장면을 완성하는 순서를 볼 수 있습니다.
+
+## screen.scene.title <!-- screen.scene.title -->
+
+빈 포스트잇이 붙은 장면
+
+## screen.scene.caption <!-- screen.scene.caption -->
+
+장면 속 빈 포스트잇이 그릴 자리를 알려준다
+
+## screen.pick.title <!-- screen.pick.title -->
+
+포스트잇 고르기
+
+## screen.pick.caption <!-- screen.pick.caption -->
+
+그림을 채울 포스트잇을 고른다
+
+## screen.draw.title <!-- screen.draw.title -->
+
+종이에 직접 그리기
+
+## screen.draw.caption <!-- screen.draw.caption -->
+
+종이와 색연필로 직접 그린다
+
+## screen.done.title <!-- screen.done.title -->
+
+장면에 들어간 그림
+
+## screen.done.caption <!-- screen.done.caption -->
+
+그린 해와 나무가 장면에 들어가 한 폭을 완성한다
+
+## screen.character.title <!-- screen.character.title -->
+
+나만의 애착 캐릭터
+
+## screen.character.caption <!-- screen.character.caption -->
+
+팝업북 위에 선 캐릭터가 생동감 있게 움직이며 상호작용한다
