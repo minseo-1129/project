@@ -132,6 +132,10 @@ A line on its own before a list changes how that list is drawn:
 | `@canvas` | A business model canvas (nine cards in the usual order) |
 | `@stack` | Pairs stacked vertically, or images one per row instead of a gallery |
 
+### Prototype page options
+
+`"showDetail": false` in `project.json` shows only the web prototype, without the screen title, CONTEXT / DECISION and extra links (used by The Lighthouse and RECO).
+
 ### Case-study header
 
 `subtitle` and `tagline` in `content.md` appear under the title (without them the summary shows). `case.intro` in `case-study.md` is a large lead line above the first section. `"availability"` in `project.json` sets the pills under the meta row, e.g. `[["prototype", false], ["screens", true], ["case", true]]` (`video` is also available); without it, the pills follow `showPrototype`. The number beside the breadcrumb is the project's position in `shared/projects.json`.

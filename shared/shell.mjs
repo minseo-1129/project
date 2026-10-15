@@ -365,8 +365,10 @@ function prototypePage() {
     nodes.push(stage);
   } else {
     const stage = el('section', 'stage-wide');
-    stage.append(browser(selected), detailPanel());
-    if (config.links?.length) {
+    // "showDetail": false leaves only the prototype: no screen title, CONTEXT / DECISION or extra links.
+    stage.append(browser(selected));
+    if (config.showDetail !== false) stage.append(detailPanel());
+    if (config.showDetail !== false && config.links?.length) {
       const extra = el('div', 'extra-links');
       for (const item of config.links) extra.append(link(text(`link.${item.id}`, item.id), item.href, 'btn btn-outline'));
       stage.append(extra);

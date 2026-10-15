@@ -31,5 +31,6 @@
   ],
   "nativeViewport": true,
   "caseStudy": true,
-  "hideStageToolbar": true
+  "hideStageToolbar": true,
+  "showDetail": false
 }
