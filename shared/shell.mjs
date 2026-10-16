@@ -667,7 +667,7 @@ function segmentNodes(segments) {
   if (io.children.length) text.splice(text.findIndex(node => node.classList.contains('basis')) >>> 0, 0, io);
   return {media, text};
 }
-const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack', 'timeline', 'quad', 'boxed', 'cards', 'defs', 'chips', 'specs', 'dots', 'versus', 'split', 'hero']);
+const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack', 'timeline', 'quad', 'boxed', 'cards', 'defs', 'chips', 'specs', 'dots', 'versus', 'split', 'hero', 'legend', 'trace', 'dash', 'slope']);
 // "@defs" — "Term — text" rows with the term on the left ("@defs mono" sets the term as a small blue label).
 function defRows(items, args) {
   return hairList(items, item => { const {title, tag, lines} = parseCard(item); const row = el('div', `def-row${'mono' in args ? ' is-mono' : ''}`); const term = el('div', 'def-term'); term.append(el('p', '', title || tag || '')); if (title && tag) term.append(el('p', 'mono def-tag', tag)); row.append(term, (() => { const box = el('div'); for (const line of lines) box.append(md(line, 'small')); return box; })()); return row; });
@@ -739,6 +739,96 @@ function tabifyTimelines(group) {
   for (const count of bar.querySelectorAll('.tab-count')) count.remove();
   lines.forEach((line, index) => { line.hidden = index !== 0; });
   group.prepend(bar);
+}
+// "@slope Pre | Post // Group A | Group B" — small-multiple slope charts, one per row:
+// "- Measure — 4.21 2.78 | 3.29 3.68" (group A pre post | group B pre post). A is the highlighted series.
+function slopeCharts(items, args) {
+  const [timesRaw = '', groupsRaw = ''] = (args._raw || '').split(/\s+\/\/\s+/);
+  const [t0 = 'Pre', t1 = 'Post'] = timesRaw.split(/\s*\|\s*/);
+  const groups = groupsRaw.split(/\s*\|\s*/).filter(Boolean);
+  const node = el('div', 'slope');
+  const key = el('div', 'slope-key');
+  groups.forEach((group, index) => { const k = el('span', `slope-key-item${index ? ' is-base' : ''}`); k.append(el('span', 'slope-swatch'), el('span', '', group)); key.append(k); });
+  node.append(key);
+  const grid = el('div', 'slope-grid');
+  const NS = 'http://www.w3.org/2000/svg';
+  const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); return e; };
+  for (const item of items) {
+    const [label, data = ''] = item.split(/\s+—\s+/);
+    const raw = data.split(/\s*\|\s*/).map(part => part.trim().split(/\s+/));
+    const series = raw.map(pair => pair.map(Number));
+    const all = series.flat();
+    const lo = Math.min(...all), hi = Math.max(...all), padV = (hi - lo) * 0.18 || 1;
+    const W = 200, H = 150, x0 = 46, x1 = 154, top = 14, bottom = 122;
+    const y = v => bottom - (v - (lo - padV)) / ((hi + padV) - (lo - padV)) * (bottom - top);
+    const cell = el('figure', 'slope-cell');
+    const svg = svgEl('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${label}: ${groups.map((g, i) => `${g} ${series[i]?.[0]} → ${series[i]?.[1]}`).join(', ')}`});
+    for (const x of [x0, x1]) svg.append(svgEl('line', {x1: x, x2: x, y1: top - 4, y2: bottom + 4, class: 'slope-axis'}));
+    [[x0, t0], [x1, t1]].forEach(([x, t]) => { const tx = svgEl('text', {x, y: H - 8, class: 'slope-time', 'text-anchor': 'middle'}); tx.textContent = t; svg.append(tx); });
+    // The base series is drawn first so the highlighted one sits on top.
+    [...series.keys()].reverse().forEach(index => {
+      const [a, b] = series[index]; if (!Number.isFinite(a) || !Number.isFinite(b)) return;
+      const g = svgEl('g', {class: `slope-series${index ? ' is-base' : ''}`});
+      g.append(svgEl('line', {x1: x0, y1: y(a), x2: x1, y2: y(b), class: 'slope-line'}));
+      [[x0, a, 'end', -8, raw[index][0]], [x1, b, 'start', 8, raw[index][1]]].forEach(([x, v, anchor, dx, text]) => {
+        const dot = svgEl('circle', {cx: x, cy: y(v), r: 4, class: 'slope-dot'});
+        const tip = svgEl('title', {}); tip.textContent = `${groups[index] || ''} · ${x === x0 ? t0 : t1} ${text}`; dot.append(tip);
+        const tx = svgEl('text', {x: x + dx, y: y(v) + 3.5, 'text-anchor': anchor, class: 'slope-value'}); tx.textContent = text;
+        g.append(dot, tx);
+      });
+      svg.append(g);
+    });
+    cell.append(svg, md(label, 'slope-label'));
+    grid.append(cell);
+  }
+  node.append(grid);
+  return node;
+}
+// "@legend" — "- [solid] label" items become a key with a small swatch per line style (solid, dashed, dotted, bold, plain).
+function legendRow(items) {
+  const node = el('div', 'legend');
+  for (const item of items) {
+    const m = item.match(/^\[(\w+)\]\s*(.*)$/);
+    const entry = el('span', 'legend-item');
+    entry.append(el('span', `legend-swatch is-${m ? m[1] : 'plain'}`), md(m ? m[2] : item, 'legend-label'));
+    node.append(entry);
+  }
+  return node;
+}
+// "@trace Theme(s) | Role | Justification // Themes from: | Group A | Group B" — a traceability table.
+// Rows: "- Theme + ^Theme => [style] Role · TAG — justification". "^" marks a theme from the second group (outlined);
+// role styles: primary, sub, tool, policy, infra, repo.
+function traceTable(items, args) {
+  const [colsRaw = '', fromRaw = ''] = (args._raw || '').split(/\s+\/\/\s+/);
+  const cols = colsRaw.split(/\s*\|\s*/).filter(Boolean);
+  const [fromLabel, ...groups] = fromRaw.split(/\s*\|\s*/).filter(Boolean);
+  const node = el('div', 'trace');
+  if (groups.length) {
+    const key = el('div', 'trace-key');
+    key.append(el('span', 'trace-key-label', fromLabel));
+    groups.forEach((group, index) => key.append(el('span', `trace-theme${index ? ' is-outline' : ''}`, group)));
+    node.append(key);
+  }
+  const head = el('div', 'trace-row trace-head');
+  // The role and its justification share the right column, so their headers share it too.
+  if (cols.length) head.append(el('span', '', cols[0]), el('span', '', cols.slice(1).join(' · ')));
+  if (cols.length) node.append(head);
+  for (const item of items) {
+    const [themes, rest = ''] = item.split(/\s+=>\s+/);
+    const row = el('div', 'trace-row');
+    const left = el('div', 'trace-themes');
+    themes.split(/\s+\+\s+/).forEach((theme, index) => {
+      if (index) left.append(el('span', 'trace-plus', '+'));
+      left.append(el('span', `trace-theme${theme.startsWith('^') ? ' is-outline' : ''}`, theme.replace(/^\^/, '')));
+    });
+    left.append(el('span', 'trace-arrow', '→'));
+    const m = rest.match(/^\[(\w+)\]\s*([^·—]+?)(?:\s+·\s+([^—]+?))?\s+—\s+([\s\S]*)$/);
+    const role = el('div', `trace-role is-${m ? m[1] : 'sub'}`);
+    role.append(el('span', 'trace-role-name', m ? m[2] : rest), el('span', 'trace-role-tag', m && m[3] ? m[3] : ''));
+    row.append(left, role, md(m ? m[4] : '', 'trace-why'));
+    node.append(row);
+  }
+  return node;
 }
 function timelineChart(items, args, heading) {
   const points = (args._raw || '').split(/\s*\|\s*/).filter(Boolean);
@@ -871,6 +961,11 @@ function richList(lines, heading, mode = null, args = {}) {
   // "@quad" keeps four cards as a 2 × 2 grid at every width (SWOT).
   if (mode === 'quad') { const node = el('div', 'cards is-quad'); for (const item of items) node.append(cardNode(item)); return node; }
   if (mode === 'timeline') return timelineChart(items, args, heading);
+  if (mode === 'legend') return legendRow(items);
+  if (mode === 'slope') return slopeCharts(items, args);
+  // "@dash" — a plain list with an em dash before each line, divided by hairlines.
+  if (mode === 'dash') { const node = el('div', 'dash-list'); for (const item of items) { const row = el('div', 'dash-item'); row.append(el('span', 'dash-mark', '—'), md(item, 'dash-text')); node.append(row); } return node; }
+  if (mode === 'trace') return traceTable(items, args);
   // "left => right" pairs a card with the dark card it leads to (requirement → goal, problem → response).
   if (!ordered && items.every(item => /\s=>\s/.test(item))) {
     const node = el('div', `pairs${mode === 'stack' ? ' is-stacked' : ''}`);
@@ -930,7 +1025,7 @@ function richList(lines, heading, mode = null, args = {}) {
     }
     return node;
   }
-  return hairList(items, item => {
+  const list = hairList(items, item => {
     const index = items.indexOf(item);
     const card = item.match(/^\*\*([^*]+)\*\*\s+—\s+([\s\S]*)$/);
     const row = el('div', ordered ? 'numbered' : '');
@@ -943,6 +1038,9 @@ function richList(lines, heading, mode = null, args = {}) {
     row.append(col);
     return row;
   });
+  // Numbered "**Title** — text" rows without images read as insights.
+  if (ordered && !list.querySelector('.has-media') && items.every(item => /^\*\*[^*]+\*\*\s+—\s+/.test(item))) list.classList.add('is-insights');
+  return list;
 }
 function richBody(source, body) {
   let first = true;
@@ -955,6 +1053,9 @@ function richBody(source, body) {
     // "@columns", "@rows", "@flow", "@meter", "@canvas" shape the list that follows; "key=value" words set options.
     const directive = block.match(/^@(\w+)([^\n]*)$/);
     if (directive && blockModes.has(directive[1])) { mode = directive[1]; args = {_raw: directive[2].trim(), ...Object.fromEntries(directive[2].trim().split(/\s+/).filter(word => /^[\w.]+(=[\w.]+)?$/.test(word)).map(word => word.split('=')))}; continue; }
+    // "##### Label" is the large mono kicker (Quote, Observed); "### Label" the small one.
+    const kicker = block.match(/^#####\s+(.+)$/);
+    if (kicker) { const node = el('div', 'sub-head is-large'); node.append(el('p', 'mono blue', kicker[1])); body.append(node); heading = null; gallery = null; first = false; continue; }
     const strongHead = block.match(/^####\s+(.+)$/);
     if (strongHead) { body.append(md(`**${strongHead[1]}**`, 'sub-title')); gallery = null; first = false; continue; }
     if (block.startsWith('※ ')) { body.append(md(block.slice(2), 'note-caption')); gallery = null; first = false; continue; }
@@ -976,6 +1077,7 @@ function richBody(source, body) {
     gallery = null;
     const lines = block.split('\n');
     if (lines.every(line => /^(\d+\.|[-*])\s/.test(line))) {
+      const listMode = mode;
       const list = richList(lines, heading, mode, args);
       mode = null; args = {};
       if (list.classList.contains('columns-chart') && heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
@@ -993,7 +1095,8 @@ function richBody(source, body) {
         // Consecutive charts share one grid; the chart carries its own heading.
         if (heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
         let grid = body.lastElementChild;
-        if (!grid?.classList.contains('bar-groups')) { grid = el('div', 'bar-groups'); body.append(grid); }
+        // "@stack" before a chart stacks the charts full width, one per row.
+        if (!grid?.classList.contains('bar-groups')) { grid = el('div', `bar-groups${listMode === 'stack' ? ' is-stacked' : ''}`); body.append(grid); }
         grid.append(list);
       } else body.append(list);
     } else body.append(md(block, first ? 'lead' : 'body-text'));

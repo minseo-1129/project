@@ -42,6 +42,23 @@ Even when the child's answer is wrong or missing, the conversation keeps going w
 
 The dialogue scenarios ran on the NAVER CLOVA Chatbot builder. The schedule the child sets triggers the system, so ForMe speaks first at the promised time. It is an Android tablet app left on the desk.
 
+## Task flow <!-- case.section.taskflow -->
+
+How one “read a book” promise runs as a conversation, from the first question to praise
+
+@flow down
+
+- ForMe speaks first — At the promised time, ForMe asks // “Jiwon! What did we plan to do at this time?”
+- [solid] **Correct** · Book — “Ding-dong!” and straight to the next step || [dashed] **Wrong · no answer · other** · Hint — “We planned to focus on something…” asks once more, then says “We planned to read a book together”
+- Choose a book — “Tell ForMe the name of the book.” // If the child doesn't know, ForMe suggests rereading yesterday's book
+- Set the time — “How long did we plan to read?” // The timer is set to what the child says
+- Get ready and start — “When you're ready, say ‘ready’!” // A timer runs for the agreed minutes
+- [solid] **Time completed** · Done — An end sound, then “Time's up! That's amazing!” || [outline] **Stopped early** · Skip — “Wow, done already? Great job!”
+- Look back — “Was the book fun?” // ForMe praises the feeling or learning the child names
+- Praise yourself — “Say ‘Jiwon worked really hard!’” // Ends by thanking the child for keeping the promise
+
+※ As the steps progress, the on-screen cue changes from a question mark to a book to a star · Source · Book-reading task dialogue design (Task 19, Lv1)
+
 ## Rewards <!-- case.section.rewards -->
 
 Fun for the result, praise for the process.
@@ -67,12 +84,36 @@ A tablet for the child, a phone for the parent
 
 ## Study <!-- case.section.study -->
 
-Children kept using ForMe throughout the eight weeks.
+A six-week randomised controlled study with 132 first graders from 20 elementary schools.
 
-- 76.1% — average 8-week usage among children with ADHD, borderline or mild intellectual disability — Doeun et al., 2023
-- 8 weeks — improvements in self-efficacy and ADHD-related symptoms
+@specs
 
-### Follow-up study design
+- Participants — **132 first graders** // 20 schools · 67 intervention, 65 control
+- Duration — **6 weeks** // 1–4 promises a day with ForMe
+- Measures — **BRIEF · ADHD RS** // rated by parents and teachers, pre and post
+
+@boxed
+
+- 56.2% — average daily promise completion in the intervention group
+- 31.8 days — average days, out of 42, with at least one promise completed
+
+#### ADHD symptoms rated by teachers · pre → post
+
+@slope Pre | Post // Intervention (n = 67) | Control (n = 65)
+
+- Inattention — 4.21 2.78 | 3.29 3.68
+- Hyperactivity / impulsivity — 3.66 2.48 | 3.06 3.20
+- Total ADHD RS — 7.87 5.24 | 6.35 6.88
+
+※ Mean ADHD RS score · lower means fewer symptoms · group × time interaction p < .001 · p = .017 · p = .001 · Park et al., CHI 2024
+
+Symptom scores fell over the six weeks in the intervention group and rose in the control group. Parent-rated executive function (BRIEF) also improved in the intervention group for behavioural regulation (BRI, p = .011) and the global composite (GEC, p = .035).
+
+※ In an earlier eight-week study, children with ADHD, borderline or mild intellectual disability averaged 76.1% usage, with improvements in self-efficacy and ADHD-related symptoms · Doeun et al., 2023
+
+## Follow-up study <!-- case.section.followup -->
+
+We designed a follow-up at a scale of 500, looking at effects at home together with digital biomarkers.
 
 - Item | Details
 - Participants | 500 children aged 6–8 and 500 parents, remote
