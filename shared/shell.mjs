@@ -428,7 +428,7 @@ function prototypePage() {
     const scene = el('div', 'scene-player');
     scene.append(preview(selected));
     const list = el('div', 'side-list');
-    list.append(label(UI.allScenes), sceneThumbs());
+    list.append(sceneThumbs());
     const row = el('div', 'side-row');
     row.append(scene, list);
     stage.append(detailPanel(), row);
