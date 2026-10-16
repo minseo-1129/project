@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A school-linked conversational agent, ForMe, that helps first graders set and keep their own daily promises while parents and teachers follow along. Published at CHI 2024.
+A conversational agent for children, designed to support everyday planning and follow-through and help address ADHD symptoms.
 
 ## role <!-- role -->
 
@@ -40,7 +40,7 @@ Executive-function support with the school as the platform
 
 ## context.body <!-- context.body -->
 
-Executive-function deficits, the core of ADHD, rarely lead to diagnosis and treatment. The child sets and carries out daily tasks by talking with ForMe, while parents follow along in a monitoring app and teachers on a web page.
+Children with ADHD may find it difficult to plan and follow through on daily tasks. We explored how a conversational agent could support that process.
 
 ## decision.title <!-- decision.title -->
 
@@ -48,7 +48,7 @@ Split each promise into four steps
 
 ## decision.body <!-- decision.body -->
 
-Based on cognitive behavioural therapy (CBT), each promise moves through Goal, Plan, Do and Check. Results are rewarded with stars and AR cards; the process with parents' voice praise.
+We used a CBT-inspired flow of setting goals, action planning, doing and checking, with stars and AR cards for completed tasks
 
 ## guide.title <!-- guide.title -->
 
@@ -72,7 +72,7 @@ Main · parent app
 
 ## screen.hero.caption <!-- screen.hero.caption -->
 
-Today's promises and times, and the parent app's progress view
+Shows today's tasks and scheduled times, with a separate progress view for parents
 
 ## screen.hero.body <!-- screen.hero.body -->
 
@@ -84,7 +84,7 @@ Setting promises
 
 ## screen.promises.caption <!-- screen.promises.caption -->
 
-Choose three of ForMe's suggested promises
+Choosing three daily tasks from the agent's suggestions
 
 ## screen.promises.body <!-- screen.promises.body -->
 
@@ -96,7 +96,7 @@ Doing
 
 ## screen.doing.caption <!-- screen.doing.caption -->
 
-Carry it out at the set time and finish on your own
+Completing the chosen tasks at their scheduled times
 
 ## screen.doing.body <!-- screen.doing.body -->
 
@@ -108,7 +108,7 @@ Collecting stars
 
 ## screen.stars.caption <!-- screen.stars.caption -->
 
-Stars for every promise kept
+Stars collected for each completed promise
 
 ## screen.stars.body <!-- screen.stars.body -->
 

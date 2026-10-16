@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-Video-call filters for couples. Face, voice and motion filters that keep long-distance conversations positive.
+A video-call app for long-distance couples, using face, voice and motion filters to support emotional expression.
 
 ## role <!-- role -->
 
@@ -40,7 +40,7 @@ Long-distance couples miss the sense of being together
 
 ## context.body <!-- context.body -->
 
-Couples apart stay in touch online, yet rarely feel they spend time together. We focused on restoring non-verbal cues and a positive tone inside the video call.
+Long-distance couples can stay in touch online without feeling they spend time together. We explored ways to support expression and tone during video calls.
 
 ## decision.title <!-- decision.title -->
 
@@ -48,7 +48,7 @@ One filter for each requirement
 
 ## decision.body <!-- decision.body -->
 
-Non-verbal cues became the face filter, effective communication the voice filter, and full engagement the motion filter.
+We designed face filters that respond to expressions, voice filters triggered by certain words, and motion filters activated by gestures.
 
 ## guide.title <!-- guide.title -->
 
@@ -76,11 +76,11 @@ Face, voice and motion filters that keep long-distance conversations positive.
 
 ## Intro video · screen name <!-- screen.intro.title -->
 
-Intro video
+Introduction
 
 ## Intro video · card caption <!-- screen.intro.caption -->
 
-Sweetalk and its three filters
+An introduction to Sweetalk application for video calls
 
 ## Intro video · detail <!-- screen.intro.body -->
 
@@ -92,7 +92,7 @@ Use case
 
 ## Use case · card caption <!-- screen.usecase.caption -->
 
-A couple's video call with filters on
+An example video call showing the three filters in use
 
 ## Use case · detail <!-- screen.usecase.body -->
 
