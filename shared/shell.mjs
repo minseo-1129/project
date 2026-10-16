@@ -199,7 +199,9 @@ function mirrorFrameControls(frame) {
       if (name) group.append(el('span', 'mono frame-group-label', name.textContent.trim()));
       const buttons = el('div', 'frame-buttons');
       for (const inner of row.querySelectorAll('button')) {
-        const outer = button(inner.textContent.trim(), 'tab', () => inner.click());
+        // "frameLabels" renames the copied buttons ({"완성": "Default", …}) without touching the prototype.
+        const original = inner.textContent.trim();
+        const outer = button(config.frameLabels?.[original] || original, 'tab', () => inner.click());
         outer.setAttribute('aria-pressed', inner.getAttribute('aria-pressed') || 'false');
         buttons.append(outer);
       }
@@ -437,14 +439,14 @@ function prototypePage() {
     const stage = el('section', 'stage-wide');
     const scene = el('div', 'scene-player');
     scene.append(preview(selected));
-    stage.append(scene, label(UI.allScenes), sceneThumbs(), detailPanel());
+    stage.append(detailPanel(), scene, label(UI.allScenes), sceneThumbs());
     nodes.push(stage);
   } else {
     const stage = el('section', 'stage-wide');
-    // "showDetail": false leaves only the prototype: no screen title, CONTEXT / DECISION or extra links.
+    // The description sits above the prototype. "showDetail": false leaves only the prototype: no screen title, CONTEXT / DECISION or extra links.
+    if (config.showDetail !== false) stage.append(detailPanel());
     if (config.frameControls) { frameBar = el('div', 'frame-bar'); stage.append(frameBar); }
     stage.append(browser(selected));
-    if (config.showDetail !== false) stage.append(detailPanel());
     if (config.showDetail !== false && config.links?.length) {
       const extra = el('div', 'extra-links');
       for (const item of config.links) extra.append(link(text(`link.${item.id}`, item.id), item.href, 'btn btn-outline'));
