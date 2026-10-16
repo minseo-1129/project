@@ -9,6 +9,8 @@
   --sans:'Inter','Noto Sans KR',sans-serif;--kr:'Noto Sans KR','Inter',sans-serif;--mono:'IBM Plex Mono','Noto Sans KR',monospace;
   --column:760px;--gutter:176px;
 }
+/* English pages set Latin text in Inter; Korean stays in Noto Sans KR. */
+html[lang="en"]{--kr:'Inter','Noto Sans KR',sans-serif}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 14px/23px var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
