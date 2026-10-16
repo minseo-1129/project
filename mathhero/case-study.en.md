@@ -15,12 +15,14 @@ An ordinary pupil is asked by the AI robot ‘Kobi’ to enter virtual-reality d
 
 From sign-in to rewards, played together as a school.
 
-1. **Sign in** — Log in
-2. **Character** — Name, gender, school, year
-3. **Tutorial** — Controls and a maths-level check
-4. **First reward** — Pet, items, room
-5. **Play** — Choose dimension and difficulty
-6. **Rewards** — Experience and the next stage
+@flow row
+
+- **Sign in** — Log in
+- **Character** — Name, gender, school, year
+- **Tutorial** — Controls and a maths-level check
+- **First reward** — Pet, items, room
+- **Play** — Choose dimension and difficulty
+- **Rewards** — Experience and the next stage
 
 Screen structure — Main (shop, wardrobe, leaderboard, events, pet, room, clan) → Map (dimension, difficulty) → Play (question, answer, hint)
 

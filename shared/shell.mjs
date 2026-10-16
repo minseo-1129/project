@@ -600,7 +600,38 @@ function segmentNodes(segments) {
   if (io.children.length) text.splice(text.findIndex(node => node.classList.contains('basis')) >>> 0, 0, io);
   return {media, text};
 }
-const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack']);
+const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack', 'timeline']);
+// Lane diagram on a timeline: "@timeline Session 1 | Activity | Session 2", then
+// "- Lane — [solid 1] text // line || [dashed 1-3] text". Spans count the timeline points (1, 2, 3, 1-2, 2-3, 1-3);
+// styles: solid, dashed, dotted, bold, plain, muted, note. A line starting with "~" is a small caption.
+function timelineChart(items, args, heading) {
+  const points = (args._raw || '').split(/\s*\|\s*/).filter(Boolean);
+  const node = el('div', 'tl');
+  if (heading) node.append(el('p', 'mono blue tl-title', heading));
+  const axis = el('div', 'tl-row tl-axis');
+  const line = el('div', 'tl-points');
+  points.forEach((point, index) => { const mark = el('span', 'tl-point', point); mark.style.gridColumn = `${index * 2 + 1} / span 2`; line.append(mark); });
+  axis.append(el('span', 'tl-lane'), line);
+  node.append(axis);
+  // "h1" / "h2" are the left and right halves, for two boxes side by side.
+  const columns = span => { if (span === 'h1') return '1 / 4'; if (span === 'h2') return '4 / 7'; const [a, b = a] = span.split('-').map(Number); return `${a * 2 - 1} / ${b * 2 + 1}`; };
+  for (const item of items) {
+    const [lane, rest = ''] = item.split(/\s+—\s+/, 2).length === 2 ? [item.slice(0, item.indexOf(' — ')), item.slice(item.indexOf(' — ') + 3)] : ['', item];
+    const row = el('div', 'tl-row');
+    const track = el('div', 'tl-track');
+    for (const part of rest.split(/\s+\|\|\s+/)) {
+      const m = part.match(/^\[(\w+)\s+([\dh-]+)\]\s*([\s\S]*)$/);
+      if (!m) continue;
+      const box = el('div', `tl-box is-${m[1]}`);
+      box.style.gridColumn = columns(m[2]);
+      for (const text of m[3].split(/\s+\/\/\s+/)) box.append(text.startsWith('~') ? md(text.slice(1).trim(), 'tl-sub') : md(text, 'tl-text'));
+      track.append(box);
+    }
+    row.append(el('span', 'tl-lane', lane), track);
+    node.append(row);
+  }
+  return node;
+}
 // Journey lanes: "**Stage** — “thought” // “thought” // → feature" becomes one column per stage.
 function laneChart(items) {
   const node = el('div', 'lanes');
@@ -652,12 +683,17 @@ function meterChart(items, args) {
   return node;
 }
 function flowChart(items, args) {
-  const down = 'down' in args;
-  const node = el('div', `flow${down ? ' is-down' : ''}`);
+  const down = 'down' in args, row = 'row' in args;
+  // "@flow row" lines the boxes up as one row of steps, without arrows or a dark last box.
+  const node = el('div', `flow${down ? ' is-down' : ''}${row ? ' is-row' : ''}`);
   items.forEach((item, index) => {
-    if (index) node.append(el('span', 'flow-arrow', down ? '↓' : '→'));
-    const step = el('div', `flow-step${index === items.length - 1 && !down ? ' is-last' : ''}`);
-    for (const part of item.split(/\s+\|\|\s+/)) step.append(cardNode(part, 'flow-box'));
+    if (index && !row) node.append(el('span', 'flow-arrow', down ? '↓' : '→'));
+    const step = el('div', `flow-step${index === items.length - 1 && !down && !row ? ' is-last' : ''}`);
+    for (const part of item.split(/\s+\|\|\s+/)) {
+      // "[outline] …", "[blue] …", "[dashed] …", "[solid] …" pick a box style.
+      const style = part.match(/^\[(\w+)\]\s+/);
+      step.append(cardNode(style ? part.slice(style[0].length) : part, `flow-box${style ? ' is-' + style[1] : ''}`));
+    }
     if (step.children.length > 1) step.classList.add('is-multi');
     node.append(step);
   });
@@ -687,6 +723,7 @@ function richList(lines, heading, mode = null, args = {}) {
   if (mode === 'canvas') return canvasChart(items);
   if (mode === 'rows') return sourceRows(items);
   if (mode === 'lanes') return laneChart(items);
+  if (mode === 'timeline') return timelineChart(items, args, heading);
   // "left => right" pairs a card with the dark card it leads to (requirement → goal, problem → response).
   if (!ordered && items.every(item => /\s=>\s/.test(item))) {
     const node = el('div', `pairs${mode === 'stack' ? ' is-stacked' : ''}`);
@@ -768,8 +805,8 @@ function richBody(source, body) {
     const block = raw.trim();
     if (!block || /^@wide$/.test(block)) continue;
     // "@columns", "@rows", "@flow", "@meter", "@canvas" shape the list that follows; "key=value" words set options.
-    const directive = block.match(/^@(\w+)((?:\s+[\w=.]+)*)$/);
-    if (directive && blockModes.has(directive[1])) { mode = directive[1]; args = Object.fromEntries(directive[2].trim().split(/\s+/).filter(Boolean).map(word => word.split('='))); continue; }
+    const directive = block.match(/^@(\w+)([^\n]*)$/);
+    if (directive && blockModes.has(directive[1])) { mode = directive[1]; args = {_raw: directive[2].trim(), ...Object.fromEntries(directive[2].trim().split(/\s+/).filter(word => /^[\w.]+(=[\w.]+)?$/.test(word)).map(word => word.split('=')))}; continue; }
     const strongHead = block.match(/^####\s+(.+)$/);
     if (strongHead) { body.append(md(`**${strongHead[1]}**`, 'sub-title')); gallery = null; first = false; continue; }
     if (block.startsWith('※ ')) { body.append(md(block.slice(2), 'note-caption')); gallery = null; first = false; continue; }
@@ -792,6 +829,15 @@ function richBody(source, body) {
       const list = richList(lines, heading, mode, args);
       mode = null; args = {};
       if (list.classList.contains('columns-chart') && heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
+      if (list.classList.contains('tl')) {
+        if (heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();
+        // Consecutive timelines sit side by side.
+        let grid = body.lastElementChild;
+        if (!grid?.classList.contains('tl-group')) { grid = el('div', 'tl-group'); body.append(grid); }
+        grid.append(list);
+        heading = null;
+        continue;
+      }
       if (list.classList.contains('bar-group')) {
         // Consecutive charts share one grid; the chart carries its own heading.
         if (heading && body.lastElementChild?.classList.contains('sub-head')) body.lastElementChild.remove();

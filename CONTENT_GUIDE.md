@@ -130,6 +130,8 @@ A line on its own before a list changes how that list is drawn:
 | `@flow` / `@flow down` | Boxes joined by arrows; ` \|\| ` puts boxes side by side in one step; the last step is dark |
 | `@lanes` | Journey lanes (`- **Stage** — “thought” // → feature`) |
 | `@canvas` | A business model canvas (nine cards in the usual order) |
+| `@timeline A \| B \| C` | A lane diagram on a timeline: `- Lane — [solid 1] text // ~caption \|\| [dashed 1-3] text` (spans 1, 2, 3, 1-2, 2-3, 1-3, or h1/h2 for halves; styles solid, dashed, dotted, bold, plain, muted, note); consecutive timelines sit side by side |
+| `@flow row` | A row of boxes without arrows (box styles `[solid]`, `[outline]`, `[blue]`, `[dashed]` work in any flow) |
 | `@stack` | Pairs stacked vertically, or images one per row instead of a gallery |
 
 ### Prototype page options
