@@ -63,17 +63,12 @@ export function renderMarkdown(source, target) {
       if (href) {
         const figure = document.createElement('figure');
         figure.className = 'content-image';
-        const link = document.createElement('a');
-        link.href = href;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
         const img = document.createElement('img');
         img.src = href;
         img.alt = image[1];
         img.loading = 'lazy';
         img.decoding = 'async';
-        link.append(img);
-        figure.append(link);
+        figure.append(img);
         if (image[1]) {
           const caption = document.createElement('figcaption');
           caption.textContent = image[1];

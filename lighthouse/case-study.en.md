@@ -43,15 +43,13 @@ Two sensors drive the light and the pump.
 
 ## Drawings <!-- case.section.drawings -->
 
-The build is specified in an orthographic drawing, a circuit diagram and an exploded view.
+The build is specified in an orthographic drawing and a circuit diagram.
 
 @stack
 
 ![SHEET 01 · Orthographic drawing — front, section and plan, in mm](assets/case-study/drawing-01-orthographic.jpg)
 
 ![SHEET 02 · Circuit diagram — Arduino Uno R3 with water-level sensor, light sensor, LED and submersible pump](assets/case-study/drawing-02-circuit.jpg)
-
-![SHEET 03 · Exploded view and bill of materials — 12 parts and assembly order](assets/case-study/drawing-03-exploded.jpg)
 
 ## case.intro <!-- case.intro -->
 

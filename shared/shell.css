@@ -301,10 +301,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* Standalone Markdown evidence images preserve their original proportions. */
 .content-image{margin:16px 0;max-width:100%;min-width:0}
-.content-image>a{display:block;color:inherit}
 .content-image img{display:block;width:100%;max-width:100%;height:auto}
 .content-image figcaption{margin-top:8px;color:var(--body);font-size:12px;line-height:18px;overflow-wrap:anywhere}
-.content-image>a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 /* free-layout case study */
 .sub-head{padding-top:8px;margin-bottom:-12px;letter-spacing:.12em}
 .sub-head .mono{letter-spacing:.08em;text-transform:uppercase}
