@@ -92,7 +92,7 @@ Presents the assembled lighthouse-inspired design, showing the humidifier and mo
 
 ## scope <!-- scope -->
 
-Web prototype
+Product design
 
 ## org <!-- org -->
 

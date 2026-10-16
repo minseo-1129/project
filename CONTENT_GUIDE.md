@@ -138,6 +138,10 @@ A line on its own before a list changes how that list is drawn:
 
 `"showDetail": false` in `project.json` shows only the web prototype, without the screen title, CONTEXT / DECISION and extra links (used by The Lighthouse and RECO).
 
+`"galleryLayout": "side"` shows a gallery's description first, then the screen on the left and the scene list on the right (Kiketch). `"frameHeight"` sets a web prototype's height in px (RECO). `"frameHide"` lists selectors hidden inside a static prototype and `"frameControls"` names its control rows, which are mirrored above the prototype (The Lighthouse). `"hotspots"` makes static component screens tappable: `{"<screen>" or "*": [{"text": "…", "to": "<screen>", "exact": true}]}` (PICO).
+
+Mobile prototypes show CONTEXT / DECISION once above the flow tabs, list screens as numbered chips and always open on the first flow.
+
 ### Case-study header
 
 `subtitle` and `tagline` in `content.md` appear under the title (without them the summary shows). `case.intro` in `case-study.md` is a large lead line above the first section. `"availability"` in `project.json` sets the pills under the meta row, e.g. `[["prototype", false], ["screens", true], ["case", true]]` (`video` is also available); without it, the pills follow `showPrototype`. The number beside the breadcrumb is the project's position in `shared/projects.json`.

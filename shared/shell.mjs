@@ -136,6 +136,8 @@ function preview(screen, readonly = false, native = config.component !== null ||
   const node = el('div', 'preview');
   Object.assign(node.dataset, {width: config.width, height: config.height, native: String(native), readonly: String(readonly)});
   node.style.setProperty('--ratio', `${config.width} / ${config.height}`);
+  // "frameHeight" sets the height of a full-width web prototype (default 600px).
+  if (config.frameHeight) node.style.setProperty('--frame-height', `${config.frameHeight}px`);
   const frame = el('iframe');
   if (config.component) {
     const url = new URL('viewer.html', location.href);
@@ -149,6 +151,7 @@ function preview(screen, readonly = false, native = config.component !== null ||
     frame.src = url.href;
     frame.dataset.screen = screen;
     if (config.webStates?.length) frame.addEventListener('load', () => applyWebState(frame, readonly));
+    if (!readonly && (config.frameHide || config.frameControls)) frame.addEventListener('load', () => mirrorFrameControls(frame));
   }
   frame.title = `${text('title')} · ${screenTitle(screen)}`;
   frame.loading = readonly ? 'lazy' : 'eager';
@@ -160,6 +163,34 @@ function preview(screen, readonly = false, native = config.component !== null ||
   node.append(frame);
   resizeObserver.observe(node);
   return node;
+}
+// "frameHide" lists selectors hidden inside a static prototype; "frameControls" names its control rows
+// (a label span plus buttons), which are mirrored above the prototype and click through to the originals.
+let frameBar = null;
+function mirrorFrameControls(frame) {
+  const doc = frame.contentDocument;
+  if (!doc) return;
+  if (config.frameHide?.length) { const style = doc.createElement('style'); style.textContent = `${config.frameHide.join(',')}{display:none!important}`; doc.head.append(style); }
+  if (!config.frameControls || !frameBar) return;
+  const render = () => {
+    frameBar.replaceChildren();
+    for (const row of doc.querySelectorAll(config.frameControls)) {
+      const group = el('div', 'frame-group');
+      const name = row.querySelector('span');
+      if (name) group.append(el('span', 'mono frame-group-label', name.textContent.trim()));
+      const buttons = el('div', 'frame-buttons');
+      for (const inner of row.querySelectorAll('button')) {
+        const outer = button(inner.textContent.trim(), 'tab', () => inner.click());
+        outer.setAttribute('aria-pressed', inner.getAttribute('aria-pressed') || 'false');
+        buttons.append(outer);
+      }
+      group.append(buttons);
+      frameBar.append(group);
+    }
+  };
+  render();
+  const source = doc.querySelector(config.frameControls)?.parentElement;
+  if (source) new MutationObserver(render).observe(source, {subtree: true, attributes: true, attributeFilter: ['aria-pressed'], characterData: true, childList: true});
 }
 function applyWebState(frame, readonly) {
   const apply = () => {
@@ -214,6 +245,12 @@ function updateSelection(screen, send = true) {
     else { frame.dataset.screen = screen; const url = new URL(config.prototype, location.href); url.searchParams.set('portfolioState', screen); frame.src = url.href; }
   }
 }
+// When a screen belongs to another flow, switch to that flow so its tabs and chips follow.
+function syncFlow(screen) {
+  if (!isFlowLayout() || currentFlow()?.screens.includes(screen)) return;
+  const flow = config.flows.find(item => item.screens.includes(screen));
+  if (flow) document.querySelectorAll('.flows .tab')[config.flows.indexOf(flow)]?.click();
+}
 function isFlowLayout() { return config.type === 'mobile' && (config.layout || 'flow') === 'flow'; }
 // Flow layouts step inside the current flow; every other layout steps through all screens.
 function navigationList() { return isFlowLayout() && currentFlow().screens.includes(selected) ? currentFlow().screens : allScreens(); }
@@ -247,7 +284,17 @@ function thumb(screen, number, className = 'thumb') {
   media.append(preview(screen, true));
   return screenControl(screen, className, [media, el('span', 'thumb-meta', pad(number)), el('span', 'thumb-title', screenTitle(screen))]);
 }
-function detailPanel() {
+function contextPair() {
+  const pair = el('div', 'context-pair');
+  for (const [name, key] of [[UI.context, 'context.body'], [UI.decision, 'decision.body']]) {
+    const item = el('div');
+    item.append(el('p', 'mono', name), copy(key));
+    pair.append(item);
+  }
+  return pair;
+}
+// Mobile prototypes show CONTEXT / DECISION once above the flows, since it describes the whole project.
+function detailPanel({context = true} = {}) {
   const node = el('div', 'detail');
   const head = el('div', 'detail-head');
   detail.kicker = el('p', 'kicker');
@@ -259,14 +306,8 @@ function detailPanel() {
   detail.title = el('h2');
   detail.note = el('div', 'copy');
   titleBlock.append(detail.title, detail.note);
-  const pair = el('div', 'context-pair');
-  for (const [name, key] of [[UI.context, 'context.body'], [UI.decision, 'decision.body']]) {
-    const item = el('div');
-    item.append(el('p', 'mono', name), copy(key));
-    pair.append(item);
-  }
   // A single-screen prototype has nothing to step through, so it skips the counter and arrows.
-  node.append(...(allScreens().length > 1 ? [head] : []), titleBlock, pair);
+  node.append(...(allScreens().length > 1 ? [head] : []), titleBlock, ...(context ? [contextPair()] : []));
   if (config.themes) {
     const themes = el('div', 'theme-toggle');
     for (const name of ['light', 'dark']) {
@@ -284,10 +325,12 @@ function detailPanel() {
   }
   return node;
 }
+// Screens in a flow are listed as numbered chips (number + name), grouped when the flow has groups.
+function chip(screen, number) { return screenControl(screen, 'pill', [el('span', 'pill-num', pad(number)), el('span', '', screenTitle(screen))]); }
 function flowThumbs(flow) {
   if (!flow.groups) {
-    const node = el('div', 'thumbs');
-    flow.screens.forEach((screen, index) => node.append(thumb(screen, index + 1)));
+    const node = el('div', 'pills');
+    flow.screens.forEach((screen, index) => node.append(chip(screen, index + 1)));
     return node;
   }
   const node = el('div', 'thumb-groups');
@@ -296,8 +339,8 @@ function flowThumbs(flow) {
     const section = el('div', 'thumb-group');
     const head = el('p', 'thumb-group-head');
     head.append(el('span', 'mono', pad(index + 1)), el('span', '', text(`group.${group.id}.title`, group.id)), el('span', 'mono', pad(group.screens.length)));
-    const grid = el('div', 'thumbs');
-    group.screens.forEach(screen => grid.append(thumb(screen, ++number)));
+    const grid = el('div', 'pills');
+    group.screens.forEach(screen => grid.append(chip(screen, ++number)));
     section.append(head, grid);
     node.append(section);
   });
@@ -306,7 +349,7 @@ function flowThumbs(flow) {
 function groupOf(screen) { return currentFlow()?.groups?.find(group => group.screens.includes(screen)); }
 function screenPills() {
   const node = el('div', 'pills');
-  allScreens().forEach((screen, index) => node.append(screenControl(screen, 'pill', [el('span', '', `${pad(index + 1)} ${screenTitle(screen)}`)])));
+  allScreens().forEach((screen, index) => node.append(chip(screen, index + 1)));
   return node;
 }
 function sceneThumbs() {
@@ -329,8 +372,10 @@ function tabs(items, isActive, onSelect, count) {
 
 // ---------- prototype page ----------
 function prototypePage() {
-  const nodes = [topBar([[UI.projects, '../'], [text('title').toUpperCase()], [UI.prototype]]), pageHead(`${text('title').toUpperCase()} · ${UI[config.type]}`, text('title'), 'summary')];
+  const nodes = [topBar([[UI.projects, '../'], [text('title').toUpperCase()], [UI.prototype]]), pageHead(`${text('title').toUpperCase()} · ${(filled('scope') ? text('scope') : UI[config.type]).toUpperCase()}`, text('title'), 'summary')];
   const layout = config.type === 'mobile' ? config.layout || 'flow' : config.type;
+  const mobile = layout === 'flow' || layout === 'screen';
+  if (mobile) { const section = el('section', 'context-top'); section.append(contextPair()); nodes.push(section); }
   if (layout === 'flow' && config.flows.length > 1) {
     const section = el('section', 'flows');
     section.append(label(UI.flows), tabs(config.flows.map(flow => ({...flow, label: text(`flow.${flow.id}.title`, flow.id)})), flow => flow.id === selectedFlow, flow => {
@@ -352,10 +397,21 @@ function prototypePage() {
   }
   if (layout === 'flow' || layout === 'screen') {
     const stage = el('section', 'stage-mobile');
-    const side = detailPanel();
+    const side = detailPanel({context: false});
     if (layout === 'flow') { flowList = flowThumbs(currentFlow()); side.append(label(UI.flowScreens), flowList); }
     else side.append(label(UI.allScreens), screenPills());
     stage.append(device(selected), side);
+    nodes.push(stage);
+  } else if (layout === 'gallery' && config.galleryLayout === 'side') {
+    // "galleryLayout": "side" — description first, then the screen on the left and the scene list on the right.
+    const stage = el('section', 'stage-wide gallery-side');
+    const scene = el('div', 'scene-player');
+    scene.append(preview(selected));
+    const list = el('div', 'side-list');
+    list.append(label(UI.allScenes), sceneThumbs());
+    const row = el('div', 'side-row');
+    row.append(scene, list);
+    stage.append(detailPanel(), row);
     nodes.push(stage);
   } else if (layout === 'gallery') {
     const stage = el('section', 'stage-wide');
@@ -366,6 +422,7 @@ function prototypePage() {
   } else {
     const stage = el('section', 'stage-wide');
     // "showDetail": false leaves only the prototype: no screen title, CONTEXT / DECISION or extra links.
+    if (config.frameControls) { frameBar = el('div', 'frame-bar'); stage.append(frameBar); }
     stage.append(browser(selected));
     if (config.showDetail !== false) stage.append(detailPanel());
     if (config.showDetail !== false && config.links?.length) {
@@ -980,6 +1037,7 @@ async function loadContent(base, requireTitle = true) {
 window.addEventListener('message', event => {
   if (event.origin !== location.origin || ![...frames].some(frame => frame.contentWindow === event.source)) return;
   if (event.data?.type === 'portfolio:screen') updateSelection(event.data.screen, false);
+  if (event.data?.type === 'portfolio:navigate') { syncFlow(event.data.screen); updateSelection(event.data.screen); }
   if (event.data?.type === 'portfolio:ready') event.source.postMessage({type: 'portfolio:select', screen: selected, theme}, location.origin);
 });
 
@@ -998,8 +1056,9 @@ async function start() {
     const index = registry.indexOf(location.pathname.split('/').filter(Boolean).at(-2));
     if (index >= 0) projectNumber = pad(index + 1);
   }
-  selected = config.defaultScreen;
-  selectedFlow = config.flows.find(flow => flow.screens.includes(selected))?.id || config.flows[0].id;
+  // Flow prototypes always open on the first flow's first screen.
+  selected = isFlowLayout() && config.flows[0]?.screens?.length ? config.flows[0].screens[0] : config.defaultScreen;
+  selectedFlow = isFlowLayout() ? config.flows[0].id : config.flows.find(flow => flow.screens.includes(selected))?.id || config.flows[0].id;
   document.title = `${text('title')} · ${view === 'case' ? 'Case study' : 'Prototype'}`;
   const node = el('main', `shell v2 ${view === 'case' ? 'case-page' : 'prototype-page'}`);
   node.append(...(view === 'case' ? casePage() : prototypePage()));

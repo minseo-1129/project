@@ -88,7 +88,7 @@ Introduces the self-reflection experience and guides users into the conversation
 
 ## scope <!-- scope -->
 
-Web prototype
+Web application
 
 ## org <!-- org -->
 
