@@ -57,24 +57,39 @@
 
 ## Digital phenotypes <!-- case.section.phenotypes -->
 
-@wide
-
 수집한 디지털 피노타입
 
-- Sensor | User exposure | Feature | Calculation
-- GPS | - | - | Every 5 minutes.
-- - | N | State (Stationary and Transition) | We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states. In this study, we set this threshold to 1 km/h.
-- - | N | Location Variance | We defined location variance to measure the variability in a participant’s GPS location. To calculate location variance, we used only the location data of stationary states.
-- - | N | Entropy | We defined entropy to measure the variability of the time the participant spent at the location clusters.
-- - | N | Normalized Entropy | We defined normalized entropy by dividing the entropy by its maximum value, which is the logarithm of the total number of clusters.
-- - | N | Home Stay | Home stay measured the percentage of time a participant spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
-- - | N | Circadian Movement | If a participant left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
-- Accelerometer | N | Activity | We set the accelerometer sampling rate to 5 Hz. To compress the raw data, we only logged aggregated statistics for each 120-second window. The threshold was empirically set to 0.1 m/s².
-- - | Y | Step Counter | For each detected step we recorded its timestamp, then computed the total number of steps during nighttime (11 PM–7 AM) and daytime (7 AM–11 PM) per day.
-- Camera | N | Ambient Light | The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
-- - | Y | EMA | The number of EMAs fired each day varied, but on average 8 EMAs per day were administered.
+#### GPS · 5분마다 수집
 
-※ User exposure: Y = 사용자에게 보이는 값 · N = 백그라운드에서만 쓰는 값
+@defs
+
+- **State (Stationary and Transition)** · 백그라운드 — We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states. In this study, we set this threshold to 1 km/h.
+- **Location Variance** · 백그라운드 — We defined location variance to measure the variability in a participant’s GPS location. To calculate location variance, we used only the location data of stationary states.
+- **Entropy** · 백그라운드 — We defined entropy to measure the variability of the time the participant spent at the location clusters.
+- **Normalized Entropy** · 백그라운드 — We defined normalized entropy by dividing the entropy by its maximum value, which is the logarithm of the total number of clusters.
+- **Home Stay** · 백그라운드 — Home stay measured the percentage of time a participant spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
+- **Circadian Movement** · 백그라운드 — If a participant left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
+
+#### Accelerometer
+
+@defs
+
+- **Activity** · 백그라운드 — We set the accelerometer sampling rate to 5 Hz. To compress the raw data, we only logged aggregated statistics for each 120-second window. The threshold was empirically set to 0.1 m/s².
+- **Step Counter** · 사용자 노출 — For each detected step we recorded its timestamp, then computed the total number of steps during nighttime (11 PM–7 AM) and daytime (7 AM–11 PM) per day.
+
+#### Camera
+
+@defs
+
+- **Ambient Light** · 백그라운드 — The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
+
+#### 자기기록
+
+@defs
+
+- **EMA** · 사용자 노출 — The number of EMAs fired each day varied, but on average 8 EMAs per day were administered.
+
+※ 사용자 노출 = 앱 화면에서 사용자에게 보이는 값 · 백그라운드 = 분석에만 쓰는 값
 
 ## 소개 <!-- case.intro -->
 
