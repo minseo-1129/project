@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A sci-fi maths game for primary pupils, where solving problems stops a hacker group. UI planned from my room to the map, problem solving and the clan.
+A sci-fi maths game for primary school pupils, where players solve maths problems to fight against a hacker.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ A sci-fi game where maths stops the hackers
 
 ## context.body <!-- context.body -->
 
-An ordinary pupil enters virtual-reality dimensions at the request of the AI robot ‘Kobi’ and removes malware by solving maths problems.
+A project to develop a maths game for primary school pupils, using advances in AI and Woongjin's maths question database.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Play together as a school
 
 ## decision.body <!-- decision.body -->
 
-From log-in to rewards, play is organised by school and year, and clans bring classmates from the same school together.
+Designed a game that combines an engaging storyline with a learning system that adapts questions based on the player's mistakes.
 
 ## guide.title <!-- guide.title -->
 
@@ -84,7 +84,7 @@ Main · my room
 
 ## screen.main.caption <!-- screen.main.caption -->
 
-From my room, with my character and pet, into the virtual world
+A familiar bedroom setting for primary school pupils, featuring a desk, monitor, bookshelf, and wardrobe
 
 ## screen.map.title <!-- screen.map.title -->
 
@@ -92,7 +92,7 @@ Map
 
 ## screen.map.caption <!-- screen.map.caption -->
 
-Stage roadmap by dimension, with stars and a difficulty switch
+Learning and revision are organised into separate sections, allowing players to choose how they want to practise
 
 ## screen.stageInfo.title <!-- screen.stageInfo.title -->
 
@@ -100,7 +100,7 @@ Stage briefing
 
 ## screen.stageInfo.caption <!-- screen.stageInfo.caption -->
 
-The story and learning goal come first
+Introduces the story and learning objectives, helping players understand what to expect.
 
 ## screen.play.title <!-- screen.play.title -->
 
@@ -108,7 +108,7 @@ Play
 
 ## screen.play.caption <!-- screen.play.caption -->
 
-Battle scene on the left, problem and choices on the right
+The battle scene is positioned on the left, with the maths question and answer choices on the right
 
 ## screen.clear.title <!-- screen.clear.title -->
 
@@ -116,7 +116,7 @@ Stage clear
 
 ## screen.clear.caption <!-- screen.clear.caption -->
 
-Questions answered, time taken and bonus XP
+Displays the number of correct answers, time taken and bonus XP after completing a stage
 
 ## screen.clanRoom.title <!-- screen.clanRoom.title -->
 
@@ -124,7 +124,7 @@ Clan base
 
 ## screen.clanRoom.caption <!-- screen.clanRoom.caption -->
 
-The clan space where classmates from the same school gather
+A shared space where players from the same school can gather and take part in clan activities
 
 ## screen.clanBoard.title <!-- screen.clanBoard.title -->
 
@@ -132,4 +132,4 @@ Clan board
 
 ## screen.clanBoard.caption <!-- screen.clanBoard.caption -->
 
-The clan you play with classmates from your school
+A board where players can take part in clan activities with friends from the same school

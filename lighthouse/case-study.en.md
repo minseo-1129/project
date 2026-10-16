@@ -19,16 +19,6 @@ A system driven by Arduino water-level and light sensors
 - Water Lamp · Witaya Junma — A lamp whose LED turns on as water rises past an ultrasonic sensor; the rippling water throws light onto the wall. // → Water as a switch: a water-level sensor
 - Night Light · Egrobotics — A mood lamp that turns on as the room darkens and off as it brightens, using a light sensor. // → Beyond on and off: light readings set the brightness
 
-## Form <!-- case.section.form -->
-
-A humidifier shaped as an island, sea and lighthouse on a water tank
-
-![Design sketch: 30 cm tank, lighthouse 15 cm tall and 6 cm wide, Arduino and light sensor below the fabric lighthouse](assets/case-study/00-sketch.jpg)
-
-![An island and lighthouse that also work as an interior object](assets/case-study/01-before.jpg)
-
-![The light turns on once water poured into the tank reaches the sand](assets/case-study/02-after.jpg)
-
 ## Specification <!-- case.section.specification -->
 
 Two sensors drive the light and the pump.
@@ -40,6 +30,18 @@ Two sensors drive the light and the pump.
 - Submersible pump | Gentle waves | Hidden under the land model
 - Toggle switch | Power on/off | Lets the user turn the mood light on and off
 - Power | 12 V adapter | External power supply
+
+## Drawings <!-- case.section.drawings -->
+
+The build is specified in an orthographic drawing, a circuit diagram and an exploded view.
+
+@stack
+
+![SHEET 01 · Orthographic drawing — front, section and plan, in mm](assets/case-study/drawing-01-orthographic.jpg)
+
+![SHEET 02 · Circuit diagram — Arduino Uno R3 with water-level sensor, light sensor, LED and submersible pump](assets/case-study/drawing-02-circuit.jpg)
+
+![SHEET 03 · Exploded view and bill of materials — 12 parts and assembly order](assets/case-study/drawing-03-exploded.jpg)
 
 ## case.intro <!-- case.intro -->
 

@@ -45,7 +45,7 @@ In those cases, add the design to `02 Components` / `04 Case study masters` in t
   - Optional blocks stay hidden.
 - The body supports paragraphs, `**bold**`, `` `code` ``, `[links](docs/a.pdf)` and `- lists`. HTML does not run.
 - Do not invent numbers that are not in the data.
-- Add an evidence image on its own line: `![Description](assets/case-study/image.png)`. Leave a blank line before and after it. The description becomes the caption, and clicking the image opens the original file.
+- Add an evidence image on its own line: `![Description](assets/case-study/image.png)`. Leave a blank line before and after it. The description becomes the caption.
 
 ```md
 ## One-line summary <!-- summary -->
@@ -132,6 +132,7 @@ A line on its own before a list changes how that list is drawn:
 | `@canvas` | A business model canvas (nine cards in the usual order) |
 | `@timeline A \| B \| C` | A lane diagram on a timeline: `- Lane — [solid 1] text // ~caption \|\| [dashed 1-3] text` (spans 1, 2, 3, 1-2, 2-3, 1-3, or h1/h2 for halves; styles solid, dashed, dotted, bold, plain, muted, note); two or more consecutive timelines become capsule tabs, shown one at a time |
 | `@flow row` | A row of boxes without arrows (box styles `[solid]`, `[outline]`, `[blue]`, `[dashed]` work in any flow) |
+| `@dialog` | A conversation diagram: `- Line — **forward** \| other` puts the agent's line in a dark box with the responses beside it; bold responses (blue) lead on. A line alone has no responses; `**a** \| **b**` alone is a pair of events |
 | `@stack` | Pairs stacked vertically, or images one per row instead of a gallery |
 | `@meter inline` | Bars with the value inside; the first row is dark, the rest blue |
 | `@quad` | Labelled cards (`- Strength — …`) in a 2×2 grid (SWOT, four findings) |
@@ -156,7 +157,7 @@ A line on its own before a list changes how that list is drawn:
 
 `"showDetail": false` in `project.json` shows only the web prototype, without the screen title, CONTEXT / DECISION and extra links (used by The Lighthouse and RECO).
 
-`"galleryLayout": "side"` shows a gallery's description first, then the screen on the left and the scene list on the right (Kiketch). `"frameHeight"` sets a web prototype's height in px (RECO). `"frameHide"` lists selectors hidden inside a static prototype and `"frameControls"` names its control rows, which are mirrored above the prototype (The Lighthouse). `"frameAspect": "16/9"` keeps a web or video frame at that ratio instead of a fixed height (Sweetalk). A `statesLabel` field in content.md renames the tab row above a web prototype (e.g. 영상). `"hotspots"` makes static component screens tappable: `{"<screen>" or "*": [{"text": "…", "to": "<screen>", "exact": true}]}` (PICO).
+`"galleryLayout": "side"` shows a gallery's description first, then the screen on the left and the scene list on the right (Kiketch). `"frameHeight"` sets a web prototype's height in px (RECO). `"frameHide"` lists selectors hidden inside a static prototype and `"frameControls"` names its control rows, which are mirrored above the prototype; `"frameLabels"` renames those buttons, e.g. `{"완성": "Default"}` (The Lighthouse). Web and gallery prototypes show their description above the prototype. `"frameAspect": "16/9"` keeps a web or video frame at that ratio instead of a fixed height (Sweetalk). A `statesLabel` field in content.md renames the tab row above a web prototype (e.g. 영상). `"hotspots"` makes static component screens tappable: `{"<screen>" or "*": [{"text": "…", "to": "<screen>", "exact": true}]}` (PICO).
 
 Mobile prototypes show CONTEXT / DECISION once above the flow tabs, list screens as numbered chips and always open on the first flow.
 

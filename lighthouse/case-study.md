@@ -19,16 +19,6 @@
 - Water Lamp · Witaya Junma — 초음파 센서로 물이 차오르면 LED가 켜지는 전등. 물의 일렁임이 빛과 만나 벽면에 반사. // → 물을 스위치처럼: 수위 감지 센서 활용
 - Night Light · Egrobotics — 조도 센서로 방이 어두워지면 켜지고 밝아지면 꺼지는 무드등 기능의 램프. // → 켜고 끄는 것을 넘어, 조도 값으로 밝기 조절
 
-## Form <!-- case.section.form -->
-
-수조 위의 섬과 바다, 등대를 형상화 한 가습기 디자인
-
-![디자인 스케치: 수조 30cm, 등대 높이 15cm·폭 6cm, 부직포 등대 아래 아두이노와 조도 센서](assets/case-study/00-sketch.jpg)
-
-![인테리어 소품으로 사용 가능한 섬과 등대 디자인](assets/case-study/01-before.jpg)
-
-![수조에 물을 부어 모래까지 수위가 오르면 불이 켜짐](assets/case-study/02-after.jpg)
-
 ## Specification <!-- case.section.specification -->
 
 센서 두 개가 조명과 펌프를 움직인다.
@@ -40,6 +30,18 @@
 - 수중 펌프 | 잔잔한 파도 | 육지 모형 아래에 배치
 - 토글 스위치 | 전원 on/off | 사용자가 무드등을 켜고 끔
 - 전원 | 12V 어댑터 | 외부 전원 공급
+
+## Drawings <!-- case.section.drawings -->
+
+정투상도, 회로도, 분해도로 제작 사양을 정리했다.
+
+@stack
+
+![SHEET 01 · 정투상 도면 — 정면·단면·평면, 단위 mm](assets/case-study/drawing-01-orthographic.jpg)
+
+![SHEET 02 · 회로 결선도 — Arduino Uno R3, 수위 센서·조도 센서·LED·수중 펌프](assets/case-study/drawing-02-circuit.jpg)
+
+![SHEET 03 · 분해도·부품표 — 부품 12종과 조립 순서](assets/case-study/drawing-03-exploded.jpg)
 
 ## 소개 <!-- case.intro -->
 

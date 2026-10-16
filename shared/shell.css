@@ -9,6 +9,8 @@
   --sans:'Inter','Noto Sans KR',sans-serif;--kr:'Noto Sans KR','Inter',sans-serif;--mono:'IBM Plex Mono','Noto Sans KR',monospace;
   --column:760px;--gutter:176px;
 }
+/* English pages set Latin text in Inter; Korean stays in Noto Sans KR. */
+html[lang="en"]{--kr:'Inter','Noto Sans KR',sans-serif}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 14px/23px var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
@@ -301,10 +303,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* Standalone Markdown evidence images preserve their original proportions. */
 .content-image{margin:16px 0;max-width:100%;min-width:0}
-.content-image>a{display:block;color:inherit}
 .content-image img{display:block;width:100%;max-width:100%;height:auto}
 .content-image figcaption{margin-top:8px;color:var(--body);font-size:12px;line-height:18px;overflow-wrap:anywhere}
-.content-image>a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 /* free-layout case study */
 .sub-head{padding-top:8px;margin-bottom:-12px;letter-spacing:.12em}
 .sub-head .mono{letter-spacing:.08em;text-transform:uppercase}
@@ -389,6 +389,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .flow-step.is-last .card-tag{color:var(--blue-soft)}
 .flow-step.is-last .small,.flow-step.is-last .small p,.flow-step.is-last .strong{color:var(--white)}
 .flow.is-down{flex-direction:column;align-items:stretch}
+.dialog{display:flex;flex-direction:column}
+.dialog-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;align-items:center}
+.dialog-line{display:flex;gap:8px}
+.dialog-say{flex:1;background:var(--ink);color:var(--white);border-radius:4px;padding:9px 12px;font-size:13px;line-height:18px}
+.dialog-answers{display:flex;flex-wrap:wrap;gap:8px}
+.dialog-answer{border:1px solid var(--line-strong);border-radius:4px;padding:8px 12px;font-size:12px;line-height:16px;color:var(--muted);background:var(--paper)}
+.dialog-answer.is-forward{border-color:var(--blue);color:var(--blue);font-weight:500}
+.dialog-event{flex:1;text-align:center;border-style:dashed}
+.dialog-arrow{width:200px;text-align:center;color:var(--muted);line-height:22px}
+@media (max-width:640px){.dialog-row{grid-template-columns:1fr;gap:8px}.dialog-arrow{width:auto;text-align:left;padding-left:12px}}
 .flow.is-down .flow-arrow{text-align:center}
 .flow.is-down .flow-step.is-multi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 /* business model canvas */
@@ -660,3 +670,31 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .bar-row .mono{font-size:10.5px;color:var(--ink)}
 .bar-groups.is-stacked .bar-head{flex-direction:row;justify-content:space-between;align-items:baseline;gap:8px}
 .bar-groups.is-stacked .bar-head .mono{color:var(--muted)}
+/* Case study on the Projects type scale — Display 32 · Lead 16 · Heading 18/15/13 · Body 13/12 · Mono 10/9 */
+[data-view="case"] .crumbs,[data-view="case"] .top-bar .mono,[data-view="case"] .meta-row dt,[data-view="case"] .page-head .eyebrow,[data-view="case"] .spec>.mono,[data-view="case"] .card.has-stat .card-tag,[data-view="case"] .sub-head.is-large .mono{font-size:10px;line-height:14px;letter-spacing:.12em}
+[data-view="case"] .case-page>.page-head h1{font-size:32px;line-height:38px;letter-spacing:-.03em}
+[data-view="case"] .page-head .subtitle,[data-view="case"] .page-head .subtitle p{font-size:16px;line-height:24px}
+[data-view="case"] .case-intro,[data-view="case"] .case-intro p{font-size:16px;line-height:26px}
+[data-view="case"] .lead,[data-view="case"] .lead p{font-size:16px;line-height:24px}
+[data-view="case"] .quote-lead,[data-view="case"] .quote-lead p{font-size:15px;line-height:23px}
+[data-view="case"] .persona-profile h3{font-size:18px;line-height:26px}
+[data-view="case"] .insight h3,[data-view="case"] .moment h3{font-size:15px;line-height:22px}
+[data-view="case"] .quote blockquote{font-size:14px;line-height:22px}
+[data-view="case"] .stage-head h3,[data-view="case"] .sub-title,[data-view="case"] .sub-title p,[data-view="case"] .card.has-stat .strong{font-size:13px;line-height:20px}
+[data-view="case"] .state-card h3,[data-view="case"] .hair-list.is-insights .strong{font-size:14px;line-height:22px}
+[data-view="case"] .card-figure,[data-view="case"] .card.has-stat .card-figure{font-size:32px;line-height:36px}
+[data-view="case"] .hero-value{font-size:28px;line-height:32px}
+[data-view="case"] .hero-numbers.is-boxed .hero-value,[data-view="case"] .aside strong{font-size:24px;line-height:30px}
+[data-view="case"] .vs-name{font-size:16px;line-height:22px}
+[data-view="case"] .card .small,[data-view="case"] .card .small p,[data-view="case"] .gtable,[data-view="case"] .pair-from .small,[data-view="case"] .pair-from .small p,[data-view="case"] .pair-to .small,[data-view="case"] .pair-to .small p,[data-view="case"] .tl-tabs .tab,[data-view="case"] .dot-name,[data-view="case"] .dot-name p,[data-view="case"] .split-quote,[data-view="case"] .split-quote p,[data-view="case"] .trace-why,[data-view="case"] .trace-why p,[data-view="case"] .slope-label,[data-view="case"] .slope-label p,[data-view="case"] .card-stat .small,[data-view="case"] .card-stat .small p{font-size:12px}
+[data-view="case"] .gtable th,[data-view="case"] .note-caption,[data-view="case"] .note-caption p,[data-view="case"] .bar-head .mono,[data-view="case"] .tl-sub,[data-view="case"] .tl-sub p,[data-view="case"] .slope-time{font-size:9px}
+[data-view="case"] .tl-points,[data-view="case"] .tl-text,[data-view="case"] .tl-text p,[data-view="case"] .def-row.is-mono .def-term,[data-view="case"] .bar-row .mono,[data-view="case"] .slope-value{font-size:10px}
+@media (max-width:480px){[data-view="case"] .case-page>.page-head h1{font-size:28px;line-height:34px}[data-view="case"] .case-intro,[data-view="case"] .case-intro p{font-size:15px;line-height:24px}}
+[data-view="case"] .hair-list.is-insights .numbered>.mono,[data-view="case"] .sub-head .mono{font-size:10px;line-height:14px}
+[data-view="case"] .dash-mark{font-size:12px}
+[data-view="case"] .spec-value,[data-view="case"] .spec-value p{font-size:13px;font-weight:700}
+[data-view="case"] .vs-quote,[data-view="case"] .vs-quote p{font-size:14px}
+[data-view="case"] .legend-label,[data-view="case"] .legend-label p,[data-view="case"] .slope-key-item,[data-view="case"] .bar-name,[data-view="case"] .tl-text,[data-view="case"] .tl-text p{font-size:12px}
+[data-view="case"] .bar-groups .mono,[data-view="case"] .columns-chart .mono{font-size:10px}
+[data-view="case"] .bar-groups .bar-head .mono{font-size:9px}
+[data-view="case"] .bar-row .mono,[data-view="case"] .bar-groups.is-stacked .bar-row .mono{font-size:10px}

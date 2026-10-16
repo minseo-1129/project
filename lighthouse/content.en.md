@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A 3D web prototype of a lighthouse-inspired humidifier and mood light, combining fabric-based evaporation, gentle waves and sensor-responsive lighting.
+A 3D humidifier inspired by a lighthouse, combining fabric-evaporation, gentle waves and lighting that responds to ambient brightness.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ The product's exterior and inner structure together
 
 ## context.body <!-- context.body -->
 
-Explored an alternative to plastic humidifier discs and how ambient lighting and gentle waves could create a relaxing everyday experience.
+Explored an alternative to plastic-disc humidifiers, alongside how soft lighting and gentle water movement could create a calming experience
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Explaining the structure through state changes
 
 ## decision.body <!-- decision.body -->
 
-Combined fabric-based evaporation with an island-and-lighthouse design. Water level controls lighting and the pump, while ambient light adjusts brightness.
+Combines fabric-based evaporation with an island-and-lighthouse form and gentle waves. Water level controls the pump, while ambient light adjusts brightness.
 
 ## guide.title <!-- guide.title -->
 
@@ -88,7 +88,7 @@ Understand the overall form of the product first.
 
 ## screen.finished.caption <!-- screen.finished.caption -->
 
-Presents the assembled lighthouse-inspired design, showing the humidifier and mood light as one product
+Final 3D model showing the lighthouse-inspired form, humidifier and ambient light
 
 ## scope <!-- scope -->
 

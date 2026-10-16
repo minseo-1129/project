@@ -46,18 +46,19 @@ The dialogue scenarios ran on the NAVER CLOVA Chatbot builder. The schedule the 
 
 How one “read a book” promise runs as a conversation, from the first question to praise
 
-@flow down
+@dialog
 
-- ForMe speaks first — At the promised time, ForMe asks // “Jiwon! What did we plan to do at this time?”
-- [solid] **Correct** · Book — “Ding-dong!” and straight to the next step || [dashed] **Wrong · no answer · other** · Hint — “We planned to focus on something…” asks once more, then says “We planned to read a book together”
-- Choose a book — “Tell ForMe the name of the book.” // If the child doesn't know, ForMe suggests rereading yesterday's book
-- Set the time — “How long did we plan to read?” // The timer is set to what the child says
-- Get ready and start — “When you're ready, say ‘ready’!” // A timer runs for the agreed minutes
-- [solid] **Time completed** · Done — An end sound, then “Time's up! That's amazing!” || [outline] **Stopped early** · Skip — “Wow, done already? Great job!”
-- Look back — “Was the book fun?” // ForMe praises the feeling or learning the child names
-- Praise yourself — “Say ‘Jiwon worked really hard!’” // Ends by thanking the child for keeping the promise
+- What did we plan to do? — **Correct** | Wrong | No answer | Other
+- Shall we read a book, then?
+- What's the book called? — **Answer** | Refuse | No answer
+- How long did we plan to read? — **A time** | Refuse | Other | No answer
+- I'll time it for you
+- Are you ready? — **Ready** | No answer | Other
+- **End sound** | **Stopped early**
+- How was the book? — **Answer (A)** | **Feeling (B)** | **Learning (C)** | No answer
+- You're doing great! Say it — **Says it** | No answer
 
-※ As the steps progress, the on-screen cue changes from a question mark to a book to a star · Source · Book-reading task dialogue design (Task 19, Lv1)
+※ Blue responses lead to the next step; for the others ForMe gives a hint and asks again · Source · Book-reading task dialogue design (Task 19, Lv1)
 
 ## Rewards <!-- case.section.rewards -->
 

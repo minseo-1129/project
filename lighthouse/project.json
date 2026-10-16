@@ -26,12 +26,20 @@
   "nativeViewport": true,
   "caseStudy": true,
   "hideStageToolbar": true,
-  "showDetail": false,
   "frameHide": [
     ".head",
     ".controls",
     ".legend",
     "a[href=\"drawings.html\"]"
   ],
-  "frameControls": ".controls .row"
+  "frameControls": ".controls .row",
+  "frameLabels": {
+    "완성": "Default",
+    "반투명": "Transparent",
+    "분해도": "Exploded",
+    "창가 낮": "Light",
+    "야간 무드등": "Dark",
+    "작동 재생": "Play",
+    "작동 정지": "Pause"
+  }
 }
