@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A personalised health-routine service that adapts goals, tracking, and information density to each user's stage of behaviour change.
+A personalised health routine app that adapts goal setting, tracking, and home-screen content to each user's stage of behaviour change
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Different starting points in one service
 
 ## context.body <!-- context.body -->
 
-User research revealed differences between beginners and experienced users in goal setting, behaviour tracking, and information needs.
+Research showed that people starting health routines and those already maintaining them had different needs for goal setting and tracking.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Show the value before asking for logs
 
 ## decision.body <!-- decision.body -->
 
-Goal setting, tracking options, and home-screen content are tailored to Stage 3 beginners and Stage 5 experienced users.
+We designed separate flows for Stage 3 and Stage 5, adapting goal setting, tracking options, and home-screen content to each stage.
 
 ## guide.title <!-- guide.title -->
 
@@ -352,127 +352,127 @@ Kept from the original — but it is no longer the way into the forecast; it adj
 
 ## flow.beginner.intro.body <!-- flow.beginner.intro.body -->
 
-Introduces goals and predicted outcomes early to motivate routine adoption.
+Introduces goals and the potential effects of routine practice at the start of onboarding
 
 ## flow.beginner.profile.body <!-- flow.beginner.profile.body -->
 
-Collects basic user details and shows progress through onboarding
+Basic information fields with a progress indicator for the onboarding steps
 
 ## flow.beginner.stage.body <!-- flow.beginner.stage.body -->
 
-Assesses users' stage of behaviour change and explains how their answers shape the experience
+Questions to assess the user's stage of behaviour change, with an explanation of how the flow adapts
 
 ## flow.beginner.stageResult.body <!-- flow.beginner.stageResult.body -->
 
-Explains the assessment result and how the experience adapts to the user's stage.
+The assessment result, alongside an overview of the features available at that stage
 
 ## flow.beginner.goalPurpose.body <!-- flow.beginner.goalPurpose.body -->
 
-Combines health goals and support areas into one streamlined selection screen.
+Health goals and areas where support is needed, selected on the same screen
 
 ## flow.beginner.routinePick.body <!-- flow.beginner.routinePick.body -->
 
-Offers a curated set of routines in response to beginners' need for guided choices.
+A short list of preset routines for beginners to choose from
 
 ## flow.beginner.forecastPreview.body <!-- flow.beginner.forecastPreview.body -->
 
-Closes onboarding with an explainable AI forecast of the selected routine’s potential impact.
+An AI forecast showing the potential effects of the selected routine and the reasoning behind the prediction
 
 ## flow.beginner.homeBeginner.body <!-- flow.beginner.homeBeginner.body -->
 
-Keeps the forecast visible and shows completed days this week to simplify tracking.
+Keeps the forecast at the top, alongside the number of days the routine was completed this week
 
 ## flow.beginner.logAdd.body <!-- flow.beginner.logAdd.body -->
 
-Prioritises simple and automatic tracking; body-composition metrics unlock from Stage 4.
+Starts with daily activities and automatic tracking, while more detailed metrics such as body composition become available later
 
 ## flow.beginner.forecast.body <!-- flow.beginner.forecast.body -->
 
-Compares last week's and this week's forecasts to show progress at a glance.
+Side-by-side cards comparing last week's and this week's forecasts
 
 ## flow.beginner.selfCompare.body <!-- flow.beginner.selfCompare.body -->
 
-Replaces peer averages with last week's personal data to highlight individual progress.
+Compares routine progress with people in similar circumstances, providing a reference for beginners
 
 ## flow.beginner.routineEdit.body <!-- flow.beginner.routineEdit.body -->
 
-Beginners focus on one routine, with a second unlocked after 11 days.
+Beginners start with one routine, with a second becoming available after sustained practice
 
 ## flow.beginner.stageUp.body <!-- flow.beginner.stageUp.body -->
 
-Recognises sustained routine practice with a stage update and explains changes to available features.
+A stage update following sustained routine practice, with an overview of newly available features
 
 ## flow.beginner.me.body <!-- flow.beginner.me.body -->
 
-Lets users reassess their stage and adjust information density at any time.
+Options to reassess the stage of behaviour change and adjust how much information is displayed
 
 ## flow.advanced.intro.body <!-- flow.advanced.intro.body -->
 
-Uses the same entry screen before guiding users to a stage-specific flow.
+Shares the same opening screen before directing users to a stage-specific flow
 
 ## flow.advanced.profile.body <!-- flow.advanced.profile.body -->
 
-Collects basic user details and shows progress through onboarding.
+Basic information fields with a progress indicator for the onboarding steps
 
 ## flow.advanced.stage.body <!-- flow.advanced.stage.body -->
 
-Directs users assessed at Stage 4 or 5 to the experienced-user flow.
+The same assessment directs users at Stage 4 or 5 to the experienced-user flow
 
 ## flow.advanced.stageResult.body <!-- flow.advanced.stageResult.body -->
 
-Explains that progress in the maintenance stage is measured against the user's goal.
+The assessment result, alongside an overview of the features available at that stage
 
 ## flow.advanced.goalPurpose.body <!-- flow.advanced.goalPurpose.body -->
 
-Combines health goals and support areas into one streamlined selection screen.
+Health goals and areas where support is needed, selected on the same screen
 
 ## flow.advanced.concern.body <!-- flow.advanced.concern.body -->
 
-Builds on interview feedback by asking about challenges first, using free text and preset tags.
+Free-text input and preset tags for describing challenges before setting up a routine
 
 ## flow.advanced.routineDetail.body <!-- flow.advanced.routineDetail.body -->
 
-Lets experienced users customise routine type, schedule, and time of day.
+Controls for choosing a routine type, schedule, and time of day
 
 ## flow.advanced.forecastPreview.body <!-- flow.advanced.forecastPreview.body -->
 
-Experienced users get the same promise first.
+Experienced users get the same promise first
 
 ## flow.advanced.homeAdvanced.body <!-- flow.advanced.homeAdvanced.body -->
 
-Replaces the forecast with a countdown to the goal date and adds concise coaching tips.
+Replaces the forecast with a countdown to the goal date, alongside personalised coaching messages
 
 ## flow.advanced.log.body <!-- flow.advanced.log.body -->
 
-Unlocks detailed tracking, including body-composition metrics, for experienced users.
+Additional tracking fields, including body-composition metrics, for a more detailed view of progress
 
 ## flow.advanced.report.body <!-- flow.advanced.report.body -->
 
-Provides body-composition and diet charts to help users review weekly progress.
+Charts showing weekly changes in body composition and diet
 
 ## flow.advanced.forecastAdvanced.body <!-- flow.advanced.forecastAdvanced.body -->
 
-Shows how many days a behaviour could save, linking coaching advice to predicted outcomes.
+A coaching card showing how many days a behaviour could bring the predicted goal date forward
 
 ## flow.advanced.forecastCalc.body <!-- flow.advanced.forecastCalc.body -->
 
-Builds on the forecast with a calculator for exploring detailed goal scenarios.
+A calculator for adjusting forecast values and exploring different scenarios for reaching a goal
 
 ## flow.advanced.selfCompare.body <!-- flow.advanced.selfCompare.body -->
 
-Reflects experienced users' preference for comparing their own progress rather than peer averages.
+Compares progress with the user's own records from the previous week rather than peer averages
 
 ## flow.advanced.routineEdit.body <!-- flow.advanced.routineEdit.body -->
 
-Enables experienced users to manage multiple routines at once.
+Multiple routines can be managed and tracked at the same time
 
 ## flow.advanced.stageUp.body <!-- flow.advanced.stageUp.body -->
 
-Highlights the full Stage 5 report made available to experienced users.
+Introduces the full report that becomes available through continued routine practice
 
 ## flow.advanced.me.body <!-- flow.advanced.me.body -->
 
-Lets users reassess their stage and adjust information density at any time.
+Options to reassess the stage of behaviour change and adjust how much information is displayed
 
 ## org <!-- org -->
 

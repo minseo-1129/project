@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A conversational agent supporting reflection on social prescribing experiences and exploring how AI summaries are presented.
+A web prototype for young adults to revisit social prescribing experiences through conversation.
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Suggesting an interpretation the user confirms
 
 ## context.body <!-- context.body -->
 
-The prototype explores how users' own words, suggested patterns and next steps are presented, and when AI interpretations appear.
+Taking part in social prescribing activities does not always make their meaning clear. We explored how conversation could support reflection on those experiences.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Keeping the user's words apart from the interpretation
 
 ## decision.body <!-- decision.body -->
 
-Separates users' words, suggested patterns and next steps. Compares upfront and on-demand interpretations while retaining pattern confirmation and editing.
+Designed a conversational agent to revisit social prescribing experiences and explored how to present AI-generated summaries for users to review.
 
 ## guide.title <!-- guide.title -->
 
@@ -84,7 +84,7 @@ Anticipate what you can do.
 
 ## screen.welcome.caption <!-- screen.welcome.caption -->
 
-Introduces the self-reflection experience and guides users into the conversation
+Introduces the purpose of the conversation
 
 ## scope <!-- scope -->
 

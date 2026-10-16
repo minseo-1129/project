@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A children's picture book: the child fills empty sticky notes in pop-up scenes with their own drawings, which then come alive as a character.
+An interactive picture-book where children's drawings come to life and become part of the story
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ A pop-up book finished with the child's drawings
 
 ## context.body <!-- context.body -->
 
-The child picks an empty sticky note in a scene; the drawing they make on paper joins the scene and completes the picture.
+Explored how technology could help picture books support children's emotional development by allowing them to take a more active part in the story.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Keep the drawing inside the story
 
 ## decision.body <!-- decision.body -->
 
-Drawing doesn't end in the sketchbook: it fills the empty spot in the scene, and the finished drawing comes alive as a character.
+We left spaces in the story for children's drawings, which become part of the scene with automatic matching sounds, movements, and interactions.
 
 ## guide.title <!-- guide.title -->
 
@@ -80,19 +80,19 @@ Pick a scene to follow the sequence: choose an empty sticky note, draw on paper 
 
 ## screen.scene.title <!-- screen.scene.title -->
 
-A scene with empty sticky notes
+Story scene
 
 ## screen.scene.caption <!-- screen.scene.caption -->
 
-The empty sticky notes mark where to draw
+A storybook scene with an empty sticky note marking where a drawing can be added
 
 ## screen.pick.title <!-- screen.pick.title -->
 
-Picking a sticky note
+Choose where to draw
 
 ## screen.pick.caption <!-- screen.pick.caption -->
 
-Choose the note to fill with a drawing
+Choosing an empty sticky note to decide where a drawing will be added
 
 ## screen.draw.title <!-- screen.draw.title -->
 
@@ -100,15 +100,15 @@ Drawing on paper
 
 ## screen.draw.caption <!-- screen.draw.caption -->
 
-Draw with paper and coloured pencils
+A space for children to draw something that will become part of the story
 
 ## screen.done.title <!-- screen.done.title -->
 
-The drawing in the scene
+Completed story scene
 
 ## screen.done.caption <!-- screen.done.caption -->
 
-The drawn sun and tree complete the picture
+The sticky note peels away, revealing the child's drawing as it moves and interacts within the scene
 
 ## screen.character.title <!-- screen.character.title -->
 

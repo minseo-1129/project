@@ -62,3 +62,7 @@ The child picks an empty sticky note in a scene, draws on paper, and the drawing
 #### A character of their own to love
 
 ![A character standing on the pop-up book — the child's drawings move and react with life](assets/case-study/05-character.jpg)
+
+## case.intro <!-- case.intro -->
+
+Explored how technology could help picture books support children's emotional development by allowing them to take a more active part in the story.

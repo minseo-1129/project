@@ -128,3 +128,7 @@ From the trigger to buying again. The biggest drop-off is at the moment of choos
 - Moment: A few weeks later, she can't remember the last wine's name.
 - Pain: Nothing accumulates; search starts over
 - Opportunity: Logs refresh the profile for the next pick
+
+## case.intro <!-- case.intro -->
+
+Wine terminology and numerical ratings can be difficult for beginners to interpret, making it harder to understand and compare wines.

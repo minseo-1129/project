@@ -9,7 +9,7 @@ Recipe Player
 
 ## 한 줄 소개 <!-- summary -->
 
-취향과 보유 재료에 맞는 레시피를 찾고, 음성 인식으로 내 속도에 맞춰 조리하며 레시피를 저장하는 1인 가구용 큐레이션 서비스.
+취향과 냉장고 속 재료로 레시피를 찾고, 음악 플레이어처럼 한 단계씩 따라가며 음성으로 조리할 수 있는 1인 가구용 앱
 
 ## 담당 역할 <!-- role -->
 
@@ -45,7 +45,7 @@ Mobile application
 
 ## 배경 설명 <!-- context.body -->
 
-요리 관심도와 숙련도가 다른 20대 5명을 인터뷰함. 남은 재료 활용, 낯선 계량 단위 이해, 조리 중 화면 조작의 어려움을 확인함.
+20대 5명과의 인터뷰에서 남는 재료를 활용하기 어렵고, 계량 단위는 낯설며, 요리 중 화면을 만지기 번거롭다는 점을 발견
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -53,7 +53,7 @@ Mobile application
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-취향과 재료를 기준으로 레시피를 선택하고, 음악 플레이어처럼 조리 과정을 따라가며, 플레이리스트와 제작자 구독으로 보관과 공유를 연결하도록 설계했음.
+취향과 보유 재료로 레시피를 좁히고, 익숙한 음악 플레이어 구조와 음성 조작으로 조리 흐름을 이어가도록 설계
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
@@ -81,7 +81,7 @@ Mobile application
 
 ## 플로우 · flow.flow3.title <!-- flow.flow3.title -->
 
-내 속도로 조리하기
+단계별 조리
 
 ## 플로우 · flow.flow3.body <!-- flow.flow3.body -->
 
@@ -89,11 +89,11 @@ Mobile application
 
 ## 스플래시 · 화면 이름 <!-- screen.splash.title -->
 
-레플리 시작
+REPLY 시작
 
 ## 스플래시 · 카드 설명 <!-- screen.splash.caption -->
 
-레시피 탐색과 조리를 하나의 경험으로
+레시피를 찾는 순간부터 요리를 마칠 때까지 함께하는 서비스
 
 ## 스플래시 · 상세 설명 <!-- screen.splash.body -->
 
@@ -105,7 +105,7 @@ Mobile application
 
 ## 취향 버블 · 카드 설명 <!-- screen.taste.caption -->
 
-선호·비선호를 추천의 기준으로
+좋아하는 음식과 피하고 싶은 음식으로 정하는 레시피 추천 기준
 
 ## 취향 버블 · 상세 설명 <!-- screen.taste.body -->
 
@@ -117,7 +117,7 @@ Mobile application
 
 ## 부엌 조건 · 카드 설명 <!-- screen.kitchen.caption -->
 
-숙련도와 사용하는 계량 도구 설정
+조리 안내에 반영할 요리 숙련도와 계량 도구 설정
 
 ## 부엌 조건 · 상세 설명 <!-- screen.kitchen.body -->
 
@@ -129,7 +129,7 @@ Mobile application
 
 ## 냉장고 재료 · 카드 설명 <!-- screen.pantry.caption -->
 
-냉장고에 있는 재료에서 탐색 시작
+레시피 추천에 사용할 냉장고 속 재료 등록
 
 ## 냉장고 재료 · 상세 설명 <!-- screen.pantry.body -->
 
@@ -141,7 +141,7 @@ Mobile application
 
 ## 재료 직접 추가 · 카드 설명 <!-- screen.pantryAdd.caption -->
 
-목록에 없는 재료도 선택에 반영
+기본 목록에 없는 재료를 직접 추가하는 기능
 
 ## 재료 직접 추가 · 상세 설명 <!-- screen.pantryAdd.body -->
 
@@ -153,7 +153,7 @@ Mobile application
 
 ## 플레이리스트 생성 · 카드 설명 <!-- screen.building.caption -->
 
-설정한 조건을 추천 목록으로 연결
+선택한 취향과 보유 재료를 바탕으로 추천 레시피 목록 생성
 
 ## 플레이리스트 생성 · 상세 설명 <!-- screen.building.body -->
 
@@ -161,11 +161,11 @@ Mobile application
 
 ## 홈 · 화면 이름 <!-- screen.home.title -->
 
-홈 · 보유 재료 추천
+보유 재료 추천
 
 ## 홈 · 카드 설명 <!-- screen.home.caption -->
 
-내 재료로 만들 수 있는 요리를 먼저 제공
+현재 보유한 재료로 만들 수 있는 레시피를 우선적으로 표시
 
 ## 홈 · 상세 설명 <!-- screen.home.body -->
 
@@ -177,7 +177,7 @@ Mobile application
 
 ## 재료 검색 · 카드 설명 <!-- screen.search.caption -->
 
-메뉴 이름 대신 재료로 후보 찾기
+요리 이름 대신 재료명을 기준으로 레시피 검색
 
 ## 재료 검색 · 상세 설명 <!-- screen.search.body -->
 
@@ -185,11 +185,11 @@ Mobile application
 
 ## 레시피 프리뷰 · 화면 이름 <!-- screen.preview.title -->
 
-레시피 프리뷰
+레시피 미리보기
 
 ## 레시피 프리뷰 · 카드 설명 <!-- screen.preview.caption -->
 
-조리 전 필요한 재료와 시간 확인
+조리 시작 전 필요한 재료와 예상 조리 시간 확인
 
 ## 레시피 프리뷰 · 상세 설명 <!-- screen.preview.body -->
 
@@ -201,7 +201,7 @@ Mobile application
 
 ## 쿡 모드 · 카드 설명 <!-- screen.play.caption -->
 
-단계 진행과 내 도구 기준 계량
+설정한 계량 도구에 맞춘 단계별 조리 안내와 음성 조작 화면
 
 ## 쿡 모드 · 상세 설명 <!-- screen.play.body -->
 
@@ -213,7 +213,7 @@ Mobile application
 
 ## 완료 · 카드 설명 <!-- screen.done.caption -->
 
-완료에서 저장과 재사용으로
+조리 중 화면 터치 횟수를 확인하고, 마음에 든 레시피는 플레이리스트에 저장
 
 ## 완료 · 상세 설명 <!-- screen.done.body -->
 
@@ -225,7 +225,7 @@ Mobile application
 
 ## 내 플레이리스트 · 카드 설명 <!-- screen.playlist.caption -->
 
-다시 만들고 싶은 레시피를 한곳에
+저장한 레시피를 모아두고 다시 찾아볼 수 있는 목록
 
 ## 내 플레이리스트 · 상세 설명 <!-- screen.playlist.body -->
 

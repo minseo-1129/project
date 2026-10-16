@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A mobile service that helps wine beginners explore wines through familiar sensory language and discover their preferences through tasting logs.
+A wine discovery app for beginners, using familiar descriptions of taste and tasting logs to help them explore their preferences
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Everyday taste over expert vocabulary
 
 ## context.body <!-- context.body -->
 
-Wine terminology and numerical ratings can make discovery less approachable for beginners. The experience focuses on understanding preferences through everyday senses.
+Wine terminology and numerical ratings can be difficult for beginners to interpret, making it harder to understand and compare wines.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Unfold information when it's needed
 
 ## decision.body <!-- decision.body -->
 
-Uses familiar drinks, food and occasions to explore preferences. Wine cards lead with colour and short descriptions, while details unfold on demand and tasting logs update the profile.
+We used familiar drinks, foods, and occasions to explore taste, then presented wines through colours and short descriptions.
 
 ## guide.title <!-- guide.title -->
 
@@ -64,7 +64,7 @@ Putting taste into words without jargon
 
 ## flow.flow2.title <!-- flow.flow2.title -->
 
-Browse
+Browse wines
 
 ## flow.flow2.body <!-- flow.flow2.body -->
 
@@ -88,11 +88,11 @@ A loop that gets more accurate the more you drink
 
 ## screen.splash.title <!-- screen.splash.title -->
 
-Splash
+Splash screen
 
 ## screen.splash.caption <!-- screen.splash.caption -->
 
-Introduces the service identity through familiar sensory language, making wine discovery feel approachable.
+Introducing wine discovery through familiar sensory language
 
 ## screen.splash.body <!-- screen.splash.body -->
 
@@ -104,7 +104,7 @@ Onboarding
 
 ## screen.onboardIntro.caption <!-- screen.onboardIntro.caption -->
 
-Reassures beginners that no specialist wine knowledge is needed and previews the three-step setup.
+An introduction to the three-step taste setup, designed for beginners without prior wine knowledge
 
 ## screen.onboardIntro.body <!-- screen.onboardIntro.body -->
 
@@ -112,11 +112,11 @@ Promises “no difficult words” first and previews the three steps.
 
 ## screen.quizTaste.title <!-- screen.quizTaste.title -->
 
-Taste1 · flavour
+Taste · flavour
 
 ## screen.quizTaste.caption <!-- screen.quizTaste.caption -->
 
-Uses familiar drinks such as juice and black tea to explore flavour preferences, carrying colour cues through to the taste profile.
+Taste questions using familiar drinks such as juice and black tea, with colours distinguishing different flavours
 
 ## screen.quizTaste.body <!-- screen.quizTaste.body -->
 
@@ -128,7 +128,7 @@ Taste · food
 
 ## screen.quizFood.caption <!-- screen.quizFood.caption -->
 
-Brings food pairing into the taste quiz, reflecting its importance in user research.
+Includes food pairing preferences in the taste setup through familiar food choices
 
 ## screen.quizFood.body <!-- screen.quizFood.body -->
 
@@ -140,7 +140,7 @@ Taste · occasion
 
 ## screen.quizOccasion.caption <!-- screen.quizOccasion.caption -->
 
-Explores preferences through everyday drinking occasions rather than separate questions about price and mood.
+Everyday drinking occasions used to explore preferences for price range and atmosphere
 
 ## screen.quizOccasion.body <!-- screen.quizOccasion.body -->
 
@@ -152,7 +152,7 @@ Taste profile
 
 ## screen.tasteProfile.caption <!-- screen.tasteProfile.caption -->
 
-Presents preferences through names, colours and sensory descriptions rather than scores, making results easier to interpret.
+A taste profile expressed through colours and familiar sensory descriptions instead of numerical scores
 
 ## screen.tasteProfile.body <!-- screen.tasteProfile.body -->
 
@@ -164,7 +164,7 @@ Home
 
 ## screen.home.caption <!-- screen.home.caption -->
 
-Replaces the carousel and popular-wine grid with a single featured wine of the day.
+A home screen centred on a featured wine of the day
 
 ## screen.home.body <!-- screen.home.body -->
 
@@ -176,7 +176,7 @@ Tag search
 
 ## screen.tagSearch.caption <!-- screen.tagSearch.caption -->
 
-Groups filters by flavour, body, food pairing and price, with English captions introducing wine terms.
+Filters for flavour, body, food pairing, and price, with wine terms introduced through short captions
 
 ## screen.tagSearch.body <!-- screen.tagSearch.body -->
 
@@ -188,7 +188,7 @@ Search results
 
 ## screen.results.caption <!-- screen.results.caption -->
 
-Uses colour swatches instead of match percentages and introduces each wine in one sentence.
+Search results using colours to show how wines relate to the taste profile, with a short description for each wine
 
 ## screen.results.body <!-- screen.results.body -->
 
@@ -200,7 +200,7 @@ Wine card
 
 ## screen.wineCard.caption <!-- screen.wineCard.caption -->
 
-Shows name, price, taste, and aroma without scrolling, using colours and words for taste and an illustration area for aroma.
+A wine card showing the name, price, flavour, and aroma, using colours for taste and an illustration for aroma
 
 ## screen.wineCard.body <!-- screen.wineCard.body -->
 
@@ -208,11 +208,11 @@ Name, price, taste and aroma fit without scrolling. Taste is colour + words; aro
 
 ## screen.wineMore.title <!-- screen.wineMore.title -->
 
-Wine · learn more
+More about this wine
 
 ## screen.wineMore.caption <!-- screen.wineMore.caption -->
 
-Reveals food pairings, occasions and expert notes in expandable sections so users can choose how much detail to see.
+Expandable sections for food pairings, suggested occasions, and expert notes, allowing users to view details as needed
 
 ## screen.wineMore.body <!-- screen.wineMore.body -->
 
@@ -224,7 +224,7 @@ Glossary sheet
 
 ## screen.termSheet.caption <!-- screen.termSheet.caption -->
 
-Opens a glossary sheet when users tap an English wine term, explaining it through everyday comparisons.
+A glossary sheet that opens when a wine term is tapped, with explanations using everyday comparisons
 
 ## screen.termSheet.body <!-- screen.termSheet.body -->
 
@@ -236,7 +236,7 @@ Log a wine
 
 ## screen.review.caption <!-- screen.review.caption -->
 
-Replaces star ratings with three plain-language options and taste tags, helping users describe wines in their own terms.
+Plain-language choices and flavour tags in place of star ratings for recording a tasting experience
 
 ## screen.review.body <!-- screen.review.body -->
 
@@ -244,11 +244,11 @@ No star ratings. A log is three sentence-style verdicts and taste tags.
 
 ## screen.reviewDone.title <!-- screen.reviewDone.title -->
 
-Log & profile update
+Taste profile update
 
 ## screen.reviewDone.caption <!-- screen.reviewDone.caption -->
 
-Shows how the taste profile changes after each log, making the link between tasting and learning visible.
+An updated taste profile shown immediately after a wine is logged
 
 ## screen.reviewDone.body <!-- screen.reviewDone.body -->
 
@@ -260,7 +260,7 @@ My wine log
 
 ## screen.cellar.caption <!-- screen.cellar.caption -->
 
-Collects tried and saved wines, preserving tasting notes in users' own words.
+Tried and saved wines collected alongside the user's own tasting notes
 
 ## screen.cellar.body <!-- screen.cellar.body -->
 
@@ -272,7 +272,7 @@ My page
 
 ## screen.myPage.caption <!-- screen.myPage.caption -->
 
-Places the taste profile at the top and makes the glossary an entry point for further learning.
+Taste profile with access to the wine glossary for further reference
 
 ## screen.myPage.body <!-- screen.myPage.body -->
 

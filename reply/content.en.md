@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A voice-enabled recipe curation service for people living alone to discover recipes based on their tastes and available ingredients, and cook at their own pace.
+A recipe app for solo cooks: find something to make with what you have, then follow each step with voice controls
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Browsing by ingredient and use while cooking
 
 ## context.body <!-- context.body -->
 
-Interviews with five people in their 20s revealed challenges with leftover ingredients, unfamiliar measurements, and navigating screens while cooking.
+Interviews with 5 people in their 20s surfaced three everyday hurdles: using up ingredients, making sense of measurements, and touching a screen mid-cook.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ Progression that fits cooking
 
 ## decision.body <!-- decision.body -->
 
-Designed recipe discovery around tastes and available ingredients, a music-player-inspired cooking flow, and playlists and creator subscriptions for saving and sharing.
+We started recipe discovery with tastes and ingredients on hand, then used a player-like flow and voice controls to make cooking easier to follow.
 
 ## guide.title <!-- guide.title -->
 
@@ -72,7 +72,7 @@ The first block on home is a recommendation from what you have
 
 ## flow.flow3.title <!-- flow.flow3.title -->
 
-Hands-free play
+Step-by-step cooking
 
 ## flow.flow3.body <!-- flow.flow3.body -->
 
@@ -80,11 +80,11 @@ Auto-advance + voice + measurements in your own tools
 
 ## screen.splash.title <!-- screen.splash.title -->
 
-Getting started
+Meet REPLY
 
 ## screen.splash.caption <!-- screen.splash.caption -->
 
-Connects recipe discovery and cooking into one experience
+From finding a recipe to cooking it: one connected experience
 
 ## screen.splash.body <!-- screen.splash.body -->
 
@@ -96,7 +96,7 @@ Taste preferences
 
 ## screen.taste.caption <!-- screen.taste.caption -->
 
-Uses food likes and dislikes as the basis for recommendations
+Selection of food preferences and dislikes for recipe recommendations
 
 ## screen.taste.body <!-- screen.taste.body -->
 
@@ -108,7 +108,7 @@ Kitchen setup
 
 ## screen.kitchen.caption <!-- screen.kitchen.caption -->
 
-Sets cooking skill level and available measuring tools
+Cooking experience and available measuring tools used to adapt recipe instructions
 
 ## screen.kitchen.body <!-- screen.kitchen.body -->
 
@@ -116,11 +116,11 @@ Taste, kitchen and ingredients in one go at sign-up
 
 ## screen.pantry.title <!-- screen.pantry.title -->
 
-Available ingredients
+My pantry
 
 ## screen.pantry.caption <!-- screen.pantry.caption -->
 
-Starts recipe discovery with ingredients already in the fridge
+Adding available ingredients to the pantry
 
 ## screen.pantry.body <!-- screen.pantry.body -->
 
@@ -132,7 +132,7 @@ Add ingredients
 
 ## screen.pantryAdd.caption <!-- screen.pantryAdd.caption -->
 
-Includes unlisted ingredients in recipe selection
+Manual entry for ingredients not included in the list
 
 ## screen.pantryAdd.body <!-- screen.pantryAdd.body -->
 
@@ -140,11 +140,11 @@ Taste, kitchen and ingredients in one go at sign-up
 
 ## screen.building.title <!-- screen.building.title -->
 
-Building the playlist
+Building your playlist
 
 ## screen.building.caption <!-- screen.building.caption -->
 
-Turns selected preferences and conditions into recipe recommendations
+Generating recipe recommendations from selected preferences and available ingredients
 
 ## screen.building.body <!-- screen.building.body -->
 
@@ -152,7 +152,7 @@ Taste, kitchen and ingredients in one go at sign-up
 
 ## screen.home.title <!-- screen.home.title -->
 
-Home · Pantry picks
+Pantry recommendations
 
 ## screen.home.caption <!-- screen.home.caption -->
 
@@ -168,7 +168,7 @@ Ingredient search
 
 ## screen.search.caption <!-- screen.search.caption -->
 
-Finds recipe options by ingredient rather than dish name
+Searching for recipes by ingredient rather than dish name
 
 ## screen.search.body <!-- screen.search.body -->
 
@@ -180,7 +180,7 @@ Recipe preview
 
 ## screen.preview.caption <!-- screen.preview.caption -->
 
-Shows required ingredients and cooking time before starting
+Shows required ingredients and estimated cooking time
 
 ## screen.preview.body <!-- screen.preview.body -->
 
@@ -192,7 +192,7 @@ Cook mode
 
 ## screen.play.caption <!-- screen.play.caption -->
 
-Guides each cooking step with measurements based on the user's own tools
+Step-by-step cooking instructions with voice controls
 
 ## screen.play.body <!-- screen.play.body -->
 
@@ -204,7 +204,7 @@ Cooking complete
 
 ## screen.done.caption <!-- screen.done.caption -->
 
-Connects finished cooking to saving and reusing recipes
+Shows how often you touched the screen, then saves the recipe for next time
 
 ## screen.done.body <!-- screen.done.body -->
 
@@ -216,7 +216,7 @@ My playlist
 
 ## screen.playlist.caption <!-- screen.playlist.caption -->
 
-Brings recipes users want to cook again into one place.
+A collection of saved recipes for later use
 
 ## screen.playlist.body <!-- screen.playlist.body -->
 

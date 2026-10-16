@@ -40,3 +40,7 @@ Two sensors drive the light and the pump.
 - Submersible pump | Gentle waves | Hidden under the land model
 - Toggle switch | Power on/off | Lets the user turn the mood light on and off
 - Power | 12 V adapter | External power supply
+
+## case.intro <!-- case.intro -->
+
+Explored an alternative to plastic humidifier discs and how ambient lighting and gentle waves could create a relaxing everyday experience.

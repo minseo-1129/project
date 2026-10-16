@@ -44,3 +44,7 @@ Eight menus × two temperatures make the base cups, and the topping choice calls
 - 16 / 400 | Gowun Dodum · 오늘의 커피는? | Body, inputs
 - 14 / 400 | Card title · label · button | Mixed
 - 12 / 400 | #아메리카노 · 2022.02.10 | Tags, dates, captions (numbers in IBM Plex Mono)
+
+## case.intro <!-- case.intro -->
+
+We explored how to capture the experience around each cup of coffee in one place and revisit it over time.
