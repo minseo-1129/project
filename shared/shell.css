@@ -140,7 +140,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .case-page{gap:0}
 .case-page>.page-head{margin:32px 0 24px}
 .case-page>.footer-nav{margin-top:40px}
-.block{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr);padding:40px 0;border-bottom:1px solid var(--line)}
+.block{display:grid;grid-template-columns:var(--gutter) minmax(0,1fr);column-gap:24px;padding:40px 0;border-bottom:1px solid var(--line)}
 .block-label{letter-spacing:.12em;padding-top:4px}
 .block-body{display:flex;flex-direction:column;gap:24px;min-width:0}
 .block-wide{grid-template-columns:1fr;gap:20px;width:min(1120px,calc(100vw - 48px));margin-left:50%;transform:translateX(-50%)}
@@ -631,3 +631,19 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .slope-dot:hover{r:6}
 .slope-label,.slope-label p{font:700 12.5px/18px var(--kr);color:var(--ink);text-align:center}
 .row-media img{border:1px solid var(--line-strong);border-radius:4px}
+/* Typography from the Figma case frames */
+[data-view="case"] .crumbs,[data-view="case"] .top-bar .mono,[data-view="case"] .meta-row dt{font:400 14px/22px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--body)}
+[data-view="case"] .page-head .eyebrow{font:400 14px/22px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.page-head .subtitle,.page-head .subtitle p{line-height:28px;letter-spacing:0}
+.page-head .tagline,.page-head .tagline p{font:400 14px/23px var(--sans);color:var(--body)}
+.meta-row dd{font:400 13px/20px var(--sans);color:var(--ink)}
+.avail>*{line-height:16px;letter-spacing:.08em}
+.lead,.lead p{letter-spacing:0}
+.body-text,.body-text p{font:400 13px/21px var(--kr);color:var(--body)}
+.gtable th{font-size:9.5px;text-transform:none}
+.note-caption,.note-caption p{font:400 9.5px/14px var(--mono);letter-spacing:.08em}
+.card.has-stat .card-tag{font:400 14px/22px var(--mono);letter-spacing:.08em}
+.card.has-stat .strong{font:700 15px/23px var(--kr)}
+.card.has-stat .card-figure{font:600 40px/44px var(--sans);letter-spacing:0}
+.card-stat .small,.card-stat .small p{font-size:12.5px;line-height:20px;color:var(--body)}
+@media (max-width:560px){[data-view="case"] .crumbs,[data-view="case"] .top-bar .mono,[data-view="case"] .meta-row dt,[data-view="case"] .page-head .eyebrow{font-size:11px;line-height:16px}}

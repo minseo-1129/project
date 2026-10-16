@@ -63,7 +63,7 @@ Coded results
 ## Design decision <!-- case.section.response -->
 
 - **Difficult, technical terms** · Jargon — Body, tannin, acidity: hard to describe or understand without study. => **Everyday words first** · Design decision — Everyday words come first; technical terms open as captions.
-- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: knowing all of them before drinking is unrealistic. => **Taste onboarding** · Design decision — Three onboarding questions compute the classification.
+- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: too much to know before drinking. => **Taste onboarding** · Design decision — Three onboarding questions compute the classification.
 - **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. => **One wine card** · Design decision — Price, pairing and stockists sit on one card, complete even as a screenshot.
 
 ## case.persona.name <!-- case.persona.name -->
@@ -109,7 +109,7 @@ From the trigger to buying again. The biggest drop-off is at the moment of choos
 - Mood: Confused
 - Moment: Results list origins and grapes; time goes on digging through reviews.
 - Pain: Too much (19) and too hard (14) to take in
-- Opportunity: Tag search made only of words you know
+- Opportunity: Tag search with words you know
 
 ### Choice · CHOICE
 - Mood: Anxious
@@ -120,8 +120,8 @@ From the trigger to buying again. The biggest drop-off is at the moment of choos
 ### Drinking · DRINKING
 - Mood: Enjoying
 - Moment: The wine she tried was good, but she can't say what made it good.
-- Pain: Unworded, the experience can't be repeated
-- Opportunity: Log a sentence verdict and tags, no stars
+- Pain: Unworded, it can't be repeated
+- Opportunity: A sentence and tags, no stars
 
 ### Next bottle · NEXT
 - Mood: Starting over

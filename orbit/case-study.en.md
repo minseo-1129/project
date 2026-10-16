@@ -103,7 +103,7 @@ Both flows scored well above the 68 benchmark. Split by group, each flow did bes
 
 The forecast was the only feature both user types rated highly on usefulness and effectiveness.
 
-### Effects participants named unprompted
+##### Effects participants named unprompted
 
 @cards
 

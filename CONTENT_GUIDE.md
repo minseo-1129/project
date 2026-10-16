@@ -144,8 +144,13 @@ A line on its own before a list changes how that list is drawn:
 | `@versus` | Two side-by-side persona columns: `- **Name** · tag — profile // “quote” // Goals: a; b // Frustrations: a; b` |
 | `@split` | Rows with a bold title on the left and text plus a quote on the right |
 | `@hero` | Gallery whose first image spans the full width |
+| `@legend` | A line-style key: `- [solid] label` (solid, dashed, dotted, bold, plain, muted) |
+| `@trace Theme(s) \| Role \| Justification // Themes from \| Group A \| Group B` | A traceability table: `- Theme + ^Theme => [primary] Role · Primary agent — justification` (`^` marks a Group B theme; role styles primary, sub, tool, policy, infra, repo) |
+| `@slope Pre \| Post // Group A \| Group B` | Pre/post slope charts, one per row: `- Measure — 4.21 2.78 \| 3.29 3.68` (Group A is highlighted, Group B dashed) |
+| `@dash` | A plain list with an em dash before each line (Observed) |
+| `@stack` before a chart | Stacks the bar charts full width, one per row |
 
-Table cells accept ` // ` for a line break, and every column of a table has the same width. A gallery of three images becomes a mosaic (the first image spans two rows). Journey maps sit in the text column, show two stages at a time and scroll with arrows.
+`### Label` is a small mono sub-heading and `##### Label` the large one (Quote, Observed). Numbered `**Title** — text` rows read as insights, with lines only between rows. Table cells accept ` // ` for a line break, and every column of a table has the same width. A gallery of three images becomes a mosaic (the first image spans two rows). Journey maps sit in the text column, show two stages at a time and scroll with arrows.
 
 ### Prototype page options
 
