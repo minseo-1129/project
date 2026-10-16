@@ -25,19 +25,19 @@ Coded results
 - Unneeded info: 10
 - Disorganised: 9
 
-### Extra information wanted · EXTRA INFO
-
-- Food pairing: 16
-- Occasion: 10
-- Tasting notes: 8
-- All of it: 2
-
 ### Taste information needed · TASTE CRITERIA
 
 - Sweetness: 17
 - Tannin: 4
 - Acidity: 4
 - Body: 1
+
+### Extra information wanted · EXTRA INFO
+
+- Food pairing: 16
+- Occasion: 10
+- Tasting notes: 8
+- All of it: 2
 
 ### Taste & aroma cues · PERCEPTION
 

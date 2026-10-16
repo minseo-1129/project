@@ -647,3 +647,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .card.has-stat .card-figure{font:600 40px/44px var(--sans);letter-spacing:0}
 .card-stat .small,.card-stat .small p{font-size:12.5px;line-height:20px;color:var(--body)}
 @media (max-width:560px){[data-view="case"] .crumbs,[data-view="case"] .top-bar .mono,[data-view="case"] .meta-row dt,[data-view="case"] .page-head .eyebrow{font-size:11px;line-height:16px}}
+.spec>.mono{font:400 14px/22px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--body)}
+/* Grid charts — Figma: tag above title, no rule, bars without a track */
+.bar-groups{column-gap:24px;row-gap:28px}
+.bar-group{display:flex;flex-direction:column;gap:8px}
+.bar-head{flex-direction:column-reverse;justify-content:flex-start;align-items:flex-start;gap:2px;padding-bottom:0;border-bottom:0;margin-bottom:0}
+.bar-head .mono{font-size:9.5px;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}
+.bar-row{grid-template-columns:104px minmax(0,1fr) 20px;gap:10px;min-height:17px;padding:0}
+.bar-name{font:400 11.5px/17px var(--kr);color:var(--body)}
+.bar-track{height:10px;background:none}
+.bar-fill{background:var(--line-strong)}
+.bar-row .mono{font-size:10.5px;color:var(--ink)}
+.bar-groups.is-stacked .bar-head{flex-direction:row;justify-content:space-between;align-items:baseline;gap:8px}
+.bar-groups.is-stacked .bar-head .mono{color:var(--muted)}
