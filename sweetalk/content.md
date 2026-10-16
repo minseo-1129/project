@@ -1,7 +1,7 @@
 # Sweetalk 콘텐츠
 
 <!-- 각 제목 끝의 항목 ID는 유지하고 아래 글만 수정하세요. 비운 항목은 빈 상태로 표시됩니다. -->
-<!-- 프로토타입은 영상입니다. assets/video/sweetalk.mp4를 넣고 project.json의 "showPrototype"을 true로 바꾸면 공개됩니다. -->
+<!-- 프로토타입은 영상 두 편입니다(assets/video/intro.mp4, usecase.mp4). -->
 
 ## 프로젝트 이름 <!-- title -->
 
@@ -75,18 +75,6 @@ Mobile application
 
 얼굴·목소리·동작 필터가 반응하는 통화 장면입니다.
 
-## 프로토타입 영상 · 화면 이름 <!-- screen.video.title -->
-
-프로토타입 영상
-
-## 프로토타입 영상 · 카드 설명 <!-- screen.video.caption -->
-
-세 가지 필터가 켜진 영상 통화
-
-## 프로토타입 영상 · 상세 설명 <!-- screen.video.body -->
-
-세 가지 필터가 켜진 영상 통화
-
 ## 부제 <!-- subtitle -->
 
 커플을 위한 영상 통화 필터
@@ -94,3 +82,31 @@ Mobile application
 ## 태그라인 <!-- tagline -->
 
 표정·목소리·동작 필터로 장거리 대화를 긍정적으로 이어 갑니다.
+
+## 소개 영상 · 화면 이름 <!-- screen.intro.title -->
+
+소개 영상
+
+## 소개 영상 · 카드 설명 <!-- screen.intro.caption -->
+
+Sweetalk 앱과 세 가지 필터 소개
+
+## 소개 영상 · 상세 설명 <!-- screen.intro.body -->
+
+Sweetalk 앱과 얼굴·목소리·동작 필터를 짧게 소개합니다.
+
+## 사용 장면 · 화면 이름 <!-- screen.usecase.title -->
+
+사용 장면
+
+## 사용 장면 · 카드 설명 <!-- screen.usecase.caption -->
+
+필터가 켜진 커플의 영상 통화
+
+## 사용 장면 · 상세 설명 <!-- screen.usecase.body -->
+
+장거리 커플의 실제 통화에서 필터가 대화에 반응하는 모습입니다.
+
+## 탭 묶음 이름 <!-- statesLabel -->
+
+영상

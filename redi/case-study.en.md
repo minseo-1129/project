@@ -4,7 +4,7 @@
 
 ## Context <!-- case.section.context -->
 
-### Why a teenager's day
+##### Why a teenager's day
 
 After COVID-19, teenagers' daily rhythms were shaken more than adults'. Sleep and sitting time went up; physical activity and social contact went down.
 

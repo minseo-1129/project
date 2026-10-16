@@ -2,9 +2,23 @@
 
 <!-- English text for case-study.md. Keep the field IDs; a section written here replaces the Korean section as a whole. -->
 
+## Problem <!-- case.section.problem -->
+
+Recipes are everywhere, but one that fits what is in my fridge and what I can actually cook is hard to find.
+
+COVID-19 meant more single-person households cooking at home. From people in their twenties who had just started living alone to people in their thirties tired of eating out, the same frustrations kept coming up when finding and following recipes.
+
+@cards
+
+- Scattered channels — Recipes live across YouTube, blogs and recipe apps, and saved ones end up scattered too.
+- Search that can't start from ingredients — It is hard to find dishes you can make with what is already at home.
+- Instructions that don't fit your skill — Units and steps feel unfamiliar, and videos must be paused and replayed at every step.
+
 ## Research <!-- case.section.research -->
 
 We interviewed five people, from a second-year student living alone to an office worker back with their parents after living alone, and coded what they said into behaviours and feelings.
+
+@stack
 
 ### Utterances per coding category · CODED UTTERANCES
 
@@ -26,13 +40,17 @@ We interviewed five people, from a second-year student living alone to an office
 - Clean UI: 3
 - Voice recognition: 1
 
-### Verbatim
+## Result <!-- case.section.result -->
+
+##### Quote
 
 - “When my hands are dirty mid-cooking, wiping them to touch the phone again is a hassle.” — P1 · lives alone
 - “The video sweetens it with rice syrup, but I only had sugar, so I was stuck.” — P3 · job seeker
 - “I don't really know what one teaspoon means… I couldn't get a feel for measuring.” — P4 · lives alone
 
-### Observed
+##### Observed
+
+@dash
 
 - Ingredients at hand were more than a filter: they were where deciding the menu began.
 - People who wanted to skim text quickly and people who preferred the clarity of video coexisted.
@@ -57,6 +75,12 @@ From choosing a menu to cooking, measuring, voice control and saving to a playli
 ## Journey <!-- case.section.journey -->
 
 @journey
+
+## Outcome <!-- case.section.outcome -->
+
+An information architecture from home recommendations and search to community, playlists and profile
+
+![Recipe Player information architecture — home (recipe recommendations, search), community, playlists, profile](assets/case-study/ia.png)
 
 ## case.persona.name <!-- case.persona.name -->
 
@@ -91,7 +115,7 @@ A to-be journey from ingredient-based recommendations to choosing, cooking and s
 
 ## case.journey.stages <!-- case.journey.stages -->
 
-### Get recommendations from ingredients · DISCOVER
+### From my ingredients · DISCOVER
 
 - Mood: Hopeful
 - Moment: Picks food tastes and what is in the fridge, and finds a dish to make today.
@@ -123,5 +147,5 @@ A to-be journey from ingredient-based recommendations to choosing, cooking and s
 
 - Mood: Hopeful
 - Moment: Makes a saved recipe again or checks new recipes from creators they follow.
-- Pain: May forget they saved it, or miss new content
+- Pain: May forget a recipe was saved, or miss new content from creators they like
 - Opportunity: Build return visits on the playlist and let users follow list creators

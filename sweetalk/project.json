@@ -3,21 +3,23 @@
   "component": null,
   "width": 1280,
   "height": 720,
-  "defaultScreen": "video",
+  "defaultScreen": "intro",
   "keyScreens": [
-    "video"
+    "intro",
+    "usecase"
   ],
-  "evidenceScreen": "video",
+  "evidenceScreen": "usecase",
   "prototype": "video.html",
   "flows": [
     {
       "id": "call",
       "screens": [
-        "video"
+        "intro",
+        "usecase"
       ]
     }
   ],
-  "showPrototype": false,
+  "showPrototype": true,
   "caseStudy": true,
   "availability": [
     [
@@ -28,5 +30,14 @@
       "case",
       true
     ]
-  ]
+  ],
+  "webStates": [
+    {
+      "id": "intro"
+    },
+    {
+      "id": "usecase"
+    }
+  ],
+  "frameAspect": "16/9"
 }

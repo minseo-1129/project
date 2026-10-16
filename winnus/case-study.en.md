@@ -12,19 +12,18 @@
 
 Coded results
 
+@specs
+
+- Method — **Survey + written and video interviews** // the survey tested three hypotheses; interview remarks were coded by theme
+- Participants — **21 participants** // across the survey and interviews
+- Analysis — **Thematic analysis** // four themes: cognitive load, extra information, taste criteria, perception
+
 ### What creates cognitive load · COGNITIVE LOAD
 
-- Too much information: 19
-- Hard to understand: 14
-- Unnecessary information: 10
+- Too much info: 19
+- Hard to grasp: 14
+- Unneeded info: 10
 - Disorganised: 9
-
-### Extra information wanted · ADDITIONAL INFO
-
-- Food pairing: 16
-- Occasion: 10
-- Tasting notes: 8
-- All of it: 2
 
 ### Taste information needed · TASTE CRITERIA
 
@@ -33,9 +32,16 @@ Coded results
 - Acidity: 4
 - Body: 1
 
-### How taste and aroma are perceived · MEANS OF PERCEPTION
+### Extra information wanted · EXTRA INFO
 
-- Aroma · illustration: 18
+- Food pairing: 16
+- Occasion: 10
+- Tasting notes: 8
+- All of it: 2
+
+### Taste & aroma cues · PERCEPTION
+
+- Aroma · drawings: 18
 - Taste · sentences: 15
 - Taste · colour cues: 11
 - Taste · scale ticks: 1
@@ -54,11 +60,11 @@ Coded results
 
 @journey
 
-## Problems → response <!-- case.section.response -->
+## Design decision <!-- case.section.response -->
 
-- **Difficult, technical terms** · Jargon — Body, tannin, acidity — unless you study them, you can neither describe nor understand wine. => Design response — → Everyday language first; technical terms open as captions on tap
-- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: knowing all of them before drinking is unrealistic. => Design response — → Three onboarding questions compute the classification instead
-- **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. => Design response — → One wine card holds it all — complete even as a screenshot
+- **Difficult, technical terms** · Jargon — Body, tannin, acidity: hard to describe or understand without study. => **Everyday words first** · Design decision — Everyday words come first; technical terms open as captions.
+- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: too much to know before drinking. => **Taste onboarding** · Design decision — Three onboarding questions compute the classification.
+- **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. => **One wine card** · Design decision — Price, pairing and stockists sit on one card, complete even as a screenshot.
 
 ## case.persona.name <!-- case.persona.name -->
 
@@ -97,28 +103,28 @@ From the trigger to buying again. The biggest drop-off is at the moment of choos
 - Mood: Expectant
 - Moment: Friends are coming over; wine comes to mind to set the mood.
 - Pain: No criteria at all for what to buy
-- Opportunity: Taste onboarding sets a first criterion for you
+- Opportunity: Taste onboarding sets a first criterion
 
 ### Search · SEARCH
 - Mood: Confused
 - Moment: Results list origins and grapes; time goes on digging through reviews.
-- Pain: Too much to take in (19) and hard to understand (14)
-- Opportunity: Tag search made only of words you know
+- Pain: Too much (19) and too hard (14) to take in
+- Opportunity: Tag search with words you know
 
 ### Choice · CHOICE
 - Mood: Anxious
 - Moment: Picking by label design or price; staff recommendations miss.
 - Pain: Every purchase is a gamble
-- Opportunity: A wine card that shows taste first, in colour and sentences
+- Opportunity: Cards show taste in colour and words
 
 ### Drinking · DRINKING
 - Mood: Enjoying
-- Moment: The wine was good, but she can't say why.
-- Pain: The experience isn't put into words, so it can't be repeated
-- Opportunity: Log only a sentence verdict and taste tags, with no star ratings
+- Moment: The wine she tried was good, but she can't say what made it good.
+- Pain: Unworded, it can't be repeated
+- Opportunity: A sentence and tags, no stars
 
 ### Next bottle · NEXT
 - Mood: Starting over
 - Moment: A few weeks later, she can't remember the last wine's name.
-- Pain: Nothing accumulates, so she is back at the start of searching
-- Opportunity: Logs update the taste profile and shape the next recommendation
+- Pain: Nothing accumulates; search starts over
+- Opportunity: Logs refresh the profile for the next pick

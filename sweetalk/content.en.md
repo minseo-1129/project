@@ -66,18 +66,6 @@ Video call
 
 A call where the face, voice and motion filters respond.
 
-## screen.video.title <!-- screen.video.title -->
-
-Prototype video
-
-## screen.video.caption <!-- screen.video.caption -->
-
-A video call with all three filters
-
-## screen.video.body <!-- screen.video.body -->
-
-A video call with all three filters
-
 ## subtitle <!-- subtitle -->
 
 Video-call Filters for Couples
@@ -85,3 +73,31 @@ Video-call Filters for Couples
 ## tagline <!-- tagline -->
 
 Face, voice and motion filters that keep long-distance conversations positive.
+
+## Intro video · screen name <!-- screen.intro.title -->
+
+Intro video
+
+## Intro video · card caption <!-- screen.intro.caption -->
+
+Sweetalk and its three filters
+
+## Intro video · detail <!-- screen.intro.body -->
+
+A short introduction to Sweetalk and its face, voice and motion filters.
+
+## Use case · screen name <!-- screen.usecase.title -->
+
+Use case
+
+## Use case · card caption <!-- screen.usecase.caption -->
+
+A couple's video call with filters on
+
+## Use case · detail <!-- screen.usecase.body -->
+
+How the filters respond during a long-distance couple's real call.
+
+## Tab row label <!-- statesLabel -->
+
+Videos
