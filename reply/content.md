@@ -25,7 +25,7 @@ Figma
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Mobile prototype
+Mobile application
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 

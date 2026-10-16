@@ -52,8 +52,6 @@ Coded results
 
 ## Journey <!-- case.section.journey -->
 
-@wide
-
 @journey
 
 ## Problems → response <!-- case.section.response -->

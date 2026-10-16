@@ -23,5 +23,6 @@
     }
   ],
   "caseStudy": true,
-  "showDetail": false
+  "showDetail": false,
+  "frameHeight": 900
 }

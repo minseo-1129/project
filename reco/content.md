@@ -25,7 +25,7 @@ UX/UI 리서처
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Web prototype
+Web application
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 

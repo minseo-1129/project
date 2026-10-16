@@ -17,12 +17,6 @@
       ]
     }
   ],
-  "links": [
-    {
-      "id": "drawings",
-      "href": "drawings.html"
-    }
-  ],
   "webStates": [
     {
       "id": "finished",
@@ -32,5 +26,12 @@
   "nativeViewport": true,
   "caseStudy": true,
   "hideStageToolbar": true,
-  "showDetail": false
+  "showDetail": false,
+  "frameHide": [
+    ".head",
+    ".controls",
+    ".legend",
+    "a[href=\"drawings.html\"]"
+  ],
+  "frameControls": ".controls .row"
 }

@@ -68,7 +68,7 @@ Adaptive game for personalised elementary math practice.
 
 ## scope <!-- scope -->
 
-Gallery / game UI
+Game design
 
 ## flow.pages.title <!-- flow.pages.title -->
 

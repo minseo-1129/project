@@ -57,6 +57,27 @@ try {
     announce.disconnect();
   });
   announce.observe(document.body,{childList:true,subtree:true});
+  // "hotspots" in project.json makes static screens tappable: {"<screen>|*": [{"text": "…", "to": "<screen>"}]}.
+  // A tap on an element whose text starts with "text" asks the portfolio page to open "to".
+  if (config.hotspots && !readonly) {
+    let current = initial;
+    window.addEventListener('message', event => { if (event.data?.type === 'portfolio:select') current = event.data.screen; });
+    const bind = () => {
+      const rules = [...(config.hotspots[current] || []), ...(config.hotspots['*'] || [])];
+      for (const leaf of document.querySelectorAll('body *')) {
+        if (leaf.children.length || leaf.dataset.hotspot === current) continue;
+        const text = (leaf.textContent || '').trim();
+        const rule = text && rules.find(item => item.exact ? text === item.text : text.startsWith(item.text));
+        if (!rule || !screens.includes(rule.to)) continue;
+        const target = leaf.parentElement && leaf.parentElement.textContent.trim().length < text.length + 40 ? leaf.parentElement : leaf;
+        leaf.dataset.hotspot = current;
+        target.style.cursor = 'pointer';
+        target.onclick = event => { event.stopPropagation(); current = rule.to; window.parent.postMessage({type:'portfolio:navigate',screen:rule.to},location.origin); };
+      }
+    };
+    let pending = 0;
+    new MutationObserver(() => { cancelAnimationFrame(pending); pending = requestAnimationFrame(bind); }).observe(document.body,{childList:true,subtree:true,characterData:true});
+  }
 } catch (error) {
   document.body.textContent = error.message;
   console.error(error);

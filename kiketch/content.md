@@ -25,7 +25,7 @@ UX/UI 디자이너
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Gallery / tablet
+Mobile application
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 

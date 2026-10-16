@@ -25,7 +25,7 @@ Math Hero
 
 ## 플랫폼과 범위 <!-- scope -->
 
-Gallery / game UI
+Game design
 
 ## 프로토타입 안내 제목 <!-- explore.title -->
 

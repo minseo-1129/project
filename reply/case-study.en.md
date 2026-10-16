@@ -56,8 +56,6 @@ From choosing a menu to cooking, measuring, voice control and saving to a playli
 
 ## Journey <!-- case.section.journey -->
 
-@wide
-
 @journey
 
 ## case.persona.name <!-- case.persona.name -->

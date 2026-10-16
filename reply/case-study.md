@@ -57,8 +57,6 @@
 
 ## Journey <!-- case.section.journey -->
 
-@wide
-
 @journey
 
 ## 페르소나 이름 <!-- case.persona.name -->

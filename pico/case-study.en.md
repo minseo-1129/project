@@ -11,8 +11,6 @@ Both stakeholders, users and online shops, had a gap
 
 ## Journey <!-- case.section.journey -->
 
-@wide
-
 A prospective user's journey map
 
 ※ Speech bubble = thoughts & feelings · → = feature derived
@@ -46,11 +44,15 @@ Free for users, 3% of sales for shops: the business model canvas of a two-sided 
 
 Inside a ₩43 trillion fashion market, wardrobe-based styling on mobile was an empty space.
 
+@boxed
+
 - ₩43tn — Total market · Korean fashion market — Statistics Korea
 - ₩10tn — Serviceable market · online fashion — Statistics Korea
 - ₩6tn — Core market · mobile fashion — Croquis (Zigzag)
 
 ### Demand check
+
+@boxed
 
 - 88% — of users would use it · survey of 127 people in their 10s–30s
 - 78% — of shops would use it · survey of 37 online shops
@@ -72,16 +74,20 @@ No service combined wardrobe management, shop recommendations and purchase
 
 ### STP
 
-- **Segmentation** — The mobile fashion platform market
-- **Targeting** — Men in their 20s–30s who struggle to put outfits together
-- **Positioning** — A platform that manages your wardrobe and runs from free styling to purchase
+@cards
+
+- Segmentation — The mobile fashion platform market
+- Targeting — Men in their 20s–30s who struggle to put outfits together
+- Positioning — A platform that manages your wardrobe and runs from free styling to purchase
 
 ### SWOT
 
-- **Strength** — Lower commission than other services // VC and AI infrastructure from earlier start-up experience
-- **Weakness** — Low awareness // Effectiveness not yet proven
-- **Opportunity** — Personalised styling no one offered // A fashion market with room to expand
-- **Threat** — Existing AI services moving into fashion
+@quad
+
+- Strength — Lower commission than other services // VC and AI infrastructure from earlier start-up experience
+- Weakness — Low awareness // Effectiveness not yet proven
+- Opportunity — Personalised styling no one offered // A fashion market with room to expand
+- Threat — Existing AI services moving into fashion
 
 ## Revenue model <!-- case.section.revenue -->
 
@@ -92,5 +98,7 @@ Attracting shops with a 3% commission, below other online fashion platforms (5�
 - Commission: ₩96m — shops selling ₩8m a month × 20% through PICO × 3% × 2,000 shops
 - Data subscriptions: ₩50m — wardrobe data reports at ₩100k a month × 500 shops
 - Premium styling: ₩11.9m — styling by social-media influencers at ₩11,900 a month × 1,000 users
+
+@boxed
 
 - ₩150m+ — projected monthly revenue (all three streams, business-plan estimate)

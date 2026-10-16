@@ -68,7 +68,7 @@ Animates children's drawings with contextual sound.
 
 ## scope <!-- scope -->
 
-Gallery / tablet
+Mobile application
 
 ## flow.pages.title <!-- flow.pages.title -->
 

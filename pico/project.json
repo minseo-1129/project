@@ -44,5 +44,125 @@
       ]
     }
   ],
-  "caseStudy": true
+  "caseStudy": true,
+  "hotspots": {
+    "*": [
+      {
+        "text": "TONIGHT",
+        "to": "home",
+        "exact": true
+      },
+      {
+        "text": "CLOSET",
+        "to": "wardrobe",
+        "exact": true
+      },
+      {
+        "text": "ADD",
+        "to": "capture",
+        "exact": true
+      },
+      {
+        "text": "REPORT",
+        "to": "my",
+        "exact": true
+      }
+    ],
+    "onboarding": [
+      {
+        "text": "옷 한 장 찍고 시작하기",
+        "to": "capture"
+      }
+    ],
+    "capture": [
+      {
+        "text": "DETECTING",
+        "to": "confirm"
+      }
+    ],
+    "confirm": [
+      {
+        "text": "맞아요, 옷장에 넣기",
+        "to": "wardrobe"
+      },
+      {
+        "text": "수정",
+        "to": "capture"
+      }
+    ],
+    "home": [
+      {
+        "text": "SET 01",
+        "to": "outfit"
+      },
+      {
+        "text": "블랙 블레이저 · 화이트 티 · 데님",
+        "to": "outfit"
+      },
+      {
+        "text": "SET 03",
+        "to": "shop"
+      },
+      {
+        "text": "3 ITEMS · 1 TO BUY",
+        "to": "shop"
+      }
+    ],
+    "outfit": [
+      {
+        "text": "← SET 01",
+        "to": "home"
+      },
+      {
+        "text": "내일 이걸 입기",
+        "to": "home"
+      }
+    ],
+    "shop": [
+      {
+        "text": "나중에",
+        "to": "home"
+      }
+    ],
+    "wardrobe": [
+      {
+        "text": "SH-04",
+        "to": "item"
+      }
+    ],
+    "item": [
+      {
+        "text": "← SH-04",
+        "to": "wardrobe"
+      }
+    ],
+    "notify": [
+      {
+        "text": "오늘의 코디 3세트가 도착했어요",
+        "to": "home"
+      },
+      {
+        "text": "옷장에 없는 아이템 1개",
+        "to": "shop"
+      },
+      {
+        "text": "옷장 리포트가 준비되었습니다",
+        "to": "my"
+      },
+      {
+        "text": "코디 도착 시간",
+        "to": "time"
+      }
+    ],
+    "time": [
+      {
+        "text": "← 알림",
+        "to": "notify"
+      },
+      {
+        "text": "22:00으로 저장",
+        "to": "notify"
+      }
+    ]
+  }
 }
