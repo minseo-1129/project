@@ -41,6 +41,18 @@
 - 토글 스위치 | 전원 on/off | 사용자가 무드등을 켜고 끔
 - 전원 | 12V 어댑터 | 외부 전원 공급
 
+## Drawings <!-- case.section.drawings -->
+
+정투상도, 회로도, 분해도로 제작 사양을 정리했다.
+
+@stack
+
+![SHEET 01 · 정투상 도면 — 정면·단면·평면, 단위 mm](assets/case-study/drawing-01-orthographic.jpg)
+
+![SHEET 02 · 회로 결선도 — Arduino Uno R3, 수위 센서·조도 센서·LED·수중 펌프](assets/case-study/drawing-02-circuit.jpg)
+
+![SHEET 03 · 분해도·부품표 — 부품 12종과 조립 순서](assets/case-study/drawing-03-exploded.jpg)
+
 ## 소개 <!-- case.intro -->
 
 가습기의 플라스틱 디스크를 대체하고, 무드등과 잔잔한 물결을 결합해 일상 속 휴식 경험을 제공하는 방식을 탐색함.
