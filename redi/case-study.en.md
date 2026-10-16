@@ -14,12 +14,16 @@ An unbalanced routine leaves marks on both body and mind. Irregular sleep and sk
 
 Less effort to log, a clearer reason to log
 
-- **A familiar shape** — The logging screen takes the shape of a timetable teenagers already know.
-- **Areas they log often** — Built around the areas that matter most and take up most of a teenager's day.
-- **A reward in return** — Logging is rewarded with a weekly report.
+@defs
 
-- **Four life areas** — Sleep · leisure · study · exercise
-- **Three emotional indicators** — Depression · anxiety · stress
+- A familiar shape — The logging screen takes the shape of a timetable teenagers already know.
+- Areas they log often — Built around the areas that matter most and take up most of a teenager's day.
+- A reward in return — Logging is rewarded with a weekly report.
+
+@chips
+
+- Four life areas — Sleep · leisure · study · exercise
+- Three emotional indicators — Depression · anxiety · stress
 
 ## System <!-- case.section.system -->
 
@@ -30,16 +34,18 @@ What the sensors record on their own and what users log themselves are combined,
 @flow
 
 - Passive — Sensors · location, movement, screen use, ambient light || Active — Self-logging · timetable, daily diary, emotions
-- **Four life areas / three emotional indicators** · Translate
+- [outline] **Four life areas / three emotional indicators** · Translate
 - **A weekly report** · Return
 
 ## Study <!-- case.section.study -->
 
 A usability study with 8 teenagers after two weeks of logging
 
-- **8 teenage girls** · Participants — Aged 12–17
-- **Two-week time diary** · Duration — 24 hourly cells × 7 days
-- **Semi-structured interview + card sorting** · Method — About 40 minutes
+@specs
+
+- Participants — **8 teenage girls** // Aged 12–17
+- Duration — **Two-week time diary** // 24 hourly cells × 7 days
+- Method — **Semi-structured interview + card sorting** // About 40 minutes
 
 ## Findings <!-- case.section.findings -->
 

@@ -130,9 +130,22 @@ A line on its own before a list changes how that list is drawn:
 | `@flow` / `@flow down` | Boxes joined by arrows; ` \|\| ` puts boxes side by side in one step; the last step is dark |
 | `@lanes` | Journey lanes (`- **Stage** — “thought” // → feature`) |
 | `@canvas` | A business model canvas (nine cards in the usual order) |
-| `@timeline A \| B \| C` | A lane diagram on a timeline: `- Lane — [solid 1] text // ~caption \|\| [dashed 1-3] text` (spans 1, 2, 3, 1-2, 2-3, 1-3, or h1/h2 for halves; styles solid, dashed, dotted, bold, plain, muted, note); consecutive timelines sit side by side |
+| `@timeline A \| B \| C` | A lane diagram on a timeline: `- Lane — [solid 1] text // ~caption \|\| [dashed 1-3] text` (spans 1, 2, 3, 1-2, 2-3, 1-3, or h1/h2 for halves; styles solid, dashed, dotted, bold, plain, muted, note); two or more consecutive timelines become capsule tabs, shown one at a time |
 | `@flow row` | A row of boxes without arrows (box styles `[solid]`, `[outline]`, `[blue]`, `[dashed]` work in any flow) |
 | `@stack` | Pairs stacked vertically, or images one per row instead of a gallery |
+| `@meter inline` | Bars with the value inside; the first row is dark, the rest blue |
+| `@quad` | Labelled cards (`- Strength — …`) in a 2×2 grid (SWOT, four findings) |
+| `@boxed` | Big figures in outlined boxes (`- 76.8% — caption`) |
+| `@cards` / `@cards outline` | Equal-width cards; labelled lines (`- Label — text`) get a bold title |
+| `@defs` / `@defs mono` | Definition rows: label on the left, text on the right (`mono` for quotes or dialogue) |
+| `@chips` | Groups of chips: `- Group — chip, chip, chip` |
+| `@specs` | Spec columns: `- Label — **value** // note` |
+| `@dots` | Dot plot: `- Attribute \| left \| right \| 15 [25 32] 85*` (numbers 0–100, `[a b]` a grouped range, `*` the highlighted dot) |
+| `@versus` | Two side-by-side persona columns: `- **Name** · tag — profile // “quote” // Goals: a; b // Frustrations: a; b` |
+| `@split` | Rows with a bold title on the left and text plus a quote on the right |
+| `@hero` | Gallery whose first image spans the full width |
+
+Table cells accept ` // ` for a line break, and every column of a table has the same width. A gallery of three images becomes a mosaic (the first image spans two rows). Journey maps sit in the text column, show two stages at a time and scroll with arrows.
 
 ### Prototype page options
 

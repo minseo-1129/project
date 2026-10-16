@@ -9,17 +9,15 @@ Both groups valued social prescribing. Both struggled to keep participation goin
 Two participatory workshops: one with link workers, one with young people aged 16–25 who had used social activities for their mental health. Each group mapped its journey, named barriers, then imagined how an agent could help.
 
 - Link workers | Young people
-- **Systematic burdens** · 9-to-5 hours, admin work, service pushbacks | **Logistical constraints** · Cost, transport, clashes with school or work
-- **Engagement issues** · High drop-off; hard to get genuine feedback | **Emotional challenges** · Brain fog, fatigue, social anxiety, pressure to perform
-- **Emotional barriers** · Fear of judgement, anxiety about leaving home, stigma | **Communication gaps** · Inconsistent provision, little meaningful follow-up
-- **Resource gaps** · Few age-appropriate, up-to-date local resources | **Navigational loads** · Unaware of options; no induction before joining
-- **Relational tensions** · Mismatched role expectations; autonomy vs guidance | **Personalisation gaps** · Generic support; hard to name own needs and goals
+- **Systematic burdens** // 9-to-5 hours, admin work, service pushbacks | **Logistical constraints** // Cost, transport, clashes with school or work
+- **Engagement issues** // High drop-off; hard to get genuine feedback | **Emotional challenges** // Brain fog, fatigue, social anxiety, pressure to perform
+- **Emotional barriers** // Fear of judgement, anxiety about leaving home, stigma | **Communication gaps** // Inconsistent provision, little meaningful follow-up
+- **Resource gaps** // Few age-appropriate, up-to-date local resources | **Navigational loads** // Unaware of options; no induction before joining
+- **Relational tensions** // Mismatched role expectations; autonomy vs guidance | **Personalisation gaps** // Generic support; hard to name own needs and goals
 
 - “Sometimes it feels like they’re just answering what they think you want to hear.” — Link worker 1
 
 ## Mapping on the journey <!-- case.section.mapping -->
-
-@wide
 
 Ten expectations, placed on the journey: which belong to a session, and which need to run between sessions.
 

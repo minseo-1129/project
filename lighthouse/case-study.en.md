@@ -14,8 +14,10 @@ A humidifier and mood light: pour in water, the lighthouse lights up and gentle 
 
 A system driven by Arduino water-level and light sensors
 
-- **Water Lamp** · Witaya Junma — A lamp whose LED turns on as water rises past an ultrasonic sensor; the rippling water throws light onto the wall. // → Water as a switch: a water-level sensor
-- **Night Light** · Egrobotics — A mood lamp that turns on as the room darkens and off as it brightens, using a light sensor. // → Beyond on and off: light readings set the brightness
+@cards
+
+- Water Lamp · Witaya Junma — A lamp whose LED turns on as water rises past an ultrasonic sensor; the rippling water throws light onto the wall. // → Water as a switch: a water-level sensor
+- Night Light · Egrobotics — A mood lamp that turns on as the room darkens and off as it brightens, using a light sensor. // → Beyond on and off: light readings set the brightness
 
 ## Form <!-- case.section.form -->
 

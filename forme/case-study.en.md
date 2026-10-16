@@ -33,12 +33,12 @@ Reading, for example, goes from choosing a book → reading for the set time →
 
 Even when the child's answer is wrong or missing, the conversation keeps going with a little more of a hint each time.
 
-- “Jiwon! What did we plan to do at this time? Tell me, Jiwon!” — ForMe
+@defs mono
 
-- Child's answer | ForMe's reply
-- Correct | “Ding-dong!” and moves on to the next step
-- Wrong · no answer · other | “Oh no! We planned to focus on something... can you tell me what it was?”
-- Still stuck | Gives a closer hint with a picture of a book
+- ForMe — “Jiwon! What did we plan to do at this time? Tell me, Jiwon!”
+- Correct — “Ding-dong!” and moves on to the next step
+- Wrong · no answer · other — “Oh no! We planned to focus on something... can you tell me what it was?”
+- Still stuck — Gives a closer hint with a picture of a book
 
 The dialogue scenarios ran on the NAVER CLOVA Chatbot builder. The schedule the child sets triggers the system, so ForMe speaks first at the promised time. It is an Android tablet app left on the desk.
 
@@ -54,6 +54,8 @@ Fun for the result, praise for the process.
 ## Screens <!-- case.section.screens -->
 
 A tablet for the child, a phone for the parent
+
+@hero
 
 ![The main screen with today's promises and times, and the parent app's progress view](assets/screens/01-hero.jpg)
 
