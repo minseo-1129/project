@@ -643,8 +643,15 @@ function cardNode(source, className = 'card') {
   const node = el('div', className);
   if (tag) node.append(el('p', 'mono card-tag', tag));
   if (title) node.append(el('p', 'strong', title));
-  // A line that is only a bold figure ("**82%**") is shown large.
-  for (const line of lines) node.append(/^\*\*[^*]{1,16}\*\*$/.test(line) && /\d/.test(line) ? el('p', 'card-figure', line.slice(2, -2)) : md(line, 'small'));
+  // A line that is only a bold figure ("**82%**") is shown large; when the card has a title, the
+  // figure and the lines after it sit in their own grey box under the title.
+  const isFigure = line => /^\*\*[^*]{1,16}\*\*$/.test(line) && /\d/.test(line);
+  const start = title ? lines.findIndex(isFigure) : -1;
+  let target = node;
+  lines.forEach((line, index) => {
+    if (index === start) { target = el('div', 'card-stat'); node.append(target); node.classList.add('has-stat'); }
+    target.append(isFigure(line) ? el('p', 'card-figure', line.slice(2, -2)) : md(line, 'small'));
+  });
   return node;
 }
 // A list row's "//" segments: images sit beside the text, "Input ·"/"Output ·" become boxes, "Basis ·" a caption.
@@ -663,7 +670,7 @@ function segmentNodes(segments) {
 const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack', 'timeline', 'quad', 'boxed', 'cards', 'defs', 'chips', 'specs', 'dots', 'versus', 'split', 'hero']);
 // "@defs" — "Term — text" rows with the term on the left ("@defs mono" sets the term as a small blue label).
 function defRows(items, args) {
-  return hairList(items, item => { const {title, tag, lines} = parseCard(item); const row = el('div', `def-row${'mono' in args ? ' is-mono' : ''}`); row.append(el('p', 'def-term', title || tag || ''), (() => { const box = el('div'); for (const line of lines) box.append(md(line, 'small')); return box; })()); return row; });
+  return hairList(items, item => { const {title, tag, lines} = parseCard(item); const row = el('div', `def-row${'mono' in args ? ' is-mono' : ''}`); const term = el('div', 'def-term'); term.append(el('p', '', title || tag || '')); if (title && tag) term.append(el('p', 'mono def-tag', tag)); row.append(term, (() => { const box = el('div'); for (const line of lines) box.append(md(line, 'small')); return box; })()); return row; });
 }
 // "@chips" — "Label — a · b · c" becomes a label with pill chips; every second group is tinted.
 function chipGroups(items) {
