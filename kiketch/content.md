@@ -9,7 +9,7 @@ Kiketch
 
 ## 한 줄 소개 <!-- summary -->
 
-팝업북 장면 속 빈 포스트잇에 아이가 직접 그린 그림을 채워 한 폭을 완성하는 어린이 그림책. 그림은 애착 캐릭터가 되어 움직입니다.
+아이가 직접 그린 그림이 AI를 통해 움직이고 그림책 속 장면과 상호작용하는 유아용 인터랙티브 그림책 앱
 
 ## 담당 역할 <!-- role -->
 
@@ -45,7 +45,7 @@ Mobile application
 
 ## 배경 설명 <!-- context.body -->
 
-장면 속 빈 포스트잇을 고르면, 아이가 종이 위에 직접 그린 그림이 장면에 들어가 한 폭을 완성합니다.
+유아기 감성 발달에 그림책이 기여할 수 있다는 점에 주목, 아이가 이야기를 읽는 데서 나아가 직접 참여할 수 있는 방식을 탐색
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -53,7 +53,7 @@ Mobile application
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-스케치북에서 끝내지 않고 장면의 빈자리를 채우도록 연결하고, 완성한 그림은 애착 캐릭터가 되어 움직입니다.
+그림책 장면에 빈 공간을 두어 아이가 직접 그린 그림으로 채우고, 그림에 어울리는 움직임과 상호작용이 이어지도록 구성
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
@@ -85,19 +85,19 @@ Dodam
 
 ## screen.scene.title <!-- screen.scene.title -->
 
-빈 포스트잇이 붙은 장면
+그림책 배경
 
 ## screen.scene.caption <!-- screen.scene.caption -->
 
-장면 속 빈 포스트잇이 그릴 자리를 알려준다
+그림책 내용에 맞게 구성된 배경과 아이의 그림을 넣을 수 있는 빈 포스트잇
 
 ## screen.pick.title <!-- screen.pick.title -->
 
-포스트잇 고르기
+그림 그릴 공간 선택
 
 ## screen.pick.caption <!-- screen.pick.caption -->
 
-그림을 채울 포스트잇을 고른다
+빈 포스트잇을 선택해 그림을 그릴 위치를 정하는 단계
 
 ## screen.draw.title <!-- screen.draw.title -->
 
@@ -105,15 +105,15 @@ Dodam
 
 ## screen.draw.caption <!-- screen.draw.caption -->
 
-종이와 색연필로 직접 그린다
+그림책의 빈자리를 채울 그림을 아이가 직접 그리는 공간
 
 ## screen.done.title <!-- screen.done.title -->
 
-장면에 들어간 그림
+완성된 그림책의 장면
 
 ## screen.done.caption <!-- screen.done.caption -->
 
-그린 해와 나무가 장면에 들어가 한 폭을 완성한다
+포스트잇이 떼어지면 아이가 그린 그림이 그 자리에 나타나 움직이며 상호작용하는 장면
 
 ## screen.character.title <!-- screen.character.title -->
 

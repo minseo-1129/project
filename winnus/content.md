@@ -9,7 +9,7 @@ Winnus
 
 ## 한 줄 소개 <!-- summary -->
 
-일상적인 감각 언어로 와인을 탐색하고, 마신 경험을 기록하며 취향을 알아가는 초보자용 모바일 서비스.
+익숙한 맛과 일상적인 표현으로 와인을 탐색하고, 시음 기록을 통해 자신의 취향을 알아가는 입문자용 와인 큐레이션 앱
 
 ## 담당 역할 <!-- role -->
 
@@ -45,7 +45,7 @@ Mobile application
 
 ## 배경 설명 <!-- context.body -->
 
-와인 초보자가 전문 용어와 수치 중심의 정보를 어렵게 느낄 수 있다는 점에 주목함. 일상적인 감각을 바탕으로 취향을 이해하고 탐색할 수 있는 경험이 필요함.
+와인 입문자에게 전문 용어와 숫자 평점은 낯설고 어렵게 느껴질 수 있어, 일상적인 감각으로 와인을 이해하고 탐색하는 방식이 필요
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -53,7 +53,7 @@ Mobile application
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-일상적인 음료·음식·상황으로 취향을 파악하고, 색과 짧은 문장으로 와인을 소개함. 상세 정보는 단계적으로 제공하고, 시음 기록을 취향 프로필에 반영함.
+익숙한 음료와 음식, 와인을 소비하는 상황으로 취향을 묻고, 와인 정보는 색상과 짧은 설명을 활용한 카드로 구성
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
@@ -73,7 +73,7 @@ Mobile application
 
 ## 플로우 · flow.flow2.title <!-- flow.flow2.title -->
 
-탐색
+와인 탐색
 
 ## 플로우 · flow.flow2.body <!-- flow.flow2.body -->
 
@@ -97,11 +97,11 @@ Mobile application
 
 ## 스플래시 · 화면 이름 <!-- screen.splash.title -->
 
-스플래시
+시작 화면
 
 ## 스플래시 · 카드 설명 <!-- screen.splash.caption -->
 
-친숙한 감각 언어로 와인을 탐색하는 서비스의 정체성을 첫 화면에서 전달함.
+익숙한 감각 언어로 와인을 탐색하는 WINNUS의 시작 화면
 
 ## 스플래시 · 상세 설명 <!-- screen.splash.body -->
 
@@ -109,11 +109,11 @@ Mobile application
 
 ## 온보딩 안내 · 화면 이름 <!-- screen.onboardIntro.title -->
 
-온보딩 안내
+온보딩
 
 ## 온보딩 안내 · 카드 설명 <!-- screen.onboardIntro.caption -->
 
-어려운 와인 용어 없이 시작할 수 있음을 알리고, 세 단계의 취향 설정 과정을 미리 보여줌.
+와인에 대한 사전 지식 없이도 시작할 수 있도록 세 단계의 취향 설정 과정을 소개
 
 ## 온보딩 안내 · 상세 설명 <!-- screen.onboardIntro.body -->
 
@@ -125,7 +125,7 @@ Mobile application
 
 ## 취향 퀴즈 1 · 맛 · 카드 설명 <!-- screen.quizTaste.caption -->
 
-주스·홍차처럼 익숙한 음료로 맛을 질문하고, 선택한 색을 취향 프로필과 연결함.
+주스나 홍차처럼 익숙한 음료로 맛 취향을 묻고, 색상으로 각 선택지를 구분
 
 ## 취향 퀴즈 1 · 맛 · 상세 설명 <!-- screen.quizTaste.body -->
 
@@ -137,7 +137,7 @@ Mobile application
 
 ## 취향 퀴즈 2 · 음식 · 카드 설명 <!-- screen.quizFood.caption -->
 
-푸드 페어링을 취향 입력으로 흡수한다 어울리는 음식이 리서치에서 가장 많이 요구된 정보이므로,
+선호하는 음식을 선택해 음식 페어링까지 와인 취향 설정에 반영
 
 ## 취향 퀴즈 2 · 음식 · 상세 설명 <!-- screen.quizFood.body -->
 
@@ -149,7 +149,7 @@ Mobile application
 
 ## 취향 퀴즈 3 · 상황 · 카드 설명 <!-- screen.quizOccasion.caption -->
 
-가격대와 분위기를 와인을 마시는 일상적인 상황으로 대체해 물어본다
+일상적인 상황을 통해 선호하는 가격대와 분위기를 알아보는 질문
 
 ## 취향 퀴즈 3 · 상황 · 상세 설명 <!-- screen.quizOccasion.body -->
 
@@ -161,7 +161,7 @@ Mobile application
 
 ## 취향 프로필 · 카드 설명 <!-- screen.tasteProfile.caption -->
 
-점수 대신 이름·색·감각 표현으로 취향을 보여줘 결과를 직관적으로 이해하도록 함.
+숫자 점수 대신 색상과 익숙한 감각 표현으로 정리한 와인 취향 프로필
 
 ## 취향 프로필 · 상세 설명 <!-- screen.tasteProfile.body -->
 
@@ -173,7 +173,7 @@ Mobile application
 
 ## 홈 · 카드 설명 <!-- screen.home.caption -->
 
-캐러셀 배너와 인기 와인 목록 대신 오늘의 추천 와인 한 병에 집중하도록 구성함.
+여러 정보를 한꺼번에 보여주기보다 오늘의 추천 와인 한 병에 집중한 홈 화면
 
 ## 홈 · 상세 설명 <!-- screen.home.body -->
 
@@ -185,7 +185,7 @@ Mobile application
 
 ## 태그 검색 · 카드 설명 <!-- screen.tagSearch.caption -->
 
-맛·무게·페어링·가격 네 그룹. 전문 용어는 영문 캡션으로만 병기해 자연스럽게 배우게 합니다.
+간략한 태그인 맛·무게감·음식 페어링·가격으로 와인을 검색하고, 전문 용어는 짧은 설명과 함께 표시
 
 ## 태그 검색 · 상세 설명 <!-- screen.tagSearch.body -->
 
@@ -197,7 +197,7 @@ Mobile application
 
 ## 검색 결과 · 카드 설명 <!-- screen.results.caption -->
 
-매칭 점수 대신 색상으로 취향과의 관계를 보여주고, 각 와인을 한 문장으로 소개함.
+취향과의 관계를 색상으로 보여주고, 와인마다 한 문장씩 소개하는 결과 창
 
 ## 검색 결과 · 상세 설명 <!-- screen.results.body -->
 
@@ -209,7 +209,7 @@ Mobile application
 
 ## 와인 카드 · 카드 설명 <!-- screen.wineCard.caption -->
 
-스크롤 없이 이름·가격·맛·향이 다 들어옵니다. 맛은 색 + 말, 향은 일러스트 자리.
+와인 이름과 가격, 맛과 향을 한눈에 보여주는 카드. 맛은 색상과 문장으로, 향은 일러스트로 구성
 
 ## 와인 카드 · 상세 설명 <!-- screen.wineCard.body -->
 
@@ -221,7 +221,7 @@ Mobile application
 
 ## 와인 · 더 알아보기 · 카드 설명 <!-- screen.wineMore.caption -->
 
-음식 페어링·추천 상황·전문가 노트를 순차적으로 펼쳐 필요한 정보만 확인하도록 함.
+음식 페어링·추천 상황·전문가 노트를 펼쳐보며 필요한 정보만 확인할 수 있는 상세 화면
 
 ## 와인 · 더 알아보기 · 상세 설명 <!-- screen.wineMore.body -->
 
@@ -233,7 +233,7 @@ Mobile application
 
 ## 용어 시트 · 카드 설명 <!-- screen.termSheet.caption -->
 
-영어 와인 용어를 누르면 일상적인 비유로 뜻을 설명하는 시트가 열리도록 함.
+와인 용어를 누르면 일상적인 비유로 풀어쓴 설명을 확인할 수 있는 시트
 
 ## 용어 시트 · 상세 설명 <!-- screen.termSheet.body -->
 
@@ -245,7 +245,7 @@ Mobile application
 
 ## 기록하기 · 카드 설명 <!-- screen.review.caption -->
 
-별점 대신 세 가지 문장형 평가와 맛 태그로 시음 경험을 쉽게 기록하도록 함.
+별점 대신 세 가지 문장형 선택지와 맛 태그로 시음 경험을 남기는 기록 화면
 
 ## 기록하기 · 상세 설명 <!-- screen.review.body -->
 
@@ -253,11 +253,11 @@ Mobile application
 
 ## 기록 완료 · 프로필 갱신 · 화면 이름 <!-- screen.reviewDone.title -->
 
-기록 후 취향 갱신
+취향 업데이트
 
 ## 기록 완료 · 프로필 갱신 · 카드 설명 <!-- screen.reviewDone.caption -->
 
-기록 직후 취향 프로필의 변화를 보여줘 경험이 취향 학습에 반영됨을 알림.
+시음 기록을 남긴 직후 달라진 취향 프로필을 확인할 수 있는 화면
 
 ## 기록 완료 · 프로필 갱신 · 상세 설명 <!-- screen.reviewDone.body -->
 
@@ -269,7 +269,7 @@ Mobile application
 
 ## 내 기록 · 카드 설명 <!-- screen.cellar.caption -->
 
-마신 와인과 저장한 와인을 모아 보고, 자신의 표현으로 남긴 기록을 다시 확인하도록 함.
+마신 와인과 저장해둔 와인, 직접 남긴 시음 기록을 확인하는 화면
 
 ## 내 기록 · 상세 설명 <!-- screen.cellar.body -->
 
@@ -281,7 +281,7 @@ Mobile application
 
 ## 마이페이지 · 카드 설명 <!-- screen.myPage.caption -->
 
-취향 프로필을 화면 상단에 배치하고, 용어 사전을 이어지는 학습의 시작점으로 제공함
+취향 프로필을 확인하고 필요할 때 용어 사전도 찾아볼 수 있는 마이페이지
 
 ## 마이페이지 · 상세 설명 <!-- screen.myPage.body -->
 

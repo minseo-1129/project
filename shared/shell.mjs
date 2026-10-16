@@ -154,6 +154,8 @@ function preview(screen, readonly = false, native = config.component !== null ||
     frame.dataset.screen = screen;
     if (config.webStates?.length) frame.addEventListener('load', () => applyWebState(frame, readonly));
     if (!readonly && (config.frameHide || config.frameControls)) frame.addEventListener('load', () => mirrorFrameControls(frame));
+    // Hide the prototype's own header and controls before its first paint, not after every asset has loaded.
+    if (!readonly && config.frameHide?.length) hideFrameParts(frame);
   }
   frame.title = `${text('title')} · ${screenTitle(screen)}`;
   frame.loading = readonly ? 'lazy' : 'eager';
@@ -169,10 +171,25 @@ function preview(screen, readonly = false, native = config.component !== null ||
 // "frameHide" lists selectors hidden inside a static prototype; "frameControls" names its control rows
 // (a label span plus buttons), which are mirrored above the prototype and click through to the originals.
 let frameBar = null;
+function frameHideStyle(doc) {
+  if (!config.frameHide?.length || !doc?.head || doc.getElementById('portfolio-frame-hide')) return;
+  const style = doc.createElement('style'); style.id = 'portfolio-frame-hide'; style.textContent = `${config.frameHide.join(',')}{display:none!important}`; doc.head.append(style);
+}
+// The frame stays invisible until its document exists and the hide rules are in, so the parts never flash.
+function hideFrameParts(frame) {
+  frame.style.visibility = 'hidden';
+  const tick = () => {
+    const doc = frame.contentDocument;
+    if (doc && doc.head && doc.URL !== 'about:blank') { frameHideStyle(doc); frame.style.visibility = ''; return; }
+    requestAnimationFrame(tick);
+  };
+  tick();
+  frame.addEventListener('load', () => { frameHideStyle(frame.contentDocument); frame.style.visibility = ''; });
+}
 function mirrorFrameControls(frame) {
   const doc = frame.contentDocument;
   if (!doc) return;
-  if (config.frameHide?.length) { const style = doc.createElement('style'); style.textContent = `${config.frameHide.join(',')}{display:none!important}`; doc.head.append(style); }
+  frameHideStyle(doc);
   if (!config.frameControls || !frameBar) return;
   const render = () => {
     frameBar.replaceChildren();

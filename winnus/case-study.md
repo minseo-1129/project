@@ -133,3 +133,7 @@
 ## 페르소나 사진 <!-- case.persona.photo -->
 
 assets/case-study/persona.jpg
+
+## 소개 <!-- case.intro -->
+
+와인 입문자에게 전문 용어와 숫자 평점은 낯설고 어렵게 느껴질 수 있어, 일상적인 감각으로 와인을 이해하고 탐색하는 방식이 필요

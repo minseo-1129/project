@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A mobile service for tracking daily activities and mood through manual logs and sensor estimates, then reflecting on patterns with statistics and weekly reports.
+A mobile diary app for teens that combines manual and sensor-based activity logs with mood entries, statistics, and weekly reports
 
 ## role <!-- role -->
 
@@ -36,7 +36,7 @@ Manual logs alongside sensor estimates
 
 ## context.body <!-- context.body -->
 
-Daily activity and mood tracking combines manual entries and sensor estimates, making it important to distinguish logged time and data sources.
+Tracking daily activities and mood can support self-reflection, but keeping up with entries and making sense of the collected data can be difficult.
 
 ## decision.title <!-- decision.title -->
 
@@ -44,7 +44,7 @@ A log where blocks of time are visible
 
 ## decision.body <!-- decision.body -->
 
-Visualises each day in 24 hourly cells, distinguishes logged and unlogged time by colour, and links records to statistics, weekly reports and data controls.
+We used a youth-friendly timetable format, connect manual logs and sensor entries, and translate records to statistics and reports.
 
 ## guide.title <!-- guide.title -->
 
@@ -100,7 +100,7 @@ Goal · challenges
 
 ## screen.ob1.caption <!-- screen.ob1.caption -->
 
-Starts with users’ challenges. Their choices shape goal defaults and priorities in weekly reports.
+Users select areas they struggle with in daily life, which inform their initial goals and what the weekly report
 
 ## screen.ob1.body <!-- screen.ob1.body -->
 
@@ -112,7 +112,7 @@ Goal · focus areas
 
 ## screen.ob2.caption <!-- screen.ob2.caption -->
 
-Introduces six colour-coded activity areas in onboarding and uses them consistently throughout the app. Grey marks unlogged time.
+Introduces six colour-coded activity areas, with the same colours used throughout the app
 
 ## screen.ob2.body <!-- screen.ob2.body -->
 
@@ -124,7 +124,7 @@ Wake & sleep times
 
 ## screen.ob3.caption <!-- screen.ob3.caption -->
 
-Uses wake and bedtimes to anchor the 24-hour grid and estimated sleep, displaying planned sleep duration.
+Wake-up and bedtime settings, with the planned sleep duration shown alongside
 
 ## screen.ob3.body <!-- screen.ob3.body -->
 
@@ -136,7 +136,7 @@ Goal · time allocation
 
 ## screen.ob4.caption <!-- screen.ob4.caption -->
 
-Shows target hours as proportions of a 24-hour stacked bar and warns users when the total exceeds a day.
+Target hours for each activity area shown in a 24-hour stacked bar, with a warning if the total exceeds a day
 
 ## screen.ob4.body <!-- screen.ob4.body -->
 
@@ -148,7 +148,7 @@ Daily log
 
 ## screen.rec.caption <!-- screen.rec.caption -->
 
-Gives sensor-based logging checks a compact, focused card.
+An overview of daily records, with a separate prompt to review estimates from sensor data
 
 ## screen.rec.body <!-- screen.rec.body -->
 
@@ -156,11 +156,11 @@ In the original, an empty circle (the agent image) and O / X buttons took half t
 
 ## screen.d1.title <!-- screen.d1.title -->
 
-Diary · mood & ratin
+Diary · mood & rating
 
 ## screen.d1.caption <!-- screen.d1.caption -->
 
-Divides diary questions into three short steps, each designed to fit on one screen.
+The first diary step, with short questions about the day overall and the user's current mood
 
 ## screen.d1.body <!-- screen.d1.body -->
 
@@ -172,7 +172,7 @@ Diary · meals & weather
 
 ## screen.d2.caption <!-- screen.d2.caption -->
 
-Groups meals and weather into three-option selections to make factual entries quick and reduce taps.
+Simple multiple-choice options for recording meals and weather without lengthy text entry
 
 ## screen.d2.body <!-- screen.d2.body -->
 
@@ -184,7 +184,7 @@ Diary · daily ratings
 
 ## screen.d3.caption <!-- screen.d3.caption -->
 
-Uses a consistent five-point scale for leisure satisfaction, academic achievement and sleep quality.
+Five-point ratings for leisure satisfaction, academic achievement, and sleep quality
 
 ## screen.d3.body <!-- screen.d3.body -->
 
@@ -196,7 +196,7 @@ Stats · daily life
 
 ## screen.stat.caption <!-- screen.stat.caption -->
 
-Places a life-balance summary above the chart and labels goal-achievement counts directly on the trend.
+Charts showing how time is spent across daily activities, alongside weekly patterns and progress towards goals
 
 ## screen.stat.body <!-- screen.stat.body -->
 
@@ -208,7 +208,7 @@ Stats · mood
 
 ## screen.statm.caption <!-- screen.statm.caption -->
 
-Combines three mood measures in a seven-day heatmap, with week-on-week changes and an option to compare daily activity data.
+A weekly view of depression, anxiety, and stress indicators, with comparable layout to daily activities
 
 ## screen.statm.body <!-- screen.statm.body -->
 
@@ -220,7 +220,7 @@ Sleep highlight
 
 ## screen.hl_sleep.caption <!-- screen.hl_sleep.caption -->
 
-Prioritises daily sleep totals to support habit formation, using recommended sleep duration as a reference.
+Daily sleep duration shown alongside the recommended amount for comparison
 
 ## screen.hl_sleep.body <!-- screen.hl_sleep.body -->
 
@@ -232,7 +232,7 @@ Exercise highlight
 
 ## screen.hl_ex.caption <!-- screen.hl_ex.caption -->
 
-Shows a weekly exercise summary and measures progress against each user’s session goal rather than general guidelines.
+A weekly exercise summary compared with the user's own session goal rather than general guidelines
 
 ## screen.hl_ex.body <!-- screen.hl_ex.body -->
 
@@ -244,7 +244,7 @@ Leisure highlight
 
 ## screen.hl_leisure.caption <!-- screen.hl_leisure.caption -->
 
-Keeps recommended limits as a reference, showing daily media leisure totals separately from the activity breakdown.
+Daily leisure time divided into totals and activity types, with recommended limits shown for media use
 
 ## screen.hl_leisure.body <!-- screen.hl_leisure.body -->
 
@@ -256,7 +256,7 @@ Study highlight
 
 ## screen.hl_study.caption <!-- screen.hl_study.caption -->
 
-Uses a daily study summary and evaluates progress against the user’s own goal.
+A daily summary of study time, compared with the user's own goal
 
 ## screen.hl_study.body <!-- screen.hl_study.body -->
 
@@ -268,7 +268,7 @@ Weekly report
 
 ## screen.report.caption <!-- screen.report.caption -->
 
-Uses restrained typography and generous spacing to present a seven-day, 24-hour activity grid on one screen
+A seven-day activity grid alongside mood data, bringing the week's records together to review patterns over time
 
 ## screen.report.body <!-- screen.report.body -->
 
@@ -280,7 +280,7 @@ My · data controls
 
 ## screen.my.caption <!-- screen.my.caption -->
 
-Makes My Page a hub for reviewing automatically collected data, connection status and controls.
+A hub to review automatically collected data, device connections, and related settings
 
 ## screen.my.body <!-- screen.my.body -->
 
@@ -292,7 +292,7 @@ Data connection
 
 ## screen.my_data.caption <!-- screen.my_data.caption -->
 
-Lists Health Connect and device sensors with their data uses. Disabling a source switches that area to manual logging.
+Device sensor settings showing what data is collected and how it is used. Disconnected sources switch to manual logging
 
 ## screen.my_data.body <!-- screen.my_data.body -->
 
@@ -304,7 +304,7 @@ Edit goals
 
 ## screen.my_goal.caption <!-- screen.my_goal.caption -->
 
-Reuses familiar onboarding controls so users can adjust their goals at any time.
+The same controls used during onboarding, available for adjusting daily goals
 
 ## screen.my_goal.body <!-- screen.my_goal.body -->
 
@@ -316,7 +316,7 @@ Report delivery time
 
 ## screen.my_report.caption <!-- screen.my_report.caption -->
 
-Lets users choose the day and time for weekly report notifications to suit their routine.
+Day and time settings for receiving weekly report notifications
 
 ## screen.my_report.body <!-- screen.my_report.body -->
 
@@ -328,7 +328,7 @@ Report archive
 
 ## screen.my_archive.caption <!-- screen.my_archive.caption -->
 
-Archives weekly reports for long-term reflection, previewing each week’s logging rate and key takeaway.
+Archived weekly reports for long-term reflection, with each week's logging rate and key takeaway in the list
 
 ## screen.my_archive.body <!-- screen.my_archive.body -->
 
@@ -340,7 +340,7 @@ Privacy policy
 
 ## screen.my_privacy.caption <!-- screen.my_privacy.caption -->
 
-Summarises data collection, purpose, retention and sharing in a table, with separate research consent and guardian-consent status.
+A table of data types, collection purposes, retention, and sharing, with research-consent controls and guardian-consent status
 
 ## screen.my_privacy.body <!-- screen.my_privacy.body -->
 

@@ -9,7 +9,7 @@ Orbit
 
 ## 한 줄 소개 <!-- summary -->
 
-행동 변화 단계에 따라 목표 설정, 기록 항목, 정보량을 조정하는 맞춤형 건강 루틴 서비스.
+행동 변화 단계에 맞춰 목표 설정, 루틴 기록, 홈 화면의 정보량을 다르게 구성한 맞춤형 건강 루틴 앱
 
 ## 담당 역할 <!-- role -->
 
@@ -45,7 +45,7 @@ Mobile application
 
 ## 배경 설명 <!-- context.body -->
 
-사용자 조사 결과, 입문자와 숙련자는 목표 설정, 행동 기록, 정보 수용 방식에서 차이를 보임.
+사용자 조사에서 건강 루틴을 시작하는 사람과 꾸준히 실천해 온 사람은 목표 설정, 행동 기록, 필요한 정보에서 차이를 보임
 
 ## 설계 결정 제목 <!-- decision.title -->
 
@@ -53,7 +53,7 @@ Mobile application
 
 ## 설계 결정 설명 <!-- decision.body -->
 
-3단계 입문자와 5단계 숙련자를 구분하여, 각 단계에 따라 목표 설정 방식, 행동 기록 항목 및 홈 화면의 정보량을 다르게 구성함.
+행동 변화 3단계와 5단계를 대표 플로우로 삼아, 목표 설정 방식과 기록 항목, 홈 화면의 정보량을 각 단계에 맞게 구성
 
 ## 웹 조작 안내 제목 <!-- guide.title -->
 
@@ -361,127 +361,127 @@ Mobile application
 
 ## 플로우 · flow.beginner.intro.body <!-- flow.beginner.intro.body -->
 
-목표 설정과 예상 변화를 먼저 제시해 루틴 실천 동기를 높임.
+목표 설정과 루틴 실천에 따른 예상 변화를 먼저 소개하는 시작 단계
 
 ## 플로우 · flow.beginner.profile.body <!-- flow.beginner.profile.body -->
 
-기본 정보를 입력하고 온보딩 진행 단계를 확인하도록 구성함.
+기본 정보를 입력하고 온보딩이 어디까지 진행됐는지 확인
 
 ## 플로우 · flow.beginner.stage.body <!-- flow.beginner.stage.body -->
 
-5단계 문항으로 행동 변화 단계를 진단하고, 응답에 따라 서비스가 달라짐을 안내함.
+질문에 답하며 자신의 행동 변화 단계를 확인하고, 결과에 따라 달라지는 서비스 흐름을 안내
 
 ## 플로우 · flow.beginner.stageResult.body <!-- flow.beginner.stageResult.body -->
 
-진단 결과와 해당 단계에서 달라지는 기능을 안내해 개인화 기준을 명확히 함.
+진단 결과와 함께 해당 단계에서 사용할 수 있는 기능과 이후 진행 방식을 안내
 
 ## 플로우 · flow.beginner.goalPurpose.body <!-- flow.beginner.goalPurpose.body -->
 
-건강 관리 목표와 도움받고 싶은 영역을 한 화면에서 선택하도록 구성함.
+건강 관리 목표와 도움이 필요한 영역을 한 화면에서 선택
 
 ## 플로우 · flow.beginner.routinePick.body <!-- flow.beginner.routinePick.body -->
 
-인터뷰에서 확인된 안내 요구를 반영해 선택 가능한 루틴을 간결하게 제시함.
+입문자가 미리 준비된 선택지에서 실천할 루틴을 고를 수 있도록 간결하게 구성
 
 ## 플로우 · flow.beginner.forecastPreview.body <!-- flow.beginner.forecastPreview.body -->
 
-온보딩 마지막에 설명 가능한 AI 예측을 제시해 루틴의 예상 효과와 근거를 안내함
+선택한 루틴을 실천했을 때의 예상 변화와 AI 예측의 근거를 함께 제시
 
 ## 플로우 · flow.beginner.homeBeginner.body <!-- flow.beginner.homeBeginner.body -->
 
-홈 상단에 예상 변화를 고정하고, 이번 주 실천 일수를 보여줘 기록 부담을 줄임.
+예상 변화를 상단에 배치하고 이번 주 루틴 실천 일수를 함께 확인
 
 ## 플로우 · flow.beginner.logAdd.body <!-- flow.beginner.logAdd.body -->
 
-일상·자동 기록 항목을 우선 제공하고, 체성분 지표는 4단계부터 추가하도록 함.
+일상 활동과 자동 기록 항목을 먼저 제공하고, 체성분 등 세부 지표는 단계 승급 후 추가
 
 ## 플로우 · flow.beginner.forecast.body <!-- flow.beginner.forecast.body -->
 
-지난주와 이번 주의 변화 예측을 카드로 비교해 전반적인 진행 상황을 보여줌
+지난주와 이번 주의 예상 변화를 카드로 나란히 보여주며 차이를 비교
 
 ## 플로우 · flow.beginner.selfCompare.body <!-- flow.beginner.selfCompare.body -->
 
-비교 기준을 타인 평균에서 지난주 자신의 기록으로 바꿔 개인의 변화에 집중하도록 함.
+비슷한 사용자들과 루틴 실천 현황을 비교해 자신의 진행 상황을 살펴보는 구성
 
 ## 플로우 · flow.beginner.routineEdit.body <!-- flow.beginner.routineEdit.body -->
 
-한 번에 한 루틴에 집중하도록 하고, 11일 후 두 번째 루틴을 개방함.
+처음에는 하나의 루틴에 집중하고, 일정 기간 실천한 뒤 두 번째 루틴을 추가할 수 있도록 구성
 
 ## 플로우 · flow.beginner.stageUp.body <!-- flow.beginner.stageUp.body -->
 
-루틴 실천으로 습관 형성이 확인되면 단계를 높이고 변경되는 기능을 안내함.
+꾸준한 루틴 실천으로 다음 단계에 도달하면 새롭게 사용할 수 있는 기능을 안내
 
 ## 플로우 · flow.beginner.me.body <!-- flow.beginner.me.body -->
 
-행동 변화 단계를 언제든 다시 진단하고 화면 정보량을 조정할 수 있도록 함.
+행동 변화 단계를 다시 진단하거나 화면에 표시되는 정보량을 조절
 
 ## 플로우 · flow.advanced.intro.body <!-- flow.advanced.intro.body -->
 
-입문자와 동일한 진입 화면을 제공하고, 단계 진단 후 맞춤 플로우로 연결함.
+입문자와 같은 시작 화면을 거쳐, 행동 변화 단계 진단 후 숙련자 플로우로 연결
 
 ## 플로우 · flow.advanced.profile.body <!-- flow.advanced.profile.body -->
 
-기본 정보를 입력하고 온보딩 진행 단계를 확인하도록 구성함.
+기본 정보를 입력하고 온보딩이 어디까지 진행됐는지 확인
 
 ## 플로우 · flow.advanced.stage.body <!-- flow.advanced.stage.body -->
 
-동일한 진단을 통해 4~5단계 응답자를 숙련자 플로우로 연결함.
+동일한 진단을 거쳐 4~5단계로 판단된 사용자를 숙련자 플로우로 연결
 
 ## 플로우 · flow.advanced.stageResult.body <!-- flow.advanced.stageResult.body -->
 
-유지 단계에서는 목표 대비 진행 상황을 기준으로 삼는다는 점을 미리 안내함.
+진단 결과와 함께 해당 단계에서 사용할 수 있는 기능과 이후 진행 방식을 안내
 
 ## 플로우 · flow.advanced.goalPurpose.body <!-- flow.advanced.goalPurpose.body -->
 
-건강 관리 목표와 도움받고 싶은 영역을 한 화면에서 선택하도록 구성함.
+건강 관리 목표와 도움받고 싶은 영역을 선택하도록 구성하는 화면
 
 ## 플로우 · flow.advanced.concern.body <!-- flow.advanced.concern.body -->
 
-어려움을 먼저 묻는 인터뷰 피드백을 반영해 자유 입력과 선택 태그로 고민을 수집함.
+건강 관리에서 겪는 어려움을 자유롭게 작성하거나 준비된 태그에서 선택
 
 ## 플로우 · flow.advanced.routineDetail.body <!-- flow.advanced.routineDetail.body -->
 
-숙련자가 루틴 종류, 수행 일정, 시간대를 직접 설정할 수 있도록 함.
+루틴 종류와 실천 일정, 시간대를 자신의 계획에 맞게 직접 설정
 
 ## 플로우 · flow.advanced.forecastPreview.body <!-- flow.advanced.forecastPreview.body -->
 
-온보딩 마지막에 설명 가능한 AI 예측을 제시해 루틴의 예상 효과와 근거를 안내함
+선택한 루틴을 실천했을 때의 예상 변화와 AI 예측의 근거를 함께 제시
 
 ## 플로우 · flow.advanced.homeAdvanced.body <!-- flow.advanced.homeAdvanced.body -->
 
-예상 변화를 목표일까지의 카운트다운으로 전환하고 맞춤형 코칭 메시지를 제공함.
+예상 변화 대신 목표일까지의 카운트다운을 보여주고, 맞춤형 코칭 메시지를 함께 표시
 
 ## 플로우 · flow.advanced.log.body <!-- flow.advanced.log.body -->
 
-숙련자에게 체성분 등 상세 기록 항목을 추가로 제공함.
+체성분 등 세부 지표를 추가로 기록해 건강 변화와 루틴 실천을 더 자세히 확인
 
 ## 플로우 · flow.advanced.report.body <!-- flow.advanced.report.body -->
 
-체성분과 식단을 시각화해 주간 변화를 검토할 수 있도록 함.
+체성분과 식단의 주간 변화를 그래프로 모아 비교
 
 ## 플로우 · flow.advanced.forecastAdvanced.body <!-- flow.advanced.forecastAdvanced.body -->
 
-코칭 카드에 목표 달성 시점의 단축 일수를 표시해 행동과 결과의 관계를 보여줌.
+코칭 카드에서 행동에 따라 예상되는 목표 달성 시점의 단축 일수를 확인
 
 ## 플로우 · flow.advanced.forecastCalc.body <!-- flow.advanced.forecastCalc.body -->
 
-앞서 확인한 예상 변화를 계산기로 조정해 목표 달성 시나리오를 구체화함.
+예상 변화를 계산기에서 조정하며 다양한 목표 달성 시나리오를 비교
 
 ## 플로우 · flow.advanced.selfCompare.body <!-- flow.advanced.selfCompare.body -->
 
-숙련자의 자기 비교 선호를 반영해 타인 평균 대신 지난주 자신을 기준으로 제시함.
+타인의 평균 대신 지난주의 자기 기록을 기준으로 루틴 실천과 변화를 비교
 
 ## 플로우 · flow.advanced.routineEdit.body <!-- flow.advanced.routineEdit.body -->
 
-여러 루틴을 동시에 관리해 폭넓은 건강 행동을 추적하도록 지원함.
+여러 루틴을 동시에 관리하며 각각의 실천 현황을 확인
 
 ## 플로우 · flow.advanced.stageUp.body <!-- flow.advanced.stageUp.body -->
 
-단계 상승 시 숙련자에게 열리는 전체 리포트 기능을 안내함.
+루틴 실천을 이어가면 이용할 수 있는 전체 리포트 기능을 미리 소개
 
 ## 플로우 · flow.advanced.me.body <!-- flow.advanced.me.body -->
 
-행동 변화 단계를 언제든 다시 진단하고 화면 정보량을 조정할 수 있도록 함.
+행동 변화 단계를 다시 진단하거나 화면에 표시되는 정보량을 조절
 
 ## 소속 <!-- org -->
 
