@@ -138,6 +138,8 @@ function preview(screen, readonly = false, native = config.component !== null ||
   node.style.setProperty('--ratio', `${config.width} / ${config.height}`);
   // "frameHeight" sets the height of a full-width web prototype (default 600px).
   if (config.frameHeight) node.style.setProperty('--frame-height', `${config.frameHeight}px`);
+  // "frameAspect" (e.g. "16/9") keeps the frame at that ratio instead of a fixed height, for videos.
+  if (config.frameAspect) { node.style.setProperty('aspect-ratio', config.frameAspect); node.style.setProperty('height', 'auto'); }
   const frame = el('iframe');
   if (config.component) {
     const url = new URL('viewer.html', location.href);
@@ -392,7 +394,8 @@ function prototypePage() {
     const section = el('section', 'flows');
     const stateTabs = tabs(allScreens().map(id => ({id, label: screenTitle(id)})), item => item.id === selected, item => updateSelection(item.id), item => pad(allScreens().indexOf(item.id) + 1));
     [...stateTabs.children].forEach((tab, index) => { tab.dataset.screen = allScreens()[index]; controls.push(tab); });
-    section.append(label(UI.states), stateTabs);
+    // "statesLabel" in content.md renames the tab row (e.g. 영상 for video prototypes).
+    section.append(label(filled('statesLabel') ? text('statesLabel') : UI.states), stateTabs);
     nodes.push(section);
   }
   if (layout === 'flow' || layout === 'screen') {

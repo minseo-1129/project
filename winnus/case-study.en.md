@@ -14,8 +14,8 @@ Coded results
 
 @specs
 
-- Method — **Survey + interviews** // the survey tested three hypotheses; interview remarks were coded by theme
-- Participants — **[to be written]** // who took part, and how many
+- Method — **Survey + written and video interviews** // the survey tested three hypotheses; interview remarks were coded by theme
+- Participants — **21 participants** // across the survey and interviews
 - Analysis — **Thematic analysis** // four themes: cognitive load, extra information, taste criteria, perception
 
 ### What creates cognitive load · COGNITIVE LOAD
