@@ -687,7 +687,7 @@ function segmentNodes(segments) {
   if (io.children.length) text.splice(text.findIndex(node => node.classList.contains('basis')) >>> 0, 0, io);
   return {media, text};
 }
-const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack', 'timeline', 'quad', 'boxed', 'cards', 'defs', 'chips', 'specs', 'dots', 'versus', 'split', 'hero', 'legend', 'trace', 'dash', 'slope']);
+const blockModes = new Set(['columns', 'rows', 'flow', 'meter', 'canvas', 'lanes', 'stack', 'timeline', 'quad', 'boxed', 'cards', 'defs', 'chips', 'specs', 'dots', 'versus', 'split', 'hero', 'legend', 'trace', 'dash', 'slope', 'dialog']);
 // "@defs" — "Term — text" rows with the term on the left ("@defs mono" sets the term as a small blue label).
 function defRows(items, args) {
   return hairList(items, item => { const {title, tag, lines} = parseCard(item); const row = el('div', `def-row${'mono' in args ? ' is-mono' : ''}`); const term = el('div', 'def-term'); term.append(el('p', '', title || tag || '')); if (title && tag) term.append(el('p', 'mono def-tag', tag)); row.append(term, (() => { const box = el('div'); for (const line of lines) box.append(md(line, 'small')); return box; })()); return row; });
@@ -946,6 +946,27 @@ function flowChart(items, args) {
   });
   return node;
 }
+// "@dialog" — a conversation diagram: "Line — **forward** | other | other" puts the agent's line in a box with the
+// child's possible responses beside it; bold responses lead to the next line, the rest are asked again.
+// A line without " — " is the line alone; "**a** | **b**" with no line is a pair of events (e.g. timer ends).
+function dialogChart(items) {
+  const node = el('div', 'dialog');
+  items.forEach((item, index) => {
+    if (index) node.append(el('span', 'dialog-arrow', '↓'));
+    const row = el('div', 'dialog-row');
+    const [line, answers] = item.includes(' — ') ? item.split(/\s+—\s+/) : (item.includes(' | ') ? [null, item] : [item, null]);
+    const left = el('div', 'dialog-line');
+    if (line) left.append(el('p', 'dialog-say', line));
+    const chips = (answers || '').split(/\s+\|\s+/).filter(Boolean).map(answer => {
+      const forward = /^\*\*.+\*\*$/.test(answer);
+      return el('span', `dialog-answer${forward ? ' is-forward' : ''}`, forward ? answer.slice(2, -2) : answer);
+    });
+    if (line) { row.append(left); if (chips.length) { const list = el('div', 'dialog-answers'); list.append(...chips); row.append(list); } }
+    else { left.classList.add('is-events'); for (const chip of chips) { chip.classList.add('dialog-event'); left.append(chip); } row.append(left); }
+    node.append(row);
+  });
+  return node;
+}
 // Business model canvas: nine cards in the usual order (partners, activities, resources, value, relationships, channels, segments, cost, revenue).
 function canvasChart(items) {
   const node = el('div', 'canvas');
@@ -967,6 +988,7 @@ function richList(lines, heading, mode = null, args = {}) {
   if (mode === 'columns' && items.every(item => /^.+:\s+\D{0,2}\d[\d,.]*\s?\S{0,3}$/.test(item))) return columnChart(items, heading);
   if (mode === 'meter') return meterChart(items, args);
   if (mode === 'flow') return flowChart(items, args);
+  if (mode === 'dialog') return dialogChart(items);
   if (mode === 'canvas') return canvasChart(items);
   if (mode === 'rows') return sourceRows(items);
   if (mode === 'lanes') return laneChart(items);

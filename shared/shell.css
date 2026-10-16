@@ -387,6 +387,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .flow-step.is-last .card-tag{color:var(--blue-soft)}
 .flow-step.is-last .small,.flow-step.is-last .small p,.flow-step.is-last .strong{color:var(--white)}
 .flow.is-down{flex-direction:column;align-items:stretch}
+.dialog{display:flex;flex-direction:column}
+.dialog-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;align-items:center}
+.dialog-line{display:flex;gap:8px}
+.dialog-say{flex:1;background:var(--ink);color:var(--white);border-radius:4px;padding:9px 12px;font-size:13px;line-height:18px}
+.dialog-answers{display:flex;flex-wrap:wrap;gap:8px}
+.dialog-answer{border:1px solid var(--line-strong);border-radius:4px;padding:8px 12px;font-size:12px;line-height:16px;color:var(--muted);background:var(--paper)}
+.dialog-answer.is-forward{border-color:var(--blue);color:var(--blue);font-weight:500}
+.dialog-event{flex:1;text-align:center;border-style:dashed}
+.dialog-arrow{width:200px;text-align:center;color:var(--muted);line-height:22px}
+@media (max-width:640px){.dialog-row{grid-template-columns:1fr;gap:8px}.dialog-arrow{width:auto;text-align:left;padding-left:12px}}
 .flow.is-down .flow-arrow{text-align:center}
 .flow.is-down .flow-step.is-multi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 /* business model canvas */

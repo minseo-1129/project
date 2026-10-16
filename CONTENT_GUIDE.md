@@ -132,6 +132,7 @@ A line on its own before a list changes how that list is drawn:
 | `@canvas` | A business model canvas (nine cards in the usual order) |
 | `@timeline A \| B \| C` | A lane diagram on a timeline: `- Lane — [solid 1] text // ~caption \|\| [dashed 1-3] text` (spans 1, 2, 3, 1-2, 2-3, 1-3, or h1/h2 for halves; styles solid, dashed, dotted, bold, plain, muted, note); two or more consecutive timelines become capsule tabs, shown one at a time |
 | `@flow row` | A row of boxes without arrows (box styles `[solid]`, `[outline]`, `[blue]`, `[dashed]` work in any flow) |
+| `@dialog` | A conversation diagram: `- Line — **forward** \| other` puts the agent's line in a dark box with the responses beside it; bold responses (blue) lead on. A line alone has no responses; `**a** \| **b**` alone is a pair of events |
 | `@stack` | Pairs stacked vertically, or images one per row instead of a gallery |
 | `@meter inline` | Bars with the value inside; the first row is dark, the rest blue |
 | `@quad` | Labelled cards (`- Strength — …`) in a 2×2 grid (SWOT, four findings) |
