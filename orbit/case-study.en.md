@@ -88,7 +88,7 @@ Everyone experienced both prototypes, then completed the SUS and a debrief inter
 
 @meter inline max=100 mark=68
 
-- Beginner flow: 90.0
+- Beginner flow: 90.5
 - Advanced flow: 86.3
 
 ※ SUS 0–100 · white line = 68 benchmark
@@ -96,7 +96,7 @@ Everyone experienced both prototypes, then completed the SUS and a debrief inter
 Both flows scored above the SUS benchmark of 68. The advanced flow scored 96 among experienced participants and 82 among beginners.
 
 - Flow | Beginners · n=3 | Experienced · n=3 | All
-- Beginner flow | 90 | 91 | 90
+- Beginner flow | 90 | 91 | 90.5
 - Advanced flow | 82 | **96** | 86.25
 
 ## Debrief <!-- case.section.debrief -->

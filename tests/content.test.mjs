@@ -51,11 +51,13 @@ test('전체 프로젝트의 플로우·콘텐츠·컴포넌트·진입점이 �
   }
 });
 test('기존 전체 프로토타입과 화면 구현 파일은 보존된다',()=>{
+  const renamed={recipeplayer:'reply'};
   for(const project of projects.filter(p=>!['cuppo','sweetalk','forme'].includes(p))){
-    const original=execFileSync('git',['show',`${originalCommit}:${project}/index.html`]);
+    const original=execFileSync('git',['show',`${originalCommit}:${renamed[project]||project}/index.html`]);
     assert.deepEqual(fs.readFileSync(new URL(`../${project}/original-prototype.html`,import.meta.url)),original,project);
   }
-  const originals=['orbit/ORBITScreen.dc.html','kiketch/KiketchScreen.dc.html','pico/PicoScreen.dc.html','reply/ReplyScreen.dc.html','winnus/WinnusScreenV2.dc.html','mathhero/MathHeroScreen.dc.html','cuppo/CuppoScreen.dc.html','cuppo/CUPPO Prototype.dc.html','lighthouse/three-d-stage.js','lighthouse/lighthouse-model.js'];
+  const originals=['orbit/ORBITScreen.dc.html','kiketch/KiketchScreen.dc.html','pico/PicoScreen.dc.html','winnus/WinnusScreenV2.dc.html','mathhero/MathHeroScreen.dc.html','cuppo/CuppoScreen.dc.html','cuppo/CUPPO Prototype.dc.html','lighthouse/three-d-stage.js','lighthouse/lighthouse-model.js'];
+  assert.deepEqual(fs.readFileSync(new URL('../recipeplayer/ReplyScreen.dc.html',import.meta.url)),execFileSync('git',['show',`${originalCommit}:reply/ReplyScreen.dc.html`]),'recipeplayer/ReplyScreen.dc.html');
   for(const file of originals)assert.deepEqual(fs.readFileSync(new URL('../'+file,import.meta.url)),execFileSync('git',['show',`${originalCommit}:${file}`]),file);
   const redi=fs.readFileSync(new URL('../redi/REDIScreen.dc.html',import.meta.url),'utf8');
   const rediConfig=JSON.parse(fs.readFileSync(new URL('../redi/project.json',import.meta.url),'utf8'));

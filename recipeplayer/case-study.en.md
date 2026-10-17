@@ -11,7 +11,7 @@ For people living alone who cook at home, both finding a recipe and following it
 @cards
 
 - Scattered channels and recipes — Recipes live across apps, and saved ones end up scattered.
-- Search Not starting from ingredients — It is hard to find dishes you can make with what is already at home.
+- Search not starting from ingredients — It is hard to find dishes you can make with what is already at home.
 - Instructions that don't fit your skill — Units feel unfamiliar, and videos must be paused and replayed.
 
 ## Research <!-- case.section.research -->
@@ -64,7 +64,7 @@ Interviews with five people living alone, coded by behaviour and feeling.
 
 1. **Start with what users have, not what they want to eat** — Participants wanted to use leftovers and often chose a dish based on available ingredients. Ingredients should therefore guide discovery.
 2. **Let users control how recipes are presented and how quickly they progress** — Some wanted to skim text or images, while others preferred video. Video could remain the default, with steps skipped or replayed at the user’s own pace.
-3. **Reduce both screen interaction and the effort of learning units** — Reduce both screen interaction and the effort of interpreting measurements
+3. **Reduce both screen interaction and the effort of learning units** — Explain quantities using familiar kitchen tools, with simple and visual guidance.
 
 ## Storyboard <!-- case.section.storyboard -->
 

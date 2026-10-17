@@ -1,4 +1,4 @@
-# REPLY — English
+# RECIPE PLAYER — English
 
 <!-- English text for content.md. Keep the field IDs; empty or [bracketed] fields fall back to the Korean file. -->
 
@@ -80,7 +80,7 @@ Auto-advance + voice + measurements in your own tools
 
 ## screen.splash.title <!-- screen.splash.title -->
 
-Meet REPLY
+Meet Recipe Player
 
 ## screen.splash.caption <!-- screen.splash.caption -->
 

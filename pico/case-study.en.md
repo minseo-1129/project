@@ -76,7 +76,7 @@ No service offered wardrobe management, retailer recommendations and clothing pu
 
 @cards
 
-- Segmentation — The mobile fashion platform market for men in their 20x-30s
+- Segmentation — The mobile fashion platform market for men in their 20s-30s
 - Targeting — Men in their 20s–30s who struggle to put outfits together
 - Positioning — A platform that manages your wardrobe and runs free styling
 

@@ -34,7 +34,7 @@ The final direction kept what the research valued most, non-verbal cues and a po
 
 1. **Face filter** — ![Face filter: a caption asking for a smile over a frowning face](assets/case-study/filter-face.jpg) // Emoticons and prompts respond to facial expressions, making emotions easier to convey. // Input · Frowning or smiling on camera // Output · A prompt with a smile emoticon // Basis · 6/6 had misread a conversation because of a facial expression
 2. **Voice filter** — ![Voice filter: a cat sticker asking for kind words](assets/case-study/filter-voice.jpg) // When particular words are detected, playful captions respond to ease conversational tension. // Input · “Sick of it”, “Idiot” // Output · Humorous, playful captions // Basis · 5/6 had been frustrated by words they didn’t want to hear
-3. **Motion filter** — ![Motion filter: a sparkling heart above the partner](assets/case-study/filter-motion.jpg) // Heart gestures and kisses trigger effects, creating moments both partners can share // Input · A body heart or a blown kiss // Output · Heart animation and sounds // Basis · 6/6 reported a shared response through movement
+3. **Motion filter** — ![Motion filter: a sparkling heart above the partner](assets/case-study/filter-motion.jpg) // Heart gestures and kisses trigger effects, creating moments both partners can share // Input · A body heart or a blown kiss // Output · Heart animation and sounds
 
 ## Results <!-- case.section.results -->
 
