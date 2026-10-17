@@ -5,19 +5,19 @@
 
 ## Hypotheses <!-- case.section.hypotheses -->
 
-- **대중은 와인에 심리적 장벽을 느낄 것이다** · 가설 1 — 흥미가 있다고 답한 비율은 69%. 그러나 어렵고 잘 모르는 분야라는 인식이 압도적이었다. >> **87%** said “difficult”
-- **와인을 고를 때 주관적 정보에 의거할 것이다** · 가설 2 — 원산지·도수·생산연도보다 맛·향·어울리는 음식을 참고한다고 답했다. >> **92%** prefer subjective cues
-- **추천 시 취향 부합 여부를 중시할 것이다** · 가설 3 — 시행착오를 줄이기 위해 내 취향에 맞는 / 만족했던 것과 비슷한 / 상황에 맞는 와인을 원했다. >> Trial-and-error is the cost
+- **와인 입문자는 와인을 어렵고 낯선 분야로 느낄 것이다** · 가설 1 — 흥미가 있다고 답한 비율은 69%. 그러나 어렵고 잘 모르는 분야라는 인식이 압도적이었다. >> **87%** said “difficult”
+- **와인을 고를 때는 경험 및 감각 단서를 중시할 것이다** · 가설 2 — 원산지·도수·생산연도보다 맛·향·어울리는 음식을 참고한다고 답했다. >> **92%** prefer subjective cues
+- **와인을 추천받을 때 취향과 상황에 맞는지를 중시할 것이다** · 가설 3 — 시행착오를 줄이기 위해 내 취향에 맞는 / 만족했던 것과 비슷한 / 상황에 맞는 와인을 원했다. >> Trial-and-error is the cost
 
 ## Thematic analysis <!-- case.section.thematic -->
 
-코딩 결과
+와인 입문자 인터뷰에서 도출한 네 가지 주제
 
 @specs
 
 - Method — **설문 + 서면·화상 인터뷰** // 세 가설을 설문으로 확인하고, 인터뷰 발화를 주제별로 코딩
 - Participants — **21명** // 설문과 인터뷰 참여자
-- Analysis — **주제 분석** // 인지 부하·추가 정보·맛 기준·인지 수단 네 주제
+- Analysis — **주제 분석** // 정보 부담·추가로 필요한 정보·맛의 기준·감각 정보 표현 방식
 
 ### 인지 부하를 만드는 요인 · COGNITIVE LOAD
 
@@ -53,19 +53,19 @@
 
 ## What the data said <!-- case.section.data -->
 
-1. **1–5 스케일 매트릭스를 쓰지 말 것** — Scale matrices scored 1 for taste and 0 for scent.
-2. **색과 그림으로 감각 정보를 전달할 것** — Color cues and illustration outperformed numbers.
-3. **정보량은 암묵적으로 보여줄 것** — Quantity was the top cognitive-load factor.
+1. **맛과 향을 1~5점 척도만으로 표현하지 않기** — Scale matrices scored 1 for taste and 0 for scent.
+2. **향은 일러스트로, 맛은 일상적인 문장과 색으로 전달하기** — Color cues and illustration outperformed numbers.
+3. **핵심 정보부터 보여주고 상세 정보는 단계적으로 제공하기** — Quantity was the top cognitive-load factor.
 
 ## Journey <!-- case.section.journey -->
 
 @journey
 
-## Design decision <!-- case.section.response -->
+## Design decisions <!-- case.section.response -->
 
-- **어렵고 전문적인 용어** · Jargon — 바디감, 탄닌, 산도 — 따로 공부하지 않는 한 와인을 표현할 수도, 이해할 수도 없다. => **일상 언어를 앞에** · Design decision — 맛과 향은 일상 언어로 먼저 보여주고, 전문 용어는 탭하면 열리는 캡션으로 둔다.
-- **복잡한 분류 체계** · Taxonomy — 원산지·생산연도·품종·스타일. 모든 요소를 알고 마시는 건 현실적으로 불가능하다. => **취향 온보딩** · Design decision — 세 문항의 취향 온보딩이 복잡한 분류를 대신 계산해 첫 추천을 만든다.
-- **분산된 정보 채널** · Scattered info — 가격대, 페어링, 취급 매장이 서로 다른 채널에 흩어져 있다. => **와인 카드 한 장** · Design decision — 가격·페어링·매장을 카드 한 장에 모아, 캡처해도 정보가 완결된다.
+- **어렵고 전문적인 용어** · Jargon — 바디감·탄닌·산도 같은 용어는 낯설어 맛을 이해하고 표현하기 어렵다. => **일상 언어를 앞에** · Design decision — 맛과 향은 일상 언어로 먼저 보여주고, 전문 용어는 탭하면 열리는 캡션으로 둔다.
+- **복잡한 분류 체계** · Taxonomy — 원산지·생산연도·품종·스타일. 모든 요소를 알고 마시는 건 현실적으로 불가능하다. => **취향 온보딩** · Design decision — 세 가지 질문으로 익숙한 취향 단서를 수집하고 첫 와인 추천에 반영한다.
+- **분산된 정보 채널** · Scattered info — 가격대, 페어링, 취급 매장이 서로 다른 서비스와 채널에 흩어져 있다. => **와인 카드 한 장** · Design decision — 가격·페어링·매장을 카드 한 장에 모아, 캡처 시에 정보가 완결된다.
 
 ## 페르소나 이름 <!-- case.persona.name -->
 
@@ -96,7 +96,7 @@
 
 ## 저니 요약 <!-- case.journey.lead -->
 
-계기부터 재구매까지. 이탈이 가장 큰 구간은 ‘고르는 순간’입니다.
+와인 입문자가 와인을 탐색하고 선택하는 과정
 
 ## 저니 단계 <!-- case.journey.stages -->
 

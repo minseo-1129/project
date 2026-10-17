@@ -224,8 +224,8 @@ SOTA Labs
 
 ## subtitle <!-- subtitle -->
 
-AI-Powered Outfit Coordination Service
+AI-powered Outfit Recommendation Service
 
 ## tagline <!-- tagline -->
 
-Recognises clothing from photos to suggest styling.
+A mobile app that saves clothing from photos and suggests outfits using items in the user’s wardrobe.

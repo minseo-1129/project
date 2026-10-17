@@ -4,19 +4,19 @@
 
 ## Problem <!-- case.section.problem -->
 
-Recipes are everywhere, but one that fits what is in my fridge and what I can actually cook is hard to find.
+Finding a suitable recipe is hard and following it while cooking can be harder
 
-COVID-19 meant more single-person households cooking at home. From people in their twenties who had just started living alone to people in their thirties tired of eating out, the same frustrations kept coming up when finding and following recipes.
+For people living alone who cook at home, both finding a recipe and following it during preparation can be burdensome. Interviews repeatedly surfaced difficulties around searching menus, interpreting measurements and controlling videos while cooking.
 
 @cards
 
-- Scattered channels — Recipes live across YouTube, blogs and recipe apps, and saved ones end up scattered too.
-- Search that can't start from ingredients — It is hard to find dishes you can make with what is already at home.
-- Instructions that don't fit your skill — Units and steps feel unfamiliar, and videos must be paused and replayed at every step.
+- Scattered channels and recipes — Recipes live across apps, and saved ones end up scattered.
+- Search not starting from ingredients — It is hard to find dishes you can make with what is already at home.
+- Instructions that don't fit your skill — Units feel unfamiliar, and videos must be paused and replayed.
 
 ## Research <!-- case.section.research -->
 
-We interviewed five people, from a second-year student living alone to an office worker back with their parents after living alone, and coded what they said into behaviours and feelings.
+Interviews with five people living alone, coded by behaviour and feeling.
 
 @stack
 
@@ -44,7 +44,7 @@ We interviewed five people, from a second-year student living alone to an office
 
 ##### Quote
 
-- “When my hands are dirty mid-cooking, wiping them to touch the phone again is a hassle.” — P1 · lives alone
+- “When my hands are dirty mid-cooking, wiping them to touch the phone is a hassle.” — P1 · lives alone
 - “The video sweetens it with rice syrup, but I only had sugar, so I was stuck.” — P3 · job seeker
 - “I don't really know what one teaspoon means… I couldn't get a feel for measuring.” — P4 · lives alone
 
@@ -53,8 +53,8 @@ We interviewed five people, from a second-year student living alone to an office
 @dash
 
 - Ingredients at hand were more than a filter: they were where deciding the menu began.
-- People who wanted to skim text quickly and people who preferred the clarity of video coexisted.
-- Operating the screen mid-cooking and interpreting measuring units came up as the main difficulties.
+- People who wanted to skim text and people who preferred clarity of video coexisted.
+- Operating screen mid-cooking and interpreting measuring units came up as main issues.
 
 ## Persona <!-- case.section.persona -->
 
@@ -62,13 +62,13 @@ We interviewed five people, from a second-year student living alone to an office
 
 ## Insights <!-- case.section.insights -->
 
-1. **Ask what they have before asking what to eat** — The wish to use leftovers and the habit of choosing a menu from what is at hand appeared together. Ingredients should drive browsing, not sit inside the detail page.
-2. **Let users choose how a recipe is shown and how fast it moves** — Some wanted to skim text or photos, others preferred video. Video plays by default, but steps can be skipped like a music playlist.
-3. **Cut screen handling and unit interpretation while cooking** — Measurements are explained simply and visually, in terms of the tools the user already has.
+1. **Start with what users have, not what they want to eat** — Participants wanted to use leftovers and often chose a dish based on available ingredients. Ingredients should therefore guide discovery.
+2. **Let users control how recipes are presented and how quickly they progress** — Some wanted to skim text or images, while others preferred video. Video could remain the default, with steps skipped or replayed at the user’s own pace.
+3. **Reduce both screen interaction and the effort of learning units** — Explain quantities using familiar kitchen tools, with simple and visual guidance.
 
 ## Storyboard <!-- case.section.storyboard -->
 
-From choosing a menu to cooking, measuring, voice control and saving to a playlist
+A storyboard from recipe selection to voice-guided cooking
 
 ![A storyboard from choosing a menu to cooking, measuring, voice control and saving to a playlist](assets/case-study/storyboard.png)
 
@@ -76,9 +76,9 @@ From choosing a menu to cooking, measuring, voice control and saving to a playli
 
 @journey
 
-## Outcome <!-- case.section.outcome -->
+## Architecture <!-- case.section.outcome -->
 
-An information architecture from home recommendations and search to community, playlists and profile
+Information architecture linking recipe discovery, community, and playlists
 
 ![Recipe Player information architecture — home (recipe recommendations, search), community, playlists, profile](assets/case-study/ia.png)
 
@@ -101,17 +101,17 @@ Han Seon-woo
 
 - Find simple, new dishes from what is at home
 - Follow the cooking steps at my own pace
-- Keep scattered recipes in one place and come back to them
+- Keep scattered recipes and come back to them
 
 ## case.persona.frustrations <!-- case.persona.frustrations -->
 
-- Searching several channels for a dish that uses what I have
-- Pausing and replaying the video at every step
-- Forgetting where I saved a recipe, so I never use it again
+- Having to search multiple channels
+- Pausing and replaying videos while cooking
+- Losing track of saved recipes
 
 ## case.journey.lead <!-- case.journey.lead -->
 
-A to-be journey from ingredient-based recommendations to choosing, cooking and saving
+A user journey from recommendations to choosing, cooking and saving
 
 ## case.journey.stages <!-- case.journey.stages -->
 

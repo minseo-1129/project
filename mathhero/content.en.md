@@ -60,11 +60,11 @@ Woongjin
 
 ## subtitle <!-- subtitle -->
 
-Interactive AI Math Game
+Sci-Fi Maths Learning Game for Primary School
 
 ## tagline <!-- tagline -->
 
-Adaptive game for personalised elementary math practice.
+A game in which children solve maths problems with adjustable difficulty.
 
 ## scope <!-- scope -->
 
