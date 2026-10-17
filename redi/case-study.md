@@ -4,11 +4,11 @@
 
 ## Context <!-- case.section.context -->
 
-##### 왜 청소년의 하루였나
+##### 청소년의 생활 리듬 변화와 정신건강 문제
 
 코로나 이후 청소년의 생활 리듬은 성인보다 크게 흔들렸다. 수면과 좌식 시간이 늘고, 신체활동과 사회적 교류가 줄었다.
 
-생활 불균형은 신체와 정서 양쪽에 남는다. 불규칙한 수면과 결식은 체중 문제로, 지속된 비활동은 골격·심폐 발달 저해로 이어진다. 동시에 일상과 관계의 단절이 심리사회적 발달을 가로막는다.
+생활 불균형은 신체와 정서 양쪽에 영향을 준다. 불규칙한 수면과 결식은 체중 문제로, 지속된 비활동은 골격·심폐 발달 저해로 이어진다. 동시에 일상과 관계의 단절이 심리사회적 발달을 가로막는다.
 
 ## Approach <!-- case.section.approach -->
 
@@ -16,9 +16,9 @@
 
 @defs
 
-- 친숙한 모양 — 기록 화면을 이미 익숙한 시간표 모양으로 만들었다.
-- 자주 기록하는 영역 — 청소년에게 가장 중요하고 지배적인 영역으로 구성했다.
-- 돌려받는 보상 — 기록의 보상으로 주간 리포트를 준다.
+- 친숙한 인터페이스 — 기존에 익숙한 시간표와 다이어리 형태를 기록 화면에 적용
+- 자주 기록하는 영역 — 청소년이 기록하고 관리하고자 하는 네 가지 생활 영역을 중심으로 구성
+- 주간 통계와 리포트 — 기록한 내용을 이해하고 돌아볼 수 있도록 주간 리포트를 제공
 
 @chips
 
@@ -27,70 +27,70 @@
 
 ## System <!-- case.section.system -->
 
-사용자 데이터 수집에 대한 보상은 리포트로
+센서 기록과 자기기록을 주간 리포트로 연결한 구조
 
-센서가 알아서 남기는 것과 사용자가 직접 남기는 것을 합쳐, 생활 4영역과 정서 3지표로 환산하고, 주 1회 리포트로 돌려준다.
+센서에서 자동 수집한 데이터와 직접 입력한 기록을 함께 분석해, 네 가지 생활 영역과 세 가지 정서 지표를 주간 리포트로 보여준다.
 
 @flow
 
-- Passive — 센서 · 위치, 움직임, 화면 사용, 주변 조도 || Active — 자기기록 · 시간표, 하루 일기, 정서
+- Passive — 센서 · 위치, 신체 움직임, 화면 사용, 주변 조도 || Active — 자기기록 · 생활 시간표, 하루 일기, 정서적 어려움
 - [outline] **생활 4영역 / 정서 3지표** · Translate
 - **주 1회 리포트** · Return
 
 ## Study <!-- case.section.study -->
 
-2주 기록 후 8명 청소년 대상 사용성 평가
+2주간 기록한 청소년 8명을 대상으로 한 사용성 평가
 
 @specs
 
 - Participants — **여자 청소년 8명** // 만 12–17세
-- Duration — **2주 연속 시간일지** // 1시간 단위 24칸 × 7일
-- Method — **반구조적 인터뷰 + 카드소팅** // 약 40분
+- Duration — **2주 시간일지** // 1시간 단위 24칸 × 7일
+- Method — **반구조적 인터뷰 + 카드소팅** // 약 40분 온라인
 
 ## Findings <!-- case.section.findings -->
 
 @stack
 
-- **수치화 된 원자료보다 해석을 원했다** · 01 · Finding — 참여자들은 모든 생활 영역에서 원자료(raw data)보다 각 영역에 특화된 해석 요인을 압도적으로 자주 "도움됨"으로 분류했다. => So the screen must — 숫자와 그래프가 아니라 해석이 화면의 첫 줄에 와야 한다. 시스템이 해석의 부담을 대신 진다.
-- **선호하는 요약 방식이 영역마다 달랐다** · 02 · Finding — 수면과 공부는 일간 요약을, 운동과 여가는 주간 요약을 선호했다. 수면·공부는 습관화가 목적이라 매일의 총량이 중요했고, 운동은 이번 주에 한 번이라도 했는가가 중요했다. => So the screen must — 하이라이트를 영역마다 다른 시간 창으로 그린다. 하나로 통일된 요약 방식과 리포트 구성은 오히려 해석을 어렵게 한다.
-- **행동 평가 기준의 소재지가 달랐다** · 03 · Finding — 운동과 공부는 개인 목표를, 여가는 객관적 권장 기준을 선호했다. 운동은 주 2회 30분이면 충분하다고 보았지만 권장 기준은 매일 1시간이었고, 여가는 스스로 적정선을 판단하기 어려워했다. => So the screen must — 같은 막대 차트라도 영역마다 기준선이 달라야 한다. 운동의 기준선은 권장량이 아니라 내 목표이고, 상태 라벨은 과다가 아니라 목표 달성이다.
+- **숫자보다 생활 패턴의 의미를 설명하는 해석을 선호했다** · 01 · Finding — 참여자들은 원자료보다 생활 영역별 해석 정보를 더 자주 ‘도움됨’으로 분류했다.=> So the screen must — 숫자와 그래프보다 해석 문장을 먼저 제시해 사용자가 기록의 의미를 이해하도록 돕는다.
+- **선호하는 요약 방식이 영역마다 달랐다** · 02 · Finding — 수면과 공부는 일간 요약을, 운동과 여가는 주간 요약을 선호했다. 수면·공부는 습관화가 목적이라 매일의 총량이 중요했고, 운동은 이번 주에 한 번이라도 했는가가 중요했다. => So the screen must — 영역별로 적절한 요약 주기와 비교 기준을 다르게 적용한다. 모든 영역을 같은 방식으로 보여주면 중요한 차이가 드러나지 않는다.
+- **생활 영역마다 적절한 비교 기준이 달랐다** · 03 · Finding — 운동과 공부는 개인 목표를, 여가는 객관적 권장 기준을 선호했다. 운동은 주 2회 30분이면 충분하다고 보았지만 권장 기준은 매일 1시간이었고, 여가는 스스로 적정선을 판단하기 어려워했다. => So the screen must — 운동처럼 개인 목표가 중요한 영역에는 자신의 목표를 기준선으로 사용한다. 결과도 ‘과다’보다 ‘목표 달성’ 여부로 설명한다.
 
 ## Digital phenotypes <!-- case.section.phenotypes -->
 
-수집한 디지털 피노타입
+수집한 디지털 표현형 데이터
 
-#### GPS · 5분마다 수집
-
-@defs
-
-- **State (Stationary and Transition)** · 백그라운드 — We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states. In this study, we set this threshold to 1 km/h.
-- **Location Variance** · 백그라운드 — We defined location variance to measure the variability in a participant’s GPS location. To calculate location variance, we used only the location data of stationary states.
-- **Entropy** · 백그라운드 — We defined entropy to measure the variability of the time the participant spent at the location clusters.
-- **Normalized Entropy** · 백그라운드 — We defined normalized entropy by dividing the entropy by its maximum value, which is the logarithm of the total number of clusters.
-- **Home Stay** · 백그라운드 — Home stay measured the percentage of time a participant spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
-- **Circadian Movement** · 백그라운드 — If a participant left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
-
-#### Accelerometer
+#### GPS
 
 @defs
 
-- **Activity** · 백그라운드 — We set the accelerometer sampling rate to 5 Hz. To compress the raw data, we only logged aggregated statistics for each 120-second window. The threshold was empirically set to 0.1 m/s².
-- **Step Counter** · 사용자 노출 — For each detected step we recorded its timestamp, then computed the total number of steps during nighttime (11 PM–7 AM) and daytime (7 AM–11 PM) per day.
+- **GPS 상태** · 백그라운드 — 위치 데이터의 시간에 따른 변화로 이동 속도를 추정하고, 기준 속도를 적용해 정지 상태와 이동 상태를 구분했다.
+- **위치 분산** · 백그라운드 — 위치 분산은 GPS 위치가 얼마나 달라지는지 나타낸다. 계산에는 정지 상태에서 수집한 위치 데이터만 사용했다.
+- **Entropy** · 백그라운드 — 엔트로피는 각 위치 군집에서 보낸 시간의 분포가 얼마나 다양한지 나타낸다.
+- **정규화 엔트로피** · 백그라운드 — 엔트로피를 전체 위치 군집 수의 로그로 나누어 정규화 엔트로피를 계산했다.
+- **재택 시간** · 백그라운드 — 재택 시간은 전체 위치 군집 중 집에 머문 시간의 비율이다. 집은 방문 빈도 상위 3개 군집 중 하나이면서, 자정부터 오전 6시 사이 가장 자주 머무른 군집으로 정의했다.
+- **일주기 움직임** · 백그라운드 — 매일 비슷한 시간에 외출하고 귀가하는 등 이동 패턴이 규칙적일수록 일주기 움직임 지표가 높다. Lomb–Scargle 최소제곱 스펙트럼 분석으로 계산했다.
+
+#### 가속도계
+
+@defs
+
+- **활동** · 백그라운드 — 가속도계를 5Hz로 수집하고 원자료를 줄이기 위해 120초 구간별 요약 통계만 기록했다. 임계값은 경험적으로 0.1m/s²로 설정했다.
+- **걸음 수** · 사용자 노출 — 걸음이 감지될 때마다 시각을 기록하고, 하루의 주간(오전 7시~오후 11시)과 야간(오후 11시~오전 7시) 걸음 수를 합산했다.
 
 #### Camera
 
 @defs
 
-- **Ambient Light** · 백그라운드 — The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
+- **주변 밝기** · 백그라운드 — 조도 센서 값을 2분마다 기록하고 시간대별 평균 조도를 계산했다. 임계값은 1lux로 설정했다.
 
 #### 자기기록
 
 @defs
 
-- **EMA** · 사용자 노출 — The number of EMAs fired each day varied, but on average 8 EMAs per day were administered.
+- **EMA** · 사용자 노출 — 하루에 제시되는 EMA 횟수는 달랐으며, 평균 하루 약 8회의 EMA가 시행됐다.
 
 ※ 사용자 노출 = 앱 화면에서 사용자에게 보이는 값 · 백그라운드 = 분석에만 쓰는 값
 
 ## 소개 <!-- case.intro -->
 
-청소년의 하루를 센서(패시브)와 자기기록(액티브) 두 경로로 모으고, 모은 것을 주간 리포트로 되돌려주는 서비스.
+센서 기록과 직접 입력한 일기를 모아 청소년의 일상을 주간 리포트로 보여주는 서비스

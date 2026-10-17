@@ -480,8 +480,8 @@ Yonsei University
 
 ## subtitle <!-- subtitle -->
 
-User Readiness-based Wellbeing Coach
+A Wellbeing Coach Tailored to Behaviour Change Stages
 
 ## tagline <!-- tagline -->
 
-Health tracker grounded on the transtheoretical model.
+A health management app informed by the Transtheoretical Model.

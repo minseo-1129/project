@@ -288,4 +288,4 @@ Multisensory Wine Guide for Beginners
 
 ## tagline <!-- tagline -->
 
-Maps taste & aroma profiles into interactive visuals.
+A wine guide that explains taste and aroma using colour, imagery and everyday language.

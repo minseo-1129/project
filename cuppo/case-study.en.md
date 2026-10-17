@@ -6,7 +6,7 @@
 
 One cup, one card
 
-A coffee journal that lays hand-drawn coffee illustrations on a paper texture and treats each landscape card like a frame of film. Restoring the 2023 personal project as an HTML prototype, the values were carried over from the original assets as they were, and only the misaligned hierarchy was tidied.
+A coffee journal that lays hand-drawn coffee illustrations on a paper texture and treats each landscape card like a frame of film.
 
 ## Color & type <!-- case.section.color-type -->
 
@@ -17,15 +17,15 @@ Palette and type
 
 ## Illustration <!-- case.section.illustration -->
 
-The illustration inventory
+Coffee illustration collection
 
-Eight menus × two temperatures make the base cups, and the topping choice calls a variant file: hot/ice + menu, plus whipped cream (_wip) and extra ice (_ice).
+The eight coffee types are shown hot or iced, with optional whipped cream or extra ice to create variations of each card.
 
 @stack
 
-![Eight menus × hot and iced cups](assets/case-study/illustrations.png)
+![Eight drink types × hot and iced versions](assets/case-study/illustrations.png)
 
-![Variants — base → whipped, iced → extra ice](assets/case-study/variants.png)
+![Variations: plain → whipped cream; iced → extra ice](assets/case-study/variants.png)
 
 ## case.system.palette <!-- case.system.palette -->
 
@@ -43,7 +43,7 @@ Eight menus × two temperatures make the base cups, and the topping choice calls
 - 20 / 400 | Gowun Dodum · 오후 3시의 리셋 | Record title
 - 16 / 400 | Gowun Dodum · 오늘의 커피는? | Body, inputs
 - 14 / 400 | Card title · label · button | Mixed
-- 12 / 400 | #아메리카노 · 2022.02.10 | Tags, dates, captions (numbers in IBM Plex Mono)
+- 12 / 400 | #아메리카노 · 2022.02.10 | Tags, dates, captions
 
 ## case.intro <!-- case.intro -->
 

@@ -120,4 +120,4 @@ A School-linked Conversational Agent for Children's Executive Function
 
 ## tagline <!-- tagline -->
 
-First graders set and carry out their own daily tasks with ForMe while parents and teachers follow along: a school mental-health support system, published at CHI 2024.
+An intervention that connects a conversational agent with school and family support to help children plan and carry out everyday tasks.

@@ -4,14 +4,14 @@
 
 ## Market <!-- case.section.market -->
 
-A kids' industry worth at least ₩40 trillion, and growing fast
+Korea’s children’s industry had grown to ₩40 trillion by 2017
 
 @columns
 
-- 2002: ₩8T
-- 2007: ₩19T
-- 2012: ₩27T
-- 2017*: ₩40T
+- 2002: ₩8tn
+- 2007: ₩19tn
+- 2012: ₩27tn
+- 2017*: ₩40tn
 
 ※ Korean kids' industry · KRW · *2017 is an estimate · Source: KT Economic Research Institute
 
@@ -24,32 +24,32 @@ A kids' industry worth at least ₩40 trillion, and growing fast
 
 ## Competition <!-- case.section.competition -->
 
-No service combined emotional stimulation, printing and child-friendliness
+None of the existing services combined emotional interaction, a print option and child-friendly design
 
 - Criterion | Kiketch | Play-Doh Touch | PuppetPals | Catch Mind | YouTube Kids | KT Kidsland | Dubrain
-- Emotional stimulation | ○ | × | × | × | △ | × | ×
-- Story | ○ | × | ○ | × | ○ | ○ | ○
-- Participatory | ○ | × | × | ○ | × | ○ | ○
-- Variety · extensibility | ○ | × | △ | △ | ○ | ○ | ○
-- Printing service | ○ | × | × | × | × | × | ×
-- Uses real photos | ○ | ○ | ○ | × | × | ○ | ×
-- Child-friendly | ○ | ○ | × | × | △ | △ | △
+- Emotional interaction | ○ | × | × | × | △ | × | ×
+- Storytelling | ○ | × | ○ | × | ○ | ○ | ○
+- Participatory experience | ○ | × | × | ○ | × | ○ | ○
+- Variety | ○ | × | △ | △ | ○ | ○ | ○
+- Printing | ○ | × | × | × | × | × | ×
+- Photo integration | ○ | ○ | ○ | × | × | ○ | ×
+- Child-friendly design | ○ | ○ | × | × | △ | △ | △
 
 ※ ○ yes · △ partly · × no · Source: SURF pitch deck
 
 ## Approach <!-- case.section.approach -->
 
-The experience KIKETCH set out to give
+Three design principles that guided KIKETCH
 
-1. **Everything, A to Z, is for the child**
-2. **Focus on emotional development**
-3. **Leave memories for a lifetime**
+1. **Design the entire journey around the child, from getting started to completing**
+2. **Give children room to express emotions by taking part in the illustrations and story**
+3. **Turn the completed picture book into a printed keepsake that can last**
 
 ## Concept <!-- case.section.concept -->
 
-A picture the child finishes themselves
+A picture book children complete with their own drawings
 
-The child picks an empty sticky note in a scene, draws on paper, and the drawing joins the scene to complete the picture.
+Children choose an empty sticky-note space in a scene and draw what belongs there. Their drawings then become part of the story
 
 ![01 · A scene with empty sticky notes](assets/case-study/01-scene.jpg)
 
@@ -59,9 +59,7 @@ The child picks an empty sticky note in a scene, draws on paper, and the drawing
 
 ![04 · The drawn sun and tree placed in the scene](assets/case-study/04-done.jpg)
 
-#### A character of their own to love
-
-![A character standing on the pop-up book — the child's drawings move and react with life](assets/case-study/05-character.jpg)
+![The characters children draw can move and interact with the picture-book scene](assets/case-study/05-character.jpg)
 
 ## case.intro <!-- case.intro -->
 

@@ -352,8 +352,8 @@ HAII
 
 ## subtitle <!-- subtitle -->
 
-Digital Phenotype Collection Platform
+Active and Passive Digital Phenotyping Platform
 
 ## tagline <!-- tagline -->
 
-Lifestyle and mood diary for adolescent mental health.
+A lifestyle and mood diary designed to support adolescent mental health.

@@ -228,7 +228,7 @@ Curated Recipes for Single Households
 
 ## tagline <!-- tagline -->
 
-Personalised recipes with hands-free voice control. (REPLY)
+A mobile app for finding recipes based on available ingredients, moving through cooking steps by voice.
 
 ## org <!-- org -->
 

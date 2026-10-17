@@ -272,11 +272,11 @@ New · one-tap logging
 
 ## subtitle <!-- subtitle -->
 
-Illustration-based Coffee Diary
+Illustrated Coffee Journal
 
 ## tagline <!-- tagline -->
 
-Visual diary specifically for coffee intake and notes.
+A coffee diary that captures each cup’s recipe and the day’s notes on an illustrated card.
 
 ## org <!-- org -->
 

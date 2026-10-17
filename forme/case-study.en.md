@@ -4,22 +4,22 @@
 
 ## Context <!-- case.section.context -->
 
-ADHD is the most common mental disorder in childhood, yet most cases never reach diagnosis or treatment.
+ADHD is the most common mental disorder in childhood, yet there is a significant gap in early support and diagnosis
 
 - 7.2% — prevalence of ADHD in children, the most common mental disorder before adolescence
-- <1% — children diagnosed and treated in Korean national health insurance data, less than a fifth of those affected
+- <1% — children treated in Korean national health insurance data, less than a fifth of the affected
 
-At the core of ADHD is a deficit in executive function. Children who struggle to set goals, plan, regulate themselves and follow through find it hard to adapt to elementary school, where they must sit still at set times. Teachers often notice first, but the stigma around mental health makes it hard to suggest an assessment to parents.
+Children with ADHD may find it difficult to set goals, follow plans or regulate their behaviour, which can affect their daily school routines. Teachers may notice changes in everyday behaviour, yet concerns and stigma around diagnosis can make it difficult to recommend seeking support.
 
-We used the school as a platform and tested the service in a real setting. The child sets and carries out daily tasks by talking with ForMe, while parents follow along in a monitoring app and teachers on a web page.
+The service was deployed through schools and evaluated in a real-world setting. Children used a tablet to plan and complete daily promises with ForMe, while parents and teachers viewed participation through a mobile app and web dashboard.
 
-- **ForMe · tablet app** · Child — Sets and carries out daily tasks
-- **Monitoring app** · Parent — Follows the child's tasks and sends praise
-- **Monitoring web** · Teacher — Sees how the class is using it
+- **ForMe · tablet app** · Child — Sets and carries out daily promises
+- **Monitoring app** · Parent — Follows child's progress and sends praise
+- **Monitoring web** · Teacher — Sees how the class is using ForMe
 
 ## Approach <!-- case.section.approach -->
 
-Based on cognitive behavioural therapy (CBT), each promise is split into four steps.
+Four steps informed by cognitive behavioural therapy (CBT).
 
 - Step | What happens
 - Goal | The child and a parent choose three promises to keep for the week
@@ -27,24 +27,20 @@ Based on cognitive behavioural therapy (CBT), each promise is split into four st
 - Do | ForMe walks through each step so the child sees the promise through
 - Check | Every night the child talks with ForMe about the promises kept that day
 
-Reading, for example, goes from choosing a book → reading for the set time → saying what they thought → praising themselves.
-
 ## Conversation <!-- case.section.conversation -->
 
-Even when the child's answer is wrong or missing, the conversation keeps going with a little more of a hint each time.
+Even when the child's answer is wrong or missing, the conversation keeps going with a little more of a hint each time
 
 @defs mono
 
 - ForMe — “Jiwon! What did we plan to do at this time? Tell me, Jiwon!”
 - Correct — “Ding-dong!” and moves on to the next step
-- Wrong · no answer · other — “Oh no! We planned to focus on something... can you tell me what it was?”
+- Wrong · no answer — “We planned to focus on something... can you tell me what it was?”
 - Still stuck — Gives a closer hint with a picture of a book
 
-The dialogue scenarios ran on the NAVER CLOVA Chatbot builder. The schedule the child sets triggers the system, so ForMe speaks first at the promised time. It is an Android tablet app left on the desk.
+The dialogue scenarios ran on the NAVER CLOVA Chatbot builder. The schedule the child sets triggers the system, so ForMe speaks first at the promised time.
 
-## Task flow <!-- case.section.taskflow -->
-
-How one “read a book” promise runs as a conversation, from the first question to praise
+#### A sample case of “read a book”: from the first question to praise
 
 @dialog
 
@@ -62,16 +58,16 @@ How one “read a book” promise runs as a conversation, from the first questio
 
 ## Rewards <!-- case.section.rewards -->
 
-Fun for the result, praise for the process.
+Make completion rewarding and celebrate together
 
-- **Stars · AR character cards** · Result reward — The child gets a star for each promise kept, and a character card on days every promise is kept. Cards come alive through the AR camera.
-- **Parents' voice praise** · Process reward — A praise guide, based on the child's progress and reinforcement praise theory, helps parents record a voice message.
+- **Stars · AR character cards** · Result reward — The child gets a star and character cards for each promise kept. Cards come alive through the AR camera.
+- **Parents' voice praise** · Process reward — A praise guide, based on the child's progress and reinforcement theory, helps parents record a voice message.
 
 ※ Praise activities linked with home raise young children's self-esteem (Jang, 2012), and parents' responses shape positive self-esteem (Coopersmith, 1976).
 
 ## Screens <!-- case.section.screens -->
 
-A tablet for the child, a phone for the parent
+A tablet app for children and a mobile app for parents
 
 @hero
 
@@ -85,7 +81,7 @@ A tablet for the child, a phone for the parent
 
 ## Study <!-- case.section.study -->
 
-A six-week randomised controlled study with 132 first graders from 20 elementary schools.
+A six-week randomised controlled study with 132 first graders from 20 elementary schools
 
 @specs
 
@@ -110,11 +106,9 @@ A six-week randomised controlled study with 132 first graders from 20 elementary
 
 Symptom scores fell over the six weeks in the intervention group and rose in the control group. Parent-rated executive function (BRIEF) also improved in the intervention group for behavioural regulation (BRI, p = .011) and the global composite (GEC, p = .035).
 
-※ In an earlier eight-week study, children with ADHD, borderline or mild intellectual disability averaged 76.1% usage, with improvements in self-efficacy and ADHD-related symptoms · Doeun et al., 2023
-
 ## Follow-up study <!-- case.section.followup -->
 
-We designed a follow-up at a scale of 500, looking at effects at home together with digital biomarkers.
+Follow-up study at a scale of 500, looking at effects at home together with digital biomarkers
 
 - Item | Details
 - Participants | 500 children aged 6–8 and 500 parents, remote

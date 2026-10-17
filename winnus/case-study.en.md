@@ -4,19 +4,19 @@
 
 ## Hypotheses <!-- case.section.hypotheses -->
 
-- **People feel a psychological barrier to wine** · Hypothesis 1 — 69% said they were interested, yet most saw wine as difficult and unfamiliar. >> **87%** said “difficult”
-- **People choose wine on subjective cues** · Hypothesis 2 — Respondents relied on taste, aroma and food pairing rather than origin, ABV or vintage. >> **92%** prefer subjective cues
-- **Recommendations must match personal taste** · Hypothesis 3 — To cut trial and error, they wanted wine that suits their taste / resembles one they enjoyed / fits the occasion. >> Trial-and-error is the cost
+- **People feel a psychological barrier to wine** · Hypothesis 1 — Although 69% expressed an interest in wine, many still regarded it as difficult to understand. >> **87%** said “difficult”
+- **People choose wine on subjective cues** · Hypothesis 2 — Respondents looked to taste, aroma and food pairings more than origin, alcohol content or vintage. >> **92%** prefer subjective cues
+- **Recommendations must match personal taste** · Hypothesis 3 — To reduce trial and error, participants wanted a wine that suited their taste, resembled one they had enjoyed. >> Trial-and-error is the cost
 
 ## Thematic analysis <!-- case.section.thematic -->
 
-Coded results
+Four themes from interviews with wine beginners
 
 @specs
 
-- Method — **Survey + written and video interviews** // the survey tested three hypotheses; interview remarks were coded by theme
+- Method — **Survey + Interviews** // the survey tested hypotheses; interviews produced themes
 - Participants — **21 participants** // across the survey and interviews
-- Analysis — **Thematic analysis** // four themes: cognitive load, extra information, taste criteria, perception
+- Analysis — **Thematic analysis** // four themes: cognitive load, information, taste, perception
 
 ### What creates cognitive load · COGNITIVE LOAD
 
@@ -43,7 +43,7 @@ Coded results
 
 - Aroma · drawings: 18
 - Taste · sentences: 15
-- Taste · colour cues: 11
+- Taste · colours: 11
 - Taste · scale ticks: 1
 
 ## Persona <!-- case.section.persona -->
@@ -52,9 +52,9 @@ Coded results
 
 ## What the data said <!-- case.section.data -->
 
-1. **Don't use 1–5 scale matrices** — Scale matrices scored 1 for taste and 0 for scent.
-2. **Convey the senses with colour and illustration** — Colour cues and illustration outperformed numbers.
-3. **Show quantity implicitly** — Quantity was the top cognitive-load factor.
+1. **Don't use 1–5 scale matrices** — Scale matrices scored poorly for conveying both taste and scent.
+2. **Convey the senses with colour and illustration** — Colour cues and illustrations performed better than numerical cues.
+3. **Reduce the amount of information** — The amount of information was a major source of cognitive load.
 
 ## Journey <!-- case.section.journey -->
 
@@ -62,9 +62,9 @@ Coded results
 
 ## Design decision <!-- case.section.response -->
 
-- **Difficult, technical terms** · Jargon — Body, tannin, acidity: hard to describe or understand without study. => **Everyday words first** · Design decision — Everyday words come first; technical terms open as captions.
-- **A complex taxonomy** · Taxonomy — Origin, vintage, grape, style: too much to know before drinking. => **Taste onboarding** · Design decision — Three onboarding questions compute the classification.
-- **Scattered information** · Scattered info — Price, pairing and stockists sit in different channels. => **One wine card** · Design decision — Price, pairing and stockists sit on one card, complete even as a screenshot.
+- **Difficult, technical terms** · Body, tannin, acidity: hard to describe or understand without study. => **Everyday words first** · Design decision — Everyday words come first; technical terms open as captions.
+- **A complex taxonomy** · Taxonomy — Origin, vintage, grape and style: too much to understand before choosing a wine => **Taste onboarding** · Design decision — Three onboarding questions compute the classification.
+- **Scattered information** · Scattered info — Prices, pairings and stockists are spread across different channels. => **One wine card** · Design decision — Price, pairing and stockists sit on one card, complete even as a screenshot.
 
 ## case.persona.name <!-- case.persona.name -->
 
@@ -83,7 +83,7 @@ Bae Ye-eun
 
 ## case.persona.goals <!-- case.persona.goals -->
 
-- I want to get to know wine without learning the jargon
+- I want to learn wine without studying the jargon
 - I want recommendations even when I describe things my own way
 - I want to know what is similar to a wine I enjoyed
 
@@ -95,7 +95,7 @@ Bae Ye-eun
 
 ## case.journey.lead <!-- case.journey.lead -->
 
-From the trigger to buying again. The biggest drop-off is at the moment of choosing.
+A journey map of how wine beginners browse and choose wines
 
 ## case.journey.stages <!-- case.journey.stages -->
 

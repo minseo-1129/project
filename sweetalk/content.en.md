@@ -72,7 +72,7 @@ Video-call Filters for Couples
 
 ## tagline <!-- tagline -->
 
-Face, voice and motion filters that keep long-distance conversations positive.
+A video-call service that helps long-distance couples communicate effectively.
 
 ## Intro video · screen name <!-- screen.intro.title -->
 

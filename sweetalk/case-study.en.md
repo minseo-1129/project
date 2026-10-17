@@ -4,7 +4,7 @@
 
 ## Research <!-- case.section.research -->
 
-Couples apart stay in touch online, yet rarely feel they spend time together.
+Couples apart stay in touch online, yet rarely feel they are together
 
 “One third to 75% of young adults are currently or have been in a long-distance dating relationship at some point while attending college.” We studied couples in their 20s through a literature review, a survey, interviews and a diary study.
 
@@ -16,36 +16,36 @@ Couples apart stay in touch online, yet rarely feel they spend time together.
 
 Each requirement became one design goal.
 
-- **Non-verbal cues** · Requirement 1 — Sense of being together, fewer misunderstandings => **Support your own and partner’s nuance and expression** · Design goal 1 — → Face filter
-- **Effective communication** · Requirement 2 — Positive tone; problems handled lightly => **Brighten the atmosphere** · Design goal 2 — → Voice filter
-- **Full engagement** · Requirement 3 — Attentive, considerate, closer => **Share one time and space** · Design goal 3 — → Motion filter
+- **Non-verbal cues** · Requirement 1 — Create a sense of togetherness and reduce misunderstandings => **Make the meaning conveyed through facial expressions** · Design goal 1 — → Visual prompts for facial expressions
+- **Effective communication** · Requirement 2 — Express frustration without worsening the mood => **Ease tension in conversation through humour** · Design goal 2 — → Soften difficult topics and moments
+- **Full engagement** · Requirement 3 — Feel more connected to the other person’s words and situation => **Create moments of shared response despite the distance** · Design goal 3 — → Features triggered by contexts
 
 ## Concepts <!-- case.section.concepts -->
 
-Three concepts came before the video call.
+Three initial concepts explored in response to the design goals
 
-1. **VR application** — Online activities to enjoy together, beyond time and distance.
-2. **Couple mode on KakaoTalk** — Avatars, a shared schedule and D-day inside the messenger couples already use.
-3. **Independent application** — Knowing your partner better through shared moments and in-depth tests.
+1. **VR application** — Provide online activities to enjoy together, beyond time and distance.
+2. **Couple mode on KakaoTalk** — Add avatars, a shared schedule and D-day inside the familiar messaging app.
+3. **Independent application** — Record shared moments and learn more about each other through questions.
 
 The final direction kept what the research valued most, non-verbal cues and a positive tone, in the video call couples already used to communicate in daily settings.
 
 ## System <!-- case.section.system -->
 
-1. **Face filter** — ![Face filter: a caption asking for a smile over a frowning face](assets/case-study/filter-face.jpg) // Reads the user’s expression so both partners can see how they come across. // Input · Frowning or smiling on camera // Output · A prompt with a smile emoticon // Basis · 6/6 had misread a conversation because of a facial expression
-2. **Voice filter** — ![Voice filter: a cat sticker asking for kind words](assets/case-study/filter-voice.jpg) // Users choose words they don’t want to hear; the filter answers them with a joke. // Input · “Sick of it”, “Idiot” // Output · A playful caption or image that turns the moment into laughter // Basis · 5/6 had been frustrated by words they didn’t want to hear
-3. **Motion filter** — ![Motion filter: a sparkling heart above the partner](assets/case-study/filter-motion.jpg) // Gestures become shared moments in the call. // Input · A body heart or a blown kiss // Output · Background music and effects with heart for both partners // Basis · Design goal 3, share one time and space
+1. **Face filter** — ![Face filter: a caption asking for a smile over a frowning face](assets/case-study/filter-face.jpg) // Emoticons and prompts respond to facial expressions, making emotions easier to convey. // Input · Frowning or smiling on camera // Output · A prompt with a smile emoticon // Basis · 6/6 had misread a conversation because of a facial expression
+2. **Voice filter** — ![Voice filter: a cat sticker asking for kind words](assets/case-study/filter-voice.jpg) // When particular words are detected, playful captions respond to ease conversational tension. // Input · “Sick of it”, “Idiot” // Output · Humorous, playful captions // Basis · 5/6 had been frustrated by words they didn’t want to hear
+3. **Motion filter** — ![Motion filter: a sparkling heart above the partner](assets/case-study/filter-motion.jpg) // Heart gestures and kisses trigger effects, creating moments both partners can share // Input · A body heart or a blown kiss // Output · Heart animation and sounds // Basis · 6/6 reported a shared response through movement
 
 ## Results <!-- case.section.results -->
 
-Before the session, every couple recognised the problem. After it, every couple found the conversation more positive.
+All participants reported that the filters helped their talk more positive
 
 ### Pre-session
 
 - 5/6 — had been frustrated when their partner kept saying something they didn’t want to hear
 - 6/6 — had misunderstood a conversation because of a facial expression
 
-- “I didn’t want to hear that but I couldn’t directly say so, so it was much more frustrating.” — Participant #2
+- “I didn’t want to hear that but I couldn’t directly say so, so it was frustrating.” — Participant #2
 
 ### Post-session
 
@@ -54,4 +54,4 @@ Before the session, every couple recognised the problem. After it, every couple 
 - 3/6 — used it to reflect on their own expressions
 
 - “I think we laughed a lot more than we talked without the filters.” — Participant #1
-- “By looking at the subtitles I was able to realize, oh I was being cranky.” — Participant, post-session
+- “By looking at the subtitles I was able to realise, oh I was being cranky.” — Participant, post-session

@@ -4,11 +4,11 @@
 
 ## Context <!-- case.section.context -->
 
-##### Why a teenager's day
+##### Adolescent mental health and emotional difficulties
 
-After COVID-19, teenagers' daily rhythms were shaken more than adults'. Sleep and sitting time went up; physical activity and social contact went down.
+Following COVID-19, adolescents’ daily routines were disrupted more than adults’. Sleep and sedentary time increased, while physical activity and social contact declined.
 
-An unbalanced routine leaves marks on both body and mind. Irregular sleep and skipped meals lead to weight problems, and lasting inactivity holds back bone and cardiopulmonary development. At the same time, losing daily routines and relationships gets in the way of psychosocial development.
+Disrupted routines can affect both physical and emotional wellbeing. Irregular sleep, missed meals and prolonged inactivity may be linked to physical health concerns, while disruptions to daily life and relationships can also affect psychosocial development.
 
 ## Approach <!-- case.section.approach -->
 
@@ -16,25 +16,25 @@ Less effort to log, a clearer reason to log
 
 @defs
 
-- A familiar shape — The logging screen takes the shape of a timetable teenagers already know.
-- Areas they log often — Built around the areas that matter most and take up most of a teenager's day.
-- A reward in return — Logging is rewarded with a weekly report.
+- A familiar shape — A familiar timetable-and-diary layout for recording daily activities
+- Areas they log often — Four areas of daily life that youth want to track and manage
+- A reward in return — Weekly summaries help make the value of everyday logging visible
 
 @chips
 
 - Four life areas — Sleep · leisure · study · exercise
-- Three emotional indicators — Depression · anxiety · stress
+- Three emotional indicators — Depression · Anxiety · Stress
 
 ## System <!-- case.section.system -->
 
-Data collection is rewarded with a report
+Collected data returned to users in a weekly report
 
-What the sensors record on their own and what users log themselves are combined, converted into four life areas and three emotional indicators, and returned as a weekly report.
+Automatically collected sensor data and users’ own entries are analysed together and presented across four areas of daily life and three emotional indicators in a weekly report.
 
 @flow
 
 - Passive — Sensors · location, movement, screen use, ambient light || Active — Self-logging · timetable, daily diary, emotions
-- [outline] **Four life areas / three emotional indicators** · Translate
+- [outline] **Four life areas / Three mood areas** · Translate
 - **A weekly report** · Return
 
 ## Study <!-- case.section.study -->
@@ -43,32 +43,32 @@ A usability study with 8 teenagers after two weeks of logging
 
 @specs
 
-- Participants — **8 teenage girls** // Aged 12–17
+- Participants — **8 adolescents** // Aged 12–17
 - Duration — **Two-week time diary** // 24 hourly cells × 7 days
-- Method — **Semi-structured interview + card sorting** // About 40 minutes
+- Method — **Interview + card sorting** // About 40 minutes
 
 ## Findings <!-- case.section.findings -->
 
 @stack
 
-- **They wanted interpretation over raw numbers** · 01 · Finding — In every life area, participants marked area-specific interpretation as "helpful" far more often than raw data. => So the screen must — Put interpretation, not numbers and graphs, on the first line. The system carries the burden of interpreting.
-- **The preferred summary differed by area** · 02 · Finding — Sleep and study were wanted as daily summaries, exercise and leisure as weekly ones. Sleep and study were about habit, so the daily total mattered; for exercise, what mattered was whether it happened at all that week. => So the screen must — Draw highlights with a different time window per area. One uniform summary and report layout makes interpretation harder.
-- **Where the benchmark comes from differed** · 03 · Finding — Exercise and study were judged against personal goals, leisure against an objective recommendation. Participants felt twice a week for 30 minutes was enough exercise, while the recommendation was an hour a day; for leisure, they found it hard to judge the right amount themselves. => So the screen must — Give each area its own baseline, even on the same bar chart. For exercise, the baseline is my goal, not the recommended amount, and the status label is goal reached, not too much.
+- **Interpretation over raw numbers** · 01 · Finding — In every life area, participants more often marked area-specific interpretations as helpful than raw, numerical data. => So the screen must — Lead with an interpretive sentence rather than a number or chart, helping users understand what their records mean.
+- **Preferred summary differed by area** · 02 · Finding — Sleep and study were wanted as daily summaries, exercise and leisure as weekly ones. Sleep and study were about habit, so the daily total mattered; for exercise, what mattered was whether it happened at all that week. => So the screen must — Choose time frames and comparison criteria that fit each activity instead of giving every area the same report structure.
+- **Comparison benchmark depended on the activity** · 03 · Finding — Exercise and study were judged against personal goals, leisure against an objective recommendation. Participants felt twice a week for 30 minutes was just enough; for leisure, they found it hard to judge the right amount themselves. => So the screen must — Use an activity-specific benchmark. For exercise, show progress towards a personal goal rather than treating more activity as excessive
 
 ## Digital phenotypes <!-- case.section.phenotypes -->
 
-The digital phenotypes collected
+Digital phenotyping measures collected
 
-#### GPS · collected every 5 minutes
+#### GPS
 
 @defs
 
-- **State (Stationary and Transition)** · Background — We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states. In this study, we set this threshold to 1 km/h.
+- **State (Stationary and Transition)** · Background — We estimated the movement speed at each location data sample by calculating its time derivative and then used a threshold speed that defined the boundary between these two states.
 - **Location Variance** · Background — We defined location variance to measure the variability in a participant’s GPS location. To calculate location variance, we used only the location data of stationary states.
 - **Entropy** · Background — We defined entropy to measure the variability of the time the participant spent at the location clusters.
 - **Normalized Entropy** · Background — We defined normalized entropy by dividing the entropy by its maximum value, which is the logarithm of the total number of clusters.
-- **Home Stay** · Background — Home stay measured the percentage of time a participant spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
-- **Circadian Movement** · Background — If a participant left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
+- **Home Stay** · Background — Home stay measured the percentage of time a user spent at home relative to other location clusters. We identified the home cluster with two heuristics: (1) it is among the first to the third most visited clusters, and (2) it is the cluster most visited between 12 a.m. and 6 a.m.
+- **Circadian Movement** · Background — If a user left home for work and returned home from work around the same time each day, the circadian movement was high. To calculate it, we used least-squares spectral analysis (the Lomb–Scargle method).
 
 #### Accelerometer
 
@@ -81,7 +81,7 @@ The digital phenotypes collected
 
 @defs
 
-- **Ambient Light** · Background — The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was empirically set to 1 lux.
+- **Ambient Light** · Background — The light sensor reading was logged every 2 min. We calculated the average light intensity for each hour. The threshold was set to 1 lux.
 
 #### Self-report
 
@@ -93,4 +93,4 @@ The digital phenotypes collected
 
 ## case.intro <!-- case.intro -->
 
-A service that collects a teenager's day through two paths, sensors (passive) and self-logging (active), and gives it back as a weekly report.
+A service that combines sensor data and self-reported diaries into weekly views

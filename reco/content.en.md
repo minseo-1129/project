@@ -96,8 +96,8 @@ Imperial College London
 
 ## subtitle <!-- subtitle -->
 
-Reflective Companion for Social Prescribing
+A Reflective Companion for Social Prescribing
 
 ## tagline <!-- tagline -->
 
-Intermediary tool to address mental healthcare gaps.
+A conversational agent that helps young people reflect on experiences between social prescribing sessions.

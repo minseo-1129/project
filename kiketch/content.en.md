@@ -60,11 +60,11 @@ Dodam
 
 ## subtitle <!-- subtitle -->
 
-Interactive Drawing Book for Early Childhood
+Interactive Picture Book for Young Children
 
 ## tagline <!-- tagline -->
 
-Animates children's drawings with contextual sound.
+An interactive picture-book app where children’s drawings become part of the story and come to life.
 
 ## scope <!-- scope -->
 

@@ -4,31 +4,31 @@
 
 ## Overview <!-- case.section.overview -->
 
-A sci-fi maths game for primary pupils: solve problems to stop the hacker group ‘Minos’
+A sci-fi maths game where primary school children solve problems to stop a hacker group
 
-An ordinary pupil is asked by the AI robot ‘Kobi’ to enter virtual-reality dimensions, where solving maths problems removes malware, installs security tools and catches hackers. The game ends once all six dimensions, Year 1 to Year 6, are safe.
+The player is an ordinary primary school student recruited by an AI robot named Kobi to enter a virtual world. By solving maths problems, they remove malicious code, capture hackers and protect six dimensions representing Years 1–6.
 
 - Platform | View | Genre | Stages
-- Unity | First person | Sci-fi | 6 dimensions × easy · normal · hard
+- Unity | First person | Sci-fi | 6 grade-dimensions
 
 ## Flow <!-- case.section.flow -->
 
-From sign-in to rewards, played together as a school.
+From sign-in and setup to solving problems and earning rewards
 
 @flow row
 
 - **Sign in** — Log in
 - **Character** — Name, gender, school, year
-- **Tutorial** — Controls and a maths-level check
-- **First reward** — Pet, items, room
-- **Play** — Choose dimension and difficulty
-- **Rewards** — Experience and the next stage
+- **Tutorial** — Set-ups and maths level assessment
+- **Rewards** — Pet, items, and room decorations
+- **Play** — Select dimension and difficulty
+- **Rewards** — Earn experience and advance
 
-Screen structure — Main (shop, wardrobe, leaderboard, events, pet, room, clan) → Map (dimension, difficulty) → Play (question, answer, hint)
+Home (shop, wardrobe, rankings, events, pet, room and clan) → Map (dimension and difficulty) → Play (question, answers and hints)
 
 ## Screens <!-- case.section.screens -->
 
-UI plan — main, map, play, clan
+Player’s room, stage selection, problem-solving and clan activities
 
 ![Main — from your room with your character and pet out to the virtual world](assets/case-study/01-main.jpg)
 

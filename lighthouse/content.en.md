@@ -100,8 +100,8 @@ Yonsei University
 
 ## subtitle <!-- subtitle -->
 
-Arduino Mood Lamp Humidifier
+Arduino-Based Lighthouse Humidifier
 
 ## tagline <!-- tagline -->
 
-Senses water & light to trigger ambient effects.
+A humidifier whose gentle waves and lighthouse lighting respond to water level and ambient light.

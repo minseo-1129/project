@@ -4,45 +4,45 @@
 
 ## Problem <!-- case.section.problem -->
 
-Both stakeholders, users and online shops, had a gap
+Users and online shops faced different challenges
 
 - **No mobile wardrobe for organising the clothes you own** · User pain point — **82%** // “When buying clothes, it is hard to choose items that go with what I already have, and finding a shop that sells them is a hassle.” // Survey · 127 people in their 10s–30s
-- **No mobile platform where shops recommend and style products from a user's wardrobe** · Online shop pain point — **85%** // “Online fashion platform fees are a burden, and without knowing what customers actually own, our recommendations are limited.” // Survey · 37 online shops
+- **No mobile platform to recommend and style products from a user's wardrobe** · Online shop pain point — **85%** // “Online platform fees are a burden, and without knowing what customers actually own, our recommendations are limited.” // Survey · 37 online shops
 
 ## Journey <!-- case.section.journey -->
 
-A prospective user's journey map
+A prospective user’s journey through the service
 
 ※ Speech bubble = thoughts & feelings · → = feature derived
 
 @lanes
 
-- **Motivation** — “Blind date next week! What do I wear? My wardrobe is a mess. :(”
-- **Launch** — “Registering clothes in a few clicks is really handy :)” // → Registering the wardrobe must be simple.
-- **Engage** — “I get a notification when the outfit is ready? No need to keep checking.” // “Public reviews help me pick a shop.” // “They looked at each of my clothes. I like it, so I'll buy what they recommend.” // → Let users review shops, so their choice is easier. // → Notify users when an outfit is ready.
-- **After use** — “Signing up to shops was annoying; now I can buy straight from PICO without joining!” // → Purchases must not jump to the shop's page or happen separately. // → One PICO account should reach every shop.
+- **Motivation** — “Blind date next week! What should I wear? I have no idea :(”
+- **Launch** — “Registering clothes in a few clicks is really handy :)” // → Make it simple to add clothing to the digital wardrobe
+- **Engage** — “I get notification when the outfit is ready!” // “Public reviews helped me pick a shop.” // “They looked at my clothes. I like it. I'll buy what they suggest.” // → Let users review shops, so their choice is easier. // → Notify users when an outfit is ready.
+- **After use** — “Signing up to shops was annoying; now I can buy straight from PICO!” // → Purchases must not jump to the shop's page. // → One PICO account should reach every shop.
 
 ## Business model <!-- case.section.business-model -->
 
-Free for users, 3% of sales for shops: the business model canvas of a two-sided platform
+A two-sided model: free for users, 3% commission for shops
 
 @canvas
 
-- **Key partners** — Naver CLOVA AI // AWS // University fashion departments // Investors
+- **Key partners** — Naver CLOVA // AWS // University fashion departments // Investors
 - **Key activities** — Building the app // Acquiring users and shops // Improving service quality
-- **Key resources** — Intellectual assets — papers, AI technology // People — team capability
+- **Key resources** — Intellectual assets // Team capability
 - **Value propositions** — Convenience // Satisfaction // Higher sales // Time saved // Fun // Portability
 - **Customer relationships** — Personalised recommendations // Personalised styling
 - **Channels** — Direct channel // App platform
-- **Customer segments** — Men in their 20s–30s with little interest in fashion who struggle to put outfits together // Menswear shops that want customer insight and closer contact with customers
-- **Cost structure** — Staff · app build and maintenance · marketing · operations · technology investment
+- **Customer segments** — Men in their 20s–30s who struggle to put outfits together // Retailers seeking more relevant suggestions based on customers’ wardrobes
+- **Cost structure** — Staff · app maintenance · marketing · operations · technology investment
 - **Revenue streams** — 3% commission · data report subscriptions · premium styling subscriptions
 
 ※ Source · PICO business plan (start-up competition deck)
 
 ## Market <!-- case.section.market -->
 
-Inside a ₩43 trillion fashion market, wardrobe-based styling on mobile was an empty space.
+Opportunity for wardrobe-based styling in Korea’s fashion market
 
 @boxed
 
@@ -57,11 +57,11 @@ Inside a ₩43 trillion fashion market, wardrobe-based styling on mobile was an 
 - 88% — of users would use it · survey of 127 people in their 10s–30s
 - 78% — of shops would use it · survey of 37 online shops
 
-The team signed MOUs with 50 partners, including 35 online shops, and secured promotion channels with 930k YouTube subscribers and 300k Instagram followers.
+The team signed MOUs with 50 partners, including 35 online shops, and secured promotional channels with 930,000 YouTube subscribers and 300,000 Instagram followers.
 
 ## Competition <!-- case.section.competition -->
 
-No service combined wardrobe management, shop recommendations and purchase
+No service offered wardrobe management, retailer recommendations and clothing purchases together
 
 - Feature | pico | Zigzag | Odd Concepts | Otjang | Omnious | Codi book
 - Personal wardrobe | ○ | × | × | ○ | × | △
@@ -76,22 +76,22 @@ No service combined wardrobe management, shop recommendations and purchase
 
 @cards
 
-- Segmentation — The mobile fashion platform market
+- Segmentation — The mobile fashion platform market for men in their 20x-30s
 - Targeting — Men in their 20s–30s who struggle to put outfits together
-- Positioning — A platform that manages your wardrobe and runs from free styling to purchase
+- Positioning — A platform that manages your wardrobe and runs free styling
 
 ### SWOT
 
 @quad
 
-- Strength — Lower commission than other services // VC and AI infrastructure from earlier start-up experience
+- Strength — Lower commission than other services // AI infrastructure from start-up experience
 - Weakness — Low awareness // Effectiveness not yet proven
 - Opportunity — Personalised styling no one offered // A fashion market with room to expand
 - Threat — Existing AI services moving into fashion
 
 ## Revenue model <!-- case.section.revenue -->
 
-Attracting shops with a 3% commission, below other online fashion platforms (5–13%)
+A proposed 3% commission, below other online fashion platforms' 5–13%
 
 @meter
 

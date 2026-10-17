@@ -4,44 +4,44 @@
 
 ## Concept <!-- case.section.concept -->
 
-A humidifier and mood light: pour in water, the lighthouse lights up and gentle waves roll
+Adding water switches on the lighthouse and creates gentle waves 
 
-- **Fabric humidifier** · Organic — An eco-friendly fabric humidifier that uses evaporation instead of a plastic disc
-- **Mood light** · Healing — The light turns on the moment water is poured in, and its brightness follows the room's light
+- **Fabric humidifier** · Organic — Uses evaporation from water absorbed by fabric rather than a conventional plastic disc
+- **Mood light** · Healing — The lighthouse lights up when water is added, with brightness adjusted to the light in the room
 - **Waves** · Nature — A seaside scene with a lighthouse, like sitting on an island watching the waves
 
 ## References <!-- case.section.references -->
 
-A system driven by Arduino water-level and light sensors
+Arduino controls using water-level and ambient-light sensors
 
 @cards
 
-- Water Lamp · Witaya Junma — A lamp whose LED turns on as water rises past an ultrasonic sensor; the rippling water throws light onto the wall. // → Water as a switch: a water-level sensor
-- Night Light · Egrobotics — A mood lamp that turns on as the room darkens and off as it brightens, using a light sensor. // → Beyond on and off: light readings set the brightness
+- Water Lamp · Witaya Junma — An ultrasonic sensor detects rising water and switches on an LED. Ripples reflect the light onto the wall. // → Water as a switch: a water-level sensor
+- Night Light · Egrobotics — An ambient-light sensor switches the lamp on as the room darkens and off as it brightens. // → Light sensing for brightness adjustment
 
 ## Specification <!-- case.section.specification -->
 
-Two sensors drive the light and the pump.
+Conditions governing the light and pump through two sensors
 
 - Part | Role | Behaviour
-- Water-level sensor | Detects water | At 300 or more the light and pump turn on; when water evaporates below 300 they turn off, so the light going out signals an empty tank
+- Water-level sensor | Detects water | At readings of 300 or above, the light and pump switch on. Below 300, both switch off, signalling that water needs replenishing
 - Light sensor | Measures ambient light | Maps readings of 200–600 to a light brightness of 1–255
-- Lighthouse light | Mood light | A warm yellow bulb that turns on and dims in response to both sensors
-- Submersible pump | Gentle waves | Hidden under the land model
-- Toggle switch | Power on/off | Lets the user turn the mood light on and off
+- Lighthouse light | Mood light | Warm yellow lighting activated by water level and dimmed in response to both sensors
+- Submersible pump | Gentle waves | Placed beneath the island model to create gentle waves
+- Toggle switch | Power on/off | Manual power control
 - Power | 12 V adapter | External power supply
 
 ## Drawings <!-- case.section.drawings -->
 
-The build is specified in an orthographic drawing, a circuit diagram and an exploded view.
+Production specifications documented through drawings
 
 @stack
 
-![SHEET 01 · Orthographic drawing — front, section and plan, in mm](assets/case-study/drawing-01-orthographic.jpg)
+![Orthographic drawings — front, section and plan views; dimensions in mm](assets/case-study/drawing-01-orthographic.jpg)
 
-![SHEET 02 · Circuit diagram — Arduino Uno R3 with water-level sensor, light sensor, LED and submersible pump](assets/case-study/drawing-02-circuit.jpg)
+![Wiring diagram — Arduino Uno R3, water-level sensor, light sensor, LED and submersible pump](assets/case-study/drawing-02-circuit.jpg)
 
-![SHEET 03 · Exploded view and bill of materials — 12 parts and assembly order](assets/case-study/drawing-03-exploded.jpg)
+![Exploded view and bill of materials — 12 component types and assembly sequence](assets/case-study/drawing-03-exploded.jpg)
 
 ## case.intro <!-- case.intro -->
 
