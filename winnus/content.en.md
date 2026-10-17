@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A wine discovery app for beginners, using familiar descriptions of taste to help them explore their preferences
+A wine discovery app that helps beginners explore their taste in familiar words
 
 ## role <!-- role -->
 
