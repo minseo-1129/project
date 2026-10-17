@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A personalised health routine app that adapts goal setting, tracking, and home-screen content to each user's stage of behaviour change
+A personalised health coach that adapts goal setting, tracking to each user's stage of behaviour change
 
 ## role <!-- role -->
 

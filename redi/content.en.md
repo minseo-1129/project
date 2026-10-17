@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A mobile diary app for teens that combines manual and sensor-based activity logs with mood entries, statistics, and weekly reports
+A mobile diary for teens that combines active and passive phenotypes to support mood disorder management
 
 ## role <!-- role -->
 

@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A conversational agent for children, designed to support everyday planning and follow-through and help address ADHD symptoms.
+A conversational agent designed to support children's everyday planning and help address ADHD symptoms
 
 ## role <!-- role -->
 
