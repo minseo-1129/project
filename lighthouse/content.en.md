@@ -4,7 +4,7 @@
 
 ## summary <!-- summary -->
 
-A 3D humidifier inspired by a lighthouse, combining fabric-evaporation, gentle waves and lighting that responds to ambient brightness.
+A humidifier and mood-light inspired by a lighthouse, combining fabric-evaporation and island scenery
 
 ## role <!-- role -->
 
