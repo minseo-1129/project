@@ -81,7 +81,7 @@
 
 레시피 탐색·커뮤니티·플레이리스트·프로필을 연결한 정보 구조
 
-![정보 구조도: 홈(추천·검색), 커뮤니티, 플레이리스트, 프로필](assets/case-study/ia.png)
+![](assets/case-study/ia.png)
 
 ## 페르소나 이름 <!-- case.persona.name -->
 
