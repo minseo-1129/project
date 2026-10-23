@@ -80,7 +80,7 @@ A storyboard from recipe selection to voice-guided cooking
 
 Information architecture linking recipe discovery, community, and playlists
 
-![Recipe Player information architecture — home (recipe recommendations, search), community, playlists, profile](assets/case-study/ia.png)
+![](assets/case-study/ia.png)
 
 ## case.persona.name <!-- case.persona.name -->
 
